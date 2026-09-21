@@ -1,0 +1,13 @@
+FormKey: 000801:NightsHarvest.esp
+EditorID: NHV_Sys_Core
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_CoreScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Debug
+      Object: 000800:NightsHarvest.esp
+  FileName: ''
+Flags:
+- StartGameEnabled
+NextAliasID: 1
