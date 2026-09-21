@@ -1,0 +1,34 @@
+# Standard: Git normalisiert Text auf LF im Repository.
+* text=auto
+
+# Text: LF (Docs, CSV, Python, XML, Spriggit-Export, Claude-Konfiguration)
+*.md text eol=lf
+*.csv text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.xml text eol=lf
+*.ppj text eol=lf
+plugin-text/** text eol=lf
+
+# Windows-Tools im Data-Baum: CRLF im Arbeitsverzeichnis (docs/CONVENTIONS.md)
+Data/**/*.psc text eol=crlf
+
+# MCM-Übersetzung ist UTF-16 LE mit BOM. Git darf sie nicht als Text anfassen,
+# sonst werden Zeilenenden und Kodierung zerstört.
+Data/Interface/Translations/*.txt binary
+
+# Binärdateien
+*.esp binary
+*.esm binary
+*.esl binary
+*.seq binary
+*.nif binary
+*.dds binary
+*.tri binary
+*.png binary
+*.jpg binary
+*.wav binary
+*.xwm binary
+*.lip binary
+*.fuz binary

@@ -1,0 +1,31 @@
+# Build-Artefakte (Pyro erzeugt sie reproduzierbar; Release-Archive liegen in GitHub Releases)
+*.pex
+*.bsa
+*.7z
+/build/
+/dist/
+
+# CK-Backups, Logs, lokale Sicherungen
+*.bak
+*.log
+/backup/
+Data/Backup/
+
+# Lokale Claude-Code-Einstellungen
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editor und Betriebssystem
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Heruntergeladene Archive und entpackte Fremdwerkzeuge (lokal, nicht versionieren)
+/downloads/
+/.tools/

@@ -1,0 +1,52 @@
+name: Bug-Report
+description: Fehler in Night's Harvest melden (Pflichtfelder laut docs/TESTING.md)
+labels: ["typ:bug"]
+body:
+  - type: input
+    id: game_version
+    attributes:
+      label: Spielversion
+      description: z. B. SE 1.5.97 oder AE 1.6.1170
+    validations:
+      required: true
+  - type: input
+    id: skse_version
+    attributes:
+      label: SKSE-Version
+    validations:
+      required: true
+  - type: input
+    id: mod_version
+    attributes:
+      label: Mod-Version
+      description: z. B. 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: load_order
+    attributes:
+      label: Load Order
+      description: LOOT-Export, als Datei anhängen oder einfügen.
+    validations:
+      required: true
+  - type: textarea
+    id: papyrus_log
+    attributes:
+      label: Papyrus-Log
+      description: Zeilen mit `[NHV]` und Fehler in der Umgebung, oder das ganze Log als Datei.
+    validations:
+      required: true
+  - type: textarea
+    id: status_log
+    attributes:
+      label: Ausgabe von „Write status to log“
+      description: MCM-Funktion im Bereich Maintenance & Debug.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Schritte zum Nachstellen
+      description: Welcher Save, welche Quest und Stage (`getstage <Quest>`), was wurde getan, was ist passiert, was war erwartet?
+    validations:
+      required: true

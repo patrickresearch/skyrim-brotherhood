@@ -1,0 +1,22 @@
+[
+  {"name": "quest:Q00", "color": "5319e7", "description": "Q00 A Shadow at the Door"},
+  {"name": "quest:Q01", "color": "5319e7", "description": "Q01 The Unanswered Sacrament"},
+  {"name": "quest:Q02", "color": "5319e7", "description": "Q02 Cold Waters"},
+  {"name": "quest:Q03", "color": "5319e7", "description": "Q03 The Scholar's Sin"},
+  {"name": "quest:Q04", "color": "5319e7", "description": "Q04 Till Death Do Us Part"},
+  {"name": "quest:Q05", "color": "5319e7", "description": "Q05 Blood of the Stronghold"},
+  {"name": "quest:Q06", "color": "5319e7", "description": "Q06 Blood Harvest"},
+  {"name": "sys:core", "color": "0e8a16", "description": "NHV_Sys_Core: Version, Maintenance, Startbedingung"},
+  {"name": "sys:family", "color": "0e8a16", "description": "NHV_Sys_Family: Rekruten, Follower"},
+  {"name": "sys:ledger", "color": "0e8a16", "description": "NHV_Sys_Ledger: Black Ledger"},
+  {"name": "typ:script", "color": "1d76db", "description": "Papyrus"},
+  {"name": "typ:dialog", "color": "1d76db", "description": "Dialog-CSV, Topics, INFOs"},
+  {"name": "typ:zelle", "color": "1d76db", "description": "Zellen, Navmesh, Beleuchtung"},
+  {"name": "typ:npc", "color": "1d76db", "description": "NPC-Records, Packages"},
+  {"name": "typ:szene", "color": "1d76db", "description": "Scene-Records"},
+  {"name": "typ:tool", "color": "1d76db", "description": "Python-Tools, Build, FOMOD"},
+  {"name": "typ:bug", "color": "d73a4a", "description": "Fehler"},
+  {"name": "prio:hoch", "color": "b60205", "description": ""},
+  {"name": "prio:mittel", "color": "fbca04", "description": ""},
+  {"name": "prio:niedrig", "color": "c2e0c6", "description": ""}
+]
