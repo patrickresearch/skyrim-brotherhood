@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+  Night's Harvest - Pyro build project.
+  Start ueber tools/build.ps1, nicht direkt: Pyro sucht sonst den Spielordner ueber die
+  Registry und wuerde das Live-Spiel nehmen. build.ps1 uebergibt die Dev-Kopie als --game-path.
+-->
+<PapyrusProject xmlns="PapyrusProject.xsd"
+                Game="sse"
+                Flags="TESV_Papyrus_Flags.flg"
+                Output="Data\Scripts"
+                Optimize="true"
+                Release="false"
+                Final="false"
+                Anonymize="false"
+                Package="false"
+                Zip="false">
+    <Variables>
+        <!-- Dev-Kopie des Spiels, siehe docs/ENVIRONMENT.md -->
+        <Variable Name="DevGame" Value="C:\Dev\brotherhood-devenv\SkyrimSE-Dev" />
+    </Variables>
+    <Imports>
+        <!-- Reihenfolge = Vorrang: eigene Quellen, SKSE (ueberschreibt einige Vanilla-Skripte), Vanilla -->
+        <Import>Data\Source\Scripts</Import>
+        <Import>@DevGame\Data\Scripts\Source</Import>
+        <Import>@DevGame\Data\Source\Scripts</Import>
+        <!-- SkyUI SDK (SKI_ConfigBase.psc), sobald vorhanden, vor M1.1:
+        <Import>.tools\skyui-sdk</Import> -->
+    </Imports>
+    <Folders>
+        <Folder>Data\Source\Scripts</Folder>
+    </Folders>
+</PapyrusProject>
