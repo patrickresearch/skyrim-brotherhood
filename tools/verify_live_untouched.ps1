@@ -36,7 +36,10 @@ foreach ($line in Get-Content (Join-Path $Backup 'MANIFEST.sha256')) {
     $hash, $rel = $line -split '  ', 2
     foreach ($k in $map.Keys) {
         if (-not $rel.StartsWith($k)) { continue }
-        $live = Join-Path $map[$k] $rel.Substring($k.Length)
+        $name = $rel.Substring($k.Length)
+        # Backup legt Dateien aus Data\ als "Data_<Name>" im Ordner game-root-config ab
+        if ($k -eq 'game-root-config\' -and $name.StartsWith('Data_')) { $name = 'Data\' + $name.Substring(5) }
+        $live = Join-Path $map[$k] $name
         if (-not (Test-Path -LiteralPath $live)) { $missing += $rel; continue }
         if ((Get-FileHash -LiteralPath $live -Algorithm SHA256).Hash -eq $hash) { $same++ } else { $changed += $rel }
     }
