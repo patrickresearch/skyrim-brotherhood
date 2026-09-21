@@ -41,13 +41,13 @@ Kompilierte Scripts (`.pex`), BSA und Release-Archive werden nicht versioniert; 
 
 ## Arbeitsweise
 
-- Das ESP wird nur im Creation Kit bearbeitet. Jede CK-Session endet mit einem Export nach `plugin-text/` und einem Commit.
+- Das ESP bearbeiten Claude (Spriggit oder MCP) und der Entwickler (Creation Kit) abwechselnd, nie gleichzeitig (E17). Jede Session endet mit einem Export nach `plugin-text/` und einem Commit.
 - `main` ist immer spielbar und wird nur aus `dev` aktualisiert; entwickelt wird auf `dev`. Commit-Format: `[Q00] Szene 1: Marker und Packages`.
 - Entwickelt wird nur im Repo und in der Dev-Kopie des Spiels; das Live-Spiel ist für Claude Code schreibgeschützt (`.claude/settings.json`, `.claude/hooks/`).
 - Ab Build 0.1.0 gelten die Save-Regeln aus [docs/CONVENTIONS.md](docs/CONVENTIONS.md): nichts umbenennen oder entfernen, nur additiv erweitern.
 
 ## GitHub einrichten (einmalig)
 
-1. Das Repository `patrickresearch/skyrim-brotherhood` existiert und ist als `origin` verbunden (leer, aktuell öffentlich). Vor dem ersten Push die Sichtbarkeit klären; laut `docs/ROADMAP.md` (M0.4) soll es privat sein.
-2. Labels anlegen: `python tools/github_setup.py` (mit `gh`, `--dry-run` zeigt vorher die Befehle).
+1. Das Repository `patrickresearch/skyrim-brotherhood` ist als `origin` verbunden und aktuell öffentlich. Der Entwickler stellt es später auf privat (laut `docs/ROADMAP.md`, M0.4, soll es privat sein).
+2. Labels sind angelegt (`python tools/github_setup.py`, idempotent).
 3. Project-Board „Night's Harvest“ mit den Spalten Backlog → Bereit → In Arbeit → Test → Fertig anlegen und mit dem Repository verknüpfen.

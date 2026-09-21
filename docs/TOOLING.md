@@ -61,7 +61,7 @@ winget 1.29 ist vorhanden; die IDs habe ich mit `winget search` geprüft. Nexus-
 - **Schreiben** darf ich weiter nur im Repository (Regel 2 in `CLAUDE.md`).
 - Das Creation Kit und das Spiel kann ich nicht bedienen; das bleibt beim Entwickler.
 
-## 4. MCP-Server für das ESP (Entscheidung nötig)
+## 4. MCP-Server für das ESP (entschieden, E17)
 
 Es gibt MCP-Server, mit denen Claude ein ESP ohne Creation Kit lesen und schreiben kann:
 
@@ -76,7 +76,9 @@ Es gibt MCP-Server, mit denen Claude ein ESP ohne Creation Kit lesen und schreib
 
 **Was Claude damit übernehmen könnte:** Globals, Fraktionen, FormLists, Messages, Items und Spells, NPC-Werte, Quests mit Stages und Aliasen, Packages, Dialog-Topics und -INFOs aus dem CSV, Szenen. Das ist der größte Teil der CK-Arbeit in M1.1, M1.4, M1.5 und M1.6.
 
-### Empfehlung
+### Empfehlung (Stand vor der Entscheidung)
+
+Entschieden am 22.09.2026: Claude bearbeitet das ESP (E17). Umgesetzt wird zuerst mit Spriggit; ein MCP-Server folgt nach Quelltextprüfung und Freigabe.
 
 1. **Spike in M0** an einem Wegwerf-Plugin, nicht an `NightsHarvest.esp`: Globals, Quest mit Alias und Script, eine Dialogzeile. Danach im CK öffnen und speichern. Verglichen werden SehtMCP, SkyrimCK-MCP und Spriggit-Deserialize (Text → ESP, nutzt ohnehin Mutagen).
 2. **Ein Schreiber zur Zeit:** Das ESP ist nicht mergebar. CK und Claude bearbeiten es nie gleichzeitig. Jede Übergabe endet mit Spriggit-Export und Commit; nach jedem Claude-Eingriff öffnet der Entwickler das ESP einmal im CK und speichert, bevor er weiterarbeitet.

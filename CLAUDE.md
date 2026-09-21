@@ -36,6 +36,7 @@ Das Konzept in `docs/concept/` ist die Quelle der Wahrheit für Design. Weicht e
 4. **Dialog nur über das CSV-Master-Skript** (`dialogue/*.csv`). Keine Zeile existiert nur in einer CK-Anleitung oder einem Script.
 5. **Keine neuen harten Abhängigkeiten** über SKSE64 und SkyUI hinaus, keine eigene SKSE-DLL. Weiche Abhängigkeiten nur über `Game.GetFormFromFile()` und `Game.GetModByName()`.
 6. **Nichts als ingame funktionierend melden, bevor der Entwickler es getestet hat.** Du kannst weder das CK noch das Spiel bedienen; Ingame-Verhalten kennst du nur aus Papyrus-Log, Screenshots und seiner Beschreibung.
+7. **ESP: ein Schreiber zur Zeit (E17).** Du darfst `NightsHarvest.esp` über Spriggit oder einen freigegebenen MCP-Server bearbeiten, aber nie gleichzeitig mit dem Creation Kit. Nach deinem Eingriff öffnet und speichert der Entwickler das ESP einmal im CK. Räumliche Arbeit (Zellen, Navmesh, Beleuchtung, FaceGen) bleibt im CK. Vanilla-Records bleiben tabu (Regel 1).
 
 ## Arbeitsablauf je Arbeitspaket
 

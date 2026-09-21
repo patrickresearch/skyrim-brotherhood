@@ -1168,7 +1168,7 @@ Empfehlung: ein eigenes, leichtgewichtiges System in `NHV_Sys_Family`.
 | `NHV_ContractBaseScript` | Quest | Gemeinsame Basisklasse für Q01 bis Q05: Phasen, Status-Global, Belohnung, Fragment-Übergabe |
 | `NHV_Q01Script` bis `NHV_Q05Script` | NHV\_ContractBaseScript | Quest-spezifische Logik |
 | `NHV_FamilyManagerScript` | Quest | Rekruten registrieren, `NHV_FamilyStrength`, Follower-Slots |
-| `NHV_RecruitAliasScript` | ReferenceAlias | `OnDeath()` → Status 4, Memorial-Eintrag, ModEvent |
+| `NHV_RecruitAliasScript` | ReferenceAlias | `OnDeath()` → Status 2, Memorial-Eintrag, ModEvent |
 | `NHV_FollowerAliasScript` | ReferenceAlias | Folgen, Warten, Catch-up |
 | `NHV_LedgerScript` | Quest | Eignung, Slot-Vergabe, Initiation-Timer |
 | `NHV_SenseDarknessEffect` | ActiveMagicEffect | Kandidaten markieren (Shader + `NHV_CandidateFaction`) |
@@ -1476,7 +1476,7 @@ Profile werden in Vortex oder MO2 getrennt geführt. Im Papyrus-Abschnitt der `S
 | BT04 | Spieler wird während eines Contracts verhaftet | Contract läuft weiter, keine Blockade |
 | BT05 | Verwandlung zum Vampire Lord oder Werwolf mitten im Dialog | Dialog bricht sauber ab, erneut startbar |
 | BT06 | 30 Tage warten während eines Contracts | Zeitabhängige Phasen reagieren wie spezifiziert |
-| BT07 | Rekrut stirbt vor „Homecoming“ | Status 4, Memorial-Eintrag, Contract endet mit Tod-Variante |
+| BT07 | Rekrut stirbt vor „Homecoming“ | Status 2, Memorial-Eintrag, Contract endet mit Tod-Variante |
 | BT08 | Alle Story-Rekruten tot vor Q06 | Finale trotzdem abschließbar, Dialoge passen sich an |
 | BT09 | Fremder Follower (Vanilla oder Framework) begleitet den Spieler | Keine Konflikte bei Dialogen und Follower-Slots |
 | BT10 | Nazir oder Babette durch Fremdmod deaktiviert | Optionale Aliase leer, keine Fehler, Zeilen entfallen |

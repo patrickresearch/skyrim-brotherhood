@@ -32,7 +32,7 @@ Backups:
 - Nicht gesichert: Mod-Staging (`Vortex\skyrimse\mods`, ca. 58 GB) und Vortex-Downloads (ca. 35 GB).
 - Alle Backup-Dateien tragen das NTFS-Attribut „schreibgeschützt“.
 
-**Testumgebung:** MO2 lädt die Dev-Kopie über `ModOrganizer.ini` (`gamePath`), nicht das Live-Spiel. Das Profil `Default` nutzt profilspezifische INIs (`skyrim.ini` mit eingeschaltetem Papyrus-Logging) und einen eigenen Saves-Ordner (`LocalSaves`, `LocalSettings`). MO2 kennt SKSE, Skyrim, Creation Kit und den Virtual-Folder-Explorer; alle zeigen auf die Dev-Kopie. Die Warnung von MO2, dass die Instanz auf dem Desktop liegt (Systemordner), ist offen. Ingame noch nicht getestet.
+**Testumgebung:** MO2 lädt die Dev-Kopie über `ModOrganizer.ini` (`gamePath`), nicht das Live-Spiel. Das Profil `Default` nutzt profilspezifische INIs (`skyrim.ini` mit eingeschaltetem Papyrus-Logging) und einen eigenen Saves-Ordner (`LocalSaves`, `LocalSettings`). MO2 kennt SKSE, Skyrim, Creation Kit und den Virtual-Folder-Explorer; alle zeigen auf die Dev-Kopie. Nach dem Umzug nach `C:\Dev` meldet MO2 keine Warnung mehr. Ingame noch nicht getestet.
 
 **Schreibschutz:** `.claude/settings.json` und `.claude/hooks/protect_live.py` sperren Claude Code für Live-Spielordner, `Documents\My Games`, `%LOCALAPPDATA%\Skyrim Special Edition`, Vortex und Backups. Testen: `python .claude/hooks/protect_live.py --selftest`.
 
@@ -82,10 +82,12 @@ Der Live-Spielordner enthält ein stark gemoddetes Vortex-Deployment (177 aktive
 | Dev-Kopie → Repo (ESP, SEQ, FaceGen vom CK) | `powershell -File tools\sync_dev.ps1 -Direction FromDev` (liest `<Dev>\Data` und `MO2\overwrite`, nimmt die neuere Datei, überschreibt keine neuere Repo-Datei ohne `-Force`) |
 | Release-Archiv (BSA + FOMOD als `dist\NightsHarvest-<Version>.7z`) | `powershell -File tools\package.ps1` (braucht ein echtes ESP in `Data\`) |
 | Live-Spiel unberührt? | `powershell -File tools\verify_live_untouched.ps1` (nur lesend, vergleicht mit dem Backup) |
-| Spriggit-Serialize (ESP → `plugin-text/`) | `.tools\Spriggit\Spriggit.CLI.exe convert-from-plugin --InputPath "Data\NightsHarvest.esp" --OutputPath plugin-text --GameRelease SkyrimSE --PackageName Spriggit.Yaml` (noch nicht getestet, M0.5) |
+| Text → ESP (Claude bearbeitet `plugin-text/`, E17) | `powershell -File tools\plugin_text.ps1 -Direction ToPlugin` (schreibt `Data\NightsHarvest.esp`, schreibt den Text danach kanonisch neu; verweigert das Überschreiben eines neueren ESP) |
+| ESP → Text (nach jeder CK-Session, nach `sync_dev.ps1 -Direction FromDev`) | `powershell -File tools\plugin_text.ps1 -Direction ToText` |
+| Spriggit direkt | `.tools\Spriggit\Spriggit.CLI.exe convert-from-plugin ... --PackageName Spriggit.Yaml --PackageVersion 0.41.0` bzw. `convert-to-plugin --InputPath plugin-text --OutputPath <ESP>`. `--PackageVersion` ist Pflicht |
 | Dialog-Lint | `python tools/dialogue_lint.py dialogue/` |
 
-Spriggit-Deserialize (Text → ESP) wird hier bewusst nicht eingetragen: Das ESP ändert nur der Entwickler im Creation Kit.
+Spriggit-Deserialize (Text → ESP) ist seit E17 erlaubt, aber nur nach der Ein-Schreiber-Regel (CLAUDE.md, Regel 7). Dafür gibt es `tools/plugin_text.ps1` (siehe Tabelle oben).
 
 ## Hinweise für Claude Code unter Windows
 

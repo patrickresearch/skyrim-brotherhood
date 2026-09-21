@@ -61,4 +61,4 @@ CK speichern → Spriggit-Serialize → Commit `[<Bereich>] …`
 ## Was du nicht tust
 
 - Keine Schritte erfinden, die du nicht sicher kennst. Ist ein Menüpfad oder Feldname unsicher, schreibe „Feld für <Zweck> (Name im CK prüfen)“.
-- Keine Record-Änderungen per Tool oder Spriggit-Deserialize.
+- Records, die sich als Text abbilden lassen (Globals, Fraktionen, FormLists, Quests, Aliase, Packages, Dialog-INFOs), legst du seit E17 selbst an (Spriggit oder MCP, Ein-Schreiber-Regel). Anleitungen schreibst du für das, was das CK braucht: Zellen und Platzierung, Navmesh, Beleuchtung, Room Bounds, FaceGen, Sicht- und Ingame-Prüfung.
