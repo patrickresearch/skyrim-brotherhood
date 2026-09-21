@@ -63,6 +63,8 @@ winget 1.29 ist vorhanden; die IDs habe ich mit `winget search` geprüft. Nexus-
 
 ## 4. MCP-Server für das ESP (entschieden, E17)
 
+**Ausführliche Analyse aller Kandidaten: [docs/MCP-Vergleich.md](MCP-Vergleich.md) (22.09.2026). Kurzfassung: houseCARL ist der beste Kandidat (mit Auflagen), SehtMCP für Navmesh später, SkyrimCK-MCP ist kein MCP-Server.** Die Tabelle unten stammt aus der ersten Recherche und ist dort korrigiert.
+
 Es gibt MCP-Server, mit denen Claude ein ESP ohne Creation Kit lesen und schreiben kann:
 
 | Server | Umfang laut Beschreibung | Voraussetzungen | Reife |

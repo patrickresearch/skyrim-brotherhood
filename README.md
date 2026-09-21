@@ -37,6 +37,7 @@ Kompilierte Scripts (`.pex`), BSA und Release-Archive werden nicht versioniert; 
 | [docs/TESTING.md](docs/TESTING.md) | Testprofile, Break-Tests, Definition of Done |
 | [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) | Lokale Pfade und Build-Befehle |
 | [docs/TOOLING.md](docs/TOOLING.md) | Benötigte Werkzeuge, MCP-Optionen für das ESP |
+| [docs/MCP-Vergleich.md](docs/MCP-Vergleich.md) | Analyse und Vergleich der MCP-Server und Werkzeuge für das ESP |
 | [docs/concept/](docs/concept/) | Vollständiges Konzept (Quelle der Wahrheit für Design) |
 
 ## Arbeitsweise
