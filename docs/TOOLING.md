@@ -17,7 +17,7 @@ Stand: 22.09.2026. Was für die Entwicklung gebraucht wird, was schon da ist und
 
 ## 2. Muss installiert oder beschafft werden
 
-**Stand 22.09.:** Installiert sind `gh` (noch nicht angemeldet), LOOT, .NET SDK 10, 7-Zip und die Papyrus-Extension. SSEEdit, Spriggit und Pyro sind nach `.tools/` entpackt. Dev-Kopie und Backups stehen (Abschnitt 5), CKPE liegt in der Dev-Kopie. Offen: SkyUI SDK, Testumgebung für Ingame-Tests, Skyrim 1.5.97, Fuz Ro D-oh, Test-Saves, Papyrus-Logging.
+**Stand 22.09.:** Installiert sind `gh` (noch nicht angemeldet), LOOT, .NET SDK 10, 7-Zip und die Papyrus-Extension. SSEEdit, Spriggit und Pyro sind nach `.tools/` entpackt. Dev-Kopie, Backups (inkl. Saves), Schreibschutz und die MO2-Testumgebung stehen (Abschnitt 5), CKPE liegt in der Dev-Kopie. Offen: SkyUI SDK, Ingame-Test über MO2, Skyrim 1.5.97, Fuz Ro D-oh, Test-Saves.
 
 | Was | Wofür | Paket |
 |---|---|---|
@@ -97,12 +97,17 @@ Der Spielordner ist ein aktives Vortex-Deployment mit 177 aktiven Plugins. Er wi
 | Papyrus-Quellen in der Kopie | `Data\Source\Scripts`: 14.301 Vanilla-Quellen aus `Scripts.zip`. `Data\Scripts\Source`: 328 `.psc` aus dem Live-Ordner (SKSE, dort können einzelne Mod-Quellen dabei sein) |
 | CKPE | in der Dev-Kopie entpackt (`ckpe_loader.exe`, `winhttp.dll`, überschreibt dort `Tools\LipGen`). Nicht getestet. Im Live-Ordner ist weder `winhttp.dll` noch `ckpe_loader.exe` vorhanden (geprüft) |
 | SkyUI-Archiv aus `downloads/` | nicht verwendet: kein SDK, und die Hashes weichen von der installierten Version ab |
+| Saves-Backup | `brotherhood-devenv\backups\2026-09-22_0032-saves`: 2.683 Dateien, 751 MB, jede Datei per SHA-256 geprüft, 0 Fehler. Quelle danach unverändert |
+| Schreibschutz | Alle 2.723 Backup-Dateien NTFS-schreibgeschützt. Für Claude Code: PreToolUse-Hook `.claude/hooks/protect_live.py` (20 Selbsttest-Fälle bestanden) plus Deny-Regeln in `.claude/settings.json`. Der Hook hat in dieser Sitzung einen Testbefehl mit Live-Pfad und `Remove-Item` blockiert, ein Schreibversuch in die Backups wurde von den Settings abgelehnt |
+| Testumgebung | Mod Organizer 2 2.5.2 (portable, `Mod.Organizer-2.5.2.7z` von github.com/ModOrganizer2, 142,7 MB, SHA-256 `E6376EFD87FD5DDD95AEE959405E8F067AFA526EA6C2C0C5AA03C5108BF4A815`, GitHub nennt keinen Vergleichswert) in `brotherhood-devenv\MO2`. Ein Testlauf hat die Instanz akzeptiert: Spiel `Skyrim Special Edition` (Steam, ID 489830) in der Dev-Kopie, Executables SKSE, Skyrim, Creation Kit, Explorer, Plugins DLCs, USSEP, SkyUI |
+| Git | `main` mit zwei Commits, `dev` mit dem Hook-Commit, `origin` = `patrickresearch/skyrim-brotherhood`, nichts gepusht |
 
 Korrektur zu meiner früheren Angabe: Die Live-Quellen in `Data\Source\Scripts` (14.339 `.psc`) sind nicht stark vermischt. 38 Dateien stammen von Mods (z. B. `AFW_`), 7 weichen von Vanilla ab, vermutlich durch USSEP.
 
 ### Grenzen der Trennung
 
-- **Dieselben Dateien für beide Spiele:** Ein direkt gestartetes `SkyrimSE.exe` aus der Kopie liest dieselben `Documents\My Games`-INIs und dieselbe `plugins.txt` (`%LOCALAPPDATA%\Skyrim Special Edition`) wie das Live-Spiel und legt Saves im selben Ordner ab. Deshalb wird die Kopie vorerst nur für das Creation Kit und für Builds verwendet. Für Testläufe im Spiel braucht es eine Lösung, die INIs, Saves und Plugin-Liste trennt, z. B. Mod Organizer 2 (portable Instanz, profilspezifische INIs und Saves).
+- **Nur über MO2 spielen:** Die Dev-Kopie darf nicht direkt gestartet werden (nicht `SkyrimSE.exe`, nicht `skse64_loader.exe` aus dem Ordner). Sonst benutzt sie die INIs, die `plugins.txt` und den Saves-Ordner des Live-Spiels. Über MO2 gilt das Profil `Default` mit eigenen INIs und Saves (`LocalSaves`, `LocalSettings`).
+- **Restrisiko Logs:** Papyrus-Logs, SKSE-Logs und Screenshots schreibt das Spiel vermutlich weiter in den echten `Documents\My Games`-Ordner (neue Dateien, keine Überschreibung). Ungeprüft. Nach dem ersten Spielstart die INIs dort mit dem Backup vergleichen und prüfen, ob ein Ordner `__MO_Saves` entstanden ist.
 - **Creation Kit:** Die `CreationKit.ini` nutzt relative Pfade (`Data\`, `Saves\`), das CK arbeitet also im `Data`-Ordner der Kopie. Ob es zusätzlich etwas unter `Documents\My Games` schreibt, ist ungeprüft. Nach dem ersten CK-Start sind die INIs dort mit dem Backup zu vergleichen.
 - **Start ohne Steam-Ordner:** Die Kopie enthält `steam_appid.txt` (489830). Der Start ist ungetestet; Steam muss laufen.
 
@@ -127,9 +132,11 @@ Aus `plugins.txt` (aktive Plugins), nur gelesen. Die Einstufung beruht auf den P
 
 Für Konflikte reicht SSEEdit im Nur-Lese-Modus gegen diese Load Order; `Check for Errors` und Cleaning werden nicht auf Live-Plugins ausgeführt.
 
-### Offene Schritte zur Absicherung
+### Offene Schritte
 
-1. Testumgebung für Ingame-Tests wählen (Mod Organizer 2 oder Alternative), siehe Grenzen der Trennung.
-2. Papyrus-Logging in der Dev-Umgebung einschalten, nicht in der Live-INI.
-3. E16 vor M1.3 entscheiden, mit Blick auf Sanctuary Reborn.
-4. Optional: Backup der Saves (2.683 Dateien, ca. 750 MB).
+1. MO2 einmal öffnen (`brotherhood-devenv\MO2\ModOrganizer.exe`), „Show tutorial?“ mit Nein beantworten, Executables und Plugin-Liste ansehen. Die Warnung „Instanz liegt auf dem Desktop“ ist offen; ein Ordner außerhalb des Desktops wäre sauberer (dann müssen `ModOrganizer.ini` und diese Doku angepasst werden).
+2. SSEEdit in MO2 als Executable eintragen (`<Repo>\.tools\SSEEdit\SSEEdit.exe`).
+3. Ersten Spielstart über MO2 mit dem Profil `Default` testen und danach die Live-Dateien gegen das Backup prüfen (Restrisiko Logs).
+4. CKPE in der Dev-Kopie über MO2 mit dem Creation Kit testen (CKPE und MO2 zusammen sind ungeprüft).
+5. Sichtbarkeit des GitHub-Repos klären: `skyrim-brotherhood` ist öffentlich, `docs/ROADMAP.md` (M0.4) sieht ein privates Repo vor. Erst danach pushen.
+6. E16 vor M1.3 entscheiden, mit Blick auf Sanctuary Reborn.

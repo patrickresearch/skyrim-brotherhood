@@ -21,12 +21,22 @@ Das Live-Spiel wird aktiv gespielt und bleibt unangetastet. Alles rund um den Mo
 | Live-Einstellungen, Saves, Load Order | `C:\Users\Vanessa Bubu Schmidt\Documents\My Games\Skyrim Special Edition`, `%LOCALAPPDATA%\Skyrim Special Edition` | nur lesen |
 | Vortex (Zustand, Profile, Mods, Downloads) | `%APPDATA%\Vortex`, Installation `C:\Program Files\Black Tree Gaming Ltd\Vortex` | nicht anfassen |
 | Repository (Quellen, Doku, Tools) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood` | hier wird entwickelt |
-| Dev-Kopie des Spiels (Vanilla, USSEP, SkyUI, SKSE, CK) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\SkyrimSE-Dev` | hier laufen CK, Builds, Tests |
-| Backups vom 22.09.2026 | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\backups\2026-09-22_0015` | mit `MANIFEST.sha256` (SHA-256 je Datei) |
+| Dev-Kopie des Spiels (Vanilla, USSEP, SkyUI, SKSE, CK, CKPE) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\SkyrimSE-Dev` | hier laufen CK, Builds, Tests |
+| Testumgebung (Mod Organizer 2 2.5.2, portable) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\MO2` | zeigt auf die Dev-Kopie; Profil `Default` mit eigenen INIs und Saves |
+| Backups vom 22.09.2026 (schreibgeschützt) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\backups\` | je Ordner eine `MANIFEST.sha256` (SHA-256 je Datei) |
 
-Inhalt des Backups: Vortex-Zustand (`state.v2`, Profile, Snapshots, Masterlist, Userlist, Einstellungen), alle INI-Dateien aus `Documents\My Games` (darunter `Skyrim.ini` und `SkyrimCustom.ini`), `plugins.txt` und `loadorder.txt`, die Deployment-Manifeste und die CK-INIs. Nicht gesichert: Mod-Staging (`Vortex\skyrimse\mods`, ca. 58 GB), Vortex-Downloads (ca. 35 GB) und die Saves.
+Backups:
 
-**Grenzen der Trennung:** Die Dev-Kopie hat ihren eigenen `Data`-Ordner. Ein direkt gestartetes `SkyrimSE.exe` aus der Kopie würde aber dieselben `Documents\My Games`-INIs, dieselben Saves und dieselbe `plugins.txt` wie das Live-Spiel benutzen. Deshalb wird die Kopie zunächst nur für das Creation Kit und Builds genutzt; Testläufe im Spiel erst mit einer Lösung, die INIs, Saves und Plugin-Liste trennt (z. B. Mod Organizer 2 mit profilspezifischen INIs und Saves).
+- `2026-09-22_0015`: Vortex-Zustand (`state.v2`, Profile, Snapshots, Masterlist, Userlist, Einstellungen), alle INI-Dateien aus `Documents\My Games` (darunter `Skyrim.ini` und `SkyrimCustom.ini`), `plugins.txt`, `loadorder.txt`, Deployment-Manifeste, CK-INIs (39 Dateien).
+- `2026-09-22_0032-saves`: alle Saves (2.683 Dateien, 751 MB), jede Datei per Hash geprüft.
+- Nicht gesichert: Mod-Staging (`Vortex\skyrimse\mods`, ca. 58 GB) und Vortex-Downloads (ca. 35 GB).
+- Alle Backup-Dateien tragen das NTFS-Attribut „schreibgeschützt“.
+
+**Testumgebung:** MO2 lädt die Dev-Kopie über `ModOrganizer.ini` (`gamePath`), nicht das Live-Spiel. Das Profil `Default` nutzt profilspezifische INIs (`skyrim.ini` mit eingeschaltetem Papyrus-Logging) und einen eigenen Saves-Ordner (`LocalSaves`, `LocalSettings`). MO2 kennt SKSE, Skyrim, Creation Kit und den Virtual-Folder-Explorer; alle zeigen auf die Dev-Kopie. Die Warnung von MO2, dass die Instanz auf dem Desktop liegt (Systemordner), ist offen. Ingame noch nicht getestet.
+
+**Schreibschutz:** `.claude/settings.json` und `.claude/hooks/protect_live.py` sperren Claude Code für Live-Spielordner, `Documents\My Games`, `%LOCALAPPDATA%\Skyrim Special Edition`, Vortex und Backups. Testen: `python .claude/hooks/protect_live.py --selftest`.
+
+**Restrisiko:** Papyrus-Logs, SKSE-Logs und Screenshots schreibt das Spiel vermutlich in den echten `Documents\My Games`-Ordner, weil MO2 nur INIs und Saves umleitet. Das ist ungeprüft. Nach dem ersten Spielstart die INIs dort mit dem Backup vergleichen und prüfen, ob ein Ordner `__MO_Saves` entstanden ist.
 
 ## Spiel & Tools
 
@@ -48,7 +58,7 @@ Die Tabelle beschreibt das Live-Spiel und die Werkzeuge. Für die Entwicklung gi
 | .NET SDK | 10.0.401 | `C:\Program Files\dotnet` |
 | 7-Zip | installiert | `C:\Program Files\7-Zip\7z.exe` |
 | Vortex | Installationspfad eintragen; Daten unter `C:\Users\Vanessa Bubu Schmidt\AppData\Roaming\Vortex` | Profile: Clean, Heavy, Legacy, Voice (M0.1) |
-| Papyrus-Log | Ordner `Logs\Script` existiert noch nicht, Logging ist aus (`bEnableLogging=0`) | `C:\Users\Vanessa Bubu Schmidt\Documents\My Games\Skyrim Special Edition\Logs\Script\Papyrus.0.log` |
+| Papyrus-Log | Live-INI: Logging aus, unverändert. Dev-Profil: Logging an (`MO2\profiles\Default\skyrim.ini`) | vermutlich `C:\Users\Vanessa Bubu Schmidt\Documents\My Games\Skyrim Special Edition\Logs\Script\Papyrus.0.log` (nach dem ersten Testlauf prüfen) |
 
 Der Live-Spielordner enthält ein stark gemoddetes Vortex-Deployment (177 aktive Plugins). Statt eines Clean-Profils in Vortex (M0.1) gilt für die Entwicklung die Dev-Kopie.
 
