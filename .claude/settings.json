@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(//c/Program Files */Steam/steamapps/common/Skyrim Special Edition/**)",
+      "Edit(//c/Users/Vanessa Bubu Schmidt/Documents/My Games/Skyrim Special Edition/**)",
+      "Edit(//c/Users/Vanessa Bubu Schmidt/AppData/Local/Skyrim Special Edition/**)",
+      "Edit(//c/Users/Vanessa Bubu Schmidt/AppData/Roaming/Vortex/**)",
+      "Edit(//c/Program Files/Black Tree Gaming Ltd/**)",
+      "Edit(//c/Users/Vanessa Bubu Schmidt/Desktop/Utils/dev/brotherhood-devenv/backups/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect_live.py\"",
+            "timeout": 10,
+            "statusMessage": "Prüfe Schreibschutz für Live-Spiel, Vortex und Backups"
+          }
+        ]
+      }
+    ]
+  }
+}
