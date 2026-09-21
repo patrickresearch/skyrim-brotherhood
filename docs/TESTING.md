@@ -48,6 +48,7 @@ Während der Tests in `Skyrim.ini`, Abschnitt `[Papyrus]`: `bEnableLogging=1`, `
 | BT12 | Kandidat ist Quest-NPC eines anderen Mods | Blacklist/Essential greift |
 | BT13 | MCM-Werte während Szene ändern | Keine Fehler |
 | BT14 | Spieler verlässt das Sanctuary während der Finale-Wellen | Pause, Fortsetzung bei Rückkehr |
+| BT15 | SKSE fehlt: Spiel ohne SKSE-Loader starten, über den MO2-Eintrag „Skyrim Special Edition“ (nie `SkyrimSE.exe` direkt) | Warnung oder sauberes Ausbleiben, keine Blockade, Fehler im Log nur einmal |
 
 ## Definition of Done (je Arbeitspaket mit Spielinhalt)
 

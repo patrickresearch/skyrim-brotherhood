@@ -76,8 +76,12 @@ Der Live-Spielordner enthält ein stark gemoddetes Vortex-Deployment (177 aktive
 
 | Zweck | Befehl |
 |---|---|
-| Build (Scripts, BSA, Archiv) | (in M0.3 eintragen, z. B. Pyro mit `NightsHarvest.ppj`) |
-| Nur Scripts kompilieren | (eintragen) |
+| Build (Scripts kompilieren) | `powershell -File tools\build.ps1` (`-Clean` kompiliert alles neu). Ruft Pyro mit `NightsHarvest.ppj` und `--game-path` der Dev-Kopie auf und bricht ab, wenn der Pfad auf das Live-Spiel zeigt |
+| Nur Scripts kompilieren | wie Build |
+| Repo → Dev-Kopie (`.pex`, `NHV_*.psc`, optional ESP) | `powershell -File tools\sync_dev.ps1 -Direction ToDev [-IncludeEsp]` |
+| Dev-Kopie → Repo (ESP, SEQ, FaceGen vom CK) | `powershell -File tools\sync_dev.ps1 -Direction FromDev` (liest `<Dev>\Data` und `MO2\overwrite`, nimmt die neuere Datei, überschreibt keine neuere Repo-Datei ohne `-Force`) |
+| Release-Archiv (BSA + FOMOD als `dist\NightsHarvest-<Version>.7z`) | `powershell -File tools\package.ps1` (braucht ein echtes ESP in `Data\`) |
+| Live-Spiel unberührt? | `powershell -File tools\verify_live_untouched.ps1` (nur lesend, vergleicht mit dem Backup) |
 | Spriggit-Serialize (ESP → `plugin-text/`) | `.tools\Spriggit\Spriggit.CLI.exe convert-from-plugin --InputPath "Data\NightsHarvest.esp" --OutputPath plugin-text --GameRelease SkyrimSE --PackageName Spriggit.Yaml` (noch nicht getestet, M0.5) |
 | Dialog-Lint | `python tools/dialogue_lint.py dialogue/` |
 

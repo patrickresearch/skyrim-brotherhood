@@ -41,10 +41,10 @@ Der Dialog-Track läuft parallel: Claude schreibt die CSVs jeweils einen Meilens
 |---|---|---|---|---|---|
 | M0.1 | Spielumgebung sichern | Steam-Updates auf „nur beim Spielstart“, Start über SKSE-Loader, Backup des Spielordners, Clean-Profil in Vortex (SKSE, SkyUI, USSEP) | Entwickler | 3 | Offen |
 | M0.2 | Creation Kit | CK über Steam, CKPE einrichten, `Scripts.zip` nach `Data/Source/Scripts` entpacken, `CreationKitCustom.ini` anlegen | Entwickler, Claude (Anleitung) | 4 | Offen |
-| M0.3 | Papyrus-Toolchain | VS Code mit Papyrus-Extension, Pyro, `NightsHarvest.ppj` mit Imports (Vanilla, SKSE, SkyUI SDK) | Claude (ppj), Entwickler (Setup) | 4 | Offen |
+| M0.3 | Papyrus-Toolchain | VS Code mit Papyrus-Extension, Pyro, `NightsHarvest.ppj` mit Imports (Vanilla, SKSE, SkyUI SDK) | Claude (ppj), Entwickler (Setup) | 4 | Test |
 | M0.4 | Repository & Board | Privates GitHub-Repo mit Struktur aus `docs/ARCHITECTURE.md`, `.gitignore`, README, Board mit Labels | Claude (Vorlagen), Entwickler | 3 | In Arbeit |
 | M0.5 | Spriggit, xEdit, LOOT | Spriggit installieren, Round-Trip testen, xEdit und LOOT einrichten | Entwickler | 3 | Offen |
-| M0.6 | Smoke-Test | `NHV_Sys_Core` (Start Game Enabled) mit `NHV_CoreScript` und Versionsmeldung, Pyro-Build inkl. BSA, Minimal-FOMOD, Installation in Vortex, Ingame-Test | Claude (Script, FOMOD), Entwickler (CK, Test) | 6 | Offen |
+| M0.6 | Smoke-Test | `NHV_Sys_Core` (Start Game Enabled) mit `NHV_CoreScript` und Versionsmeldung, Pyro-Build inkl. BSA, Minimal-FOMOD, Installation in Vortex, Ingame-Test | Claude (Script, FOMOD), Entwickler (CK, Test) | 6 | In Arbeit |
 | M0.7 | Record-Inventar M1 | Tabelle aller EditorIDs für M1 mit Typ, Zweck, Quest | Claude | 2 | Offen |
 | M0.8 | Entscheidungen | E05 treffen; E01, E02, E06, E12, E14, E16 bis Start M1 vorbereiten | Entwickler | 1 | Offen |
 

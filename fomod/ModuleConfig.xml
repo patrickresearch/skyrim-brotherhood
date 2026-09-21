@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+  <moduleName>Night's Harvest</moduleName>
+
+  <!-- Smoke-test build 0.0.1: only the required core files. Patch and Mantella steps follow in M6.
+       Template: .claude/skills/release-build/references/fomod-template.md -->
+  <requiredInstallFiles>
+    <folder source="00 Core" destination=""/>
+  </requiredInstallFiles>
+</config>
