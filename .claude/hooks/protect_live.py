@@ -20,6 +20,7 @@ import re
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DEVENV = r"C:\Dev\brotherhood-devenv"  # dev copy of the game, MO2 and the backups
 PROFILE = os.environ.get("USERPROFILE", "")
 LOCAL = os.environ.get("LOCALAPPDATA", "")
 ROAMING = os.environ.get("APPDATA", "")
@@ -81,7 +82,7 @@ def build_roots():
         live.append(("die Live-Load-Order", root(os.path.join(LOCAL, "Skyrim Special Edition"))))
     if ROAMING:
         live.append(("Vortex", root(os.path.join(ROAMING, "Vortex"))))
-    backup = [("die Backups", root(os.path.join(os.path.dirname(REPO), "brotherhood-devenv", "backups")))]
+    backup = [("die Backups", root(os.path.join(DEVENV, "backups")))]
     return live, backup
 
 
@@ -148,7 +149,7 @@ def decide(payload):
 
 def selftest():
     game = r"C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition"
-    dev = os.path.join(os.path.dirname(REPO), "brotherhood-devenv")
+    dev = DEVENV
     cases = [
         ("Edit live ini", {"tool_name": "Edit", "tool_input": {"file_path": game + r"\Data\x.esp"}}, "deny"),
         ("Write Vortex", {"tool_name": "Write", "tool_input": {"file_path": ROAMING + r"\Vortex\state.v2\x"}}, "deny"),

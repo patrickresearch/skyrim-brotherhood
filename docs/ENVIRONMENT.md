@@ -21,9 +21,9 @@ Das Live-Spiel wird aktiv gespielt und bleibt unangetastet. Alles rund um den Mo
 | Live-Einstellungen, Saves, Load Order | `C:\Users\Vanessa Bubu Schmidt\Documents\My Games\Skyrim Special Edition`, `%LOCALAPPDATA%\Skyrim Special Edition` | nur lesen |
 | Vortex (Zustand, Profile, Mods, Downloads) | `%APPDATA%\Vortex`, Installation `C:\Program Files\Black Tree Gaming Ltd\Vortex` | nicht anfassen |
 | Repository (Quellen, Doku, Tools) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood` | hier wird entwickelt |
-| Dev-Kopie des Spiels (Vanilla, USSEP, SkyUI, SKSE, CK, CKPE) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\SkyrimSE-Dev` | hier laufen CK, Builds, Tests |
-| Testumgebung (Mod Organizer 2 2.5.2, portable) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\MO2` | zeigt auf die Dev-Kopie; Profil `Default` mit eigenen INIs und Saves |
-| Backups vom 22.09.2026 (schreibgeschützt) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\backups\` | je Ordner eine `MANIFEST.sha256` (SHA-256 je Datei) |
+| Dev-Kopie des Spiels (Vanilla, USSEP, SkyUI, SKSE, CK, CKPE) | `C:\Dev\brotherhood-devenv\SkyrimSE-Dev` | hier laufen CK, Builds, Tests |
+| Testumgebung (Mod Organizer 2 2.5.2, portable) | `C:\Dev\brotherhood-devenv\MO2` | zeigt auf die Dev-Kopie; Profil `Default` mit eigenen INIs und Saves |
+| Backups vom 22.09.2026 (schreibgeschützt) | `C:\Dev\brotherhood-devenv\backups\` | je Ordner eine `MANIFEST.sha256` (SHA-256 je Datei) |
 
 Backups:
 
@@ -64,7 +64,7 @@ Der Live-Spielordner enthält ein stark gemoddetes Vortex-Deployment (177 aktive
 
 ## Papyrus-Quellen für Imports
 
-`<Dev>` steht für `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood-devenv\SkyrimSE-Dev`.
+`<Dev>` steht für `C:\Dev\brotherhood-devenv\SkyrimSE-Dev`.
 
 | Quelle | Pfad | Stand |
 |---|---|---|
