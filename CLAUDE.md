@@ -16,6 +16,7 @@ Senior Full-Stack-Entwickler mit Erfahrung in der Skyrim-Modding-Szene (Creation
 
 | Datei | Inhalt | Lesen, wenn |
 |---|---|---|
+| `docs/PROGRESS.md` | Aktueller Stand, nächster Schritt, Log erledigter Arbeit | **zuerst**, am Anfang jeder neuen Session |
 | `docs/GOAL.md` | Ziel, Scope v1.0, Figuren, Quests, Design-Pfeiler, Nicht-Ziele | bei Scope- und Designfragen |
 | `docs/ROADMAP.md` | Meilensteine, Arbeitspakete, Status | vor jedem Arbeitspaket; danach Status pflegen |
 | `docs/ARCHITECTURE.md` | Plugin, Quests, Aliase, Fraktionen, Scripts, Kompatibilität, Save-Sicherheit | bei jeder technischen Arbeit |
@@ -42,12 +43,33 @@ Das Konzept in `docs/concept/` ist die Quelle der Wahrheit für Design. Weicht e
 
 Start mit `/work-package <ID>`, z. B. `/work-package M1.5`. In Kurzform:
 
-1. ROADMAP-Eintrag, passende Konzept-Abschnitte und fällige Entscheidungen lesen.
+1. `docs/PROGRESS.md` (Kurzfassung + Nächster Schritt), den passenden ROADMAP-Eintrag, passende Konzept-Abschnitte und fällige Entscheidungen lesen. Gezielt lesen, nicht ganze Dateien, wenn ein Abschnitt reicht.
 2. Plan in 3–7 Schritten nennen, getrennt nach „Claude liefert“ und „Entwickler im CK“. Bei Unklarheit fragen statt raten.
 3. Liefern: Scripts, Dialog-CSV, Tools, CK-Anleitung – je nach Paket.
 4. Scripts kompilieren (Befehl in `docs/ENVIRONMENT.md`) und alle Fehler beheben.
 5. Testanleitung schreiben: Save, Schritte, erwartetes Ergebnis, welche Log-Zeilen zurückkommen sollen.
-6. Status in `docs/ROADMAP.md` auf „Test“ setzen und eine Commit-Nachricht vorschlagen. „Fertig“ setzt nur der Entwickler nach dem Ingame-Test.
+6. Status in `docs/ROADMAP.md` auf „Test“ setzen, einen Eintrag in `docs/PROGRESS.md` anhängen (Log, neuestes Datum oben; „Aktueller Stand“/„Nächster Schritt“ aktualisieren) und eine Commit-Nachricht vorschlagen. „Fertig“ setzt nur der Entwickler nach dem Ingame-Test.
+
+## Token sparen
+
+Lange Sessions erreichen schnell das Kontext-Limit. Deshalb:
+
+- **`docs/PROGRESS.md` statt Gesprächsverlauf.** Eine neue Session startet mit leerem Kontext,
+  liest diese Datei und weiß, was fertig ist und was als Nächstes ansteht – ohne die ganze
+  bisherige Konversation zu brauchen. Nach jedem Schritt dort nachtragen (siehe Arbeitsablauf
+  Schritt 6).
+- **Gezielt lesen.** Grep/Abschnitt statt ganze Datei, besonders bei `docs/concept/` (groß).
+  Eine Datei, die gerade bearbeitet wurde, nicht zur Kontrolle erneut komplett einlesen.
+- **Subagents für Review-Arbeit.** `papyrus-reviewer` und `lore-editor` laufen mit eigenem
+  Kontext und liefern nur Befunde zurück – nicht den kompletten Dateiinhalt noch einmal in den
+  Hauptkontext holen.
+- **Kleine, häufige Commits.** Zustand liegt im Git-Verlauf, nicht im Gesprächsverlauf; eine
+  neue Session kann `git log` statt alte Chat-Nachrichten lesen.
+- **Lange Spriggit-/houseCARL-Operationen im Hintergrund laufen lassen** (z. B. volles
+  `Skyrim.esm` serialisieren) und das Ergebnis erst bei Bedarf einlesen, nicht die ganze
+  Ausgabe vorsorglich in den Kontext holen.
+- **Ein Arbeitspaket pro Session-Fokus** (`/work-package <ID>`), nicht mehrere gleichzeitig
+  anfangen – hält den nötigen Kontext klein und den PROGRESS-Eintrag eindeutig.
 
 ## Befehle
 
