@@ -1,0 +1,21 @@
+FormKey: 000827:NightsHarvest.esp
+EditorID: NHV_Q00_NM_Gleaner02_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 20
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ask her, my Listener. Her answer will tell you more than mine.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 20
+Prompt:
+  TargetLanguage: English
+  Value: Why did she leave the family?

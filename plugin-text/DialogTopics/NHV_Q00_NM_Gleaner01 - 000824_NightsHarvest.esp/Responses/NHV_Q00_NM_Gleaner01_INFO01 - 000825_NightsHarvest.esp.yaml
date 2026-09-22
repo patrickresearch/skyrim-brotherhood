@@ -1,0 +1,29 @@
+FormKey: 000825:NightsHarvest.esp
+EditorID: NHV_Q00_NM_Gleaner01_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 20
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'Trust is for the living to squabble over. I know only this: her heart beats for Sithis.'
+  ScriptNotes: ''
+  Edits: ''
+- EmotionValue: 20
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: What she does with it is yours to watch.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 20
+Prompt:
+  TargetLanguage: English
+  Value: Can she be trusted?

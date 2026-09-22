@@ -1,0 +1,21 @@
+FormKey: 000831:NightsHarvest.esp
+EditorID: NHV_Q00_NM_Gleaner04_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 20
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She is the one who gathers. What else she is, the Void keeps. It does not share.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 20
+Prompt:
+  TargetLanguage: English
+  Value: What is she, Mother?

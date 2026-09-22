@@ -1,0 +1,30 @@
+FormKey: 000829:NightsHarvest.esp
+EditorID: NHV_Q00_NM_Gleaner03_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 20
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I speak to one. It has always been one.
+  ScriptNotes: ''
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 20
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That is the burden of the Listener, and the wound of all the rest.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 20
+Prompt:
+  TargetLanguage: English
+  Value: Why have you never spoken to her?
