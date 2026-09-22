@@ -1,0 +1,19 @@
+FormKey: 000807:NightsHarvest.esp
+EditorID: NHV_FamilyFaction
+Name:
+  TargetLanguage: English
+  Value: Night's Harvest Family
+Relations:
+- Target: 000807:NightsHarvest.esp
+  Reaction: Ally
+Flags:
+- IgnoreMurder
+- IgnoreAssault
+- IgnoreStealing
+- IgnoreTrespass
+- DoNotReportCrimesAgainstMembers
+- IgnorePickpocket
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorValues: {}

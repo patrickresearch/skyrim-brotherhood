@@ -17,8 +17,8 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 ## Aktueller Stand (Kurzfassung)
 
 - Repo, Dev-Umgebung, Tooling (Spriggit, houseCARL, Pyro, portable MO2-Dev-Instanz) stehen
-  und funktionieren. Live-Spiel nachweislich unangetastet (SHA-256-Verifikation läuft nach
-  jedem ESP-Write über `tools/verify_live_untouched.ps1`).
+  und funktionieren. Live-Spiel nachweislich unangetastet bis auf zwei harmlose, bereits
+  erklärte Nebeneffekte (siehe „Bekannte Umgebungs-Falle" unten).
 - E05, E09, E14, E16, E17, E18 entschieden – Details in `docs/DECISIONS.md`.
 - M0.6 (Smoke-Test) und M0.7 (Record-Inventar) inhaltlich fertig, Status „Test" – warten auf
   Ingame-Test durch den Entwickler (MO2-Startproblem siehe `docs/tests/M0.6.md`, live-Test
@@ -28,28 +28,44 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
   nicht anfassen bis der Entwickler das wieder freigibt.
 - M1.1 (Core-System) und M1.6 (Family-Grundgerüst): 6 Scripts stehen, kompilieren sauber
   (6/6 .pex), eine papyrus-reviewer-Runde erledigt und alle Befunde eingearbeitet.
-- ESP-Aufbau (Spriggit/plugin-text, E17-Workflow) läuft: 5 neue Globals als YAML angelegt,
-  `NHV_FamilyFaction` in Arbeit (wartet auf ein echtes Vanilla-Faction-Beispiel aus einem
-  Hintergrund-Export von `Skyrim.esm`).
+- **ESP enthält jetzt 8 eigene Records** (`Data/NightsHarvest.esp`, 1117 Bytes, per
+  `tools/plugin_text.ps1 -Direction ToPlugin` gebacken, zum Dev-Copy synct, Build grün):
+  6 Globals (`NHV_Cfg_Debug/Enabled/StartDelay/Notify/Markers/Delivery`), `NHV_FamilyFaction`
+  (nach Vorbild `DB10SanctuaryFamilyFaction`), `NHV_Sys_Core` erweitert um Player-Alias
+  (ForcedReference auf PlayerRef) und alle neuen Script-Properties inkl. verifizierter
+  vanilla-FormIDs für `HailSithisQuest` (DB11, `01EA59:Skyrim.esm`) und `DestroyQuest`
+  (DBDestroy, `0934FB:Skyrim.esm`).
+- **Bekannte Lücke:** Das Script `NHV_PlayerAliasScript` ist NICHT am Player-Alias
+  angehängt – zwei Schema-Versuche für Alias-VMAD in YAML sind gescheitert (Spriggit
+  verwirft das Feld still statt mit Fehler). Muss der Entwickler einmalig im CK nachholen
+  (siehe „Nächster Schritt").
 
 ## Nächster Schritt
 
-**M1.1/M1.4/M1.6 ESP-Aufbau fortsetzen** (E17-Workflow, `tools/plugin_text.ps1`):
+**A) Sofort, für den Entwickler im CK (klein, ca. 2 Minuten):**
+1. `NHV_Sys_Core` öffnen → Alias „PlayerAlias" → Scripts → `NHV_PlayerAliasScript` hinzufügen
+   → Property `Core` auf `NHV_Sys_Core` (die Quest selbst) setzen → Speichern.
+   Danach `tools/plugin_text.ps1 -Direction ToText` laufen lassen, damit der Text-Stand
+   wieder synchron ist (Ein-Schreiber-Regel, E17).
 
-1. Hintergrund-Task (Spriggit-Export von `Skyrim.esm` für ein echtes Faction-Beispiel)
-   prüfen, Ergebnis für `plugin-text/Factions/NHV_FamilyFaction.yaml` nutzen.
-2. Neue Globals in die ESP backen: `tools/plugin_text.ps1 -Direction ToPlugin`.
-3. `NHV_Sys_Core`-YAML um Player-Alias (ForcedReference auf PlayerRef 000014:Skyrim.esm)
-   und die neuen Script-Properties ergänzen.
-4. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
+**B) M1.1/M1.4/M1.6 ESP-Aufbau fortsetzen (Claude):**
+1. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
    FormIDs, Night Mother offen lassen – siehe „Offene Rückfragen").
-5. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen.
-6. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
+2. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
+   (hier vermutlich dieselbe Alias-Script-Lücke wie bei A – ggf. wieder CK-Nacharbeit nötig).
+3. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
    `dialogue/Q00.csv`).
-7. Nach jedem ESP-Write: `tools/sync_dev.ps1`, Build, `tools/verify_live_untouched.ps1`.
+4. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
+   `tools/verify_live_untouched.ps1`.
 
 ## Offene Rückfragen an den Entwickler
 
+- **Alias-Scripts per YAML**: Spriggit/Mutagen-Schema für Script-Anhang an eine Quest-Alias
+  (`VirtualMachineAdapter.Aliases`) ist nicht sicher bekannt, zwei Versuche sind beim
+  Rundlauf stillschweigend verworfen worden. Für M1.1 einmalig im CK nachgeholt (siehe
+  „Nächster Schritt" A); für M1.6 (FollowerSlot1, HrefnaSlot, RecruitSlots) kommt das
+  vermutlich wieder vor. Falls jemand die exakte Mutagen-Schreibweise kennt, bitte hier
+  eintragen.
 - **Night Mother**: exakte platzierte Referenz-FormID muss im CK nachgesehen werden
   (bewusst nicht geraten, siehe `docs/ck/M0.7-Record-Inventar-M1.md` Punkt 6).
 - **RecruitDied() vs. OnDeath()**: Überschneidung zwischen Contract-Phase
@@ -57,6 +73,21 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-22 (Fortsetzung)
+- Hintergrund-Export von `Skyrim.esm` ausgewertet: `DB10SanctuaryFamilyFaction` als
+  Vorbild für `plugin-text/Factions/NHV_FamilyFaction.yaml` (000807) genutzt.
+- Vanilla-FormIDs verifiziert (im serialisierten `Skyrim.esm`, nicht geraten): DB11 „Hail
+  Sithis!" = `01EA59:Skyrim.esm`, DBDestroy „Destroy the Dark Brotherhood!" = `0934FB:Skyrim.esm`,
+  DawnstarSanctuaryLocation = `019429:Skyrim.esm`.
+- `NHV_Sys_Core` erweitert: Player-Alias (ForcedReference), alle Script-Properties gefüllt.
+- Zwei Versuche, `NHV_PlayerAliasScript` per YAML an den Player-Alias zu hängen, sind beim
+  Spriggit-Rundlauf stillschweigend verworfen worden (kein Fehler, Feld einfach weg) –
+  nicht weiter geraten, CK-Nacharbeit dokumentiert (siehe „Nächster Schritt" A).
+- ESP gebaut (1117 Bytes, 8 Records), zum Dev-Copy synct, Build weiterhin grün,
+  `verify_live_untouched.ps1` grün (zwei bereits erklärte Nebeneffekte, keine echten
+  Änderungen an Live-Spieldaten).
+- `docs/ck/M0.7-Record-Inventar-M1.md`: „vermutlich DB11" durch verifizierte FormIDs ersetzt.
 
 ### 2026-09-22
 - papyrus-reviewer-Befunde aus der M1.6-Review eingearbeitet:

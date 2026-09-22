@@ -5,8 +5,23 @@ VirtualMachineAdapter:
   - Name: NHV_CoreScript
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: DawnstarSanctuaryLocation
+      Object: 019429:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DestroyQuest
+      Object: 0934FB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HailSithisQuest
+      Object: 01EA59:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Cfg_Debug
       Object: 000800:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Enabled
+      Object: 000802:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_StartDelay
+      Object: 000803:NightsHarvest.esp
   Versioning:
   - Break0
   ExtraBindDataVersion: 0
@@ -15,3 +30,9 @@ Flags:
 - StartGameEnabled
 - 0x10
 NextAliasID: 1
+Aliases:
+- Name: PlayerAlias
+  Flags:
+  - Optional
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
