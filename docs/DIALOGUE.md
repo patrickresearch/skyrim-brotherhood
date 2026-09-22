@@ -40,6 +40,8 @@ Spalten (feste Reihenfolge, Kopfzeile Pflicht):
 
 Die Spalte `Topic` enthält den Kurznamen aus dem Konzept (`SCN_Standoff`); im CK wird daraus die EditorID mit Präfix, z. B. `NHV_Q00_SCN_Standoff`.
 
+**Journal-Einträge** einer Quest stehen in `dialogue/Journal.csv`, teilen sich aber die `LineID`-Zählung mit `dialogue/<Quest>.csv`: Wer eine Journal-Zeile für Stage X einer Quest ergänzt, prüft vorher die höchste vergebene Nummer für `NHV_<Quest>_<X>_*` in **beiden** Dateien und zählt von dort weiter. Speaker ist `Journal`, VoiceType und Topic `-`.
+
 Regeln: UTF-8 ohne BOM, Komma als Trenner, Felder mit Komma oder Anführungszeichen in `"…"`, Anführungszeichen im Text verdoppeln. Eine Zeile pro Response. Gelöschte Zeilen werden nicht entfernt, sondern mit `Notes = DEPRECATED` markiert, damit LineIDs nie wiederverwendet werden.
 
 Formatbeispiel (weitere Beispiele in Konzept Abschnitt 13):
