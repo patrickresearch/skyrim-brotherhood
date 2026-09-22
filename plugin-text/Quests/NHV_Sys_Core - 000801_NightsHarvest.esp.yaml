@@ -22,10 +22,14 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Cfg_StartDelay
       Object: 000803:NightsHarvest.esp
-  Versioning:
-  - Break0
-  ExtraBindDataVersion: 0
   FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000801:NightsHarvest.esp
+      Alias: 0
+    Scripts:
+    - Name: NHV_PlayerAliasScript
 Flags:
 - StartGameEnabled
 - 0x10

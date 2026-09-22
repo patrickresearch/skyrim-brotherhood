@@ -35,18 +35,46 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
   (ForcedReference auf PlayerRef) und alle neuen Script-Properties inkl. verifizierter
   vanilla-FormIDs für `HailSithisQuest` (DB11, `01EA59:Skyrim.esm`) und `DestroyQuest`
   (DBDestroy, `0934FB:Skyrim.esm`).
-- **Bekannte Lücke:** Das Script `NHV_PlayerAliasScript` ist NICHT am Player-Alias
-  angehängt – zwei Schema-Versuche für Alias-VMAD in YAML sind gescheitert (Spriggit
-  verwirft das Feld still statt mit Fehler). Muss der Entwickler einmalig im CK nachholen
+- **Erledigt (22.09., per CK):** `NHV_PlayerAliasScript` hängt jetzt am Player-Alias,
+  Schema dabei aus einem echten CK-Speicherstand gelernt (siehe „Gelöste Schema-Frage"
+  unten) statt weiter geraten.
+- **Neue Lücke:** Die Script-Property `Core` (Typ `NHV_CoreScript`, soll auf `NHV_Sys_Core`
+  selbst zeigen) ist am Alias-Script noch **nicht** gesetzt – im CK-Rundlauf kam kein
+  `Properties:`-Eintrag zurück. Ohne sie tut `NHV_PlayerAliasScript` nichts (die
+  None-Checks auf `Core` greifen), Q00 startet dann nie automatisch. Nachtrag im CK nötig
   (siehe „Nächster Schritt").
+
+## Gelöste Schema-Frage: Script an einer Quest-Alias anhängen (YAML)
+
+Aus einem echten CK-Speicherstand gelernt (nicht mehr raten nötig für M1.4/M1.6):
+
+```yaml
+VirtualMachineAdapter:
+  Scripts: [...]        # Quest-eigene Scripts wie gehabt
+  Aliases:
+  - Property:
+      Name: ''
+      Object: <FormKey der Quest selbst>
+      Alias: <AliasID, 0-basiert>
+    Scripts:
+    - Name: <AliasScriptName>
+      Properties:        # wie bei Quest-Scripts, MutagenObjectType: ScriptObjectProperty
+      - MutagenObjectType: ScriptObjectProperty
+        Name: <PropertyName>
+        Object: <FormKey>
+```
+Mein ursprünglicher Versuch (`MutagenObjectType: ScriptObjectProperty` explizit im
+`Property`-Block) hat Spriggit still verworfen; ohne dieses Feld (nur `Name`/`Object`/
+`Alias`) funktioniert es. Nicht mehr experimentieren, dieses Muster einfach wiederverwenden.
 
 ## Nächster Schritt
 
-**A) Sofort, für den Entwickler im CK (klein, ca. 2 Minuten):**
-1. `NHV_Sys_Core` öffnen → Alias „PlayerAlias" → Scripts → `NHV_PlayerAliasScript` hinzufügen
-   → Property `Core` auf `NHV_Sys_Core` (die Quest selbst) setzen → Speichern.
-   Danach `tools/plugin_text.ps1 -Direction ToText` laufen lassen, damit der Text-Stand
-   wieder synchron ist (Ein-Schreiber-Regel, E17).
+**A) Sofort, für den Entwickler im CK (klein, 1 Minute):**
+1. `NHV_Sys_Core` → Quest Aliases → Doppelklick auf „PlayerAlias" → Scripts-Bereich →
+   `NHV_PlayerAliasScript` ist schon da, aber die Property **`Core`** ist noch leer.
+   Auf `NHV_Sys_Core` (diese Quest selbst) setzen → OK → Speichern.
+   Danach kurz Bescheid geben, dann ziehe ich es mit `tools/plugin_text.ps1 -Direction ToText`
+   zurück ins Repo (Ein-Schreiber-Regel, E17).
 
 **B) M1.1/M1.4/M1.6 ESP-Aufbau fortsetzen (Claude):**
 1. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
@@ -60,12 +88,6 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Offene Rückfragen an den Entwickler
 
-- **Alias-Scripts per YAML**: Spriggit/Mutagen-Schema für Script-Anhang an eine Quest-Alias
-  (`VirtualMachineAdapter.Aliases`) ist nicht sicher bekannt, zwei Versuche sind beim
-  Rundlauf stillschweigend verworfen worden. Für M1.1 einmalig im CK nachgeholt (siehe
-  „Nächster Schritt" A); für M1.6 (FollowerSlot1, HrefnaSlot, RecruitSlots) kommt das
-  vermutlich wieder vor. Falls jemand die exakte Mutagen-Schreibweise kennt, bitte hier
-  eintragen.
 - **Night Mother**: exakte platzierte Referenz-FormID muss im CK nachgesehen werden
   (bewusst nicht geraten, siehe `docs/ck/M0.7-Record-Inventar-M1.md` Punkt 6).
 - **RecruitDied() vs. OnDeath()**: Überschneidung zwischen Contract-Phase
@@ -73,6 +95,17 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-22 (Fortsetzung 2, nach CK-Speichern des Entwicklers)
+- Entwickler hat `NHV_PlayerAliasScript` im CK an den Player-Alias gehängt und gespeichert.
+- `tools/sync_dev.ps1 -Direction FromDev` + `tools/plugin_text.ps1 -Direction ToText`
+  geholt: Schema für Alias-Scripts jetzt aus echtem CK-Speicherstand bekannt (siehe
+  „Gelöste Schema-Frage" oben) – meine zwei YAML-Rateversuche waren nah dran, aber falsch
+  (`MutagenObjectType` im `Property`-Block war das Problem).
+  Gebraucht wird das für M1.4/M1.6 nicht mehr geraten werden.
+- Fund: Property `Core` am Alias-Script ist noch leer (Entwickler hat nur das Script
+  hinzugefügt, nicht die Property gesetzt) – neuer Schritt A in „Nächster Schritt".
+- Build + Live-Verifikation weiterhin grün.
 
 ### 2026-09-22 (Fortsetzung)
 - Hintergrund-Export von `Skyrim.esm` ausgewertet: `DB10SanctuaryFamilyFaction` als
