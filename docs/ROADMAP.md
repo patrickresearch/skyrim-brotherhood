@@ -65,7 +65,7 @@ Reihenfolge: M0.1 → M0.2 → M0.3 → M0.6; M0.4, M0.5, M0.7 parallel.
 | ID | Arbeitspaket | Aufgaben | Wer | h | Status |
 |---|---|---|---|---|---|
 | M1.1 | Core-System | `NHV_CoreScript` (Version, `Maintenance()`, SKSE-Check, Startbedingung, Wartezeit), `NHV_PlayerAliasScript`, `NHV_Cfg_*`-Globals, MCM-Seiten Status und General | Claude (Scripts), Entwickler (CK) | 14 | Test |
-| M1.2 | Veyra | NPC-Record, FaceGen-Export (Strg+F4), Outfit, Trainer, `NHV_VoiceVeyra`, nachtaktive Alias-Packages | Entwickler, Claude (Werte, Packages) | 12 | Offen |
+| M1.2 | Veyra | NPC-Record, FaceGen-Export (Strg+F4), Outfit, Trainer, `NHV_VoiceVeyra`, nachtaktive Alias-Packages | Entwickler, Claude (Werte, Packages) | 12 | In Arbeit |
 | M1.3 | Deep Sanctuary Stufe 1 | Hall of Whispers, Ledger Room, Memorial Wall, Initiates' Dormitory, versiegelte Passage für Q00 Szene 4, gesperrte Übergänge, Navmesh, Room Bounds, Beleuchtung, Zugang nach E16 | Entwickler, Claude (Raumliste, Anleitung) | 22 | Offen |
 | M1.4 | Sanctuary-Aliase | `NHV_Sys_Sanctuary` mit optionalen Aliasen für Nazir, Babette, Cicero, Night Mother; Testfall „Cicero tot“ | Claude, Entwickler | 6 | Test |
 | M1.5 | Q00 A Shadow at the Door | Stages 10–100, Szenen 1–6, Draugr-Passage, Memorial Wall, Journal, Dialoge aus CSV | Claude (CSV, Fragmente), Entwickler (CK) | 30 | In Arbeit |

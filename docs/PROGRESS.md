@@ -109,6 +109,28 @@ innerhalb der ganz normalen `Properties:`-Liste:
 ```
 Per Rundlauf bestätigt (nicht geraten).
 
+## Schema-Notizen DialogTopic/DialogResponses (für die nächste Session, noch nicht selbst gebaut)
+
+Aus einem echten Vanilla-Beispiel (`DB11EmperorPlayerResponse1`/`04FD60`) gelernt, noch nicht per Rundlauf getestet:
+
+- **`DialogTopic`** (der Menüeintrag/Branch): `EditorID`, `Quest` (FormLink), `Category`
+  (z. B. `Topic`), `Subtype`+`SubtypeName` (z. B. `Custom`/`CUST`), `Priority` (int),
+  optional `Branch` (FormLink zu einer `DialogBranch`, meist leer bei uns), `Responses`
+  (Liste von FormLinks auf `DialogResponses`, eigene Records).
+- **`DialogResponses`** (die INFO): `Prompt` (Spieler-Auswahltext), `Speaker` (optional
+  FormLink), `Responses` (Liste `DialogResponse` mit `Emotion`/`EmotionValue`/`Text`/
+  `Flags`), `Conditions` (Liste `Condition`, z. B. `GetIsID`/`GetVMQuestVariable`),
+  `LinkTo` (Liste FormLinks zu Folge-Topics), `Flags`, `FavorLevel`, `WalkAwayTopic`,
+  `PreviousDialog`, `VirtualMachineAdapter` (für Script-Fragmente).
+- Vermutlich brauchen Union-Typen wie `Configuration.Level` bei Npc auch hier ein
+  `MutagenObjectType`-Diskriminator-Feld (z. B. bei `Data` innerhalb `Condition`, siehe
+  `GetVMQuestVariableConditionData`/`GetIsIDConditionData` als zwei verschiedene Typen
+  für dasselbe `Data`-Feld) – nicht bestätigt, vor dem ersten Rundlauf-Test einplanen.
+- **Noch offen, vor dem Bau klären:** Welche Quest „besitzt" die Q00-Dialoge (vermutlich
+  `NHV_Q00_ShadowAtTheDoor` selbst, mit `GetStage`-Bedingungen statt Alias-Bindung, da
+  Veyra kein Alias ist und Nazir/Babette/Cicero über echte FormIDs statt Alias-Referenzen
+  ansprechbar sind) – als Annahme dokumentieren, nicht raten, wenn Unsicherheit bleibt.
+
 ## Nächster Schritt
 
 **M1.5 (Q00-Questhülle) ist zum Teil erledigt – der Rest braucht CK-Arbeit oder eine
@@ -123,18 +145,23 @@ Q00-Zeilen, copy-paste):**
    synchron ist (Ein-Schreiber-Regel, E17).
 
 **Für Claude, als Nächstes:**
-1. Dialog-Branches (Topics/INFOs) für Q00 als eigene Schema-Erkundung angehen – bisher
-   nicht versucht, komplexestes Record-Feld überhaupt (DIAL/INFO). `dialogue/Q00.csv`
-   steht bereits vollständig und gelintet als Textquelle.
-2. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
+1. Dialog-Branches (Topics/INFOs) für Q00 jetzt angehen (Veyras FormID existiert seit
+   heute) – eigene Schema-Erkundung nötig, siehe „Schema-Notizen" oben, mit kleinen
+   Rundlauf-Tests wie beim Npc-Record (drei echte Fehler dort gefunden und behoben,
+   ähnliche Überraschungen hier einplanen). `dialogue/Q00.csv` steht bereits vollständig
+   und gelintet als Textquelle. Klein anfangen (ein Branch), dann erweitern.
+2. M1.2 weiterführen, sobald CK-Zeit da ist: FaceGen, Kampfstil/Klasse, Packages
+   (Schlaf/Ledger/Essen/Map-Table/Training laut Konzept Abschnitt 3), platzierte Referenz
+   im Ledger Room.
+3. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
    `dialogue/NightsHarvest-claude-code/dialogue/books/` vor, noch nicht übertragen).
-3. Szenen (`NHV_Scn_Q00_01Standoff` etc.) sind laut M0.7-Tabelle CK-Arbeit
+4. Szenen (`NHV_Scn_Q00_01Standoff` etc.) sind laut M0.7-Tabelle CK-Arbeit
    (Actor-Platzierung, Kamera) – dafür eine `ck-guide`-Anleitung schreiben, sobald die
    Dialog-Branches stehen.
-4. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
+5. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
    existieren schon, Scripts/Properties erst anhängen, wenn die jeweilige NPC- und
    Status-Global-Arbeit dran ist (M2.2–M2.5).
-5. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
+6. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
    `tools/verify_live_untouched.ps1`.
 
 **Für den Entwickler, sobald Zeit ist:** M1.1, M1.4 und M1.6 sind bereit für einen
@@ -153,6 +180,26 @@ Hand anstoßen.
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (Fortsetzung 3, M1.2 Veyra-Grundrecord)
+- **Reihenfolge-Fund:** Beim Versuch, Q00s Dialog-Branches (DIAL/INFO-Records) zu bauen,
+  festgestellt, dass fast jede Zeile Veyra als Sprecherin hat und ihre FormID für
+  Sprecher-Bedingungen (`GetIsID`) braucht – Veyra existierte aber noch nicht (M1.2 offen).
+  Mit dem Entwickler geklärt: M1.2 zuerst.
+- `NHV_VoiceVeyra` (000816, VoiceType) und `NHV_Veyra` (000817, Npc) angelegt – Basisdaten
+  (Name, Rasse Dunmer, `NHV_FamilyFaction`-Mitgliedschaft, Level 1.0/20–60 als
+  `PcLevelMult`, Essential+Unique, AIData) nach Vorbild des echten Vanilla-NPCs
+  `DrevisNeloren` (Illusions-Lehrer, ebenfalls Dunmer). FaceGen, Kampfstil/Klasse,
+  Packages und die platzierte Referenz im Ledger Room bleiben CK-Arbeit (M1.2/M1.3).
+- Drei echte Spriggit-Fehler beim Npc-Record gefunden und behoben (alle mit klarer
+  Fehlermeldung, kein stilles Verwerfen): `Name` braucht die Übersetzungsstruktur wie bei
+  Fraktionen, nicht nur einen String; `Configuration.Level` (PcLevelMult vs. fixe Stufe)
+  braucht `MutagenObjectType: PcLevelMult` als Diskriminator; `AIData.Assistance:
+  HelpsFriends` ist kein gültiger Enum-Wert (echten Vanilla-Wert `HelpsNobody` verwendet).
+- Build, ESP gebaut (3495 Bytes, 20 Records), Sync + Live-Verifikation grün.
+- **Noch nicht begonnen:** Dialog-Branches für Q00 (jetzt entsperrt durch Veyras FormID,
+  aber eigene, komplexere Schema-Erkundung nötig – DIAL/INFO ist der komplexeste
+  Record-Typ überhaupt, siehe Log-Eintrag unten zu den bereits bekannten Feldern).
 
 ### 2026-09-23 (Fortsetzung 2, M1.5 Q00-Questhülle + Dialog-Integration)
 - **Dialog-Integration Q00:** Externes Skript (`dialogue/NightsHarvest-claude-code/dialogue/script/Q00_A_Shadow_at_the_Door.md`,
@@ -339,7 +386,8 @@ Nach jeder CK-Session, die „Scripts.zip entpacken?" bestätigt hat, prüfen.
 - M1.1 Core-System: **Test, ingame bestätigt** – Scripts + ESP-Records + MCM (Status/General)
   fertig, reviewed, Build/Live-Check grün, vom Entwickler erfolgreich getestet (23.09.).
   „Fertig" setzt der Entwickler, sobald er möchte.
-- M1.2 Veyra: Offen, nicht begonnen.
+- M1.2 Veyra: **In Arbeit** – Grunddaten (Npc-Record, Rasse, Fraktion, Level, VoiceType)
+  gebaut. Fehlt: FaceGen, Kampfstil/Klasse, Packages, Platzierung (alles CK).
 - M1.3 Deep Sanctuary Stufe 1: Offen, nicht begonnen.
 - M1.4 Sanctuary-Aliase: **Test** – Nazir/Babette/Cicero fertig, Night Mother offen (CK).
 - M1.5 Q00 im CK: **In Arbeit** – Dialog-CSV fertig (141 Zeilen, gelintet, lore-editor-

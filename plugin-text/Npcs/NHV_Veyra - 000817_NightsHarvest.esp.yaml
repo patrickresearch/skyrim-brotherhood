@@ -1,0 +1,22 @@
+FormKey: 000817:NightsHarvest.esp
+EditorID: NHV_Veyra
+Configuration:
+  Flags:
+  - Essential
+  - Unique
+  Level:
+    MutagenObjectType: PcLevelMult
+    LevelMult: 1
+  CalcMinLevel: 20
+  CalcMaxLevel: 60
+Factions:
+- Faction: 000807:NightsHarvest.esp
+  Fluff: 0x000000
+Voice: 000816:NightsHarvest.esp
+Race: 013742:Skyrim.esm
+AIData:
+  Confidence: Brave
+  EnergyLevel: 50
+Name:
+  TargetLanguage: English
+  Value: Veyra Othren
