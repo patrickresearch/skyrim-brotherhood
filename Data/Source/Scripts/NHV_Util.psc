@@ -8,3 +8,13 @@ Function Log(GlobalVariable akDebugFlag, String asMsg) Global
         Debug.Trace("[NHV] " + asMsg)
     EndIf
 EndFunction
+
+; Fires a SKSE ModEvent carrying akForm, for patches/addons to hook without editing our
+; scripts (docs/ARCHITECTURE.md: NHV_RecruitJoined, NHV_RecruitDied, NHV_ContractCompleted).
+Function SendRecruitEvent(String asEventName, Form akForm) Global
+    Int iHandle = ModEvent.Create(asEventName)
+    If iHandle
+        ModEvent.PushForm(iHandle, akForm)
+        ModEvent.Send(iHandle)
+    EndIf
+EndFunction
