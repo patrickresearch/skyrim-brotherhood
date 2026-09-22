@@ -1,0 +1,21 @@
+FormKey: 000849:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Proposal03_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 40
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You don't. That's why we test them. And that's why you decide, not me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 30
+Prompt:
+  TargetLanguage: English
+  Value: How do I know one of them won't be the next Astrid?

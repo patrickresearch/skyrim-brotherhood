@@ -1,0 +1,12 @@
+FormKey: 000845:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Proposal01_INFO01
+Flags: {}
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 30
+Prompt:
+  TargetLanguage: English
+  Value: Agreed. We rebuild.
