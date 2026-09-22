@@ -1,0 +1,14 @@
+FormKey: 000815:NightsHarvest.esp
+EditorID: NHV_Q00_ShadowAtTheDoor
+Stages:
+- Index: 10
+- Index: 15
+- Index: 20
+- Index: 30
+- Index: 40
+- Index: 50
+- Index: 60
+- Index: 100
+  Flags:
+  - ShutDownStage
+NextAliasID: 0

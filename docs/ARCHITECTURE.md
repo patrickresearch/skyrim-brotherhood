@@ -36,6 +36,8 @@ Leitlinie: so viel wie möglich über Records und Conditions, so wenig wie mögl
 
 Grundsatz: Story-Quests enthalten nur Stage-Logik und quest-eigene Aliase. Alles, was eine Quest überdauert, lebt in System-Quests. Abgeschlossene Story-Quests lassen sich stoppen, ohne Rekruten zu verlieren.
 
+**Timing `Start()` vs. `OnInit()` vs. `SetStage()`:** `NHV_CoreScript.StartQ00()` ruft `Q00.Start()` und direkt danach `Q00.SetStage(10)` auf. Ein `OnInit()`-Fragment am Quest-Script (falls die CK später eines anhängt) feuert als vom Spiel intern gequeutes Event, nicht synchron innerhalb von `Start()` – ein direkt folgender `SetStage()`-Aufruf kann also vor `OnInit()` laufen. Einmalige Vorbereitung, die eine bestimmte Stage braucht, gehört deshalb in das jeweilige Stage-Fragment selbst (läuft synchron mit `SetStage()`) oder in eine Funktion, die der Aufrufer vor `SetStage()` explizit ruft – nicht in `OnInit()` des Quest-Scripts (papyrus-reviewer-Fund, M1.5).
+
 ## Aliase & Vanilla-NPCs
 
 - Vanilla-NPC-Records werden nie verändert. Dialoge, Packages, Fraktionen, Scripts hängen an Reference-Aliasen in `NHV_Sys_Sanctuary`.

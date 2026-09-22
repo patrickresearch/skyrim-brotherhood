@@ -22,6 +22,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Cfg_StartDelay
       Object: 000803:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Q00
+      Object: 000815:NightsHarvest.esp
   FileName: ''
   Aliases:
   - Property:

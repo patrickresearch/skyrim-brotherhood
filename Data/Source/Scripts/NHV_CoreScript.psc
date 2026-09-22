@@ -16,7 +16,8 @@ GlobalVariable Property NHV_Cfg_StartDelay Auto
 Quest Property HailSithisQuest Auto
 ; DBDestroy "Destroy the Dark Brotherhood!", the alternate path that keeps the mod inactive.
 Quest Property DestroyQuest Auto
-; NHV_Q00_ShadowAtTheDoor. Filled once the quest exists in the CK (M1.5).
+; NHV_Q00_ShadowAtTheDoor (M1.5). Journal texts for its stages are set directly in the
+; CK for now, not via Spriggit - see docs/PROGRESS.md "Bekannte Spriggit-Limitation".
 Quest Property Q00 Auto
 ; DawnstarSanctuaryLocation, verified 22.09.2026 via houseCARL against Skyrim.esm.
 Location Property DawnstarSanctuaryLocation Auto
@@ -104,5 +105,6 @@ EndEvent
 
 Function StartQ00()
     Q00.Start()
+    Q00.SetStage(10)
     NHV_Util.Log(NHV_Cfg_Debug, "Q00 started")
 EndFunction

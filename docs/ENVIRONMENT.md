@@ -94,6 +94,8 @@ Der Live-Spielordner enthält ein stark gemoddetes Vortex-Deployment (177 aktive
 
 Spriggit-Deserialize (Text → ESP) ist seit E17 erlaubt, aber nur nach der Ein-Schreiber-Regel (CLAUDE.md, Regel 7). Dafür gibt es `tools/plugin_text.ps1` (siehe Tabelle oben).
 
+**Bekannte Spriggit-Limitation (23.09.2026, Version 0.41.0, aktuell):** Ein `QuestLogEntry` (Journal-Text an einer Quest-Stage, Feld `Entry`) lässt sich per YAML **nicht deserialisieren**, sobald die Liste mindestens einen Eintrag hat – `convert-to-plugin` stürzt hart ab mit `System.ArgumentException: Could not convert to Mutagen.Bethesda.Skyrim.QuestLogEntry+Flag: 0` (auch mit explizit gesetztem `Flags: None`, das ebenfalls nicht als gültiger Enum-Wert akzeptiert wird – der Enum hat offenbar keinen benannten Nullwert). Eine leere Liste (`LogEntries: []`) funktioniert; Stages ganz ohne `LogEntries`-Feld funktionieren. Getestet: kein neueres Spriggit-Release verfügbar (0.41.0 ist aktuell). **Workaround:** Quest-Stages nur mit `Index` (und ggf. Stage-`Flags` wie `ShutDownStage`) per YAML anlegen, Journal-Text für jede Stage direkt im CK eintragen (Quest Stages-Tab, Text einfügen) – die Texte stehen bereits in `dialogue/Journal.csv`. Betrifft aktuell `NHV_Q00_ShadowAtTheDoor`.
+
 ## Hinweise für Claude Code unter Windows
 
 - Pfade mit Leerzeichen immer in Anführungszeichen.

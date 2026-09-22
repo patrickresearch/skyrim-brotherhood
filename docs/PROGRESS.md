@@ -43,9 +43,15 @@ Instanz archivieren, sobald Spiel/MO2 geschlossen sind (Prozesse blockieren den 
 - M0.6 (Smoke-Test) und M0.7 (Record-Inventar) inhaltlich fertig, Status „Test" – warten auf
   Ingame-Test durch den Entwickler (MO2-Startproblem siehe `docs/tests/M0.6.md`, live-Test
   auf Entwicklerwunsch vertagt).
-- Dialog Q00/Q01 + Journal.csv geschrieben, `tools/dialogue_lint.py` grün, lore-editor
-  geprüft – dann **pausiert**: Dialoge/Bücher/Briefe werden aktuell extern geschrieben,
-  nicht anfassen bis der Entwickler das wieder freigibt.
+- **23.09.2026, Dialog-Pause aufgehoben:** Externes Skript für alle Quests/Familie/Banter/
+  Black Ledger/Bücher liegt jetzt vor (`dialogue/NightsHarvest-claude-code/dialogue/`,
+  Quelle, noch nicht committet – enthält u. a. eine veraltete Vor-E17-CLAUDE.md, deren
+  Regeln nicht gelten). Ziel laut Entwickler: Mod mit allen Dialogen/Quests lauffähig,
+  **ohne Vertonung**; Anpassungen später, Vertonung erst wenn final. Übertragung ins
+  CSV-Master-Format läuft **schrittweise**, quest-für-quest parallel zum jeweiligen
+  Arbeitspaket (nicht alles auf einmal). `Q00.csv` + `Journal.csv` (Q00-Teil) sind fertig
+  übertragen, gelintet, lore-editor-geprüft. Q01–Q06, Family, Banter, Black Ledger, Bücher
+  stehen noch aus – Reihenfolge orientiert sich an der ROADMAP (als Nächstes Q01 bei M1.7).
 - M1.1 (Core-System) und M1.6 (Family-Grundgerüst): 6 Scripts stehen, kompilieren sauber
   (6/6 .pex), eine papyrus-reviewer-Runde erledigt und alle Befunde eingearbeitet.
 - **ESP enthält jetzt 8 eigene Records** (`Data/NightsHarvest.esp`, 1117 Bytes, per
@@ -105,23 +111,38 @@ Per Rundlauf bestätigt (nicht geraten).
 
 ## Nächster Schritt
 
-**M1.4 und M1.6 sind ESP-seitig fertig (Status „Test"), Housekeeping erledigt.**
-1. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
-   `dialogue/Q00.csv`) – nächstes großes Stück, M1.5.
-2. Sobald Q00/FamilyManager existieren: `Q00`- und `NHV_FamilyStrength`-Properties in
-   `NHV_MCMScript` (Status-Seite) im CK nachtragen, damit die Platzhalter „not available
-   yet" verschwinden.
-3. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
-   existieren schon (siehe Log 23.09.), Scripts/Properties erst anhängen, wenn die
-   jeweilige NPC- und Status-Global-Arbeit dran ist (M2.2–M2.5).
-4. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
+**M1.5 (Q00-Questhülle) ist zum Teil erledigt – der Rest braucht CK-Arbeit oder eine
+neue Schema-Erkundung. Details siehe Log 23.09. „M1.5 Q00-Questhülle".**
+
+**Für den Entwickler, kurzer CK-Schritt (überall Text aus `dialogue/Journal.csv`,
+Q00-Zeilen, copy-paste):**
+1. `NHV_Q00_ShadowAtTheDoor` im CK öffnen → Quest Stages-Tab → für jede der 8 Stages
+   (10/15/20/30/40/50/60/100) den Journal-Text aus `dialogue/Journal.csv` eintragen
+   (Grund: Spriggit-Bug, siehe `docs/ENVIRONMENT.md` „Bekannte Spriggit-Limitation").
+2. Danach `tools/plugin_text.ps1 -Direction ToText`, damit der Text-Stand wieder
+   synchron ist (Ein-Schreiber-Regel, E17).
+
+**Für Claude, als Nächstes:**
+1. Dialog-Branches (Topics/INFOs) für Q00 als eigene Schema-Erkundung angehen – bisher
+   nicht versucht, komplexestes Record-Feld überhaupt (DIAL/INFO). `dialogue/Q00.csv`
+   steht bereits vollständig und gelintet als Textquelle.
+2. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
+   `dialogue/NightsHarvest-claude-code/dialogue/books/` vor, noch nicht übertragen).
+3. Szenen (`NHV_Scn_Q00_01Standoff` etc.) sind laut M0.7-Tabelle CK-Arbeit
+   (Actor-Platzierung, Kamera) – dafür eine `ck-guide`-Anleitung schreiben, sobald die
+   Dialog-Branches stehen.
+4. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
+   existieren schon, Scripts/Properties erst anhängen, wenn die jeweilige NPC- und
+   Status-Global-Arbeit dran ist (M2.2–M2.5).
+5. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
    `tools/verify_live_untouched.ps1`.
 
-**Für den Entwickler, sobald Zeit ist:** M1.4 (Sanctuary-Aliase) und M1.6 (Family-
-Grundgerüst) sind bereit für einen Ingame-Test analog zu M1.1 – `sqv NHV_Sys_Sanctuary`
-bzw. `sqv NHV_Sys_Family` in der Konsole zeigt den Alias-Zustand. Beide Quests starten
-aber erst automatisch, sobald Q00 existiert (M1.5) und die jeweilige Stage erreicht;
-bis dahin lassen sie sich nur mit `StartQuest`/`SetStage` von Hand anstoßen.
+**Für den Entwickler, sobald Zeit ist:** M1.1, M1.4 und M1.6 sind bereit für einen
+Ingame-Test – `sqv NHV_Sys_Sanctuary` bzw. `sqv NHV_Sys_Family` in der Konsole zeigt den
+Alias-Zustand. M1.4/M1.6 starten aber erst automatisch, sobald Q00 die jeweilige Stage
+erreicht (Q00 selbst startet jetzt korrekt bei Stage 10, aber ohne Dialog-Branches passiert
+noch nichts Sichtbares) – bis dahin lassen sie sich nur mit `StartQuest`/`SetStage` von
+Hand anstoßen.
 
 ## Offene Rückfragen an den Entwickler
 
@@ -132,6 +153,43 @@ bis dahin lassen sie sich nur mit `StartQuest`/`SetStage` von Hand anstoßen.
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (Fortsetzung 2, M1.5 Q00-Questhülle + Dialog-Integration)
+- **Dialog-Integration Q00:** Externes Skript (`dialogue/NightsHarvest-claude-code/dialogue/script/Q00_A_Shadow_at_the_Door.md`,
+  Version 1 vom Entwickler) komplett nach `dialogue/Q00.csv` (141 Zeilen) und
+  `dialogue/Journal.csv` (Q00-Teil, 8 Zeilen) übertragen – ersetzt den alten
+  Platzhalter-Entwurf. Deutlich reicher: neue Windpeak-Inn-Szene, Cicero-Intercept jetzt
+  sauber auf Stage 30 (löst alte Timing-Unklarheit), Nazir-Kommentar zur
+  Memorial-Wall-Entscheidung. `tools/dialogue_lint.py` grün, `lore-editor`-Runde
+  gemacht: Zeitangabe „Dritte Ära" entfernt (hätte Veyras bewusst ungeklärtes Alter
+  verraten – harte Projektregel), zwei Emotion-/Condition-Korrekturen. Nazirs
+  „Scimitar" per houseCARL verifiziert (echtes Vanilla-Item), kein Lore-Fehler.
+  **Ziel laut Entwickler:** Mod mit allen Dialogen/Quests lauffähig, noch ohne
+  Vertonung; Vertonung erst wenn inhaltlich final. Übertragung der restlichen
+  Quests/Familie/Banter/Black Ledger/Bücher läuft schrittweise mit den jeweiligen
+  Arbeitspaketen, nicht alles auf einmal.
+- **M1.5 Q00-Questhülle:** `NHV_Q00_ShadowAtTheDoor` (000815) mit 8 Stages
+  (10/15/20/30/40/50/60/100, Stage 100 = `ShutDownStage`) angelegt, `NHV_AstridMemorial`
+  (000814, Global) angelegt. `NHV_CoreScript.StartQ00()` ruft jetzt `Q00.SetStage(10)`
+  nach `Start()`. `Q00`-Property in `NHV_Sys_Core` und `NHV_Sys_MCM` gefüllt,
+  `NHV_FamilyStrength`-Property in `NHV_Sys_MCM` ergänzt (existierte seit M1.6, war
+  aber in der MCM-Quest noch nicht verkabelt) – die MCM-Status-Seite zeigt damit bald
+  echte Werte statt „not available yet", sobald M1.6/Family tatsächlich läuft.
+  papyrus-reviewer-Runde: Timing-Hinweis zu `Start()`/`SetStage()`/`OnInit()` in
+  `docs/ARCHITECTURE.md` dokumentiert (künftige CK-Fragmente).
+- **Echter Spriggit-Bug gefunden (0.41.0, aktuell):** `QuestLogEntry.Entry` (Journal-Text
+  pro Stage) lässt sich nicht per YAML deserialisieren, sobald die Liste einen Eintrag
+  hat – harter Absturz, kein stilles Verwerfen wie bei früheren Schema-Lücken. Mit
+  `Flags: 0` und `Flags: None` gleichermaßen reproduziert (`ArgumentException: Could
+  not convert to QuestLogEntry+Flag`); der Enum hat offenbar keinen benannten Nullwert.
+  Kein neueres Spriggit-Release verfügbar. **Workaround:** Stages nur mit `Index`
+  (+ Stage-`Flags` wie `ShutDownStage`) anlegen, Journal-Text im CK von Hand eintragen
+  (Text liegt fertig in `dialogue/Journal.csv`) – siehe `docs/ENVIRONMENT.md` „Bekannte
+  Spriggit-Limitation". Dialog-Branches/INFOs (viel komplexeres Feld) sind davon noch
+  nicht getestet betroffen – eigene Schema-Erkundung nötig, bevor Q00 wirklich spielbar ist.
+- Build (7/7), ESP gebaut (3174 Bytes, 17 Records), Sync + Live-Verifikation grün.
+- ROADMAP-Status M1.5 auf „In Arbeit" (Questhülle steht, Dialog-Branches/Szenen/Bücher
+  fehlen noch – das ist der Großteil des Arbeitspakets).
 
 ### 2026-09-23 (Fortsetzung, M1.4 + M1.6 ESP-Aufbau)
 - Housekeeping erledigt: `MO2-clean-test` → `MO2` umbenannt, alte kaputte Instanz liegt
@@ -284,6 +342,8 @@ Nach jeder CK-Session, die „Scripts.zip entpacken?" bestätigt hat, prüfen.
 - M1.2 Veyra: Offen, nicht begonnen.
 - M1.3 Deep Sanctuary Stufe 1: Offen, nicht begonnen.
 - M1.4 Sanctuary-Aliase: **Test** – Nazir/Babette/Cicero fertig, Night Mother offen (CK).
-- M1.5 Q00 im CK: Offen – Dialog-CSV steht, Stages/Szenen noch nicht als Records gebaut.
+- M1.5 Q00 im CK: **In Arbeit** – Dialog-CSV fertig (141 Zeilen, gelintet, lore-editor-
+  geprüft), Quest+8 Stages als Records gebaut. Fehlt: Journal-Text im CK nachtragen
+  (Spriggit-Bug), Dialog-Branches/INFOs, Szenen, 2 Bücher.
 - M1.6 Family-Grundgerüst: **Test** – FollowerSlot1+HrefnaSlot fertig, Reserve-Aliase für
   M2-Rekruten schon angelegt (leer).
