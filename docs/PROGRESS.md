@@ -16,6 +16,26 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**23.09.2026: M1.1 vollständig und fehlerfrei ingame bestätigt (durch den Entwickler getestet).**
+`sqv NHV_Sys_Core` zeigt korrekten Zustand, MCM zeigt „Night's Harvest" mit funktionierenden
+Seiten „Status" (Version, Mod-Status, None-sichere Platzhalter für Q00/FamilyManager) und
+„General" (alle 5 Optionen mit korrekten Standardwerten, Hilfetexte funktionieren). Voraus
+ging ein längerer Debugging-Marathon mit vier echten, gefundenen und behobenen Ursachen für
+das MO2-Startproblem (Details: `docs/tests/M0.6.md`, Abschnitt „Auflösung Spielstartproblem"):
+1. Fehlende Creation-Club-Master für USSEP (im Dev-Profil deaktiviert).
+2. Alte portable MO2-Instanz war fehlerhaft (Ursache nicht weiter untersucht, lohnt sich
+   nicht) – neue, funktionierende Instanz `MO2-clean-test`.
+3. SKSE-Papyrus-Dateien fast komplett gefehlt (nur `skse.pex` vorhanden, ~60 weitere
+   SKSE-erweiterte Kern-Scripts wie `Actor`, `Quest`, `UI`, `Utility` fehlten) – vollständig
+   aus dem offiziellen SKSE64-Archiv nachinstalliert.
+4. SkyUI registriert neue MCM-Menüs auf ganz frischen Spielständen manchmal erst nach
+   Speichern+Neuladen oder Spielneustart (kein Bug, nur Timing).
+
+**Offenes Housekeeping (nicht dringend):** `MO2-clean-test` → `MO2` umbenennen, alte kaputte
+Instanz archivieren, sobald Spiel/MO2 geschlossen sind (Prozesse blockieren den Ordner).
+`docs/ENVIRONMENT.md` muss danach entsprechend aktualisiert werden.
+
+
 - Repo, Dev-Umgebung, Tooling (Spriggit, houseCARL, Pyro, portable MO2-Dev-Instanz) stehen
   und funktionieren. Live-Spiel nachweislich unangetastet bis auf zwei harmlose, bereits
   erklärte Nebeneffekte (siehe „Bekannte Umgebungs-Falle" unten).
@@ -74,24 +94,21 @@ Mein ursprünglicher Versuch (`MutagenObjectType: ScriptObjectProperty` explizit
 ## Nächster Schritt
 
 **M1.4/M1.6 ESP-Aufbau (Claude, mit bekanntem Alias-Script-Schema, siehe unten). M1.1 ist
-fertig (Status „Test") und wartet auf den Ingame-Test durch den Entwickler.**
-1. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
+fertig und ingame bestätigt – der Entwickler kann den ROADMAP-Status jederzeit auf „Fertig"
+setzen.**
+1. Housekeeping: `MO2-clean-test` → `MO2` umbenennen (alte Instanz archivieren), sobald
+   Spiel/MO2 zu sind; `docs/ENVIRONMENT.md` entsprechend aktualisieren.
+2. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
    FormIDs, Night Mother offen lassen – siehe „Offene Rückfragen").
-2. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
+3. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
    (Schema jetzt bekannt, siehe „Gelöste Schema-Frage").
-3. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
+4. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
    `dialogue/Q00.csv`).
-4. Sobald Q00/FamilyManager existieren: `Q00`- und `NHV_FamilyStrength`-Properties in
+5. Sobald Q00/FamilyManager existieren: `Q00`- und `NHV_FamilyStrength`-Properties in
    `NHV_MCMScript` (Status-Seite) im CK nachtragen, damit die Platzhalter „not available
    yet" verschwinden.
-5. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
+6. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
    `tools/verify_live_untouched.ps1`.
-
-**Für den Entwickler:** M1.1 ist bereit für den Ingame-Test (Vortex-Installation, „Hail
-Sithis!" abschließen, Dawnstar Sanctuary betreten, MCM öffnen → Night's Harvest sollte mit
-Seiten „Status" und „General" erscheinen). Testanleitung folgt, sobald M1.4/M1.6 so weit
-sind, dass ein zusammenhängender Testlauf sinnvoll ist – sag Bescheid, falls du M1.1 schon
-jetzt isoliert testen willst.
 
 ## Offene Rückfragen an den Entwickler
 
@@ -102,6 +119,23 @@ jetzt isoliert testen willst.
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (M1.1 ingame bestätigt)
+- Entwickler hat über die neue MO2-Instanz `MO2-clean-test` getestet: `completequest DB11`
+  + `coc DawnstarSanctuary` (Zelle per houseCARL verifiziert, nicht geraten), `sqv
+  NHV_Sys_Core` zeigt korrekten Zustand inkl. korrekter None-Sicherheit (`CanStartQ00()`
+  verweigert den Timer-Start, weil `Q00` noch None ist – wie designed, kein Bug).
+- MCM zeigte zunächst eine leere Modliste, dann „SkyUI Error Code 7" (SKSE64 scripts
+  overwritten/not properly loaded). Ursache: Nur `skse.pex`+`SKSE.psc` waren installiert,
+  aber SKSE ersetzt ~60 weitere Kern-Scripts (`Actor`, `Quest`, `ObjectReference`, `UI`,
+  `Utility`, `Game` u. a.) durch erweiterte Versionen, gegen die SkyUI kompiliert ist.
+  Alle 62 Dateipaare aus dem offiziellen SKSE64-2.2.6-Archiv nachinstalliert (überschreiben
+  die Vanilla-Versionen in `Data\Scripts`).
+- Nach Spielneustart: MCM zeigt „Night's Harvest" korrekt, beide Seiten (Status/General)
+  fehlerfrei mit korrekten Werten. M1.1 damit vollständig ingame bestätigt.
+- `docs/tests/M0.6.md` um die komplette Ursachenkette (4 gefundene Probleme) ergänzt.
+- Housekeeping offen: MO2-Instanzen umbenennen (`MO2-clean-test` → `MO2`), sobald Spiel/MO2
+  geschlossen sind – blockierte den Ordner beim Versuch während der laufenden Session.
 
 ### 2026-09-22 (Fortsetzung 4, MCM-Grundgerüst)
 - SkyUI-SDK-Quellen (`SKI_ConfigBase.psc`, `SKI_QuestBase.psc`) von GitHub
@@ -208,8 +242,9 @@ Nach jeder CK-Session, die „Scripts.zip entpacken?" bestätigt hat, prüfen.
 - M0.1–M0.5, M0.8: siehe ROADMAP, größtenteils „Offen"/Entwickler-Aufgaben.
 - M0.6 Smoke-Test: **Test** (wartet auf Ingame-Prüfung).
 - M0.7 Record-Inventar: **Test**.
-- M1.1 Core-System: **Test** – Scripts + ESP-Records + MCM (Status/General) fertig,
-  reviewed, Build/Live-Check grün. Wartet auf Ingame-Test.
+- M1.1 Core-System: **Test, ingame bestätigt** – Scripts + ESP-Records + MCM (Status/General)
+  fertig, reviewed, Build/Live-Check grün, vom Entwickler erfolgreich getestet (23.09.).
+  „Fertig" setzt der Entwickler, sobald er möchte.
 - M1.2 Veyra: Offen, nicht begonnen.
 - M1.3 Deep Sanctuary Stufe 1: Offen, nicht begonnen.
 - M1.4 Sanctuary-Aliase: **In Arbeit** – ESP-Records in Arbeit (Night Mother offen).
