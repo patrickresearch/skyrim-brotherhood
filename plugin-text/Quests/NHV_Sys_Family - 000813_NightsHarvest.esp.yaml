@@ -1,0 +1,77 @@
+FormKey: 000813:NightsHarvest.esp
+EditorID: NHV_Sys_Family
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_FamilyManagerScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerSlot1
+      Object: 000813:NightsHarvest.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Debug
+      Object: 000800:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_FamilyFaction
+      Object: 000807:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_FamilyStrength
+      Object: 000810:NightsHarvest.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000813:NightsHarvest.esp
+      Alias: 0
+    Scripts:
+    - Name: NHV_FollowerAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NHV_Cfg_Debug
+        Object: 000800:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 000813:NightsHarvest.esp
+      Alias: 2
+    Scripts:
+    - Name: NHV_RecruitAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NHV_Cfg_Debug
+        Object: 000800:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: StatusGlobal
+        Object: 000811:NightsHarvest.esp
+NextAliasID: 7
+Aliases:
+- Name: FollowerSlot1
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- Name: FollowerSlot2
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- Name: HrefnaSlot
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- Name: SingsSlot
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- Name: NireldaSlot
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- Name: CorisandeSlot
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- Name: KharzogSlot
+  Flags:
+  - Optional
+  VoiceTypes: Null

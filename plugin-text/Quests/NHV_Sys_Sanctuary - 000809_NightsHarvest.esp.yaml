@@ -1,0 +1,23 @@
+FormKey: 000809:NightsHarvest.esp
+EditorID: NHV_Sys_Sanctuary
+NextAliasID: 4
+Aliases:
+- Name: Nazir
+  Flags:
+  - Optional
+  ForcedReference: 01C3AD:Skyrim.esm
+  VoiceTypes: Null
+- Name: Babette
+  Flags:
+  - Optional
+  ForcedReference: 01D4BC:Skyrim.esm
+  VoiceTypes: Null
+- Name: Cicero
+  Flags:
+  - Optional
+  ForcedReference: 01E64A:Skyrim.esm
+  VoiceTypes: Null
+- Name: NightMother
+  Flags:
+  - Optional
+  VoiceTypes: Null

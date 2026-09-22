@@ -91,24 +91,37 @@ Mein ursprünglicher Versuch (`MutagenObjectType: ScriptObjectProperty` explizit
 `Property`-Block) hat Spriggit still verworfen; ohne dieses Feld (nur `Name`/`Object`/
 `Alias`) funktioniert es. Nicht mehr experimentieren, dieses Muster einfach wiederverwenden.
 
+**Ergänzung (23.09., bei M1.6 bestätigt):** Eine normale Script-Property, die statt auf ein
+Form auf einen **Alias derselben Quest** zeigen soll (z. B. `NHV_FamilyManagerScript`s
+`FollowerSlot1`-Property vom Typ `NHV_FollowerAliasScript`), nutzt exakt dasselbe Muster
+innerhalb der ganz normalen `Properties:`-Liste:
+```yaml
+- MutagenObjectType: ScriptObjectProperty
+  Name: <PropertyName>
+  Object: <FormKey der eigenen Quest>
+  Alias: <AliasID>
+```
+Per Rundlauf bestätigt (nicht geraten).
+
 ## Nächster Schritt
 
-**M1.4/M1.6 ESP-Aufbau (Claude, mit bekanntem Alias-Script-Schema, siehe unten). M1.1 ist
-fertig und ingame bestätigt – der Entwickler kann den ROADMAP-Status jederzeit auf „Fertig"
-setzen.**
-1. Housekeeping: `MO2-clean-test` → `MO2` umbenennen (alte Instanz archivieren), sobald
-   Spiel/MO2 zu sind; `docs/ENVIRONMENT.md` entsprechend aktualisieren.
-2. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
-   FormIDs, Night Mother offen lassen – siehe „Offene Rückfragen").
-3. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
-   (Schema jetzt bekannt, siehe „Gelöste Schema-Frage").
-4. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
-   `dialogue/Q00.csv`).
-5. Sobald Q00/FamilyManager existieren: `Q00`- und `NHV_FamilyStrength`-Properties in
+**M1.4 und M1.6 sind ESP-seitig fertig (Status „Test"), Housekeeping erledigt.**
+1. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
+   `dialogue/Q00.csv`) – nächstes großes Stück, M1.5.
+2. Sobald Q00/FamilyManager existieren: `Q00`- und `NHV_FamilyStrength`-Properties in
    `NHV_MCMScript` (Status-Seite) im CK nachtragen, damit die Platzhalter „not available
    yet" verschwinden.
-6. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
+3. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
+   existieren schon (siehe Log 23.09.), Scripts/Properties erst anhängen, wenn die
+   jeweilige NPC- und Status-Global-Arbeit dran ist (M2.2–M2.5).
+4. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
    `tools/verify_live_untouched.ps1`.
+
+**Für den Entwickler, sobald Zeit ist:** M1.4 (Sanctuary-Aliase) und M1.6 (Family-
+Grundgerüst) sind bereit für einen Ingame-Test analog zu M1.1 – `sqv NHV_Sys_Sanctuary`
+bzw. `sqv NHV_Sys_Family` in der Konsole zeigt den Alias-Zustand. Beide Quests starten
+aber erst automatisch, sobald Q00 existiert (M1.5) und die jeweilige Stage erreicht;
+bis dahin lassen sie sich nur mit `StartQuest`/`SetStage` von Hand anstoßen.
 
 ## Offene Rückfragen an den Entwickler
 
@@ -119,6 +132,29 @@ setzen.**
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (Fortsetzung, M1.4 + M1.6 ESP-Aufbau)
+- Housekeeping erledigt: `MO2-clean-test` → `MO2` umbenannt, alte kaputte Instanz liegt
+  jetzt unter `MO2-broken-archive`. `tools/sync_dev.ps1`/`verify_live_untouched.ps1`
+  unverändert lauffähig (Pfad ist immer `<DevRoot>\MO2`). `docs/ENVIRONMENT.md` aktualisiert.
+- `NHV_Sys_Sanctuary` (000809) angelegt: optionale Aliase Nazir/Babette/Cicero mit
+  verifizierten platzierten Referenzen (`NazirRef` 01C3AD, `BabetteRef` 01D4BC, `CiceroRef`
+  01E64A, alle `:Skyrim.esm`), `NightMother` bewusst leer (siehe „Offene Rückfragen").
+- `NHV_Sys_Family` (000813) angelegt, inkl. **Erweiterung über die M0.7-Tabelle hinaus**:
+  `docs/ARCHITECTURE.md` verlangt Reserve-Aliase für Quests, die Save-Kompatibilität ab
+  0.1.0 unterliegen ("Aliase in laufenden Quests werden bei Updates nicht neu befüllt").
+  Deshalb neben `FollowerSlot1` (Skript `NHV_FollowerAliasScript` angehängt) und
+  `HrefnaSlot` (Skript `NHV_RecruitAliasScript` angehängt, `StatusGlobal` →
+  `NHV_Status_Hrefna`) auch leere Reserve-Aliase für `FollowerSlot2` (M2.1) und
+  `SingsSlot`/`NireldaSlot`/`CorisandeSlot`/`KharzogSlot` (M2.2–M2.5) – noch ohne Skript,
+  reservieren nur die Alias-ID. Neue Globals `NHV_FamilyStrength` (000810, Float),
+  `NHV_Status_Hrefna` (000811), `NHV_Status_Sings` (000812, laut M0.7-Tabelle "optional
+  vorziehen").
+- Neues, per Rundlauf bestätigtes Schema: eine Script-Property, die auf einen Alias
+  derselben Quest zeigt (nicht auf ein Form), nutzt dasselbe `Object`+`Alias`-Muster wie
+  das Alias-Script-Binding – siehe „Gelöste Schema-Frage" oben.
+- Build (7/7), ESP gebaut (2880 Bytes, 15 Records), Sync + Live-Verifikation grün.
+- ROADMAP-Status M1.4 und M1.6 auf „Test" gesetzt.
 
 ### 2026-09-23 (M1.1 ingame bestätigt)
 - Entwickler hat über die neue MO2-Instanz `MO2-clean-test` getestet: `completequest DB11`
@@ -247,6 +283,7 @@ Nach jeder CK-Session, die „Scripts.zip entpacken?" bestätigt hat, prüfen.
   „Fertig" setzt der Entwickler, sobald er möchte.
 - M1.2 Veyra: Offen, nicht begonnen.
 - M1.3 Deep Sanctuary Stufe 1: Offen, nicht begonnen.
-- M1.4 Sanctuary-Aliase: **In Arbeit** – ESP-Records in Arbeit (Night Mother offen).
+- M1.4 Sanctuary-Aliase: **Test** – Nazir/Babette/Cicero fertig, Night Mother offen (CK).
 - M1.5 Q00 im CK: Offen – Dialog-CSV steht, Stages/Szenen noch nicht als Records gebaut.
-- M1.6 Family-Grundgerüst: **In Arbeit** – Scripts fertig+reviewed, ESP-Records ausstehend.
+- M1.6 Family-Grundgerüst: **Test** – FollowerSlot1+HrefnaSlot fertig, Reserve-Aliase für
+  M2-Rekruten schon angelegt (leer).
