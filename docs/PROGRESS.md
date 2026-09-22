@@ -16,6 +16,11 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**23.09.2026: Cheydinhal-Frage nachgetragen (fehlte in den 24 zuvor gebauten Q00-Topics),
+`NHV_Q00_AskedLeave`-Global angelegt, `GetDeadConditionData`-Schema per Rundlauf bestätigt
+(`RunOnType`+`Reference`, nicht `Object`) – siehe Log unten. Als Nächstes: Script-Fragmente
+für die Q00-Stage-Übergänge/Variablen ausarbeiten (siehe „Nächster Schritt").**
+
 **23.09.2026: M1.1 vollständig und fehlerfrei ingame bestätigt (durch den Entwickler getestet).**
 `sqv NHV_Sys_Core` zeigt korrekten Zustand, MCM zeigt „Night's Harvest" mit funktionierenden
 Seiten „Status" (Version, Mod-Status, None-sichere Platzhalter für Q00/FamilyManager) und
@@ -188,6 +193,26 @@ Hand anstoßen.
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (Fortsetzung 5, Cheydinhal-Frage nachgetragen)
+- Beim Sichten der 24 gebauten Topics aufgefallen: die „Why did you leave Cheydinhal?"-
+  Frage (NHV_Q00_030_45-48) war in `dialogue/Q00.csv` vorhanden, aber nie als Record
+  gebaut worden – und das Global `NHV_Q00_AskedLeave`, auf das eine spätere Bedingung
+  verweist, existierte ebenfalls noch nicht. Beides nachgetragen: `NHV_Q00_AskedLeave`
+  (000866, GlobalShort), `NHV_Q00_Veyra_Proposal04` (000867/000868, Frage + zwei
+  Response-Zeilen), `NHV_Q00_Veyra_Proposal04b` (000869/000870, Folgezeile über
+  `PreviousDialog`).
+- Eigenen Fehler vor dem Testen abgefangen: erster Versuch nutzte
+  `GetVMQuestVariableConditionData` für das AskedLeave-Global – das ist für
+  Quest-Script-Papyrus-Variablen (z. B. `::pEmperorTalked_var`), nicht für echte
+  Global-Records. Per houseCARL ein echtes `GetGlobalValue`-Beispiel geholt, korrigiert
+  auf `GetGlobalValueConditionData{Global: <FormID>}`.
+- **Neues, per Rundlauf bestätigtes Schema:** `GetDeadConditionData` (für die
+  „Cicero lebt"-Bedingung in Proposal04b) nutzt **nicht** das `Object`-Feld wie
+  `GetIsIDConditionData`, sondern `RunOnType: Reference` + `Reference: <FormID>`. Vorab
+  per houseCARL verifiziert, nicht geraten; Rundlauf bestätigt exakten Erhalt beider
+  Felder. Für künftige Death-Bedingungen einfach dieses Muster wiederverwenden.
+- Build, ESP gebaut (14923 Bytes), Sync + Live-Verifikation grün, committet.
 
 ### 2026-09-23 (Fortsetzung 4, Q00-Dialog-Branches komplett)
 - Alle Player-Choice-Dialoge aus `dialogue/Q00.csv` als echte `DialogTopic`/
