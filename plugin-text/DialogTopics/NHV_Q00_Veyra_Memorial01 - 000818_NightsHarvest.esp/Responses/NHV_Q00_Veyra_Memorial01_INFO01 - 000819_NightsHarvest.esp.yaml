@@ -1,0 +1,22 @@
+FormKey: 000819:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Memorial01_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 30
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Mercy for the dead. The dead rarely deserve it, but they never complain.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 60
+Prompt:
+  TargetLanguage: English
+  Value: Carve her name with the others.

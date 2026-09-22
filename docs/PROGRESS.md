@@ -109,27 +109,37 @@ innerhalb der ganz normalen `Properties:`-Liste:
 ```
 Per Rundlauf bestätigt (nicht geraten).
 
-## Schema-Notizen DialogTopic/DialogResponses (für die nächste Session, noch nicht selbst gebaut)
+## Schema-Notizen DialogTopic/DialogResponses (per Rundlauf bestätigt, 23.09.2026)
 
-Aus einem echten Vanilla-Beispiel (`DB11EmperorPlayerResponse1`/`04FD60`) gelernt, noch nicht per Rundlauf getestet:
+Erste komplette Dialog-INFO gebaut und getestet (`NHV_Q00_Veyra_Memorial01`, Memorial-Wall-
+Option 1) – Schema jetzt gesichert, nicht mehr raten nötig:
 
-- **`DialogTopic`** (der Menüeintrag/Branch): `EditorID`, `Quest` (FormLink), `Category`
-  (z. B. `Topic`), `Subtype`+`SubtypeName` (z. B. `Custom`/`CUST`), `Priority` (int),
-  optional `Branch` (FormLink zu einer `DialogBranch`, meist leer bei uns), `Responses`
-  (Liste von FormLinks auf `DialogResponses`, eigene Records).
-- **`DialogResponses`** (die INFO): `Prompt` (Spieler-Auswahltext), `Speaker` (optional
-  FormLink), `Responses` (Liste `DialogResponse` mit `Emotion`/`EmotionValue`/`Text`/
-  `Flags`), `Conditions` (Liste `Condition`, z. B. `GetIsID`/`GetVMQuestVariable`),
-  `LinkTo` (Liste FormLinks zu Folge-Topics), `Flags`, `FavorLevel`, `WalkAwayTopic`,
-  `PreviousDialog`, `VirtualMachineAdapter` (für Script-Fragmente).
-- Vermutlich brauchen Union-Typen wie `Configuration.Level` bei Npc auch hier ein
-  `MutagenObjectType`-Diskriminator-Feld (z. B. bei `Data` innerhalb `Condition`, siehe
-  `GetVMQuestVariableConditionData`/`GetIsIDConditionData` als zwei verschiedene Typen
-  für dasselbe `Data`-Feld) – nicht bestätigt, vor dem ersten Rundlauf-Test einplanen.
-- **Noch offen, vor dem Bau klären:** Welche Quest „besitzt" die Q00-Dialoge (vermutlich
-  `NHV_Q00_ShadowAtTheDoor` selbst, mit `GetStage`-Bedingungen statt Alias-Bindung, da
-  Veyra kein Alias ist und Nazir/Babette/Cicero über echte FormIDs statt Alias-Referenzen
-  ansprechbar sind) – als Annahme dokumentieren, nicht raten, wenn Unsicherheit bleibt.
+- **Ein `DialogTopic` ist ein ORDNER, keine flache Datei** – anders als alle bisherigen
+  Record-Typen. Ordnername: `<EditorID> - <FormID>_NightsHarvest.esp` unter
+  `plugin-text/DialogTopics/`. Darin:
+  - `RecordData.yaml`: die Topic-Felder selbst (`FormKey`, `EditorID`, `Quest`,
+    `Priority`, `SubtypeName: CUST` für eigene Quest-Dialoge – `Category`/`Subtype`
+    default auf `Topic`/`Custom`, weglassen). **Kein** `Responses`-Feld hier – die
+    Zuordnung läuft rein über den Ordner.
+  - `Responses/<EditorID> - <FormID>_NightsHarvest.esp.yaml`: je eine Datei pro INFO
+    (`DialogResponses`-Record) in diesem Unterordner.
+- **`DialogResponses`** (die INFO): `Prompt` und jedes `Responses[].Text` sind
+  **Übersetzungsstrukturen** wie bei Npc-`Name` (`TargetLanguage`/`Values`), kein
+  einfacher String. `Flags: {}` explizit mitschreiben (leeres Dict), auch wenn leer –
+  beim echten Vanilla-Beispiel stand es auch explizit da. `Conditions` als Liste von
+  `ConditionFloat` mit `Data.MutagenObjectType` als Diskriminator (bestätigt:
+  `GetStageConditionData` mit `Quest`-Feld, `GetIsIDConditionData` mit `Object`-Feld,
+  `GetVMQuestVariableConditionData` mit `Quest`+`VariableName`). `CompareOperator`
+  z. B. `GreaterThanOrEqualTo`/`EqualTo`, `ComparisonValue` Standard 0 wenn `EqualTo 1`
+  gemeint ist, sonst explizit setzen. `LinkTo` (Liste FormLinks zu Folge-Topics) für
+  Verzweigungen – noch nicht getestet.
+- **Geklärt:** Q00-Dialoge gehören zu `NHV_Q00_ShadowAtTheDoor` selbst (`Quest`-Feld),
+  mit `GetStageConditionData` statt Alias-Bindung – passt zu Veyra (kein Alias) und
+  Nazir/Babette/Cicero (über echte FormIDs ansprechbar, keine Alias-Referenz nötig für
+  reine Sprecher-Bedingungen).
+- **Muster für weitere INFOs:** siehe
+  `plugin-text/DialogTopics/NHV_Q00_Veyra_Memorial01 - 000818_NightsHarvest.esp/` als
+  fertiges, getestetes Beispiel zum Kopieren.
 
 ## Nächster Schritt
 
