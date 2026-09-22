@@ -22,7 +22,7 @@ Das Live-Spiel wird aktiv gespielt und bleibt unangetastet. Alles rund um den Mo
 | Vortex (Zustand, Profile, Mods, Downloads) | `%APPDATA%\Vortex`, Installation `C:\Program Files\Black Tree Gaming Ltd\Vortex` | nicht anfassen |
 | Repository (Quellen, Doku, Tools) | `C:\Users\Vanessa Bubu Schmidt\Desktop\Utils\dev\brotherhood` | hier wird entwickelt |
 | Dev-Kopie des Spiels (Vanilla, USSEP, SkyUI, SKSE, CK, CKPE) | `C:\Dev\brotherhood-devenv\SkyrimSE-Dev` | hier laufen CK, Builds, Tests |
-| Testumgebung (Mod Organizer 2 2.5.2, portable) | `C:\Dev\brotherhood-devenv\MO2` | zeigt auf die Dev-Kopie; Profil `Default` mit eigenen INIs und Saves |
+| Testumgebung (Mod Organizer 2 2.5.2, portable) | `C:\Dev\brotherhood-devenv\MO2` | zeigt auf die Dev-Kopie; Profil `Default` mit eigenen INIs und Saves. Seit 23.09.2026 eine frisch aufgesetzte Instanz (die ursprüngliche war fehlerhaft, siehe unten) – liegt unter `C:\Dev\brotherhood-devenv\MO2-broken-archive`, falls je gebraucht |
 | Backups vom 22.09.2026 (schreibgeschützt) | `C:\Dev\brotherhood-devenv\backups\` | je Ordner eine `MANIFEST.sha256` (SHA-256 je Datei) |
 
 Backups:
@@ -34,7 +34,7 @@ Backups:
 
 **Testumgebung:** MO2 lädt die Dev-Kopie über `ModOrganizer.ini` (`gamePath`), nicht das Live-Spiel. Das Profil `Default` nutzt profilspezifische INIs (`skyrim.ini` mit eingeschaltetem Papyrus-Logging) und einen eigenen Saves-Ordner (`LocalSaves`, `LocalSettings`). MO2 kennt SKSE, Skyrim, Creation Kit und den Virtual-Folder-Explorer; alle zeigen auf die Dev-Kopie. Nach dem Umzug nach `C:\Dev` meldet MO2 keine Warnung mehr.
 
-**Bekanntes Problem (22.09.2026):** `SkyrimSE.exe` aus der Dev-Kopie bricht nur über MO2 nach ca. 1 s ab; per direktem Doppelklick ohne MO2 startet es normal. Liegt also an MO2s Virtualisierung (usvfs) in dieser Umgebung. Details und Diagnose: `docs/tests/M0.6.md`, Abschnitt „Bekanntes Problem: Spielstart“. Ingame-Test bis zur Klärung zurückgestellt.
+**Gelöst (23.09.2026):** `SkyrimSE.exe` brach über die ursprüngliche MO2-Instanz nach ca. 1 s ab. Ursache war eine Kombination aus vier Problemen (fehlende USSEP-Master, die fehlerhafte alte MO2-Instanz selbst, eine unvollständige SKSE-Installation, SkyUI-Registrierungs-Timing) – Details und volle Diagnose-Geschichte: `docs/tests/M0.6.md`, Abschnitt „Auflösung Spielstartproblem“. M1.1 läuft seither ingame fehlerfrei (Startbedingung, MCM).
 
 **Schreibschutz:** `.claude/settings.json` und `.claude/hooks/protect_live.py` sperren Claude Code für Live-Spielordner, `Documents\My Games`, `%LOCALAPPDATA%\Skyrim Special Edition`, Vortex und Backups. Testen: `python .claude/hooks/protect_live.py --selftest`.
 
@@ -47,7 +47,7 @@ Die Tabelle beschreibt das Live-Spiel und die Werkzeuge. Für die Entwicklung gi
 | Tool | Version | Pfad |
 |---|---|---|
 | Skyrim SE/AE | 1.6.1170.0 (AE) | `C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition` |
-| SKSE64 | Loader 0.2.2.8; Live-Ordner hat DLLs für 1.6.1170 und 1.5.97, die Dev-Kopie nur 1.6.1170 | `<Dev>\skse64_loader.exe` |
+| SKSE64 | Loader 0.2.2.8, passend zu Spiel 1.6.1170. Data-Paket (`Data\Scripts\*.pex` + `Data\Scripts\Source\*.psc`, 62 Dateipaare – SKSE ersetzt u. a. `Actor`, `Quest`, `ObjectReference`, `UI`, `Utility`, `Game` durch erweiterte Versionen) seit 23.09.2026 vollständig installiert, aus dem offiziellen 2.2.6-Archiv (skse.silverlock.org/download/archive) – Script-API ist versionsstabil, Diskrepanz zu Loader 2.2.8 irrelevant. Ohne das komplette Paket: SkyUI „Error Code 7“ | `<Dev>\skse64_loader.exe` |
 | Creation Kit | 1.7.99.0 | `<Dev>\CreationKit.exe` |
 | CKPE | 0.6-b701, nur in der Dev-Kopie entpackt, ungetestet | `<Dev>\ckpe_loader.exe` |
 | Papyrus-Compiler (Bethesda) | vorhanden | `<Dev>\Papyrus Compiler\PapyrusCompiler.exe` |
