@@ -1,0 +1,87 @@
+# Tamriel-Begriffe und Eigennamen, die die Rechtschreibpruefung (docs/DIALOGUE.md) akzeptieren soll.
+# Eine Zeile pro Wort, Gross-/Kleinschreibung wird beim Pruefen ignoriert. Zeilen mit # sind Kommentare.
+# Ergaenzen, sobald neue Namen oder Begriffe in dialogue/*.csv auftauchen.
+
+# Kosmologie und Religion
+sithis
+dread father
+void
+night mother
+listener
+sanctuary
+black sacrament
+penitus oculatus
+aetherius
+arkay
+
+# Orte
+skyrim
+tamriel
+cyrodiil
+morrowind
+bravil
+cheydinhal
+falkreath
+dawnstar
+morthal
+hjaalmarch
+windhelm
+winterhold
+riften
+solitude
+the reach
+windpeak inn
+moorside inn
+
+# Nacht-Familie und Veyra
+veyra
+othren
+gleaner
+nazir
+babette
+cicero
+astrid
+mathieu
+bellamont
+festus
+gabriella
+arnbjorn
+veezara
+shadowscale
+shadowscales
+
+# Q01 Hrefna
+hrefna
+stormhollow
+eirik
+ashmark
+quintus
+aufidius
+hakan
+reed-walker
+
+# Weitere Rekruten (spaetere Quests, schon in Charakterboegen belegt)
+sings-beneath-ice
+nirelda
+aurantil
+hollowfrost
+corisande
+marchand
+aurelian
+cato
+kharzog
+gro-ulgar
+livia
+maro
+
+# Rassen/Voelker
+dunmer
+altmer
+argonier
+argonian
+breton
+bretonin
+nord
+redguard
+imperiale
+ork

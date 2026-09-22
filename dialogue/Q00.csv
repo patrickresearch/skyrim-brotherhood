@@ -1,9 +1,9 @@
 LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
-NHV_Q00_010_01,Q00,10,SCN_Standoff,Nazir,Vanilla,Anger,50,"Listener. Good. You can settle this before I settle it myself.",,Automatische Szene; Veyra sitzt am Tisch, Nazir steht mit gezogener Klinge über ihr
+NHV_Q00_010_01,Q00,10,SCN_Standoff,Nazir,Vanilla,Anger,50,"Listener. Good. You can settle this before I settle it myself.",,"Automatische Szene; Veyra sitzt am Tisch, Nazir steht mit gezogener Klinge ueber ihr"
 NHV_Q00_010_02,Q00,10,SCN_Standoff,Nazir,Vanilla,Anger,70,"This one walked through the Black Door like she owned the place. Say the word and I open her up.",,
 NHV_Q00_010_03,Q00,10,SCN_Standoff,Veyra,NHV_VoiceVeyra,Neutral,50,"He's been saying that for an hour. I'm beginning to think he doesn't mean it.",,
-NHV_Q00_010_04,Q00,10,SCN_Standoff,Babette,Vanilla,Happy,30,"Oh, he means it. He just hasn't decided where to start.",,Babette lehnt an einer Säule
-NHV_Q00_010_05,Q00,10,SCN_Standoff,Cicero,Vanilla,Surprise,60,"Cicero knows that face! Cicero knows it! But from where, from where...",GetDead Cicero == 0,"Platzhalter-Condition, echte Prüfung über Alias NHV_Sys_Sanctuary::Cicero (M1.4); Cicero kauert hinter einer Kiste und kichert"
+NHV_Q00_010_04,Q00,10,SCN_Standoff,Babette,Vanilla,Happy,30,"Oh, he means it. He just hasn't decided where to start.",,Babette lehnt an einer Saeule
+NHV_Q00_010_05,Q00,10,SCN_Standoff,Cicero,Vanilla,Surprise,60,"Cicero knows that face! Cicero knows it! But from where, from where...",GetDead Cicero == 0,"Platzhalter-Condition, echte Pruefung ueber Alias NHV_Sys_Sanctuary::Cicero (M1.4); Cicero kauert hinter einer Kiste und kichert"
 NHV_Q00_010_06,Q00,10,Standoff_Choice,Player,-,Neutral,50,"Who are you?",,Option 1 von 6
 NHV_Q00_010_07,Q00,10,Standoff_Choice,Veyra,NHV_VoiceVeyra,Neutral,50,"Veyra Othren. Once of Bravil, once of Cheydinhal, once of a dozen sanctuaries that don't exist anymore. The family used to call me the Gleaner.",,
 NHV_Q00_010_08,Q00,10,Standoff_Choice,Player,-,Neutral,50,"The Gleaner?",,Folgefrage innerhalb Option 1
@@ -25,23 +25,25 @@ NHV_Q00_010_23,Q00,10,Standoff_Choice,Player,-,Neutral,50,"I want you out of thi
 NHV_Q00_010_24,Q00,10,Standoff_Choice,Veyra,NHV_VoiceVeyra,Neutral,50,"As you wish. I'll be at the Windpeak Inn. I've waited two hundred years. A few more days won't trouble me.",,→ Stage 15
 NHV_Q00_010_25,Q00,10,Standoff_AfterChoice,Nazir,Vanilla,Anger,40,"An old assassin turns up the moment we're weakest, with a sad story and the right password. That's exactly what a spy would do.",,Automatisch nach Option 1-4 (nicht nach 5 oder 6)
 NHV_Q00_010_26,Q00,10,Standoff_AfterChoice,Veyra,NHV_VoiceVeyra,Neutral,50,"It's exactly what a spy would do. So don't take my word for it. Take hers.",,"Blick zum Sarg der Night Mother → Stage 20"
-NHV_Q00_020_01,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Mother, a stranger has come. She calls herself the Gleaner.",,Neuer Dialogzweig auf dem Night-Mother-Actor, nur bei Stage 20
+NHV_Q00_020_01,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Mother, a stranger has come. She calls herself the Gleaner.",,"Neuer Dialogzweig auf dem Night-Mother-Actor, nur bei Stage 20"
 NHV_Q00_020_02,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"My Listener. You come with a question on your lips.",,
-NHV_Q00_020_03,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"The Gleaner has walked in my shadow longer than you have drawn breath. She gathered for me when the family was many. Let her gather now, when the family is few.",,
-NHV_Q00_020_04,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Can she be trusted?",,Option 1 von 3
-NHV_Q00_020_05,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"Trust is for the living to squabble over. I know only this: her heart beats for Sithis. What she does with it is yours to watch.",,
-NHV_Q00_020_06,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Why did she leave the family?",,"Option 2 von 3; markiert NightMotherOption2 fuer die spaetere Proposal-Szene (Stage 30)"
-NHV_Q00_020_07,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"Ask her, my Listener. Her answer will tell you more than mine.",,
-NHV_Q00_020_08,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Why have you never spoken to her?",,Option 3 von 3
-NHV_Q00_020_09,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"I speak to one. It has always been one. That is the burden of the Listener, and the wound of all the rest.",,
-NHV_Q00_020_10,Q00,20,Cicero_Intercept,Cicero,Vanilla,Anger,50,"Cicero remembers now! Cheydinhal! The pointy-eared lady who LEFT! Who left Cicero alone with Mother and the dust and the rats!",GetDead Cicero == 0,"Platzhalter-Condition, s. o.; faengt den Spieler auf dem Rueckweg ab"
-NHV_Q00_020_11,Q00,20,Cicero_Intercept,Cicero,Vanilla,Sad,60,"Cicero talked to the rats for years, you know. They were terrible listeners. Terrible!",GetDead Cicero == 0,Platzhalter-Condition
-NHV_Q00_020_12,Q00,20,Cicero_Intercept,Player,-,Neutral,50,"She's here now. That counts for something.",,Option 1 von 3
-NHV_Q00_020_13,Q00,20,Cicero_Intercept,Cicero,Vanilla,Puzzled,40,"Does it? Does it count? Cicero will count. Cicero is very good at counting grudges.",,
-NHV_Q00_020_14,Q00,20,Cicero_Intercept,Player,-,Neutral,50,"You have every right to be angry.",,Option 2 von 3
-NHV_Q00_020_15,Q00,20,Cicero_Intercept,Cicero,Vanilla,Happy,40,"Yes! Rights! Cicero has so many rights! Thank you, Listener!",,
-NHV_Q00_020_16,Q00,20,Cicero_Intercept,Player,-,Neutral,50,"Not now, Cicero.",,Option 3 von 3
-NHV_Q00_020_17,Q00,20,Cicero_Intercept,Cicero,Vanilla,Sad,30,"Not now. Never now. Always later with Cicero...",,"Aufloesung erst in der Szene ""The Keeper and the Gleaner"" (Abschnitt 11, M5.3)"
+NHV_Q00_020_03,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"The Gleaner has walked in my shadow longer than you have drawn breath.",,"Konzept-Satz (31 Woerter) auf zwei Responses aufgeteilt, siehe docs/DIALOGUE.md"
+NHV_Q00_020_04,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"She gathered for me when the family was many. Let her gather now, when the family is few.",,Fortsetzung von NHV_Q00_020_03
+NHV_Q00_020_05,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Can she be trusted?",,Option 1 von 3
+NHV_Q00_020_06,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"Trust is for the living to squabble over.",,Konzept-Satz (26 Woerter) auf zwei Responses aufgeteilt
+NHV_Q00_020_07,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"I know only this: her heart beats for Sithis. What she does with it is yours to watch.",,Fortsetzung von NHV_Q00_020_06
+NHV_Q00_020_08,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Why did she leave the family?",,"Option 2 von 3; markiert NightMotherOption2 fuer die spaetere Proposal-Szene (Stage 30)"
+NHV_Q00_020_09,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"Ask her, my Listener. Her answer will tell you more than mine.",,
+NHV_Q00_020_10,Q00,20,NightMother_Talk,Player,-,Neutral,50,"Why have you never spoken to her?",,Option 3 von 3
+NHV_Q00_020_11,Q00,20,NightMother_Talk,NightMother,Vanilla,Neutral,50,"I speak to one. It has always been one. That is the burden of the Listener, and the wound of all the rest.",,
+NHV_Q00_020_12,Q00,20,Cicero_Intercept,Cicero,Vanilla,Anger,50,"Cicero remembers now! Cheydinhal! The pointy-eared lady who LEFT! Who left Cicero alone with Mother and the dust and the rats!",GetDead Cicero == 0,"Platzhalter-Condition, echte Pruefung ueber Alias NHV_Sys_Sanctuary::Cicero (M1.4); faengt den Spieler auf dem Rueckweg ab. OFFENE FRAGE (lore-editor): Stage-Tabelle setzt Stage 30 bereits bei ""Night-Mother-Dialog beendet"", eine reine GetStage==20-Bedingung koennte die Szene dann verpassen. Mit Entwickler klaeren, ob eine Alias-/Flag-Bedingung statt Stage-Wert noetig ist"
+NHV_Q00_020_13,Q00,20,Cicero_Intercept,Cicero,Vanilla,Sad,60,"Cicero talked to the rats for years, you know. They were terrible listeners. Terrible!",GetDead Cicero == 0,Platzhalter-Condition
+NHV_Q00_020_14,Q00,20,Cicero_Intercept,Player,-,Neutral,50,"She's here now. That counts for something.",,Option 1 von 3
+NHV_Q00_020_15,Q00,20,Cicero_Intercept,Cicero,Vanilla,Puzzled,40,"Does it? Does it count? Cicero will count. Cicero is very good at counting grudges.",,
+NHV_Q00_020_16,Q00,20,Cicero_Intercept,Player,-,Neutral,50,"You have every right to be angry.",,Option 2 von 3
+NHV_Q00_020_17,Q00,20,Cicero_Intercept,Cicero,Vanilla,Happy,40,"Yes! Rights! Cicero has so many rights! Thank you, Listener!",,
+NHV_Q00_020_18,Q00,20,Cicero_Intercept,Player,-,Neutral,50,"Not now, Cicero.",,Option 3 von 3
+NHV_Q00_020_19,Q00,20,Cicero_Intercept,Cicero,Vanilla,Sad,30,"Not now. Never now. Always later with Cicero...",,"Aufloesung erst in der Szene ""The Keeper and the Gleaner"" (Abschnitt 11, M5.3)"
 NHV_Q00_030_01,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"Well? Am I to be gutted or put to work?",,
 NHV_Q00_030_02,Q00,30,Proposal,Player,-,Neutral,50,"The Night Mother vouches for you. Welcome to the family.",,Option 1 von 3
 NHV_Q00_030_03,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Happy,20,"Family. No one has said that word to me in a very long time. Thank you, Listener.",,
@@ -49,23 +51,27 @@ NHV_Q00_030_04,Q00,30,Proposal,Player,-,Neutral,50,"The Night Mother vouches for
 NHV_Q00_030_05,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"Good. Keep that doubt sharp. It's the only thing that could have saved Falkreath.",,
 NHV_Q00_030_06,Q00,30,Proposal,Player,-,Neutral,50,"Why did you leave Cheydinhal?",NightMotherOption2 == 1,"Option 3 von 3, nur wenn Stage-020-Option 2 gewaehlt wurde; Tracking-Mechanismus (Stage-Zwischenschritt oder Alias-Variable) im CK klaeren"
 NHV_Q00_030_07,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Sad,40,"Because the Night Mother went quiet, and I was young enough to think silence meant absence. Cicero stayed. The fool stayed. And he was right.",NightMotherOption2 == 1,s. o.
-NHV_Q00_030_08,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"Don't tell him I said that. He'd never let me forget it.",GetDead Cicero == 0,"Platzhalter-Condition, s. o."
+NHV_Q00_030_08,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"Don't tell him I said that. He'd never let me forget it.",GetDead Cicero == 0,"Platzhalter-Condition, s. o.; OFFENE FRAGE (lore-editor): Zeile ergibt inhaltlich nur nach der NightMotherOption2-Rueckblende (030_06/07) Sinn. Falls im CK als eigene INFO statt Folge-Response umgesetzt, Bedingung um NightMotherOption2 == 1 ergaenzen"
 NHV_Q00_030_09,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"Then hear my proposal.",,Unabhaengig von der vorherigen Wahl
 NHV_Q00_030_10,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"The family is currently two killers, a jester and a horse.",GetDead Cicero == 0,Platzhalter-Condition
 NHV_Q00_030_11,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"The family is currently two killers and a horse.",GetDead Cicero == 1,Platzhalter-Condition; Alternativzeile falls Cicero tot
 NHV_Q00_030_12,Q00,30,Proposal,Babette,Vanilla,Anger,20,"I'll have you know I count as at least three killers on my own.",,
-NHV_Q00_030_13,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"The Brotherhood has never posted notices. We watch. Across Skyrim there are people who have already crossed the line. Killers who don't yet know they're family. I keep a ledger of them.",,
-NHV_Q00_030_14,Q00,30,Proposal,Nazir,Vanilla,Anger,30,"And after Astrid, you want us to open the door to strangers?",,
-NHV_Q00_030_15,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"No. I want us to open it to the right strangers. Every one of them watched, tested and judged. By the Listener. Not by me.",,
-NHV_Q00_030_16,Q00,30,Proposal,Player,-,Neutral,50,"Agreed. We rebuild.",,Option 1 von 3
-NHV_Q00_030_17,Q00,30,Proposal,Player,-,Neutral,50,"What's in it for you?",,Option 2 von 3
-NHV_Q00_030_18,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"A family. A home that doesn't burn. And one day, perhaps, a name on a wall that someone bothers to remember.",,
-NHV_Q00_030_19,Q00,30,Proposal,Player,-,Neutral,50,"How do I know one of them won't be the next Astrid?",,Option 3 von 3
-NHV_Q00_030_20,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"You don't. That's why we test them. And that's why you decide, not me.",,
-NHV_Q00_030_21,Q00,30,Proposal,Nazir,Vanilla,Neutral,50,"...Contracts are scarce anyway. Fine. She answers to the Listener, and I keep my scimitar sharp.",,
-NHV_Q00_030_22,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"I would expect nothing less.",,
-NHV_Q00_030_23,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"One more thing. This place is older than you think. There's a passage behind that rubble, sealed before any of us were born. If we mean to build a family, we'll need somewhere to put it.",,→ Stage 40
-NHV_Q00_040_01,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,50,"Nordic. Older than the sanctuary above. Someone sealed this for a reason.",,"Spieler aktiviert Geroell, Zellwechsel in die verfallene Deep Sanctuary, 3 Draugr bewachen die Kammern"
+NHV_Q00_030_13,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"The Brotherhood has never posted notices. We watch.",,Konzept-Satz (32 Woerter) auf drei Responses aufgeteilt
+NHV_Q00_030_14,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"Across Skyrim there are people who have already crossed the line. Killers who don't yet know they're family.",,Fortsetzung von NHV_Q00_030_13
+NHV_Q00_030_15,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"I keep a ledger of them.",,Fortsetzung von NHV_Q00_030_14
+NHV_Q00_030_16,Q00,30,Proposal,Nazir,Vanilla,Anger,30,"And after Astrid, you want us to open the door to strangers?",,
+NHV_Q00_030_17,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"No. I want us to open it to the right strangers. Every one of them watched, tested and judged. By the Listener. Not by me.",,
+NHV_Q00_030_18,Q00,30,Proposal,Player,-,Neutral,50,"Agreed. We rebuild.",,Option 1 von 3
+NHV_Q00_030_19,Q00,30,Proposal,Player,-,Neutral,50,"What's in it for you?",,Option 2 von 3
+NHV_Q00_030_20,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"A family. A home that doesn't burn. And one day, perhaps, a name on a wall that someone bothers to remember.",,
+NHV_Q00_030_21,Q00,30,Proposal,Player,-,Neutral,50,"How do I know one of them won't be the next Astrid?",,Option 3 von 3
+NHV_Q00_030_22,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"You don't. That's why we test them. And that's why you decide, not me.",,
+NHV_Q00_030_23,Q00,30,Proposal,Nazir,Vanilla,Neutral,50,"...Contracts are scarce anyway. Fine. She answers to the Listener, and I keep my scimitar sharp.",,
+NHV_Q00_030_24,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"I would expect nothing less.",,
+NHV_Q00_030_25,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"One more thing. This place is older than you think.",,Konzept-Satz (36 Woerter) auf drei Responses aufgeteilt
+NHV_Q00_030_26,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"There's a passage behind that rubble, sealed before any of us were born.",,Fortsetzung von NHV_Q00_030_25
+NHV_Q00_030_27,Q00,30,Proposal,Veyra,NHV_VoiceVeyra,Neutral,50,"If we mean to build a family, we'll need somewhere to put it.",,Fortsetzung von NHV_Q00_030_26 → Stage 40
+NHV_Q00_040_01,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,50,"Nordic. Older than the sanctuary above. Someone sealed this for a reason.",,"OFFENE FRAGE (lore-editor): Stage-Tabelle setzt ""Geroell aktiviert, Zellwechsel"" als Ausloeser fuer Stage 50, diese Zeile faellt aber zeitlich danach. Mit Entwickler klaeren, ob Stage hier 50 statt 40 sein sollte, bevor die Szene im CK gebaut wird. Spieler aktiviert Geroell, Zellwechsel in die verfallene Deep Sanctuary, 3 Draugr bewachen die Kammern"
 NHV_Q00_040_02,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Happy,20,"Well. Now we know the reason.",,Nach dem Kampf
 NHV_Q00_040_03,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,50,"A long table. A fire pit. Imagine it full.",,In der Hall of Whispers
 NHV_Q00_060_01,Q00,60,MemorialWall,Veyra,NHV_VoiceVeyra,Sad,40,"Festus. Gabriella. Arnbjorn. Veezara. I'll carve their names myself.",,
@@ -79,4 +85,4 @@ NHV_Q00_060_08,Q00,60,MemorialWall,Veyra,NHV_VoiceVeyra,Happy,30,"Remembered, bu
 NHV_Q00_100_01,Q00,100,FirstContract,Veyra,NHV_VoiceVeyra,Neutral,50,"Before Falkreath burned, the Night Mother heard a prayer from Hjaalmarch. A Black Sacrament. No one answered it. There was no one left to answer.",,
 NHV_Q00_100_02,Q00,100,FirstContract,Veyra,NHV_VoiceVeyra,Neutral,50,"Let's find out what became of the one who performed it.",,"→ Stage 100 abgeschlossen, Q01 startet"
 NHV_Q00_100_03,Q00,-,Initiates_Q,Player,-,Neutral,50,"What about the initiates who are already here?",,"Optional, nur wenn Vanilla-Initiates in der Sanctuary vorhanden sind; vor Stage 100 verfuegbar"
-NHV_Q00_100_04,Q00,-,Initiates_Q,Veyra,NHV_VoiceVeyra,Neutral,50,"They found the door by luck, not judgement. Luck is a fine thing. Judgement lasts longer. I'll keep an eye on them.",,
+NHV_Q00_100_04,Q00,-,Initiates_Q,Veyra,NHV_VoiceVeyra,Neutral,50,"They found the door by luck, not judgment. Luck is a fine thing. Judgment lasts longer. I'll keep an eye on them.",,"Konzept schreibt ""judgement"" (britisch); auf amerikanische Schreibweise korrigiert (E12, docs/DIALOGUE.md)"

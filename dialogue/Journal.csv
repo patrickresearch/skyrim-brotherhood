@@ -1,8 +1,8 @@
 LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
 NHV_Q00_010_27,Q00,10,-,Journal,-,Neutral,50,"Find out who has entered the Sanctuary.",,"Quest-Start per Story Manager; Zaehlung setzt die Sequenz von dialogue/Q00.csv Stage 10 fort (bis 26 dort), damit die LineID eindeutig bleibt"
-NHV_Q00_015_01,Q00,15,-,Journal,-,Neutral,50,"Veyra is waiting at the Windpeak Inn.",,Optionaler Pfad, wenn der Spieler Veyra wegschickt (Standoff-Option 6)
-NHV_Q00_020_18,Q00,20,-,Journal,-,Neutral,50,"Consult the Night Mother about Veyra.",,Fortsetzung der Sequenz aus Q00.csv Stage 20 (bis 17 dort)
-NHV_Q00_030_24,Q00,30,-,Journal,-,Neutral,50,"Return to Veyra.",,Fortsetzung der Sequenz aus Q00.csv Stage 30 (bis 23 dort)
+NHV_Q00_015_01,Q00,15,-,Journal,-,Neutral,50,"Veyra is waiting at the Windpeak Inn.",,"Optionaler Pfad, wenn der Spieler Veyra wegschickt (Standoff-Option 6)"
+NHV_Q00_020_20,Q00,20,-,Journal,-,Neutral,50,"Consult the Night Mother about Veyra.",,"Fortsetzung der Sequenz aus Q00.csv Stage 20 (bis 19 dort, nach Wortlimit-Split)"
+NHV_Q00_030_28,Q00,30,-,Journal,-,Neutral,50,"Return to Veyra.",,"Fortsetzung der Sequenz aus Q00.csv Stage 30 (bis 27 dort, nach Wortlimit-Split)"
 NHV_Q00_040_04,Q00,40,-,Journal,-,Neutral,50,"Open the sealed passage with Veyra.",,Fortsetzung der Sequenz aus Q00.csv Stage 40 (bis 03 dort)
 NHV_Q00_050_01,Q00,50,-,Journal,-,Neutral,50,"Explore the Deep Sanctuary.",,"Keine Dialogzeilen fuer Stage 50 in Q00.csv, daher Sequenz 01"
 NHV_Q00_060_09,Q00,60,-,Journal,-,Neutral,50,"Decide whose names belong on the Memorial Wall.",,Fortsetzung der Sequenz aus Q00.csv Stage 60 (bis 08 dort)

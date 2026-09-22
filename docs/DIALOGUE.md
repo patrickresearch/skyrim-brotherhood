@@ -48,7 +48,7 @@ Formatbeispiel (weitere Beispiele in Konzept Abschnitt 13):
 
 ```csv
 LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
-NHV_Q00_010_03,Q00,10,SCN_Standoff,Veyra,NHV_VoiceVeyra,Neutral,0,"He's been saying that for an hour. I'm beginning to think he doesn't mean it.",,
+NHV_Q00_010_03,Q00,10,SCN_Standoff,Veyra,NHV_VoiceVeyra,Neutral,50,"He's been saying that for an hour. I'm beginning to think he doesn't mean it.",,
 NHV_SYS_REC_01,Ledger,-,REC_Ask,Generic,ALL,Puzzled,30,"...Who's asking?",Morality <= 1,shared line
 ```
 
