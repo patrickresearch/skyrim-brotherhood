@@ -1,0 +1,27 @@
+FormKey: 000861:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Standoff04_INFO01
+Flags: {}
+Responses:
+- Emotion: Anger
+  EmotionValue: 30
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: '...Fine. But it stays out of its sheath.'
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 01C3AD:Skyrim.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Nazir, lower your blade. Let her talk.

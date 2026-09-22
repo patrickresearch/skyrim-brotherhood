@@ -1,0 +1,34 @@
+FormKey: 000865:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Standoff06_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 30
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: As you wish. I'll be at the Windpeak Inn.
+  ScriptNotes: ''
+  Edits: ''
+- EmotionValue: 20
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I've waited longer than you would believe. A few more days won't trouble me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: I want you out of this Sanctuary.

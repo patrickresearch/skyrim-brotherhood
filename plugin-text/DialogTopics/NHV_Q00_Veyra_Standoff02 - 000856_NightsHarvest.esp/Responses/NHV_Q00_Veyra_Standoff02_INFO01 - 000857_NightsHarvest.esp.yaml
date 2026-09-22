@@ -1,0 +1,26 @@
+FormKey: 000857:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Standoff02_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 30
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The door asked me for the music of life. I knew the answer before your Redguard's grandmother was born.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: How did you get past the Black Door?
