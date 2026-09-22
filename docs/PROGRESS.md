@@ -155,19 +155,17 @@ Q00-Zeilen, copy-paste):**
    synchron ist (Ein-Schreiber-Regel, E17).
 
 **Für Claude, als Nächstes:**
-1. Dialog-Branches (Topics/INFOs) für Q00 jetzt angehen (Veyras FormID existiert seit
-   heute) – eigene Schema-Erkundung nötig, siehe „Schema-Notizen" oben, mit kleinen
-   Rundlauf-Tests wie beim Npc-Record (drei echte Fehler dort gefunden und behoben,
-   ähnliche Überraschungen hier einplanen). `dialogue/Q00.csv` steht bereits vollständig
-   und gelintet als Textquelle. Klein anfangen (ein Branch), dann erweitern.
-2. M1.2 weiterführen, sobald CK-Zeit da ist: FaceGen, Kampfstil/Klasse, Packages
+1. Script-Fragmente für die Stage-Übergänge/Variablen an den Q00-INFOs ausarbeiten
+   (siehe Log-Eintrag oben für die Liste) – braucht vermutlich eine eigene
+   VirtualMachineAdapter-Schema-Erkundung für `DialogResponses` (noch nicht getestet).
+2. `ck-guide`-Anleitung für die Scene-Arbeit schreiben: `NHV_Scn_Q00_01Standoff` (Actors,
+   Kamera, Nazir-Zwischenrufe/-Verdacht), `NHV_Scn_Q00_02SealedPassage`,
+   `NHV_Scn_Q00_03MemorialWall`, plus Force-Greet-Verkabelung für Cicero.
+3. M1.2 weiterführen, sobald CK-Zeit da ist: FaceGen, Kampfstil/Klasse, Packages
    (Schlaf/Ledger/Essen/Map-Table/Training laut Konzept Abschnitt 3), platzierte Referenz
    im Ledger Room.
-3. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
+4. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
    `dialogue/NightsHarvest-claude-code/dialogue/books/` vor, noch nicht übertragen).
-4. Szenen (`NHV_Scn_Q00_01Standoff` etc.) sind laut M0.7-Tabelle CK-Arbeit
-   (Actor-Platzierung, Kamera) – dafür eine `ck-guide`-Anleitung schreiben, sobald die
-   Dialog-Branches stehen.
 5. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
    existieren schon, Scripts/Properties erst anhängen, wenn die jeweilige NPC- und
    Status-Global-Arbeit dran ist (M2.2–M2.5).
@@ -190,6 +188,32 @@ Hand anstoßen.
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (Fortsetzung 4, Q00-Dialog-Branches komplett)
+- Alle Player-Choice-Dialoge aus `dialogue/Q00.csv` als echte `DialogTopic`/
+  `DialogResponses`-Records gebaut: Memorial (3 Optionen), Night Mother `NM_Gleaner`
+  (5 Optionen), Cicero `CIC_Remembers` (3 Optionen), Windpeak Inn (2 Optionen),
+  Proposal-Abschluss (3 Optionen), FirstContract-Zusatzfrage (1), Standoff (6
+  Hauptoptionen + 1 Folgefrage) – macht **24 Topics / 24 INFOs**, alle einzeln oder in
+  kleinen Batches per Rundlauf getestet.
+- **Korrektheits-Fund:** Standoff-Option 4 wird von Nazir beantwortet, nicht Veyra –
+  explizite `GetIsID`-Sprecherbedingung ergänzt (sonst hätte die Engine die Zeile
+  standardmäßig Veyra zugeschrieben). Alle Veyra-Zeilen bekamen zur Sicherheit ebenfalls
+  `GetIsID(Veyra)`, obwohl bei Einzelgesprächen mit ihr wahrscheinlich unnötig.
+- **Bewusst nicht gebaut** (an CK-Scene-Arbeit übergeben, Text liegt vollständig in
+  `dialogue/Q00.csv` bereit): Nazirs Zwischenrufe während Veyras Standoff-Antworten
+  (010_22/23) und seine Verdachtszeilen nach den Optionen 1–5 (010_70–72, bräuchten
+  ODER-Logik über 5 Vorgänger-Topics). Das ist Mehrsprecher-Choreographie innerhalb
+  einer laufenden Szene – dafür ist CKs Scene-Editor da, nicht per YAML zu raten.
+- **Noch fehlend, bevor Q00 wirklich durchspielbar ist:** Script-Fragmente an den
+  Stage-Übergangs-INFOs (z. B. Standoff-Option 6 → `SetStage(15)`, Proposal → Stage 40,
+  Gleaner-Option 5 → Stage 30, Memorial-Optionen → `NHV_AstridMemorial` setzen,
+  Gleaner-Option 2 → `NHV_Q00_AskedLeave` setzen). Fragment-Text kann geliefert werden,
+  sobald der Entwickler die INFOs einmal im CK geöffnet hat (CK generiert dann die
+  TIF_-Fragment-Scripts, in die der Text kommt) – reine Schema-Frage für Fragmente war
+  noch nicht Teil dieser Session.
+- `PreviousDialog`-Feld (Themen-Verkettung für Folgefragen) erstmals getestet, funktioniert.
+- Build, ESP gebaut (13817 Bytes, 39 Records), Sync + Live-Verifikation grün durchgehend.
 
 ### 2026-09-23 (Fortsetzung 3, M1.2 Veyra-Grundrecord)
 - **Reihenfolge-Fund:** Beim Versuch, Q00s Dialog-Branches (DIAL/INFO-Records) zu bauen,
@@ -401,7 +425,8 @@ Nach jeder CK-Session, die „Scripts.zip entpacken?" bestätigt hat, prüfen.
 - M1.3 Deep Sanctuary Stufe 1: Offen, nicht begonnen.
 - M1.4 Sanctuary-Aliase: **Test** – Nazir/Babette/Cicero fertig, Night Mother offen (CK).
 - M1.5 Q00 im CK: **In Arbeit** – Dialog-CSV fertig (141 Zeilen, gelintet, lore-editor-
-  geprüft), Quest+8 Stages als Records gebaut. Fehlt: Journal-Text im CK nachtragen
-  (Spriggit-Bug), Dialog-Branches/INFOs, Szenen, 2 Bücher.
+  geprüft), Quest+8 Stages als Records gebaut, alle 24 Player-Choice-Dialog-Topics
+  gebaut. Fehlt: Journal-Text im CK nachtragen (Spriggit-Bug), Script-Fragmente an den
+  INFOs (Stage-Übergänge/Variablen), Szenen (CK), 2 Bücher.
 - M1.6 Family-Grundgerüst: **Test** – FollowerSlot1+HrefnaSlot fertig, Reserve-Aliase für
   M2-Rekruten schon angelegt (leer).
