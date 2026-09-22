@@ -22,7 +22,7 @@ Nach „Hail Sithis!“ ist die Dark Brotherhood fast ausgelöscht. Night's Harv
 
 ## Startbedingungen
 
-- „Hail Sithis!“ abgeschlossen (Quest-EditorID vermutlich `DB11`, im CK verifizieren), nicht auf dem Destroy-Pfad.
+- „Hail Sithis!“ abgeschlossen (Quest-EditorID `DB11`, am 22.09.2026 über `houseCARL` gegen `Skyrim.esm` verifiziert: `Name = "Hail Sithis!"`), nicht auf dem Destroy-Pfad.
 - Auslöser: Betreten der Dawnstar Sanctuary nach einer Wartezeit von 0–7 Tagen (MCM, Standard 2).
 - Sonderfälle laut Konzept Abschnitt 2: Cicero lebt oder ist tot, Spieler ist Arch-Mage, Gildenleitung, Vampir oder Werwolf, Installation mitten im Spiel.
 
