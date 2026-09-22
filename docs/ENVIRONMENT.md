@@ -34,7 +34,7 @@ Backups:
 
 **Testumgebung:** MO2 lädt die Dev-Kopie über `ModOrganizer.ini` (`gamePath`), nicht das Live-Spiel. Das Profil `Default` nutzt profilspezifische INIs (`skyrim.ini` mit eingeschaltetem Papyrus-Logging) und einen eigenen Saves-Ordner (`LocalSaves`, `LocalSettings`). MO2 kennt SKSE, Skyrim, Creation Kit und den Virtual-Folder-Explorer; alle zeigen auf die Dev-Kopie. Nach dem Umzug nach `C:\Dev` meldet MO2 keine Warnung mehr.
 
-**Bekanntes Problem (22.09.2026):** `SkyrimSE.exe` aus der Dev-Kopie bricht nach ca. 1 s ab – sowohl über MO2 als auch bei direktem Doppelklick ohne MO2. Liegt also nicht an MO2, sondern an der Dev-Kopie oder an Steam. Details und Diagnose: `docs/tests/M0.6.md`, Abschnitt „Bekanntes Problem: Spielstart“. Ingame-Test bis zur Klärung zurückgestellt.
+**Bekanntes Problem (22.09.2026):** `SkyrimSE.exe` aus der Dev-Kopie bricht nur über MO2 nach ca. 1 s ab; per direktem Doppelklick ohne MO2 startet es normal. Liegt also an MO2s Virtualisierung (usvfs) in dieser Umgebung. Details und Diagnose: `docs/tests/M0.6.md`, Abschnitt „Bekanntes Problem: Spielstart“. Ingame-Test bis zur Klärung zurückgestellt.
 
 **Schreibschutz:** `.claude/settings.json` und `.claude/hooks/protect_live.py` sperren Claude Code für Live-Spielordner, `Documents\My Games`, `%LOCALAPPDATA%\Skyrim Special Edition`, Vortex und Backups. Testen: `python .claude/hooks/protect_live.py --selftest`.
 
