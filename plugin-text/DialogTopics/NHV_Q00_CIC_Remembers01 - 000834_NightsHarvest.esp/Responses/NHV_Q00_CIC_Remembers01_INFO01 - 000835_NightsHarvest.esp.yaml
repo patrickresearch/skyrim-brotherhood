@@ -1,0 +1,22 @@
+FormKey: 000835:NightsHarvest.esp
+EditorID: NHV_Q00_CIC_Remembers01_INFO01
+Flags: {}
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 40
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Does it? Does it count? Cicero will count. Cicero is very good at counting grudges.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 30
+Prompt:
+  TargetLanguage: English
+  Value: She's here now. That counts for something.

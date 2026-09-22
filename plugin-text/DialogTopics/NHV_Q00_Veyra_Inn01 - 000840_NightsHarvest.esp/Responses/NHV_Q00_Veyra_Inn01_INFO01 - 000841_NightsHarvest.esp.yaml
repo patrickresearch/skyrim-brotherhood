@@ -1,0 +1,21 @@
+FormKey: 000841:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Inn01_INFO01
+Flags: {}
+Responses:
+- EmotionValue: 30
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Wise. I'll follow you. Try not to walk too fast; I'm older than this town.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 15
+Prompt:
+  TargetLanguage: English
+  Value: Come back. The Night Mother will decide about you.
