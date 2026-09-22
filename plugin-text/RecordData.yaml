@@ -4,8 +4,6 @@ SpriggitSource:
 ModKey: NightsHarvest.esp
 GameRelease: SkyrimSE
 ModHeader:
-  Stats:
-    Version: 1.7
   Author: Night's Harvest
   Description: Night's Harvest 0.0.1 smoke test
   MasterReferences:

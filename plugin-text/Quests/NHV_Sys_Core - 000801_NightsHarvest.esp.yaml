@@ -7,7 +7,11 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Cfg_Debug
       Object: 000800:NightsHarvest.esp
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
   FileName: ''
 Flags:
 - StartGameEnabled
+- 0x10
 NextAliasID: 1
