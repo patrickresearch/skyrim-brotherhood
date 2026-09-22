@@ -6,3 +6,11 @@ NHV_Q00_030_24,Q00,30,-,Journal,-,Neutral,50,"Return to Veyra.",,Fortsetzung der
 NHV_Q00_040_04,Q00,40,-,Journal,-,Neutral,50,"Open the sealed passage with Veyra.",,Fortsetzung der Sequenz aus Q00.csv Stage 40 (bis 03 dort)
 NHV_Q00_050_01,Q00,50,-,Journal,-,Neutral,50,"Explore the Deep Sanctuary.",,"Keine Dialogzeilen fuer Stage 50 in Q00.csv, daher Sequenz 01"
 NHV_Q00_060_09,Q00,60,-,Journal,-,Neutral,50,"Decide whose names belong on the Memorial Wall.",,Fortsetzung der Sequenz aus Q00.csv Stage 60 (bis 08 dort)
+NHV_Q01_010_01,Q01,10,-,Journal,-,Neutral,50,"Travel to Morthal and ask about unusual deaths.",,Keine Dialogzeilen fuer Stage 10 in Q01.csv
+NHV_Q01_020_01,Q01,20,-,Journal,-,Neutral,50,"Find the site of the Black Sacrament.",,Keine Dialogzeilen fuer Stage 20 in Q01.csv
+NHV_Q01_030_01,Q01,30,-,Journal,-,Neutral,50,"Find Hrefna.",,Keine Dialogzeilen fuer Stage 30 in Q01.csv
+NHV_Q01_040_05,Q01,40,-,Journal,-,Neutral,50,"Hear Hrefna's story.",,Fortsetzung der Sequenz aus Q01.csv Stage 40 (bis 04 dort)
+NHV_Q01_050_07,Q01,50,-,Journal,-,Neutral,50,"Help Hrefna silence Quintus Aufidius.",,Fortsetzung der Sequenz aus Q01.csv Stage 50 (bis 06 dort)
+NHV_Q01_060_01,Q01,60,-,Journal,-,Neutral,50,"Search Quintus's belongings.",,Keine Dialogzeilen fuer Stage 60 in Q01.csv
+NHV_Q01_070_01,Q01,70,-,Journal,-,Neutral,50,"Decide Hrefna's fate.",,Keine Dialogzeilen fuer Stage 70 in Q01.csv
+NHV_Q01_100_01,Q01,100,-,Journal,-,Neutral,50,"Return to Veyra.",,Keine Dialogzeilen fuer Stage 100 in Q01.csv

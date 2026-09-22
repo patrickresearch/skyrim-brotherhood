@@ -1,0 +1,11 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q01_040_01,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Sad,50,"Six weeks I waited. Heart, skull, flesh, bones, nightshade. I did it all right. I know I did.",,"Hrefnas Wut ueber die spaete Antwort der Familie; Reihenfolge/Kontext der Zeilen laut Konzept-Fliesstext, kein vollstaendiges Skript belegt"
+NHV_Q01_040_02,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Anger,70,"You came. *Now* you come. Where were you when he took the farm and my husband took to the bottle?",,
+NHV_Q01_040_03,Q01,40,Hrefna_Offer,Player,-,Neutral,50,"The family was burning. No one was left to answer.",,
+NHV_Q01_040_04,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Neutral,50,"So I answered myself. Held him under till the bubbles stopped. It was quieter than I thought.",,
+NHV_Q01_050_01,Q01,50,Veyra_TrialBriefing,Veyra,NHV_VoiceVeyra,Neutral,50,"Grief kills once. Sithis wants those who can kill twice.",,Veyras Briefing vor der Pruefung
+NHV_Q01_050_02,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Fear,40,"There's a letter on his table. To a daughter. I... can't.",,Am Bett des Agenten Quintus Aufidius
+NHV_Q01_050_03,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"If he lives, he hangs you for doing what the Brotherhood should have done.",,"(Persuade); Option 1 von 3"
+NHV_Q01_050_04,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"Then you're no use to us. And neither is your silence.",,"(Intimidate); Option 2 von 3"
+NHV_Q01_050_05,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"Step aside. I'll do it.",,"Option 3 von 3; Pruefung NICHT bestanden, fuehrt zu Flag Unproven"
+NHV_Q01_050_06,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,30,"Twice now. It doesn't get quieter.",,Danach, unabhaengig vom gewaehlten Weg
