@@ -9,7 +9,7 @@ Stand: 22.09.2026, zu E17. Ergänzt `docs/TOOLING.md`, Abschnitt 4.
 | Kandidat | Was es wirklich ist | Reife | Lizenz | Schreibt ESP | Einschätzung |
 |---|---|---|---|---|---|
 | **Spriggit** (Mutagen-Projekt) | CLI: ESP ↔ YAML | 130 Sterne, aktiv (Push 10.07.2026), von uns getestet | GPL-3.0 | ja, per Text | Basis, bleibt |
-| **houseCARL** (Avick3110) | MCP-Server, 31 Tools, Mutagen 0.54.4 | 22 Releases (v2.0.2 vom 15.09.), 34 Sterne, ca. 2.900 Commits seit 04.06.2026 | GPL-3.0 | ja: neues Patch-Plugin, „Extend“, „In-Place“ | **bester Kandidat, mit Auflagen** |
+| **houseCARL** (Avick3110) | MCP-Server, 31 Tools, Mutagen 0.54.4 | 22 Releases (v2.0.2 vom 15.09.), 34 Sterne, ca. 2.900 Commits seit 04.06.2026 | GPL-3.0 | ja: neues Patch-Plugin, „Extend“, „In-Place“ | **eingerichtet, Pilot bestanden (22.09.)** |
 | **SehtMCP** (tel-0s) | MCP-Server, 52 Tools, Mutagen 0.54.4 | erstellt 19.09.2026, 4 Commits, 0 Sterne, keine Releases | GPL-3.0 | ja, mit Staging und Backup | später für Navmesh prüfen |
 | **SkyrimCK-MCP** (Pyrhame) | **kein MCP-Server**, sondern ein Einzelprogramm für ein anderes Mod | 1 Commit, 13 Sterne | GitHub erkennt keine Lizenz (README nennt MIT) | nur dieses eine ESP | ausschließen |
 | **creation-kit-mcp-v2** (nawnie) | Python-Projekt mit eingecheckten Binärdateien, für Codex gedacht | 1 Commit, 177 MB | unklar | behauptet ja | ausschließen (nicht prüfbar) |
@@ -48,6 +48,26 @@ Stand: 22.09.2026, zu E17. Ergänzt `docs/TOOLING.md`, Abschnitt 4.
 ### Toolkit von Nexus (176043) und Gemini-Hinweis
 - Der von Gemini genannte „Skyrim-Claude Code Modder's Toolkit“ ist ein Paket aus Skills, Wissensbasis (über 1.300 Zeilen), Sicherheits-Hooks und Hilfswerkzeugen (Node-Wrapper für `XEditLib.dll`, Spriggit, PyNifly). Es ist **kein** MCP-Server. Nach eigener Aussage kann es komplexe Quest-Dialogketten oder Multi-Actor-Packages nicht zuverlässig aus dem Nichts bauen. Die Hooks (Löschschutz, Backups) sind eine Anregung für unseren eigenen Hook.
 - Der Absatz zum „Skyrim Creation Kit MCP Server“ und zur Bibliothek `esper` bezieht sich auf SkyrimCK-MCP (siehe oben), nicht auf das Toolkit.
+
+## Einrichtung und Pilot (22.09.2026, mit Freigabe)
+
+**Download und Prüfung:** `houseCARL-2.0.2.zip` (13,07 MB) von der GitHub-Release-Seite geladen. SHA-256 lokal `dcb3…c4b19`, identisch mit dem von GitHub gemeldeten Digest. Inhalt vor dem Entpacken über `7z l` gesichtet: 293 Dateien, 50,9 MB entpackt, nur zwei ausführbare Dateien (`houseCARL-Setup.exe`, `server/housecarl-mcp.exe`), beide unsigniert (`NotSigned`, wie bei den meisten kleinen Community-Tools).
+
+**Installation ohne Setup-Assistenten**, damit `~/.claude.json` und `~/.claude/skills` unberührt bleiben (README, Abschnitt „By hand“, nachvollzogen):
+- `housecarl/` (Server, Skills, `.claude-plugin/`) nach `C:\Dev\brotherhood-devenv\tools\houseCARL` kopiert, nicht nach `~/.claude/skills`.
+- Server projektweit über `.mcp.json` im Repo registriert (`type: stdio`, `command` zeigt auf `server\housecarl-mcp.exe`), statt in eine globale Nutzerkonfiguration einzutragen. `env` setzt `HouseCarl__Mo2InstanceDir` auf unsere Dev-MO2-Instanz und `HOUSECARL_DATA_DIR` auf `tools\houseCARL-data`.
+- Laufzeiten: `Microsoft.DotNet.Runtime.9` und `Microsoft.DotNet.AspNetCore.9` (beide 9.0.20) per `winget` installiert. Beide Installationen brauchten eine UAC-Bestätigung; der erste Versuch blieb ohne Rückmeldung des Entwicklers über eine Stunde an der Zustimmung hängen und wurde abgebrochen, der zweite lief nach seiner Bestätigung durch.
+- **Hook erweitert:** `.claude/hooks/protect_live.py` prüft jetzt auch `mcp__*`-Aufrufe (Argumente auf Live-Pfade durchsucht) und `.claude/settings.json` matcht den Hook zusätzlich auf `mcp__.*`. Selbsttest: 25 von 25 Fällen, davon 5 neu für MCP.
+
+**Pilot:** Server über ein eigenes Test-Skript gestartet (ein minimaler MCP-Stdio-Client, nur für diesen Test, nicht Teil des Repos), `housecarl_load_order_status` gegen unsere Dev-MO2-Instanz aufgerufen (7 Plugins, davon 2 implizite Master, passt zu Vanilla + USSEP + SkyUI + 2 Master), danach mit `housecarl_create` eine Quest `NHVPilot_Sys_Core` (Start Game Enabled, Script `NHV_CoreScript`, Property auf einen neu angelegten Global) in ein neues Wegwerf-Plugin `NHVPilot.esp` geschrieben. houseCARL legt das automatisch in einen eigenen, in MO2 noch nicht aktivierten Mod-Ordner (`houseCARL - NHVPilot`). Über Spriggit zurückgelesen: strukturell identisch mit unserem eigenen, per Spriggit erzeugten `NHV_Sys_Core` (gleicher Aufbau von `VirtualMachineAdapter.Scripts`, `Properties`, `Flags`), Unterschied nur `NextAliasID: 0` statt `1` (Standardwert bei einer Quest ohne Alias, unbedenklich). Der Pilot-Mod-Ordner wurde danach gelöscht.
+- **Erster Start ohne Laufzeit-Trick bestätigt:** Ein zweiter Lauf ohne `DOTNET_ROLL_FORWARD` (also genau der Weg, den `.mcp.json` nimmt) initialisiert den Server korrekt und listet alle 31 Tools.
+- **Live-Spiel nach jedem Schritt geprüft** (`tools\verify_live_untouched.ps1`): 19 von 19 gesicherten Dateien identisch, 0 neue Einträge, Saves unverändert. `Data\NightsHarvest.esp` im Repo hat vorher und nachher denselben Hash.
+
+**Offen:**
+- Nexus-Werkzeuge (`housecarl_nexus_*`) sind read-only laut Doku und Quelltext, aber im Pilot nicht aufgerufen.
+- `housecarl_check` (Validierungs-Sweep für Dialog, Scripts, FaceGen) noch nicht getestet.
+- Noch keine echte Night's-Harvest-Arbeit über houseCARL, nur der Wegwerf-Pilot.
+- Ob sich unser eigentliches `NightsHarvest.esp` mit `into=` erweitern lässt (statt eines neuen Patches), ist ungetestet.
 
 ## Empfehlung
 

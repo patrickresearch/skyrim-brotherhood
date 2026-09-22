@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "housecarl": {
+      "type": "stdio",
+      "command": "C:\\Dev\\brotherhood-devenv\\tools\\houseCARL\\server\\housecarl-mcp.exe",
+      "args": [],
+      "env": {
+        "HouseCarl__Mo2InstanceDir": "C:\\Dev\\brotherhood-devenv\\MO2",
+        "HOUSECARL_DATA_DIR": "C:\\Dev\\brotherhood-devenv\\tools\\houseCARL-data"
+      }
+    }
+  }
+}

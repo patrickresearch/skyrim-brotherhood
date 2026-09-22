@@ -56,6 +56,8 @@ Die Tabelle beschreibt das Live-Spiel und die Werkzeuge. Für die Entwicklung gi
 | LOOT | 0.29.2 (winget) | `C:\Users\Vanessa Bubu Schmidt\AppData\Local\Programs\LOOT\LOOT.exe` |
 | GitHub CLI | 2.101.0, noch nicht angemeldet (`gh auth login` macht der Entwickler) | `C:\Program Files\GitHub CLI\gh.exe` |
 | .NET SDK | 10.0.401 | `C:\Program Files\dotnet` |
+| .NET Runtime + ASP.NET Core Runtime 9 | 9.0.20 (für houseCARL, winget) | `C:\Program Files\dotnet\shared` |
+| houseCARL (MCP-Server, E17) | 2.0.2, ohne Setup-Assistenten installiert, Pilot bestanden (22.09.) | `C:\Dev\brotherhood-devenv\tools\houseCARL`, registriert in `.mcp.json` im Repo. Details: `docs/MCP-Vergleich.md` |
 | 7-Zip | installiert | `C:\Program Files\7-Zip\7z.exe` |
 | Vortex | Installationspfad eintragen; Daten unter `C:\Users\Vanessa Bubu Schmidt\AppData\Roaming\Vortex` | Profile: Clean, Heavy, Legacy, Voice (M0.1) |
 | Papyrus-Log | Live-INI: Logging aus, unverändert. Dev-Profil: Logging an (`MO2\profiles\Default\skyrim.ini`) | vermutlich `C:\Users\Vanessa Bubu Schmidt\Documents\My Games\Skyrim Special Edition\Logs\Script\Papyrus.0.log` (nach dem ersten Testlauf prüfen) |

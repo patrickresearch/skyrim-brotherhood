@@ -137,6 +137,18 @@ def shell_decision(command):
     return None
 
 
+def mcp_decision(tool, tin):
+    """MCP servers run outside this hook, so only their arguments can be checked: any argument
+    that names the live game, its settings or Vortex is denied, the backups need a confirmation."""
+    text = expand(json.dumps(tin, ensure_ascii=False))
+    live_hits = sorted({n for n, b in LIVE if mentions(text, b)})
+    if live_hits:
+        return "deny", "Schreibschutz: Der MCP-Aufruf %s nennt %s. Live-Spiel und Vortex bleiben unangetastet." % (tool, ", ".join(live_hits))
+    if any(mentions(text, b) for _, b in BACKUP):
+        return "ask", "Der MCP-Aufruf %s nennt die Backups. Bitte bestätigen." % tool
+    return None
+
+
 def decide(payload):
     tool = payload.get("tool_name", "")
     tin = payload.get("tool_input", {}) or {}
@@ -144,6 +156,8 @@ def decide(payload):
         return file_decision(tin.get("file_path") or tin.get("notebook_path") or "")
     if tool in ("Bash", "PowerShell"):
         return shell_decision(tin.get("command", ""))
+    if tool.startswith("mcp__"):
+        return mcp_decision(tool, tin)
     return None
 
 
@@ -171,6 +185,11 @@ def selftest():
         ("backup read", {"tool_name": "PowerShell", "tool_input": {"command": "Get-Content '%s\\backups\\x\\MANIFEST.sha256'" % dev}}, None),
         ("unrelated delete in dev copy", {"tool_name": "PowerShell", "tool_input": {"command": "Remove-Item '%s\\SkyrimSE-Dev\\x.txt'" % dev}}, None),
         ("git status", {"tool_name": "Bash", "tool_input": {"command": "git status --short"}}, None),
+        ("MCP mit Live-Pfad", {"tool_name": "mcp__housecarl__set_mo2_instance", "tool_input": {"path": game}}, "deny"),
+        ("MCP mit Live-Documents", {"tool_name": "mcp__housecarl__apply", "tool_input": {"file": PROFILE + r"\Documents\My Games\Skyrim Special Edition\Skyrim.ini"}}, "deny"),
+        ("MCP mit Backup-Pfad", {"tool_name": "mcp__housecarl__apply", "tool_input": {"file": dev + r"\backups\x"}}, "ask"),
+        ("MCP mit Dev-Pfad", {"tool_name": "mcp__housecarl__load_order_status", "tool_input": {"instance": dev + r"\MO2"}}, None),
+        ("MCP ohne Pfad", {"tool_name": "mcp__housecarl__records", "tool_input": {"plugin": "NightsHarvest.esp", "type": "Quest"}}, None),
     ]
     failed = 0
     for name, payload, expected in cases:
