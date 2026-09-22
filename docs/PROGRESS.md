@@ -18,8 +18,10 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 **23.09.2026: Cheydinhal-Frage nachgetragen (fehlte in den 24 zuvor gebauten Q00-Topics),
 `NHV_Q00_AskedLeave`-Global angelegt, `GetDeadConditionData`-Schema per Rundlauf bestätigt
-(`RunOnType`+`Reference`, nicht `Object`) – siehe Log unten. Als Nächstes: Script-Fragmente
-für die Q00-Stage-Übergänge/Variablen ausarbeiten (siehe „Nächster Schritt").**
+(`RunOnType`+`Reference`, nicht `Object`) – siehe Log unten. CK-Anleitung für die sechs
+offenen Dialog-Fragmente (Memorial/Gleaner/Standoff) fertig:
+`docs/ck/M1.5-Q00-Dialog-Fragmente.md`. Als Nächstes: Scene-Anleitung für Q00 schreiben
+(siehe „Nächster Schritt").**
 
 **23.09.2026: M1.1 vollständig und fehlerfrei ingame bestätigt (durch den Entwickler getestet).**
 `sqv NHV_Sys_Core` zeigt korrekten Zustand, MCM zeigt „Night's Harvest" mit funktionierenden
@@ -151,30 +153,29 @@ Option 1) – Schema jetzt gesichert, nicht mehr raten nötig:
 **M1.5 (Q00-Questhülle) ist zum Teil erledigt – der Rest braucht CK-Arbeit oder eine
 neue Schema-Erkundung. Details siehe Log 23.09. „M1.5 Q00-Questhülle".**
 
-**Für den Entwickler, kurzer CK-Schritt (überall Text aus `dialogue/Journal.csv`,
-Q00-Zeilen, copy-paste):**
-1. `NHV_Q00_ShadowAtTheDoor` im CK öffnen → Quest Stages-Tab → für jede der 8 Stages
+**Für den Entwickler, zwei kurze CK-Schritte:**
+1. Fragmente an sechs bestehenden Q00-INFOs ergänzen (Memorial x3, Gleaner02/05,
+   Standoff06) – vollständige Anleitung mit Fragment-Code zum Copy-Paste:
+   `docs/ck/M1.5-Q00-Dialog-Fragmente.md`.
+2. `NHV_Q00_ShadowAtTheDoor` im CK öffnen → Quest Stages-Tab → für jede der 8 Stages
    (10/15/20/30/40/50/60/100) den Journal-Text aus `dialogue/Journal.csv` eintragen
    (Grund: Spriggit-Bug, siehe `docs/ENVIRONMENT.md` „Bekannte Spriggit-Limitation").
-2. Danach `tools/plugin_text.ps1 -Direction ToText`, damit der Text-Stand wieder
-   synchron ist (Ein-Schreiber-Regel, E17).
+3. Nach beiden Schritten einmal `tools/plugin_text.ps1 -Direction ToText`, damit
+   `plugin-text/` wieder synchron ist (Ein-Schreiber-Regel, E17).
 
 **Für Claude, als Nächstes:**
-1. Script-Fragmente für die Stage-Übergänge/Variablen an den Q00-INFOs ausarbeiten
-   (siehe Log-Eintrag oben für die Liste) – braucht vermutlich eine eigene
-   VirtualMachineAdapter-Schema-Erkundung für `DialogResponses` (noch nicht getestet).
-2. `ck-guide`-Anleitung für die Scene-Arbeit schreiben: `NHV_Scn_Q00_01Standoff` (Actors,
+1. `ck-guide`-Anleitung für die Scene-Arbeit schreiben: `NHV_Scn_Q00_01Standoff` (Actors,
    Kamera, Nazir-Zwischenrufe/-Verdacht), `NHV_Scn_Q00_02SealedPassage`,
    `NHV_Scn_Q00_03MemorialWall`, plus Force-Greet-Verkabelung für Cicero.
-3. M1.2 weiterführen, sobald CK-Zeit da ist: FaceGen, Kampfstil/Klasse, Packages
+2. M1.2 weiterführen, sobald CK-Zeit da ist: FaceGen, Kampfstil/Klasse, Packages
    (Schlaf/Ledger/Essen/Map-Table/Training laut Konzept Abschnitt 3), platzierte Referenz
    im Ledger Room.
-4. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
+3. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
    `dialogue/NightsHarvest-claude-code/dialogue/books/` vor, noch nicht übertragen).
-5. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
+4. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
    existieren schon, Scripts/Properties erst anhängen, wenn die jeweilige NPC- und
    Status-Global-Arbeit dran ist (M2.2–M2.5).
-6. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
+5. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
    `tools/verify_live_untouched.ps1`.
 
 **Für den Entwickler, sobald Zeit ist:** M1.1, M1.4 und M1.6 sind bereit für einen
@@ -213,6 +214,12 @@ Hand anstoßen.
   per houseCARL verifiziert, nicht geraten; Rundlauf bestätigt exakten Erhalt beider
   Felder. Für künftige Death-Bedingungen einfach dieses Muster wiederverwenden.
 - Build, ESP gebaut (14923 Bytes), Sync + Live-Verifikation grün, committet.
+- `docs/ck/M1.5-Q00-Dialog-Fragmente.md` geschrieben: Fragment-Code zum Copy-Paste für die
+  sechs INFOs, die bisher nur Text ohne Spielwirkung haben (Memorial01/02/03 →
+  `NHV_AstridMemorial` 1/2/3, Gleaner02 → `NHV_Q00_AskedLeave` 1, Gleaner05 → Stage 30,
+  Standoff06 → Stage 15). Technischer Hintergrund dokumentiert: `TIF_`-Fragmente erben von
+  der Quest selbst (kein eigenes Q00-Quest-Script vorhanden), `SetStage()` wirkt darum
+  direkt; Globals sind in Papyrus immer per EditorID ansprechbar, keine Property nötig.
 
 ### 2026-09-23 (Fortsetzung 4, Q00-Dialog-Branches komplett)
 - Alle Player-Choice-Dialoge aus `dialogue/Q00.csv` als echte `DialogTopic`/
