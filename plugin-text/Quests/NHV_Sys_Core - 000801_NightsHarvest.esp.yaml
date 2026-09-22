@@ -30,6 +30,10 @@ VirtualMachineAdapter:
       Alias: 0
     Scripts:
     - Name: NHV_PlayerAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Core
+        Object: 000801:NightsHarvest.esp
 Flags:
 - StartGameEnabled
 - 0x10

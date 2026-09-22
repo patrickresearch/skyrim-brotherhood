@@ -35,14 +35,15 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
   (ForcedReference auf PlayerRef) und alle neuen Script-Properties inkl. verifizierter
   vanilla-FormIDs für `HailSithisQuest` (DB11, `01EA59:Skyrim.esm`) und `DestroyQuest`
   (DBDestroy, `0934FB:Skyrim.esm`).
-- **Erledigt (22.09., per CK):** `NHV_PlayerAliasScript` hängt jetzt am Player-Alias,
-  Schema dabei aus einem echten CK-Speicherstand gelernt (siehe „Gelöste Schema-Frage"
-  unten) statt weiter geraten.
-- **Neue Lücke:** Die Script-Property `Core` (Typ `NHV_CoreScript`, soll auf `NHV_Sys_Core`
-  selbst zeigen) ist am Alias-Script noch **nicht** gesetzt – im CK-Rundlauf kam kein
-  `Properties:`-Eintrag zurück. Ohne sie tut `NHV_PlayerAliasScript` nichts (die
-  None-Checks auf `Core` greifen), Q00 startet dann nie automatisch. Nachtrag im CK nötig
-  (siehe „Nächster Schritt").
+- **Erledigt (22.09., per CK), geprüft:** `NHV_PlayerAliasScript` hängt am Player-Alias,
+  Property `Core` zeigt korrekt auf `NHV_Sys_Core` selbst (per CK gesetzt, per
+  `sync_dev.ps1 FromDev` + `plugin_text.ps1 ToText` zurückgeholt und in der YAML
+  verifiziert). Schema dabei aus einem echten CK-Speicherstand gelernt (siehe „Gelöste
+  Schema-Frage" unten).
+- **Aus M1.1 bleibt offen:** Die MCM-Seiten (`NHV_Sys_MCM`, `NHV_MCMScript` auf
+  `SKI_ConfigBase`, Seiten „Status" und „General") sind noch nicht gebaut – deshalb bleibt
+  M1.1 auf „In Arbeit", nicht „Test". Der Core-Teil (Startbedingung, Player-Alias,
+  Cfg-Globals) ist funktional fertig.
 
 ## Gelöste Schema-Frage: Script an einer Quest-Alias anhängen (YAML)
 
@@ -69,21 +70,17 @@ Mein ursprünglicher Versuch (`MutagenObjectType: ScriptObjectProperty` explizit
 
 ## Nächster Schritt
 
-**A) Sofort, für den Entwickler im CK (klein, 1 Minute):**
-1. `NHV_Sys_Core` → Quest Aliases → Doppelklick auf „PlayerAlias" → Scripts-Bereich →
-   `NHV_PlayerAliasScript` ist schon da, aber die Property **`Core`** ist noch leer.
-   Auf `NHV_Sys_Core` (diese Quest selbst) setzen → OK → Speichern.
-   Danach kurz Bescheid geben, dann ziehe ich es mit `tools/plugin_text.ps1 -Direction ToText`
-   zurück ins Repo (Ein-Schreiber-Regel, E17).
-
-**B) M1.1/M1.4/M1.6 ESP-Aufbau fortsetzen (Claude):**
-1. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
+**M1.1 abschließen, dann M1.4/M1.6 ESP-Aufbau fortsetzen (Claude, jetzt mit bekanntem
+Alias-Script-Schema, siehe unten):**
+1. MCM-Grundgerüst für M1.1: `NHV_Sys_MCM` (Start Game Enabled) + `NHV_MCMScript`
+   (`SKI_ConfigBase`), Seiten „Status" und „General".
+2. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
    FormIDs, Night Mother offen lassen – siehe „Offene Rückfragen").
-2. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
-   (hier vermutlich dieselbe Alias-Script-Lücke wie bei A – ggf. wieder CK-Nacharbeit nötig).
-3. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
+3. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
+   (Schema jetzt bekannt, siehe „Gelöste Schema-Frage").
+4. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
    `dialogue/Q00.csv`).
-4. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
+5. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
    `tools/verify_live_untouched.ps1`.
 
 ## Offene Rückfragen an den Entwickler
@@ -95,6 +92,13 @@ Mein ursprünglicher Versuch (`MutagenObjectType: ScriptObjectProperty` explizit
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-22 (Fortsetzung 3, Core-Property geprüft)
+- Entwickler hat `Core` am `NHV_PlayerAliasScript` im CK gesetzt und erneut gespeichert.
+- Zurückgeholt und in der YAML verifiziert: `Core` zeigt korrekt auf `000801:NightsHarvest.esp`
+  (NHV_Sys_Core selbst). Build + Live-Verifikation grün.
+- ROADMAP-Status M1.1 bewusst NICHT auf „Test" gesetzt: Der Core-Teil ist fertig, aber die
+  MCM-Seiten (Teil des M1.1-Aufgabenpakets) fehlen noch.
 
 ### 2026-09-22 (Fortsetzung 2, nach CK-Speichern des Entwicklers)
 - Entwickler hat `NHV_PlayerAliasScript` im CK an den Player-Alias gehängt und gespeichert.
