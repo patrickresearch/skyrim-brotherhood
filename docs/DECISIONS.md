@@ -11,7 +11,7 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E03 | Release-Strategie | Komplette v1.0 / Kapitel-Releases | Komplette v1.0 mit geschlossener Beta | bis Ende M2 | Offen |
 | E04 | Plugin-Format | ESP / ESL-geflaggtes ESP | ESP, nach Record-Inventur neu prüfen | Ende M1 | Offen |
 | E05 | Master-Dateien | Skyrim.esm + Update.esm / zusätzlich Dawnguard, Dragonborn | Nur Skyrim.esm + Update.esm | in M0 | Entschieden |
-| E06 | MCM-Technik | SkyUI direkt / MCM Helper | SkyUI direkt | vor M1 | Offen |
+| E06 | MCM-Technik | SkyUI direkt / MCM Helper | SkyUI direkt | vor M1 | Entschieden |
 | E07 | Einstellungs-Export | Keiner / optional über PapyrusUtil-JSON | Optional, erst in M6 | vor M6 | Offen |
 | E08 | Livia-Rekrutierungspfad in v1.0 | Behalten / nach v1.1 | Behalten, erster Scope-Hebel | während M3 | Offen |
 | E09 | Pathing Vanilla-Sanctuary | Option B `MoveTo` / Option A Navmesh-Edits | B für v1.0 (bereits so geplant), A für v1.1 prüfen | Ende M1 | Entschieden |
@@ -24,12 +24,31 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E16 | Zugang Deep Sanctuary | A: Load Door mit Zell-Kopie / B: Script-Tür per `PlaceAtMe` + `MoveTo` | B, wegen `Sanctuary Reborn.esp` in der Load Order | vor M1.3 | Entschieden |
 | E17 | ESP-Bearbeitung durch Claude | Nur CK / Claude per MCP oder Spriggit | Claude bearbeitet das ESP, Ein-Schreiber-Regel | vor M0.6 | Entschieden |
 | E18 | Status-Wert für getötete Rekruten | 2 (Definition in Konzept Abschnitt 5) / 4 (zwei Stellen im Konzept) | 2 | vor M1.6 | Entschieden |
+| E19 | MCM-Texte: Übersetzungsschlüssel in v0.0.1 | Jetzt `$NHV_*`-Keys + Translations-Datei / vorerst Literal-Strings, Umstellung in M6 | Vorerst Literal-Strings | vor M6 | Entschieden |
 
 ### Hintergrund E16
 
 Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin. Die Kopie ändert nichts, kann aber Änderungen anderer Mods an derselben Zelle (z. B. Beleuchtung) überdecken, wenn Night's Harvest später lädt. Das betrifft auch Quest-Referenzen in Städten (Q01–Q05). Grundregel unabhängig von E16: Schlüsselszenen in eigenen Innenzellen, berührte Vanilla-Zellen minimieren und in `docs/ARCHITECTURE.md` listen.
 
 ## Entscheidungs-Einträge
+
+### E19 – MCM-Texte: Übersetzungsschlüssel in v0.0.1
+
+- **Datum:** 22.09.2026
+- **Entschieden von:** Claude (Umsetzungsdetail, keine Design-Abweichung – zur Nachvollziehbarkeit dokumentiert)
+- **Kontext:** Konzept Abschnitt 16 sieht `$NHV_*`-Übersetzungsschlüssel für alle MCM-Texte vor (`Interface/Translations/NightsHarvest_ENGLISH.txt`, UTF-16 LE mit BOM), damit das MCM übersetzbar ist. Beim Bau von `NHV_MCMScript` (M1.1, Seiten Status/General) fiel im `papyrus-reviewer` auf, dass die Texte als englische Literal-Strings stehen, nicht als Keys.
+- **Optionen:** A: Jetzt auf `$NHV_MCM_*`-Keys umstellen und die Translations-Datei parallel anlegen. B: Für v0.0.1/M1.1 bei Literal-Strings bleiben, Umstellung erst mit dem restlichen Lokalisierungs-Fahrplan in M6 (Polish).
+- **Entscheidung:** B – vorerst Literal-Strings. Lokalisierung ist laut Roadmap ohnehin erst ab M6 vorgesehen (Voice-Pack v1.1), eine halbfertige Key-Infrastruktur jetzt wäre ungetestet und zusätzlicher Pflegeaufwand pro neuer MCM-Seite (M1.6+) ohne aktuellen Nutzen.
+- **Folgen:** Alle MCM-Texte bleiben bis M6 englische Literale. Vor M6: `Interface/Translations/NightsHarvest_ENGLISH.txt` anlegen und alle `AddXOption*`/`SetInfoText`/`SetTitleText`-Aufrufe in `NHV_MCMScript.psc` (und späteren MCM-Erweiterungen) auf `$NHV_MCM_*`-Keys umstellen. Betrifft M1.1 (jetzt), M1.6/M2/M3/M4 (weitere MCM-Seiten), M6.1 (MCM komplett).
+
+### E06 – MCM-Technik (Bestätigung aus Konzept Abschnitt 16)
+
+- **Datum:** 22.09.2026
+- **Entschieden von:** Konzept (Abschnitt 16, bereits vor dieser Session festgelegt), hier nur in die Entscheidungs-Tabelle nachgetragen
+- **Kontext:** Tabellen-Zeile stand auf „Offen", obwohl Konzept Abschnitt 16 bereits eindeutig sagt: „Das MCM basiert direkt auf SkyUI (`SKI_ConfigBase`), ohne zusätzliche Abhängigkeit wie MCM Helper." `NHV_MCMScript` (M1.1) ist entsprechend gebaut.
+- **Optionen:** A: SkyUI direkt (`SKI_ConfigBase`). B: MCM Helper (zusätzliche Abhängigkeit).
+- **Entscheidung:** A, SkyUI direkt – keine neue harte Abhängigkeit über SkyUI hinaus (Regel 5).
+- **Folgen:** Keine; nur Status-Korrektur, Umsetzung war bereits konzeptkonform.
 
 Neue Einträge oben anfügen, mit folgender Vorlage:
 

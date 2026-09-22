@@ -55,6 +55,7 @@ Die Tabelle beschreibt das Live-Spiel und die Werkzeuge. Für die Entwicklung gi
 | Pyro | Build 1656807840 (Juli 2022), enthält bsarch | `<Repo>\.tools\pyro\pyro.exe` (lokal, ignoriert) |
 | Spriggit CLI | 0.41.0 | `<Repo>\.tools\Spriggit\Spriggit.CLI.exe` (lokal, ignoriert) |
 | SSEEdit (xEdit) | 4.1.5f | `<Repo>\.tools\SSEEdit\SSEEdit.exe` (lokal, ignoriert) |
+| SkyUI SDK (nur `SKI_ConfigBase.psc`, `SKI_QuestBase.psc`) | von github.com/schlangster/skyui, Pfad `dist/Data/Scripts/Headers/`, `master`-Branch (22.09.) | `<Repo>\.tools\skyui-sdk\` (lokal, ignoriert). Neu holen: `curl -sL "https://raw.githubusercontent.com/schlangster/skyui/master/dist/Data/Scripts/Headers/SKI_ConfigBase.psc" -o .tools/skyui-sdk/SKI_ConfigBase.psc` (und entsprechend für `SKI_QuestBase.psc`). Kein Nexus-Download/-Login nötig, Quelle ist öffentlich |
 | LOOT | 0.29.2 (winget) | `C:\Users\Vanessa Bubu Schmidt\AppData\Local\Programs\LOOT\LOOT.exe` |
 | GitHub CLI | 2.101.0, noch nicht angemeldet (`gh auth login` macht der Entwickler) | `C:\Program Files\GitHub CLI\gh.exe` |
 | .NET SDK | 10.0.401 | `C:\Program Files\dotnet` |
@@ -74,7 +75,7 @@ Der Live-Spielordner enthält ein stark gemoddetes Vortex-Deployment (177 aktive
 |---|---|---|
 | Vanilla (aus `Scripts.zip`) | `<Dev>\Data\Source\Scripts` | 14.301 unveränderte Quellen (AE inkl. Creation Club) |
 | SKSE | `<Dev>\Data\Scripts\Source` | 328 `.psc` aus dem Live-Ordner kopiert (SKSE, evtl. einzelne Mod-Quellen dabei); SKSE-Quellen haben Vorrang vor Vanilla |
-| SkyUI SDK | | fehlt: `SKI_ConfigBase.psc` liegt nicht vor. Das SkyUI-Archiv in `downloads/` enthält nur `.pex`. Ablage künftig unter `<Repo>\.tools\skyui-sdk`, nicht im Spielordner. Wird ab M1.1 gebraucht |
+| SkyUI SDK | `<Repo>\.tools\skyui-sdk` | Erledigt (22.09.): von GitHub geholt, siehe Tabelle oben. `NightsHarvest.ppj` importiert `.\.tools\skyui-sdk` (der führende `.\` ist nötig, ein reiner `.tools\...`-Pfad wird von Pyro falsch mit dem Arbeitsverzeichnis verkettet) |
 
 ## Befehle
 

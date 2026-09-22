@@ -35,15 +35,18 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
   (ForcedReference auf PlayerRef) und alle neuen Script-Properties inkl. verifizierter
   vanilla-FormIDs für `HailSithisQuest` (DB11, `01EA59:Skyrim.esm`) und `DestroyQuest`
   (DBDestroy, `0934FB:Skyrim.esm`).
-- **Erledigt (22.09., per CK), geprüft:** `NHV_PlayerAliasScript` hängt am Player-Alias,
-  Property `Core` zeigt korrekt auf `NHV_Sys_Core` selbst (per CK gesetzt, per
-  `sync_dev.ps1 FromDev` + `plugin_text.ps1 ToText` zurückgeholt und in der YAML
-  verifiziert). Schema dabei aus einem echten CK-Speicherstand gelernt (siehe „Gelöste
-  Schema-Frage" unten).
-- **Aus M1.1 bleibt offen:** Die MCM-Seiten (`NHV_Sys_MCM`, `NHV_MCMScript` auf
-  `SKI_ConfigBase`, Seiten „Status" und „General") sind noch nicht gebaut – deshalb bleibt
-  M1.1 auf „In Arbeit", nicht „Test". Der Core-Teil (Startbedingung, Player-Alias,
-  Cfg-Globals) ist funktional fertig.
+- **M1.1 komplett, Status „Test":** `NHV_PlayerAliasScript` hängt am Player-Alias, Property
+  `Core` gesetzt und verifiziert. MCM-Grundgerüst gebaut: `NHV_Sys_MCM` (Start Game
+  Enabled) mit `NHV_MCMScript` (`SKI_ConfigBase`), Seiten „Status" (read-only: Version,
+  aktuelle Quest, Familienstärke – alle None-sicher, zeigen „not available yet" bis M1.5/
+  M1.6 existieren) und „General" (5 Optionen, State-API, alle an die bestehenden
+  `NHV_Cfg_*`-Globals angebunden). SkyUI-SDK-Quellen (`SKI_ConfigBase.psc`,
+  `SKI_QuestBase.psc`) von github.com/schlangster/skyui nach `.tools/skyui-sdk/` geholt,
+  `NightsHarvest.ppj` entsprechend erweitert. papyrus-reviewer-Runde erledigt, alle Funde
+  eingearbeitet (Pages/`OnVersionUpdate()` für künftige Seiten, `OnOptionHighlight`,
+  `OnDefaultST` je Option, CRLF, Core-Referenz für den Versionstext). E19 (MCM-Texte
+  vorerst Literal statt Übersetzungsschlüssel) und E06 (SkyUI direkt, war schon im Konzept
+  festgelegt) in `docs/DECISIONS.md` nachgetragen.
 
 ## Gelöste Schema-Frage: Script an einer Quest-Alias anhängen (YAML)
 
@@ -70,18 +73,25 @@ Mein ursprünglicher Versuch (`MutagenObjectType: ScriptObjectProperty` explizit
 
 ## Nächster Schritt
 
-**M1.1 abschließen, dann M1.4/M1.6 ESP-Aufbau fortsetzen (Claude, jetzt mit bekanntem
-Alias-Script-Schema, siehe unten):**
-1. MCM-Grundgerüst für M1.1: `NHV_Sys_MCM` (Start Game Enabled) + `NHV_MCMScript`
-   (`SKI_ConfigBase`), Seiten „Status" und „General".
-2. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
+**M1.4/M1.6 ESP-Aufbau (Claude, mit bekanntem Alias-Script-Schema, siehe unten). M1.1 ist
+fertig (Status „Test") und wartet auf den Ingame-Test durch den Entwickler.**
+1. `NHV_Sys_Sanctuary` anlegen: 4 optionale Vanilla-Aliase (Nazir/Babette/Cicero bestätigte
    FormIDs, Night Mother offen lassen – siehe „Offene Rückfragen").
-3. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
+2. `NHV_Sys_Family` anlegen: FollowerSlot1 + HrefnaSlot-Alias, die 4 M1.6-Scripts anhängen
    (Schema jetzt bekannt, siehe „Gelöste Schema-Frage").
-4. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
+3. `NHV_Q00_ShadowAtTheDoor`-Quest-Shell (8 Stages, ohne Dialogtext, der kommt später aus
    `dialogue/Q00.csv`).
+4. Sobald Q00/FamilyManager existieren: `Q00`- und `NHV_FamilyStrength`-Properties in
+   `NHV_MCMScript` (Status-Seite) im CK nachtragen, damit die Platzhalter „not available
+   yet" verschwinden.
 5. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
    `tools/verify_live_untouched.ps1`.
+
+**Für den Entwickler:** M1.1 ist bereit für den Ingame-Test (Vortex-Installation, „Hail
+Sithis!" abschließen, Dawnstar Sanctuary betreten, MCM öffnen → Night's Harvest sollte mit
+Seiten „Status" und „General" erscheinen). Testanleitung folgt, sobald M1.4/M1.6 so weit
+sind, dass ein zusammenhängender Testlauf sinnvoll ist – sag Bescheid, falls du M1.1 schon
+jetzt isoliert testen willst.
 
 ## Offene Rückfragen an den Entwickler
 
@@ -92,6 +102,25 @@ Alias-Script-Schema, siehe unten):**
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-22 (Fortsetzung 4, MCM-Grundgerüst)
+- SkyUI-SDK-Quellen (`SKI_ConfigBase.psc`, `SKI_QuestBase.psc`) von GitHub
+  (schlangster/skyui) geholt statt Nexus-Download abzuwarten – öffentlich verfügbar,
+  keine Kontoanmeldung nötig. Liegen jetzt in `.tools/skyui-sdk/`.
+- `NHV_MCMScript.psc` neu: Seiten „Status" (read-only) und „General" (5 Optionen,
+  State-API `AddXOptionST`/`OnXST`). `NHV_Sys_MCM` (000808) als neue Start-Game-Enabled-
+  Quest mit Player-Alias (`SKI_PlayerLoadGameAlias`, Registrierungsmuster laut SkyUI-MCM-
+  Quickstart) und `NHV_MCMScript` angehängt.
+- papyrus-reviewer-Runde: Hoch-Befund (Pages-Array wurde bei `OnVersionUpdate()` nicht neu
+  aufgebaut, hätte künftige MCM-Seiten in Bestandsspielständen verhindert) sowie mehrere
+  Mittel-/Hinweis-Befunde (fehlende Hilfetexte auf der Status-Seite, hartkodierte
+  Versionsnummer statt `Core.VERSION_TEXT`, fehlende `OnDefaultST()`, CRLF, Variablen-
+  Namenskonvention) – alle eingearbeitet.
+- `docs/DECISIONS.md`: E19 (MCM-Texte vorerst Literal-Strings statt `$NHV_*`-Keys, Umstellung
+  in M6) neu; E06 (MCM-Technik = SkyUI direkt) von „Offen" auf „Entschieden" nachgetragen,
+  war im Konzept bereits festgelegt.
+- Build (7/7 .pex), ESP gebaut (1578 Bytes, 9 Records), Sync + Live-Verifikation grün.
+- ROADMAP-Status M1.1 auf „Test" gesetzt – Paket ist inhaltlich vollständig.
 
 ### 2026-09-22 (Fortsetzung 3, Core-Property geprüft)
 - Entwickler hat `Core` am `NHV_PlayerAliasScript` im CK gesetzt und erneut gespeichert.
@@ -179,7 +208,8 @@ Nach jeder CK-Session, die „Scripts.zip entpacken?" bestätigt hat, prüfen.
 - M0.1–M0.5, M0.8: siehe ROADMAP, größtenteils „Offen"/Entwickler-Aufgaben.
 - M0.6 Smoke-Test: **Test** (wartet auf Ingame-Prüfung).
 - M0.7 Record-Inventar: **Test**.
-- M1.1 Core-System: **In Arbeit** – Scripts fertig+reviewed, ESP-Records ausstehend.
+- M1.1 Core-System: **Test** – Scripts + ESP-Records + MCM (Status/General) fertig,
+  reviewed, Build/Live-Check grün. Wartet auf Ingame-Test.
 - M1.2 Veyra: Offen, nicht begonnen.
 - M1.3 Deep Sanctuary Stufe 1: Offen, nicht begonnen.
 - M1.4 Sanctuary-Aliase: **In Arbeit** – ESP-Records in Arbeit (Night Mother offen).

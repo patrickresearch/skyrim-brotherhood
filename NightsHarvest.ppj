@@ -23,8 +23,8 @@
         <Import>Data\Source\Scripts</Import>
         <Import>@DevGame\Data\Scripts\Source</Import>
         <Import>@DevGame\Data\Source\Scripts</Import>
-        <!-- SkyUI SDK (SKI_ConfigBase.psc), sobald vorhanden, vor M1.1:
-        <Import>.tools\skyui-sdk</Import> -->
+        <!-- SkyUI SDK (SKI_ConfigBase.psc/SKI_QuestBase.psc), Quelle: github.com/schlangster/skyui -->
+        <Import>.\.tools\skyui-sdk</Import>
     </Imports>
     <Folders>
         <Folder>Data\Source\Scripts</Folder>

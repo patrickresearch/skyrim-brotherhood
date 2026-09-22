@@ -1,0 +1,45 @@
+FormKey: 000808:NightsHarvest.esp
+EditorID: NHV_Sys_MCM
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_MCMScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Core
+      Object: 000801:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Debug
+      Object: 000800:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Delivery
+      Object: 000806:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Enabled
+      Object: 000802:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Markers
+      Object: 000805:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Notify
+      Object: 000804:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_StartDelay
+      Object: 000803:NightsHarvest.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000808:NightsHarvest.esp
+      Alias: 0
+    Scripts:
+    - Name: SKI_PlayerLoadGameAlias
+Flags:
+- StartGameEnabled
+- 0x10
+NextAliasID: 1
+Aliases:
+- Name: PlayerAlias
+  Flags:
+  - Optional
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
