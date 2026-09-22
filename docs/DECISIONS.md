@@ -14,14 +14,14 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E06 | MCM-Technik | SkyUI direkt / MCM Helper | SkyUI direkt | vor M1 | Offen |
 | E07 | Einstellungs-Export | Keiner / optional über PapyrusUtil-JSON | Optional, erst in M6 | vor M6 | Offen |
 | E08 | Livia-Rekrutierungspfad in v1.0 | Behalten / nach v1.1 | Behalten, erster Scope-Hebel | während M3 | Offen |
-| E09 | Pathing Vanilla-Sanctuary | Option B `MoveTo` / Option A Navmesh-Edits | B für v1.0 (bereits so geplant), A für v1.1 prüfen | Ende M1 | Offen |
+| E09 | Pathing Vanilla-Sanctuary | Option B `MoveTo` / Option A Navmesh-Edits | B für v1.0 (bereits so geplant), A für v1.1 prüfen | Ende M1 | Entschieden |
 | E10 | Vertonung zum Start | Nur Text / Release erst mit Stimmen | Nur Text, Voice-Pack in v1.1 | vor M6 | Offen |
 | E11 | Voice-Pack-Format | BSA mit Dummy-ESL / Loose Files | BSA mit Dummy-ESL | vor v1.1 | Offen |
 | E12 | Schreibweise Ingame-Texte | Amerikanisch / britisch | Amerikanisch | vor M1 | Offen |
 | E13 | Unique-NPCs im Black Ledger | Erlaubt / verboten | Erlaubt (außer Essential, Blacklist), MCM | vor M4 | Offen |
-| E14 | Standard-Wartezeit bis Q00 | 0–7 Tage | 2 Tage | vor M1 | Offen |
+| E14 | Standard-Wartezeit bis Q00 | 0–7 Tage | 2 Tage | vor M1 | Entschieden |
 | E15 | Finaler Mod-Name | „Night's Harvest“ / Alternative | „Night's Harvest“, falls auf Nexus frei | vor M6 | Offen |
-| E16 | Zugang Deep Sanctuary | A: Load Door mit Zell-Kopie / B: Script-Tür per `PlaceAtMe` + `MoveTo` | offen; A ist einfacher, B vermeidet Zell-Konflikte | vor M1.3 | Offen |
+| E16 | Zugang Deep Sanctuary | A: Load Door mit Zell-Kopie / B: Script-Tür per `PlaceAtMe` + `MoveTo` | B, wegen `Sanctuary Reborn.esp` in der Load Order | vor M1.3 | Entschieden |
 | E17 | ESP-Bearbeitung durch Claude | Nur CK / Claude per MCP oder Spriggit | Claude bearbeitet das ESP, Ein-Schreiber-Regel | vor M0.6 | Entschieden |
 | E18 | Status-Wert für getötete Rekruten | 2 (Definition in Konzept Abschnitt 5) / 4 (zwei Stellen im Konzept) | 2 | vor M1.6 | Entschieden |
 
@@ -43,6 +43,33 @@ Neue Einträge oben anfügen, mit folgender Vorlage:
 - **Entscheidung:** …
 - **Folgen:** Was sich in Code, Records, Doku ändert; betroffene Arbeitspakete
 ```
+
+### E16 – Zugang Deep Sanctuary
+
+- **Datum:** 22.09.2026
+- **Entschieden von:** Entwickler
+- **Kontext:** Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin, die Änderungen anderer Mods an derselben Zelle überdecken kann. `docs/TOOLING.md` (Abschnitt 6) listet `Sanctuary Reborn.esp` als aktives Mod mit hohem Konfliktrisiko für genau diese Zelle.
+- **Optionen:** A Load Door mit Zell-Kopie (einfacher im CK), B Script-Tür per `PlaceAtMe` + `MoveTo` (kein Zell-Override).
+- **Entscheidung:** B. Vor Q00 ist an der Wandstelle nur ein Geröll-Activator sichtbar; in Q00 Szene 4 tauscht ein Enable-Parent den Activator gegen eine per Script platzierte Tür, die per `MoveTo` in die Deep Sanctuary führt. Keine Referenz wird in der Vanilla-Sanctuary-Zelle neu angelegt.
+- **Folgen:** `docs/ARCHITECTURE.md` (Zell-Kopien-Tabelle bleibt leer), CK-Anleitung für M1.3 muss die Script-Tür statt einer normalen Load Door beschreiben. Betrifft M1.3 (Deep Sanctuary Stufe 1) und M1.5 (Q00 Szene 4).
+
+### E09 – Pathing Vanilla-Sanctuary
+
+- **Datum:** 22.09.2026
+- **Entschieden von:** Entwickler
+- **Kontext:** Folgt aus E16 (Script-Tür statt Load Door): Ohne echte Türverbindung gibt es auch keine Navmesh-Kante zwischen den Zellen.
+- **Optionen:** A Navmesh-Verknüpfung (echtes Gehen durch die Tür), B `MoveTo` ohne Navmesh-Edit.
+- **Entscheidung:** B für v1.0, wie im Konzept vorgesehen. Follower folgen dem Spieler wie gewohnt über die Script-Tür (Catch-up-Teleport des Follower-Systems, M1.6/M2.1), NPC-Packages bleiben im jeweils eigenen Flügel. Option A für v1.1 offen zu prüfen, falls echtes Pendeln gewünscht wird.
+- **Folgen:** Keine Navmesh-Änderungen an der Vanilla-Sanctuary-Zelle. Betrifft M1.3 und das Follower-System (M1.6).
+
+### E14 – Standard-Wartezeit bis Q00
+
+- **Datum:** 22.09.2026
+- **Entschieden von:** Entwickler
+- **Kontext:** `NHV_Cfg_StartDelay` braucht einen Startwert zwischen 0 und 7 Tagen nach „Hail Sithis!“.
+- **Optionen:** 0–7 Tage, Konzept-Empfehlung 2 Tage.
+- **Entscheidung:** 2 Tage, per MCM änderbar.
+- **Folgen:** `NHV_Cfg_StartDelay` wird mit Standardwert 2.0 angelegt (M1.1).
 
 ### E18 – Status getöteter Rekruten
 

@@ -100,6 +100,7 @@ ModEvents für Patches/Addons: `NHV_RecruitJoined`, `NHV_RecruitDied`, `NHV_Cont
 - Szenen als Scene-Records; Actors vorher per `MoveTo` auf XMarker (Pathing-Option B, keine Navmesh-Edits in der Vanilla-Sanctuary). Jede Szene hat eine Fallback-Stage.
 - Tagesabläufe über Alias-Packages; Veyra nachtaktiv.
 - `NHV_DeepSanctuaryCell` mit Location `NHV_DeepSanctuaryLocation` (Parent: Vanilla-Sanctuary-Location), Encounter Zone „Never Resets“, Room Bounds und Portale, Lighting Template. Räume mit Enable-Parents für verfallen/eingerichtet.
+- **Zugang Deep Sanctuary (E16, E09):** Script-Tür statt Load Door, keine Zell-Kopie der Vanilla-Sanctuary. Vor Q00 Stage 40 steht an der Wandstelle nur ein Geröll-Activator (`NHV_Mk_Q00_SealedPassageDoor`, Platzierung im CK); ein Enable-Parent tauscht ihn nach der Proposal-Szene gegen eine Tür-Referenz. Die Tür ruft `MoveTo` auf ein XMarker in `NHV_DeepSanctuaryCell`, keine Navmesh-Verknüpfung zur Vanilla-Zelle. Follower folgen über den Catch-up-Teleport des Follower-Systems (M1.6), nicht über echtes Gehen durch die Tür.
 
 ## Repository-Struktur
 
