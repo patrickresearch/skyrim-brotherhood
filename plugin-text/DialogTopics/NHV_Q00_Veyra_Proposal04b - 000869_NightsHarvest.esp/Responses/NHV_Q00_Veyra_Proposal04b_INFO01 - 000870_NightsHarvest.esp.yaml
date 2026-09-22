@@ -1,0 +1,30 @@
+FormKey: 000870:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Proposal04b_INFO01
+Flags: {}
+PreviousDialog: 000867:NightsHarvest.esp
+Responses:
+- Emotion: Happy
+  EmotionValue: 10
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Don't tell him I said that. He'd never let me forget it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 01E64A:Skyrim.esm
