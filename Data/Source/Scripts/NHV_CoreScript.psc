@@ -28,9 +28,11 @@ Location Property DawnstarSanctuaryLocation Auto
 ; (09725F:Skyrim.esm) - verified 23.09.2026 via houseCARL, actually present in that cell.
 ; "Danestar" (not "Dawnstar") is Bethesda's own typo in the vanilla EditorID, not ours.
 ObjectReference Property DawnstarAnchorRef Auto
-; Vanilla MG05Rubble (0327C7:Skyrim.esm) - unused, scriptless "Debris" Activator, verified
-; 23.09.2026 via houseCARL. Visible at the sealed-passage wall spot before Q00 Stage 40.
-Activator Property RubbleBase Auto
+; Vanilla NorRubblePile05 (03011F:Skyrim.esm) - plain Nordic rubble pile Static (no snow/ice),
+; verified 23.09.2026 via houseCARL against Skyrim.esm. Visible at the sealed-passage wall spot
+; before Q00 Stage 40. (Earlier pick MG05Rubble looked right by name but is actually a small
+; wall sconce model - corrected.) PlaceAtMe takes any Form, so Static works here too.
+Static Property RubbleBase Auto
 ; NHV_SealedPassageDoor - our own Door record (Nordic door model reused from vanilla
 ; NorDoorSmLoad01MinUse, own base so NHV_SealedPassageDoorScript can attach to it; this
 ; compiler has no RegisterForRemoteEvent, so the base-object script handles OnActivate

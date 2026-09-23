@@ -33,7 +33,7 @@ VirtualMachineAdapter:
       Object: 000815:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: RubbleBase
-      Object: 0327C7:Skyrim.esm
+      Object: 03011F:Skyrim.esm
   FileName: ''
   Aliases:
   - Property:
