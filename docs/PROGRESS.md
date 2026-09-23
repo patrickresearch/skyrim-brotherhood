@@ -16,6 +16,12 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**23.09.2026: M1.2 Veyra-Aussehen ingame bestätigt.** FaceGen-Export erfolgreich (kein
+schwarzes Gesicht), `player.placeatme 06000817` zeigt sie korrekt im Spiel. Offen bei M1.2:
+Kampfstil/Klasse, Outfit, nachtaktive Alias-Packages, Platzierung im Ledger Room. Als
+Nächstes: Klasse für Veyra festlegen (passende Vanilla-Klasse recherchieren, s. u.), dann
+Outfit/Packages.
+
 **23.09.2026: Cheydinhal-Frage nachgetragen (fehlte in den 24 zuvor gebauten Q00-Topics),
 `NHV_Q00_AskedLeave`-Global angelegt, `GetDeadConditionData`-Schema per Rundlauf bestätigt
 (`RunOnType`+`Reference`, nicht `Object`) – siehe Log unten. CK-Anleitung für die sechs
@@ -194,6 +200,22 @@ Hand anstoßen.
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (Fortsetzung 6, M1.2 Veyra-Aussehen ingame bestätigt)
+- CK-Anleitung `docs/ck/M1.2-Veyra-Aussehen.md` vom Entwickler abgearbeitet: Head Parts
+  (Haar, Augen, Narbe-Versuch), Hautton/Tints, Gesichtsmorphs gesetzt, FaceGen exportiert
+  (Strg+F4, nach kurzem Zwischenfall – Record im Object Window kurz nicht mehr sichtbar,
+  ließ sich durch CK-Neustart ohne Speichern beheben, kein Datenverlust).
+- **Ingame bestätigt (Entwickler, Screenshot):** `player.placeatme 06000817` (Laufzeit-
+  FormID, `000817` allein reicht der Konsole nicht) zeigt Veyra korrekt – kein schwarzes/
+  fehlendes Gesicht, Grundaussehen passt. Dialog-Prompt „Talk – Veyra Othren" erscheint
+  (erwartungsgemäß ohne aktive Zeilen, da Q00 auf diesem Testcharakter nicht läuft).
+  Kleidung ist noch Standard-Unterwäsche (kein Outfit zugewiesen) – bewusst offen, wird
+  später mit Kampfstil/Klasse/Outfit nachgezogen.
+- **Offen für M1.2:** Kampfstil/Klasse (Speed-Multiplier-Warnung beim Schließen des
+  NPC-Fensters kommt, solange `Class` auf NONE steht – Stats-Tab, nicht Traits-Tab),
+  Outfit (Shrouded Robes + Hood), `NHV_VoiceVeyra`-Zuweisung war schon vorher gesetzt,
+  nachtaktive Alias-Packages, Platzierung im Ledger Room.
 
 ### 2026-09-23 (Fortsetzung 5, Cheydinhal-Frage nachgetragen)
 - Beim Sichten der 24 gebauten Topics aufgefallen: die „Why did you leave Cheydinhal?"-
