@@ -1,6 +1,8 @@
 FormKey: 000845:NightsHarvest.esp
 EditorID: NHV_Q00_Veyra_Proposal01_INFO01
 Flags: {}
+PreviousDialog: Null
+FavorLevel: None
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:

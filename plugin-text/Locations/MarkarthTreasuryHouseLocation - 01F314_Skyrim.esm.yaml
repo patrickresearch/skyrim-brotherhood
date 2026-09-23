@@ -1,0 +1,64 @@
+FormKey: 01F314:Skyrim.esm
+EditorID: MarkarthTreasuryHouseLocation
+Version2: 3
+LocationRefTypeReferencesAdded:
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 0198E3:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 0198E4:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 0198E5:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 0198E6:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 0198E9:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 0198FE:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 01BDF1:Skyrim.esm
+  Ref: 01F322:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 071061:Skyrim.esm
+  Ref: 04E7AF:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 070E64:Skyrim.esm
+  Ref: 079AF2:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 01CF1A:Skyrim.esm
+  Ref: 09CE80:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 01CF18:Skyrim.esm
+  Ref: 09CE81:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 01CF16:Skyrim.esm
+  Ref: 09CE82:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 060FD4:Skyrim.esm
+  Ref: 09CF4C:Skyrim.esm
+  Location: 016E00:Skyrim.esm
+  Grid: 32767, 32767
+Name:
+  TargetLanguage: English
+  Value: Treasury House
+Keywords:
+- 0130DC:Skyrim.esm
+- 01CB85:Skyrim.esm
+- 02892A:Skyrim.esm
+ParentLocation: 018A59:Skyrim.esm

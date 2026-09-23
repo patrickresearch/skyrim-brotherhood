@@ -1,6 +1,8 @@
 FormKey: 000849:NightsHarvest.esp
 EditorID: NHV_Q00_Veyra_Proposal03_INFO01
 Flags: {}
+PreviousDialog: Null
+FavorLevel: None
 Responses:
 - EmotionValue: 40
   Unknown2: 0x000000

@@ -1,7 +1,8 @@
 FormKey: 000870:NightsHarvest.esp
 EditorID: NHV_Q00_Veyra_Proposal04b_INFO01
 Flags: {}
-PreviousDialog: 000867:NightsHarvest.esp
+PreviousDialog: Null
+FavorLevel: None
 Responses:
 - Emotion: Happy
   EmotionValue: 10

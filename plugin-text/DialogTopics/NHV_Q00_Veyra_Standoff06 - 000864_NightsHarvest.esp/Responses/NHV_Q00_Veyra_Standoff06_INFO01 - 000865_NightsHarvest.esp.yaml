@@ -1,6 +1,8 @@
 FormKey: 000865:NightsHarvest.esp
 EditorID: NHV_Q00_Veyra_Standoff06_INFO01
 Flags: {}
+PreviousDialog: Null
+FavorLevel: None
 Responses:
 - EmotionValue: 30
   Unknown2: 0x000000

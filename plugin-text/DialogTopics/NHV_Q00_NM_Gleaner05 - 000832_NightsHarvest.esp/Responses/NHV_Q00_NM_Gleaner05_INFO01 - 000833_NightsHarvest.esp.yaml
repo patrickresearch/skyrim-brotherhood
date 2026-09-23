@@ -1,6 +1,8 @@
 FormKey: 000833:NightsHarvest.esp
 EditorID: NHV_Q00_NM_Gleaner05_INFO01
 Flags: {}
+PreviousDialog: Null
+FavorLevel: None
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:

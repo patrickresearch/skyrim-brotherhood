@@ -83,6 +83,7 @@ Neue Rekruten erhalten nicht die Vanilla-`DarkBrotherhoodFaction`. Die Allianz s
 | `NHV_BanterControllerScript` | Quest | Banter-Timer und -Auswahl |
 | `NHV_FinaleWaveScript` | Quest | Q06 Wellen |
 | `NHV_SanctuaryStateScript` | ObjectReference | Enable-Parents der Räume |
+| `NHV_SealedPassageDoorScript` | ObjectReference | Basis-Objekt-Script auf `NHV_SealedPassageDoor` (M1.3/M1.5 Q00 Szene 4, E16/E09); `OnActivate` → `MoveTo(TargetMarker)`. Am Basisobjekt statt per Remote-Event, da `RegisterForRemoteEvent` in dieser SKSE-Version fehlt. |
 | `NHV_Util` | Globale Funktionen | Logging, gemeinsame Prüfungen |
 
 ModEvents für Patches/Addons: `NHV_RecruitJoined`, `NHV_RecruitDied`, `NHV_ContractCompleted`.

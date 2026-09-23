@@ -1,6 +1,8 @@
 FormKey: 000829:NightsHarvest.esp
 EditorID: NHV_Q00_NM_Gleaner03_INFO01
 Flags: {}
+PreviousDialog: Null
+FavorLevel: None
 Responses:
 - EmotionValue: 20
   Unknown2: 0x000000

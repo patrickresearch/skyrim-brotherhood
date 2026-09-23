@@ -1,6 +1,8 @@
 FormKey: 000835:NightsHarvest.esp
 EditorID: NHV_Q00_CIC_Remembers01_INFO01
 Flags: {}
+PreviousDialog: Null
+FavorLevel: None
 Responses:
 - Emotion: Puzzled
   EmotionValue: 40
