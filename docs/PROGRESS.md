@@ -16,7 +16,24 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
-**23.09.2026: M1.3 gestartet, Zwischenfall behoben.** Beim Versuch, `NHV_DeepSanctuaryLocation`
+**23.09.2026: M1.3/M1.5-Vorarbeit – Sealed Passage verkabelt, reproduzierbarer CK-Save-Bug
+gefunden.** `NHV_DeepSanctuaryCell` (Duplikat von `MarkarthTreasuryHouse`), `NHV_SealedPassageDoor`
+(eigener Tür-Record + `NHV_SealedPassageDoorScript`), `NHV_CoreScript` v3 mit
+Geröll/Tür-Spawn-Logik (`SpawnPassageRubble`/`SpawnPassageDoor`/`OpenSealedPassage`) stehen,
+alle Properties am `NHV_Sys_Core` gefüllt. **Wichtiger, noch ungeklärter Befund:** Bei jedem
+CK-Save dieser Session (dreimal in Folge, auch ohne erkennbare inhaltliche Änderung an den
+betroffenen Records) hat das CK das `Quest`-Feld aller 24 Q00-Dialog-Topics geleert, die
+Family-Quest-Alias-Bindung dupliziert/falsch geschrieben und einen leeren Geister-DialogBranch
+erzeugt – reproduzierbar, nicht nur beim ersten (houseCARL-verursachten) Vorfall. Verdacht:
+CK liest diese per Spriggit geschriebenen Felder beim Laden nicht korrekt ein und schreibt bei
+jedem Save seine eigene falsche Version zurück. **Noch offen:** Ursache verifizieren (nächster
+Test: CK öffnen, sofort ohne Änderung speichern, prüfen ob der Schaden trotzdem auftritt) und
+eine dauerhafte Lösung finden (z. B. Family-Alias-Bindung und Dialog-Quest-Feld einmal direkt
+im CK statt per Spriggit setzen, damit das CK sie als „eigene" Daten erkennt). Bis dahin: nach
+jeder CK-Session `sync_dev.ps1 FromDev` → `plugin_text.ps1 ToText` → `git diff` prüfen, bevor
+weitergearbeitet wird.
+
+**23.09.2026: M1.3 gestartet, erster Zwischenfall behoben.** Beim Versuch, `NHV_DeepSanctuaryLocation`
 per houseCARL direkt ins ESP zu schreiben, hat der Full-Plugin-Reserialize mehrere bestehende
 Records beschädigt (Family-Quest-Aliase dupliziert, Quest-Feld aller Q00-Dialog-Topics
 verloren, `Update.esm`-Master weg, Veyras `Voice`-Feld gelöscht). Per Git auf den letzten
