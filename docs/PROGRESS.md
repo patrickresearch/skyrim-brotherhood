@@ -16,6 +16,21 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**23.09.2026: M1.3 gestartet, Zwischenfall behoben.** Beim Versuch, `NHV_DeepSanctuaryLocation`
+per houseCARL direkt ins ESP zu schreiben, hat der Full-Plugin-Reserialize mehrere bestehende
+Records beschädigt (Family-Quest-Aliase dupliziert, Quest-Feld aller Q00-Dialog-Topics
+verloren, `Update.esm`-Master weg, Veyras `Voice`-Feld gelöscht). Per Git auf den letzten
+sauberen Commit zurückgesetzt und den Location-Record + Veyras CK-Aussehendaten (Class,
+Haar, Hautton, Tints, Morphs, FaceGen) sauber über die getestete Spriggit-Pipeline
+(`plugin_text.ps1 -Direction ToPlugin`) neu aufgebaut, per houseCARL-Read verifiziert.
+**Lehre: houseCARL `in_place`-Writes auf `NightsHarvest.esp` künftig vermeiden, nur noch
+über `plugin-text/`-YAML + `plugin_text.ps1` schreiben.** CK-Anleitung `docs/ck/M1.3-Deep-Sanctuary-Stufe1.md`
+geschrieben (fünf Q00-Räume: Hall of Whispers, Ledger Room, Shrine of the Void, Memorial
+Wall, Training Hall – Initiates' Dormitory bewusst nicht, das ist Finale-Scope laut Konzept).
+`ARCHITECTURE.md`-Widerspruch zu E16 korrigiert (Sealed-Passage-Activator/Tür entstehen per
+Script/`PlaceAtMe`, nicht CK-Platzierung in der Vanilla-Zelle). Als Nächstes: Entwickler
+arbeitet die M1.3-Anleitung ab.
+
 **23.09.2026: M1.2 Veyra-Aussehen ingame bestätigt.** FaceGen-Export erfolgreich (kein
 schwarzes Gesicht), `player.placeatme 06000817` zeigt sie korrekt im Spiel. Offen bei M1.2:
 Kampfstil/Klasse, Outfit, nachtaktive Alias-Packages, Platzierung im Ledger Room. Als
@@ -200,6 +215,39 @@ Hand anstoßen.
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-23 (Fortsetzung 7, M1.3 gestartet + houseCARL-Zwischenfall)
+- Entwickler wollte Q00 initiieren/testen; da M1.3 (Deep Sanctuary) und die Q00-Szenen noch
+  fehlen, gemeinsam entschieden: erst M1.3 angehen. E16-Widerspruch in `ARCHITECTURE.md`
+  gefunden und mit dem Entwickler geklärt (Sealed-Passage-Activator/Tür per Script statt
+  CK-Platzierung, sonst Zell-Kopie entgegen E16) – korrigiert.
+- `NHV_DeepSanctuaryLocation` (Parent: `DawnstarSanctuaryLocation`) per houseCARL **direkt
+  in-place** ins ESP geschrieben – dabei hat der vom Tool selbst angekündigte
+  Full-Plugin-Reserialize mehrere unbeteiligte Records beschädigt: `NHV_Sys_Family` bekam
+  6 identische, falsche Alias-Script-Einträge (`NHV_FollowerAliasScript`, Alias 0) statt des
+  einen echten (`NHV_RecruitAliasScript`, Alias 2, `StatusGlobal`-Property), alle ~24
+  Q00-Dialog-Topics verloren ihr `Quest`-Rückverknüpfungsfeld, der Plugin-Master `Update.esm`
+  verschwand aus dem Header, `NHV_Veyra` verlor ihr `Voice`-Feld. Ein zusätzlicher
+  Geister-Record (`NHV_Q00_ShadowAtTheDoorNewBranch0`, DialogBranch) tauchte im Text auf.
+- **Behoben:** `plugin-text/` und `Data/NightsHarvest.esp` per Git auf den letzten sauberen
+  Commit zurückgesetzt (Nutzerbestätigung eingeholt, da destruktive Aktion), Location-Record
+  und Veyras echte CK-Aussehendaten (Class `TrainerSneakMaster`, Haar/Haut/Tints/Morphs,
+  FaceGen) manuell sauber in die YAML gemerged (inkl. wiederhergestelltem `Voice`-Feld),
+  ESP über `plugin_text.ps1 -Direction ToPlugin` (Spriggit, die bisher fehlerfrei genutzte
+  Pipeline) neu gebaut. Familie-Quest, alle Dialog-Topics und `Update.esm`-Master wieder
+  sauber – per `git diff` (keine Abweichung zu HEAD außer den gewollten Feldern) und
+  houseCARL-Read (`Voice`/`Class` korrekt) verifiziert. Repariertes ESP + FaceGen-Assets
+  per `sync_dev.ps1 -Direction ToDev -IncludeEsp` in die Dev-Kopie zurückgespielt.
+- **Lehre für künftige Sessions:** houseCARL `in_place`-Writes auf `NightsHarvest.esp`
+  vermeiden (Tool warnt selbst: „trusts Mutagen for the rest“ bei unbeteiligten Records).
+  Neue Text-repräsentierbare Records künftig als YAML unter `plugin-text/` anlegen und über
+  `plugin_text.ps1 -Direction ToPlugin` einspielen – das ist die getestete, bisher nie
+  fehlerhafte Pipeline für alle ~70 bisherigen Records.
+- CK-Anleitung `docs/ck/M1.3-Deep-Sanctuary-Stufe1.md` geschrieben: fünf Q00-Räume (Hall of
+  Whispers, Ledger Room, Shrine of the Void, Memorial Wall, Training Hall), Cell/Location/
+  Encounter-Zone/Beleuchtung/Room-Bounds/Enable-Parent-System/Navmesh, Standoff-Marker.
+  Initiates' Dormitory bewusst ausgeklammert (Finale-Scope laut Konzept Abschnitt 4, nicht
+  Q00 – Diskrepanz zur ROADMAP-Zeile M1.3 aufgelöst zugunsten des Konzepts).
 
 ### 2026-09-23 (Fortsetzung 6, M1.2 Veyra-Aussehen ingame bestätigt)
 - CK-Anleitung `docs/ck/M1.2-Veyra-Aussehen.md` vom Entwickler abgearbeitet: Head Parts
