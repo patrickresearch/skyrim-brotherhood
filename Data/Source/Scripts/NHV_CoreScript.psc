@@ -28,10 +28,10 @@ Location Property DawnstarSanctuaryLocation Auto
 ; (09725F:Skyrim.esm) - verified 23.09.2026 via houseCARL, actually present in that cell.
 ; "Danestar" (not "Dawnstar") is Bethesda's own typo in the vanilla EditorID, not ours.
 ObjectReference Property DawnstarAnchorRef Auto
-; Vanilla NorRubblePile05 (03011F:Skyrim.esm) - plain Nordic rubble pile Static (no snow/ice),
-; verified 23.09.2026 via houseCARL against Skyrim.esm. Visible at the sealed-passage wall spot
-; before Q00 Stage 40. (Earlier pick MG05Rubble looked right by name but is actually a small
-; wall sconce model - corrected.) PlaceAtMe takes any Form, so Static works here too.
+; Vanilla NorRubblePile06 (03BC38:Skyrim.esm) - smallest plain Nordic rubble pile Static found
+; (no snow/ice), verified 23.09.2026 via houseCARL against Skyrim.esm; still scaled down further
+; in SpawnPassageRubble(). Visible at the sealed-passage wall spot before Q00 Stage 40. (Earlier
+; picks MG05Rubble/NorRubblePile05 were wrong - a wall sconce, then a 6m-wide pile - corrected.)
 Static Property RubbleBase Auto
 ; NHV_SealedPassageDoor - our own Door record (Nordic door model reused from vanilla
 ; NorDoorSmLoad01MinUse, own base so NHV_SealedPassageDoorScript can attach to it; this
@@ -105,6 +105,10 @@ Function SpawnPassageRubble()
         ; Wall spot in DawnstarSanctuary, taken via getpos/getangle 23.09.2026 (docs/ck/M1.3-Deep-Sanctuary-Stufe1.md).
         RubbleRef.SetPosition(2648.75, 4930.81, 5649.73)
         RubbleRef.SetAngle(0.0, 0.0, 0.0)
+        ; NorRubblePile06's own bounds are still ~4.5x3.5x1.1m - shrunk down so it reads as a
+        ; blocked passage, not furniture-sized clutter in the middle of the room. Adjust to taste
+        ; once seen in place (23.09.2026: developer testing scale/position live, see PROGRESS.md).
+        RubbleRef.SetScale(0.3)
     EndIf
 EndFunction
 
