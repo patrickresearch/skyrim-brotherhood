@@ -2175,14 +2175,13 @@ Persistent:
 - MutagenObjectType: PlacedObject
   FormKey: 0025EB:NightsHarvest.esp
   MajorRecordFlagsRaw: 1024
-  VersionControl: 13623
   EditorID: NHV_Mk_Q00_DeepSanctuaryEntry
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 00003B:Skyrim.esm
   Placement:
     Position: -5568, -3200, 384
-    Rotation: 0, 0, -0.41680422
+    Rotation: 0, 0, 5.866381
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 001344:NightsHarvest.esp

@@ -12,3 +12,4 @@ Name:
   Value: Sealed Passage
 Model:
   File: Dungeons\Nordic\Doors\Animated\SmDoor01\NorDoorSmLoad01.nif
+  Data: 0x020000000000000000000000

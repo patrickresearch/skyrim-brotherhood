@@ -5,6 +5,9 @@ VirtualMachineAdapter:
   - Name: NHV_CoreScript
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: DawnstarAnchorRef
+      Object: 09725F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: DawnstarSanctuaryLocation
       Object: 019429:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
@@ -23,8 +26,14 @@ VirtualMachineAdapter:
       Name: NHV_Cfg_StartDelay
       Object: 000803:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: PassageDoorBase
+      Object: 000DD5:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: Q00
       Object: 000815:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RubbleBase
+      Object: 0327C7:Skyrim.esm
   FileName: ''
   Aliases:
   - Property:
