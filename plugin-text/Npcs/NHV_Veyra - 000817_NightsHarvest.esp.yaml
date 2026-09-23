@@ -1,7 +1,12 @@
 FormKey: 000817:NightsHarvest.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: NHV_Veyra
+SkyrimMajorRecordFlags:
+- Compressed
 Configuration:
   Flags:
+  - Female
   - Essential
   - Unique
   Level:
@@ -9,6 +14,7 @@ Configuration:
     LevelMult: 1
   CalcMinLevel: 20
   CalcMaxLevel: 60
+  SpeedMultiplier: 10
 Factions:
 - Faction: 000807:NightsHarvest.esp
   Fluff: 0x000000
@@ -17,6 +23,101 @@ Race: 013742:Skyrim.esm
 AIData:
   Confidence: Brave
   EnergyLevel: 50
+Class: 0E3A63:Skyrim.esm
 Name:
   TargetLanguage: English
   Value: Veyra Othren
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 5
+  - Key: TwoHanded
+    Value: 5
+  - Key: Archery
+    Value: 5
+  - Key: Block
+    Value: 5
+  - Key: Smithing
+    Value: 5
+  - Key: HeavyArmor
+    Value: 5
+  - Key: LightArmor
+    Value: 5
+  - Key: Pickpocket
+    Value: 5
+  - Key: Lockpicking
+    Value: 5
+  - Key: Sneak
+    Value: 5
+  - Key: Alchemy
+    Value: 5
+  - Key: Speech
+    Value: 5
+  - Key: Alteration
+    Value: 5
+  - Key: Conjuration
+    Value: 5
+  - Key: Destruction
+    Value: 5
+  - Key: Illusion
+    Value: 5
+  - Key: Restoration
+    Value: 5
+  - Key: Enchanting
+    Value: 5
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 1
+  Stamina: 30896
+  GearedUpWeapons: 1
+HairColor: 0A0439:Skyrim.esm
+NAM5: 255
+Height: 1
+Weight: 45
+TextureLighting: '#00B5B5B5'
+FaceMorph:
+  LipsUpVsDown: -0.32
+FaceParts:
+  Mouth: 15
+TintLayers:
+- Index: 24
+  Color: '#00FFFFFF'
+  InterpolationValue: 0.42
+  Preset: -1
+MajorFlags:
+- 0x40000
