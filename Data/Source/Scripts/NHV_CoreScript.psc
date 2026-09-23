@@ -102,6 +102,10 @@ Function SpawnPassageRubble()
     EndIf
     RubbleRef = DawnstarAnchorRef.PlaceAtMe(RubbleBase, 1, False, False)
     If RubbleRef
+        ; SetPosition right after PlaceAtMe in the same frame is unreliable (the reference isn't
+        ; fully cell-registered yet) - a short wait fixes it. Confirmed 23.09.2026: without this,
+        ; the rubble landed ~25/121/9 units off from the intended spot.
+        Utility.Wait(0.1)
         ; Wall spot in DawnstarSanctuary, taken via getpos/getangle 23.09.2026 (docs/ck/M1.3-Deep-Sanctuary-Stufe1.md).
         RubbleRef.SetPosition(2648.75, 4930.81, 5649.73)
         RubbleRef.SetAngle(0.0, 0.0, 0.0)
@@ -129,6 +133,7 @@ Function SpawnPassageDoor()
     EndIf
     PassageDoorRef = DawnstarAnchorRef.PlaceAtMe(PassageDoorBase, 1, False, False)
     If PassageDoorRef
+        Utility.Wait(0.1) ; see SpawnPassageRubble() - same PlaceAtMe/SetPosition timing issue.
         PassageDoorRef.SetPosition(2648.75, 4930.81, 5649.73)
         PassageDoorRef.SetAngle(0.0, 0.0, 0.0)
         NHV_Util.Log(NHV_Cfg_Debug, "Sealed passage door spawned")
