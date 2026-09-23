@@ -1,0 +1,14 @@
+FormKey: 000DD5:NightsHarvest.esp
+EditorID: NHV_SealedPassageDoor
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_SealedPassageDoorScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetMarker
+      Object: 0025EB:NightsHarvest.esp
+Name:
+  TargetLanguage: English
+  Value: Sealed Passage
+Model:
+  File: Dungeons\Nordic\Doors\Animated\SmDoor01\NorDoorSmLoad01.nif
