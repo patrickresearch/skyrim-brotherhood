@@ -5,7 +5,10 @@ Scriptname SF_NHV_Scn_Q00_01Standoff_02002B4E Extends Scene Hidden
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()
 ;BEGIN CODE
-(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).RefreezeStandoff()
+NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+If kCore != None
+    kCore.RefreezeStandoff()
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT
