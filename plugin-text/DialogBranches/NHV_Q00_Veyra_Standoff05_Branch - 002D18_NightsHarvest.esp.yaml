@@ -1,0 +1,7 @@
+FormKey: 002D18:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_Standoff05_Branch
+Quest: 000815:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000862:NightsHarvest.esp

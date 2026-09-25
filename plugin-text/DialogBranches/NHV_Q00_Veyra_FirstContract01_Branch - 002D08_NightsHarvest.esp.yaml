@@ -1,0 +1,7 @@
+FormKey: 002D08:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_FirstContract01_Branch
+Quest: 000815:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000850:NightsHarvest.esp
