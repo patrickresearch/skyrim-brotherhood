@@ -16,6 +16,9 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**25.09.2026 (später): Q00-Stages im CK erledigt und übernommen.** Journal-Texte aller acht Stages und das Stage-40-Fragment (`QF_NHV_Q00_ShadowAtTheDoor_02000815`, ruft `NHV_CoreScript.OpenSealedPassage()`) sind im ESP (per houseCARL-Read bestätigt). CK-Save-Schaden trat wieder auf (26 Dialog-Topics ohne Quest-Feld, Family-Aliase, Geister-Branch `NewBranch0`) und wurde repariert; Ursache weiter ungeklärt. CK-Compiler brauchte `SKSE.psc`/`ModEvent.psc` in `Data\Source\Scripts` (siehe ENVIRONMENT.md). **Nicht getestet:** Ingame-Ablauf Stage 40 → Tür → Stage 50. **Nächster Schritt Entwickler:** Test laut `docs/ck/M1.5-Q00-Stages.md` (Neues Spiel, `setstage ... 40`). **Danach Claude:** Aliase und Szenen 1–6 der Q00.
+
+
 **25.09.2026: Sealed Passage ingame bestätigt (Geröll erscheint, `coc NHV_DeepSanctuaryCell`
 funktioniert), Stage-Kette 40→50 vorbereitet.** Geröll = `NorRubblePile06` mit Scale 0.3
 (Platzhalter, später Hebel/Fackel o. ä.), `SetPosition` braucht `Utility.Wait(0.1)` nach

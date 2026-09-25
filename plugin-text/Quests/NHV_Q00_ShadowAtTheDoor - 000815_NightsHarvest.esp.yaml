@@ -1,14 +1,63 @@
 FormKey: 000815:NightsHarvest.esp
 EditorID: NHV_Q00_ShadowAtTheDoor
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_NHV_Q00_ShadowAtTheDoor_02000815
+  FileName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+  Fragments:
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_0
 Stages:
 - Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Find out who has entered the Sanctuary.
 - Index: 15
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Veyra is waiting at the Windpeak Inn.
 - Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Consult the Night Mother about Veyra.
 - Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Return to Veyra.
 - Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Open the sealed passage with Veyra.
 - Index: 50
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Explore the Deep Sanctuary.
 - Index: 60
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Decide whose names belong on the Memorial Wall.
 - Index: 100
   Flags:
   - ShutDownStage
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Find out what became of the one who performed the sacrament.
 NextAliasID: 0
