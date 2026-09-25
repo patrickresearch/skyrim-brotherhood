@@ -12,7 +12,10 @@ Quest Property Q00 Auto
 
 Event OnActivate(ObjectReference akActionRef)
     If akActionRef == Game.GetPlayer() && TargetMarker
-        akActionRef.MoveTo(TargetMarker)
+        ; TargetMarker (the cell's COCMarkerHeading) sits in the plane of the cell's exit door
+        ; (Y -2944 vs door Y -2942), so arriving exactly on it pushed the player to the wrong side.
+        ; The marker faces +Y = into the room, hence the offset along +Y. Rotation is matched.
+        akActionRef.MoveTo(TargetMarker, 0.0, 128.0, 8.0, True)
         If Q00 && Q00.GetStage() == 40
             Q00.SetStage(50)
         EndIf
