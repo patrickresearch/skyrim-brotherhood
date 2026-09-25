@@ -16,6 +16,7 @@ Event OnActivate(ObjectReference akActionRef)
         ; (Y -2944 vs door Y -2942), so arriving exactly on it pushed the player to the wrong side.
         ; The marker faces +Y = into the room, hence the offset along +Y. Rotation is matched.
         akActionRef.MoveTo(TargetMarker, 0.0, 128.0, 8.0, True)
+        (Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).OnEnterDeepSanctuary()
         If Q00 && Q00.GetStage() == 40
             Q00.SetStage(50)
         EndIf

@@ -1,0 +1,10 @@
+FormKey: 000DD6:NightsHarvest.esp
+EditorID: NHV_SealedPassageReturnDoor
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_ReturnDoorScript
+Name:
+  TargetLanguage: English
+  Value: Sanctuary Passage
+Model:
+  File: Dungeons\Dwemer\Door\DwemerSmallDoorLoad01.nif

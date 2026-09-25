@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 3 AutoReadOnly
+Int Property VERSION = 4 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -39,10 +39,20 @@ Static Property RubbleBase Auto
 ; instead of NHV_CoreScript). Replaces RubbleBase from Q00 Stage 40 onward.
 Door Property PassageDoorBase Auto
 
+; --- Return door inside NHV_DeepSanctuaryCell ---
+; The cell's own COCMarkerHeading (001456:NightsHarvest.esp), used as PlaceAtMe anchor inside the cell.
+ObjectReference Property DeepSanctuaryAnchorRef Auto
+; The duplicated Markarth exit door (001586:NightsHarvest.esp, no teleport destination); disabled
+; and replaced by ReturnDoorBase at the same spot.
+ObjectReference Property ExitDoorRef Auto
+; NHV_SealedPassageReturnDoor - own Door record carrying NHV_ReturnDoorScript.
+Door Property ReturnDoorBase Auto
+
 ; Runtime-created references (PlaceAtMe), not CK properties. Persist in the save as normal
 ; script variables - never rename these (Regel 3, Save-Kompatibilitaet).
 ObjectReference RubbleRef
 ObjectReference PassageDoorRef
+ObjectReference ReturnDoorRef
 
 Int iInstalledVersion = 0
 ; True between registering the start-delay timer and it firing; guards against a second
@@ -78,6 +88,10 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 4
+        ; Return door introduced. Nothing to migrate: ReturnDoorRef is created lazily by
+        ; EnsureReturnDoor() the first time the player arrives in NHV_DeepSanctuaryCell.
     EndIf
 EndFunction
 
@@ -138,6 +152,47 @@ Function SpawnPassageDoor()
         PassageDoorRef.SetAngle(0.0, 0.0, 0.0)
         NHV_Util.Log(NHV_Cfg_Debug, "Sealed passage door spawned")
     EndIf
+EndFunction
+
+; Called by NHV_SealedPassageDoorScript right after the player arrived in NHV_DeepSanctuaryCell.
+; PlaceAtMe from a ref in a cell that is not loaded yet is unreliable, so the return door is
+; created only now, once the cell is loaded.
+Function OnEnterDeepSanctuary()
+    Utility.Wait(1.0)
+    EnsureReturnDoor()
+EndFunction
+
+Function EnsureReturnDoor()
+    If ReturnDoorRef
+        Return
+    EndIf
+    If !DeepSanctuaryAnchorRef || !ReturnDoorBase
+        NHV_Util.Log(NHV_Cfg_Debug, "EnsureReturnDoor: DeepSanctuaryAnchorRef or ReturnDoorBase not set")
+        Return
+    EndIf
+    If ExitDoorRef
+        ExitDoorRef.Disable()
+    EndIf
+    ReturnDoorRef = DeepSanctuaryAnchorRef.PlaceAtMe(ReturnDoorBase, 1, False, False)
+    If ReturnDoorRef
+        Utility.Wait(0.1) ; see SpawnPassageRubble() - same PlaceAtMe/SetPosition timing issue.
+        ; Same spot and rotation (180 degrees) as the duplicated Markarth exit door 001586.
+        ReturnDoorRef.SetPosition(-5600.0, -2942.2288, 144.0)
+        ReturnDoorRef.SetAngle(0.0, 0.0, 180.0)
+        NHV_Util.Log(NHV_Cfg_Debug, "Return door spawned")
+    EndIf
+EndFunction
+
+; Called by NHV_ReturnDoorScript. Puts the player in front of the sealed-passage door in
+; DawnstarSanctuary (100 units off the wall along -Y, the wall lies at +Y from that spot).
+Function ReturnToSanctuary()
+    If !PassageDoorRef
+        NHV_Util.Log(NHV_Cfg_Debug, "ReturnToSanctuary: passage door does not exist")
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    kPlayer.MoveTo(PassageDoorRef, 0.0, -100.0, 8.0, False)
+    kPlayer.SetAngle(0.0, 0.0, 180.0)
 EndFunction
 
 ; Public entry point for the Q00 Stage-40 fragment: swaps rubble for the door. The door's own
