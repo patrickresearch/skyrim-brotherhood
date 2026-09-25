@@ -40,6 +40,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: RubbleBase
       Object: 03BC38:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraBase
+      Object: 000817:NightsHarvest.esp
   FileName: ''
   Aliases:
   - Property:

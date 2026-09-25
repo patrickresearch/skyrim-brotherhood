@@ -16,6 +16,9 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**25.09.2026 (Abend): Rückweg, Q00-Aliase, Start-Logik.** Rückweg-Tür (eigener Door-Record `NHV_SealedPassageReturnDoor`, ersetzt die Markarth-Ausgangstür) und Ankunft 128 Einheiten im Raum sind ingame bestätigt bzw. gebaut (Rückweg selbst ungetestet). **Wichtiger Fund:** Bei allen Quests mit Aliasen (Q00, Family, Sanctuary) hatten die Aliase im ESP dieselbe ID 0, weil Spriggit die ID nur schreibt, wenn `ID: n` im YAML steht – jetzt explizit gesetzt und per houseCARL geprüft (wirkt auch auf M1.4/M1.6, dort noch ingame ungetestet). Q00-Aliase: 0 Veyra, 1 Nazir, 2 Babette, 3 Cicero. Start-Logik umgebaut (`NHV_CoreScript` v6): Verzögerung (E14, 2 Tage) zählt ab „Hail Sithis!“-Abschluss; Q00 startet beim Betreten der Dawnstar Sanctuary, Veyra wird per Script am Stuhl erzeugt, Nazir gestellt, Akteure per `EnableAI(False)` bis Szenenstart eingefroren (`ReleaseStandoff()`, Sicherheitsnetz an Stage 15/20). **Offen:** Koordinaten für Babette und Cicero (Nazir/Veyra liegen vor), Szenen 1–6 (CK), Veyra sitzend (Package/Möbel im CK). Alles ingame ungetestet.
+
+
 **25.09.2026 (später): Q00-Stages im CK erledigt und übernommen.** Journal-Texte aller acht Stages und das Stage-40-Fragment (`QF_NHV_Q00_ShadowAtTheDoor_02000815`, ruft `NHV_CoreScript.OpenSealedPassage()`) sind im ESP (per houseCARL-Read bestätigt). CK-Save-Schaden trat wieder auf (26 Dialog-Topics ohne Quest-Feld, Family-Aliase, Geister-Branch `NewBranch0`) und wurde repariert; Ursache weiter ungeklärt. CK-Compiler brauchte `SKSE.psc`/`ModEvent.psc` in `Data\Source\Scripts` (siehe ENVIRONMENT.md). **Nicht getestet:** Ingame-Ablauf Stage 40 → Tür → Stage 50. **Nächster Schritt Entwickler:** Test laut `docs/ck/M1.5-Q00-Stages.md` (Neues Spiel, `setstage ... 40`). **Danach Claude:** Aliase und Szenen 1–6 der Q00.
 
 

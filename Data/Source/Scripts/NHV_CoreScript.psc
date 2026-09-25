@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 4 AutoReadOnly
+Int Property VERSION = 6 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -39,6 +39,11 @@ Static Property RubbleBase Auto
 ; instead of NHV_CoreScript). Replaces RubbleBase from Q00 Stage 40 onward.
 Door Property PassageDoorBase Auto
 
+; --- Q00 Szene 1 (Standoff) ---
+; NHV_Veyra (000817:NightsHarvest.esp). She has no placed reference (a new reference in the vanilla
+; cell would create a cell copy, E16), so she is created here at Q00 start.
+ActorBase Property VeyraBase Auto
+
 ; --- Return door inside NHV_DeepSanctuaryCell ---
 ; The duplicated Markarth exit door (001586:NightsHarvest.esp, no teleport destination); disabled
 ; after ReturnDoorBase was placed at its exact position/rotation (used as PlaceAtMe anchor too).
@@ -51,6 +56,7 @@ Door Property ReturnDoorBase Auto
 ObjectReference RubbleRef
 ObjectReference PassageDoorRef
 ObjectReference ReturnDoorRef
+Actor VeyraRef
 Bool bReturnDoorBusy = False
 
 Int iInstalledVersion = 0
@@ -87,6 +93,13 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 6
+        ; Start delay now counts from Hail Sithis completion (fHailSithisDoneTime). Saves that already
+        ; completed it get the reference time on the next location change; the delay restarts then.
+    EndIf
+    If aiFrom < 5
+        ; Standoff preparation introduced (Veyra spawn at Q00 start). No per-save state to migrate.
     EndIf
     If aiFrom < 4
         ; Return door introduced. Nothing to migrate: ReturnDoorRef is created lazily by
@@ -222,28 +235,51 @@ Bool Function CanStartQ00()
     Return True
 EndFunction
 
+; Game time (days) at which "Hail Sithis!" was first seen as completed. The start delay (E14, days
+; from NHV_Cfg_StartDelay) counts from here, not from the first Sanctuary visit. 0 = not seen yet.
+Float fHailSithisDoneTime = 0.0
+
 ; Called by NHV_PlayerAliasScript.OnLocationChange() whenever the player enters any location.
-; Cheap to call often: the location check happens before anything else runs.
+; Cheap to call often: everything before the location check is a couple of comparisons.
+; Q00 starts when the delay has elapsed AND the player enters the Dawnstar Sanctuary; the Standoff
+; scene itself then starts once the player comes near Veyra (scene condition in the CK).
 Function OnEnterDawnstarSanctuary(Location akNewLoc)
+    NoteHailSithisCompletion()
     If akNewLoc != DawnstarSanctuaryLocation
         Return
     EndIf
-    If bStartTimerPending || !CanStartQ00()
+    If !CanStartQ00() || fHailSithisDoneTime <= 0.0
         Return
     EndIf
     Float fDelay = 0.0
     If NHV_Cfg_StartDelay
         fDelay = NHV_Cfg_StartDelay.GetValue()
     EndIf
-    If fDelay <= 0.0
+    Float fElapsed = Utility.GetCurrentGameTime() - fHailSithisDoneTime
+    If fElapsed >= fDelay
         StartQ00()
     Else
-        bStartTimerPending = True
-        RegisterForSingleUpdateGameTime(fDelay * 24.0)
-        NHV_Util.Log(NHV_Cfg_Debug, "Q00 start delayed by " + fDelay + " day(s)")
+        NHV_Util.Log(NHV_Cfg_Debug, "Q00 not started yet: " + (fDelay - fElapsed) + " day(s) of delay left")
     EndIf
 EndFunction
 
+; Remembers when "Hail Sithis!" was first observed as completed (Destroy path stays inactive).
+Function NoteHailSithisCompletion()
+    If fHailSithisDoneTime > 0.0
+        Return
+    EndIf
+    If !HailSithisQuest || !HailSithisQuest.IsCompleted()
+        Return
+    EndIf
+    If DestroyQuest && (DestroyQuest.IsRunning() || DestroyQuest.IsCompleted())
+        Return
+    EndIf
+    fHailSithisDoneTime = Utility.GetCurrentGameTime()
+    NHV_Util.Log(NHV_Cfg_Debug, "Hail Sithis completion noted at game time " + fHailSithisDoneTime)
+EndFunction
+
+; Obsolete since script version 6 (the start delay is now measured from Hail Sithis completion, see
+; OnEnterDawnstarSanctuary). Kept so saves that still have the old timer registered behave as before.
 Event OnUpdateGameTime()
     bStartTimerPending = False
     ; Re-check: conditions may no longer hold (mod disabled, Destroy path taken meanwhile).
@@ -254,8 +290,61 @@ Event OnUpdateGameTime()
     EndIf
 EndEvent
 
+; Places Veyra at the chair and Nazir over her, and fills the Q00 aliases. Q00 alias IDs follow the
+; order in the quest: 0 Veyra, 1 Nazir, 2 Babette, 3 Cicero (never renumber, save compatibility).
+; Coordinates from getpos/getangle in DawnstarSanctuary, 25.09.2026. Veyra stands beside the chair
+; for now; sitting comes with the Standoff scene's package/furniture in the CK.
+Function PrepareStandoff()
+    If !VeyraRef && VeyraBase && DawnstarAnchorRef
+        VeyraRef = DawnstarAnchorRef.PlaceAtMe(VeyraBase, 1, True, False) as Actor
+        If VeyraRef
+            Utility.Wait(0.1) ; see SpawnPassageRubble() - same PlaceAtMe/SetPosition timing issue.
+            VeyraRef.SetPosition(2477.90, 4740.29, 5617.24)
+            VeyraRef.SetAngle(0.0, 0.0, 80.24)
+        EndIf
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "PrepareStandoff: Veyra already exists or VeyraBase/DawnstarAnchorRef not set")
+    EndIf
+    ReferenceAlias kVeyra = Q00.GetAlias(0) as ReferenceAlias
+    If kVeyra && VeyraRef
+        kVeyra.ForceRefTo(VeyraRef)
+    EndIf
+    ReferenceAlias kNazir = Q00.GetAlias(1) as ReferenceAlias
+    If kNazir
+        Actor kNazirActor = kNazir.GetActorReference()
+        If kNazirActor
+            kNazirActor.SetPosition(2462.77, 4975.05, 5675.23)
+            kNazirActor.SetAngle(0.0, 0.0, 343.0)
+        EndIf
+    EndIf
+    ; Everyone has to stand in place when the player walks into the room, so their AI is frozen until
+    ; the scene runs. ReleaseStandoff() unfreezes them (scene start, and as a safety net on Q00 stage 15/20).
+    FreezeStandoffActors(True)
+EndFunction
+
+; Freezes/unfreezes the Q00 actors (aliases 0-3). Dead actors and empty aliases are skipped.
+Function FreezeStandoffActors(Bool abFreeze)
+    Int i = 0
+    While i < 4
+        ReferenceAlias kAlias = Q00.GetAlias(i) as ReferenceAlias
+        If kAlias
+            Actor kActor = kAlias.GetActorReference()
+            If kActor && !kActor.IsDead()
+                kActor.EnableAI(!abFreeze)
+            EndIf
+        EndIf
+        i += 1
+    EndWhile
+EndFunction
+
+; Called when the Standoff scene starts and from the Q00 stage 15/20 fragments.
+Function ReleaseStandoff()
+    FreezeStandoffActors(False)
+EndFunction
+
 Function StartQ00()
     Q00.Start()
+    PrepareStandoff()
     Q00.SetStage(10)
     NHV_Util.Log(NHV_Cfg_Debug, "Q00 started")
 EndFunction

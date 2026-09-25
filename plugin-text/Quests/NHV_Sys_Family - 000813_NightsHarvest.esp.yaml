@@ -51,27 +51,33 @@ Aliases:
   Flags:
   - Optional
   VoiceTypes: Null
-- Name: FollowerSlot2
+- ID: 1
+  Name: FollowerSlot2
   Flags:
   - Optional
   VoiceTypes: Null
-- Name: HrefnaSlot
+- ID: 2
+  Name: HrefnaSlot
   Flags:
   - Optional
   VoiceTypes: Null
-- Name: SingsSlot
+- ID: 3
+  Name: SingsSlot
   Flags:
   - Optional
   VoiceTypes: Null
-- Name: NireldaSlot
+- ID: 4
+  Name: NireldaSlot
   Flags:
   - Optional
   VoiceTypes: Null
-- Name: CorisandeSlot
+- ID: 5
+  Name: CorisandeSlot
   Flags:
   - Optional
   VoiceTypes: Null
-- Name: KharzogSlot
+- ID: 6
+  Name: KharzogSlot
   Flags:
   - Optional
   VoiceTypes: Null

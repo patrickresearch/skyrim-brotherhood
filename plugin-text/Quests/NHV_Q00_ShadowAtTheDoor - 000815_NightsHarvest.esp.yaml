@@ -127,17 +127,20 @@ Aliases:
   Flags:
   - Optional
   VoiceTypes: Null
-- Name: Nazir
+- ID: 1
+  Name: Nazir
   Flags:
   - Optional
   ForcedReference: 01C3AD:Skyrim.esm
   VoiceTypes: Null
-- Name: Babette
+- ID: 2
+  Name: Babette
   Flags:
   - Optional
   ForcedReference: 01D4BC:Skyrim.esm
   VoiceTypes: Null
-- Name: Cicero
+- ID: 3
+  Name: Cicero
   Flags:
   - Optional
   ForcedReference: 01E64A:Skyrim.esm

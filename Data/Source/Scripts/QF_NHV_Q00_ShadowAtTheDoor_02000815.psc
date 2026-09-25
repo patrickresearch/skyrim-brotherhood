@@ -25,6 +25,7 @@ Function Fragment_2()
 ;BEGIN CODE
 SetObjectiveCompleted(10)
 SetObjectiveDisplayed(15)
+(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).ReleaseStandoff()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -35,6 +36,7 @@ Function Fragment_3()
 SetObjectiveCompleted(10)
 SetObjectiveCompleted(15)
 SetObjectiveDisplayed(20)
+(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).ReleaseStandoff()
 ;END CODE
 EndFunction
 ;END FRAGMENT
