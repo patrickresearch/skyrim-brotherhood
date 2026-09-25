@@ -5,10 +5,42 @@ VirtualMachineAdapter:
   - Name: QF_NHV_Q00_ShadowAtTheDoor_02000815
   FileName: QF_NHV_Q00_ShadowAtTheDoor_02000815
   Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_1
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_2
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_3
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_4
   - Stage: 40
     Unknown2: 1
     ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
     FragmentName: Fragment_0
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_5
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_6
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_7
+Name:
+  TargetLanguage: English
+  Value: A Shadow at the Door
+Type: DarkBrotherhood
 Stages:
 - Index: 10
   LogEntries:
@@ -60,4 +92,33 @@ Stages:
     Entry:
       TargetLanguage: English
       Value: Find out what became of the one who performed the sacrament.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Find out who has entered the Sanctuary.
+- Index: 15
+  DisplayText:
+    TargetLanguage: English
+    Value: Veyra is waiting at the Windpeak Inn.
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Consult the Night Mother about Veyra.
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Return to Veyra.
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Open the sealed passage with Veyra.
+- Index: 50
+  DisplayText:
+    TargetLanguage: English
+    Value: Explore the Deep Sanctuary.
+- Index: 60
+  DisplayText:
+    TargetLanguage: English
+    Value: Decide whose names belong on the Memorial Wall.
 NextAliasID: 0
