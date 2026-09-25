@@ -11,6 +11,9 @@ VirtualMachineAdapter:
       Name: DawnstarSanctuaryLocation
       Object: 019429:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: DBRecurringQuest
+      Object: 01EA5A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: DestroyQuest
       Object: 0934FB:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty

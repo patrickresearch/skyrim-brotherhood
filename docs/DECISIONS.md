@@ -25,6 +25,7 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E17 | ESP-Bearbeitung durch Claude | Nur CK / Claude per MCP oder Spriggit | Claude bearbeitet das ESP, Ein-Schreiber-Regel | vor M0.6 | Entschieden |
 | E18 | Status-Wert für getötete Rekruten | 2 (Definition in Konzept Abschnitt 5) / 4 (zwei Stellen im Konzept) | 2 | vor M1.6 | Entschieden |
 | E19 | MCM-Texte: Übersetzungsschlüssel in v0.0.1 | Jetzt `$NHV_*`-Keys + Translations-Datei / vorerst Literal-Strings, Umstellung in M6 | Vorerst Literal-Strings | vor M6 | Entschieden |
+| E20 | Startbedingung Q00 | Nach „Hail Sithis!“ / nach „The Dark Brotherhood Forever“ (`DBrecurring`) | Nach `DBrecurring`, Wartezeit ab diesem Zeitpunkt | vor M1.9 | Entschieden |
 
 ### Hintergrund E16
 
@@ -117,3 +118,12 @@ Neue Einträge oben anfügen, mit folgender Vorlage:
 - **Optionen:** A nur `Skyrim.esm` und `Update.esm`, B zusätzlich Dawnguard und Dragonborn.
 - **Entscheidung:** A. DLC-Inhalte nur weich über `Game.GetFormFromFile()`.
 - **Folgen:** `NightsHarvest.esp` hat genau die Master `Skyrim.esm` und `Update.esm`. Betrifft M0.6 und alle Records, die DLC-Formen brauchen (z. B. Vampire-Lord-Erkennung).
+
+### E20 – Startbedingung Q00
+
+- **Datum:** 25.09.2026
+- **Entschieden von:** Entwickler (Vorschlag), Claude (Umsetzung)
+- **Kontext:** Ein Sprung mit `setstage DB11 200` überspringt den Umzug nach Dawnstar und alle Weltzustände (Falkreath-Sanctuary bleibt bestehen, Astrid lebt, Nazir/Babette/Cicero fehlen in Dawnstar, Black Door fragt das Passwort). Auch im regulären Spiel beginnt die Sanctuary-Nutzung erst mit `DBrecurring` „The Dark Brotherhood Forever“.
+- **Optionen:** A nach „Hail Sithis!“ (bisher), B nach Start von `DBrecurring`.
+- **Entscheidung:** B. `NHV_CoreScript.CanStartQ00()` verlangt zusätzlich, dass `DBrecurring` läuft, abgeschlossen ist oder Stage > 0 hat. Die Wartezeit (E14) zählt ab diesem Zeitpunkt; Q00 startet beim nächsten Betreten der Dawnstar Sanctuary.
+- **Folgen:** Konzept Abschnitt 2 (Startbedingungen) ist anzupassen. Zum Testen entweder DB regulär spielen (Save nach `DBrecurring` aufheben) oder Q00 per `cqf NHV_Sys_Core StartQ00` aus der Sanctuary heraus starten.

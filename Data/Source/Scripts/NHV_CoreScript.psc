@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 6 AutoReadOnly
+Int Property VERSION = 7 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -14,6 +14,11 @@ GlobalVariable Property NHV_Cfg_StartDelay Auto
 
 ; DB11 "Hail Sithis!", verified 22.09.2026 via houseCARL against Skyrim.esm (docs/GOAL.md).
 Quest Property HailSithisQuest Auto
+; DBrecurring "The Dark Brotherhood Forever" (01EA5A:Skyrim.esm, verified 25.09.2026 via houseCARL): the
+; vanilla follow-up after "Hail Sithis!". Q00 starts only once it has been started, i.e. once the family
+; has been rebuilt in the Dawnstar Sanctuary (E20). Skipping Hail Sithis with setstage leaves the world
+; in the pre-move state (Falkreath sanctuary alive, characters missing), so this is the real gate.
+Quest Property DBRecurringQuest Auto
 ; DBDestroy "Destroy the Dark Brotherhood!", the alternate path that keeps the mod inactive.
 Quest Property DestroyQuest Auto
 ; NHV_Q00_ShadowAtTheDoor (M1.5). Journal texts for its stages are set directly in the
@@ -93,6 +98,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 7
+        ; Start gate moved behind DBrecurring (E20). No per-save state to migrate.
     EndIf
     If aiFrom < 6
         ; Start delay now counts from Hail Sithis completion (fHailSithisDoneTime). Saves that already
@@ -226,6 +234,9 @@ Bool Function CanStartQ00()
     If !HailSithisQuest || !HailSithisQuest.IsCompleted()
         Return False
     EndIf
+    If !DBRecurringQuest || !(DBRecurringQuest.IsRunning() || DBRecurringQuest.IsCompleted() || DBRecurringQuest.GetStage() > 0)
+        Return False
+    EndIf
     If DestroyQuest && (DestroyQuest.IsRunning() || DestroyQuest.IsCompleted())
         Return False
     EndIf
@@ -271,11 +282,14 @@ Function NoteHailSithisCompletion()
     If !HailSithisQuest || !HailSithisQuest.IsCompleted()
         Return
     EndIf
+    If !DBRecurringQuest || !(DBRecurringQuest.IsRunning() || DBRecurringQuest.IsCompleted() || DBRecurringQuest.GetStage() > 0)
+        Return
+    EndIf
     If DestroyQuest && (DestroyQuest.IsRunning() || DestroyQuest.IsCompleted())
         Return
     EndIf
     fHailSithisDoneTime = Utility.GetCurrentGameTime()
-    NHV_Util.Log(NHV_Cfg_Debug, "Hail Sithis completion noted at game time " + fHailSithisDoneTime)
+    NHV_Util.Log(NHV_Cfg_Debug, "Start gate reached (Hail Sithis done, Dark Brotherhood Forever started) at game time " + fHailSithisDoneTime)
 EndFunction
 
 ; Obsolete since script version 6 (the start delay is now measured from Hail Sithis completion, see
@@ -313,6 +327,7 @@ Function PrepareStandoff()
     If kNazir
         Actor kNazirActor = kNazir.GetActorReference()
         If kNazirActor
+            kNazirActor.MoveTo(DawnstarAnchorRef)
             kNazirActor.SetPosition(2462.77, 4975.05, 5675.23)
             kNazirActor.SetAngle(0.0, 0.0, 343.0)
         EndIf
@@ -323,6 +338,7 @@ Function PrepareStandoff()
     If kBabette
         Actor kBabetteActor = kBabette.GetActorReference()
         If kBabetteActor && !kBabetteActor.IsDead()
+            kBabetteActor.MoveTo(DawnstarAnchorRef)
             kBabetteActor.SetPosition(2002.43, 5345.85, 5695.10)
             kBabetteActor.SetAngle(0.0, 0.0, 0.0)
         EndIf
@@ -331,6 +347,7 @@ Function PrepareStandoff()
     If kCicero
         Actor kCiceroActor = kCicero.GetActorReference()
         If kCiceroActor && !kCiceroActor.IsDead()
+            kCiceroActor.MoveTo(DawnstarAnchorRef)
             kCiceroActor.SetPosition(2485.03, 4466.59, 5618.41)
             kCiceroActor.SetAngle(0.0, 0.0, 0.0)
         EndIf
