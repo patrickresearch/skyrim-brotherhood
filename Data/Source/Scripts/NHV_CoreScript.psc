@@ -348,7 +348,9 @@ Function PrepareStandoff()
         VeyraRef = DawnstarAnchorRef.PlaceAtMe(VeyraBase, 1, True, False) as Actor
         If VeyraRef
             Utility.Wait(0.1) ; see SpawnPassageRubble() - same PlaceAtMe/SetPosition timing issue.
-            VeyraRef.SetPosition(2477.90, 4740.29, 5617.24)
+            ; The coordinates were taken standing IN the chair, so she stood inside it; moved ~70 units back
+            ; along her heading (80.24 degrees). Sitting down is handled by the Standoff scene (CK).
+            VeyraRef.SetPosition(2408.90, 4728.30, 5617.24)
             VeyraRef.SetAngle(0.0, 0.0, 80.24)
         EndIf
     Else
@@ -361,7 +363,13 @@ Function PrepareStandoff()
     ReferenceAlias kNazir = Q00.GetAlias(1) as ReferenceAlias
     If kNazir
         Actor kNazirActor = kNazir.GetActorReference()
+        If !kNazirActor
+            NHV_Util.Log(NHV_Cfg_Debug, "PrepareStandoff: Nazir alias is empty")
+        EndIf
         If kNazirActor
+            If kNazirActor.IsDisabled()
+                kNazirActor.Enable()
+            EndIf
             kNazirActor.MoveTo(DawnstarAnchorRef)
             kNazirActor.SetPosition(2462.77, 4975.05, 5675.23)
             kNazirActor.SetAngle(0.0, 0.0, 343.0)
@@ -373,6 +381,9 @@ Function PrepareStandoff()
     If kBabette
         Actor kBabetteActor = kBabette.GetActorReference()
         If kBabetteActor && !kBabetteActor.IsDead()
+            If kBabetteActor.IsDisabled()
+                kBabetteActor.Enable()
+            EndIf
             kBabetteActor.MoveTo(DawnstarAnchorRef)
             kBabetteActor.SetPosition(2002.43, 5345.85, 5695.10)
             kBabetteActor.SetAngle(0.0, 0.0, 0.0)
@@ -382,6 +393,9 @@ Function PrepareStandoff()
     If kCicero
         Actor kCiceroActor = kCicero.GetActorReference()
         If kCiceroActor && !kCiceroActor.IsDead()
+            If kCiceroActor.IsDisabled()
+                kCiceroActor.Enable()
+            EndIf
             kCiceroActor.MoveTo(DawnstarAnchorRef)
             kCiceroActor.SetPosition(2485.03, 4466.59, 5618.41)
             kCiceroActor.SetAngle(0.0, 0.0, 0.0)
