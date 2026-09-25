@@ -16,6 +16,9 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**25.09.2026 (spät): Q00 Szene 1 im CK gebaut und übernommen.** `NHV_Scn_Q00_01Standoff` (Phasen 1–4, Aktionen `010_01`, `010_03`–`010_06`; `010_02` ist zweite Response von `010_01`), Phase-4-Bedingung `GetDead` auf Alias Cicero, End-Fragment `RefreezeStandoff()`, `StandoffScene` am `NHV_Sys_Core` gefüllt. Round-Trip Text→ESP funktioniert. Diesmal trat der CK-Save-Schaden **nicht** auf. CK-Compiler: `Cell.psc` (SKSE) nötig, SKSE-`Form.psc` darf **nicht** in `Data\Source\Scripts` liegen (siehe ENVIRONMENT.md). **Nicht getestet:** Ablauf Standoff-Szene ingame (Start bei <800 Units, Reihenfolge, Einfrieren danach). **Offen:** Veyra sitzend (echte Stuhl-Referenz nötig, houseCARL-Abfrage hing), Szenen 2–6, Bücher, Veyra-Rest.
+
+
 **25.09.2026 (Nacht): Q00 Szene 1 im CK gebaut und repariert übernommen.** `NHV_Scn_Q00_01Standoff`
 ist im ESP, `NHV_CoreScript.StandoffScene` zeigt auf die Szene, und die sechs Standoff-Zeilen
 liegen als Scene-Topics/INFOs mit Quest-Bindung, Text, ScriptNotes und Response-Emotionen vor.

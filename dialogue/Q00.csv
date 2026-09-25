@@ -1,6 +1,6 @@
 LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
 NHV_Q00_010_01,Q00,10,SCN_Standoff,Nazir,Vanilla,Anger,50,"Listener. Good. You can settle this before I settle it myself.",,"Automatische Szene; Veyra sitzt am Esstisch, Nazir steht mit gezogener Klinge ueber ihr, Szene startet < 800 Units"
-NHV_Q00_010_02,Q00,10,SCN_Standoff,Nazir,Vanilla,Anger,70,"This one walked through the Black Door like she owned the place. Say the word and I open her up.",,
+NHV_Q00_010_02,Q00,10,SCN_Standoff,Nazir,Vanilla,Anger,70,"This one walked through the Black Door like she owned the place. Say the word and I open her up.",,"Im CK als zweite Response im Topic NHV_Q00_010_01 der Szene angelegt (eine Aktion je Phase und Actor)"
 NHV_Q00_010_03,Q00,10,SCN_Standoff,Veyra,NHV_VoiceVeyra,Neutral,30,"He's been saying that for an hour. I'm beginning to think he doesn't mean it.",,"ruhig, ohne aufzusehen"
 NHV_Q00_010_04,Q00,10,SCN_Standoff,Babette,Vanilla,Happy,30,"Oh, he means it. He just hasn't decided where to start.",,Babette lehnt an einer Saeule
 NHV_Q00_010_05,Q00,10,SCN_Standoff,Cicero,Vanilla,Surprise,60,"Cicero knows that face! Cicero knows it! But from where, from where...",GetDead Cicero == 0,"Platzhalter-Condition, echte Pruefung ueber Alias NHV_Sys_Sanctuary::Cicero (M1.4); Cicero kauert hinter einer Kiste"
