@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 15 AutoReadOnly
+Int Property VERSION = 16 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -141,6 +141,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 16
+        ; SayStandoffLine enables the speaker's AI while it talks. Nothing to migrate.
     EndIf
     If aiFrom < 15
         ; The Standoff opening is spoken via Actor.Say instead of the scene. Nothing to migrate.
@@ -593,9 +596,15 @@ Function SayStandoffLine(Actor akSpeaker, Int aiTopicFormID, Int aiChars)
         NHV_Util.Log(NHV_Cfg_Debug, "SayStandoffLine: speaker or topic missing (" + aiTopicFormID + ")")
         Return
     EndIf
+    ; An actor with AI disabled does not process its speech queue: the first test left every line hanging
+    ; and they popped up one by one whenever the player opened a dialogue (blocking its menu). So the
+    ; speaker's AI runs only while it talks, then it is frozen again.
+    akSpeaker.EnableAI(True)
+    Utility.Wait(0.3)
     akSpeaker.Say(kTopic)
     NHV_Util.Log(NHV_Cfg_Debug, "Say " + aiTopicFormID)
     Utility.Wait(1.0 + aiChars * 0.07)
+    akSpeaker.EnableAI(False)
 EndFunction
 
 ; Debug aid: which Q00 actors are currently inside the Standoff scene (25.09.2026: scene "played" but nobody spoke).
