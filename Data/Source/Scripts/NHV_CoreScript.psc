@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 8 AutoReadOnly
+Int Property VERSION = 9 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -62,6 +62,10 @@ ObjectReference RubbleRef
 ObjectReference PassageDoorRef
 ObjectReference ReturnDoorRef
 Actor VeyraRef
+; Random NPCs (Dark Brotherhood initiates, prisoners) hidden during the Standoff so they neither block
+; Veyra's chair nor walk through the scene. Filled by HideStandoffBystanders(), cleared by ReleaseStandoff().
+Actor[] StandoffBystanders
+Int iBystanderCount = 0
 Bool bReturnDoorBusy = False
 
 Int iInstalledVersion = 0
@@ -130,6 +134,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 9
+        ; Bystander hiding introduced (StandoffBystanders/iBystanderCount). Nothing to migrate.
     EndIf
     If aiFrom < 8
         ; EnsureProperties() introduced (refills None properties in old saves). Runs before Migrate().
@@ -367,6 +374,7 @@ Function PrepareStandoff()
     PlaceStandoffActor(2, 0x01D4BC, 2002.43, 5345.85, 5695.10, 0.0)
     ; Babette and Cicero: which of the two spots is whose does not matter for now (developer, 25.09.2026).
     PlaceStandoffActor(3, 0x01E64A, 2485.03, 4466.59, 5618.41, 0.0)
+    HideStandoffBystanders()
     LogStandoffActor("Veyra", 0)
     LogStandoffActor("Nazir", 1)
     LogStandoffActor("Babette", 2)
@@ -440,9 +448,58 @@ Function FreezeStandoffActors(Bool abFreeze)
     EndWhile
 EndFunction
 
+; Hides every other living, enabled NPC in the Sanctuary cell for the duration of the Standoff. The
+; player, Veyra, the Q00 alias actors and the player's teammates are left alone. At most 20 are remembered.
+Function HideStandoffBystanders()
+    If !DawnstarAnchorRef
+        Return
+    EndIf
+    Cell kCell = DawnstarAnchorRef.GetParentCell()
+    If !kCell
+        Return
+    EndIf
+    If !StandoffBystanders
+        StandoffBystanders = new Actor[20]
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    Int iNum = kCell.GetNumRefs(43)
+    Int i = 0
+    While i < iNum && iBystanderCount < 20
+        Actor kActor = kCell.GetNthRef(i, 43) as Actor
+        If kActor && kActor != kPlayer && kActor != VeyraRef && !kActor.IsDead() && !kActor.IsDisabled() && !kActor.IsPlayerTeammate() && !IsStandoffActor(kActor)
+            kActor.Disable()
+            StandoffBystanders[iBystanderCount] = kActor
+            iBystanderCount += 1
+        EndIf
+        i += 1
+    EndWhile
+    NHV_Util.Log(NHV_Cfg_Debug, "Standoff: " + iBystanderCount + " bystander(s) hidden")
+EndFunction
+
+Bool Function IsStandoffActor(Actor akActor)
+    Int i = 0
+    While i < 4
+        ReferenceAlias kAlias = Q00.GetAlias(i) as ReferenceAlias
+        If kAlias && kAlias.GetReference() == akActor
+            Return True
+        EndIf
+        i += 1
+    EndWhile
+    Return False
+EndFunction
+
 ; Called when the Standoff scene starts and from the Q00 stage 15/20 fragments.
 Function ReleaseStandoff()
     FreezeStandoffActors(False)
+    Int i = 0
+    While i < iBystanderCount
+        If StandoffBystanders[i]
+            StandoffBystanders[i].Enable()
+            StandoffBystanders[i] = None
+        EndIf
+        i += 1
+    EndWhile
+    iBystanderCount = 0
 EndFunction
 
 Function StartQ00()
