@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 10 AutoReadOnly
+Int Property VERSION = 11 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -140,6 +140,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 11
+        ; Dead actors leave their alias, bystanders only counted when disabled. Nothing to migrate.
     EndIf
     If aiFrom < 10
         ; StandoffScene polling introduced. Nothing to migrate.
@@ -411,6 +414,8 @@ Event OnUpdate()
         FreezeStandoffActors(False)
         StandoffScene.Start()
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
+        Utility.Wait(2.0)
+        NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene IsPlaying=" + StandoffScene.IsPlaying())
     Else
         RegisterForSingleUpdate(2.0)
     EndIf
@@ -435,6 +440,12 @@ Function PlaceStandoffActor(Int aiAlias, Int aiRefFormID, Float afX, Float afY, 
         Return
     EndIf
     If kActor.IsDead()
+        ; A scene does not start with a dead actor among its aliases (Cicero in a save where he died).
+        ; The alias is optional, so emptying it makes the scene skip that actor.
+        If kAlias
+            kAlias.Clear()
+        EndIf
+        NHV_Util.Log(NHV_Cfg_Debug, "PlaceStandoffActor: alias " + aiAlias + " actor is dead, alias cleared")
         Return
     EndIf
     If kActor.IsDisabled()
@@ -508,8 +519,11 @@ Function HideStandoffBystanders()
         Actor kActor = kCell.GetNthRef(i, 43) as Actor
         If kActor && kActor != kPlayer && kActor != VeyraRef && !kActor.IsDead() && !kActor.IsDisabled() && !kActor.IsPlayerTeammate() && !IsStandoffActor(kActor)
             kActor.Disable()
-            StandoffBystanders[iBystanderCount] = kActor
-            iBystanderCount += 1
+            ; Some actors (prisoners) have an enable-state parent and cannot be disabled; skip those.
+            If kActor.IsDisabled()
+                StandoffBystanders[iBystanderCount] = kActor
+                iBystanderCount += 1
+            EndIf
         EndIf
         i += 1
     EndWhile
