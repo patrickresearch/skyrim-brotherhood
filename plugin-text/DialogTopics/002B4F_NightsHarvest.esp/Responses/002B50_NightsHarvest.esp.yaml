@@ -1,0 +1,22 @@
+FormKey: 002B50:NightsHarvest.esp
+VersionControl: 13625
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 50
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Listener. Good. You can settle this before I settle it myself.
+  ScriptNotes: NHV_Q00_010_01
+  Edits: ''
+  ListenerIdleAnimation: 023621:Skyrim.esm
+Speaker: 01C3AB:Skyrim.esm

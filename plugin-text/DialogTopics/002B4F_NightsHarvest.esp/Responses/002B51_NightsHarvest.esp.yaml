@@ -1,0 +1,21 @@
+FormKey: 002B51:NightsHarvest.esp
+VersionControl: 13625
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: 002B50:NightsHarvest.esp
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 70
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: This one walked through the Black Door like she owned the place. Say the word and I open her up.
+  ScriptNotes: NHV_Q00_010_02
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

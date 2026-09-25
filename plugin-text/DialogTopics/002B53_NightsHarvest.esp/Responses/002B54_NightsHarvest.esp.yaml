@@ -1,0 +1,19 @@
+FormKey: 002B54:NightsHarvest.esp
+VersionControl: 13625
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He's been saying that for an hour. I'm beginning to think he doesn't mean it.
+  ScriptNotes: NHV_Q00_010_03
+  Edits: ''

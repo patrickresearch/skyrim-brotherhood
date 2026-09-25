@@ -1,0 +1,115 @@
+FormKey: 002B4E:NightsHarvest.esp
+VersionControl: 13625
+EditorID: NHV_Scn_Q00_01Standoff
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Scn_Q00_01Standoff_02002B4E
+  ScriptFragments:
+    FileName: SF_NHV_Scn_Q00_01Standoff_02002B4E
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Scn_Q00_01Standoff_02002B4E
+      FragmentName: Fragment_0
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  StartConditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetDeadConditionData
+      RunOnType: QuestAlias
+      RunOnTypeIndex: 3
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 1
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 2
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 3
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Q00_010_01
+  ActorID: 1
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 002B4F:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_010_03
+  ActorID: 0
+  Index: 2
+  StartPhase: 1
+  EndPhase: 1
+  Topic: 002B53:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_010_04
+  ActorID: 2
+  Index: 3
+  StartPhase: 2
+  EndPhase: 2
+  Topic: 002B55:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_010_05
+  ActorID: 3
+  Index: 4
+  StartPhase: 3
+  EndPhase: 3
+  Topic: 002B57:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_010_06
+  ActorID: 0
+  Index: 5
+  StartPhase: 3
+  EndPhase: 3
+  Topic: 002B59:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 000815:NightsHarvest.esp
+LastActionIndex: 5
+VNAM: 0x03000000030000000300000003000000
