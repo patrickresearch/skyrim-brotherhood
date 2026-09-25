@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 11 AutoReadOnly
+Int Property VERSION = 12 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -140,6 +140,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 12
+        ; HoldStandoffActors (SetDontMove) introduced. Nothing to migrate.
     EndIf
     If aiFrom < 11
         ; Dead actors leave their alias, bystanders only counted when disabled. Nothing to migrate.
@@ -412,6 +415,7 @@ Event OnUpdate()
     If VeyraRef && VeyraRef.GetDistance(Game.GetPlayer()) < 800.0
         bStandoffSceneStarted = True
         FreezeStandoffActors(False)
+        HoldStandoffActors(True)
         StandoffScene.Start()
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
         Utility.Wait(2.0)
@@ -518,12 +522,11 @@ Function HideStandoffBystanders()
     While i < iNum && iBystanderCount < 20
         Actor kActor = kCell.GetNthRef(i, 43) as Actor
         If kActor && kActor != kPlayer && kActor != VeyraRef && !kActor.IsDead() && !kActor.IsDisabled() && !kActor.IsPlayerTeammate() && !IsStandoffActor(kActor)
+            ; Some actors (prisoners) have an enable-state parent and cannot be disabled (harmless error
+            ; in the log). IsDisabled() cannot be used to check: it still says false right after Disable().
             kActor.Disable()
-            ; Some actors (prisoners) have an enable-state parent and cannot be disabled; skip those.
-            If kActor.IsDisabled()
-                StandoffBystanders[iBystanderCount] = kActor
-                iBystanderCount += 1
-            EndIf
+            StandoffBystanders[iBystanderCount] = kActor
+            iBystanderCount += 1
         EndIf
         i += 1
     EndWhile
@@ -542,9 +545,27 @@ Bool Function IsStandoffActor(Actor akActor)
     Return False
 EndFunction
 
+; Stops the Q00 actors from walking (SetDontMove) while their AI keeps running, which the running scene
+; needs to speak. Without it Nazir sat down and Babette walked off as soon as the freeze was lifted
+; (25.09.2026 test).
+Function HoldStandoffActors(Bool abHold)
+    Int i = 0
+    While i < 4
+        ReferenceAlias kAlias = Q00.GetAlias(i) as ReferenceAlias
+        If kAlias
+            Actor kActor = kAlias.GetActorReference()
+            If kActor && !kActor.IsDead()
+                kActor.SetDontMove(abHold)
+            EndIf
+        EndIf
+        i += 1
+    EndWhile
+EndFunction
+
 ; Called when the Standoff scene starts and from the Q00 stage 15/20 fragments.
 Function ReleaseStandoff()
     FreezeStandoffActors(False)
+    HoldStandoffActors(False)
     RestoreStandoffBystanders()
 EndFunction
 
