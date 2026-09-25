@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 9 AutoReadOnly
+Int Property VERSION = 10 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -14,6 +14,11 @@ GlobalVariable Property NHV_Cfg_StartDelay Auto
 
 ; DB11 "Hail Sithis!", verified 22.09.2026 via houseCARL against Skyrim.esm (docs/GOAL.md).
 Quest Property HailSithisQuest Auto
+; NHV_Scn_Q00_01Standoff (built in the CK, docs/ck/M1.5-Q00-Szene1-Standoff.md). Started from
+; OnUpdate() once the player is closer than 800 units to Veyra (concept section 6, stage 10).
+; Filled in the CK on NHV_Sys_Core; None until then (the Standoff simply does not start).
+Scene Property StandoffScene Auto
+
 ; DBrecurring "The Dark Brotherhood Forever" (01EA5A:Skyrim.esm, verified 25.09.2026 via houseCARL): the
 ; vanilla follow-up after "Hail Sithis!". Q00 starts only once it has been started, i.e. once the family
 ; has been rebuilt in the Dawnstar Sanctuary (E20). Skipping Hail Sithis with setstage leaves the world
@@ -66,6 +71,7 @@ Actor VeyraRef
 ; Veyra's chair nor walk through the scene. Filled by HideStandoffBystanders(), cleared by ReleaseStandoff().
 Actor[] StandoffBystanders
 Int iBystanderCount = 0
+Bool bStandoffSceneStarted = False
 Bool bReturnDoorBusy = False
 
 Int iInstalledVersion = 0
@@ -134,6 +140,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 10
+        ; StandoffScene polling introduced. Nothing to migrate.
     EndIf
     If aiFrom < 9
         ; Bystander hiding introduced (StandoffBystanders/iBystanderCount). Nothing to migrate.
@@ -383,7 +392,29 @@ Function PrepareStandoff()
     ; Everyone has to stand in place when the player walks into the room, so their AI is frozen until
     ; the scene runs. ReleaseStandoff() unfreezes them (scene start, and as a safety net on Q00 stage 15/20).
     FreezeStandoffActors(True)
+    bStandoffSceneStarted = False
+    RegisterForSingleUpdate(2.0)
 EndFunction
+
+; Polls (real time, every 2 s) while Q00 sits on stage 10 until the player comes near Veyra, then starts
+; the Standoff scene. Stops by itself once the stage moves on or the scene has been started.
+Event OnUpdate()
+    If !Q00 || !Q00.IsRunning() || Q00.GetStage() != 10 || bStandoffSceneStarted
+        Return
+    EndIf
+    If !StandoffScene
+        NHV_Util.Log(NHV_Cfg_Debug, "OnUpdate: StandoffScene not set, Standoff scene cannot start")
+        Return
+    EndIf
+    If VeyraRef && VeyraRef.GetDistance(Game.GetPlayer()) < 800.0
+        bStandoffSceneStarted = True
+        FreezeStandoffActors(False)
+        StandoffScene.Start()
+        NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
+    Else
+        RegisterForSingleUpdate(2.0)
+    EndIf
+EndEvent
 
 ; Resolves one vanilla actor (alias first, then its placed ref), fills the alias, activates it if it is
 ; disabled, brings it into the Sanctuary and puts it on its spot.
@@ -498,6 +529,16 @@ EndFunction
 ; Called when the Standoff scene starts and from the Q00 stage 15/20 fragments.
 Function ReleaseStandoff()
     FreezeStandoffActors(False)
+    RestoreStandoffBystanders()
+EndFunction
+
+; Called at the end of the Standoff scene so Nazir and the others stay put for the player dialogue.
+Function RefreezeStandoff()
+    FreezeStandoffActors(True)
+EndFunction
+
+; Brings the hidden random NPCs back.
+Function RestoreStandoffBystanders()
     Int i = 0
     While i < iBystanderCount
         If StandoffBystanders[i]
