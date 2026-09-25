@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 14 AutoReadOnly
+Int Property VERSION = 15 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -141,6 +141,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 15
+        ; The Standoff opening is spoken via Actor.Say instead of the scene. Nothing to migrate.
     EndIf
     If aiFrom < 14
         ; No DontMove; bystanders lose their own scene and AI. Nothing to migrate.
@@ -430,18 +433,7 @@ Event OnUpdate()
     EndIf
     If VeyraRef && VeyraRef.GetDistance(Game.GetPlayer()) < 800.0
         bStandoffSceneStarted = True
-        FreezeStandoffActors(False)
-        ; SetDontMove (HoldStandoffActors) was tried here and made everybody walk on the spot; not used.
-        ; Vanilla Sanctuary scenes claim the same actors (the first Standoff line was drowned out by other
-        ; subtitles, 25.09.2026), so stop them and force ours through.
-        StopOtherScenes()
-        StandoffScene.ForceStart()
-        NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
-        Utility.Wait(2.0)
-        NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene IsPlaying=" + StandoffScene.IsPlaying())
-        LogSceneMembership()
-        iSceneGuardTicks = 30
-        RegisterForSingleUpdate(1.0)
+        PlayStandoffIntro()
     Else
         RegisterForSingleUpdate(2.0)
     EndIf
@@ -572,6 +564,38 @@ Bool Function IsStandoffActor(Actor akActor)
         i += 1
     EndWhile
     Return False
+EndFunction
+
+; The Standoff opening lines, spoken by the actors themselves with Actor.Say and the topics that were built
+; in the CK scene editor. The real scene (StandoffScene) ran (IsPlaying=TRUE, actors inside) but played no line
+; and let Nazir sit down / Babette walk off (25.09.2026 tests), so it is not started for now. The actors stay
+; frozen (no AI), which keeps them in place; ReleaseStandoff() frees them on Q00 stage 15/20.
+Function PlayStandoffIntro()
+    NHV_Util.Log(NHV_Cfg_Debug, "Standoff intro: start")
+    Actor kNazir = (Q00.GetAlias(1) as ReferenceAlias).GetActorReference()
+    Actor kBabette = (Q00.GetAlias(2) as ReferenceAlias).GetActorReference()
+    Actor kCicero = (Q00.GetAlias(3) as ReferenceAlias).GetActorReference()
+    SayStandoffLine(kNazir, 0x002B4F, 65)
+    SayStandoffLine(kNazir, 0x002B4F, 100)
+    SayStandoffLine(VeyraRef, 0x002B53, 80)
+    SayStandoffLine(kBabette, 0x002B55, 55)
+    If kCicero && !kCicero.IsDead()
+        SayStandoffLine(kCicero, 0x002B57, 70)
+        SayStandoffLine(VeyraRef, 0x002B59, 30)
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Standoff intro: done")
+EndFunction
+
+; Speaks one topic and waits roughly as long as the line takes to read (no voice files, so no length known).
+Function SayStandoffLine(Actor akSpeaker, Int aiTopicFormID, Int aiChars)
+    Topic kTopic = Game.GetFormFromFile(aiTopicFormID, "NightsHarvest.esp") as Topic
+    If !akSpeaker || !kTopic
+        NHV_Util.Log(NHV_Cfg_Debug, "SayStandoffLine: speaker or topic missing (" + aiTopicFormID + ")")
+        Return
+    EndIf
+    akSpeaker.Say(kTopic)
+    NHV_Util.Log(NHV_Cfg_Debug, "Say " + aiTopicFormID)
+    Utility.Wait(1.0 + aiChars * 0.07)
 EndFunction
 
 ; Debug aid: which Q00 actors are currently inside the Standoff scene (25.09.2026: scene "played" but nobody spoke).
