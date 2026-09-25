@@ -144,6 +144,17 @@ State StartQ00
     EndEvent
 
     Event OnSelectST()
+        ; Saves made with an earlier build keep None for properties filled later (see
+        ; NHV_CoreScript.EnsureProperties()), so resolve them here too.
+        If !Core
+            Core = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+        EndIf
+        If !Q00
+            Q00 = Game.GetFormFromFile(0x000815, "NightsHarvest.esp") as Quest
+        EndIf
+        If Core
+            Core.EnsureProperties()
+        EndIf
         If !Core || !Q00
             ShowMessage("Night's Harvest is not fully set up yet (Core or Q00 missing).", False)
         ElseIf Q00.IsRunning() || Q00.IsCompleted()

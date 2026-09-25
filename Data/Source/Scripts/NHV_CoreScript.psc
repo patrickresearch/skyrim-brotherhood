@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 7 AutoReadOnly
+Int Property VERSION = 8 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -80,6 +80,7 @@ Function Maintenance()
         Debug.MessageBox("Night's Harvest requires SKSE64 and stays inactive without it.")
         Return
     EndIf
+    EnsureProperties()
     If iInstalledVersion < VERSION
         Migrate(iInstalledVersion)
         iInstalledVersion = VERSION
@@ -87,6 +88,37 @@ Function Maintenance()
     EndIf
     EnsureSealedPassageState()
     NHV_Util.Log(NHV_Cfg_Debug, "Maintenance done, mod " + VERSION_TEXT + ", script version " + iInstalledVersion)
+EndFunction
+
+; Skyrim does not copy property values changed in the ESP into script instances that already exist in a
+; save, so a save made with an earlier build keeps None for properties filled later. This refills every
+; property that is still None from its known FormID (own plugin or vanilla, never changes). Idempotent,
+; runs on every load via Maintenance(). New properties added later belong in here as well.
+Function EnsureProperties()
+    If !Q00
+        Q00 = Game.GetFormFromFile(0x000815, "NightsHarvest.esp") as Quest
+    EndIf
+    If !VeyraBase
+        VeyraBase = Game.GetFormFromFile(0x000817, "NightsHarvest.esp") as ActorBase
+    EndIf
+    If !PassageDoorBase
+        PassageDoorBase = Game.GetFormFromFile(0x000DD5, "NightsHarvest.esp") as Door
+    EndIf
+    If !ReturnDoorBase
+        ReturnDoorBase = Game.GetFormFromFile(0x000DD6, "NightsHarvest.esp") as Door
+    EndIf
+    If !ExitDoorRef
+        ExitDoorRef = Game.GetFormFromFile(0x001586, "NightsHarvest.esp") as ObjectReference
+    EndIf
+    If !RubbleBase
+        RubbleBase = Game.GetFormFromFile(0x03BC38, "Skyrim.esm") as Static
+    EndIf
+    If !DawnstarAnchorRef
+        DawnstarAnchorRef = Game.GetFormFromFile(0x09725F, "Skyrim.esm") as ObjectReference
+    EndIf
+    If !DBRecurringQuest
+        DBRecurringQuest = Game.GetFormFromFile(0x01EA5A, "Skyrim.esm") as Quest
+    EndIf
 EndFunction
 
 Function Migrate(Int aiFrom)
@@ -98,6 +130,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 8
+        ; EnsureProperties() introduced (refills None properties in old saves). Runs before Migrate().
     EndIf
     If aiFrom < 7
         ; Start gate moved behind DBrecurring (E20). No per-save state to migrate.
