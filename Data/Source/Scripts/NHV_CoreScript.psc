@@ -401,9 +401,33 @@ Function PrepareStandoff()
             kCiceroActor.SetAngle(0.0, 0.0, 0.0)
         EndIf
     EndIf
+    LogStandoffActor("Veyra", 0)
+    LogStandoffActor("Nazir", 1)
+    LogStandoffActor("Babette", 2)
+    LogStandoffActor("Cicero", 3)
     ; Everyone has to stand in place when the player walks into the room, so their AI is frozen until
     ; the scene runs. ReleaseStandoff() unfreezes them (scene start, and as a safety net on Q00 stage 15/20).
     FreezeStandoffActors(True)
+EndFunction
+
+; Debug aid (25.09.2026): one log line per Q00 actor - alias filled, dead, disabled, position, cell.
+Function LogStandoffActor(String asName, Int aiAlias)
+    ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
+    If !kAlias
+        NHV_Util.Log(NHV_Cfg_Debug, "Standoff " + asName + ": alias " + aiAlias + " not found")
+        Return
+    EndIf
+    Actor kActor = kAlias.GetActorReference()
+    If !kActor
+        NHV_Util.Log(NHV_Cfg_Debug, "Standoff " + asName + ": alias empty")
+        Return
+    EndIf
+    String sCell = "none"
+    Cell kCell = kActor.GetParentCell()
+    If kCell
+        sCell = kCell.GetName()
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Standoff " + asName + ": dead=" + kActor.IsDead() + " disabled=" + kActor.IsDisabled() + " pos=" + kActor.GetPositionX() + "/" + kActor.GetPositionY() + "/" + kActor.GetPositionZ() + " cell=" + sCell)
 EndFunction
 
 ; Freezes/unfreezes the Q00 actors (aliases 0-3). Dead actors and empty aliases are skipped.
