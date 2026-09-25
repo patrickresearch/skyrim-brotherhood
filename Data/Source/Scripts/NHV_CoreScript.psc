@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 12 AutoReadOnly
+Int Property VERSION = 13 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -72,6 +72,7 @@ Actor VeyraRef
 Actor[] StandoffBystanders
 Int iBystanderCount = 0
 Bool bStandoffSceneStarted = False
+Int iSceneGuardTicks = 0
 Bool bReturnDoorBusy = False
 
 Int iInstalledVersion = 0
@@ -140,6 +141,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 13
+        ; StopOtherScenes/ForceStart introduced. Nothing to migrate.
     EndIf
     If aiFrom < 12
         ; HoldStandoffActors (SetDontMove) introduced. Nothing to migrate.
@@ -405,7 +409,16 @@ EndFunction
 ; Polls (real time, every 2 s) while Q00 sits on stage 10 until the player comes near Veyra, then starts
 ; the Standoff scene. Stops by itself once the stage moves on or the scene has been started.
 Event OnUpdate()
-    If !Q00 || !Q00.IsRunning() || Q00.GetStage() != 10 || bStandoffSceneStarted
+    If bStandoffSceneStarted
+        ; Guard phase: for 30 s keep other scenes away from the Standoff actors while ours plays.
+        If iSceneGuardTicks > 0 && Q00 && Q00.IsRunning() && Q00.GetStage() == 10
+            StopOtherScenes()
+            iSceneGuardTicks -= 1
+            RegisterForSingleUpdate(1.0)
+        EndIf
+        Return
+    EndIf
+    If !Q00 || !Q00.IsRunning() || Q00.GetStage() != 10
         Return
     EndIf
     If !StandoffScene
@@ -416,10 +429,15 @@ Event OnUpdate()
         bStandoffSceneStarted = True
         FreezeStandoffActors(False)
         HoldStandoffActors(True)
-        StandoffScene.Start()
+        ; Vanilla Sanctuary scenes claim the same actors (the first Standoff line was drowned out by other
+        ; subtitles, 25.09.2026), so stop them and force ours through.
+        StopOtherScenes()
+        StandoffScene.ForceStart()
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
         Utility.Wait(2.0)
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene IsPlaying=" + StandoffScene.IsPlaying())
+        iSceneGuardTicks = 30
+        RegisterForSingleUpdate(1.0)
     Else
         RegisterForSingleUpdate(2.0)
     EndIf
@@ -543,6 +561,25 @@ Bool Function IsStandoffActor(Actor akActor)
         i += 1
     EndWhile
     Return False
+EndFunction
+
+; Stops every scene other than the Standoff that currently holds one of the Q00 actors.
+Function StopOtherScenes()
+    Int i = 0
+    While i < 4
+        ReferenceAlias kAlias = Q00.GetAlias(i) as ReferenceAlias
+        If kAlias
+            Actor kActor = kAlias.GetActorReference()
+            If kActor
+                Scene kScene = kActor.GetCurrentScene()
+                If kScene && kScene != StandoffScene
+                    NHV_Util.Log(NHV_Cfg_Debug, "Stopping foreign scene on Standoff actor " + i)
+                    kScene.Stop()
+                EndIf
+            EndIf
+        EndIf
+        i += 1
+    EndWhile
 EndFunction
 
 ; Stops the Q00 actors from walking (SetDontMove) while their AI keeps running, which the running scene
