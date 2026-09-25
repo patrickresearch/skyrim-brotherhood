@@ -9,7 +9,7 @@ VirtualMachineAdapter:
       Object: 000815:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: TargetMarker
-      Object: 0025EB:NightsHarvest.esp
+      Object: 001456:NightsHarvest.esp
 Name:
   TargetLanguage: English
   Value: Sealed Passage
