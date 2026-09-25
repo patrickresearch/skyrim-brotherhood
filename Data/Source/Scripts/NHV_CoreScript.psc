@@ -317,6 +317,24 @@ Function PrepareStandoff()
             kNazirActor.SetAngle(0.0, 0.0, 343.0)
         EndIf
     EndIf
+    ; Babette and Cicero: two spots taken 25.09.2026, which of them stands where is still open
+    ; (developer: does not matter for now). Cicero only if alive.
+    ReferenceAlias kBabette = Q00.GetAlias(2) as ReferenceAlias
+    If kBabette
+        Actor kBabetteActor = kBabette.GetActorReference()
+        If kBabetteActor && !kBabetteActor.IsDead()
+            kBabetteActor.SetPosition(2002.43, 5345.85, 5695.10)
+            kBabetteActor.SetAngle(0.0, 0.0, 0.0)
+        EndIf
+    EndIf
+    ReferenceAlias kCicero = Q00.GetAlias(3) as ReferenceAlias
+    If kCicero
+        Actor kCiceroActor = kCicero.GetActorReference()
+        If kCiceroActor && !kCiceroActor.IsDead()
+            kCiceroActor.SetPosition(2485.03, 4466.59, 5618.41)
+            kCiceroActor.SetAngle(0.0, 0.0, 0.0)
+        EndIf
+    EndIf
     ; Everyone has to stand in place when the player walks into the room, so their AI is frozen until
     ; the scene runs. ReleaseStandoff() unfreezes them (scene start, and as a safety net on Q00 stage 15/20).
     FreezeStandoffActors(True)
