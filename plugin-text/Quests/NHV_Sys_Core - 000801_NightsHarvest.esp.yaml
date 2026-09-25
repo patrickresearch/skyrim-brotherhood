@@ -11,9 +11,6 @@ VirtualMachineAdapter:
       Name: DawnstarSanctuaryLocation
       Object: 019429:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: DeepSanctuaryAnchorRef
-      Object: 001456:NightsHarvest.esp
-    - MutagenObjectType: ScriptObjectProperty
       Name: DestroyQuest
       Object: 0934FB:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty

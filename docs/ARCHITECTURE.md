@@ -84,6 +84,7 @@ Neue Rekruten erhalten nicht die Vanilla-`DarkBrotherhoodFaction`. Die Allianz s
 | `NHV_FinaleWaveScript` | Quest | Q06 Wellen |
 | `NHV_SanctuaryStateScript` | ObjectReference | Enable-Parents der Räume |
 | `NHV_SealedPassageDoorScript` | ObjectReference | Basis-Objekt-Script auf `NHV_SealedPassageDoor` (M1.3/M1.5 Q00 Szene 4, E16/E09); `OnActivate` → `MoveTo(TargetMarker)`, setzt danach `NHV_Q00_ShadowAtTheDoor` von Stage 40 auf 50 (Property `Q00`). Am Basisobjekt statt per Remote-Event, da `RegisterForRemoteEvent` in dieser SKSE-Version fehlt. |
+| `NHV_ReturnDoorScript` | ObjectReference | Basis-Objekt-Script auf `NHV_SealedPassageReturnDoor`: ersetzt die duplizierte Markarth-Ausgangstür in `NHV_DeepSanctuaryCell` (per `PlaceAtMe` aus `NHV_CoreScript.EnsureReturnDoor()`), `OnActivate` → `NHV_CoreScript.ReturnToSanctuary()`. Das Passage-Tür-Script meldet die Ankunft per `NHV_CoreScript.OnEnterDeepSanctuary()`. |
 | `NHV_Util` | Globale Funktionen | Logging, gemeinsame Prüfungen |
 
 ModEvents für Patches/Addons: `NHV_RecruitJoined`, `NHV_RecruitDied`, `NHV_ContractCompleted`.

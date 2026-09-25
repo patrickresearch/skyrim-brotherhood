@@ -121,4 +121,24 @@ Objectives:
   DisplayText:
     TargetLanguage: English
     Value: Decide whose names belong on the Memorial Wall.
-NextAliasID: 0
+NextAliasID: 4
+Aliases:
+- Name: Veyra
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- Name: Nazir
+  Flags:
+  - Optional
+  ForcedReference: 01C3AD:Skyrim.esm
+  VoiceTypes: Null
+- Name: Babette
+  Flags:
+  - Optional
+  ForcedReference: 01D4BC:Skyrim.esm
+  VoiceTypes: Null
+- Name: Cicero
+  Flags:
+  - Optional
+  ForcedReference: 01E64A:Skyrim.esm
+  VoiceTypes: Null

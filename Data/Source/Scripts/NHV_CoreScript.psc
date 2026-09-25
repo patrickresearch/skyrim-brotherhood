@@ -40,10 +40,8 @@ Static Property RubbleBase Auto
 Door Property PassageDoorBase Auto
 
 ; --- Return door inside NHV_DeepSanctuaryCell ---
-; The cell's own COCMarkerHeading (001456:NightsHarvest.esp), used as PlaceAtMe anchor inside the cell.
-ObjectReference Property DeepSanctuaryAnchorRef Auto
 ; The duplicated Markarth exit door (001586:NightsHarvest.esp, no teleport destination); disabled
-; and replaced by ReturnDoorBase at the same spot.
+; after ReturnDoorBase was placed at its exact position/rotation (used as PlaceAtMe anchor too).
 ObjectReference Property ExitDoorRef Auto
 ; NHV_SealedPassageReturnDoor - own Door record carrying NHV_ReturnDoorScript.
 Door Property ReturnDoorBase Auto
@@ -53,6 +51,7 @@ Door Property ReturnDoorBase Auto
 ObjectReference RubbleRef
 ObjectReference PassageDoorRef
 ObjectReference ReturnDoorRef
+Bool bReturnDoorBusy = False
 
 Int iInstalledVersion = 0
 ; True between registering the start-delay timer and it firing; guards against a second
@@ -156,29 +155,33 @@ EndFunction
 
 ; Called by NHV_SealedPassageDoorScript right after the player arrived in NHV_DeepSanctuaryCell.
 ; PlaceAtMe from a ref in a cell that is not loaded yet is unreliable, so the return door is
-; created only now, once the cell is loaded.
+; created only now, once the cell is loaded. Cheap no-op on every later visit.
 Function OnEnterDeepSanctuary()
-    Utility.Wait(1.0)
+    If ReturnDoorRef || bReturnDoorBusy
+        Return
+    EndIf
+    bReturnDoorBusy = True
+    Utility.Wait(0.5)
     EnsureReturnDoor()
+    bReturnDoorBusy = False
 EndFunction
 
 Function EnsureReturnDoor()
     If ReturnDoorRef
         Return
     EndIf
-    If !DeepSanctuaryAnchorRef || !ReturnDoorBase
-        NHV_Util.Log(NHV_Cfg_Debug, "EnsureReturnDoor: DeepSanctuaryAnchorRef or ReturnDoorBase not set")
+    If !ExitDoorRef || !ReturnDoorBase
+        NHV_Util.Log(NHV_Cfg_Debug, "EnsureReturnDoor: ExitDoorRef or ReturnDoorBase not set")
         Return
     EndIf
-    If ExitDoorRef
-        ExitDoorRef.Disable()
-    EndIf
-    ReturnDoorRef = DeepSanctuaryAnchorRef.PlaceAtMe(ReturnDoorBase, 1, False, False)
+    ReturnDoorRef = ExitDoorRef.PlaceAtMe(ReturnDoorBase, 1, False, False)
     If ReturnDoorRef
         Utility.Wait(0.1) ; see SpawnPassageRubble() - same PlaceAtMe/SetPosition timing issue.
-        ; Same spot and rotation (180 degrees) as the duplicated Markarth exit door 001586.
-        ReturnDoorRef.SetPosition(-5600.0, -2942.2288, 144.0)
-        ReturnDoorRef.SetAngle(0.0, 0.0, 180.0)
+        ; Same spot and rotation as the duplicated Markarth exit door, which is only disabled now
+        ; that its replacement exists (a failed PlaceAtMe must never leave the player without a door).
+        ReturnDoorRef.SetPosition(ExitDoorRef.GetPositionX(), ExitDoorRef.GetPositionY(), ExitDoorRef.GetPositionZ())
+        ReturnDoorRef.SetAngle(0.0, 0.0, ExitDoorRef.GetAngleZ())
+        ExitDoorRef.Disable()
         NHV_Util.Log(NHV_Cfg_Debug, "Return door spawned")
     EndIf
 EndFunction
@@ -192,7 +195,7 @@ Function ReturnToSanctuary()
     EndIf
     Actor kPlayer = Game.GetPlayer()
     kPlayer.MoveTo(PassageDoorRef, 0.0, -100.0, 8.0, False)
-    kPlayer.SetAngle(0.0, 0.0, 180.0)
+    kPlayer.SetAngle(0.0, 0.0, PassageDoorRef.GetAngleZ() + 180.0)
 EndFunction
 
 ; Public entry point for the Q00 Stage-40 fragment: swaps rubble for the door. The door's own
