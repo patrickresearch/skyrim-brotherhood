@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 13 AutoReadOnly
+Int Property VERSION = 14 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -141,6 +141,9 @@ Function Migrate(Int aiFrom)
         ; Sealed Passage introduced. No per-save state to migrate here - EnsureSealedPassageState()
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
+    EndIf
+    If aiFrom < 14
+        ; No DontMove; bystanders lose their own scene and AI. Nothing to migrate.
     EndIf
     If aiFrom < 13
         ; StopOtherScenes/ForceStart introduced. Nothing to migrate.
@@ -428,7 +431,7 @@ Event OnUpdate()
     If VeyraRef && VeyraRef.GetDistance(Game.GetPlayer()) < 800.0
         bStandoffSceneStarted = True
         FreezeStandoffActors(False)
-        HoldStandoffActors(True)
+        ; SetDontMove (HoldStandoffActors) was tried here and made everybody walk on the spot; not used.
         ; Vanilla Sanctuary scenes claim the same actors (the first Standoff line was drowned out by other
         ; subtitles, 25.09.2026), so stop them and force ours through.
         StopOtherScenes()
@@ -436,6 +439,7 @@ Event OnUpdate()
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
         Utility.Wait(2.0)
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene IsPlaying=" + StandoffScene.IsPlaying())
+        LogSceneMembership()
         iSceneGuardTicks = 30
         RegisterForSingleUpdate(1.0)
     Else
@@ -542,7 +546,14 @@ Function HideStandoffBystanders()
         If kActor && kActor != kPlayer && kActor != VeyraRef && !kActor.IsDead() && !kActor.IsDisabled() && !kActor.IsPlayerTeammate() && !IsStandoffActor(kActor)
             ; Some actors (prisoners) have an enable-state parent and cannot be disabled (harmless error
             ; in the log). IsDisabled() cannot be used to check: it still says false right after Disable().
+            ; Their own looping scenes (torture victims keep talking) drown out the Standoff subtitles.
+            Scene kOwnScene = kActor.GetCurrentScene()
+            If kOwnScene
+                kOwnScene.Stop()
+            EndIf
             kActor.Disable()
+            ; Actors with an enable-state parent stay enabled; freeze their AI so they stop talking.
+            kActor.EnableAI(False)
             StandoffBystanders[iBystanderCount] = kActor
             iBystanderCount += 1
         EndIf
@@ -561,6 +572,21 @@ Bool Function IsStandoffActor(Actor akActor)
         i += 1
     EndWhile
     Return False
+EndFunction
+
+; Debug aid: which Q00 actors are currently inside the Standoff scene (25.09.2026: scene "played" but nobody spoke).
+Function LogSceneMembership()
+    Int i = 0
+    While i < 4
+        ReferenceAlias kAlias = Q00.GetAlias(i) as ReferenceAlias
+        If kAlias
+            Actor kActor = kAlias.GetActorReference()
+            If kActor
+                NHV_Util.Log(NHV_Cfg_Debug, "Standoff alias " + i + " in our scene: " + (kActor.GetCurrentScene() == StandoffScene))
+            EndIf
+        EndIf
+        i += 1
+    EndWhile
 EndFunction
 
 ; Stops every scene other than the Standoff that currently holds one of the Q00 actors.
@@ -617,6 +643,7 @@ Function RestoreStandoffBystanders()
     While i < iBystanderCount
         If StandoffBystanders[i]
             StandoffBystanders[i].Enable()
+            StandoffBystanders[i].EnableAI(True)
             StandoffBystanders[i] = None
         EndIf
         i += 1
