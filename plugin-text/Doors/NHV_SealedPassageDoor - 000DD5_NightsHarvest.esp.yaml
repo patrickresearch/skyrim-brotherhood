@@ -5,6 +5,9 @@ VirtualMachineAdapter:
   - Name: NHV_SealedPassageDoorScript
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: Q00
+      Object: 000815:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: TargetMarker
       Object: 0025EB:NightsHarvest.esp
 Name:

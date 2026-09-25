@@ -16,6 +16,17 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**25.09.2026: Sealed Passage ingame bestätigt (Geröll erscheint, `coc NHV_DeepSanctuaryCell`
+funktioniert), Stage-Kette 40→50 vorbereitet.** Geröll = `NorRubblePile06` mit Scale 0.3
+(Platzhalter, später Hebel/Fackel o. ä.), `SetPosition` braucht `Utility.Wait(0.1)` nach
+`PlaceAtMe`. Wandposition noch nicht final (aktuell Stuhl-Kollision bei X 2648.75 / Y 4930.81 /
+Z 5649.73; Entwickler sucht freie Wandstelle, Vanilla-Möbel bleiben unangetastet).
+`NHV_SealedPassageDoorScript` setzt jetzt Q00 Stage 50 beim ersten Betreten (Property `Q00`).
+Neue CK-Anleitung `docs/ck/M1.5-Q00-Stages.md` (Journal-Texte + Stage-40-Fragment
+`OpenSealedPassage()`). **Nächster Schritt Entwickler:** diese Anleitung abarbeiten, danach
+CK speichern → mir Bescheid geben (Diff-Prüfung wegen CK-Save-Bug). **Danach Claude:** Aliase
+und Szenen 1–6 der Q00 (eigene Anleitung), Bücher, Veyra-Rest (Klasse/Outfit/Packages).
+
 **23.09.2026: M1.3/M1.5-Vorarbeit – Sealed Passage verkabelt, reproduzierbarer CK-Save-Bug
 gefunden.** `NHV_DeepSanctuaryCell` (Duplikat von `MarkarthTreasuryHouse`), `NHV_SealedPassageDoor`
 (eigener Tür-Record + `NHV_SealedPassageDoorScript`), `NHV_CoreScript` v3 mit
