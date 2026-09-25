@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 16 AutoReadOnly
+Int Property VERSION = 17 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -67,12 +67,13 @@ ObjectReference RubbleRef
 ObjectReference PassageDoorRef
 ObjectReference ReturnDoorRef
 Actor VeyraRef
-; Random NPCs (Dark Brotherhood initiates, prisoners) hidden during the Standoff so they neither block
-; Veyra's chair nor walk through the scene. Filled by HideStandoffBystanders(), cleared by ReleaseStandoff().
+; Random NPCs (Dark Brotherhood initiates) hidden during the Standoff so they neither block Veyra's chair
+; nor walk through the scene. Filled by HideStandoffBystanders(), cleared by ReleaseStandoff().
 Actor[] StandoffBystanders
 Int iBystanderCount = 0
 Bool bStandoffSceneStarted = False
-Int iSceneGuardTicks = 0
+; Set by the scene's End fragment (RefreezeStandoff), so a finished Standoff is never re-armed.
+Bool bStandoffSceneDone = False
 Bool bReturnDoorBusy = False
 
 Int iInstalledVersion = 0
@@ -142,46 +143,58 @@ Function Migrate(Int aiFrom)
         ; runs unconditionally from Maintenance() below and is itself idempotent (checks both
         ; refs first), so a fresh install and an upgraded save both just fall through to it.
     EndIf
-    If aiFrom < 16
-        ; SayStandoffLine enables the speaker's AI while it talks. Nothing to migrate.
+    If aiFrom < 4
+        ; Return door introduced. Nothing to migrate: ReturnDoorRef is created lazily by
+        ; EnsureReturnDoor() the first time the player arrives in NHV_DeepSanctuaryCell.
     EndIf
-    If aiFrom < 15
-        ; The Standoff opening is spoken via Actor.Say instead of the scene. Nothing to migrate.
-    EndIf
-    If aiFrom < 14
-        ; No DontMove; bystanders lose their own scene and AI. Nothing to migrate.
-    EndIf
-    If aiFrom < 13
-        ; StopOtherScenes/ForceStart introduced. Nothing to migrate.
-    EndIf
-    If aiFrom < 12
-        ; HoldStandoffActors (SetDontMove) introduced. Nothing to migrate.
-    EndIf
-    If aiFrom < 11
-        ; Dead actors leave their alias, bystanders only counted when disabled. Nothing to migrate.
-    EndIf
-    If aiFrom < 10
-        ; StandoffScene polling introduced. Nothing to migrate.
-    EndIf
-    If aiFrom < 9
-        ; Bystander hiding introduced (StandoffBystanders/iBystanderCount). Nothing to migrate.
-    EndIf
-    If aiFrom < 8
-        ; EnsureProperties() introduced (refills None properties in old saves). Runs before Migrate().
-    EndIf
-    If aiFrom < 7
-        ; Start gate moved behind DBrecurring (E20). No per-save state to migrate.
+    If aiFrom < 5
+        ; Standoff preparation introduced (Veyra spawn at Q00 start). No per-save state to migrate.
     EndIf
     If aiFrom < 6
         ; Start delay now counts from Hail Sithis completion (fHailSithisDoneTime). Saves that already
         ; completed it get the reference time on the next location change; the delay restarts then.
     EndIf
-    If aiFrom < 5
-        ; Standoff preparation introduced (Veyra spawn at Q00 start). No per-save state to migrate.
+    If aiFrom < 7
+        ; Start gate moved behind DBrecurring (E20). No per-save state to migrate.
     EndIf
-    If aiFrom < 4
-        ; Return door introduced. Nothing to migrate: ReturnDoorRef is created lazily by
-        ; EnsureReturnDoor() the first time the player arrives in NHV_DeepSanctuaryCell.
+    If aiFrom < 8
+        ; EnsureProperties() introduced (refills None properties in old saves). Runs before Migrate().
+    EndIf
+    If aiFrom < 9
+        ; Bystander hiding introduced (StandoffBystanders/iBystanderCount). Nothing to migrate.
+    EndIf
+    If aiFrom < 10
+        ; StandoffScene polling introduced. Nothing to migrate.
+    EndIf
+    If aiFrom < 11
+        ; Dead actors leave their alias, bystanders only counted when disabled. Nothing to migrate.
+    EndIf
+    If aiFrom < 12
+        ; HoldStandoffActors (SetDontMove) introduced. Nothing to migrate.
+    EndIf
+    If aiFrom < 13
+        ; StopOtherScenes/ForceStart introduced. Nothing to migrate.
+    EndIf
+    If aiFrom < 14
+        ; No DontMove; bystanders lose their own scene and AI. Nothing to migrate.
+    EndIf
+    If aiFrom < 15
+        ; The Standoff opening is spoken via Actor.Say instead of the scene. Nothing to migrate.
+    EndIf
+    If aiFrom < 16
+        ; SayStandoffLine enables the speaker's AI while it talks. Nothing to migrate.
+    EndIf
+    If aiFrom >= 6 && aiFrom < 17
+        ; Script versions 6-16 froze the Standoff actors (EnableAI false, SetDontMove) and froze bystanders.
+        ; Frozen actors cannot speak or answer (Veyra hung in dialogue, 25.09.2026). Undo it in saves that
+        ; still carry the state; keeping them in place is now the job of the alias package (PrepareStandoff).
+        RepairFrozenActors()
+        ; Versions 15/16 set bStandoffSceneStarted with the Say intro and stopped polling, so a save still
+        ; on stage 10 would never start the scene. Arm it again.
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 10 && StandoffScene && !StandoffScene.IsPlaying() && !bStandoffSceneDone
+            bStandoffSceneStarted = False
+            RegisterForSingleUpdate(2.0)
+        EndIf
     EndIf
 EndFunction
 
@@ -329,6 +342,11 @@ Function OnEnterDawnstarSanctuary(Location akNewLoc)
     If akNewLoc != DawnstarSanctuaryLocation
         Return
     EndIf
+    ; Q00 already waits for the player near Veyra (he left the Sanctuary before): resume the polling.
+    If Q00 && Q00.IsRunning() && Q00.GetStage() == 10 && !bStandoffSceneStarted && !bStandoffSceneDone
+        RegisterForSingleUpdate(2.0)
+        Return
+    EndIf
     If !CanStartQ00() || fHailSithisDoneTime <= 0.0
         Return
     EndIf
@@ -377,7 +395,9 @@ EndEvent
 ; Places Veyra at the chair and Nazir over her, and fills the Q00 aliases. Q00 alias IDs follow the
 ; order in the quest: 0 Veyra, 1 Nazir, 2 Babette, 3 Cicero (never renumber, save compatibility).
 ; Coordinates from getpos/getangle in DawnstarSanctuary, 25.09.2026. Veyra stands beside the chair
-; for now; sitting comes with the Standoff scene's package/furniture in the CK.
+; for now. Keeping everybody on their spot is NOT done here: the Q00 aliases carry the package
+; NHV_Pkg_Q00_StandoffHold (vanilla DoNothing template, until stage 20), which outranks their own
+; sandbox packages. Script-side freezing (EnableAI/SetDontMove) was removed in version 17.
 Function PrepareStandoff()
     If !VeyraRef && VeyraBase && DawnstarAnchorRef
         VeyraRef = DawnstarAnchorRef.PlaceAtMe(VeyraBase, 1, True, False) as Actor
@@ -401,30 +421,36 @@ Function PrepareStandoff()
     PlaceStandoffActor(1, 0x01C3AD, 2462.77, 4975.05, 5620.0, 343.0)
     PlaceStandoffActor(2, 0x01D4BC, 2002.43, 5345.85, 5695.10, 0.0)
     ; Babette and Cicero: which of the two spots is whose does not matter for now (developer, 25.09.2026).
-    PlaceStandoffActor(3, 0x01E64A, 2485.03, 4466.59, 5618.41, 0.0)
+    ; Cicero is CiceroDawnstarRef (0x09BCB0), the one who lives in Dawnstar after "The Cure for Madness"
+    ; if spared (UESP). Killing him there kills only the Falkreath Cicero 0x01E64A; the Dawnstar one then
+    ; stays disabled but alive, and PlaceStandoffActor would enable him. So 0x01E64A decides (same test as
+    ; the scene's phase 4 and Proposal04b). Until version 17 the alias pointed at 0x01E64A itself.
+    Actor kFalkreathCicero = Game.GetFormFromFile(0x01E64A, "Skyrim.esm") as Actor
+    If kFalkreathCicero && kFalkreathCicero.IsDead()
+        ReferenceAlias kCiceroAlias = Q00.GetAlias(3) as ReferenceAlias
+        If kCiceroAlias
+            kCiceroAlias.Clear()
+        EndIf
+        NHV_Util.Log(NHV_Cfg_Debug, "PrepareStandoff: Cicero was killed (0x01E64A dead), alias 3 cleared")
+    Else
+        PlaceStandoffActor(3, 0x09BCB0, 2485.03, 4466.59, 5618.41, 0.0)
+    EndIf
     HideStandoffBystanders()
     LogStandoffActor("Veyra", 0)
     LogStandoffActor("Nazir", 1)
     LogStandoffActor("Babette", 2)
     LogStandoffActor("Cicero", 3)
-    Utility.Wait(0.5) ; let everybody land on the floor before the freeze
-    ; Everyone has to stand in place when the player walks into the room, so their AI is frozen until
-    ; the scene runs. ReleaseStandoff() unfreezes them (scene start, and as a safety net on Q00 stage 15/20).
-    FreezeStandoffActors(True)
     bStandoffSceneStarted = False
+    bStandoffSceneDone = False
     RegisterForSingleUpdate(2.0)
 EndFunction
 
-; Polls (real time, every 2 s) while Q00 sits on stage 10 until the player comes near Veyra, then starts
-; the Standoff scene. Stops by itself once the stage moves on or the scene has been started.
+; Polls (real time, every 2 s) while Q00 sits on stage 10 and the player is in the Sanctuary, until he
+; comes near Veyra, then starts the Standoff scene once. Stops by itself once the stage moves on, the scene
+; has been started or the player leaves; OnEnterDawnstarSanctuary() resumes it on his return.
+; The scene only speaks if every line has a voice file: silent ones come from tools/silent_voice.py (E10).
 Event OnUpdate()
     If bStandoffSceneStarted
-        ; Guard phase: for 30 s keep other scenes away from the Standoff actors while ours plays.
-        If iSceneGuardTicks > 0 && Q00 && Q00.IsRunning() && Q00.GetStage() == 10
-            StopOtherScenes()
-            iSceneGuardTicks -= 1
-            RegisterForSingleUpdate(1.0)
-        EndIf
         Return
     EndIf
     If !Q00 || !Q00.IsRunning() || Q00.GetStage() != 10
@@ -434,10 +460,23 @@ Event OnUpdate()
         NHV_Util.Log(NHV_Cfg_Debug, "OnUpdate: StandoffScene not set, Standoff scene cannot start")
         Return
     EndIf
-    If VeyraRef && VeyraRef.GetDistance(Game.GetPlayer()) < 800.0
+    If !VeyraRef
+        NHV_Util.Log(NHV_Cfg_Debug, "OnUpdate: VeyraRef not set, Standoff scene cannot start")
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    If VeyraRef.GetDistance(kPlayer) < 800.0
         bStandoffSceneStarted = True
-        PlayStandoffIntro()
-    Else
+        ; A vanilla Sanctuary scene holding Nazir or Babette would keep ours from getting them.
+        StopOtherScenes()
+        StandoffScene.Start()
+        NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
+        If NHV_Cfg_Debug && NHV_Cfg_Debug.GetValueInt() == 1
+            Utility.Wait(2.0)
+            NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene IsPlaying=" + StandoffScene.IsPlaying())
+            LogSceneMembership()
+        EndIf
+    ElseIf kPlayer.IsInLocation(DawnstarSanctuaryLocation)
         RegisterForSingleUpdate(2.0)
     EndIf
 EndEvent
@@ -505,7 +544,8 @@ Function LogStandoffActor(String asName, Int aiAlias)
     NHV_Util.Log(NHV_Cfg_Debug, "Standoff " + asName + ": dead=" + kActor.IsDead() + " disabled=" + kActor.IsDisabled() + " pos=" + kActor.GetPositionX() + "/" + kActor.GetPositionY() + "/" + kActor.GetPositionZ() + " cell=" + sCell)
 EndFunction
 
-; Freezes/unfreezes the Q00 actors (aliases 0-3). Dead actors and empty aliases are skipped.
+; Freezes/unfreezes the Q00 actors (aliases 0-3). Since version 17 only ever called with False, to undo
+; the freezing of earlier dev builds (RepairFrozenActors, ReleaseStandoff). Dead actors/empty aliases skipped.
 Function FreezeStandoffActors(Bool abFreeze)
     Int i = 0
     While i < 4
@@ -514,6 +554,9 @@ Function FreezeStandoffActors(Bool abFreeze)
             Actor kActor = kAlias.GetActorReference()
             If kActor && !kActor.IsDead()
                 kActor.EnableAI(!abFreeze)
+                If !abFreeze
+                    kActor.EvaluatePackage() ; pick up NHV_Pkg_Q00_StandoffHold right away
+                EndIf
             EndIf
         EndIf
         i += 1
@@ -539,16 +582,15 @@ Function HideStandoffBystanders()
     While i < iNum && iBystanderCount < 20
         Actor kActor = kCell.GetNthRef(i, 43) as Actor
         If kActor && kActor != kPlayer && kActor != VeyraRef && !kActor.IsDead() && !kActor.IsDisabled() && !kActor.IsPlayerTeammate() && !IsStandoffActor(kActor)
-            ; Some actors (prisoners) have an enable-state parent and cannot be disabled (harmless error
-            ; in the log). IsDisabled() cannot be used to check: it still says false right after Disable().
-            ; Their own looping scenes (torture victims keep talking) drown out the Standoff subtitles.
+            ; The prisoners have an enable-state parent and stay enabled (one harmless "cannot disable" line
+            ; each in the log). IsDisabled() cannot tell right after Disable(), so every candidate is remembered.
+            ; Their own looping scenes (the torture victims keep talking) would drown out the Standoff
+            ; subtitles, so those are stopped; their AI stays on.
             Scene kOwnScene = kActor.GetCurrentScene()
             If kOwnScene
                 kOwnScene.Stop()
             EndIf
             kActor.Disable()
-            ; Actors with an enable-state parent stay enabled; freeze their AI so they stop talking.
-            kActor.EnableAI(False)
             StandoffBystanders[iBystanderCount] = kActor
             iBystanderCount += 1
         EndIf
@@ -567,44 +609,6 @@ Bool Function IsStandoffActor(Actor akActor)
         i += 1
     EndWhile
     Return False
-EndFunction
-
-; The Standoff opening lines, spoken by the actors themselves with Actor.Say and the topics that were built
-; in the CK scene editor. The real scene (StandoffScene) ran (IsPlaying=TRUE, actors inside) but played no line
-; and let Nazir sit down / Babette walk off (25.09.2026 tests), so it is not started for now. The actors stay
-; frozen (no AI), which keeps them in place; ReleaseStandoff() frees them on Q00 stage 15/20.
-Function PlayStandoffIntro()
-    NHV_Util.Log(NHV_Cfg_Debug, "Standoff intro: start")
-    Actor kNazir = (Q00.GetAlias(1) as ReferenceAlias).GetActorReference()
-    Actor kBabette = (Q00.GetAlias(2) as ReferenceAlias).GetActorReference()
-    Actor kCicero = (Q00.GetAlias(3) as ReferenceAlias).GetActorReference()
-    SayStandoffLine(kNazir, 0x002B4F, 65)
-    SayStandoffLine(kNazir, 0x002B4F, 100)
-    SayStandoffLine(VeyraRef, 0x002B53, 80)
-    SayStandoffLine(kBabette, 0x002B55, 55)
-    If kCicero && !kCicero.IsDead()
-        SayStandoffLine(kCicero, 0x002B57, 70)
-        SayStandoffLine(VeyraRef, 0x002B59, 30)
-    EndIf
-    NHV_Util.Log(NHV_Cfg_Debug, "Standoff intro: done")
-EndFunction
-
-; Speaks one topic and waits roughly as long as the line takes to read (no voice files, so no length known).
-Function SayStandoffLine(Actor akSpeaker, Int aiTopicFormID, Int aiChars)
-    Topic kTopic = Game.GetFormFromFile(aiTopicFormID, "NightsHarvest.esp") as Topic
-    If !akSpeaker || !kTopic
-        NHV_Util.Log(NHV_Cfg_Debug, "SayStandoffLine: speaker or topic missing (" + aiTopicFormID + ")")
-        Return
-    EndIf
-    ; An actor with AI disabled does not process its speech queue: the first test left every line hanging
-    ; and they popped up one by one whenever the player opened a dialogue (blocking its menu). So the
-    ; speaker's AI runs only while it talks, then it is frozen again.
-    akSpeaker.EnableAI(True)
-    Utility.Wait(0.3)
-    akSpeaker.Say(kTopic)
-    NHV_Util.Log(NHV_Cfg_Debug, "Say " + aiTopicFormID)
-    Utility.Wait(1.0 + aiChars * 0.07)
-    akSpeaker.EnableAI(False)
 EndFunction
 
 ; Debug aid: which Q00 actors are currently inside the Standoff scene (25.09.2026: scene "played" but nobody spoke).
@@ -641,9 +645,8 @@ Function StopOtherScenes()
     EndWhile
 EndFunction
 
-; Stops the Q00 actors from walking (SetDontMove) while their AI keeps running, which the running scene
-; needs to speak. Without it Nazir sat down and Babette walked off as soon as the freeze was lifted
-; (25.09.2026 test).
+; SetDontMove on the Q00 actors. Since version 17 only ever called with False, to undo earlier dev builds
+; (it made everybody walk on the spot, 25.09.2026).
 Function HoldStandoffActors(Bool abHold)
     Int i = 0
     While i < 4
@@ -658,16 +661,42 @@ Function HoldStandoffActors(Bool abHold)
     EndWhile
 EndFunction
 
-; Called when the Standoff scene starts and from the Q00 stage 15/20 fragments.
+; Called from the Q00 stage 15/20 fragments.
 Function ReleaseStandoff()
     FreezeStandoffActors(False)
     HoldStandoffActors(False)
     RestoreStandoffBystanders()
 EndFunction
 
-; Called at the end of the Standoff scene so Nazir and the others stay put for the player dialogue.
+; Called by the End fragment of NHV_Scn_Q00_01Standoff (SF_NHV_Scn_Q00_01Standoff_02002B4E). Froze the
+; actors until version 16; now it only notes that the scene has finished - the alias package keeps them in
+; place, and frozen actors cannot answer the player. Name kept because the compiled fragment calls it.
 Function RefreezeStandoff()
-    FreezeStandoffActors(True)
+    bStandoffSceneDone = True
+    NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene finished")
+EndFunction
+
+; Undoes the freezing of script versions 9-16 in existing saves (Migrate step 17).
+Function RepairFrozenActors()
+    If !Q00
+        Return
+    EndIf
+    FreezeStandoffActors(False)
+    HoldStandoffActors(False)
+    ; Veyra too, in case Q00 was stopped/reset in the dev save and her alias is empty.
+    If VeyraRef
+        VeyraRef.EnableAI(True)
+        VeyraRef.SetDontMove(False)
+        VeyraRef.EvaluatePackage()
+    EndIf
+    Int i = 0
+    While i < iBystanderCount
+        If StandoffBystanders[i]
+            StandoffBystanders[i].EnableAI(True)
+        EndIf
+        i += 1
+    EndWhile
+    NHV_Util.Log(NHV_Cfg_Debug, "RepairFrozenActors: AI of Standoff actors and bystanders re-enabled")
 EndFunction
 
 ; Brings the hidden random NPCs back.

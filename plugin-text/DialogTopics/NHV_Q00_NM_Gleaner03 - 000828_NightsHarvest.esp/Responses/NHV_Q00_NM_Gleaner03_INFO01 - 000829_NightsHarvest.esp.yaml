@@ -5,6 +5,7 @@ PreviousDialog: Null
 FavorLevel: None
 Responses:
 - EmotionValue: 20
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -14,6 +15,7 @@ Responses:
   Edits: ''
 - Emotion: Sad
   EmotionValue: 20
+  ResponseNumber: 2
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -27,6 +29,11 @@ Conditions:
     MutagenObjectType: GetStageConditionData
     Quest: 000815:NightsHarvest.esp
   ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 022440:Skyrim.esm
+  ComparisonValue: 1
 Prompt:
   TargetLanguage: English
   Value: Why have you never spoken to her?

@@ -3,7 +3,8 @@
     Gleicht das Repo mit der Dev-Kopie des Spiels ab (nur kopieren, nie loeschen).
 
 .DESCRIPTION
-    ToDev   : kompilierte Scripts (.pex), eigene Quellen (NHV_*.psc) und optional das ESP in die Dev-Kopie.
+    ToDev   : kompilierte Scripts (.pex), eigene Quellen (NHV_*.psc), Sprachdateien (.fuz) und optional
+              das ESP in die Dev-Kopie.
     FromDev : das vom Creation Kit gespeicherte ESP (plus SEQ und FaceGen) zurueck ins Repo.
               Quelle ist die neuere Datei aus <Dev>\Data oder MO2\overwrite (das CK schreibt ueber MO2
               neue Dateien nach overwrite).
@@ -55,6 +56,19 @@ if ($Direction -eq 'ToDev') {
     }
     foreach ($f in Get-ChildItem (Join-Path $repoData 'Source\Scripts') -Filter 'NHV_*.psc' -ErrorAction SilentlyContinue) {
         Copy-Safe $f.FullName (Join-Path $devData "Source\Scripts\$($f.Name)")
+    }
+    # The CK writes fragment scripts through MO2 into overwrite, and MO2 lets overwrite win over the Dev copy.
+    # Refresh copies that exist there, so a stale CK build never shadows the current one.
+    foreach ($pattern in @(@('Scripts', '*.pex'), @('Source\Scripts', '*.psc'))) {
+        foreach ($f in Get-ChildItem (Join-Path $overwrite $pattern[0]) -Filter $pattern[1] -ErrorAction SilentlyContinue) {
+            $src = Join-Path $repoData "$($pattern[0])\$($f.Name)"
+            if (Test-Path -LiteralPath $src) { Copy-Safe $src $f.FullName }
+        }
+    }
+    # Voice files (silent ones from tools\silent_voice.py, E21)
+    $voice = Join-Path $repoData "Sound\Voice\$esp"
+    foreach ($f in Get-ChildItem $voice -Filter '*.fuz' -File -Recurse -ErrorAction SilentlyContinue) {
+        Copy-Safe $f.FullName (Join-Path $devData ($f.FullName.Substring($repoData.Length).TrimStart('\')))
     }
     if ($IncludeEsp) {
         $src = Join-Path $repoData $esp

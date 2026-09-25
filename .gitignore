@@ -1,5 +1,7 @@
 # Build-Artefakte (Pyro erzeugt sie reproduzierbar; Release-Archive liegen in GitHub Releases)
 *.pex
+# Stille Sprachdateien: tools/silent_voice.py erzeugt sie aus plugin-text/ (E10)
+/Data/Sound/Voice/NightsHarvest.esp/
 *.bsa
 *.7z
 /build/

@@ -3,8 +3,11 @@ EditorID: NHV_Q00_Veyra_Standoff01_INFO01
 Flags: {}
 PreviousDialog: Null
 FavorLevel: None
+LinkTo:
+- 000854:NightsHarvest.esp
 Responses:
 - EmotionValue: 40
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -13,6 +16,7 @@ Responses:
   ScriptNotes: ''
   Edits: ''
 - EmotionValue: 30
+  ResponseNumber: 2
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:

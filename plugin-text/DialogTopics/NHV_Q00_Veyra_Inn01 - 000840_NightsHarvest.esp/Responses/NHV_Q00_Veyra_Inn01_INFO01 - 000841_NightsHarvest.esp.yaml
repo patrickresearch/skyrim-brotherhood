@@ -5,6 +5,7 @@ PreviousDialog: Null
 FavorLevel: None
 Responses:
 - EmotionValue: 30
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -18,6 +19,11 @@ Conditions:
     MutagenObjectType: GetStageConditionData
     Quest: 000815:NightsHarvest.esp
   ComparisonValue: 15
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
 Prompt:
   TargetLanguage: English
   Value: Come back. The Night Mother will decide about you.

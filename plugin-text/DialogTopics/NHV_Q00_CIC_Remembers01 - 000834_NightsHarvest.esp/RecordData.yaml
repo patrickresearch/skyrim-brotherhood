@@ -1,5 +1,6 @@
 FormKey: 000834:NightsHarvest.esp
 EditorID: NHV_Q00_CIC_Remembers01
+Priority: 60
 Branch: 002D00:NightsHarvest.esp
 Quest: 000815:NightsHarvest.esp
 SubtypeName: CUST

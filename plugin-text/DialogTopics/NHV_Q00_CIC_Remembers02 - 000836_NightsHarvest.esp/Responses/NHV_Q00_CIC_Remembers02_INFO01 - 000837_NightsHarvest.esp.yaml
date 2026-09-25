@@ -6,6 +6,7 @@ FavorLevel: None
 Responses:
 - Emotion: Happy
   EmotionValue: 40
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -19,6 +20,11 @@ Conditions:
     MutagenObjectType: GetStageConditionData
     Quest: 000815:NightsHarvest.esp
   ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 09BCAF:Skyrim.esm
+  ComparisonValue: 1
 Prompt:
   TargetLanguage: English
   Value: You have every right to be angry.

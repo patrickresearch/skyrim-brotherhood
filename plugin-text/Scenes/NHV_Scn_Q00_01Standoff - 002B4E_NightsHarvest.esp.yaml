@@ -26,8 +26,13 @@ Phases:
   - MutagenObjectType: ConditionFloat
     Data:
       MutagenObjectType: GetDeadConditionData
-      RunOnType: QuestAlias
-      RunOnTypeIndex: 3
+      RunOnType: Reference
+      Reference: 01E64A:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetDeadConditionData
+      RunOnType: Reference
+      Reference: 09BCB0:Skyrim.esm
   Unused2: {}
   EditorWidth: 200
 Actors:

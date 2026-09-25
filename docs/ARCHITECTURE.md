@@ -103,6 +103,8 @@ ModEvents für Patches/Addons: `NHV_RecruitJoined`, `NHV_RecruitDied`, `NHV_Cont
 - Generischer Rekrutierungsdialog in `NHV_Sys_Ledger`, Condition `GetInFaction NHV_CandidateFaction == 1`.
 - Szenen als Scene-Records; Actors vorher per `MoveTo` auf XMarker (Pathing-Option B, keine Navmesh-Edits in der Vanilla-Sanctuary). Jede Szene hat eine Fallback-Stage.
 - Tagesabläufe über Alias-Packages; Veyra nachtaktiv.
+- **Szenen-Aufstellung Q00:** Die vier Q00-Aliase (Veyra, Nazir, Babette, Cicero = `CiceroDawnstarRef`) tragen `NHV_Pkg_Q00_StandoffHold` (DoNothing-Template, Bedingung Q00-Stage < 20, Quest-Priorität 90 schlägt die Sandbox-Packages). Akteure werden nie per `EnableAI(False)`/`SetDontMove` festgehalten – eingefrorene Akteure können weder in Szenen sprechen noch Dialog beantworten (Test 25.09.2026).
+- **Unvertonte Zeilen (E21):** Jede NPC-Antwort braucht eine Sprachdatei, sonst läuft sie in Szenen nicht und im Dialog nur einen Sekundenbruchteil. `tools/silent_voice.py` erzeugt stille `.fuz`; dafür braucht jede INFO einen eindeutigen Sprecher (Speaker bei Szenenzeilen, sonst `GetIsID` auf die Basis, nie auf eine Referenz) und Antwortnummern ab 1.
 - `NHV_DeepSanctuaryCell` mit Location `NHV_DeepSanctuaryLocation` (Parent: Vanilla-Sanctuary-Location), Encounter Zone „Never Resets“, Room Bounds und Portale, Lighting Template. Räume mit Enable-Parents für verfallen/eingerichtet.
 - **Zugang Deep Sanctuary (E16, E09):** Script-Tür statt Load Door, keine Zell-Kopie der Vanilla-Sanctuary. Weder der Geröll-Activator noch die spätere Tür werden im CK in die Vanilla-Sanctuary-Zelle platziert (das würde entgegen E16 doch eine Zell-Kopie erzeugen) – beide entstehen per Script (`PlaceAtMe` an einer fest im Script hinterlegten Position/Rotation, `NHV_Mk_Q00_SealedPassageDoor` als EditorID des erzeugten Referenz-Basisobjekts). Ein Enable-Parent-Tausch im Script ersetzt den Activator nach der Proposal-Szene durch die Tür-Referenz. Die Tür ruft `MoveTo` auf ein XMarker in `NHV_DeepSanctuaryCell`, keine Navmesh-Verknüpfung zur Vanilla-Zelle. Follower folgen über den Catch-up-Teleport des Follower-Systems (M1.6), nicht über echtes Gehen durch die Tür. (Korrigiert 23.09.2026 – vorherige Fassung sagte fälschlich „Platzierung im CK", was der E16-Folgen-Formulierung in `docs/DECISIONS.md` widersprach.)
 
@@ -118,7 +120,7 @@ NightsHarvest/
 │  ├─ Source/Scripts/            .psc
 │  ├─ Interface/Translations/    NightsHarvest_ENGLISH.txt (UTF-16 LE mit BOM)
 │  ├─ SEQ/                       NightsHarvest.seq, falls nötig
-│  └─ Sound/Voice/NightsHarvest.esp/   ab v1.1
+│  └─ Sound/Voice/NightsHarvest.esp/   stille .fuz aus tools/silent_voice.py (E21, nicht versioniert); echte Stimmen ab v1.1
 ├─ plugin-text/                  Spriggit-Export
 ├─ dialogue/                     CSV-Master-Skript
 ├─ tools/                        Python-Tools

@@ -127,22 +127,30 @@ Aliases:
 - Name: Veyra
   Flags:
   - Optional
+  PackageData:
+  - 000DD7:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 1
   Name: Nazir
   Flags:
   - Optional
   ForcedReference: 01C3AD:Skyrim.esm
+  PackageData:
+  - 000DD7:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 2
   Name: Babette
   Flags:
   - Optional
   ForcedReference: 01D4BC:Skyrim.esm
+  PackageData:
+  - 000DD7:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 3
   Name: Cicero
   Flags:
   - Optional
-  ForcedReference: 01E64A:Skyrim.esm
+  ForcedReference: 09BCB0:Skyrim.esm
+  PackageData:
+  - 000DD7:NightsHarvest.esp
   VoiceTypes: Null

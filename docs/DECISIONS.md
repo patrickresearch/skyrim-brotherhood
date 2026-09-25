@@ -26,12 +26,22 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E18 | Status-Wert für getötete Rekruten | 2 (Definition in Konzept Abschnitt 5) / 4 (zwei Stellen im Konzept) | 2 | vor M1.6 | Entschieden |
 | E19 | MCM-Texte: Übersetzungsschlüssel in v0.0.1 | Jetzt `$NHV_*`-Keys + Translations-Datei / vorerst Literal-Strings, Umstellung in M6 | Vorerst Literal-Strings | vor M6 | Entschieden |
 | E20 | Startbedingung Q00 | Nach „Hail Sithis!“ / nach „The Dark Brotherhood Forever“ (`DBrecurring`) | Nach `DBrecurring`, Wartezeit ab diesem Zeitpunkt | vor M1.9 | Entschieden |
+| E21 | Technik für unvertonte Zeilen | Stille Sprachdateien mitliefern / Fuz Ro D-oh voraussetzen | Stille Sprachdateien (`tools/silent_voice.py`) | M1.5 | Entschieden |
 
 ### Hintergrund E16
 
 Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin. Die Kopie ändert nichts, kann aber Änderungen anderer Mods an derselben Zelle (z. B. Beleuchtung) überdecken, wenn Night's Harvest später lädt. Das betrifft auch Quest-Referenzen in Städten (Q01–Q05). Grundregel unabhängig von E16: Schlüsselszenen in eigenen Innenzellen, berührte Vanilla-Zellen minimieren und in `docs/ARCHITECTURE.md` listen.
 
 ## Entscheidungs-Einträge
+
+### E21 – Technik für unvertonte Zeilen
+
+- **Datum:** 25.09.2026
+- **Entschieden von:** Entwickler
+- **Kontext:** Ohne Sprachdatei zeigt Skyrim eine Antwort nur für einen Sekundenbruchteil, und Szenen-Zeilen werden gar nicht abgespielt (Standoff-Szene lief „leer“, Test 25.09.2026). Fuz Ro D-oh löst das zur Laufzeit, wäre aber eine neue harte Abhängigkeit (Regel 5).
+- **Optionen:** A stille Sprachdateien je Zeile mitliefern, B Fuz Ro D-oh voraussetzen.
+- **Entscheidung:** A. `tools/silent_voice.py` erzeugt aus `plugin-text/` je NPC-Antwort eine stille `.fuz` (xWMA, ohne Lip-Daten; Dauer = Wörter / 2,5 + 1 s, mindestens 2 s) unter `Data/Sound/Voice/NightsHarvest.esp/<VoiceType>/`. Dateiname nach Engine-Schema `<Quest[:10]>_<Topic[:15]>_<00+INFO-ID>_<Antwortnummer>`. Die Dateien sind Build-Artefakte (nicht im Git), `sync_dev.ps1` kopiert sie in die Dev-Kopie, `package.ps1` packt sie unkomprimiert ins BSA.
+- **Folgen:** Jede INFO mit NPC-Text braucht einen eindeutigen Sprecher (Speaker oder `GetIsID`) und Antwortnummern ab 1, sonst meldet das Tool einen Fehler. Echte Aufnahmen (E10/E11, Voice-Pack) ersetzen die Dateien später; das Tool überschreibt nur Dateien aus seinem eigenen Manifest. E10 (Vertonung zum Release) bleibt davon unberührt offen.
 
 ### E19 – MCM-Texte: Übersetzungsschlüssel in v0.0.1
 

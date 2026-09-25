@@ -6,6 +6,7 @@ FavorLevel: None
 Responses:
 - Emotion: Happy
   EmotionValue: 10
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -29,3 +30,8 @@ Conditions:
     MutagenObjectType: GetDeadConditionData
     RunOnType: Reference
     Reference: 01E64A:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 09BCB0:Skyrim.esm

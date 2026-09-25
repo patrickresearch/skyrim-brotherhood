@@ -9,6 +9,11 @@ Conditions:
     MutagenObjectType: GetStageConditionData
     Quest: 000815:NightsHarvest.esp
   ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 022440:Skyrim.esm
+  ComparisonValue: 1
 Prompt:
   TargetLanguage: English
   Value: That is all I needed, Mother.

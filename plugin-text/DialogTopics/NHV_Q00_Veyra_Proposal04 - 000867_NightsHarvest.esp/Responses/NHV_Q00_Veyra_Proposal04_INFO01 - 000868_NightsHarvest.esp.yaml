@@ -1,11 +1,16 @@
 FormKey: 000868:NightsHarvest.esp
 EditorID: NHV_Q00_Veyra_Proposal04_INFO01
-Flags: {}
+Flags:
+  Flags:
+  - InvisibleContinue
 PreviousDialog: Null
 FavorLevel: None
+LinkTo:
+- 000869:NightsHarvest.esp
 Responses:
 - Emotion: Sad
   EmotionValue: 40
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -15,6 +20,7 @@ Responses:
   Edits: ''
 - Emotion: Sad
   EmotionValue: 50
+  ResponseNumber: 2
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:

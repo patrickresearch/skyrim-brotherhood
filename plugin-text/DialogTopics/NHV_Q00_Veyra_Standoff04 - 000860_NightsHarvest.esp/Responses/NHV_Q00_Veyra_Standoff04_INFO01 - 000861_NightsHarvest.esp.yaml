@@ -6,6 +6,7 @@ FavorLevel: None
 Responses:
 - Emotion: Anger
   EmotionValue: 30
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
@@ -22,7 +23,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 01C3AD:Skyrim.esm
+    Object: 01C3AB:Skyrim.esm
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English

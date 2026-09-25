@@ -5,6 +5,7 @@ PreviousDialog: Null
 FavorLevel: None
 Responses:
 - EmotionValue: 30
+  ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:

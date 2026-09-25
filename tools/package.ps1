@@ -4,7 +4,8 @@
 
 .DESCRIPTION
     1. Scripts kompilieren (tools\build.ps1)
-    2. Scripts (und Interface\Translations, falls vorhanden) mit bsarch in NightsHarvest.bsa packen
+    2. Stille Sprachdateien erzeugen (tools\silent_voice.py) und mit den Scripts (und Interface\Translations,
+       falls vorhanden) mit bsarch unkomprimiert in NightsHarvest.bsa packen
     3. 00 Core\ mit ESP, BSA, optional SEQ; fomod\ mit info.xml und ModuleConfig.xml
     4. Alles mit 7-Zip nach dist\ packen
     Nach dist\ und in das Staging wird nur unter dem Repo geschrieben.
@@ -36,6 +37,8 @@ $version = $info.fomod.Version
 if (-not $version) { throw 'fomod\info.xml enthaelt keine <Version>.' }
 
 if (-not $SkipBuild) { & (Join-Path $PSScriptRoot 'build.ps1'); if ($LASTEXITCODE) { exit $LASTEXITCODE } }
+# Silent voice files (E10): without them dialogue lines flash by and scene lines never play.
+& python (Join-Path $PSScriptRoot 'silent_voice.py'); if ($LASTEXITCODE) { throw 'silent_voice.py ist fehlgeschlagen.' }
 
 $dist = Join-Path $repo 'dist'
 $stage = Join-Path $dist 'stage'
@@ -54,7 +57,15 @@ if ($transFiles) {
     Copy-Item $transFiles.FullName $transDst
 }
 
-& $bsarch pack $bsaSrc (Join-Path $core 'NightsHarvest.bsa') -sse -z -mt | Out-Null
+$voiceSrc = Join-Path $data 'Sound\Voice\NightsHarvest.esp'
+if (Test-Path $voiceSrc) {
+    $voiceDst = Join-Path $bsaSrc 'Sound\Voice\NightsHarvest.esp'
+    New-Item -ItemType Directory -Force $voiceDst | Out-Null
+    Copy-Item (Join-Path $voiceSrc '*') $voiceDst -Recurse -Exclude 'silent_voice.manifest'
+}
+
+# No -z: voice files do not play from a compressed BSA (the vanilla voice archives are uncompressed too).
+& $bsarch pack $bsaSrc (Join-Path $core 'NightsHarvest.bsa') -sse -mt | Out-Null
 if ($LASTEXITCODE -or -not (Test-Path (Join-Path $core 'NightsHarvest.bsa'))) { throw 'bsarch konnte das BSA nicht erstellen.' }
 
 Copy-Item -LiteralPath $EspPath -Destination (Join-Path $core 'NightsHarvest.esp')

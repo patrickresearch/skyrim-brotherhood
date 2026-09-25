@@ -9,6 +9,11 @@ Conditions:
     MutagenObjectType: GetStageConditionData
     Quest: 000815:NightsHarvest.esp
   ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
 Prompt:
   TargetLanguage: English
   Value: Agreed. We rebuild.

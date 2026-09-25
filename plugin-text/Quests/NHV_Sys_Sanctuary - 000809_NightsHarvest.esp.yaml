@@ -17,7 +17,7 @@ Aliases:
   Name: Cicero
   Flags:
   - Optional
-  ForcedReference: 01E64A:Skyrim.esm
+  ForcedReference: 09BCB0:Skyrim.esm
   VoiceTypes: Null
 - ID: 3
   Name: NightMother

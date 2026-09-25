@@ -16,6 +16,17 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**25.09.2026 (Abend 2): Standoff-Schleife aufgelöst – Blöcke A und B erledigt, Ingame-Test (Block C) steht aus.**
+Ursachen der Fehlerschleife: (1) Szenen-Zeilen ohne Sprachdatei werden nicht abgespielt → stille
+`.fuz` per `tools/silent_voice.py` (E21, 39 Dateien, houseCARL: „present, 0 SILENT“); (2) eingefrorene
+Akteure (`EnableAI(False)`) können nicht sprechen/antworten → Einfrieren entfernt, Festhalten per
+Alias-Package `NHV_Pkg_Q00_StandoffHold` (bis Stage 20), `NHV_CoreScript` v17 mit Reparatur-Migration;
+(3) Cicero-Alias zeigte auf den Falkreath-Cicero statt `CiceroDawnstarRef` (09BCB0); (4) 17 Q00-INFOs
+ohne Sprecher-Bedingung (wären bei jedem NPC erschienen) → `GetIsID` Veyra/Cicero/Night Mother
+(Talking Activator), Standoff04 auf Nazirs Basis statt Referenz; (5) Folge-Topics hängen jetzt am
+Branch des Eltern-Topics (`LinkTo`, Proposal04→04b per InvisibleContinue), Menü-Reihenfolge per
+Priority; Response-Nummern ab 1. **Nicht getestet:** alles davon ingame. Testanleitung: „Nächster Schritt“.
+
 **25.09.2026 (spät): Q00 Szene 1 im CK gebaut und übernommen.** `NHV_Scn_Q00_01Standoff` (Phasen 1–4, Aktionen `010_01`, `010_03`–`010_06`; `010_02` ist zweite Response von `010_01`), Phase-4-Bedingung `GetDead` auf Alias Cicero, End-Fragment `RefreezeStandoff()`, `StandoffScene` am `NHV_Sys_Core` gefüllt. Round-Trip Text→ESP funktioniert. Diesmal trat der CK-Save-Schaden **nicht** auf. CK-Compiler: `Cell.psc` (SKSE) nötig, SKSE-`Form.psc` darf **nicht** in `Data\Source\Scripts` liegen (siehe ENVIRONMENT.md). **Nicht getestet:** Ablauf Standoff-Szene ingame (Start bei <800 Units, Reihenfolge, Einfrieren danach). **Offen:** Veyra sitzend (echte Stuhl-Referenz nötig, houseCARL-Abfrage hing), Szenen 2–6, Bücher, Veyra-Rest.
 
 
@@ -217,6 +228,52 @@ Option 1) – Schema jetzt gesichert, nicht mehr raten nötig:
 
 ## Nächster Schritt
 
+### Test Q00 Standoff (Block C, Entwickler, Stand 25.09.2026 Abend 2)
+
+Alles ist in der Dev-Kopie (ESP, Scripts, 39 `.fuz`, auch die `overwrite`-Kopien der Fragmente).
+
+**Vorbereitung**
+1. Spielstand **vor** dem Q00-Start laden (100 %-Save, außerhalb oder in der Sanctuary, Q00 läuft
+   noch nicht). Ältere Saves mit laufendem Q00 gehen auch, schreiben aber einmal
+   `variable iSceneGuardTicks … will be skipped` ins Log (erwartet, harmlos).
+2. Konsole: `set NHV_Cfg_Debug to 1`. MCM → Startverzögerung 0 (oder MCM-Debug „Start Q00 now“).
+
+**Ablauf und Erwartung**
+1. Sanctuary betreten → Q00 startet. Veyra steht neben dem Stuhl, Nazir vor ihr, Babette und
+   (falls verschont) Cicero an ihren Plätzen. Initiaten weg, Gefangene still.
+2. Kurz warten: **niemand läuft weg** (Package).
+3. Auf unter ~800 Units an Veyra heran → Szene: Nazir (2 Zeilen), Veyra, Babette, (Cicero, Veyra).
+   **Jede Untertitelzeile bleibt 3–6 s stehen**, dann die nächste.
+4. Danach Veyra ansprechen: Standoff-Optionen, oben „Who are you?“. Diese wählen → Veyras zwei
+   Sätze lesbar, danach erscheint die Folgefrage (Standoff01b).
+5. Nazir ansprechen: nur dort „Nazir, lower your blade. Let her talk.“ Babette zeigt **keine**
+   Veyra-Optionen.
+6. Optional: `setstage NHV_Q00_ShadowAtTheDoor 20`, dann den Sarg der Night Mother aktivieren →
+   „Can she be trusted?“ usw. erscheinen, Antworten lesbar.
+
+**Papyrus-Log (`[NHV]`-Zeilen, bitte mitschicken)**
+- `Standoff: N bystander(s) hidden`
+- `Standoff scene started`, `Standoff scene IsPlaying=True`
+- `Standoff alias 0..3 in our scene: True` (3 fehlt, wenn Cicero tot ist; dann stattdessen
+  `PrepareStandoff: Cicero was killed (0x01E64A dead), alias 3 cleared`)
+- nach dem letzten Szenensatz: `Standoff scene finished`
+- **nicht** erwartet: `VeyraRef not set`, `StandoffScene not set`, Papyrus-Fehler mit `NHV_`
+
+**Bekannte Lücken (kein Testfehler, Block D):** Veyra sitzt nicht; Nazirs Verdachtszeilen
+`010_70–72` (→ Stage 20) fehlen, Stage 20 daher nur per `setstage`; Veyras Nachsatz `010_42`
+nach Option 4 fehlt; erste Proposal-Optionen `030_41/030_43` fehlen; Objective-Flags (FNAM).
+
+### Danach (Block D, Claude + Entwickler)
+
+1. Nazirs Verdacht `010_70–72` als kleine zweite Szene nach Option 1–5, → Stage 20 (CK-Anleitung).
+2. Fehlende Zeilen `010_42`, `030_41/030_43` einbauen; Antworten anderer Sprecher auf Veyra-Optionen
+   (z. B. Nazir nach „Agreed. We rebuild.“) über Szenen/Fragmente lösen.
+3. Veyra sitzend: Stuhl-RefID per Konsole (Klick auf den Stuhl) → Sit-Package am Veyra-Alias.
+4. Objective-FNAM-Flags, Aufräumen (`NHV_Mk_Q00_DeepSanctuaryEntry` ungenutzt, Scratch-Mod
+   „houseCARL - NHV_ScratchPackageSchema“ in MO2).
+
+### Älterer Stand (vor 25.09.2026)
+
 **M1.5 (Q00-Questhülle) ist zum Teil erledigt – der Rest braucht CK-Arbeit oder eine
 neue Schema-Erkundung. Details siehe Log 23.09. „M1.5 Q00-Questhülle".**
 
@@ -254,13 +311,42 @@ Hand anstoßen.
 
 ## Offene Rückfragen an den Entwickler
 
-- **Night Mother**: exakte platzierte Referenz-FormID muss im CK nachgesehen werden
-  (bewusst nicht geraten, siehe `docs/ck/M0.7-Record-Inventar-M1.md` Punkt 6).
+- **Night Mother**: Für Dialog reicht die Basis `DBNightMotherTalkingActivator` (022440, wie
+  Vanilla `DBRecurringSharedContractTopic`, per houseCARL geprüft). Die platzierte Referenz in
+  Dawnstar wird erst gebraucht, wenn ein Script sie ansprechen muss.
 - **RecruitDied() vs. OnDeath()**: Überschneidung zwischen Contract-Phase
   (`NHV_ContractBaseScript.RecruitDied()`, kommt in M1.7) und Post-Homecoming-Phase
   (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
 
 ## Log (neueste zuerst)
+
+### 2026-09-25 (Abend 2, Standoff-Schleife: Analyse + Blöcke A und B)
+
+- Nach mehreren Test-Runden ohne Fortschritt: Logs analysiert, Plan in Blöcken A–D, Entwickler
+  hat A und B freigegeben (B: stille Sprachdateien statt Fuz Ro D-oh → E21).
+- **A (Script/Records):** `NHV_CoreScript` v17 – Einfrieren, Say-Intro und Wach-Schleife entfernt;
+  Migration 17 (nur aus v9–16) taut eingefrorene Akteure auf und startet das Polling neu;
+  Polling nur solange der Spieler in der Sanctuary ist, `OnEnterDawnstarSanctuary` nimmt es
+  wieder auf; Gefangenen-Szenen werden wieder gestoppt; Migrate-Schritte aufsteigend sortiert.
+  Package `NHV_Pkg_Q00_StandoffHold` (000DD7, Vanilla-DoNothing-Template, bis Stage 20) an allen
+  vier Q00-Aliasen. Cicero = `CiceroDawnstarRef` 09BCB0 (UESP; vorher Falkreath-Cicero).
+  Dialog: Folge-Topics Standoff01b/Proposal04b im Eltern-Branch (Branch-Records 002D12/002D14
+  entfernt), `LinkTo` + InvisibleContinue, Topic-Priorities, Response-Nummern ab 1, Sprecher-
+  Bedingungen an 17 INFOs, Standoff04 `GetIsID` auf Nazirs Basis 01C3AB, Speaker an Szenenzeile
+  002B54. Zwei papyrus-reviewer-Runden. Aus Runde 2: In „The Cure for Madness“ stirbt nur der
+  Falkreath-Cicero 01E64A – ist er tot, bleibt Alias 3 leer (sonst hätte `PlaceStandoffActor` den
+  deaktivierten Dawnstar-Cicero wieder aktiviert); Szenenphase 4 und Proposal04b prüfen `GetDead`
+  auf 01E64A und 09BCB0; `NHV_Sys_Sanctuary`-Alias Cicero ebenfalls auf 09BCB0; Migration 17 ab
+  v6 (dort kam das Einfrieren); `bStandoffSceneDone` (vom End-Fragment gesetzt) verhindert, dass
+  eine fertige Szene erneut startet.
+- **B (Sprachdateien):** `tools/silent_voice.py` (stdlib, liest `plugin-text/`, Engine-Namensschema
+  per UESP + houseCARL bestätigt, `.fuz` ohne Lip-Daten, Manifest schützt echte Aufnahmen).
+  Dateien sind Build-Artefakte (`.gitignore`); `sync_dev.ps1` kopiert sie, `package.ps1` erzeugt
+  sie und packt das BSA jetzt unkomprimiert. `sync_dev.ps1` aktualisiert außerdem veraltete
+  Fragment-Scripts in `MO2\overwrite` (die hatten Vorrang vor der Dev-Kopie).
+- houseCARL-Dialogprüfung Q00: Szenen-Zeilen „present, 0 SILENT“, Graph ok; übrig nur 7
+  Objective-FNAM-Hinweise (Byte-Parität).
+- **Nicht getestet:** alles ingame (Block C, Anleitung unter „Nächster Schritt“).
 
 ### 2026-09-23 (Fortsetzung 7, M1.3 gestartet + houseCARL-Zwischenfall)
 - Entwickler wollte Q00 initiieren/testen; da M1.3 (Deep Sanctuary) und die Q00-Szenen noch
