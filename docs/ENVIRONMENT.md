@@ -101,3 +101,5 @@ Spriggit-Deserialize (Text → ESP) ist seit E17 erlaubt, aber nur nach der Ein-
 - Pfade mit Leerzeichen immer in Anführungszeichen.
 - Der Build darf nur in das Staging unter `Data/` bzw. in den Build-Ordner aus `NightsHarvest.ppj` schreiben, nie in den Live-Spielordner. Kopien in die Dev-Kopie sind erlaubt.
 - Schreibzugriffe auf Live-Spielordner, `Documents\My Games`, `%LOCALAPPDATA%\Skyrim Special Edition` und Vortex sind tabu, außer der Entwickler gibt sie im Einzelfall frei.
+
+**CK-Compiler und SKSE-Scripts (25.09.2026):** Der Compiler im Creation Kit (Fragment-Fenster) sucht Quellen nur in `<Dev>\Data\Source\Scripts`, Pyro durchsucht zusätzlich `<Dev>\Data\Scripts\Source`. `SKSE.psc` und `ModEvent.psc` lagen nur dort; ohne Kopie nach `Data\Source\Scripts` scheitern CK-Fragmente, die `NHV_CoreScript`/`NHV_Util` ansprechen („variable SKSE is undefined“). Beide Dateien wurden in der Dev-Kopie kopiert (bei Neuaufbau der Dev-Kopie wiederholen). Der CK meldet bei erfolgreichem Kompilieren nichts.
