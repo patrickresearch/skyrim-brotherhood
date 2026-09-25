@@ -58,15 +58,33 @@ if ($Direction -eq 'ToDev') {
         Copy-Safe $f.FullName (Join-Path $devData "Source\Scripts\$($f.Name)")
     }
     # The CK writes fragment scripts through MO2 into overwrite, and MO2 lets overwrite win over the Dev copy.
-    # Refresh copies that exist there, so a stale CK build never shadows the current one.
+    # Refresh copies that exist there, so a stale CK build never shadows the current one. A copy that is
+    # NEWER than the repo file is a fresh CK compile and is left alone (-Protect; -Force overrides).
     foreach ($pattern in @(@('Scripts', '*.pex'), @('Source\Scripts', '*.psc'))) {
         foreach ($f in Get-ChildItem (Join-Path $overwrite $pattern[0]) -Filter $pattern[1] -ErrorAction SilentlyContinue) {
             $src = Join-Path $repoData "$($pattern[0])\$($f.Name)"
-            if (Test-Path -LiteralPath $src) { Copy-Safe $src $f.FullName }
+            if (Test-Path -LiteralPath $src) { Copy-Safe $src $f.FullName -Protect }
         }
     }
-    # Voice files (silent ones from tools\silent_voice.py, E21)
+    # Voice files (silent ones from tools\silent_voice.py, E21). Generated files that the repo manifest no
+    # longer lists (renamed/removed lines) are deleted in the Dev copy; nothing else is ever deleted there.
     $voice = Join-Path $repoData "Sound\Voice\$esp"
+    $devVoice = Join-Path $devData "Sound\Voice\$esp"
+    $repoManifest = Join-Path $voice 'silent_voice.manifest'
+    $devManifest = Join-Path $devVoice 'silent_voice.manifest'
+    if ((Test-Path -LiteralPath $repoManifest) -and (Test-Path -LiteralPath $devManifest)) {
+        $keep = @{}
+        foreach ($l in Get-Content -LiteralPath $repoManifest) { $keep[$l.Split("`t")[0]] = $true }
+        foreach ($l in Get-Content -LiteralPath $devManifest) {
+            $rel = $l.Split("`t")[0]
+            $old = Join-Path $devVoice ($rel -replace '/', '\')
+            if ($rel -and -not $keep.ContainsKey($rel) -and (Test-Path -LiteralPath $old)) {
+                [IO.File]::Delete($old)
+                Write-Host ("entfernt (veraltet): {0}" -f $old)
+            }
+        }
+    }
+    if (Test-Path -LiteralPath $repoManifest) { Copy-Safe $repoManifest $devManifest }
     foreach ($f in Get-ChildItem $voice -Filter '*.fuz' -File -Recurse -ErrorAction SilentlyContinue) {
         Copy-Safe $f.FullName (Join-Path $devData ($f.FullName.Substring($repoData.Length).TrimStart('\')))
     }

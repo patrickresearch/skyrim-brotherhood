@@ -8,9 +8,11 @@ response, long enough to read the subtitle, so the mod needs neither voice actin
 Source of truth is plugin-text/ (Spriggit YAML of NightsHarvest.esp): quests, dialogue topics and
 their INFOs. For every response it computes the engine's voice path
 
-    Sound/Voice/NightsHarvest.esp/<VoiceType>/<Quest[:10]>_<Topic[:15]>_<00 + INFO id>_<ResponseNumber>.fuz
+    Sound/Voice/NightsHarvest.esp/<VoiceType>/<Quest>_<Topic>_<00 + INFO id>_<ResponseNumber>.fuz
 
-(scheme confirmed by UESP INFO talk page and houseCARL, 25.09.2026). The voice type comes from the
+with quest and topic EditorID shortened to 25 characters together (see voice_heads(); the plain
+"quest 10 + topic 15" rule from UESP and houseCARL is wrong for scene lines without a topic EditorID,
+which cost the Standoff scene its voice files on 25.09.2026). The voice type comes from the
 INFO's Speaker, otherwise from its GetIsID conditions (one file per possible speaker). A line without
 either is an error: the engine picks the folder from the speaking actor, which the tool cannot know.
 
@@ -81,6 +83,27 @@ def scalar(raw, following):
             lines.append(line.strip())
         return (" " if raw[0] == ">" else "\n").join(l for l in lines if l)
     return raw
+
+
+def voice_heads(quest, topic):
+    """The <Quest>_<Topic> part(s) of a voice file name.
+
+    Rule derived from all 75,408 names in Skyrim - Voices_en0.bsa (25.09.2026): quest and topic share
+    25 characters. Without a topic EditorID (scene lines) the quest keeps up to 25
+    (relationshipmarriagefin__00002f50_1). If both are long, the quest gets 10 and the topic 15
+    (darkbrothe_dbnazirinfodeek); a short quest leaves the rest to the topic (db10_db10nazirsancplayerre).
+    A quest over 10 characters with a topic of 1-14 characters and more than 25 in total has no vanilla
+    example; both candidates are returned then.
+    """
+    if len(quest) + len(topic) <= 25:
+        return [f"{quest}_{topic}"]
+    heads = []
+    for qlen in (max(10, 25 - len(topic)), 10 if topic else 25):
+        q = quest[:qlen]
+        head = f"{q}_{topic[:25 - len(q)]}"
+        if head not in heads:
+            heads.append(head)
+    return heads
 
 
 def form_id_part(form_key):
@@ -167,9 +190,10 @@ def collect(voices):
                 if num < 1:
                     problems.append(f"{where}: response without ResponseNumber")
                     continue
-                name = f"{quest_edid[:10]}_{topic_edid[:15]}_{form_id_part(info_key)}_{num}.fuz"
-                for vt in vts:
-                    lines.append({"path": f"{vt}/{name}", "text": text, "where": where})
+                for head in voice_heads(quest_edid, topic_edid):
+                    name = f"{head}_{form_id_part(info_key)}_{num}.fuz"
+                    for vt in vts:
+                        lines.append({"path": f"{vt}/{name}", "text": text, "where": where})
     return lines, problems
 
 
