@@ -463,10 +463,12 @@ Function LogStandoffActor(String asName, Int aiAlias)
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff " + asName + ": alias empty")
         Return
     EndIf
+    ; Cell.GetName()/Form.GetName() are SKSE additions and would break the CK's own compiler (it
+    ; only sees the vanilla Form.psc), so the cell is logged by FormID.
     String sCell = "none"
     Cell kCell = kActor.GetParentCell()
     If kCell
-        sCell = kCell.GetName()
+        sCell = kCell.GetFormID() as String
     EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Standoff " + asName + ": dead=" + kActor.IsDead() + " disabled=" + kActor.IsDisabled() + " pos=" + kActor.GetPositionX() + "/" + kActor.GetPositionY() + "/" + kActor.GetPositionZ() + " cell=" + sCell)
 EndFunction
