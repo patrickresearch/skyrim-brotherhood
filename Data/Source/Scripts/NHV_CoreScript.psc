@@ -360,47 +360,13 @@ Function PrepareStandoff()
     If kVeyra && VeyraRef
         kVeyra.ForceRefTo(VeyraRef)
     EndIf
-    ReferenceAlias kNazir = Q00.GetAlias(1) as ReferenceAlias
-    If kNazir
-        Actor kNazirActor = kNazir.GetActorReference()
-        If !kNazirActor
-            NHV_Util.Log(NHV_Cfg_Debug, "PrepareStandoff: Nazir alias is empty")
-        EndIf
-        If kNazirActor
-            If kNazirActor.IsDisabled()
-                kNazirActor.Enable()
-            EndIf
-            kNazirActor.MoveTo(DawnstarAnchorRef)
-            kNazirActor.SetPosition(2462.77, 4975.05, 5675.23)
-            kNazirActor.SetAngle(0.0, 0.0, 343.0)
-        EndIf
-    EndIf
-    ; Babette and Cicero: two spots taken 25.09.2026, which of them stands where is still open
-    ; (developer: does not matter for now). Cicero only if alive.
-    ReferenceAlias kBabette = Q00.GetAlias(2) as ReferenceAlias
-    If kBabette
-        Actor kBabetteActor = kBabette.GetActorReference()
-        If kBabetteActor && !kBabetteActor.IsDead()
-            If kBabetteActor.IsDisabled()
-                kBabetteActor.Enable()
-            EndIf
-            kBabetteActor.MoveTo(DawnstarAnchorRef)
-            kBabetteActor.SetPosition(2002.43, 5345.85, 5695.10)
-            kBabetteActor.SetAngle(0.0, 0.0, 0.0)
-        EndIf
-    EndIf
-    ReferenceAlias kCicero = Q00.GetAlias(3) as ReferenceAlias
-    If kCicero
-        Actor kCiceroActor = kCicero.GetActorReference()
-        If kCiceroActor && !kCiceroActor.IsDead()
-            If kCiceroActor.IsDisabled()
-                kCiceroActor.Enable()
-            EndIf
-            kCiceroActor.MoveTo(DawnstarAnchorRef)
-            kCiceroActor.SetPosition(2485.03, 4466.59, 5618.41)
-            kCiceroActor.SetAngle(0.0, 0.0, 0.0)
-        EndIf
-    EndIf
+    ; The vanilla actors: the forced-reference aliases were still empty right after Q00.Start() in the
+    ; 25.09.2026 test, so they are resolved from their placed refs (NazirRef/BabetteRef/CiceroRef) and
+    ; forced into the alias here. Dead actors are skipped (Cicero may be dead).
+    PlaceStandoffActor(1, 0x01C3AD, 2462.77, 4975.05, 5675.23, 343.0)
+    PlaceStandoffActor(2, 0x01D4BC, 2002.43, 5345.85, 5695.10, 0.0)
+    ; Babette and Cicero: which of the two spots is whose does not matter for now (developer, 25.09.2026).
+    PlaceStandoffActor(3, 0x01E64A, 2485.03, 4466.59, 5618.41, 0.0)
     LogStandoffActor("Veyra", 0)
     LogStandoffActor("Nazir", 1)
     LogStandoffActor("Babette", 2)
@@ -408,6 +374,35 @@ Function PrepareStandoff()
     ; Everyone has to stand in place when the player walks into the room, so their AI is frozen until
     ; the scene runs. ReleaseStandoff() unfreezes them (scene start, and as a safety net on Q00 stage 15/20).
     FreezeStandoffActors(True)
+EndFunction
+
+; Resolves one vanilla actor (alias first, then its placed ref), fills the alias, activates it if it is
+; disabled, brings it into the Sanctuary and puts it on its spot.
+Function PlaceStandoffActor(Int aiAlias, Int aiRefFormID, Float afX, Float afY, Float afZ, Float afAngle)
+    ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
+    Actor kActor
+    If kAlias
+        kActor = kAlias.GetActorReference()
+    EndIf
+    If !kActor
+        kActor = Game.GetFormFromFile(aiRefFormID, "Skyrim.esm") as Actor
+        If kActor && kAlias
+            kAlias.ForceRefTo(kActor)
+        EndIf
+    EndIf
+    If !kActor
+        NHV_Util.Log(NHV_Cfg_Debug, "PlaceStandoffActor: alias " + aiAlias + " has no actor (ref " + aiRefFormID + ")")
+        Return
+    EndIf
+    If kActor.IsDead()
+        Return
+    EndIf
+    If kActor.IsDisabled()
+        kActor.Enable()
+    EndIf
+    kActor.MoveTo(DawnstarAnchorRef)
+    kActor.SetPosition(afX, afY, afZ)
+    kActor.SetAngle(0.0, 0.0, afAngle)
 EndFunction
 
 ; Debug aid (25.09.2026): one log line per Q00 actor - alias filled, dead, disabled, position, cell.
