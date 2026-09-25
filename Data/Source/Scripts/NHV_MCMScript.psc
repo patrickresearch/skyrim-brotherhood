@@ -20,7 +20,7 @@ NHV_CoreScript Property Core Auto
 Quest Property Q00 Auto
 GlobalVariable Property NHV_FamilyStrength Auto
 
-Int Property VERSION = 1 AutoReadOnly
+Int Property VERSION = 2 AutoReadOnly
 
 String[] asMarkerOptions
 String[] asDeliveryOptions
@@ -57,13 +57,14 @@ Function BuildOptionArrays()
     asDeliveryOptions[1] = "Veyra only"
 EndFunction
 
-; v1: Status, General. A later VERSION that adds a page (e.g. v2: + Family once M1.6 is in
+; v1: Status, General. v2 (25.09.2026): + Debug. A later VERSION that adds a page (e.g. v2: + Family once M1.6 is in
 ; the CK) appends here and branches on aiFromVersion - never remove or reorder existing
 ; entries, existing saves rely on the page list staying stable (docs/CONVENTIONS.md).
 Function BuildPages(Int aiFromVersion)
-    Pages = new String[2]
+    Pages = new String[3]
     Pages[0] = "Status"
     Pages[1] = "General"
+    Pages[2] = "Debug"
 EndFunction
 
 Event OnPageReset(String asPage)
@@ -71,6 +72,8 @@ Event OnPageReset(String asPage)
         ShowStatusPage()
     ElseIf asPage == "General"
         ShowGeneralPage()
+    ElseIf asPage == "Debug"
+        ShowDebugPage()
     EndIf
 EndEvent
 
@@ -126,6 +129,31 @@ String Function GetFamilyStrengthText()
     Int iStrength = NHV_FamilyStrength.GetValue() as Int
     Return iStrength as String
 EndFunction
+
+; ---------------------------------------------------------------------------- Debug page --
+
+Function ShowDebugPage()
+    SetCursorFillMode(TOP_TO_BOTTOM)
+    AddHeaderOption("Testing tools")
+    AddTextOptionST("StartQ00", "Start Q00 now", "Start")
+EndFunction
+
+State StartQ00
+    Event OnHighlightST()
+        SetInfoText("Testing only: starts A Shadow at the Door immediately and ignores the start conditions (Hail Sithis, The Dark Brotherhood Forever, delay). Use it inside the Dawnstar Sanctuary, then close the menu.")
+    EndEvent
+
+    Event OnSelectST()
+        If !Core || !Q00
+            ShowMessage("Night's Harvest is not fully set up yet (Core or Q00 missing).", False)
+        ElseIf Q00.IsRunning() || Q00.IsCompleted()
+            ShowMessage("Q00 is already running or completed.", False)
+        Else
+            Core.StartQ00()
+            ShowMessage("Q00 started. Close the menu.", False)
+        EndIf
+    EndEvent
+EndState
 
 ; --------------------------------------------------------------------------- General page --
 
