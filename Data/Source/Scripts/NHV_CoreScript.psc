@@ -370,7 +370,7 @@ Function PrepareStandoff()
     ; The vanilla actors: the forced-reference aliases were still empty right after Q00.Start() in the
     ; 25.09.2026 test, so they are resolved from their placed refs (NazirRef/BabetteRef/CiceroRef) and
     ; forced into the alias here. Dead actors are skipped (Cicero may be dead).
-    PlaceStandoffActor(1, 0x01C3AD, 2462.77, 4975.05, 5675.23, 343.0)
+    PlaceStandoffActor(1, 0x01C3AD, 2462.77, 4975.05, 5620.0, 343.0)
     PlaceStandoffActor(2, 0x01D4BC, 2002.43, 5345.85, 5695.10, 0.0)
     ; Babette and Cicero: which of the two spots is whose does not matter for now (developer, 25.09.2026).
     PlaceStandoffActor(3, 0x01E64A, 2485.03, 4466.59, 5618.41, 0.0)
@@ -379,6 +379,7 @@ Function PrepareStandoff()
     LogStandoffActor("Nazir", 1)
     LogStandoffActor("Babette", 2)
     LogStandoffActor("Cicero", 3)
+    Utility.Wait(0.5) ; let everybody land on the floor before the freeze
     ; Everyone has to stand in place when the player walks into the room, so their AI is frozen until
     ; the scene runs. ReleaseStandoff() unfreezes them (scene start, and as a safety net on Q00 stage 15/20).
     FreezeStandoffActors(True)
@@ -407,6 +408,12 @@ Function PlaceStandoffActor(Int aiAlias, Int aiRefFormID, Float afX, Float afY, 
     EndIf
     If kActor.IsDisabled()
         kActor.Enable()
+    EndIf
+    ; An actor caught sitting keeps the sit pose after being moved (Nazir hovered next to the chair,
+    ; 25.09.2026), so leave the furniture state before the move.
+    If kActor.GetSitState() != 0
+        Debug.SendAnimationEvent(kActor, "IdleForceDefaultState")
+        Utility.Wait(0.5)
     EndIf
     kActor.MoveTo(DawnstarAnchorRef)
     kActor.SetPosition(afX, afY, afZ)
