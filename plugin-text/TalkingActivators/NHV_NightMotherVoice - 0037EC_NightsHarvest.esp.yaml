@@ -1,0 +1,8 @@
+FormKey: 0037EC:NightsHarvest.esp
+EditorID: NHV_NightMotherVoice
+Name:
+  TargetLanguage: English
+  Value: Night Mother
+Model:
+  File: Markers\Marker_LinkMarker.nif
+Voice: 01BDB6:Skyrim.esm

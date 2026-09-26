@@ -1,5 +1,19 @@
 FormKey: 000827:NightsHarvest.esp
 EditorID: NHV_Q00_NM_Gleaner02_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02000827
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q00_AskedLeave
+      Object: 000866:NightsHarvest.esp
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02000827
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02000827
+      FragmentName: Fragment_0
 Flags: {}
 PreviousDialog: Null
 FavorLevel: None
@@ -22,7 +36,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 022440:Skyrim.esm
+    Object: 0037EC:NightsHarvest.esp
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English

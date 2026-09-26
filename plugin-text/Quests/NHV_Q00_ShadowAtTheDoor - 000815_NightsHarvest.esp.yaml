@@ -3,6 +3,23 @@ EditorID: NHV_Q00_ShadowAtTheDoor
 VirtualMachineAdapter:
   Scripts:
   - Name: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Babette
+      Object: 000815:NightsHarvest.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Cicero
+      Object: 000815:NightsHarvest.esp
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Nazir
+      Object: 000815:NightsHarvest.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Veyra
+      Object: 000815:NightsHarvest.esp
+      Alias: 0
   FileName: QF_NHV_Q00_ShadowAtTheDoor_02000815
   Fragments:
   - Stage: 10
@@ -37,6 +54,17 @@ VirtualMachineAdapter:
     Unknown2: 1
     ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
     FragmentName: Fragment_7
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000815:NightsHarvest.esp
+      Alias: 4
+    Scripts:
+    - Name: NHV_NightMotherCoffinAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Core
+        Object: 000801:NightsHarvest.esp
 Name:
   TargetLanguage: English
   Value: A Shadow at the Door
@@ -95,40 +123,50 @@ Stages:
       Value: Find out what became of the one who performed the sacrament.
 Objectives:
 - Index: 10
+  Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Find out who has entered the Sanctuary.
 - Index: 15
+  Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Veyra is waiting at the Windpeak Inn.
 - Index: 20
+  Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Consult the Night Mother about Veyra.
 - Index: 30
+  Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Return to Veyra.
 - Index: 40
+  Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Open the sealed passage with Veyra.
 - Index: 50
+  Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Explore the Deep Sanctuary.
 - Index: 60
+  Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Decide whose names belong on the Memorial Wall.
-NextAliasID: 4
+NextAliasID: 5
 Aliases:
 - Name: Veyra
   Flags:
   - Optional
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 0037DE:NightsHarvest.esp
+  - 0037DF:NightsHarvest.esp
+  - 0037E0:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 1
   Name: Nazir
@@ -153,4 +191,10 @@ Aliases:
   ForcedReference: 09BCB0:Skyrim.esm
   PackageData:
   - 000DD7:NightsHarvest.esp
+  VoiceTypes: Null
+- ID: 4
+  Name: NightMotherCoffin
+  Flags:
+  - Optional
+  ForcedReference: 074766:Skyrim.esm
   VoiceTypes: Null

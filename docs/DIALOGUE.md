@@ -26,7 +26,7 @@ Spalten (feste Reihenfolge, Kopfzeile Pflicht):
 
 | Spalte | Inhalt |
 |---|---|
-| `LineID` | Eindeutig und stabil, Schlüssel für CK-Abgleich und Audiodateien. Quest-Zeilen: `NHV_<Quest>_<Stage dreistellig>_<Nr. zweistellig>` (`NHV_Q00_010_01`); System-Zeilen: `NHV_SYS_<Bereich>_<Nr.>` (`NHV_SYS_REC_01`) |
+| `LineID` | Eindeutig und stabil, Schlüssel für CK-Abgleich und Audiodateien. Quest-Zeilen: `NHV_<Quest>_<Stage dreistellig>_<Nr. mindestens zweistellig>` (`NHV_Q00_010_01`); System-Zeilen: `NHV_SYS_<Bereich>_<Nr.>` (`NHV_SYS_REC_01`) |
 | `Quest` | `Q00` … `Q06`, `Ledger`, `Family`, `Banter`, `Sanctuary` |
 | `Stage` | Stage, ab der die Zeile gilt, sonst `-` |
 | `Topic` | EditorID des Topics bzw. der Branch |
@@ -39,6 +39,8 @@ Spalten (feste Reihenfolge, Kopfzeile Pflicht):
 | `Notes` | Regie, Kontext, Szene, Vertonungshinweise (Deutsch erlaubt) |
 
 Die Spalte `Topic` enthält den Kurznamen aus dem Konzept (`SCN_Standoff`); im CK wird daraus die EditorID mit Präfix, z. B. `NHV_Q00_SCN_Standoff`.
+
+Die laufende Nummer einer Quest-LineID hat **mindestens zwei Stellen** und wächst nach `99` auf `100` weiter. Bestehende IDs bleiben unverändert; freie Nummern unterhalb der höchsten vergebenen Nummer werden nicht nachträglich belegt. Das erlaubt umfangreiche Gesprächszweige ohne erfundene Quest-Stages.
 
 **Journal-Einträge** einer Quest stehen in `dialogue/Journal.csv`, teilen sich aber die `LineID`-Zählung mit `dialogue/<Quest>.csv`: Wer eine Journal-Zeile für Stage X einer Quest ergänzt, prüft vorher die höchste vergebene Nummer für `NHV_<Quest>_<X>_*` in **beiden** Dateien und zählt von dort weiter. Speaker ist `Journal`, VoiceType und Topic `-`.
 

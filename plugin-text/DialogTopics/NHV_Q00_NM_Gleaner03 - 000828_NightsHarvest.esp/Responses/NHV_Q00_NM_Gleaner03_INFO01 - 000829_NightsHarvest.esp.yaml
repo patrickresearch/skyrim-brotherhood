@@ -32,7 +32,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 022440:Skyrim.esm
+    Object: 0037EC:NightsHarvest.esp
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English

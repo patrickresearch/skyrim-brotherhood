@@ -32,6 +32,21 @@ VirtualMachineAdapter:
       Name: NHV_Cfg_StartDelay
       Object: 000803:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q00_VeyraReturned
+      Object: 00327B:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q00_VeyraReturning
+      Object: 00327C:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NightMotherCallTopic
+      Object: 0037ED:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NightMotherCoffinRef
+      Object: 074766:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NightMotherVoiceBase
+      Object: 0037EC:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: PassageDoorBase
       Object: 000DD5:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
@@ -49,6 +64,15 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraBase
       Object: 000817:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraSanctuaryExitMarkerRef
+      Object: 09725F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraSanctuaryReturnMarkerRef
+      Object: 09725F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraWindpeakMarkerRef
+      Object: 09725A:Skyrim.esm
   FileName: ''
   Aliases:
   - Property:

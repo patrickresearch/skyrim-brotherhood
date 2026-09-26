@@ -10,7 +10,7 @@
 
 Nach „Hail Sithis!“ ist die Familie fast ausgelöscht: Nazir, Babette, vielleicht Cicero, Shadowmere und ein Sarg. Eines Abends sitzt eine Fremde in der Sanctuary, obwohl die Black Door niemanden hereinlässt, der nicht zur Familie gehört. Nazir hat die Klinge an ihrem Hals.
 
-Sie heißt **Veyra Othren**, eine Dunmer aus der alten cyrodiilischen Bruderschaft. Man nannte sie „the Gleaner“ – die Nachleserin, die nach der Ernte aufsammelt, was die Schnitter übrig ließen. Sie führt ein Register über Menschen in Skyrim, die bereits getötet haben und noch nicht wissen, dass sie Familie sind.
+Sie heißt **Veyra Othren**, eine Frau in Dunmergestalt, die schon der alten cyrodiilischen Bruderschaft ihre Dienste anbot. Man nannte sie „the Gleaner“ – die Nachleserin, die nach der Ernte aufsammelt, was die Schnitter übrig ließen. Sie führt ein Register über Menschen in Skyrim, die bereits getötet haben und noch nicht wissen, dass sie Familie sind.
 
 Gemeinsam findet, prüft und rekrutiert der Listener fünf außergewöhnliche Kandidaten. Dabei zieht sich ein roter Faden durch alle Missionen: Ein letzter Penitus-Oculatus-Zirkel jagt die Überlebenden – und plant ein zweites Falkreath.
 
@@ -84,44 +84,44 @@ Der Mod startet frühestens nach „Hail Sithis!“ beim nächsten Betreten der 
 
 ## 3. Der Recruiter: Veyra Othren
 
-Veyra Othren ist eine ruhige, tiefgläubige Dunmer-Assassinin, die zwei Verrate an der Familie überlebt hat – deshalb wird jeder Rekrut geprüft, bevor er die Black Door durchschreitet.
+Veyra Othren erscheint als ruhige Dunmerfrau und erfahrene Nachleserin. **Autorenwissen nach E23 (26.09.2026): Sie ist eine Tochter Sithis', freiwillig und allein seinem Dienst verpflichtet.** Sie ist kein Mitglied der Dark Brotherhood; sie bietet der Night Mother ihre Dienste an, damit die Bruderschaft überlebt und neue Anhänger gewinnt. Ihre Treue reicht über einzelne Fraktionen hinaus. Vollständiges Profil, offene Details und Folgen für bestehende Texte: `docs/concept/Veyra-Autorenprofil.md`. Diese Herkunft ist eine eigene Ergänzung unserer Mod; ihre Enthüllung im Spiel ist noch nicht festgelegt.
 
 ### Steckbrief
 
 | Feld | Wert |
 | --- | --- |
 | Name | Veyra Othren, „the Gleaner“ |
-| Rasse / Geschlecht | Dunmer, weiblich |
-| Alter | ca. 230 Jahre, wirkt nach menschlichem Maß wie 55 |
+| Rasse / Geschlecht | Dunmer-Erscheinung, weiblich; Tochter Sithis' gemäß E23 |
+| Alter | tatsächlich unbestimmt; wirkt nach menschlichem Maß wie 55. Frühere Angabe von ca. 230 Jahren ist keine objektive Autorenwahrheit mehr |
 | Aussehen | aschgraue Haut, weißes Haar im strengen Zopf, rituelle Narbe quer über der Kehle, dunkelrote Augen |
 | Kleidung | Vanilla Shrouded Robes + Hood (optional später Retexture „Gleaner's Shroud“) |
 | Kampfstil | Dolch + Illusion (Calm, Fury, Invisibility), Bogen als Backup |
 | Level | skaliert mit dem Spieler (Faktor 1.0, min. 20, max. 60) |
-| Schutzstatus | Essential während der Questline, danach Protected (per MCM änderbar) |
+| Schutzstatus | E23: theoretisch endgültig tötbar, aber nicht durch Alter oder gewöhnliche Waffen; konkrete Ursache offen. Technische Umsetzung noch abzugleichen, bisherige Essential/Protected-Planung nicht als endgültige Lösung behandeln |
 | Services | Illusion-Trainerin (Expert, bis 75); nach dem Finale Verwaltung des Black Ledger |
 | VoiceType | eigener: `NHV_VoiceVeyra` |
-| Fraktionen | `DarkBrotherhoodFaction` (zur Laufzeit), `NHV_FamilyFaction` |
+| Fraktionen | Erzählerisch fraktionsungebundene Helferin, kein Brotherhood-Mitglied. Bisher geplante technische NPC-Fraktionen (`DarkBrotherhoodFaction`, `NHV_FamilyFaction`) separat prüfen; noch nicht geändert |
 | Wohnort | Deep Sanctuary, Ledger Room |
 
 ### Persönlichkeit
 
 - Spricht leise und präzise, wird nie laut.
 - Trockener, schwarzer Humor („The family is two people and a horse.“).
-- Tiefgläubig an Sithis, aber pragmatisch: Rituale ja, Fanatismus nein.
+- Dient Sithis als ihrem Vater aus freiem Willen. Seine Interessen stehen für sie über Fraktionsloyalität; sie beansprucht dadurch keine Allwissenheit über sein Wesen.
 - Paranoid beim Thema Verrat: Mathieu Bellamont und Astrid haben die Familie jeweils fast vernichtet.
 - Sieht Rekrutierung als Gärtnern: „You don't make a killer. You find one, and you prune.“
-- Verehrt die Night Mother, ist aber leise gekränkt, dass diese nie zu ihr sprach.
-- Respektiert den Listener bedingungslos als Amt – als Person erst nach und nach.
+- Akzeptiert und respektiert die Night Mother als eigenständige Verbündete. Eine persönliche Bekanntschaft zu deren Lebzeiten ist möglich, noch nicht festgelegt; die bisherige Kränkung über das Schweigen ist kein feststehender Kern mehr.
+- Respektiert das Listeneramt und dessen Entscheidungen über seine Bruderschaft im Rahmen ihrer freiwilligen Zusammenarbeit; untersteht ihm nicht als Mitglied. Respekt für die Person wächst erst nach und nach.
 
 ### Backstory
 
-1. Geboren in Mournhold, Ende der 3. Ära. Straßenkind. Tötete mit 19 einen Sklavenhändler; eine Woche später saß ein Speaker an ihrem Bett.
-2. Überlebte als junges Mitglied in Bravil die Säuberung durch Mathieu Bellamonts Verrat (3E 433), weil sie zu unbedeutend war, um auf einer Liste zu stehen.
-3. Diente über 150 Jahre in Sanctuaries in Cyrodiil. Ihre Aufgabe: potenzielle Rekruten beobachten, bewerten, heranführen. Daher „the Gleaner“.
-4. Erlebte das Schrumpfen der Bruderschaft in der 4. Ära. Verließ Cheydinhal, als die Night Mother schwieg – Cicero blieb als Keeper zurück. Diese Entscheidung verfolgt sie.
-5. Seitdem eine „solitary hand“: Einzelaufträge, keine Familie, keine Stimme.
-6. Als ein neuer Listener erwählt wurde, spürte sie es und reiste nach Skyrim. Sie fand Falkreath in Asche.
-7. Sie wartete bis nach dem Kaisermord, um nicht wie eine Spionin zu wirken – was sie natürlich erst recht verdächtig macht.
+1. Ursprung als Tochter Sithis'; Entstehungsweise, Mutter und tatsächliches Alter bleiben offen. Der frühere Mournhold-/Straßenkind-Lebenslauf ist ein zu überarbeitender Überlieferungsentwurf, keine bestätigte Geburt. Nicht automatisch zur bewussten Lüge erklären.
+2. Sie findet nach Chaos mögliche neue Anhänger und hilft Gemeinschaften bei ihrer Neuaufstellung, sofern sie darin Dienst an Sithis sieht. Frühere Zusammenarbeit mit der Morag Tong ist als Möglichkeit vorgemerkt, nicht als belegtes Ereignis.
+3. Sie kennt Sanctuaries in Cyrodiil und unterstützt Rekrutierung als externe Helferin. Ihre Bezeichnung „the Gleaner“ ergibt sich aus dieser Tätigkeit; frühere formale Brotherhood-Mitgliedschaft ist nicht mehr Bestandteil des Konzepts.
+4. Cheydinhal und Ciceros Vorwurf ihres Fortgehens bleiben Teil des Figurenbogens. Zeitpunkt und Motiv müssen mit E23 und Ciceros Tagebüchern abgeglichen werden (Keeper erst 4Ä 189); weder göttlicher Zwang noch eine unbelegte frühe Keeper-Zeit dürfen das Fortgehen erklären.
+5. Ihr Angebot an die Night Mother dient dem Fortbestehen der Brotherhood. Ein früheres persönliches Treffen beider bleibt offen; keine zweite Listenerrolle und kein Wissen um alle heutigen Botschaften ableiten.
+6. Sie kommt nach Skyrim und findet Falkreath in Asche. Sie greift nach dem Kaisermord in Dawnstar ein; ihr eigener Schutz beweist nicht, dass sie die anderen hätte retten können oder deren Untergang geplant hat.
+7. Einzelheiten der früher behaupteten Bravil-Säuberung, der 150 Dienstjahre und des übernatürlichen Rufes bleiben vor weiterer Verwendung prüfpflichtig. Gesicherte TES-Chronologie und mod-eigene Erzählung trennen, siehe `docs/lore/Veyra-Sithis-Chronologie.md`.
 
 ### Beziehungen
 
@@ -131,7 +131,7 @@ Veyra Othren ist eine ruhige, tiefgläubige Dunmer-Assassinin, die zwei Verrate 
 | Nazir | Misstrauen, professioneller Respekt | „I was wrong about her. Don't tell her I said that.“ |
 | Babette | zwei „Alte“ unter sich, spitz, aber verbunden | Banter über Alter und Unsterblichkeit |
 | Cicero | erkennt sie als „the one who left“ | Versöhnung oder offene Wunde, Spielerentscheidung |
-| Night Mother | Ehrfurcht, keine Stimme für sie | bestätigt Veyra im Intro gegenüber dem Listener |
+| Night Mother | Respekt und freiwilliges Hilfsangebot, keine Brotherhood-Mitgliedschaft; frühere persönliche Bekanntschaft offen | bestätigt die Zusammenarbeit im Intro gegenüber dem Listener; Wissen um Veyras Herkunft offen |
 | Vanilla-Initiates | „They found the door by luck, not judgement.“ | beobachtet sie, kein Handlungsstrang |
 
 ### Tagesablauf
@@ -147,6 +147,8 @@ Nachtaktiv, per MCM auf einen normalen Tagesrhythmus umschaltbar.
 | 02–06 Uhr | Training, Sandbox | Training Hall |
 
 ### Sprechproben
+
+Die folgenden Sprechproben und bestehende Dialogabschnitte sind der bisherige Textstand. Soweit sie Mitgliedschaft, gewöhnliche Sterblichkeit oder Kränkung über die Listenerrolle voraussetzen, müssen sie nach E23 im CSV-Master überarbeitet werden; keine Herkunftsenthüllung aus diesen Altzeilen ableiten.
 
 - Greeting: „Listener. The ledger grows heavier and the family grows no larger. Shall we fix one of those?“
 - Nach einer Rekrutierung: „Another name crossed out, another bed filled. Sithis is patient. I am less so.“
@@ -273,9 +275,9 @@ Das Intro führt Veyra über eine Konfrontation mit Nazir ein, lässt die Night 
 | Stage | Journal-Eintrag (Ingame, EN) | Auslöser |
 | --- | --- | --- |
 | 10 | Find out who has entered the Sanctuary. | Quest-Start per Story Manager; Szene läuft an, sobald der Spieler näher als 800 Units an Veyra ist |
-| 15 | Veyra is waiting at the Windpeak Inn. | Spieler schickt Veyra weg (optional) |
-| 20 | Consult the Night Mother about Veyra. | Standoff-Dialog beendet |
-| 30 | Return to Veyra. | Night-Mother-Dialog beendet |
+| 15 | Veyra has left the Sanctuary. | Standoff-Dialog beendet; Veyra verlässt sichtbar die Sanctuary |
+| 20 | Consult the Night Mother about Veyra. | Veyra wartet im Windpeak Inn |
+| 30 | Return to Veyra at the Windpeak Inn. | Night-Mother-Dialog beendet |
 | 40 | Open the sealed passage with Veyra. | Proposal-Dialog beendet |
 | 50 | Explore the Deep Sanctuary. | Geröll aktiviert, Zellwechsel |
 | 60 | Decide whose names belong on the Memorial Wall. | Veyra erreicht die Memorial Wall |
@@ -286,6 +288,9 @@ Das Intro führt Veyra über eine Konfrontation mit Nazir ein, lässt die Night 
 Sprecher in Großbuchstaben, dahinter Emotion und Stärke (0–100) für LIP- und KI-Vertonung. Bedingungen in eckigen Klammern. Spieler-Optionen als nummerierte Liste.
 
 ### Szene 1: Standoff (automatische Szene)
+
+**Dialogausbau 26.09.2026 / E22:** Die kurze automatische Eröffnung bleibt bestehen. Danach können Informationsfragen und Nachfragen frei nacheinander gestellt werden; auch das Senken der Klinge beendet die Befragung nicht. Erst eine ausdrückliche Abschlusswahl (Urteil der Night Mother, Drohung oder Verweisung) führt über Stage 15 zum Windpeak Inn. Gespräch abbrechen lässt Stage 10 unverändert. Sechs zusätzliche Frageketten behandeln Zugehörigkeit nach Falkreath, Veyras verspätete Ankunft, ihr Verhältnis zur schweigenden Mother, Beweise, Rekrutierung und die Autorität des Listener. Verbindliche aktuelle Formulierungen: `dialogue/Q00.csv`; die nachstehenden ursprünglichen Sprechproben dokumentieren den Ausgangsentwurf. Die neuen Gesprächsverbindungen sind noch nicht im Plugin.
+
 
 Veyra sitzt ruhig am Esstisch. Nazir steht mit gezogener Klinge über ihr. Babette lehnt an einer Säule. \[Cicero lebt\] Cicero kauert hinter einer Kiste und kichert.
 
@@ -313,16 +318,18 @@ Spieler-Optionen im Gespräch mit Veyra:
    - **VEYRA** (Neutral): "Before he does, Listener, ask the Night Mother. If she wants me dead, I'll hold very still."
    - **NAZIR** (Puzzled 40): "...The elf has a point. I hate that."
 6. "I want you out of this Sanctuary." → Stage 15
-   - **VEYRA**: "As you wish. I'll be at the Windpeak Inn. I've waited two hundred years. A few more days won't trouble me."
+   - **VEYRA**: "As you wish. I'll be at the Windpeak Inn. I've waited longer than you would believe. A few more days won't trouble me."
+   - Veyra verlässt die Dawnstar Sanctuary und wartet im Windpeak Inn. Der Spieler befragt danach die Night Mother; Veyra wird erst nach deren Urteil zurückgeholt.
 
-Nach Option 1–4 folgt automatisch:
+Nach ausdrücklicher Abschlusswahl oder der Drohung folgt die Abschlusskette (E22; nach Informationsfragen bleibt die Befragung offen):
 
-- **NAZIR** (Anger 40): "An old assassin turns up the moment we're weakest, with a sad story and the right password. That's exactly what a spy would do."
-- **VEYRA**: "It's exactly what a spy would do. So don't take my word for it. Take hers." (Blick zum Sarg der Night Mother) → Stage 20
+- **NAZIR** (Anger 40): "An old assassin turns up the moment we're weakest, with a sad story and the right words. That's exactly what a spy would do."
+- **VEYRA**: "It's exactly what a spy would do. So don't take my word for it. Take hers." (Blick zum Sarg der Night Mother)
+- **VEYRA**: "Until she speaks, I'll remove myself from your threshold." → Stage 15
 
 ### Szene 2: Die Night Mother
 
-Neuer Dialogzweig auf dem Night-Mother-Actor, nur bei Stage 20.
+Neuer Dialogzweig auf dem Night-Mother-Actor bei Stage 20. Veyra wartet währenddessen im Windpeak Inn; spricht der Spieler sie zu früh an, verweist sie ihn zurück zur Night Mother.
 
 - Spieler: "Mother, a stranger has come. She calls herself the Gleaner."
 - **NIGHT MOTHER**: "My Listener. You come with a question on your lips."
@@ -344,6 +351,14 @@ Neuer Dialogzweig auf dem Night-Mother-Actor, nur bei Stage 20.
 Die Auflösung folgt später in der Szene „The Keeper and the Gleaner“ (Abschnitt 11).
 
 ### Szene 3: Der Vorschlag
+
+Nach dem Night-Mother-Dialog sucht der Spieler Veyra im Windpeak Inn auf:
+
+- **VEYRA**: "The Night Mother has made her judgment?"
+- Spieler: "She says you may gather for us. Come back."
+- **VEYRA**: "Then let us return before Nazir decides he misses threatening me."
+
+Danach kehrt Veyra in die Dawnstar Sanctuary zurück. Das Proposal beginnt erst dort.
 
 - **VEYRA**: "Well? Am I to be gutted or put to work?"
 
@@ -872,6 +887,10 @@ Die NPC-Zeilen sind geteilt und müssen für alle Vanilla-VoiceTypes funktionier
 ## 11. Sanctuary-Leben, Vanilla-NPC-Reaktionen & Banter
 
 Die Sanctuary lebt durch nachtaktive Tagesabläufe, zwölf Banter-Szenen und gezielte neue Zeilen für Nazir, Babette, Cicero und die Night Mother – alles in eigenen Quests, ohne einen einzigen Vanilla-Dialog zu verändern.
+
+### Optionale persönliche Gespräche ab Q00
+
+Ergänzung auf Entwicklerwunsch vom 26.09.2026: `dialogue/Sanctuary.csv` enthält fünfzehn Gesprächsketten mit je einer vertiefenden Nachfrage (Veyra sechs, Nazir vier, Babette drei, Cicero zwei), freigeschaltet ab Q00 Stage 100. Die Gespräche vertiefen Glauben, Tenets, Rekrutierung, Verantwortung, Erinnerung und die Arbeit des Keeper. Sie vergeben keine Belohnungen und verändern keine Questentscheidungen. Veyras Alter und Natur werden in diesen Gesprächen nicht enthüllt; E23 legt ihre Herkunft inzwischen als Autorenwissen fest. Der Textstand ist dagegen noch abzugleichen. Ciceros persönliche Versöhnung mit ihr bleibt der späteren Szene vorbehalten. Keine Enthüllungen zu Q01–Q06, keine neuen historischen Ereignisse oder verbindlichen Aussagen über die Natur von Sithis.
 
 ### Reaktionen der Vanilla-Figuren
 

@@ -1,0 +1,8 @@
+FormKey: 0037E5:NightsHarvest.esp
+VersionControl: 13625
+EditorID: NHV_Q00_Veyra_Return03
+Quest: 000815:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 0037E6:NightsHarvest.esp

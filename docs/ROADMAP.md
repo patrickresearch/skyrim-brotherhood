@@ -163,6 +163,9 @@ Frostmere-Zugang berührt eine Tamriel-Außenzelle: Stelle vorher im Heavy-Profi
 
 ## M5 – Lebendige Sanctuary
 
+**Textvorarbeit 26.09.2026:** `dialogue/Sanctuary.csv` enthält fünfzehn optionale Gespräche (90 Zeilen, lore-editor-Prüfung separat in PROGRESS). Die Gespräche sind noch nicht im Plugin; M5.3 bleibt „Offen“. Q00-Dialogausbau/E22 gehört weiterhin zu M1.5, dessen Einbauplan unter `docs/ck/M1.5-Q00-Dialogausbau.md` liegt.
+
+
 | ID | Arbeitspaket | Aufgaben | Wer | h | Status |
 |---|---|---|---|---|---|
 | M5.1 | Räume fertigstellen | Shrine of the Void, Training Hall; alle Räume mit Enable-Parent-Stufen, Dekoration, finale Room Bounds | Entwickler, Claude | 20 | Offen |

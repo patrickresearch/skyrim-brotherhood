@@ -57,6 +57,10 @@ VANILLA_VOICES = {
     "022440:Skyrim.esm": "FemaleUniqueNightMother",  # DBNightMotherTalkingActivator
     "03BB85:Skyrim.esm": "FemaleUniqueNightMother",  # DBNightMotherVoiceNPC
 }
+# Vanilla voice types our own speakers use (VTYP FormKey -> EditorID), read from Skyrim.esm, 26.09.2026.
+VANILLA_VOICE_TYPES = {
+    "01BDB6:Skyrim.esm": "FemaleUniqueNightMother",
+}
 
 
 def read(path):
@@ -113,15 +117,17 @@ def form_id_part(form_key):
 
 def load_voice_types():
     voices = dict(VANILLA_VOICES)
-    vtypes = {}
+    vtypes = dict(VANILLA_VOICE_TYPES)
     for f in (TEXT / "VoiceTypes").glob("*.yaml"):
         t = read(f)
         vtypes[top_value(t, "FormKey")] = top_value(t, "EditorID")
-    for f in (TEXT / "Npcs").glob("*.yaml"):
-        t = read(f)
-        voice = top_value(t, "Voice")
-        if voice in vtypes:
-            voices[top_value(t, "FormKey")] = vtypes[voice]
+    # Our own speakers: NPCs and talking activators (e.g. NHV_NightMotherVoice) carry a Voice field.
+    for folder in ("Npcs", "TalkingActivators"):
+        for f in (TEXT / folder).glob("*.yaml"):
+            t = read(f)
+            voice = top_value(t, "Voice")
+            if voice in vtypes:
+                voices[top_value(t, "FormKey")] = vtypes[voice]
     return voices
 
 

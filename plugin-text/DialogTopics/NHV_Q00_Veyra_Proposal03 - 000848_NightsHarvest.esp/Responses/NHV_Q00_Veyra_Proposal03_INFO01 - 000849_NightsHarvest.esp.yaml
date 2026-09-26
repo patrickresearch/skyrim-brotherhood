@@ -21,6 +21,11 @@ Conditions:
   ComparisonValue: 30
 - MutagenObjectType: ConditionFloat
   Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00327B:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
     MutagenObjectType: GetIsIDConditionData
     Object: 000817:NightsHarvest.esp
   ComparisonValue: 1

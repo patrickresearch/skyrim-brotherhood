@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 17 AutoReadOnly
+Int Property VERSION = 21 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -11,6 +11,10 @@ GlobalVariable Property NHV_Cfg_Debug Auto
 GlobalVariable Property NHV_Cfg_Enabled Auto
 ; Days between "Hail Sithis!" and Q00, MCM slider 0-7, default 2 (E14).
 GlobalVariable Property NHV_Cfg_StartDelay Auto
+; 0 while Veyra waits at the Windpeak Inn, 1 after she has returned to the Sanctuary.
+GlobalVariable Property NHV_Q00_VeyraReturned Auto
+; 1 after the Windpeak return dialogue, until the player enters the Sanctuary with Veyra.
+GlobalVariable Property NHV_Q00_VeyraReturning Auto
 
 ; DB11 "Hail Sithis!", verified 22.09.2026 via houseCARL against Skyrim.esm (docs/GOAL.md).
 Quest Property HailSithisQuest Auto
@@ -53,6 +57,15 @@ Door Property PassageDoorBase Auto
 ; NHV_Veyra (000817:NightsHarvest.esp). She has no placed reference (a new reference in the vanilla
 ; cell would create a cell copy, E16), so she is created here at Q00 start.
 ActorBase Property VeyraBase Auto
+; XMarkerHeading in Windpeak Inn where Veyra waits after the Standoff while the Listener consults
+; the Night Mother. Filled in the CK once the marker exists.
+ObjectReference Property VeyraWindpeakMarkerRef Auto
+; Existing XMarkerHeading just inside the Dawnstar Sanctuary exit route. A stage-15 travel package sends
+; Veyra here so the player sees her leave before the script places her in the inn.
+ObjectReference Property VeyraSanctuaryExitMarkerRef Auto
+; XMarkerHeading in Dawnstar Sanctuary where Veyra is placed once the player brings her back from
+; Windpeak Inn for the proposal dialogue.
+ObjectReference Property VeyraSanctuaryReturnMarkerRef Auto
 
 ; --- Return door inside NHV_DeepSanctuaryCell ---
 ; The duplicated Markarth exit door (001586:NightsHarvest.esp, no teleport destination); disabled
@@ -74,7 +87,13 @@ Int iBystanderCount = 0
 Bool bStandoffSceneStarted = False
 ; Set by the scene's End fragment (RefreezeStandoff), so a finished Standoff is never re-armed.
 Bool bStandoffSceneDone = False
+; The Standoff runs as a fixed cutscene like the Helgen intro (developer, 25.09.2026): the player can look
+; around but not move, fight, open menus or talk until it is over. Watchdog: iCutsceneTicks (2 s each).
+Bool bCutsceneLocked = False
+Int iCutsceneTicks = 0
 Bool bReturnDoorBusy = False
+Bool bVeyraExitStageAdvancePending = False
+Bool bVeyraReturningToSanctuary = False
 
 Int iInstalledVersion = 0
 ; True between registering the start-delay timer and it firing; guards against a second
@@ -99,6 +118,14 @@ Function Maintenance()
         Debug.Notification("Night's Harvest " + VERSION_TEXT + " loaded")
     EndIf
     EnsureSealedPassageState()
+    ; Never leave the player without controls after loading a save made during the Standoff cutscene.
+    If bCutsceneLocked
+        If StandoffScene && StandoffScene.IsPlaying()
+            RegisterForSingleUpdate(2.0)
+        Else
+            UnlockCutscene()
+        EndIf
+    EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Maintenance done, mod " + VERSION_TEXT + ", script version " + iInstalledVersion)
 EndFunction
 
@@ -107,6 +134,15 @@ EndFunction
 ; property that is still None from its known FormID (own plugin or vanilla, never changes). Idempotent,
 ; runs on every load via Maintenance(). New properties added later belong in here as well.
 Function EnsureProperties()
+    If !NightMotherVoiceBase
+        NightMotherVoiceBase = Game.GetFormFromFile(0x0037EC, "NightsHarvest.esp") as TalkingActivator
+    EndIf
+    If !NightMotherCallTopic
+        NightMotherCallTopic = Game.GetFormFromFile(0x0037ED, "NightsHarvest.esp") as Topic
+    EndIf
+    If !NightMotherCoffinRef
+        NightMotherCoffinRef = Game.GetFormFromFile(0x074766, "Skyrim.esm") as ObjectReference
+    EndIf
     If !Q00
         Q00 = Game.GetFormFromFile(0x000815, "NightsHarvest.esp") as Quest
     EndIf
@@ -130,6 +166,12 @@ Function EnsureProperties()
     EndIf
     If !DBRecurringQuest
         DBRecurringQuest = Game.GetFormFromFile(0x01EA5A, "Skyrim.esm") as Quest
+    EndIf
+    If !NHV_Q00_VeyraReturned
+        NHV_Q00_VeyraReturned = Game.GetFormFromFile(0x00327B, "NightsHarvest.esp") as GlobalVariable
+    EndIf
+    If !NHV_Q00_VeyraReturning
+        NHV_Q00_VeyraReturning = Game.GetFormFromFile(0x00327C, "NightsHarvest.esp") as GlobalVariable
     EndIf
 EndFunction
 
@@ -195,6 +237,27 @@ Function Migrate(Int aiFrom)
             bStandoffSceneStarted = False
             RegisterForSingleUpdate(2.0)
         EndIf
+    EndIf
+    If aiFrom < 18
+        ; Cutscene lock (bCutsceneLocked/iCutsceneTicks) introduced; both start at their defaults.
+    EndIf
+    If aiFrom < 19
+        ; Veyra travel markers and return flag introduced for the revised Q00 flow. Existing dev saves
+        ; pick them up when the relevant dialog fragments run.
+        If NHV_Q00_VeyraReturned && Q00 && Q00.GetStage() >= 30
+            NHV_Q00_VeyraReturned.SetValue(1.0)
+        EndIf
+        If NHV_Q00_VeyraReturning
+            NHV_Q00_VeyraReturning.SetValue(0.0)
+        EndIf
+    EndIf
+    If aiFrom < 20
+        ; Stage 15 now advances from the Core update instead of waiting inside the CK fragment.
+    EndIf
+    If aiFrom < 21
+        ; Night Mother voice at her coffin introduced. Saves already on stage 20 need the coffin alias (new in a
+        ; running quest, so empty) and the voice now, otherwise stage 20 cannot be finished.
+        UpdateNightMother()
     EndIf
 EndFunction
 
@@ -342,6 +405,10 @@ Function OnEnterDawnstarSanctuary(Location akNewLoc)
     If akNewLoc != DawnstarSanctuaryLocation
         Return
     EndIf
+    UpdateNightMother()
+    If Q00 && Q00.IsRunning() && Q00.GetStage() == 30 && (bVeyraReturningToSanctuary || (NHV_Q00_VeyraReturning && NHV_Q00_VeyraReturning.GetValueInt() == 1))
+        CompleteVeyraReturnToSanctuary()
+    EndIf
     ; Q00 already waits for the player near Veyra (he left the Sanctuary before): resume the polling.
     If Q00 && Q00.IsRunning() && Q00.GetStage() == 10 && !bStandoffSceneStarted && !bStandoffSceneDone
         RegisterForSingleUpdate(2.0)
@@ -396,7 +463,7 @@ EndEvent
 ; order in the quest: 0 Veyra, 1 Nazir, 2 Babette, 3 Cicero (never renumber, save compatibility).
 ; Coordinates from getpos/getangle in DawnstarSanctuary, 25.09.2026. Veyra stands beside the chair
 ; for now. Keeping everybody on their spot is NOT done here: the Q00 aliases carry the package
-; NHV_Pkg_Q00_StandoffHold (vanilla DoNothing template, until stage 20), which outranks their own
+; NHV_Pkg_Q00_StandoffHold (vanilla DoNothing template, until stage 15), which outranks their own
 ; sandbox packages. Script-side freezing (EnableAI/SetDontMove) was removed in version 17.
 Function PrepareStandoff()
     If !VeyraRef && VeyraBase && DawnstarAnchorRef
@@ -445,11 +512,147 @@ Function PrepareStandoff()
     RegisterForSingleUpdate(2.0)
 EndFunction
 
+Actor Function GetVeyraActor()
+    If VeyraRef
+        Return VeyraRef
+    EndIf
+    If Q00
+        ReferenceAlias kVeyra = Q00.GetAlias(0) as ReferenceAlias
+        If kVeyra
+            VeyraRef = kVeyra.GetActorReference()
+        EndIf
+    EndIf
+    Return VeyraRef
+EndFunction
+
+Function SendVeyraToWindpeak()
+    ReleaseStandoff()
+    Actor kVeyra = GetVeyraActor()
+    If !kVeyra
+        NHV_Util.Log(NHV_Cfg_Debug, "SendVeyraToWindpeak: Veyra actor not available")
+        Return
+    EndIf
+    If !VeyraWindpeakMarkerRef
+        NHV_Util.Log(NHV_Cfg_Debug, "SendVeyraToWindpeak: VeyraWindpeakMarkerRef not set")
+        Return
+    EndIf
+    If kVeyra.IsDisabled()
+        kVeyra.Enable()
+    EndIf
+    kVeyra.EnableAI(True)
+    kVeyra.SetDontMove(False)
+    kVeyra.EvaluatePackage()
+    kVeyra.MoveTo(VeyraWindpeakMarkerRef)
+    kVeyra.SetAngle(0.0, 0.0, VeyraWindpeakMarkerRef.GetAngleZ())
+    kVeyra.EvaluatePackage()
+    bVeyraReturningToSanctuary = False
+    If NHV_Q00_VeyraReturned
+        NHV_Q00_VeyraReturned.SetValue(0.0)
+    EndIf
+    If NHV_Q00_VeyraReturning
+        NHV_Q00_VeyraReturning.SetValue(0.0)
+    EndIf
+    ; The marker in the log shows which property value this save really holds (the ESP value does not
+    ; replace one already stored in a save).
+    NHV_Util.Log(NHV_Cfg_Debug, "Veyra moved to Windpeak Inn, marker " + VeyraWindpeakMarkerRef)
+EndFunction
+
+Function BeginVeyraExitSanctuary()
+    ReleaseStandoff()
+    Actor kVeyra = GetVeyraActor()
+    If !kVeyra
+        NHV_Util.Log(NHV_Cfg_Debug, "BeginVeyraExitSanctuary: Veyra actor not available")
+        Return
+    EndIf
+    If kVeyra.IsDisabled()
+        kVeyra.Enable()
+    EndIf
+    bVeyraReturningToSanctuary = False
+    If NHV_Q00_VeyraReturned
+        NHV_Q00_VeyraReturned.SetValue(0.0)
+    EndIf
+    If NHV_Q00_VeyraReturning
+        NHV_Q00_VeyraReturning.SetValue(0.0)
+    EndIf
+    kVeyra.EvaluatePackage()
+    bVeyraExitStageAdvancePending = True
+    RegisterForSingleUpdate(8.0)
+    NHV_Util.Log(NHV_Cfg_Debug, "Veyra exit from Sanctuary armed")
+EndFunction
+
+Function BeginVeyraReturnToSanctuary()
+    Actor kVeyra = GetVeyraActor()
+    If !kVeyra
+        NHV_Util.Log(NHV_Cfg_Debug, "BeginVeyraReturnToSanctuary: Veyra actor not available")
+        Return
+    EndIf
+    If kVeyra.IsDisabled()
+        kVeyra.Enable()
+    EndIf
+    bVeyraReturningToSanctuary = True
+    If NHV_Q00_VeyraReturned
+        NHV_Q00_VeyraReturned.SetValue(0.0)
+    EndIf
+    If NHV_Q00_VeyraReturning
+        NHV_Q00_VeyraReturning.SetValue(1.0)
+    EndIf
+    kVeyra.EvaluatePackage()
+    NHV_Util.Log(NHV_Cfg_Debug, "Veyra return to Sanctuary armed")
+EndFunction
+
+Function CompleteVeyraReturnToSanctuary()
+    Actor kVeyra = GetVeyraActor()
+    If !kVeyra
+        NHV_Util.Log(NHV_Cfg_Debug, "CompleteVeyraReturnToSanctuary: Veyra actor not available")
+        Return
+    EndIf
+    ObjectReference kTarget = VeyraSanctuaryReturnMarkerRef
+    If !kTarget
+        kTarget = DawnstarAnchorRef
+    EndIf
+    If !kTarget
+        NHV_Util.Log(NHV_Cfg_Debug, "CompleteVeyraReturnToSanctuary: no return marker available")
+        Return
+    EndIf
+    If kVeyra.IsDisabled()
+        kVeyra.Enable()
+    EndIf
+    kVeyra.MoveTo(kTarget)
+    kVeyra.SetAngle(0.0, 0.0, kTarget.GetAngleZ())
+    kVeyra.EvaluatePackage()
+    bVeyraReturningToSanctuary = False
+    If NHV_Q00_VeyraReturned
+        NHV_Q00_VeyraReturned.SetValue(1.0)
+    EndIf
+    If NHV_Q00_VeyraReturning
+        NHV_Q00_VeyraReturning.SetValue(0.0)
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Veyra returned to Dawnstar Sanctuary")
+EndFunction
+
 ; Polls (real time, every 2 s) while Q00 sits on stage 10 and the player is in the Sanctuary, until he
 ; comes near Veyra, then starts the Standoff scene once. Stops by itself once the stage moves on, the scene
 ; has been started or the player leaves; OnEnterDawnstarSanctuary() resumes it on his return.
-; The scene only speaks if every line has a voice file: silent ones come from tools/silent_voice.py (E10).
+; The scene only speaks if every line has a voice file: silent ones come from tools/silent_voice.py (E21).
+; Once the scene runs, the same update watches the cutscene lock (WatchStandoffCutscene).
 Event OnUpdate()
+    If bVeyraExitStageAdvancePending
+        bVeyraExitStageAdvancePending = False
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 15
+            Q00.SetStage(20)
+        EndIf
+        Return
+    EndIf
+    If bNightMotherCallPending
+        ; No Return: a cutscene watchdog chain (dev saves, console setstage) must not starve behind it.
+        bNightMotherCallPending = False ; legacy (call is idle dialogue since 26.09.2026): only clear it
+    EndIf
+    ; The watchdog hangs on the lock itself, so nothing that resets bStandoffSceneStarted (Q00 restart in a
+    ; dev save) can break its chain while the player is locked.
+    If bCutsceneLocked
+        WatchStandoffCutscene()
+        Return
+    EndIf
     If bStandoffSceneStarted
         Return
     EndIf
@@ -469,6 +672,7 @@ Event OnUpdate()
         bStandoffSceneStarted = True
         ; A vanilla Sanctuary scene holding Nazir or Babette would keep ours from getting them.
         StopOtherScenes()
+        LockCutscene()
         StandoffScene.Start()
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene started")
         If NHV_Cfg_Debug && NHV_Cfg_Debug.GetValueInt() == 1
@@ -476,6 +680,7 @@ Event OnUpdate()
             NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene IsPlaying=" + StandoffScene.IsPlaying())
             LogSceneMembership()
         EndIf
+        RegisterForSingleUpdate(2.0) ; watchdog, see WatchStandoffCutscene()
     ElseIf kPlayer.IsInLocation(DawnstarSanctuaryLocation)
         RegisterForSingleUpdate(2.0)
     EndIf
@@ -674,6 +879,53 @@ EndFunction
 Function RefreezeStandoff()
     bStandoffSceneDone = True
     NHV_Util.Log(NHV_Cfg_Debug, "Standoff scene finished")
+    UnlockCutscene()
+EndFunction
+
+; Player controls off for the Standoff cutscene: looking around stays possible, everything else is locked.
+Function LockCutscene()
+    Game.DisablePlayerControls(True, True, False, False, True, True, True, False)
+    bCutsceneLocked = True
+    iCutsceneTicks = 0
+    NHV_Util.Log(NHV_Cfg_Debug, "Standoff cutscene: player controls locked")
+EndFunction
+
+Function UnlockCutscene()
+    If !bCutsceneLocked
+        Return
+    EndIf
+    bCutsceneLocked = False
+    ; Mirror LockCutscene() exactly, so locks of other systems (werewolf camera, other mods) stay untouched.
+    Game.EnablePlayerControls(True, True, False, False, True, True, True, False)
+    NHV_Util.Log(NHV_Cfg_Debug, "Standoff cutscene: player controls released")
+EndFunction
+
+; Every 2 s while the cutscene lock is on. Releases the player as soon as the scene is no longer playing
+; (normally the End fragment has done that already) and stops a scene that hangs for more than 120 s, so a
+; broken scene (e.g. a missing voice file) can never keep the player locked.
+Function WatchStandoffCutscene()
+    If !bCutsceneLocked
+        Return
+    EndIf
+    iCutsceneTicks += 1
+    Bool bPlaying = StandoffScene && StandoffScene.IsPlaying()
+    ; A locked player cannot defend himself: combat ends the cutscene like the timeout does.
+    Bool bInCombat = Game.GetPlayer().IsInCombat()
+    If bPlaying && iCutsceneTicks < 60 && !bInCombat
+        RegisterForSingleUpdate(2.0)
+        Return
+    EndIf
+    If bPlaying
+        If bInCombat
+            NHV_Util.Log(NHV_Cfg_Debug, "Standoff watchdog: player in combat, stopping the scene")
+        Else
+            NHV_Util.Log(NHV_Cfg_Debug, "Standoff watchdog: scene still running after 120 s, stopping it")
+        EndIf
+        StandoffScene.Stop()
+    ElseIf !bStandoffSceneDone
+        NHV_Util.Log(NHV_Cfg_Debug, "Standoff watchdog: scene not playing and never finished")
+    EndIf
+    UnlockCutscene()
 EndFunction
 
 ; Undoes the freezing of script versions 9-16 in existing saves (Migrate step 17).
@@ -718,4 +970,146 @@ Function StartQ00()
     PrepareStandoff()
     Q00.SetStage(10)
     NHV_Util.Log(NHV_Cfg_Debug, "Q00 started")
+EndFunction
+
+; ---------------------------------------------------------------------------------------------------------
+; Night Mother (Q00 stage 20). In Dawnstar the vanilla talking activator is not at her coffin, and the coffin
+; itself (door NMCoffin01) can only be opened. So on stage 20 our own invisible talking activator
+; NHV_NightMotherVoice (Night Mother voice type) is placed at the coffin; she calls the Listener once by idle dialogue
+; (NHV_Q00_NM_Call, Say Once), and opening the coffin (Q00 alias NightMotherCoffin, NHV_NightMotherCoffinAliasScript) starts the
+; conversation (NM_Gleaner topics). The activator is removed once the player enters the Sanctuary after stage 20.
+; ---------------------------------------------------------------------------------------------------------
+TalkingActivator Property NightMotherVoiceBase Auto
+Topic Property NightMotherCallTopic Auto
+ObjectReference Property NightMotherCoffinRef Auto
+
+ObjectReference NightMotherVoiceRef
+Bool bNightMotherCalled = False
+Bool bNightMotherCallPending = False
+Int iNightMotherCallTries = 0 ; unused since 26.09.2026, kept for saves
+Bool bNightMotherBusy = False
+
+; Stage 20 fragment, every entry into the Sanctuary and Migrate 21. Outside stage 20 the voice is removed.
+Function UpdateNightMother()
+    If !Q00 || !Q00.IsRunning() || Q00.GetStage() != 20
+        RemoveNightMotherVoice()
+        Return
+    EndIf
+    PrepareNightMother()
+EndFunction
+
+; Places the voice at the coffin (once) and makes sure the coffin alias is filled.
+Function PrepareNightMother()
+    If !Q00 || Q00.GetStage() != 20
+        Return
+    EndIf
+    If !NightMotherVoiceBase || !NightMotherCallTopic || !NightMotherCoffinRef
+        NHV_Util.Log(NHV_Cfg_Debug, "PrepareNightMother: property missing (voice " + NightMotherVoiceBase + ", topic " + NightMotherCallTopic + ", coffin " + NightMotherCoffinRef + ")")
+        Return
+    EndIf
+    ; Which coffin stands in Dawnstar depends on how the vanilla questline moved them (26.09.2026 test: opening
+    ; the coffin never reached the alias on 074766). The alias follows the coffin that is really there.
+    ObjectReference kCoffinRef = FindNightMotherCoffin()
+    ReferenceAlias kCoffin = Q00.GetAlias(4) as ReferenceAlias
+    If kCoffin && kCoffin.GetReference() != kCoffinRef
+        NHV_Util.Log(NHV_Cfg_Debug, "PrepareNightMother: coffin alias was on " + kCoffin.GetReference() + ", now on " + kCoffinRef)
+        kCoffin.ForceRefTo(kCoffinRef)
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "PrepareNightMother: coffin alias already on " + kCoffinRef)
+    EndIf
+    If !NightMotherVoiceRef && !bNightMotherBusy
+        bNightMotherBusy = True
+        NightMotherVoiceRef = kCoffinRef.PlaceAtMe(NightMotherVoiceBase, 1, True, False)
+        bNightMotherBusy = False
+        NHV_Util.Log(NHV_Cfg_Debug, "Night Mother voice placed at her coffin: " + NightMotherVoiceRef)
+    EndIf
+    ; The call itself (NHV_Q00_NM_Call) is idle dialogue of this activator (Say Once), like the vanilla Night
+    ; Mother's idle lines in DBRecurring: Say() from a talking activator never showed a line (26.09.2026).
+EndFunction
+
+; The Night Mother's coffin (door NMCoffin01) that is enabled and stands in the Dawnstar Sanctuary: the Dawnstar
+; one (property, 074766) or one of the two Falkreath coffins the questline may have moved (040166 DB10CoffinRef,
+; 050FE4 NMCoffinRef). Falls back to the property. Needs the Sanctuary loaded to compare cells.
+ObjectReference Function FindNightMotherCoffin()
+    Cell kSanctuary = None
+    If DawnstarAnchorRef
+        kSanctuary = DawnstarAnchorRef.GetParentCell()
+    EndIf
+    If kSanctuary
+        If NightMotherCoffinRef && !NightMotherCoffinRef.IsDisabled() && NightMotherCoffinRef.GetParentCell() == kSanctuary
+            Return NightMotherCoffinRef
+        EndIf
+        ObjectReference kRef = Game.GetFormFromFile(0x040166, "Skyrim.esm") as ObjectReference
+        If kRef && !kRef.IsDisabled() && kRef.GetParentCell() == kSanctuary
+            Return kRef
+        EndIf
+        kRef = Game.GetFormFromFile(0x050FE4, "Skyrim.esm") as ObjectReference
+        If kRef && !kRef.IsDisabled() && kRef.GetParentCell() == kSanctuary
+            Return kRef
+        EndIf
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "FindNightMotherCoffin: no enabled coffin found in the Sanctuary, using " + NightMotherCoffinRef)
+    Return NightMotherCoffinRef
+EndFunction
+
+; Unused since 26.09.2026 (the call is idle dialogue now); kept so saves with a pending update stay valid.
+; OnUpdate: the call, once. She speaks from her coffin like any voice in the room, so it waits (1 s steps, only
+; while the player is in the Sanctuary on stage 20) until he is close enough to hear it. Spoken "in the player's
+; head" the line never showed (26.09.2026): the speaker condition of the call INFO did not match there.
+Function CallFromNightMother()
+    If bNightMotherCalled || !NightMotherVoiceRef || !NightMotherCallTopic || !Q00 || Q00.GetStage() != 20
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    If !kPlayer.IsInLocation(DawnstarSanctuaryLocation)
+        Return ; OnEnterDawnstarSanctuary arms it again
+    EndIf
+    If !NightMotherVoiceRef.Is3DLoaded() || NightMotherVoiceRef.GetDistance(kPlayer) > 1500.0
+        iNightMotherCallTries += 1
+        If iNightMotherCallTries == 30
+            NHV_Util.Log(NHV_Cfg_Debug, "CallFromNightMother: still waiting, 3D=" + NightMotherVoiceRef.Is3DLoaded() + ", distance=" + NightMotherVoiceRef.GetDistance(kPlayer))
+        EndIf
+        bNightMotherCallPending = True
+        RegisterForSingleUpdate(1.0)
+        Return
+    EndIf
+    If bNightMotherCalled
+        Return ; the coffin was opened meanwhile
+    EndIf
+    bNightMotherCalled = True
+    NightMotherVoiceRef.Say(NightMotherCallTopic)
+    NHV_Util.Log(NHV_Cfg_Debug, "Night Mother calls the Listener (distance " + NightMotherVoiceRef.GetDistance(kPlayer) + ")")
+EndFunction
+
+; NHV_NightMotherCoffinAliasScript: the player opened the coffin (alias event, a short wait is fine here).
+Function OnNightMotherCoffinActivated()
+    If !Q00 || !Q00.IsRunning() || Q00.GetStage() != 20
+        NHV_Util.Log(NHV_Cfg_Debug, "OnNightMotherCoffinActivated: Q00 not on stage 20, ignored")
+        Return
+    EndIf
+    bNightMotherCalled = True ; legacy flags, only read by the unused CallFromNightMother()
+    bNightMotherCallPending = False
+    PrepareNightMother()
+    If !NightMotherVoiceRef
+        NHV_Util.Log(NHV_Cfg_Debug, "OnNightMotherCoffinActivated: no Night Mother voice")
+        Return
+    EndIf
+    Int i = 0
+    While !NightMotherVoiceRef.Is3DLoaded() && i < 10
+        Utility.Wait(0.1)
+        i += 1
+    EndWhile
+    NightMotherVoiceRef.Activate(Game.GetPlayer())
+    NHV_Util.Log(NHV_Cfg_Debug, "Night Mother coffin opened, conversation started (voice 3D loaded=" + NightMotherVoiceRef.Is3DLoaded() + ")")
+EndFunction
+
+Function RemoveNightMotherVoice()
+    If NightMotherVoiceRef
+        NightMotherVoiceRef.Disable()
+        NightMotherVoiceRef.Delete()
+        NightMotherVoiceRef = None
+        NHV_Util.Log(NHV_Cfg_Debug, "Night Mother voice removed")
+    EndIf
+    bNightMotherCalled = False
+    bNightMotherCallPending = False
 EndFunction

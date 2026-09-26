@@ -2,12 +2,31 @@
 ;NEXT FRAGMENT INDEX 8
 Scriptname QF_NHV_Q00_ShadowAtTheDoor_02000815 Extends Quest Hidden
 
-;BEGIN FRAGMENT Fragment_0
-Function Fragment_0()
+;BEGIN ALIAS PROPERTY Veyra
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Veyra Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Babette
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Babette Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Cicero
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Cicero Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Nazir
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Nazir Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_6
+Function Fragment_6()
 ;BEGIN CODE
-SetObjectiveCompleted(30)
-SetObjectiveDisplayed(40)
-(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).OpenSealedPassage()
+SetObjectiveCompleted(50)
+SetObjectiveDisplayed(60)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -20,12 +39,11 @@ SetObjectiveDisplayed(10)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_2
-Function Fragment_2()
+;BEGIN FRAGMENT Fragment_5
+Function Fragment_5()
 ;BEGIN CODE
-SetObjectiveCompleted(10)
-SetObjectiveDisplayed(15)
-(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).ReleaseStandoff()
+setObjectiveCompleted(40)
+setObjectiveDisplayed(50)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -36,7 +54,32 @@ Function Fragment_3()
 SetObjectiveCompleted(10)
 SetObjectiveCompleted(15)
 SetObjectiveDisplayed(20)
-(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).ReleaseStandoff()
+NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+If kCore != None
+    kCore.SendVeyraToWindpeak()
+    kCore.UpdateNightMother()
+EndIf
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_2
+Function Fragment_2()
+;BEGIN CODE
+SetObjectiveCompleted(10)
+SetObjectiveDisplayed(15)
+NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+If kCore != None
+    kCore.BeginVeyraExitSanctuary()
+EndIf
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_7
+Function Fragment_7()
+;BEGIN CODE
+SetObjectiveCompleted(60)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -46,32 +89,20 @@ Function Fragment_4()
 ;BEGIN CODE
 SetObjectiveCompleted(20)
 SetObjectiveDisplayed(30)
+NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+If kCore != None
+    kCore.SendVeyraToWindpeak()
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_5
-Function Fragment_5()
+;BEGIN FRAGMENT Fragment_0
+Function Fragment_0()
 ;BEGIN CODE
-SetObjectiveCompleted(40)
-SetObjectiveDisplayed(50)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
-;BEGIN CODE
-SetObjectiveCompleted(50)
-SetObjectiveDisplayed(60)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_7
-Function Fragment_7()
-;BEGIN CODE
-SetObjectiveCompleted(60)
+setObjectiveCompleted(30)
+setObjectiveDisplayed(40)
+(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).OpenSealedPassage()
 ;END CODE
 EndFunction
 ;END FRAGMENT

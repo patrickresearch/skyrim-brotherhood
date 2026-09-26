@@ -9,6 +9,8 @@ Configuration:
   - Female
   - Essential
   - Unique
+  - DoesNotBleed
+  - Invulnerable
   Level:
     MutagenObjectType: PcLevelMult
     LevelMult: 1
@@ -109,6 +111,7 @@ HairColor: 0A0439:Skyrim.esm
 NAM5: 255
 Height: 1
 Weight: 45
+DefaultOutfit: 052B5F:Skyrim.esm
 TextureLighting: '#00B5B5B5'
 FaceMorph:
   LipsUpVsDown: -0.32

@@ -1,0 +1,29 @@
+FormKey: 0037EE:NightsHarvest.esp
+EditorID: NHV_Q00_NM_Call_INFO01
+Flags:
+  Flags:
+  - SayOnce
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 20
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Come to me, my Listener. A stranger stood among my children. She is no stranger to me.
+  ScriptNotes: NHV_Q00_020_00
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 0037EC:NightsHarvest.esp
+  ComparisonValue: 1

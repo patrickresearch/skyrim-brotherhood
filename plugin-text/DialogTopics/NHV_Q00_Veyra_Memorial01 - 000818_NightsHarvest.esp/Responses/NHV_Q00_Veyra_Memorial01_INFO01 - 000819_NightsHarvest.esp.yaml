@@ -1,5 +1,19 @@
 FormKey: 000819:NightsHarvest.esp
 EditorID: NHV_Q00_Veyra_Memorial01_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02000819
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_AstridMemorial
+      Object: 000814:NightsHarvest.esp
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02000819
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02000819
+      FragmentName: Fragment_0
 Flags: {}
 PreviousDialog: Null
 FavorLevel: None
@@ -25,6 +39,10 @@ Conditions:
     MutagenObjectType: GetIsIDConditionData
     Object: 000817:NightsHarvest.esp
   ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000814:NightsHarvest.esp
 Prompt:
   TargetLanguage: English
   Value: Carve her name with the others.

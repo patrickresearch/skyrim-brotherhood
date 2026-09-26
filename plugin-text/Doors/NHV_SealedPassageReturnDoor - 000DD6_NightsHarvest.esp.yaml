@@ -8,3 +8,4 @@ Name:
   Value: Sanctuary Passage
 Model:
   File: Dungeons\Dwemer\Door\DwemerSmallDoorLoad01.nif
+  Data: 0x020000000000000000000000

@@ -37,7 +37,7 @@ NON_VOICED_SPEAKERS = {"Player", "Journal", "Book"}
 # Known speakers so far; extend as new recruits/NPCs are written (docs/CONVENTIONS.md VoiceType pattern).
 CUSTOM_VOICED_SPEAKERS = {"Veyra", "Hrefna"}
 VANILLA_SPEAKERS = {"Nazir", "Babette", "Cicero", "NightMother"}
-LINEID_RE = re.compile(r"^NHV_(?:[A-Za-z0-9]+_\d{3}_\d{2}|SYS_[A-Za-z0-9]+_\d+)$")
+LINEID_RE = re.compile(r"^NHV_(?:[A-Za-z0-9]+_\d{3}_\d{2,}|SYS_[A-Za-z0-9]+_\d+)$")
 
 
 def load_wordlist(path: Path) -> set:

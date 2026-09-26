@@ -14,7 +14,7 @@ Conditions:
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000815:NightsHarvest.esp
-  ComparisonValue: 20
+  ComparisonValue: 15
 PackageTemplate: 0654E2:Skyrim.esm
 Data:
 - Key: 3

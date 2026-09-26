@@ -1,8 +1,30 @@
 FormKey: 000833:NightsHarvest.esp
 EditorID: NHV_Q00_NM_Gleaner05_INFO01
-Flags: {}
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02000833
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02000833
+    OnBegin:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02000833
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - Goodbye
 PreviousDialog: Null
 FavorLevel: None
+Responses:
+- EmotionValue: 20
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Go, then. The Gleaner waits.
+  ScriptNotes: NHV_Q00_020_39
+  Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
@@ -12,7 +34,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 022440:Skyrim.esm
+    Object: 0037EC:NightsHarvest.esp
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English

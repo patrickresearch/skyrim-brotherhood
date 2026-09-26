@@ -4,7 +4,9 @@ Stand: 21.09.2026. Details zu allen Punkten stehen im Konzept unter `docs/concep
 
 ## Vision
 
-Nach „Hail Sithis!“ ist die Dark Brotherhood fast ausgelöscht. Night's Harvest erzählt ihren Wiederaufbau: Eine alte Recruiterin aus Cheydinhal taucht in der Dawnstar Sanctuary auf, öffnet einen versiegelten Flügel und schickt den Spieler los, neue Mitglieder zu finden. Jede Rekrutierung ist eine eigene Geschichte mit Entscheidungen und Folgen. Am Ende steht eine lebendige Familie und die Freiheit, selbst weiter zu rekrutieren.
+Nach „Hail Sithis!“ ist die Dark Brotherhood fast ausgelöscht. Night's Harvest erzählt ihren Wiederaufbau: Veyra, eine geheimnisvolle Nachleserin mit Vergangenheit in Cheydinhal, bietet der Night Mother ihre Hilfe an, öffnet einen versiegelten Flügel und schickt den Spieler los, neue Mitglieder zu finden. Jede Rekrutierung ist eine eigene Geschichte mit Entscheidungen und Folgen. Am Ende steht eine lebendige Familie und die Freiheit, selbst weiter zu rekrutieren.
+
+**Autorenwissen E23 (26.09.2026):** Veyra ist in unserer Mod eine Tochter Sithis', fraktionsungebunden und freiwillig seinem Dienst verpflichtet. Sie gehört der Brotherhood nicht an. Ihre tatsächliche Natur wird nicht automatisch im Spiel enthüllt; Details und offene Punkte stehen in `docs/concept/Veyra-Autorenprofil.md`.
 
 - **Arbeitstitel:** Night's Harvest (Namenskollision auf Nexus vor Release prüfen, E15)
 - **Plugin:** `NightsHarvest.esp`, EditorID-Präfix `NHV_`
@@ -30,7 +32,7 @@ Nach „Hail Sithis!“ ist die Dark Brotherhood fast ausgelöscht. Night's Harv
 
 | Figur | Rasse | Rolle | Service | Quest |
 |---|---|---|---|---|
-| Veyra Othren („the Gleaner“) | Dunmer | Recruiterin, Questgeberin | Trainerin Illusion (Expert) | alle |
+| Veyra Othren („the Gleaner“) | Dunmer-Erscheinung; E23 | Externe Recruiterin, Questgeberin | Trainerin Illusion (Expert) | alle |
 | Hrefna Stormhollow | Nord | Köchin | Trainerin Archery | Q01 |
 | Sings-Beneath-Ice | Argonier | Schleicher | Trainer Sneak | Q02 |
 | Nirelda Aurantil | Altmer | Magierin | Trainerin Destruction | Q03 |

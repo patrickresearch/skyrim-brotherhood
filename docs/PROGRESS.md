@@ -16,6 +16,25 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**26.09.2026: E23-Grundrichtung entschieden – Veyra als Tochter Sithis'.** Entwickler legt fest: theoretisch tötbar, nicht durch Alter/gewöhnliche Waffen; ungebunden und freiwillig ihrem Vater treu; kein Brotherhood-Mitglied, sondern Helferin der Night Mother. Verbindliches Profil: `docs/concept/Veyra-Autorenprofil.md`; Hauptkonzept und GOAL angepasst. Frühere Morag-Tong-Hilfe und Treffen mit der lebenden Night Mother bleiben Möglichkeiten; Entstehung/Mutter, genaue Verwundbarkeit und Ingame-Enthüllung offen. Die ältere Empfehlung „gebundene Nachleserin“ ist überholt. Betroffene CSV-/Buchstellen für nächste Redaktion aufgelistet; noch keine Dialog-, ESP-, Script- oder Schutzflag-Änderung. Lore-Designreview berücksichtigt.
+
+
+**26.09.2026: Veyra-Mysterium recherchiert, E23 offen.** Chronologie von Sithis/Mythologie über die Spaltung der Morag Tong bis Skyrim sowie Bewertung von erster Dienerin/Tochter/Schwester unter `docs/lore/Veyra-Sithis-Chronologie.md`. Empfehlung zur Diskussion: gebundene Nachleserin, Herkunft unbestätigt, eigener Auftrag bei Anerkennung des Listeneramts. Lore-Review fand konkrete Konflikte in den älteren B02/B06-Buchentwürfen (Cicero/Chronologie, 230-jährige Biografie versus frühere Erscheinungen, immerwährender Weggang versus Ledger-Verwaltung). Noch keine neue Herkunft beschlossen oder Dialoge deswegen geändert.
+
+**26.09.2026: Dialogausbau redaktionell geliefert, noch nicht im Plugin.** Auf Entwicklerwunsch Q00 vertieft (43 neue Zeilen, zehn bestehende Texte verfeinert) und `dialogue/Sanctuary.csv` angelegt (90 Zeilen, fünfzehn Gespräche mit Nachfragen für Veyra/Nazir/Babette/Cicero). E22 ausdrücklich bestätigt: Erst eine bewusste Abschlusswahl beendet den Standoff; Informationsfragen halten Stage 10 offen. Keine Änderung an ESP, plugin-text, Papyrus oder Voice-Dateien in dieser Runde. Einbauplan: `docs/ck/M1.5-Q00-Dialogausbau.md`; lesbare Fassung: `docs/dialogue/Dialogausbau-2026-09-26.md`. Dialog-Lint: 0 Fehler, optionale Rechtschreibprüfung mangels Paket übersprungen. Lore-Review abgeschlossen; sechs Befunde zu Anschlusslogik und Spielerführung eingearbeitet. M1.5 bleibt „In Arbeit“, weil Einbau und Ingame-Test ausstehen.
+
+
+**25.09.2026 (Abend 4): Szene 1 ingame bestätigt; Anschlussfluss vorbereitet.** Der Entwickler hat bestätigt: Wenn Q00 startet und der Spieler sich dem Raum nähert, sperrt die Cutscene wie im Helgen-Prolog die Bewegung, Phasen 1–4 von `NHV_Scn_Q00_01Standoff` laufen sauber durch, danach werden die Controls freigegeben und Veyras normaler Dialog funktioniert. Anschluss nach den Dialogoptionen ist vorbereitet: Veyra verlässt die Sanctuary, wird im Windpeak Inn platziert, der Spieler befragt die Night Mother, holt Veyra ab und schaltet das Proposal erst nach ihrer Rückkehr frei. Wichtiger Ablaufpunkt: Standoff-Dialoge setzen Stage 15, `NHV_Pkg_Q00_StandoffHold` muss deshalb bei Stage `< 15` enden; `NHV_CoreScript` setzt nach ca. 8 Sekunden Stage 20 und bewegt Veyra dann ins Windpeak Inn. `NHV_CoreScript` v20 enthält `BeginVeyraExitSanctuary()`, `SendVeyraToWindpeak()`, `BeginVeyraReturnToSanctuary()` und `CompleteVeyraReturnToSanctuary()`. Neue Globals: `NHV_Q00_VeyraReturned` (000871) und `NHV_Q00_VeyraReturning` (000872). Neue/angepasste CSV-Zeilen: `010_73`, `020_42–44`, `030_32–34`; Proposal-Topics sind im Plugin-Text auf `NHV_Q00_VeyraReturned == 1` gegatet. CK-Anleitung: `docs/ck/M1.5-Q00-Windpeak-NightMother-Flow.md`. Checks: Papyrus-Build grün (11 Scripts), Dialog-Lint 0 Fehler mit nur optionaler Spellchecker-Warnung. **Nicht ingame getestet und nicht final CK-verkabelt:** Marker-/Package-Properties, Dialog-INFOs/Fragmente, Silent-Voice-Dateien für neue INFO-FormIDs, anschließende CK-Save-Schaden-Prüfung.
+
+**25.09.2026 (Abend 3): Test zeigte: Szene startet, hängt aber ab der ersten Zeile – Ursache gefunden.**
+Die sechs Szenen-Sprachdateien hatten den falschen Namen (`NHV_Q00_Sh__…` statt
+`NHV_Q00_ShadowAtTheDoor__…`): Ohne Topic-EditorID wird die Quest nicht auf 10 Zeichen gekürzt
+(aus allen Vanilla-Namen im Voices-BSA abgeleitet; houseCARL rechnet hier falsch). Die Engine fand
+keine Datei, die Szene wartete ewig. Außerdem: Nazirs zweiter Satz lag in einer eigenen INFO
+(002B51, gelöscht) und wäre nie gespielt worden – jetzt Antwort 2 von 002B50. **Neu:** Standoff als
+feste Zwischensequenz (Steuerung gesperrt, Umsehen frei, Watchdog 120 s), `NHV_CoreScript` v18.
+Veyras normaler Dialog (Reihenfolge, Nazir-Option nur bei Nazir) ist ingame bestätigt.
+
 **25.09.2026 (Abend 2): Standoff-Schleife aufgelöst – Blöcke A und B erledigt, Ingame-Test (Block C) steht aus.**
 Ursachen der Fehlerschleife: (1) Szenen-Zeilen ohne Sprachdatei werden nicht abgespielt → stille
 `.fuz` per `tools/silent_voice.py` (E21, 39 Dateien, houseCARL: „present, 0 SILENT“); (2) eingefrorene
@@ -228,97 +247,149 @@ Option 1) – Schema jetzt gesichert, nicht mehr raten nötig:
 
 ## Nächster Schritt
 
-### Test Q00 Standoff (Block C, Entwickler, Stand 25.09.2026 Abend 2)
+### Veyra-Texte an die entschiedene Grundrichtung E23 anpassen
 
-Alles ist in der Dev-Kopie (ESP, Scripts, 39 `.fuz`, auch die `overwrite`-Kopien der Fragmente).
+`docs/concept/Veyra-Autorenprofil.md` als verbindlichen Kern verwenden. Q00/Sanctuary und alte Buchentwürfe auf externe Helferin, freiwillige Sithis-Treue und besondere Natur abgleichen, anschließend lore-editor/Lint. Noch offene Herkunftsdetails oder ein Treffen mit der lebenden Night Mother nicht als Tatsachen erfinden. Vor Plugin-Übernahme des früheren Dialogausbaus diesen redaktionellen Abgleich abschließen; technische Sterblichkeit getrennt bearbeiten.
 
-**Vorbereitung**
-1. Spielstand **vor** dem Q00-Start laden (100 %-Save, außerhalb oder in der Sanctuary, Q00 läuft
-   noch nicht). Ältere Saves mit laufendem Q00 gehen auch, schreiben aber einmal
-   `variable iSceneGuardTicks … will be skipped` ins Log (erwartet, harmlos).
-2. Konsole: `set NHV_Cfg_Debug to 1`. MCM → Startverzögerung 0 (oder MCM-Debug „Start Q00 now“).
+### Dialogausbau vom 26.09.2026 einbinden
 
-**Ablauf und Erwartung**
-1. Sanctuary betreten → Q00 startet. Veyra steht neben dem Stuhl, Nazir vor ihr, Babette und
-   (falls verschont) Cicero an ihren Plätzen. Initiaten weg, Gefangene still.
-2. Kurz warten: **niemand läuft weg** (Package).
-3. Auf unter ~800 Units an Veyra heran → Szene: Nazir (2 Zeilen), Veyra, Babette, (Cicero, Veyra).
-   **Jede Untertitelzeile bleibt 3–6 s stehen**, dann die nächste.
-4. Danach Veyra ansprechen: Standoff-Optionen, oben „Who are you?“. Diese wählen → Veyras zwei
-   Sätze lesbar, danach erscheint die Folgefrage (Standoff01b).
-5. Nazir ansprechen: nur dort „Nazir, lower your blade. Let her talk.“ Babette zeigt **keine**
-   Veyra-Optionen.
-6. Optional: `setstage NHV_Q00_ShadowAtTheDoor 20`, dann den Sarg der Night Mother aktivieren →
-   „Can she be trusted?“ usw. erscheinen, Antworten lesbar.
+Nach Abschluss/Abgleich der laufenden CK-Arbeit den neuen CSV-Stand gemäß `docs/ck/M1.5-Q00-Dialogausbau.md` in die Dialog-Records übernehmen. Besonders E22 beachten: Alte automatische Abschlussverbindungen nach Informationsfragen entfernen. Danach stille FUZ neu erzeugen, CK-Roundtrip und Test mit lebendem/totem Cicero. Die bisherige Windpeak-Übergabe darunter bleibt relevant.
 
-**Papyrus-Log (`[NHV]`-Zeilen, bitte mitschicken)**
-- `Standoff: N bystander(s) hidden`
-- `Standoff scene started`, `Standoff scene IsPlaying=True`
-- `Standoff alias 0..3 in our scene: True` (3 fehlt, wenn Cicero tot ist; dann stattdessen
-  `PrepareStandoff: Cicero was killed (0x01E64A dead), alias 3 cleared`)
-- nach dem letzten Szenensatz: `Standoff scene finished`
-- **nicht** erwartet: `VeyraRef not set`, `StandoffScene not set`, Papyrus-Fehler mit `NHV_`
 
-**Bekannte Lücken (kein Testfehler, Block D):** Veyra sitzt nicht; Nazirs Verdachtszeilen
-`010_70–72` (→ Stage 20) fehlen, Stage 20 daher nur per `setstage`; Veyras Nachsatz `010_42`
-nach Option 4 fehlt; erste Proposal-Optionen `030_41/030_43` fehlen; Objective-Flags (FNAM).
+### Q00 Anschluss nach Szene 1: Windpeak, Night Mother, Rückkehr
 
-### Danach (Block D, Claude + Entwickler)
+Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q00-Windpeak-NightMother-Flow.md` abarbeiten:
 
-1. Nazirs Verdacht `010_70–72` als kleine zweite Szene nach Option 1–5, → Stage 20 (CK-Anleitung).
-2. Fehlende Zeilen `010_42`, `030_41/030_43` einbauen; Antworten anderer Sprecher auf Veyra-Optionen
-   (z. B. Nazir nach „Agreed. We rebuild.“) über Szenen/Fragmente lösen.
-3. Veyra sitzend: Stuhl-RefID per Konsole (Klick auf den Stuhl) → Sit-Package am Veyra-Alias.
-4. Objective-FNAM-Flags, Aufräumen (`NHV_Mk_Q00_DeepSanctuaryEntry` ungenutzt, Scratch-Mod
-   „houseCARL - NHV_ScratchPackageSchema“ in MO2).
-
-### Älterer Stand (vor 25.09.2026)
-
-**M1.5 (Q00-Questhülle) ist zum Teil erledigt – der Rest braucht CK-Arbeit oder eine
-neue Schema-Erkundung. Details siehe Log 23.09. „M1.5 Q00-Questhülle".**
-
-**Für den Entwickler, zwei kurze CK-Schritte:**
-1. Fragmente an sechs bestehenden Q00-INFOs ergänzen (Memorial x3, Gleaner02/05,
-   Standoff06) – vollständige Anleitung mit Fragment-Code zum Copy-Paste:
-   `docs/ck/M1.5-Q00-Dialog-Fragmente.md`.
-2. `NHV_Q00_ShadowAtTheDoor` im CK öffnen → Quest Stages-Tab → für jede der 8 Stages
-   (10/15/20/30/40/50/60/100) den Journal-Text aus `dialogue/Journal.csv` eintragen
-   (Grund: Spriggit-Bug, siehe `docs/ENVIRONMENT.md` „Bekannte Spriggit-Limitation").
-3. Nach beiden Schritten einmal `tools/plugin_text.ps1 -Direction ToText`, damit
-   `plugin-text/` wieder synchron ist (Ein-Schreiber-Regel, E17).
-
-**Für Claude, als Nächstes:**
-1. `ck-guide`-Anleitung für die Scene-Arbeit schreiben: `NHV_Scn_Q00_01Standoff` (Actors,
-   Kamera, Nazir-Zwischenrufe/-Verdacht), `NHV_Scn_Q00_02SealedPassage`,
-   `NHV_Scn_Q00_03MemorialWall`, plus Force-Greet-Verkabelung für Cicero.
-2. M1.2 weiterführen, sobald CK-Zeit da ist: FaceGen, Kampfstil/Klasse, Packages
-   (Schlaf/Ledger/Essen/Map-Table/Training laut Konzept Abschnitt 3), platzierte Referenz
-   im Ledger Room.
-3. Bücher `NHV_Book_BuildersRecord` und `NHV_Book_GleanersLedger` (Text liegt in
-   `dialogue/NightsHarvest-claude-code/dialogue/books/` vor, noch nicht übertragen).
-4. M2-Story-Rekruten (Sings/Nirelda/Corisande/Kharzog): Reserve-Aliase in `NHV_Sys_Family`
-   existieren schon, Scripts/Properties erst anhängen, wenn die jeweilige NPC- und
-   Status-Global-Arbeit dran ist (M2.2–M2.5).
-5. Nach jedem ESP-Write: `tools/sync_dev.ps1 -Direction ToDev -IncludeEsp`, Build,
-   `tools/verify_live_untouched.ps1`.
-
-**Für den Entwickler, sobald Zeit ist:** M1.1, M1.4 und M1.6 sind bereit für einen
-Ingame-Test – `sqv NHV_Sys_Sanctuary` bzw. `sqv NHV_Sys_Family` in der Konsole zeigt den
-Alias-Zustand. M1.4/M1.6 starten aber erst automatisch, sobald Q00 die jeweilige Stage
-erreicht (Q00 selbst startet jetzt korrekt bei Stage 10, aber ohne Dialog-Branches passiert
-noch nichts Sichtbares) – bis dahin lassen sie sich nur mit `StartQuest`/`SetStage` von
-Hand anstoßen.
-
-## Offene Rückfragen an den Entwickler
-
-- **Night Mother**: Für Dialog reicht die Basis `DBNightMotherTalkingActivator` (022440, wie
-  Vanilla `DBRecurringSharedContractTopic`, per houseCARL geprüft). Die platzierte Referenz in
-  Dawnstar wird erst gebraucht, wenn ein Script sie ansprechen muss.
-- **RecruitDied() vs. OnDeath()**: Überschneidung zwischen Contract-Phase
-  (`NHV_ContractBaseScript.RecruitDied()`, kommt in M1.7) und Post-Homecoming-Phase
-  (`NHV_RecruitAliasScript.OnDeath()`, M1.6) – Klärung vor M1.7 nötig.
+1. Globals `NHV_Q00_VeyraReturned` und `NHV_Q00_VeyraReturning` prüfen/anlegen.
+2. Properties am `NHV_Sys_Core` füllen (`NHV_Q00_VeyraReturned`, `NHV_Q00_VeyraReturning`, `VeyraWindpeakMarkerRef`, `VeyraSanctuaryExitMarkerRef`, `VeyraSanctuaryReturnMarkerRef`).
+3. Alias-Packages am Q00-Alias `Veyra` ergänzen: `NHV_Pkg_Q00_VeyraExitSanctuary`, `NHV_Pkg_Q00_VeyraWaitWindpeak`, `NHV_Pkg_Q00_VeyraReturnFollow`.
+4. Dialog-INFOs/Conditions aus `dialogue/Q00.csv` umsetzen, besonders `NHV_Q00_010_62`, `NHV_Q00_010_73`, `NHV_Q00_030_32` bis `NHV_Q00_030_34` und das Proposal-Gate `NHV_Q00_VeyraReturned == 1`.
+5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-26 – E23: Tochter Sithis', freiwillige Helferin der Night Mother
+
+- Entwickler wählt göttliche Herkunft als Autorenwissen: ungebunden, allein dem Dienst am Vater verpflichtet, kein Mitglied der Brotherhood; Tochter als Mod-Ergänzung klar vom TES-Kanon getrennt.
+- Eigenes Autorenprofil angelegt, Abschnitt 3 des Konzepts/GOAL und E23 synchronisiert; ursprüngliche Lore-Analyse als historische Entscheidungsvorlage markiert.
+- Lore-Designreview: Gaststatus versus Zuständigkeit des Listener, Sithis-Deutungen, echter Standoff-Einsatz (Zugang/Vertrauen), keine garantierte Rettung durch Waffenfestigkeit.
+- Offene Einzelheiten und betroffene Alttexte dokumentiert. CSV/ESP/Papyrus unverändert; keine Engine- oder Ingame-Funktionsbehauptung. Kein Commit im umfangreich vorgeänderten Arbeitsbaum.
+- Commit-Vorschlag: `[Docs] Veyras Herkunft und freiwillige Sithis-Treue festlegen`.
+
+
+### 2026-09-26 – Sithis, Night Mother und Veyras mögliche Herkunft
+
+- Spieltexte zu Sithis, Brotherhood-Gründung und Ciceros Tagebüchern recherchiert; mythische Überlieferung von historischen Indizien getrennt. 2Ä 358 ist Existenzindiz, kein verlässlich feststehendes Gründungsjahr.
+- Lokales `lore-editor`-Review der bisherigen Mysteriumsbücher: konkrete Chronologie- und Kontinuitätsbefunde in `docs/lore/Veyra-Sithis-Chronologie.md` festgehalten.
+- E23 als **offene** Designentscheidung ergänzt. Keine Änderung an CSV, ESP, Scripts oder der verbindlichen Veyra-Biografie.
+
+### 2026-09-26 – Q00 vertieft und persönliche Sanctuary-Gespräche
+
+- 43 neue Q00-Zeilen: sechs Standoff-Frageketten, bewusster Abschluss, ein Windpeak-Gespräch vor dem Urteil; zehn bestehende Zeilen überarbeitet.
+- 90 neue Sanctuary-Zeilen: fünfzehn Gespräche mit Nachfragen, ohne neue Questmechanik oder spätere Spoiler.
+- E22 auf ausdrücklichen Entwicklerwunsch dokumentiert, Konzeptfluss angepasst. LineID-Zähler darf nach 99 weiterwachsen; bestehende IDs unverändert, Journal-IDs berücksichtigt, Linter entsprechend erweitert.
+- Lint: vier CSV-Dateien, 281 eindeutige IDs, 0 Fehler; optionale Rechtschreibprüfung fehlt. Lore-Review abgeschlossen, sechs Befunde eingearbeitet.
+- Nur Text/Plan: keine ESP-/Script-/Voice-Änderung, kein Build und keine Ingame-Funktionsbestätigung. Kein Commit, da umfangreiche fremde Änderungen im Arbeitsbaum liegen.
+- Commit-Vorschlag nach separater Übernahme: `[Q00] Standoff vertiefen und Sanctuary-Gespraeche ergaenzen`.
+
+
+### 2026-09-26 (Night Mother auf Stage 20)
+
+- Befund Entwickler: `player.moveto 22441` landet im Eisbereich am Eingang; die Night Mother lässt
+  sich in Vanilla-Dawnstar nicht ansprechen, nur ihr Sarg (`DawnstarSancNightMotherRef` 074766, Tür
+  `NMCoffin01`) öffnen/schließen. Veyras Referenz (FF002F92) steht im Windpeak Inn, war aber nicht zu sehen.
+- Umsetzung (Spriggit + Script, keine Vanilla-Records): eigener Sprech-Aktivator `NHV_NightMotherVoice`
+  (0037EC, Kopie des Vanilla-TACT: `Marker_LinkMarker.nif`, Stimme `FemaleUniqueNightMother`), wird auf
+  Stage 20 am Sarg platziert. Ruf `NHV_Q00_NM_Call` (0037ED/INFO 0037EE, CSV `020_00`) einmal im Kopf des
+  Spielers, sobald er auf Stage 20 in der Sanctuary ist. Q00-Alias 4 `NightMotherCoffin` auf 074766 mit
+  `NHV_NightMotherCoffinAliasScript`: Sarg öffnen → `Activate(player)` am Aktivator → Gleaner-Gespräch
+  (GetIsID jetzt 0037EC). Entfernt beim nächsten Betreten nach Stage 20. `NHV_CoreScript` v21.
+- Reviews: lore-editor → Ruf-Zeile neu („A stranger stood among my children. She is no stranger to me.“,
+  Neutral 20; offen: Lore-Check „my children“, kein Vanilla-Zitat). papyrus-reviewer → Sarg-Alias wird bei
+  Bedarf per `ForceRefTo` gefüllt, Migrate 21 ruft `UpdateNightMother()` (sonst Stage 20 in laufenden Saves
+  unlösbar); Ruf verzögert über `OnUpdate` (wartet bis 5 s auf 3D), Sarg-Pfad wartet bis 1 s; Busy-Flag;
+  Aufräumen bei Q00-Neustart. Sarg 074766 ist in `Skyrim.esm` persistent (geprüft).
+- Test 15:08 (Entwickler): Gespräch über den Sarg klappt (4 Optionen), „Talk“ erscheint nicht (Vanilla-Tür
+  zeigt „Open“). Log: Sarg-Alias war beim Queststart leer (`was on None`) → `ForceRefTo` greift. Ruf
+  ausgelöst (3D geladen), aber kein Untertitel → umgestellt auf normales `Say` aus dem Sarg, sobald der
+  Spieler < 1500 Units nah ist. „That is all I needed, Mother.“ fehlte im Menü: INFO ohne Antwort wird
+  nicht angeboten → leere Antwort ergänzt (CSV-Notiz). **Nicht getestet:** beides.
+- Test 15:18: Ruf per `Say` (aus dem Sarg, 945 Units) wieder ohne Untertitel; Option 5 trotz leerer
+  Antwort nicht angeboten. Entwickler: Vanillas Night Mother zeigt in „The Dark Brotherhood Forever“
+  zwischendurch Untertitel. `Skyrim.esm`: DBRecurring-Topic 087B6B ist **Idle (IDAT)** mit `GetIsID`
+  auf ihren TACT – kein Script-`Say`. Umgestellt: `NHV_Q00_NM_Call` = Idle/IDAT/Misc, INFO „Say Once“;
+  `Say`-Pfad stillgelegt. Option 5 hat jetzt eine echte Antwort `020_39` „Go, then. The Gleaner is
+  waiting.“ (LineIDs `020_41/46` waren vergeben – Codex arbeitet parallel im Bereich `020_4x/5x`).
+- Test 15:30 (Entwickler): Option 5 erscheint, Stage 30; Veyra im Inn ansprechbar („Lead on,
+  Listener“), folgt bis zur Sanctuary; dort 3 Proposal-Optionen. Ruf kommt auch als Idle nicht →
+  **Entscheidung Entwickler: vorerst ohne Ruf** (Quest-Ziel reicht), Ruf (Hello/Stimm-NPC) und
+  richtige Positionierungen später. „Agreed. We rebuild.“ fehlte (INFO ohne Antwort) → Veyra antwortet
+  mit `030_72/73`, `TIF__02000845` setzt Stage 40 (Nazirs `030_70/71` später als Szene). **Regel:**
+  Jede Spieler-Option braucht mindestens eine nicht-leere NPC-Antwort, sonst zeigt die Engine sie nicht.
+- **Spriggit verwirft unbekannte Felder ohne Fehler** (TACT: `VoiceType` statt `Voice`) – nach jedem
+  Round-Trip die neuen Felder im Text nachprüfen. `silent_voice.py` liest jetzt auch Sprech-Aktivatoren.
+
+### 2026-09-26 (Test Stage 15/20, Dialog-Fragmente)
+
+- Ingame (Entwickler): Zwischensequenz läuft komplett (`locked` → `scene finished` → `released`),
+  alle Gespräche laufen, Stage 10/15/20 gesetzt, Veyra verschwindet (`Veyra moved to Windpeak Inn`).
+  Nicht möglich: Night Mother ansprechen, Veyra im Windpeak Inn sehen.
+- Night Mother: im CK noch nichts gebaut (kein Ruf, kein Package). `NightMotherActivatorRef`
+  (022441, Basis 022440) steht in `Skyrim.esm` in der Falkreath-Sanctuary; ob Vanilla ihn nach Dawnstar
+  verschiebt, prüft der Entwickler mit `player.moveto 22441`.
+- Fragmente per Spriggit (`TIF__02000819/0821/0823/0827/0833`): Gleaner05 → Stage 30 (Begin, Goodbye,
+  da ohne NPC-Antwort), Gleaner02 → `NHV_Q00_AskedLeave`, Memorial01–03 → `NHV_AstridMemorial` (je als
+  Property; Optionen nur bei `NHV_AstridMemorial == 0`, CSV nachgezogen). papyrus-reviewer: Soft-Lock-
+  Befund (OnEnd ohne Antwort) behoben. `SendVeyraToWindpeak` loggt jetzt den Marker (Save kann noch den
+  Solitude-Wert `072278` halten – Property-Werte im Save ersetzt das ESP nicht).
+
+### 2026-09-25 (Nacht, CK-Session Entwickler bis Stage 30: Diff-Prüfung)
+
+- CK-Stand geholt (ESP 21:00, `TIF__020037EB`, Q00-Stage-Fragment neu sortiert) und gegen den
+  Vorher-Stand von `plugin-text/` verglichen. Kein bekannter CK-Save-Schaden (Quest-Felder,
+  Family-Aliase intakt); Standoff-Reparaturen (Nazir-INFO, Cicero, Bedingungen) erhalten.
+- **Verloren/umgebaut:** Codex' Globals `NHV_Q00_VeyraReturned/-Returning` (000871/000872) waren
+  nicht im ESP, das das CK geladen hat; im CK neu angelegt als 00327B/00327C. Dadurch fehlte die
+  „Veyra ist zurück“-Bedingung an Proposal01–04b → wiederhergestellt (00327B);
+  `EnsureProperties()`-Fallback auf die neuen IDs umgestellt.
+- **Ungewollt:** Override der Vanilla-Zelle `SolitudeTempleoftheDivines` (ohne Referenzen, von nichts
+  benutzt) → entfernt (Regel 1). `MarkarthTreasuryHouseLocation` (bestehender Vanilla-Override aus
+  M1.3) vom CK erneut verändert – separat prüfen.
+- **Stage 15 kam nicht:** Keine Standoff-INFO hatte ein Fragment. Neu: `TIF__02000865` an Veyras
+  Antwort auf „I want you out of this Sanctuary.“ (`010_62`) → `SetStage(15)`. Der zweite Weg
+  (Optionen 1–5 → Nazirs Verdacht `010_70–73` → Stage 15) existiert im ESP noch gar nicht.
+- **Veyras Ziel:** Im CK zeigte `VeyraWindpeakMarkerRef` auf `072278` (Bogenstück `SMdFArchCor02` im
+  Tempel der Göttlichen, Solitude) – Annahme war, das Windpeak Inn gehöre zu einem DLC. Es steht in
+  `Skyrim.esm` (`DawnstarWindpeakInn` 013A7F). Entwickler entscheidet: **Windpeak Inn**. Marker jetzt
+  `DBRecurringContactMarkerDawnstar` (09725A). Packages korrigiert: Exit reist zu 09725F (Sanctuary-
+  Eingang; „Near Editor Location“ greift bei per `PlaceAtMe` erzeugter Veyra nicht), Warten sandboxt um
+  09725A (r 512), Rückweg folgt `PlayerRef` bei `VeyraReturning == 1` (CK-Stand: Linked Ref, `== 0`).
+- Gewollte CK-Änderungen übernommen: Journal-Texte, `StandoffHold` bis Stage < 15, Veyra
+  Invulnerable/DoesNotBleed + Outfit, Packages Exit/WaitWindpeak/ReturnFollow, Return-Topics,
+  Marker-Properties, Objective-Flags (FNAM).
+
+### 2026-09-25 (Abend 4, Szene 1 bestätigt + Anschlussfluss vorbereitet)
+
+- Entwickler-Test: Q00 startet, Annäherung an den Raum löst die feste Standoff-Zwischensequenz aus, Phasen 1–4 laufen sauber durch, danach sind Controls wieder frei und Veyra ist normal ansprechbar. Damit ist Szene 1 bis zum Dialog nach der Szene ingame bestätigt.
+- Anschlussfluss vorbereitet: Veyra verlässt auf Stage 15 die Sanctuary, wird danach auf Stage 20 zuverlässig ins Windpeak Inn gesetzt, Stage 30 holt sie dort ab, `NHV_Q00_VeyraReturning` aktiviert das Follow-Package und `NHV_Q00_VeyraReturned` gate't die Proposal-Topics bis zur Rückkehr in die Dawnstar Sanctuary.
+- Neue/aktualisierte CK-Anleitung: `docs/ck/M1.5-Q00-Windpeak-NightMother-Flow.md` mit exakten Properties, Globals, Packages, LineIDs, Fragmenten und Testschritten.
+- Validierung: `powershell -ExecutionPolicy Bypass -File tools\build.ps1` grün (11 Scripts, 0 Fehler); `tools/dialogue_lint.py dialogue/` grün (0 Fehler, nur optionale Spellchecker-Warnung).
+
+### 2026-09-25 (Abend 3, Standoff-Szene hing: Dateinamen, Zwischensequenz)
+
+- Ingame-Test des Entwicklers: Veyra-Dialog in richtiger Reihenfolge, „Nazir, lower your blade“
+  nur bei Nazir (bestätigt). Szene: Log `IsPlaying=TRUE`, alle drei Aliase in der Szene, aber kein
+  Untertitel und kein `Standoff scene finished` → Szene hing ab Aktion 1.
+- Vanilla-Voices-BSA (75.408 Namen, per Python direkt gelesen, houseCARL hing): `.fuz` ohne Lip ist
+  gängig (1.338 Vanilla-Dateien), Format identisch. Aber: Szenen-Zeilen ohne Topic-EditorID heißen
+  `<Quest bis 25 Zeichen>__<ID>_<n>` – unser Tool (und houseCARL) kürzte die Quest auf 10.
+  `tools/silent_voice.py` rechnet jetzt nach der 25-Zeichen-Regel (`voice_heads()`).
+- Nazirs zweiter Satz war eigene INFO 002B51 → als Antwort 2 in 002B50 verschoben, 002B51 gelöscht
+  (vor 0.1.0 erlaubt).
+- Entwicklerwunsch: Standoff als feste Zwischensequenz wie Helgen. `NHV_CoreScript` v18:
+  `LockCutscene`/`UnlockCutscene`/`WatchStandoffCutscene`, Freigabe beim Laden.
+- `sync_dev.ps1` löscht in der Dev-Kopie veraltete, vom Tool erzeugte Sprachdateien (Manifest).
+- **Nicht getestet:** Szene mit korrigierten Dateien, Sperre/Freigabe.
 
 ### 2026-09-25 (Abend 2, Standoff-Schleife: Analyse + Blöcke A und B)
 
