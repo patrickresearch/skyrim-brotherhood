@@ -28,6 +28,7 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E20 | Startbedingung Q00 | Nach „Hail Sithis!“ / nach „The Dark Brotherhood Forever“ (`DBrecurring`) | Nach `DBrecurring`, Wartezeit ab diesem Zeitpunkt | vor M1.9 | Entschieden |
 | E21 | Technik für unvertonte Zeilen | Stille Sprachdateien mitliefern / Fuz Ro D-oh voraussetzen | Stille Sprachdateien (`tools/silent_voice.py`) | M1.5 | Entschieden |
 | E22 | Ende der Standoff-Befragung | Automatisch nach erster Antwort / nur ausdrückliche Abschlusswahl | Nur ausdrückliche Abschlusswahl | M1.5 | Entschieden |
+| E25 | KI-Zugang zur Deep Sanctuary (ändert E09/E16) | Script-Tür ohne Navmesh / echte Ladetür mit Navmesh | Echte Ladetür an einer mod-geprüften Sackgasse | M1.5 | Entschieden |
 | E24 | Zugang zur Deep Sanctuary in Q00 | Geröll (Konzept) / magische Verschleierung mit Zwischensequenz | Verschleierung, Zwischensequenz wie der Standoff | M1.5 | Entschieden |
 | E23 | Veyras Natur und Bindung an Sithis | Sterbliche Amtserbin / gebundene Nachleserin / wiederkehrende Gestalt / göttliche Verwandtschaft | Tochter Sithis', ungebunden und freiwillig treu; externe Helferin der Night Mother | vor weiterem Mysteriums-Dialogausbau | Entschieden |
 
@@ -36,6 +37,15 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin. Die Kopie ändert nichts, kann aber Änderungen anderer Mods an derselben Zelle (z. B. Beleuchtung) überdecken, wenn Night's Harvest später lädt. Das betrifft auch Quest-Referenzen in Städten (Q01–Q05). Grundregel unabhängig von E16: Schlüsselszenen in eigenen Innenzellen, berührte Vanilla-Zellen minimieren und in `docs/ARCHITECTURE.md` listen.
 
 ## Entscheidungs-Einträge
+
+### E25 – KI-Zugang zur Deep Sanctuary (ändert E09 und E16)
+
+- **Datum:** 27.09.2026
+- **Entschieden von:** Entwickler
+- **Kontext:** Alle Figuren der Dawnstar Sanctuary sollen die Deep Sanctuary wie einen weiteren Raum betreten können. Mit der Script-Tür (E16, `PlaceAtMe` + `MoveTo`) und ohne Navmesh-Verbindung (E09) geht das nicht; KI braucht eine echte Ladetür mit Navmesh-Anschluss.
+- **Optionen:** A Script-Tür beibehalten, B echte Ladetür in der Vanilla-Zelle `DawnstarSanctuary`.
+- **Entscheidung:** B, an einer neuen Stelle: eine Sackgasse (Wand bei X 3305.92 / Y 3363.79 / Z 5668.72, Winkel 271.19), die der Entwickler mit allen bekannten Dawnstar-Sanctuary-Mods (Visuals u. a.) geprüft hat – dort steht nichts außer einer Fackel (bleibt). Die Tür ist im CK platziert, anfangs deaktiviert und wird am Ende der Stage-40-Zwischensequenz (E24) per Script aktiviert. Gegenstück ist die Ausgangstür der Deep Sanctuary; Navmesh beider Zellen finalisiert.
+- **Folgen:** Bewusster, dokumentierter Override der Vanilla-Zelle `DawnstarSanctuary` (eine Tür-Referenz, Navmesh-Finalisierung) – Ausnahme zu Regel 1 laut E16, in `ARCHITECTURE.md` zu listen. Script-Tür (`NHV_SealedPassageDoor`), Script-Rücktür und Geröll-Position wandern bzw. entfallen; Migration für Dev-Saves. Stage 40-Szene und Aufstellung der Familie ziehen an die neue Wand. CK-Anleitung: `docs/ck/M1.5-Q00-Ladetuer-DeepSanctuary.md`.
 
 ### E24 – Zugang zur Deep Sanctuary in Q00
 

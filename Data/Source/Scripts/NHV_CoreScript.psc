@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 22 AutoReadOnly
+Int Property VERSION = 23 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -139,6 +139,12 @@ EndFunction
 ; property that is still None from its known FormID (own plugin or vanilla, never changes). Idempotent,
 ; runs on every load via Maintenance(). New properties added later belong in here as well.
 Function EnsureProperties()
+    If !MemorialScene
+        MemorialScene = Game.GetFormFromFile(0x00380A, "NightsHarvest.esp") as Scene
+    EndIf
+    If !ContractScene
+        ContractScene = Game.GetFormFromFile(0x003819, "NightsHarvest.esp") as Scene
+    EndIf
     If !VeiledPassageScene
         VeiledPassageScene = Game.GetFormFromFile(0x0037F0, "NightsHarvest.esp") as Scene
     EndIf
@@ -280,6 +286,10 @@ Function Migrate(Int aiFrom)
             bVeiledPassageDone = True
         EndIf
     EndIf
+    If aiFrom < 23
+        ; Memorial and contract cutscenes (stage 50 -> 60 -> 100) introduced; saves on stage 50 arm the poll.
+        ArmMemorialPoll()
+    EndIf
 EndFunction
 
 ; Idempotent: does nothing once either RubbleRef or PassageDoorRef already exists. Safe to call
@@ -346,6 +356,7 @@ EndFunction
 ; PlaceAtMe from a ref in a cell that is not loaded yet is unreliable, so the return door is
 ; created only now, once the cell is loaded. Cheap no-op on every later visit.
 Function OnEnterDeepSanctuary()
+    ArmMemorialPoll()
     If ReturnDoorRef || bReturnDoorBusy
         Return
     EndIf
@@ -675,6 +686,11 @@ Event OnUpdate()
         PlaceVeiledPassageFamily()
         Return
     EndIf
+    If bMemorialPollPending && !bCutsceneLocked
+        bMemorialPollPending = False
+        PollMemorial()
+        Return
+    EndIf
     If bPassagePollPending
         ; Return: a scene started here must not be judged by the watchdog in the same event (IsPlaying lags).
         bPassagePollPending = False
@@ -931,7 +947,7 @@ Function UnlockCutscene()
     EndIf
     bCutsceneLocked = False
     If ActiveCutscene && ActiveCutscene != StandoffScene
-        RecoverVeiledPassage()
+        RecoverActiveCutscene()
     EndIf
     ; Mirror LockCutscene() exactly, so locks of other systems (werewolf camera, other mods) stay untouched.
     Game.EnablePlayerControls(True, True, False, False, True, True, True, False)
@@ -1310,6 +1326,7 @@ Function FinishVeiledPassage()
     Q00.SetStage(50)
     UnlockCutscene()
     NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family entered the Deep Sanctuary")
+    ArmMemorialPoll()
     OnEnterDeepSanctuary() ; return door
 EndFunction
 
@@ -1339,4 +1356,135 @@ Function MovePassageActor(Int aiAlias, Float afX, Float afY)
         kActor.MoveTo(DeepSanctuaryEntryMarker, afX, afY, 8.0, True)
         kActor.EvaluatePackage()
     EndIf
+EndFunction
+
+; ---------------------------------------------------------------------------------------------------------
+; Q00 stage 50 -> 60 -> 100: the Memorial Wall in the Deep Sanctuary. Coming near the wall (spot given by the
+; developer 27.09.2026, provisional) sets stage 60 and plays scene C NHV_Scn_Q00_05Memorial (locked). The
+; Astrid choice is free dialogue with Veyra (Memorial01-03); its fragments call OnMemorialChosen(), which plays
+; scene D NHV_Scn_Q00_06Contract (Nazir's reaction, the first candidate); its end sets stage 100.
+; Not yet: the ledger book (text not transferred) and the Q01 start (Q01 does not exist yet).
+; ---------------------------------------------------------------------------------------------------------
+Scene Property MemorialScene Auto
+Scene Property ContractScene Auto
+
+Bool bMemorialPollPending = False
+Bool bMemorialStarted = False
+Bool bContractStarted = False
+Bool bContractDone = False
+
+Function ArmMemorialPoll()
+    If !bMemorialStarted && Q00 && Q00.IsRunning() && Q00.GetStage() == 50
+        bMemorialPollPending = True
+        RegisterForSingleUpdate(2.0)
+    EndIf
+EndFunction
+
+; OnUpdate, every 2 s while the player is in the Deep Sanctuary on stage 50, until he comes near the wall.
+Function PollMemorial()
+    If bMemorialStarted || !Q00 || Q00.GetStage() != 50 || !DeepSanctuaryEntryMarker
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    If kPlayer.GetParentCell() != DeepSanctuaryEntryMarker.GetParentCell()
+        Return ; OnEnterDeepSanctuary arms it again
+    EndIf
+    Float fDX = kPlayer.GetPositionX() + 5025.0
+    Float fDY = kPlayer.GetPositionY() + 1598.23
+    If fDX * fDX + fDY * fDY > 450.0 * 450.0
+        bMemorialPollPending = True
+        RegisterForSingleUpdate(2.0)
+        Return
+    EndIf
+    bMemorialStarted = True
+    Q00.SetStage(60)
+    PlaceMemorialActor(0, -5025.0, -1690.0, 0.0)
+    PlaceMemorialActor(1, -5140.0, -1680.0, 20.0)
+    PlaceMemorialActor(2, -4880.0, -1680.0, 340.0)
+    PlaceMemorialActor(3, -5010.0, -1780.0, 0.0)
+    If !MemorialScene
+        NHV_Util.Log(NHV_Cfg_Debug, "PollMemorial: MemorialScene not set, the choice is still open in dialogue")
+        Return
+    EndIf
+    StopOtherScenes()
+    ActiveCutscene = MemorialScene
+    LockCutscene()
+    MemorialScene.Start()
+    NHV_Util.Log(NHV_Cfg_Debug, "Memorial scene started")
+    RegisterForSingleUpdate(2.0) ; watchdog
+EndFunction
+
+; Wall spot -5025/-1598.23/-240, facing +Y (developer, 27.09.2026). Provisional positions in front of it.
+Function PlaceMemorialActor(Int aiAlias, Float afX, Float afY, Float afAngle)
+    ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
+    If !kAlias
+        Return
+    EndIf
+    Actor kActor = kAlias.GetActorReference()
+    If kActor && !kActor.IsDead() && !kActor.IsDisabled()
+        If kActor.GetParentCell() != DeepSanctuaryEntryMarker.GetParentCell()
+            kActor.MoveTo(DeepSanctuaryEntryMarker)
+        EndIf
+        kActor.SetPosition(afX, afY, -240.0)
+        kActor.SetAngle(0.0, 0.0, afAngle)
+        kActor.EvaluatePackage()
+    EndIf
+EndFunction
+
+; End fragment of NHV_Scn_Q00_05Memorial: the choice follows in free dialogue.
+Function OnMemorialSceneEnd()
+    NHV_Util.Log(NHV_Cfg_Debug, "Memorial scene finished, Astrid choice open")
+    If ActiveCutscene == MemorialScene
+        ActiveCutscene = None
+        UnlockCutscene()
+    EndIf
+EndFunction
+
+; Fragments of the Astrid choice (TIF__02000819/0821/0823), after NHV_AstridMemorial is set.
+Function OnMemorialChosen()
+    If bContractStarted || !Q00 || Q00.GetStage() != 60
+        Return
+    EndIf
+    bContractStarted = True
+    If !ContractScene
+        FinishQ00Contract()
+        Return
+    EndIf
+    StopOtherScenes()
+    ActiveCutscene = ContractScene
+    LockCutscene()
+    ContractScene.Start()
+    NHV_Util.Log(NHV_Cfg_Debug, "Contract scene started")
+    RegisterForSingleUpdate(2.0) ; watchdog
+EndFunction
+
+; End fragment of NHV_Scn_Q00_06Contract.
+Function OnContractSceneEnd()
+    FinishQ00Contract()
+EndFunction
+
+Function FinishQ00Contract()
+    If bContractDone
+        Return
+    EndIf
+    bContractDone = True
+    ActiveCutscene = None
+    UnlockCutscene()
+    If Q00 && Q00.GetStage() < 100
+        Q00.SetStage(100)
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Q00 finished (stage 100); ledger book and Q01 start still to come")
+EndFunction
+
+; A cutscene lock was released without the scene's End fragment (did not start, watchdog, combat, load).
+Function RecoverActiveCutscene()
+    Scene kScene = ActiveCutscene
+    ActiveCutscene = None
+    If kScene == VeiledPassageScene || kScene == EnterDeepScene
+        RecoverVeiledPassage()
+    ElseIf kScene == ContractScene
+        NHV_Util.Log(NHV_Cfg_Debug, "Contract scene did not finish, stage 100 set as fallback")
+        FinishQ00Contract()
+    EndIf
+    ; MemorialScene: nothing to recover, the Astrid choice is open in dialogue anyway.
 EndFunction

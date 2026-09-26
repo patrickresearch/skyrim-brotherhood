@@ -8,6 +8,10 @@ Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
 ; Memorial: leave Astrid off
 NHV_AstridMemorial.SetValue(2.0)
+NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+If kCore != None
+    kCore.OnMemorialChosen()
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT

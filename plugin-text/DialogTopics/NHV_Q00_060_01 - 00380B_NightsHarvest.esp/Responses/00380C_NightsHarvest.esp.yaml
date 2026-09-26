@@ -1,0 +1,20 @@
+FormKey: 00380C:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Festus. Gabriella. Arnbjorn. Veezara. I'll carve their names myself.
+  ScriptNotes: NHV_Q00_060_01
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

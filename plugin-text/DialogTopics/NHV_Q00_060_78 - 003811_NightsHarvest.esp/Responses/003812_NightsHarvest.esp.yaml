@@ -1,0 +1,19 @@
+FormKey: 003812:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The wall is for those we lost. The beds are for those we may yet find.
+  ScriptNotes: NHV_Q00_060_78
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

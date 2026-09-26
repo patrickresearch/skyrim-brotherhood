@@ -16,6 +16,8 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**27.09.2026: Veyras Ledger-Buch geschrieben.** `dialogue/Books.csv` enthält zwölf Absätze für `The Gleaner's Ledger`: Arbeitsregeln, Sithis-/Night-Mother-Deutung, Zuständigkeit des Listeners und den Hjaalmarch-/Hrefna-Anker für Q01. Das Buch enthüllt Veyras Herkunft nicht. CK-Einbau und Item-Übergabe nach `NHV_Q00_060_63` sind im Q00-Plan beschrieben. Lint: 0 Fehler bei 324 IDs.
+
 **26.09.2026: Dialoge bis zum gemeinsamen Deep-Sanctuary-Eintritt redaktionell abgeschlossen.** Q00-Standoff, Night-Mother-/Rückkehrdialoge, Proposal, Geröll, Deep-Sanctuary-Erkundung und Memorial wurden auf E23 vertieft; Q01 erhielt zusätzliche Hrefna-/Veyra-Zeilen. Die neue `SCN_DeepSanctuaryEntry` umfasst fünf Phasen mit Nazir, Babette, optional lebendem Cicero, Veyra und einer Spielerbestätigung; sie folgt der vorhandenen Verschleierungs-Szene an Stage 40. CSV-Lint: 0 Fehler bei 312 IDs. CK-Einbau und Ingame-Test stehen aus; die Szene ist ein Record-Vorschlag im CK-Plan.
 
 **26.09.2026: E23-Grundrichtung entschieden – Veyra als Tochter Sithis'.** Entwickler legt fest: theoretisch tötbar, nicht durch Alter/gewöhnliche Waffen; ungebunden und freiwillig ihrem Vater treu; kein Brotherhood-Mitglied, sondern Helferin der Night Mother. Verbindliches Profil: `docs/concept/Veyra-Autorenprofil.md`; Hauptkonzept und GOAL angepasst. Frühere Morag-Tong-Hilfe und Treffen mit der lebenden Night Mother bleiben Möglichkeiten; Entstehung/Mutter, genaue Verwundbarkeit und Ingame-Enthüllung offen. Die ältere Empfehlung „gebundene Nachleserin“ ist überholt. Betroffene CSV-/Buchstellen für nächste Redaktion aufgelistet; noch keine Dialog-, ESP-, Script- oder Schutzflag-Änderung. Lore-Designreview berücksichtigt.
@@ -269,6 +271,12 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-27 – The Gleaner's Ledger
+
+- Neues Buch in `dialogue/Books.csv` mit zwölf Absätzen und stabilen `NHV_SYS_BOOK_1–12`-IDs.
+- Inhalte auf Veyras E23-Profil abgestimmt: externe Helferin, Listener-Zuständigkeit, Fehlbarkeit und Beobachtung statt Herkunftsenthüllung.
+- Q01-Anschluss für Hrefna und Quintus ergänzt; CK-Inventar und einmalige Übergabe in `docs/ck/M1.5-Q00-Dialogausbau.md` dokumentiert.
 
 ### 2026-09-26 (Nacht, Stage 40: Zwischensequenz an der verschleierten Wand, E24)
 

@@ -80,6 +80,7 @@ EndFunction
 Function Fragment_7()
 ;BEGIN CODE
 SetObjectiveCompleted(60)
+CompleteQuest()
 ;END CODE
 EndFunction
 ;END FRAGMENT

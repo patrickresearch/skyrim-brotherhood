@@ -1,0 +1,20 @@
+FormKey: 003814:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 20
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Fill the beds, then. I have had quite enough of empty chairs.
+  ScriptNotes: NHV_Q00_060_79
+  Edits: ''
+Speaker: 01D4B7:Skyrim.esm

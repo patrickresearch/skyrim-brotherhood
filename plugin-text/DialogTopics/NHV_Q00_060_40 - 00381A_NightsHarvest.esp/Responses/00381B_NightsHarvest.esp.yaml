@@ -1,0 +1,19 @@
+FormKey: 00381B:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You carved her name. You're a better person than me, Listener. That's not a compliment.
+  ScriptNotes: NHV_Q00_060_40
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

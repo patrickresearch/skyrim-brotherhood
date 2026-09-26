@@ -1,21 +1,16 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
 ;NEXT FRAGMENT INDEX 1
-Scriptname TIF__02000823 Extends TopicInfo Hidden
+Scriptname SF_NHV_Scn_Q00_05Memorial_0200380A Extends Scene Hidden
 
 ;BEGIN FRAGMENT Fragment_0
-Function Fragment_0(ObjectReference akSpeakerRef)
-Actor akSpeaker = akSpeakerRef as Actor
+Function Fragment_0()
 ;BEGIN CODE
-; Memorial: carve Astrid beneath the others, smaller
-NHV_AstridMemorial.SetValue(3.0)
 NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
 If kCore != None
-    kCore.OnMemorialChosen()
+    kCore.OnMemorialSceneEnd()
 EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
-
-GlobalVariable Property NHV_AstridMemorial Auto

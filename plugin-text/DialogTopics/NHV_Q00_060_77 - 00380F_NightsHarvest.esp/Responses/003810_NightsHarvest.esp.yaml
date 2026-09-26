@@ -1,0 +1,19 @@
+FormKey: 003810:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You plan to fill this wall before we fill the beds.
+  ScriptNotes: NHV_Q00_060_77
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

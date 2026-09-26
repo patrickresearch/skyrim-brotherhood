@@ -1,0 +1,20 @@
+FormKey: 00380E:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 50
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: And Cicero. I owed the Keeper more than a chisel. It's all I have left to give.
+  ScriptNotes: NHV_Q00_060_02
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

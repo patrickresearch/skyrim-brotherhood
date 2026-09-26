@@ -5,6 +5,9 @@ VirtualMachineAdapter:
   - Name: NHV_CoreScript
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: ContractScene
+      Object: 003819:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: DawnstarAnchorRef
       Object: 09725F:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
@@ -28,6 +31,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: HailSithisQuest
       Object: 01EA59:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MemorialScene
+      Object: 00380A:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Cfg_Debug
       Object: 000800:NightsHarvest.esp
