@@ -1,0 +1,20 @@
+FormKey: 003807:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 20
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Cicero will bring the laughter! The dark hates an empty room!
+  ScriptNotes: NHV_Q00_050_15
+  Edits: ''
+Speaker: 09BCAF:Skyrim.esm

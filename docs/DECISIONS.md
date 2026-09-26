@@ -28,6 +28,7 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E20 | Startbedingung Q00 | Nach „Hail Sithis!“ / nach „The Dark Brotherhood Forever“ (`DBrecurring`) | Nach `DBrecurring`, Wartezeit ab diesem Zeitpunkt | vor M1.9 | Entschieden |
 | E21 | Technik für unvertonte Zeilen | Stille Sprachdateien mitliefern / Fuz Ro D-oh voraussetzen | Stille Sprachdateien (`tools/silent_voice.py`) | M1.5 | Entschieden |
 | E22 | Ende der Standoff-Befragung | Automatisch nach erster Antwort / nur ausdrückliche Abschlusswahl | Nur ausdrückliche Abschlusswahl | M1.5 | Entschieden |
+| E24 | Zugang zur Deep Sanctuary in Q00 | Geröll (Konzept) / magische Verschleierung mit Zwischensequenz | Verschleierung, Zwischensequenz wie der Standoff | M1.5 | Entschieden |
 | E23 | Veyras Natur und Bindung an Sithis | Sterbliche Amtserbin / gebundene Nachleserin / wiederkehrende Gestalt / göttliche Verwandtschaft | Tochter Sithis', ungebunden und freiwillig treu; externe Helferin der Night Mother | vor weiterem Mysteriums-Dialogausbau | Entschieden |
 
 ### Hintergrund E16
@@ -35,6 +36,15 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin. Die Kopie ändert nichts, kann aber Änderungen anderer Mods an derselben Zelle (z. B. Beleuchtung) überdecken, wenn Night's Harvest später lädt. Das betrifft auch Quest-Referenzen in Städten (Q01–Q05). Grundregel unabhängig von E16: Schlüsselszenen in eigenen Innenzellen, berührte Vanilla-Zellen minimieren und in `docs/ARCHITECTURE.md` listen.
 
 ## Entscheidungs-Einträge
+
+### E24 – Zugang zur Deep Sanctuary in Q00
+
+- **Datum:** 26.09.2026
+- **Entschieden von:** Entwickler
+- **Kontext:** Das Konzept (Abschnitt 4 und 6, Szene 4) sieht eine eingestürzte Passage hinter Geröll vor, die der Spieler aktiviert. Beim Test bis Stage 50 wünschte sich der Entwickler an dieser Stelle eine feste Zwischensequenz mit allen Figuren.
+- **Optionen:** A Geröll wie im Konzept, B durch Magie verborgene Passage, die Veyra (Illusion-Expertin, Abschnitt 3) enthüllt.
+- **Entscheidung:** B. Nach „Agreed. We rebuild.“ (Stage 40) stehen Veyra, Nazir, Babette und ggf. Cicero an der Wand. Betritt der Spieler den Raum, läuft wie beim Standoff eine Zwischensequenz mit Steuerungssperre: Szene A `NHV_Scn_Q00_02VeiledPassage` (`040_10–12`), danach erscheint die Tür; Szene B `NHV_Scn_Q00_03EnterDeep` (`050_01`, `050_08–16` ohne Spielerzeile); danach werden alle in die Deep Sanctuary versetzt, Stage 50. Der Urheber des Schleiers bleibt bewusst offen (lore-editor). Nicht „Dispel“ nennen – Skyrim hat keinen Dispel-Effekt, sie durchschaut und löst die Illusion.
+- **Folgen:** `040_01, 040_03–05` DEPRECATED; `030_72` und Journal-Notizen `040_02`/`050_07` ohne Geröll; Konzept Abschnitt 6 (Stage-Tabelle, Szene 4) angepasst. Das Geröll bleibt vorerst als sichtbarer Platzhalter bis zum Szenenende. Exakte Positionen folgen im CK.
 
 ### E23 – Veyra als ungebundene Tochter Sithis'
 

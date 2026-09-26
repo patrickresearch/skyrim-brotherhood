@@ -11,7 +11,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: She is the one who gathers. What else she is, the Void keeps. It does not share.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_020_36 prompt=NHV_Q00_020_35
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

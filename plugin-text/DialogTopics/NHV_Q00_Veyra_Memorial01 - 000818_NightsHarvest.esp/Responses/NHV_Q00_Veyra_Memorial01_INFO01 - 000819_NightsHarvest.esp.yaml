@@ -25,7 +25,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Mercy for the dead. The dead rarely deserve it, but they never complain.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_060_11 prompt=NHV_Q00_060_10
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

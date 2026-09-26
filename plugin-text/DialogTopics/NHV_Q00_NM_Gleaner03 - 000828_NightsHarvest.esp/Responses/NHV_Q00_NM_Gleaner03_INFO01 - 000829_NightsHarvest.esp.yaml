@@ -10,8 +10,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I speak to one. It has always been one.
-  ScriptNotes: ''
+    Value: I speak to one as Listener. It has always been one.
+  ScriptNotes: NHV_Q00_020_31 prompt=NHV_Q00_020_30
   Edits: ''
 - Emotion: Sad
   EmotionValue: 20
@@ -21,7 +21,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: That is the burden of the Listener, and the wound of all the rest.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_020_32
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

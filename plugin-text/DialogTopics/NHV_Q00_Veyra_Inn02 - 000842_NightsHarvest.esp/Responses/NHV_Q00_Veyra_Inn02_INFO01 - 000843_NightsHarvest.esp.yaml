@@ -11,8 +11,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Still here. Still waiting. I'm very good at both.
-  ScriptNotes: ''
+    Value: Regret is for the living. I will try not to burden you with more.
+  ScriptNotes: NHV_Q00_015_21 prompt=NHV_Q00_015_20
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -27,4 +27,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: Just making sure you're still here.
+  Value: Do not make me regret this.

@@ -102,7 +102,10 @@ Function Fragment_0()
 ;BEGIN CODE
 setObjectiveCompleted(30)
 setObjectiveDisplayed(40)
-(Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript).OpenSealedPassage()
+NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+If kCore != None
+    kCore.BeginVeiledPassage()
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT

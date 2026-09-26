@@ -10,8 +10,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The door asked me for the music of life. I knew the answer before your Redguard's grandmother was born.
-  ScriptNotes: ''
+    Value: No. It means someone trusted me with it once. You needn't repeat their judgment.
+  ScriptNotes: NHV_Q00_010_21 prompt=NHV_Q00_010_20
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -26,4 +26,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: How did you get past the Black Door?
+  Value: Knowing the door's answer doesn't make you family.

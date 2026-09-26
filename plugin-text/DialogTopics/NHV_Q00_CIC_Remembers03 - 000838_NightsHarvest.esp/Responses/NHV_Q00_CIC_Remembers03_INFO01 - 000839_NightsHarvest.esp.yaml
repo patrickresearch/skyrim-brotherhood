@@ -12,7 +12,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Not now. Never now. Always later with Cicero...
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_030_31 prompt=NHV_Q00_030_30
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

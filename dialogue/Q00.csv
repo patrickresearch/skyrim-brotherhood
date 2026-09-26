@@ -23,7 +23,7 @@ NHV_Q00_010_40,Q00,10,Veyra_Standoff,Player,-,Neutral,50,"Nazir, lower your blad
 NHV_Q00_010_41,Q00,10,Veyra_Standoff,Nazir,Vanilla,Anger,30,...Fine. But it stays out of its sheath.,,
 NHV_Q00_010_42,Q00,10,Veyra_Standoff,Veyra,NHV_VoiceVeyra,Happy,10,A sensible compromise.,,"; E22: nach dieser Reaktion zurueck zur Befragung, Stage 10 bleibt."
 NHV_Q00_010_50,Q00,10,Veyra_Standoff,Player,-,Neutral,50,"Do it, Nazir.",,E22: explizite Drohung; vorhandene Antwort 51-52 -> Abschluss 70-73 -> Stage 15.
-NHV_Q00_010_51,Q00,10,Veyra_Standoff,Veyra,NHV_VoiceVeyra,Neutral,20,"Before he does, Listener, ask the Night Mother. If she wants me dead, I'll hold very still.",,
+NHV_Q00_010_51,Q00,10,Veyra_Standoff,Veyra,NHV_VoiceVeyra,Neutral,20,"Ask the Night Mother, Listener. If she refuses my help, I'll leave you to your prayers.",,
 NHV_Q00_010_52,Q00,10,Veyra_Standoff,Nazir,Vanilla,Puzzled,40,...The elf has a point. I hate that.,,→ 010_70
 NHV_Q00_010_60,Q00,10,Veyra_Standoff,Player,-,Neutral,50,I want you out of this Sanctuary.,,Option 6 von 6 → Stage 15; Fragment BeginVeyraExitSanctuary()
 NHV_Q00_010_61,Q00,10,Veyra_Standoff,Veyra,NHV_VoiceVeyra,Neutral,30,As you wish. I'll be at the Windpeak Inn.,,
@@ -45,8 +45,8 @@ NHV_Q00_010_100,Q00,10,Veyra_StandoffDelayFollow,Player,-,Neutral,50,You could h
 NHV_Q00_010_101,Q00,10,Veyra_StandoffDelayFollow,Veyra,NHV_VoiceVeyra,Neutral,30,With the Emperor's death still being planned? An unfamiliar face would have looked like a knife at your back.,GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; danach zurueck zum Fragenmenue.
 NHV_Q00_010_102,Q00,10,Veyra_StandoffDelayFollow,Veyra,NHV_VoiceVeyra,Neutral,30,I waited. Nazir has made a persuasive case that waiting improved nothing.,GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; danach zurueck zum Fragenmenue.
 NHV_Q00_010_103,Q00,10,Veyra_StandoffMother,Player,-,Neutral,50,You keep invoking the Mother. Has she spoken to you?,GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Einstieg; nach Antwort bleibt Stage 10.
-NHV_Q00_010_104,Q00,10,Veyra_StandoffMother,Veyra,NHV_VoiceVeyra,Neutral,30,"No. I have knelt, tended candles, and listened to the wick burn down.",GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; danach zurueck zum Fragenmenue.
-NHV_Q00_010_105,Q00,10,Veyra_StandoffMother,Veyra,NHV_VoiceVeyra,Neutral,30,"If I claimed more, you would have your first good reason to order that blade forward.",GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; danach zurueck zum Fragenmenue.
+NHV_Q00_010_104,Q00,10,Veyra_StandoffMother,Veyra,NHV_VoiceVeyra,Neutral,30,I have spoken with the Mother. Not in the way she speaks to you.,GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,"NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; deutet eine frühere Verbindung an, bestätigt kein Treffen."
+NHV_Q00_010_105,Q00,10,Veyra_StandoffMother,Veyra,NHV_VoiceVeyra,Neutral,30,"That does not give me your place, Listener. Ask her whether she wants my help.",GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,"NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; wahrt die Zuständigkeit des Listeners."
 NHV_Q00_010_106,Q00,10,Veyra_StandoffMotherFollow,Player,-,Neutral,50,Yet you expect me to believe she wants you here.,GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Nachfrage nur aus Eltern-INFO verlinken.
 NHV_Q00_010_107,Q00,10,Veyra_StandoffMotherFollow,Veyra,NHV_VoiceVeyra,Neutral,30,I hope she does. Hope is a poor witness. Ask her before you trust me.,GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; danach zurueck zum Fragenmenue.; Lore-Review 26.09.2026 eingearbeitet.
 NHV_Q00_010_108,Q00,10,Veyra_StandoffMotherFollow,Veyra,NHV_VoiceVeyra,Neutral,30,Ask her. You needn't tell me what she says. Only what you decide.,GetStage NHV_Q00_ShadowAtTheDoor == 10; GetIsID NHV_Veyra == 1,NEU 26.09.2026; optionaler Standoff-Ausbau; noch nicht im Plugin. Antwort im selben INFO wie unmittelbar vorausgehende Spielerzeile; danach zurueck zum Fragenmenue.
@@ -85,12 +85,12 @@ NHV_Q00_020_12,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,What she does wi
 NHV_Q00_020_20,Q00,20,NM_Gleaner,Player,-,Neutral,50,Why did she leave the family?,,"Option 2 von 5; setzt NHV_Q00_AskedLeave (CK: Alias-Variable oder Stage-Zwischenschritt, im CK festlegen)"
 NHV_Q00_020_21,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"Ask her, my Listener. Her answer will tell you more than mine.",,
 NHV_Q00_020_30,Q00,20,NM_Gleaner,Player,-,Neutral,50,Why have you never spoken to her?,,Option 3 von 5
-NHV_Q00_020_31,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,I speak to one. It has always been one.,,
+NHV_Q00_020_31,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,I speak to one as Listener. It has always been one.,,E23-Präzisierung: Die Night Mother meint ihre heutige Übermittlung an den Listener; frühere persönliche Gespräche mit Veyra bleiben offen.
 NHV_Q00_020_32,Q00,20,NM_Gleaner,NightMother,Vanilla,Sad,20,"That is the burden of the Listener, and the wound of all the rest.",,
 NHV_Q00_020_35,Q00,20,NM_Gleaner,Player,-,Neutral,50,"What is she, Mother?",,Option 4 von 5
 NHV_Q00_020_36,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"She is the one who gathers. What else she is, the Void keeps. It does not share.",,"Veyras Alter/Natur bleibt bewusst ungeklaert, keine Aufloesung"
-NHV_Q00_020_40,Q00,20,NM_Gleaner,Player,-,Neutral,50,"That is all I needed, Mother.",,"Option 5 von 5 → Stage 30 (Goodbye); Antwort 020_39"
-NHV_Q00_020_39,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"Go, then. The Gleaner waits.",,"Antwort auf 020_40; eine Option ohne (bzw. mit leerer) Antwort bietet die Engine nicht an (Test 26.09.)"
+NHV_Q00_020_40,Q00,20,NM_Gleaner,Player,-,Neutral,50,"That is all I needed, Mother.",,Option 5 von 5 → Stage 30 (Goodbye); Antwort 020_39
+NHV_Q00_020_39,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"Go, then. The Gleaner waits.",,Antwort auf 020_40; eine Option ohne (bzw. mit leerer) Antwort bietet die Engine nicht an (Test 26.09.)
 NHV_Q00_020_42,Q00,20,Veyra_Inn,Veyra,NHV_VoiceVeyra,Neutral,30,"The Mother first, Listener. I have nowhere else to be.",NHV_Q00_VeyraReturned == 0; NHV_Q00_VeyraReturning == 0,Windpeak Inn if player visits Veyra before speaking to the Night Mother
 NHV_Q00_020_43,Q00,20,Veyra_Inn,Player,-,Neutral,50,I wanted to make sure you were still here.,,Optional check before Night Mother
 NHV_Q00_020_44,Q00,20,Veyra_Inn,Veyra,NHV_VoiceVeyra,Happy,10,Still here. Still waiting. I am very good at both.,,
@@ -118,8 +118,8 @@ NHV_Q00_030_42,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Happy,20,"Family. No o
 NHV_Q00_030_43,Q00,30,Veyra_Proposal,Player,-,Neutral,50,The Night Mother vouches for you. I don't. Not yet.,NHV_Q00_VeyraReturned == 1,Option 2 von 3
 NHV_Q00_030_44,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,40,Then let me earn it. The Mother's word brought me through the door. It needn't put your doubts to rest.,,"Redaktion 26.09.2026: Haltung/Subtext vertieft; CSV voraus, Plugin-Abgleich offen."
 NHV_Q00_030_45,Q00,30,Veyra_Proposal,Player,-,Neutral,50,Why did you leave Cheydinhal?,NHV_Q00_AskedLeave == 1; NHV_Q00_VeyraReturned == 1,"Option 3 von 3, nur wenn Stage-20-Option 2 gewaehlt wurde"
-NHV_Q00_030_46,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Sad,40,"Because the Night Mother went quiet. I only stay where I'm needed, and I took her silence for an answer.",NHV_Q00_AskedLeave == 1,
-NHV_Q00_030_47,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Sad,50,Cicero stayed. The fool stayed. And he was right.,NHV_Q00_AskedLeave == 1,
+NHV_Q00_030_46,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,Because the Night Mother went quiet. I took her silence to mean my work was finished. I was wrong.,NHV_Q00_AskedLeave == 1,Redaktion E23: eigene Fehlentscheidung statt Zwang oder Anspruch auf die Listenerrolle.
+NHV_Q00_030_47,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,Cicero stayed. The fool stayed. And he was right about one thing: silence still asks to be endured.,NHV_Q00_AskedLeave == 1,Redaktion E23: Cicero hatte mit seinem Bleiben recht; keine automatische Versöhnung.
 NHV_Q00_030_48,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Happy,10,Don't tell him I said that. He'd never let me forget it.,GetDead Cicero == 0; NHV_Q00_AskedLeave == 1,Platzhalter-Condition fuer Cicero; zweite Bedingung ergaenzt (lore-editor-Fund 23.09.): Zeile folgt inhaltlich nur auf 030_45-47
 NHV_Q00_030_50,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,Then hear my proposal.,,Unabhaengig von der vorherigen Wahl
 NHV_Q00_030_51,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Happy,20,"The family is currently two killers, a jester and a horse.",GetDead Cicero == 0,Platzhalter-Condition
@@ -128,6 +128,9 @@ NHV_Q00_030_53,Q00,30,Veyra_Proposal,Babette,Vanilla,Happy,30,I'll have you know
 NHV_Q00_030_54,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,40,The Brotherhood has never posted notices. We watch.,,
 NHV_Q00_030_55,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,40,Across Skyrim there are people who have already crossed the line. Killers who don't yet know they're family.,,
 NHV_Q00_030_56,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,I keep a ledger of them.,,
+NHV_Q00_030_75,Q00,30,Veyra_Proposal,Player,-,Neutral,50,And if the right stranger refuses your invitation?,NHV_Q00_VeyraReturned == 1,NEU 26.09.2026; Nachfrage nach dem Ledger; kein Stage-Wechsel.
+NHV_Q00_030_76,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,Then the ledger keeps a name and loses a hope. I do not drag souls through a door they choose to leave closed.,,NEU 26.09.2026; freiwillige Bindung und Grenzen ihrer Hilfe.
+NHV_Q00_030_77,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,The Listener decides who is tested. I only notice who has begun to listen.,,"NEU 26.09.2026; Veyra bleibt Helferin, nicht Aufnahmeinstanz."
 NHV_Q00_030_57,Q00,30,Veyra_Proposal,Nazir,Vanilla,Anger,30,"And after Astrid, you want us to open the door to strangers?",,
 NHV_Q00_030_58,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,40,No. I want us to open it to the right strangers.,,
 NHV_Q00_030_59,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,40,"Every one of them watched, tested and judged. By the Listener. Not by me.",,
@@ -138,16 +141,38 @@ NHV_Q00_030_63,Q00,30,Veyra_Proposal,Player,-,Neutral,50,A test wouldn't have ex
 NHV_Q00_030_64,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,40,Perhaps not. A test is a beginning. Watch what they do once they believe they've passed.,,"Redaktion 26.09.2026: Haltung/Subtext vertieft; CSV voraus, Plugin-Abgleich offen."
 NHV_Q00_030_70,Q00,30,Veyra_Proposal,Nazir,Vanilla,Neutral,40,"...Contracts are scarce anyway. Fine. She answers to the Listener, and I keep my scimitar sharp.",,
 NHV_Q00_030_71,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Happy,10,I would expect nothing less.,,
-NHV_Q00_030_72,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,"One more thing. This place is older than you think. There's a passage behind that rubble, sealed before any of us were born.",,
+NHV_Q00_030_72,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,One more thing. One of your walls is not what it pretends to be. Someone went to considerable trouble over it.,,"E24: Text ohne Geroell, bereitet 040_12 vor"
 NHV_Q00_030_73,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,"If we mean to build a family, we'll need somewhere to put it.",,→ Stage 40
-NHV_Q00_040_01,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,"Help me with this. My back remembers weight it shouldn't, even after all these years.",,"Am Geroell; Spieler aktiviert Geroell, Zellwechsel in die Deep Sanctuary. lore-editor-Fund 23.09.: Original nannte ""die Dritte Aera"" explizit, das verriet Veyras Alter (Regel: bleibt ungeklaert) - entschaerft"
-NHV_Q00_050_01,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Puzzled,30,Nordic. Older than the sanctuary above. Someone sealed this for a reason.,,Zellwechsel
+NHV_Q00_040_01,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,Help me with this. Stone remembers pressure better than flesh does.,,"DEPRECATED (E24: Schleier statt Geroell, ersetzt durch 040_10-12). Am Geroell; Spieler aktiviert Geroell, Zellwechsel in die Deep Sanctuary. Redaktion E23: keine unbestätigte Alters- oder Körpergeschichte."
+NHV_Q00_040_03,Q00,40,SealedPassage,Player,-,Neutral,50,You have opened doors like this before?,,"DEPRECATED (E24: Schleier statt Geroell, ersetzt durch 040_10-12). "
+NHV_Q00_040_04,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,I have stood before many doors. Opening them is rarely the difficult part.,,"DEPRECATED (E24: Schleier statt Geroell, ersetzt durch 040_10-12). "
+NHV_Q00_040_05,Q00,40,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,The difficult part is deciding who should hear what waits beyond.,,"DEPRECATED (E24: Schleier statt Geroell, ersetzt durch 040_10-12). "
+NHV_Q00_040_10,Q00,40,SCN_VeiledPassage,Veyra,NHV_VoiceVeyra,Neutral,30,"This wall is lying. Stone does not hum like that. A veil, old and patient, over a doorway.",,"E24: Szene A (NHV_Scn_Q00_02VeiledPassage) an der Wand, Phase 1; ersetzt 040_01, 040_03-05; Urheber des Schleiers bewusst offen"
+NHV_Q00_040_11,Q00,40,SCN_VeiledPassage,Nazir,Vanilla,Anger,30,"All this time we slept beside it, and the elf finds it first. Wonderful.",,Szene A Phase 2
+NHV_Q00_040_12,Q00,40,SCN_VeiledPassage,Veyra,NHV_VoiceVeyra,Happy,10,"Illusion is my trade, Nazir. Walls that pretend are the easiest to see through. Stand back.",,"Szene A Phase 3; danach bannt sie die Verschleierung, die Tuer erscheint (Szenenende)"
+NHV_Q00_050_01,Q00,50,SCN_DeepSanctuaryEntry,Veyra,NHV_VoiceVeyra,Puzzled,30,Nordic. Older than the sanctuary above. Someone sealed this for a reason.,,Szene 2 Phase 1: Veyra prüft die enthüllte Tür.
+NHV_Q00_050_08,Q00,50,SCN_DeepSanctuaryEntry,Nazir,Vanilla,Anger,30,"If this place kills us, I am blaming the elf.",,Szene 2 Phase 2: Nazir sichert den Durchgang.
+NHV_Q00_050_09,Q00,50,SCN_DeepSanctuaryEntry,Babette,Vanilla,Happy,30,You already blame me for everything else. Let her have a turn.,,Szene 2 Phase 2: Babette folgt und stichelt.
+NHV_Q00_050_10,Q00,50,SCN_DeepSanctuaryEntry,Cicero,Vanilla,Happy,30,New halls! New echoes! Cicero approves of the echoes!,GetDead Cicero == 0,Szene 2 Phase 3: nur bei lebendem Cicero.
+NHV_Q00_050_11,Q00,50,SCN_DeepSanctuaryEntry,Veyra,NHV_VoiceVeyra,Neutral,30,Stay close. Old stone has a talent for making a family feel alone.,,Szene 2 Phase 3: Veyra sammelt die Gruppe.
+NHV_Q00_050_12,Q00,50,SCN_DeepSanctuaryEntry,Player,-,Neutral,50,Then we enter together.,,Szene 2 Phase 4: Spieler bestätigt den gemeinsamen Eintritt.
+NHV_Q00_050_13,Q00,50,SCN_DeepSanctuaryEntry,Nazir,Vanilla,Neutral,30,"Together, then. Keep your eyes open and your hands where I can see them.",,Szene 2 Phase 4: gemeinsame Bewegung zur Tür.
+NHV_Q00_050_14,Q00,50,SCN_DeepSanctuaryEntry,Babette,Vanilla,Happy,20,How touching. Try not to make a habit of it.,,Szene 2 Phase 4: gemeinsame Bewegung zur Tür.
+NHV_Q00_050_15,Q00,50,SCN_DeepSanctuaryEntry,Cicero,Vanilla,Happy,20,Cicero will bring the laughter! The dark hates an empty room!,GetDead Cicero == 0,Szene 2 Phase 4: nur bei lebendem Cicero.
+NHV_Q00_050_16,Q00,50,SCN_DeepSanctuaryEntry,Veyra,NHV_VoiceVeyra,Neutral,30,Let the dark keep its room. We have work to do.,,Szene 2 Phase 5: Gruppe überschreitet die Schwelle.
 NHV_Q00_050_02,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Happy,20,Well. Now we know the reason.,,Nach dem Kampf gegen die Draugr
 NHV_Q00_050_03,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,A long table. A fire pit. Imagine it full.,,Hall of Whispers
-NHV_Q00_050_04,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,"This room will do for me. Quiet walls, a desk, and nobody's ghosts. Yet.",,Ledger Room
-NHV_Q00_050_05,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,"Beds for a dozen. If we do this right, we'll need every one.",,Initiates' Dormitory
+NHV_Q00_050_04,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,"This room will do for me. Quiet walls, a desk, and people who have not learned my habits yet.",,Ledger Room; Redaktion E23: freiwilliges Bleiben statt Besitzanspruch.
+NHV_Q00_050_05,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Neutral,30,"Beds for a dozen. If we do this right, we'll need every one. If we fail, dust needs less room.",,Initiates' Dormitory
 NHV_Q00_050_06,Q00,50,SealedPassage,Veyra,NHV_VoiceVeyra,Happy,10,A builder's record? Read it. I like to know who dug the hole I'm going to die in.,,"Buch ""Builder's Record of the Dawnstar Vaults"" aufgehoben"
 NHV_Q00_060_01,Q00,60,Veyra_Memorial,Veyra,NHV_VoiceVeyra,Sad,40,Festus. Gabriella. Arnbjorn. Veezara. I'll carve their names myself.,,
+NHV_Q00_060_74,Q00,60,Veyra_Memorial,Player,-,Neutral,50,You knew them all?,,
+NHV_Q00_060_75,Q00,60,Veyra_Memorial,Veyra,NHV_VoiceVeyra,Neutral,30,I know their names. That is enough to begin.,,Redaktion E23: Erinnerung ohne erfundene intime Biografie.
+NHV_Q00_060_76,Q00,60,Veyra_Memorial,Veyra,NHV_VoiceVeyra,Sad,30,The dead cannot correct a story. That is why I keep mine small.,,Redaktion E23: Veyra bleibt fehlbar und begrenzt.
+NHV_Q00_060_77,Q00,60,Veyra_Memorial,Nazir,Vanilla,Neutral,30,You plan to fill this wall before we fill the beds.,,Nachfrage nach der Memorial-Wahl.
+NHV_Q00_060_78,Q00,60,Veyra_Memorial,Veyra,NHV_VoiceVeyra,Neutral,30,The wall is for those we lost. The beds are for those we may yet find.,,
+NHV_Q00_060_79,Q00,60,Veyra_Memorial,Babette,Vanilla,Happy,20,"Fill the beds, then. I have had quite enough of empty chairs.",,Nur wenn Babette in der Sanctuary anwesend ist.
+NHV_Q00_060_80,Q00,60,Veyra_Memorial,Veyra,NHV_VoiceVeyra,Happy,10,A mess can be cleaned. An empty room is more stubborn.,,
 NHV_Q00_060_02,Q00,60,Veyra_Memorial,Veyra,NHV_VoiceVeyra,Sad,50,And Cicero. I owed the Keeper more than a chisel. It's all I have left to give.,GetDead Cicero == 1,
 NHV_Q00_060_03,Q00,60,Veyra_Memorial,Veyra,NHV_VoiceVeyra,Neutral,40,"And Astrid? She led them. She also sold them. Your call, Listener.",,
 NHV_Q00_060_10,Q00,60,Veyra_Memorial,Player,-,Neutral,50,Carve her name with the others.,NHV_AstridMemorial == 0,Option 1 von 3 → NHV_AstridMemorial = 1

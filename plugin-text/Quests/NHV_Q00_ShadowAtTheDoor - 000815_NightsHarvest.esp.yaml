@@ -164,6 +164,7 @@ Aliases:
   - Optional
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 0037EF:NightsHarvest.esp
   - 0037DE:NightsHarvest.esp
   - 0037DF:NightsHarvest.esp
   - 0037E0:NightsHarvest.esp
@@ -175,6 +176,7 @@ Aliases:
   ForcedReference: 01C3AD:Skyrim.esm
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 0037EF:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 2
   Name: Babette
@@ -183,6 +185,7 @@ Aliases:
   ForcedReference: 01D4BC:Skyrim.esm
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 0037EF:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 3
   Name: Cicero
@@ -191,6 +194,7 @@ Aliases:
   ForcedReference: 09BCB0:Skyrim.esm
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 0037EF:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 4
   Name: NightMotherCoffin

@@ -1,0 +1,20 @@
+FormKey: 0037F9:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Nordic. Older than the sanctuary above. Someone sealed this for a reason.
+  ScriptNotes: NHV_Q00_050_01
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

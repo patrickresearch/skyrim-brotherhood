@@ -10,8 +10,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You don't. That's why we test them. And that's why you decide, not me.
-  ScriptNotes: ''
+    Value: Perhaps not. A test is a beginning. Watch what they do once they believe they've passed.
+  ScriptNotes: NHV_Q00_030_64 prompt=NHV_Q00_030_63
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -31,4 +31,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: How do I know one of them won't be the next Astrid?
+  Value: A test wouldn't have exposed Astrid.

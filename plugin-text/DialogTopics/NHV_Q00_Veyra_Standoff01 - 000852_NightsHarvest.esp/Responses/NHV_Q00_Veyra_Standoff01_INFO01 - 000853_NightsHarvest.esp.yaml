@@ -13,7 +13,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Veyra Othren. Once of Bravil, once of Cheydinhal, once of a dozen sanctuaries that don't exist anymore.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_11 prompt=NHV_Q00_010_10
   Edits: ''
 - EmotionValue: 30
   ResponseNumber: 2
@@ -22,7 +22,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: The family used to call me the Gleaner.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_12
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -37,4 +37,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: Who are you?
+  Value: You have a name. Let's hear it.

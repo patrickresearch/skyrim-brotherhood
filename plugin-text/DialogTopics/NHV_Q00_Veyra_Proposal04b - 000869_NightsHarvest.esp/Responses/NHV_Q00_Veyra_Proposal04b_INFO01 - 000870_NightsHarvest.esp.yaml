@@ -12,7 +12,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Don't tell him I said that. He'd never let me forget it.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_030_48
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

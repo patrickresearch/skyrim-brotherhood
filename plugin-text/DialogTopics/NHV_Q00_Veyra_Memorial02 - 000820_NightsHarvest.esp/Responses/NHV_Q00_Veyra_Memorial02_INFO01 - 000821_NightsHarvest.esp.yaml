@@ -25,7 +25,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Forgotten, then. The Void will remember her. We needn't.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_060_21 prompt=NHV_Q00_060_20
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

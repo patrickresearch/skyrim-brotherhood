@@ -25,7 +25,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Ask her, my Listener. Her answer will tell you more than mine.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_020_21 prompt=NHV_Q00_020_20
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

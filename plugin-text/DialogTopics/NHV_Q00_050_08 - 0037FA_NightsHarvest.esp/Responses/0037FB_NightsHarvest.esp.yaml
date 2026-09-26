@@ -1,0 +1,20 @@
+FormKey: 0037FB:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If this place kills us, I am blaming the elf.
+  ScriptNotes: NHV_Q00_050_08
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

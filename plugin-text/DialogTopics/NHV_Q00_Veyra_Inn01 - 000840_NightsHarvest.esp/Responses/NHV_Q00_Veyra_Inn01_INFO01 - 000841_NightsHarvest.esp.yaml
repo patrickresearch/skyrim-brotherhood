@@ -10,8 +10,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Wise. I'll follow you. Try not to walk too fast; I'm older than this town.
-  ScriptNotes: ''
+    Value: Windpeak. Yes. I heard you.
+  ScriptNotes: NHV_Q00_015_11 prompt=NHV_Q00_015_10
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -26,4 +26,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: Come back. The Night Mother will decide about you.
+  Value: Wait at the inn.

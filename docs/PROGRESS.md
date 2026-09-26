@@ -16,6 +16,8 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**26.09.2026: Dialoge bis zum gemeinsamen Deep-Sanctuary-Eintritt redaktionell abgeschlossen.** Q00-Standoff, Night-Mother-/Rückkehrdialoge, Proposal, Geröll, Deep-Sanctuary-Erkundung und Memorial wurden auf E23 vertieft; Q01 erhielt zusätzliche Hrefna-/Veyra-Zeilen. Die neue `SCN_DeepSanctuaryEntry` umfasst fünf Phasen mit Nazir, Babette, optional lebendem Cicero, Veyra und einer Spielerbestätigung; sie folgt der vorhandenen Verschleierungs-Szene an Stage 40. CSV-Lint: 0 Fehler bei 312 IDs. CK-Einbau und Ingame-Test stehen aus; die Szene ist ein Record-Vorschlag im CK-Plan.
+
 **26.09.2026: E23-Grundrichtung entschieden – Veyra als Tochter Sithis'.** Entwickler legt fest: theoretisch tötbar, nicht durch Alter/gewöhnliche Waffen; ungebunden und freiwillig ihrem Vater treu; kein Brotherhood-Mitglied, sondern Helferin der Night Mother. Verbindliches Profil: `docs/concept/Veyra-Autorenprofil.md`; Hauptkonzept und GOAL angepasst. Frühere Morag-Tong-Hilfe und Treffen mit der lebenden Night Mother bleiben Möglichkeiten; Entstehung/Mutter, genaue Verwundbarkeit und Ingame-Enthüllung offen. Die ältere Empfehlung „gebundene Nachleserin“ ist überholt. Betroffene CSV-/Buchstellen für nächste Redaktion aufgelistet; noch keine Dialog-, ESP-, Script- oder Schutzflag-Änderung. Lore-Designreview berücksichtigt.
 
 
@@ -247,13 +249,13 @@ Option 1) – Schema jetzt gesichert, nicht mehr raten nötig:
 
 ## Nächster Schritt
 
-### Veyra-Texte an die entschiedene Grundrichtung E23 anpassen
+### Q00/Q01-Dialoge und zweite Sanctuary-Cutscene im CK einbauen
 
-`docs/concept/Veyra-Autorenprofil.md` als verbindlichen Kern verwenden. Q00/Sanctuary und alte Buchentwürfe auf externe Helferin, freiwillige Sithis-Treue und besondere Natur abgleichen, anschließend lore-editor/Lint. Noch offene Herkunftsdetails oder ein Treffen mit der lebenden Night Mother nicht als Tatsachen erfinden. Vor Plugin-Übernahme des früheren Dialogausbaus diesen redaktionellen Abgleich abschließen; technische Sterblichkeit getrennt bearbeiten.
+`docs/concept/Veyra-Autorenprofil.md` bleibt verbindlicher Kern. Die CSV-Redaktion ist abgeschlossen; als Nächstes die neuen Q00/Q01-Topics und die zweite Cutscene nach `docs/ck/M1.5-Q00-Dialogausbau.md` im CK einbauen. Herkunftsdetails oder ein Treffen mit der lebenden Night Mother bleiben offen.
 
 ### Dialogausbau vom 26.09.2026 einbinden
 
-Nach Abschluss/Abgleich der laufenden CK-Arbeit den neuen CSV-Stand gemäß `docs/ck/M1.5-Q00-Dialogausbau.md` in die Dialog-Records übernehmen. Besonders E22 beachten: Alte automatische Abschlussverbindungen nach Informationsfragen entfernen. Danach stille FUZ neu erzeugen, CK-Roundtrip und Test mit lebendem/totem Cicero. Die bisherige Windpeak-Übergabe darunter bleibt relevant.
+Nach Abschluss/Abgleich der laufenden CK-Arbeit den neuen CSV-Stand gemäß `docs/ck/M1.5-Q00-Dialogausbau.md` in die Dialog-Records übernehmen. Besonders E22 beachten: Alte automatische Abschlussverbindungen nach Informationsfragen entfernen. Zweite Cutscene `NHV_Scn_Q00_02DeepSanctuaryEntry` mit fünf Phasen und Tür-/XMarker-Positionen anlegen. Danach stille FUZ neu erzeugen, CK-Roundtrip und Test mit lebendem/totem Cicero. Die bisherige Windpeak-Übergabe darunter bleibt relevant.
 
 
 ### Q00 Anschluss nach Szene 1: Windpeak, Night Mother, Rückkehr
@@ -267,6 +269,33 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-26 (Nacht, Stage 40: Zwischensequenz an der verschleierten Wand, E24)
+
+- Test bis Stage 50 lief durch (Commit `8f39381`). Wunsch Entwickler: Zwischensequenz an der Wand,
+  Passage magisch verborgen (E24, `DECISIONS.md`).
+- Records (Spriggit): `NHV_Pkg_Q00_PassageHold` (0037EF, DoNothing Stage 40–50, Aliase 0–3),
+  `NHV_Scn_Q00_02VeiledPassage` (0037F0, `040_10–12`), `NHV_Scn_Q00_03EnterDeep` (0037F7, `050_01`,
+  `050_08–16` ohne Spielerzeile), 12 Szenen-Topics/INFOs, Core-Properties. Texte aus der CSV,
+  Lektorat eingearbeitet (`040_10/11` neu, `030_72` ohne Geröll, Journal-Notizen, DEPRECATED).
+- `NHV_CoreScript` v22: Stage 40 stellt die Familie vor die Wand, Auslöser < 700 Units am Geröll,
+  Sperre + Watchdog (jetzt für jede Szene über `ActiveCutscene`), Tür am Ende von Szene A, nach
+  Szene B alle per `MoveTo` in die Deep Sanctuary, Stage 50. Positionen vorläufig.
+- `build.ps1` erkennt jetzt Kompilierfehler (Pyro meldet Exitcode 0); Papyrus-Scriptnamen max. 38 Zeichen.
+- Codex arbeitet wieder parallel an `Q00.csv` (u. a. `010_51`, `030_75/76`).
+- **Nicht getestet:** alles davon.
+
+### 2026-09-26 – Veyras Antwort zur Night Mother präzisiert
+
+- `NHV_Q00_010_104–105` deutet nun eine frühere, für den Spieler unverständliche Verbindung zur Night Mother an, ohne ein Treffen oder die Herkunft zu enthüllen.
+- `NHV_Q00_020_31` grenzt die heutige Stimme der Night Mother auf den Listener ein; die neue Fassung bleibt mit möglichen früheren Gesprächen vereinbar. Lint weiterhin 0 Fehler bei 312 IDs.
+
+### 2026-09-26 – Dialogbogen bis zur Deep Sanctuary abgeschlossen
+
+- Q00 Stage 30–60 vertieft: Veyras freiwillige Grenze bei Rekruten, eigenes Fehlurteil in Cheydinhal, Verantwortung für den Zugang, Erinnerungs- und Memorialdialoge.
+- Q00 Stage 50 um `SCN_DeepSanctuaryEntry` erweitert: fünf Phasen, gemeinsamer Eintritt aller Überlebenden, Cicero-Bedingung bleibt optional; die vorhandene Stage-40-Verschleierungs-Szene bleibt davor.
+- Q01 Stage 40/50 um Hrefnas Selbstzweifel und Veyras Prüfungsrahmen ergänzt.
+- CK-Hand-off in `docs/ck/M1.5-Q00-Dialogausbau.md` und Lesefassung in `docs/dialogue/Dialogausbau-2026-09-26.md` ergänzt. Lint grün (312 IDs; optionale Spellprüfung fehlt weiterhin).
 
 ### 2026-09-26 – E23: Tochter Sithis', freiwillige Helferin der Night Mother
 

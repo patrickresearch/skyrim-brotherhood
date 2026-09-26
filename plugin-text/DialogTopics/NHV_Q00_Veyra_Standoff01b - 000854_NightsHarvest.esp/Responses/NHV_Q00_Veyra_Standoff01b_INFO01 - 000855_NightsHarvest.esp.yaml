@@ -11,7 +11,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: After the harvest, someone walks the fields and gathers what the reapers left behind.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_14 prompt=NHV_Q00_010_13
   Edits: ''
 - EmotionValue: 30
   ResponseNumber: 2
@@ -20,7 +20,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: That was my work. I found the ones worth keeping.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_15
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -35,4 +35,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: The Gleaner?
+  Value: The Gleaner. An odd name for an assassin.

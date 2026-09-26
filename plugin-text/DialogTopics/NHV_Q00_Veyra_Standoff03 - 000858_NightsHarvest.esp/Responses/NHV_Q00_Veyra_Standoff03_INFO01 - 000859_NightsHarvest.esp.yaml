@@ -11,7 +11,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: The family grows thin, and I come. It has always been that way.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_31 prompt=NHV_Q00_010_30
   Edits: ''
 - Emotion: Sad
   EmotionValue: 50
@@ -21,7 +21,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: So I came north. I found Falkreath in ashes. I was too late for them.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_32
   Edits: ''
 - EmotionValue: 40
   ResponseNumber: 3
@@ -30,7 +30,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: I don't intend to be too late for you.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_33
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -45,4 +45,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: Why are you here?
+  Value: You chose a poor time to ask for our trust.

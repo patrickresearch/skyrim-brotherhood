@@ -279,7 +279,7 @@ Das Intro führt Veyra über eine Konfrontation mit Nazir ein, lässt die Night 
 | 20 | Consult the Night Mother about Veyra. | Veyra wartet im Windpeak Inn |
 | 30 | Return to Veyra at the Windpeak Inn. | Night-Mother-Dialog beendet |
 | 40 | Open the sealed passage with Veyra. | Proposal-Dialog beendet |
-| 50 | Explore the Deep Sanctuary. | Geröll aktiviert, Zellwechsel |
+| 50 | Explore the Deep Sanctuary. | Zwischensequenz an der verschleierten Wand, gemeinsamer Eintritt (E24) |
 | 60 | Decide whose names belong on the Memorial Wall. | Veyra erreicht die Memorial Wall |
 | 100 | (Quest abgeschlossen) | Gespräch über den ersten Contract; startet Q01 |
 
@@ -387,7 +387,7 @@ Danach, unabhängig von der Wahl:
 
 ### Szene 4: Die versiegelte Passage
 
-Der Spieler aktiviert das Geröll, Zellwechsel in die verfallene Deep Sanctuary. Drei Draugr (levelskaliert) bewachen die alten Kammern. Das Buch „Builder's Record of the Dawnstar Vaults“ liefert Lore.
+**E24 (26.09.2026):** Die Passage ist nicht verschüttet, sondern durch eine uralte Verschleierung verborgen (Urheber bewusst offen). An der Wand läuft eine Zwischensequenz (Steuerung gesperrt): Veyra durchschaut und löst die Illusion, die Tür erscheint, die Familie kommentiert, alle gehen gemeinsam hinein. Der Spieler aktiviert das Geröll, Zellwechsel in die verfallene Deep Sanctuary. Drei Draugr (levelskaliert) bewachen die alten Kammern. Das Buch „Builder's Record of the Dawnstar Vaults“ liefert Lore.
 
 - **VEYRA**: "Nordic. Older than the sanctuary above. Someone sealed this for a reason."
 - **VEYRA** (nach dem Kampf, Happy 20): "Well. Now we know the reason."

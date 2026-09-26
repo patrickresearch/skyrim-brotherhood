@@ -12,7 +12,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: A family. A home that doesn't burn. And one day, perhaps, a name on a wall that someone bothers to remember.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_030_62 prompt=NHV_Q00_030_61
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

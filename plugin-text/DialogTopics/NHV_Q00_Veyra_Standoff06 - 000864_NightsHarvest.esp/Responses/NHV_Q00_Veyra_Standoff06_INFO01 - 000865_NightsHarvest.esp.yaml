@@ -21,7 +21,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: As you wish. I'll be at the Windpeak Inn.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_61 prompt=NHV_Q00_010_60
   Edits: ''
 - EmotionValue: 20
   ResponseNumber: 2
@@ -30,7 +30,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: I've waited longer than you would believe. A few more days won't trouble me.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_010_62
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

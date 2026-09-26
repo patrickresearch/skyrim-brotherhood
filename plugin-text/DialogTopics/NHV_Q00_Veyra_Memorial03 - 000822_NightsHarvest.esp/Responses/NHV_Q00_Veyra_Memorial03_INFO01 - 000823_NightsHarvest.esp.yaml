@@ -25,7 +25,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Remembered, but not honored. I like the way you think.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_060_31 prompt=NHV_Q00_060_30
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

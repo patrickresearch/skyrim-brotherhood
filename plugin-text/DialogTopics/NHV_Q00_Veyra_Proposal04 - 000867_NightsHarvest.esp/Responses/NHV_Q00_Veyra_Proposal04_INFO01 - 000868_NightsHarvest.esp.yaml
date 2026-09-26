@@ -15,8 +15,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Because the Night Mother went quiet. I only stay where I'm needed, and I took her silence for an answer.
-  ScriptNotes: ''
+    Value: Because the Night Mother went quiet. I took her silence to mean my work was finished. I was wrong.
+  ScriptNotes: NHV_Q00_030_46 prompt=NHV_Q00_030_45
   Edits: ''
 - Emotion: Sad
   EmotionValue: 50
@@ -25,8 +25,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Cicero stayed. The fool stayed. And he was right.
-  ScriptNotes: ''
+    Value: 'Cicero stayed. The fool stayed. And he was right about one thing: silence still asks to be endured.'
+  ScriptNotes: NHV_Q00_030_47
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

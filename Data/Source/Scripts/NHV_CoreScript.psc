@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 21 AutoReadOnly
+Int Property VERSION = 22 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -120,7 +120,12 @@ Function Maintenance()
     EnsureSealedPassageState()
     ; Never leave the player without controls after loading a save made during the Standoff cutscene.
     If bCutsceneLocked
-        If StandoffScene && StandoffScene.IsPlaying()
+        Scene kLockedScene = StandoffScene
+        If ActiveCutscene
+            kLockedScene = ActiveCutscene
+        EndIf
+        If kLockedScene && kLockedScene.IsPlaying()
+            bCutsceneSeenPlaying = True
             RegisterForSingleUpdate(2.0)
         Else
             UnlockCutscene()
@@ -134,6 +139,15 @@ EndFunction
 ; property that is still None from its known FormID (own plugin or vanilla, never changes). Idempotent,
 ; runs on every load via Maintenance(). New properties added later belong in here as well.
 Function EnsureProperties()
+    If !VeiledPassageScene
+        VeiledPassageScene = Game.GetFormFromFile(0x0037F0, "NightsHarvest.esp") as Scene
+    EndIf
+    If !EnterDeepScene
+        EnterDeepScene = Game.GetFormFromFile(0x0037F7, "NightsHarvest.esp") as Scene
+    EndIf
+    If !DeepSanctuaryEntryMarker
+        DeepSanctuaryEntryMarker = Game.GetFormFromFile(0x001456, "NightsHarvest.esp") as ObjectReference
+    EndIf
     If !NightMotherVoiceBase
         NightMotherVoiceBase = Game.GetFormFromFile(0x0037EC, "NightsHarvest.esp") as TalkingActivator
     EndIf
@@ -259,6 +273,13 @@ Function Migrate(Int aiFrom)
         ; running quest, so empty) and the voice now, otherwise stage 20 cannot be finished.
         UpdateNightMother()
     EndIf
+    If aiFrom < 22
+        ; E24: stage 40 is a cutscene at the veiled wall now. A save whose door already stands (old flow, the
+        ; stage 40 fragment spawned it at once) keeps that door and skips the cutscene.
+        If PassageDoorRef
+            bVeiledPassageDone = True
+        EndIf
+    EndIf
 EndFunction
 
 ; Idempotent: does nothing once either RubbleRef or PassageDoorRef already exists. Safe to call
@@ -268,7 +289,8 @@ Function EnsureSealedPassageState()
     If RubbleRef || PassageDoorRef
         Return
     EndIf
-    If Q00 && Q00.GetStage() >= 40
+    ; E24: on stage 40 the rubble (the veil) stands until the cutscene reveals the door.
+    If Q00 && (Q00.GetStage() >= 50 || bVeiledPassageDone)
         SpawnPassageDoor()
     Else
         SpawnPassageRubble()
@@ -406,6 +428,7 @@ Function OnEnterDawnstarSanctuary(Location akNewLoc)
         Return
     EndIf
     UpdateNightMother()
+    ArmVeiledPassagePoll()
     If Q00 && Q00.IsRunning() && Q00.GetStage() == 30 && (bVeyraReturningToSanctuary || (NHV_Q00_VeyraReturning && NHV_Q00_VeyraReturning.GetValueInt() == 1))
         CompleteVeyraReturnToSanctuary()
     EndIf
@@ -647,6 +670,17 @@ Event OnUpdate()
         ; No Return: a cutscene watchdog chain (dev saves, console setstage) must not starve behind it.
         bNightMotherCallPending = False ; legacy (call is idle dialogue since 26.09.2026): only clear it
     EndIf
+    If bPassagePlacePending
+        bPassagePlacePending = False
+        PlaceVeiledPassageFamily()
+        Return
+    EndIf
+    If bPassagePollPending
+        ; Return: a scene started here must not be judged by the watchdog in the same event (IsPlaying lags).
+        bPassagePollPending = False
+        PollVeiledPassage()
+        Return
+    EndIf
     ; The watchdog hangs on the lock itself, so nothing that resets bStandoffSceneStarted (Q00 restart in a
     ; dev save) can break its chain while the player is locked.
     If bCutsceneLocked
@@ -887,7 +921,8 @@ Function LockCutscene()
     Game.DisablePlayerControls(True, True, False, False, True, True, True, False)
     bCutsceneLocked = True
     iCutsceneTicks = 0
-    NHV_Util.Log(NHV_Cfg_Debug, "Standoff cutscene: player controls locked")
+    bCutsceneSeenPlaying = False
+    NHV_Util.Log(NHV_Cfg_Debug, "Cutscene " + ActiveCutscene + ": player controls locked")
 EndFunction
 
 Function UnlockCutscene()
@@ -895,9 +930,12 @@ Function UnlockCutscene()
         Return
     EndIf
     bCutsceneLocked = False
+    If ActiveCutscene && ActiveCutscene != StandoffScene
+        RecoverVeiledPassage()
+    EndIf
     ; Mirror LockCutscene() exactly, so locks of other systems (werewolf camera, other mods) stay untouched.
     Game.EnablePlayerControls(True, True, False, False, True, True, True, False)
-    NHV_Util.Log(NHV_Cfg_Debug, "Standoff cutscene: player controls released")
+    NHV_Util.Log(NHV_Cfg_Debug, "Cutscene: player controls released")
 EndFunction
 
 ; Every 2 s while the cutscene lock is on. Releases the player as soon as the scene is no longer playing
@@ -908,7 +946,23 @@ Function WatchStandoffCutscene()
         Return
     EndIf
     iCutsceneTicks += 1
-    Bool bPlaying = StandoffScene && StandoffScene.IsPlaying()
+    Scene kWatched = StandoffScene
+    If ActiveCutscene
+        kWatched = ActiveCutscene
+    EndIf
+    Bool bPlaying = kWatched && kWatched.IsPlaying()
+    If bPlaying
+        bCutsceneSeenPlaying = True
+    ElseIf !bCutsceneSeenPlaying && iCutsceneTicks < 3
+        ; A scene reports IsPlaying a moment after Start(); give it up to ~6 s to get going.
+        RegisterForSingleUpdate(2.0)
+        Return
+    ElseIf kWatched == VeiledPassageScene && !bVeiledPassageDone && !bPassageEndGrace
+        ; Scene A just ended but its End fragment (door, scene B) may not have run yet: one grace tick.
+        bPassageEndGrace = True
+        RegisterForSingleUpdate(2.0)
+        Return
+    EndIf
     ; A locked player cannot defend himself: combat ends the cutscene like the timeout does.
     Bool bInCombat = Game.GetPlayer().IsInCombat()
     If bPlaying && iCutsceneTicks < 60 && !bInCombat
@@ -917,12 +971,16 @@ Function WatchStandoffCutscene()
     EndIf
     If bPlaying
         If bInCombat
-            NHV_Util.Log(NHV_Cfg_Debug, "Standoff watchdog: player in combat, stopping the scene")
+            NHV_Util.Log(NHV_Cfg_Debug, "Cutscene watchdog: player in combat, stopping " + kWatched)
         Else
-            NHV_Util.Log(NHV_Cfg_Debug, "Standoff watchdog: scene still running after 120 s, stopping it")
+            NHV_Util.Log(NHV_Cfg_Debug, "Cutscene watchdog: " + kWatched + " still running after 120 s, stopping it")
         EndIf
-        StandoffScene.Stop()
-    ElseIf !bStandoffSceneDone
+        kWatched.Stop()
+        If ActiveCutscene && ActiveCutscene != kWatched
+            RegisterForSingleUpdate(2.0) ; the End fragment handed over to the next scene
+            Return
+        EndIf
+    ElseIf kWatched == StandoffScene && !bStandoffSceneDone
         NHV_Util.Log(NHV_Cfg_Debug, "Standoff watchdog: scene not playing and never finished")
     EndIf
     UnlockCutscene()
@@ -1112,4 +1170,173 @@ Function RemoveNightMotherVoice()
     EndIf
     bNightMotherCalled = False
     bNightMotherCallPending = False
+EndFunction
+
+; ---------------------------------------------------------------------------------------------------------
+; Q00 stage 40 -> 50 (E24): the passage is hidden by an old veil, not buried. The family gathers at the wall;
+; when the player comes near, a cutscene like the Standoff runs (controls locked, watchdog): scene A
+; NHV_Scn_Q00_02VeiledPassage (Veyra sees through the illusion), the door appears, scene B
+; NHV_Scn_Q00_03EnterDeep (the family at the door), then everybody is moved into the Deep Sanctuary, stage 50.
+; Positions are provisional (developer, 26.09.2026: exact placement later in the CK).
+; ---------------------------------------------------------------------------------------------------------
+Scene Property VeiledPassageScene Auto
+Scene Property EnterDeepScene Auto
+ObjectReference Property DeepSanctuaryEntryMarker Auto ; NHV_Mk_Q00_DeepSanctuaryEntry (door target marker)
+
+Scene ActiveCutscene ; the cutscene the lock/watchdog belongs to; None = the Standoff
+Bool bPassagePollPending = False
+Bool bVeiledPassageStarted = False
+Bool bVeiledPassageDone = False
+Bool bPassagePlacePending = False
+Bool bCutsceneSeenPlaying = False
+Bool bPassageEndGrace = False
+
+; Stage 40 fragment: no waiting in the fragment, the family is placed in the next update.
+Function BeginVeiledPassage()
+    If bVeiledPassageDone || !Q00 || Q00.GetStage() != 40
+        Return
+    EndIf
+    bPassagePlacePending = True
+    RegisterForSingleUpdate(0.5)
+EndFunction
+
+Function PlaceVeiledPassageFamily()
+    If bVeiledPassageDone || !Q00 || Q00.GetStage() != 40
+        Return
+    EndIf
+    If !DawnstarAnchorRef
+        NHV_Util.Log(NHV_Cfg_Debug, "PlaceVeiledPassageFamily: DawnstarAnchorRef not set, falling back to the door")
+        RecoverVeiledPassage()
+        Return
+    EndIf
+    EnsureSealedPassageState()
+    ; Wall at 2648.75/4930.81 (see SpawnPassageRubble); the family stands in front of it, facing the wall (+Y).
+    If VeyraRef && !VeyraRef.IsDead()
+        VeyraRef.MoveTo(DawnstarAnchorRef)
+        VeyraRef.SetPosition(2648.0, 4790.0, 5620.0)
+        VeyraRef.SetAngle(0.0, 0.0, 0.0)
+        VeyraRef.EvaluatePackage()
+    EndIf
+    PlaceStandoffActor(1, 0x01C3AD, 2510.0, 4760.0, 5620.0, 20.0)
+    PlaceStandoffActor(2, 0x01D4BC, 2790.0, 4750.0, 5620.0, 340.0)
+    Actor kFalkreathCicero = Game.GetFormFromFile(0x01E64A, "Skyrim.esm") as Actor
+    If !(kFalkreathCicero && kFalkreathCicero.IsDead())
+        PlaceStandoffActor(3, 0x09BCB0, 2700.0, 4650.0, 5620.0, 350.0)
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family gathered at the wall")
+    ArmVeiledPassagePoll()
+EndFunction
+
+Function ArmVeiledPassagePoll()
+    If !bVeiledPassageStarted && !bVeiledPassageDone && Q00 && Q00.IsRunning() && Q00.GetStage() == 40
+        bPassagePollPending = True
+        RegisterForSingleUpdate(2.0)
+    EndIf
+EndFunction
+
+; OnUpdate, every 2 s while the player is in the Sanctuary on stage 40, until he comes near the wall.
+Function PollVeiledPassage()
+    If bVeiledPassageStarted || bVeiledPassageDone || !Q00 || Q00.GetStage() != 40
+        Return
+    EndIf
+    If !VeiledPassageScene || !RubbleRef
+        NHV_Util.Log(NHV_Cfg_Debug, "PollVeiledPassage: scene " + VeiledPassageScene + " / rubble " + RubbleRef + " missing, falling back to the door")
+        RecoverVeiledPassage()
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    If !kPlayer.IsInLocation(DawnstarSanctuaryLocation)
+        Return ; OnEnterDawnstarSanctuary arms it again
+    EndIf
+    If RubbleRef.GetDistance(kPlayer) < 700.0
+        bVeiledPassageStarted = True
+        ; A vanilla Sanctuary scene holding Nazir or Babette would keep ours from getting them.
+        StopOtherScenes()
+        ActiveCutscene = VeiledPassageScene
+        LockCutscene()
+        VeiledPassageScene.Start()
+        NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage scene started")
+        RegisterForSingleUpdate(2.0) ; watchdog
+    Else
+        bPassagePollPending = True
+        RegisterForSingleUpdate(2.0)
+    EndIf
+EndFunction
+
+; End fragment of NHV_Scn_Q00_02VeiledPassage (also runs when the watchdog stops it).
+Function OnVeiledPassageSceneEnd()
+    If bVeiledPassageDone
+        Return
+    EndIf
+    bVeiledPassageDone = True
+    Bool bWasLocked = bCutsceneLocked
+    ; Hand the lock over to scene B first (no external call before it), so the watchdog never sees "nothing playing".
+    ActiveCutscene = EnterDeepScene
+    iCutsceneTicks = 0
+    bCutsceneSeenPlaying = False
+    NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage scene finished, the veil falls")
+    If !bWasLocked || Game.GetPlayer().IsInCombat() || !EnterDeepScene
+        ; Aborted (watchdog, combat) or no second scene: just the door, the player walks through himself.
+        ActiveCutscene = None
+        SpawnPassageDoor()
+        UnlockCutscene()
+        Return
+    EndIf
+    SpawnPassageDoor()
+    EnterDeepScene.Start()
+    NHV_Util.Log(NHV_Cfg_Debug, "Enter-deep scene started")
+EndFunction
+
+; End fragment of NHV_Scn_Q00_03EnterDeep.
+Function OnEnterDeepSceneEnd()
+    FinishVeiledPassage()
+EndFunction
+
+; Everybody through the door together: player and family into the Deep Sanctuary, stage 50, controls back.
+Function FinishVeiledPassage()
+    ActiveCutscene = None
+    Actor kPlayer = Game.GetPlayer()
+    If !Q00 || Q00.GetStage() != 40 || !DeepSanctuaryEntryMarker || kPlayer.IsInCombat() || !kPlayer.IsInLocation(DawnstarSanctuaryLocation)
+        ; The door stands; the player can walk through (NHV_SealedPassageDoorScript sets stage 50).
+        UnlockCutscene()
+        Return
+    EndIf
+    ; The marker faces +Y into the room (see NHV_SealedPassageDoorScript); the family spreads out ahead.
+    MovePassageActor(0, 0.0, 320.0)
+    MovePassageActor(1, -120.0, 240.0)
+    MovePassageActor(2, 120.0, 240.0)
+    MovePassageActor(3, 0.0, 420.0)
+    kPlayer.MoveTo(DeepSanctuaryEntryMarker, 0.0, 128.0, 8.0, True)
+    Q00.SetStage(50)
+    UnlockCutscene()
+    NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family entered the Deep Sanctuary")
+    OnEnterDeepSanctuary() ; return door
+EndFunction
+
+; The cutscene did not run to its end (did not start, was stopped, or a load cut it off): the veil falls anyway,
+; so stage 40 can always be finished through the door.
+Function RecoverVeiledPassage()
+    ActiveCutscene = None
+    If PassageDoorRef
+        bVeiledPassageDone = True
+        Return
+    EndIf
+    bVeiledPassageDone = True
+    NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: cutscene did not finish, door placed as fallback")
+    SpawnPassageDoor()
+EndFunction
+
+Function MovePassageActor(Int aiAlias, Float afX, Float afY)
+    If !Q00 || !DeepSanctuaryEntryMarker
+        Return
+    EndIf
+    ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
+    If !kAlias
+        Return
+    EndIf
+    Actor kActor = kAlias.GetActorReference()
+    If kActor && !kActor.IsDead()
+        kActor.MoveTo(DeepSanctuaryEntryMarker, afX, afY, 8.0, True)
+        kActor.EvaluatePackage()
+    EndIf
 EndFunction

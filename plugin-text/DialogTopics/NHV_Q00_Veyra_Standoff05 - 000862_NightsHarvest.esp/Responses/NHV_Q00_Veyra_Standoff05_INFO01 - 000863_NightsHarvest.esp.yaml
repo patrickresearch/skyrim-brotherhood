@@ -10,8 +10,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Before he does, Listener, ask the Night Mother. If she wants me dead, I'll hold very still.
-  ScriptNotes: ''
+    Value: Ask the Night Mother, Listener. If she refuses my help, I'll leave you to your prayers.
+  ScriptNotes: NHV_Q00_010_51 prompt=NHV_Q00_010_50
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

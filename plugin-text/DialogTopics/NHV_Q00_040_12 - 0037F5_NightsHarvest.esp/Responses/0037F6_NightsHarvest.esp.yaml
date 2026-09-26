@@ -1,0 +1,20 @@
+FormKey: 0037F6:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 10
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Illusion is my trade, Nazir. Walls that pretend are the easiest to see through. Stand back.
+  ScriptNotes: NHV_Q00_040_12
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

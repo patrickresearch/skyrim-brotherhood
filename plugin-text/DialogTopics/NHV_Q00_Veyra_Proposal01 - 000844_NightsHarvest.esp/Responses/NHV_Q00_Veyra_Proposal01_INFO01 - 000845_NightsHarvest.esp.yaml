@@ -20,8 +20,8 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: One more thing. This place is older than you think. There's a passage behind that rubble, sealed before any of us were born.
-  ScriptNotes: NHV_Q00_030_72
+    Value: One more thing. One of your walls is not what it pretends to be. Someone went to considerable trouble over it.
+  ScriptNotes: NHV_Q00_030_72 prompt=NHV_Q00_030_60
   Edits: ''
 - EmotionValue: 30
   ResponseNumber: 2

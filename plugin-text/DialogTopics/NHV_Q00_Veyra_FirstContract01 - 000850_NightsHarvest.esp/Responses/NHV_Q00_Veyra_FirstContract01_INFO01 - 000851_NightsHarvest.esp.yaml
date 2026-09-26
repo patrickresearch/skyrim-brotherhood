@@ -11,7 +11,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: They found the door by luck, not judgment. Luck is a fine thing. Judgment lasts longer.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_060_71 prompt=NHV_Q00_060_70
   Edits: ''
 - EmotionValue: 20
   ResponseNumber: 2
@@ -20,7 +20,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: I'll keep an eye on them.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_060_72
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

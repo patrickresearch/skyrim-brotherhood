@@ -12,7 +12,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: Does it? Does it count? Cicero will count. Cicero is very good at counting grudges.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_030_11 prompt=NHV_Q00_030_10
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -27,4 +27,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: She's here now. That counts for something.
+  Value: She came when the family was nearly gone.

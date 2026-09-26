@@ -14,8 +14,14 @@ VirtualMachineAdapter:
       Name: DBRecurringQuest
       Object: 01EA5A:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: DeepSanctuaryEntryMarker
+      Object: 001456:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: DestroyQuest
       Object: 0934FB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EnterDeepScene
+      Object: 0037F7:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: ExitDoorRef
       Object: 001586:NightsHarvest.esp
@@ -61,6 +67,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: StandoffScene
       Object: 002B4E:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeiledPassageScene
+      Object: 0037F0:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraBase
       Object: 000817:NightsHarvest.esp

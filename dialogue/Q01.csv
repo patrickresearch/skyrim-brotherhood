@@ -3,9 +3,13 @@ NHV_Q01_040_01,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Sad,50,"Six weeks I wa
 NHV_Q01_040_02,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Anger,70,"You came. Now you come. Where were you when he took the farm and my husband took to the bottle?",,"Betonung auf ""Now"" (im Konzept mit Sternchen hervorgehoben, fuer CK-Text entfernt)"
 NHV_Q01_040_03,Q01,40,Hrefna_Offer,Player,-,Neutral,50,"The family was burning. No one was left to answer.",,
 NHV_Q01_040_04,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Neutral,50,"So I answered myself. Held him under till the bubbles stopped. It was quieter than I thought.",,
-NHV_Q01_050_01,Q01,50,Veyra_TrialBriefing,Veyra,NHV_VoiceVeyra,Neutral,50,"Grief kills once. Sithis wants those who can kill twice.",,Veyras Briefing vor der Pruefung
+NHV_Q01_040_06,Q01,40,Hrefna_Offer,Player,-,Neutral,50,What did you expect the silence to tell you?,,
+NHV_Q01_040_07,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Sad,40,"That I had done the right thing. It told me only that he was gone.",,"Erweiterung 26.09.2026; Hrefnas Zweifel bleibt menschlich, keine Erklärung durch Veyra."
+NHV_Q01_050_01,Q01,50,Veyra_TrialBriefing,Veyra,NHV_VoiceVeyra,Neutral,50,Grief kills once. The second choice tells us what she is willing to carry.,,Veyras Briefing vor der Pruefung; E23: keine unbelegte Aussage über einen universellen Willen Sithis'.
 NHV_Q01_050_02,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Fear,40,"There's a letter on his table. To a daughter. I... can't.",,Am Bett des Agenten Quintus Aufidius
 NHV_Q01_050_03,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"(Persuade) If he lives, he'll hang you for the Brotherhood's work.",,"Option 1 von 3; Konzepttext gekuerzt, um mit Praefix unter 80 Zeichen zu bleiben (docs/DIALOGUE.md)"
 NHV_Q01_050_04,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"(Intimidate) Then you're no use to us. And neither is your silence.",,Option 2 von 3
 NHV_Q01_050_05,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"Step aside. I'll do it.",,"Option 3 von 3; Pruefung NICHT bestanden, fuehrt zu Flag Unproven"
-NHV_Q01_050_06,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,30,"Twice now. It doesn't get quieter.",,"Danach, unabhaengig vom gewaehlten Weg"
+NHV_Q01_050_06,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,30,"It doesn't get quieter.",,"Nach Hrefnas eigenem Kill; Spieler-Kill erhält keine falsche Hrefna-Reaktion."
+NHV_Q01_050_08,Q01,50,Veyra_TrialBriefing,Veyra,NHV_VoiceVeyra,Neutral,40,The first death settled a grievance. The next will tell us whether she can act without one.,,Erweiterung 26.09.2026; Prüfung ohne persönlichen Rachegrund.
+NHV_Q01_050_09,Q01,50,Hrefna_Trial,Player,-,Neutral,50,Then decide what you are willing to become.,,Erweiterung 26.09.2026; vor der Auswahl der Prüfung.

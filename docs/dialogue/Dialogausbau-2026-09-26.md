@@ -1,8 +1,16 @@
 # Dialogausbau – Lesefassung vom 26.09.2026
 
-Aus dem CSV-Master erzeugte Lesefassung. Änderungen ausschließlich in `dialogue/Q00.csv` bzw. `dialogue/Sanctuary.csv` vornehmen und diese Fassung anschließend erneuern. Texte geprüft bedeutet noch nicht im Spiel eingebaut.
+Aus dem CSV-Master erzeugte Lesefassung. Änderungen ausschließlich in `dialogue/Q00.csv`, `dialogue/Q01.csv` bzw. `dialogue/Sanctuary.csv` vornehmen und diese Fassung anschließend erneuern. Texte geprüft bedeutet noch nicht im Spiel eingebaut.
 
 E22: Im Standoff bleiben Fragen offen, bis der Spieler ausdrücklich das Urteil der Night Mother verlangt, droht oder Veyra fortschickt. Die automatische Eröffnung bleibt kurz. Nach Q00 stehen persönliche Gespräche zur Verfügung.
+
+## Abschlussredaktion Q00/Q01 vom 26.09.2026
+
+Die aktuelle CSV-Fassung führt die spätere Q00-Bewegung als Gruppenmoment weiter. Veyra beschreibt beim Geröll nicht ihr Alter, sondern ihre Verantwortung für den Zugang: „The difficult part is deciding who should hear what waits beyond.“ Nach dem Öffnen spricht die Gruppe in `SCN_DeepSanctuaryEntry` über fünf Phasen miteinander. Nazir sichert, Babette stichelt, Cicero reagiert nur wenn er lebt, und der Spieler gibt das Zeichen zum gemeinsamen Eintritt. Veyra beendet die Szene mit: „Let the dark keep its room. We have work to do.“
+
+Die Proposal-Szene macht Veyras freiwillige Grenze sichtbar: Wer die Einladung ablehnt, bleibt abgelehnt; der Listener entscheidet über Prüfungen. Im Memorial-Zweig trennt Veyra Erinnerung von erfundener Nähe und lässt die Namen erst durch zukünftige Arbeit Gewicht bekommen. In Q01 erhält Hrefnas Black-Sacrament-Gespräch eine zusätzliche Selbstzweifel-Ebene, bevor die Prüfung beginnt.
+
+Diese Zeilen stehen im Master in `dialogue/Q00.csv` und `dialogue/Q01.csv`; die Szenen- und Topic-Verbindungen müssen im CK nach dem Einbauplan angelegt werden. Die bisherigen Lesefassungsabschnitte darunter bleiben die Ausgangsformulierungen und werden beim nächsten Export vollständig aus dem CSV neu erzeugt.
 
 ## Verfeinerte bestehende Zeilen
 
@@ -60,9 +68,9 @@ E22: Im Standoff bleiben Fragen offen, bis der Spieler ausdrücklich das Urteil 
 
 **Player** (`NHV_Q00_010_103`): You keep invoking the Mother. Has she spoken to you?
 
-**Veyra** (`NHV_Q00_010_104`): No. I have knelt, tended candles, and listened to the wick burn down.
+**Veyra** (`NHV_Q00_010_104`): I have spoken with the Mother. Not in the way she speaks to you.
 
-**Veyra** (`NHV_Q00_010_105`): If I claimed more, you would have your first good reason to order that blade forward.
+**Veyra** (`NHV_Q00_010_105`): That does not give me your place, Listener. Ask her whether she wants my help.
 
 **Player** (`NHV_Q00_010_106`): Yet you expect me to believe she wants you here.
 

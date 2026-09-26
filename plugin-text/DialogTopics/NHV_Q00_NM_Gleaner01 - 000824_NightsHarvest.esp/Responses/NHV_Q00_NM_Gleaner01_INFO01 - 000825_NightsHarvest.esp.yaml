@@ -11,7 +11,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: 'Trust is for the living to squabble over. I know only this: her heart beats for Sithis.'
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_020_11 prompt=NHV_Q00_020_10
   Edits: ''
 - EmotionValue: 20
   ResponseNumber: 2
@@ -20,7 +20,7 @@ Responses:
   Text:
     TargetLanguage: English
     Value: What she does with it is yours to watch.
-  ScriptNotes: ''
+  ScriptNotes: NHV_Q00_020_12
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
