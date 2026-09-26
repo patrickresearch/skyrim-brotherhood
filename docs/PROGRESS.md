@@ -16,7 +16,7 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
-**27.09.2026: Veyras Ledger-Buch geschrieben.** `dialogue/Books.csv` enthält zwölf Absätze für `The Gleaner's Ledger`: Arbeitsregeln, Sithis-/Night-Mother-Deutung, Zuständigkeit des Listeners und den Hjaalmarch-/Hrefna-Anker für Q01. Das Buch enthüllt Veyras Herkunft nicht. CK-Einbau und Item-Übergabe nach `NHV_Q00_060_63` sind im Q00-Plan beschrieben. Lint: 0 Fehler bei 324 IDs.
+**27.09.2026: Veyras Buchbestand erweitert.** `dialogue/Books.csv` enthält das Ledger plus fünf optionale Bücher: ein rätselhaftes Tagebuch, persönliche Sithis-Notizen, die Harvest-Legende, Sanctuary-Feldnotizen und widersprüchliche Night-Mother-Überlieferungen. Sie vertiefen die Lore, ohne Veyras Herkunft oder offene Geschichte als Ingame-Fakt zu enthüllen. Lint: 0 Fehler bei 353 IDs; CK-Platzierung ist im Q00-Plan beschrieben.
 
 **26.09.2026: Dialoge bis zum gemeinsamen Deep-Sanctuary-Eintritt redaktionell abgeschlossen.** Q00-Standoff, Night-Mother-/Rückkehrdialoge, Proposal, Geröll, Deep-Sanctuary-Erkundung und Memorial wurden auf E23 vertieft; Q01 erhielt zusätzliche Hrefna-/Veyra-Zeilen. Die neue `SCN_DeepSanctuaryEntry` umfasst fünf Phasen mit Nazir, Babette, optional lebendem Cicero, Veyra und einer Spielerbestätigung; sie folgt der vorhandenen Verschleierungs-Szene an Stage 40. CSV-Lint: 0 Fehler bei 312 IDs. CK-Einbau und Ingame-Test stehen aus; die Szene ist ein Record-Vorschlag im CK-Plan.
 
@@ -271,6 +271,30 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-27 (E25 echte Ladetür, Navmesh)
+
+- Entwickler hat `NHV_DeepSanctuaryDoorRef` (003D8B, Basis `NHV_DeepSanctuaryDoor` 003D8A ohne Script)
+  in einer mod-geprüften Sackgasse der `DawnstarSanctuary` platziert (3296/3392/5664, 91.19°, persistent,
+  initially disabled), verlinkt mit der Ausgangstür `001586`. Scripts (`NHV_CoreScript` v24): Tür wird am Ende
+  von Szene A aktiviert, Geröll/Familie an der neuen Wand, Script-Rücktür entfällt, Ortswechsel in die Deep
+  Sanctuary setzt Stage 50 (Fallback), Migration/Selbstheilung für Dev-Saves.
+- CK-Saves: versehentlich verschobene Vanilla-Objekte (Blut-Decal 066068, Fackel-Licht 0C12D2, Nebel 0C12F2)
+  zurückgesetzt; CK-Duplikat 003D89 entfernt; Ankunftsmarker in der Deep Sanctuary aus der Türebene in den Raum
+  (-5600/-2816/136, Blick 0°).
+- Navmesh: Das Tür-Dreieck der Deep Sanctuary zeigte seit der Zellkopie auf die Markarth-Tür `079AF2` (auch in
+  NAVI) → per Spriggit auf `001586` umgestellt. **Offen (Entscheidung Entwickler: später):** Das CK speichert
+  keinen Navmesh-Override der Vanilla-Zelle (dreimal versucht, auch mit Vertex-Änderung) – NPCs aus Dawnstar
+  finden daher noch nicht hinein; hinaus geht es. Später mit xEdit/erneutem CK-Versuch oder eigenem Override.
+
+### 2026-09-27 – Fünf optionale Lore-Bücher
+
+- `Diary of Ash and Doors`: undatierte, rätselhafte Veyra-Aufzeichnungen.
+- `Sithis, as I Was Taught`: persönliche Theologie ohne Anspruch auf objektive Kosmologie.
+- `The Harvest Under Black Stars`: Erntemotiv und konkurrierende Gleaner-Legenden.
+- `Field Notes: Sanctuaries`: praktische Regeln für Wiederaufbau und Zugehörigkeit.
+- `The Fivefold Silence`: Night-Mother-/Fünf-Kinder-Überlieferung mit bewusst widersprüchlichen Fassungen.
+- Alle fünf Bücher sind optionale Lore-Funde; Lint grün bei 353 IDs.
 
 ### 2026-09-27 – The Gleaner's Ledger
 

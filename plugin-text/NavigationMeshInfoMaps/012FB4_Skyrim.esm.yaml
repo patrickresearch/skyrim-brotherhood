@@ -6,7 +6,7 @@ MapInfos:
   Point: -5682.573, -788.4622, 73.08368
   LinkedDoors:
   - Unknown: -460622861
-    Door: 079AF2:Skyrim.esm
+    Door: 001586:NightsHarvest.esp
   Unknown2: -1511415748
   Parent:
     MutagenObjectType: NavigationMapInfoCellParent
@@ -6591,22 +6591,22 @@ PreferredPathing:
   - Navmeshes:
     - 0A3F44:Skyrim.esm
   NavmeshTree:
-  - NavMesh: 1030CB:Skyrim.esm
-    NodeIndex: 8
-  - NavMesh: 098776:Skyrim.esm
-    NodeIndex: 5
   - NavMesh: 0E88CC:Skyrim.esm
     NodeIndex: 7
+  - NavMesh: 10377B:Skyrim.esm
+    NodeIndex: 1
+  - NavMesh: 0A3F44:Skyrim.esm
+    NodeIndex: 9
+  - NavMesh: 1030CB:Skyrim.esm
+    NodeIndex: 8
   - NavMesh: 079BBF:Skyrim.esm
     NodeIndex: 6
+  - NavMesh: 098776:Skyrim.esm
+    NodeIndex: 5
+  - NavMesh: 103120:Skyrim.esm
+    NodeIndex: 2
   - NavMesh: 105E9A:Skyrim.esm
   - NavMesh: 100F4B:Skyrim.esm
     NodeIndex: 3
-  - NavMesh: 10377B:Skyrim.esm
-    NodeIndex: 1
-  - NavMesh: 103120:Skyrim.esm
-    NodeIndex: 2
-  - NavMesh: 0A3F44:Skyrim.esm
-    NodeIndex: 9
   - NavMesh: 0B87DF:Skyrim.esm
     NodeIndex: 4

@@ -19,7 +19,8 @@ Leitlinie: so viel wie möglich über Records und Conditions, so wenig wie mögl
 
 | Vanilla-Zelle | Grund | Seit |
 |---|---|---|
-| (noch keine) | | |
+| `DawnstarSanctuary` (0193EE) | E25: Ladetür `NHV_DeepSanctuaryDoorRef` (003D8B) in einer mod-geprüften Sackgasse; nach Navmesh-Finalisierung zusätzlich der Navmesh-Override dieser Zelle (Tür-Dreieck) | 27.09.2026 |
+| `NavigationMeshInfoMap` 012FB4 | Folge der Deep-Sanctuary-Zelle (Duplikat von `MarkarthTreasuryHouse`, M1.3) | 23.09.2026 |
 
 ## Quest-Architektur
 

@@ -1,0 +1,11 @@
+FormKey: 003D8A:NightsHarvest.esp
+EditorID: NHV_DeepSanctuaryDoor
+ObjectBounds:
+  First: -15, -94, 0
+  Second: 22, 92, 224
+Name:
+  TargetLanguage: English
+  Value: Sealed Passage
+Model:
+  File: Dungeons\Nordic\Doors\Animated\SmDoor01\NorDoorSmLoad01.nif
+  Data: 0x020000000000000000000000

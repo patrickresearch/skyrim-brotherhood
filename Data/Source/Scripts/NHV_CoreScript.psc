@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 23 AutoReadOnly
+Int Property VERSION = 24 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -118,6 +118,10 @@ Function Maintenance()
         Debug.Notification("Night's Harvest " + VERSION_TEXT + " loaded")
     EndIf
     EnsureSealedPassageState()
+    ; E25 self-heal: a script door of an earlier build still around (the migration found no load door back then).
+    If DeepSanctuaryDoorRef && (ReturnDoorRef || (PassageDoorRef && PassageDoorRef != DeepSanctuaryDoorRef))
+        MigrateToLoadDoor()
+    EndIf
     ; Never leave the player without controls after loading a save made during the Standoff cutscene.
     If bCutsceneLocked
         Scene kLockedScene = StandoffScene
@@ -139,6 +143,12 @@ EndFunction
 ; property that is still None from its known FormID (own plugin or vanilla, never changes). Idempotent,
 ; runs on every load via Maintenance(). New properties added later belong in here as well.
 Function EnsureProperties()
+    If !DeepSanctuaryDoorRef
+        DeepSanctuaryDoorRef = Game.GetFormFromFile(0x003D8B, "NightsHarvest.esp") as ObjectReference
+    EndIf
+    If !DeepSanctuaryLocation
+        DeepSanctuaryLocation = Game.GetFormFromFile(0x000DD3, "NightsHarvest.esp") as Location
+    EndIf
     If !MemorialScene
         MemorialScene = Game.GetFormFromFile(0x00380A, "NightsHarvest.esp") as Scene
     EndIf
@@ -290,6 +300,11 @@ Function Migrate(Int aiFrom)
         ; Memorial and contract cutscenes (stage 50 -> 60 -> 100) introduced; saves on stage 50 arm the poll.
         ArmMemorialPoll()
     EndIf
+    If aiFrom < 24
+        ; E25: a real load door (NHV_DeepSanctuaryDoorRef, placed in the CK) replaces the script door and the
+        ; script return door. Remove what earlier builds spawned and switch over.
+        MigrateToLoadDoor()
+    EndIf
 EndFunction
 
 ; Idempotent: does nothing once either RubbleRef or PassageDoorRef already exists. Safe to call
@@ -319,8 +334,10 @@ Function SpawnPassageRubble()
         ; the rubble landed ~25/121/9 units off from the intended spot.
         Utility.Wait(0.1)
         ; Wall spot in DawnstarSanctuary, taken via getpos/getangle 23.09.2026 (docs/ck/M1.3-Deep-Sanctuary-Stufe1.md).
-        RubbleRef.SetPosition(2648.75, 4930.81, 5649.73)
-        RubbleRef.SetAngle(0.0, 0.0, 0.0)
+        ; E25: on the load door NHV_DeepSanctuaryDoorRef (3296/3392/5664, facing 91.19 = into the room at +X);
+        ; was 2648.75/4930.81/5649.73 before.
+        RubbleRef.SetPosition(3296.0, 3392.0, 5664.0)
+        RubbleRef.SetAngle(0.0, 0.0, 91.19)
         ; NorRubblePile06's own bounds are still ~4.5x3.5x1.1m - shrunk down so it reads as a
         ; blocked passage, not furniture-sized clutter in the middle of the room. Adjust to taste
         ; once seen in place (23.09.2026: developer testing scale/position live, see PROGRESS.md).
@@ -338,6 +355,13 @@ Function SpawnPassageDoor()
         RubbleRef.Disable()
         RubbleRef.Delete()
         RubbleRef = None
+    EndIf
+    If DeepSanctuaryDoorRef
+        ; E25: the real load door placed in the CK (initially disabled) - NPCs can path through it.
+        DeepSanctuaryDoorRef.Enable()
+        PassageDoorRef = DeepSanctuaryDoorRef
+        NHV_Util.Log(NHV_Cfg_Debug, "Deep Sanctuary load door enabled")
+        Return
     EndIf
     If !DawnstarAnchorRef || !PassageDoorBase
         NHV_Util.Log(NHV_Cfg_Debug, "SpawnPassageDoor: DawnstarAnchorRef or PassageDoorBase not set")
@@ -357,6 +381,9 @@ EndFunction
 ; created only now, once the cell is loaded. Cheap no-op on every later visit.
 Function OnEnterDeepSanctuary()
     ArmMemorialPoll()
+    If DeepSanctuaryDoorRef
+        Return ; E25: the Deep Sanctuary's own exit door (ExitDoorRef) leads back, no script return door
+    EndIf
     If ReturnDoorRef || bReturnDoorBusy
         Return
     EndIf
@@ -366,6 +393,7 @@ Function OnEnterDeepSanctuary()
     bReturnDoorBusy = False
 EndFunction
 
+; E25: legacy fallback only (used when NHV_DeepSanctuaryDoorRef is missing).
 Function EnsureReturnDoor()
     If ReturnDoorRef
         Return
@@ -388,6 +416,7 @@ EndFunction
 
 ; Called by NHV_ReturnDoorScript. Puts the player in front of the sealed-passage door in
 ; DawnstarSanctuary (100 units off the wall along -Y, the wall lies at +Y from that spot).
+; E25: legacy fallback only (script return door of earlier builds).
 Function ReturnToSanctuary()
     If !PassageDoorRef
         NHV_Util.Log(NHV_Cfg_Debug, "ReturnToSanctuary: passage door does not exist")
@@ -435,6 +464,14 @@ Float fHailSithisDoneTime = 0.0
 ; scene itself then starts once the player comes near Veyra (scene condition in the CK).
 Function OnEnterDawnstarSanctuary(Location akNewLoc)
     NoteHailSithisCompletion()
+    If DeepSanctuaryLocation && akNewLoc == DeepSanctuaryLocation
+        ; E25: the player walked through the load door himself (fallback if the cutscene did not bring him).
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && bVeiledPassageDone
+            Q00.SetStage(50)
+        EndIf
+        OnEnterDeepSanctuary()
+        Return
+    EndIf
     If akNewLoc != DawnstarSanctuaryLocation
         Return
     EndIf
@@ -1226,18 +1263,19 @@ Function PlaceVeiledPassageFamily()
         Return
     EndIf
     EnsureSealedPassageState()
-    ; Wall at 2648.75/4930.81 (see SpawnPassageRubble); the family stands in front of it, facing the wall (+Y).
+    ; E25: load door at 3296/3392 (see SpawnPassageRubble); the room lies at +X, the dead end runs towards -X, the
+    ; family faces the door (angle 271.19). Provisional positions (developer: exact placement later).
     If VeyraRef && !VeyraRef.IsDead()
         VeyraRef.MoveTo(DawnstarAnchorRef)
-        VeyraRef.SetPosition(2648.0, 4790.0, 5620.0)
-        VeyraRef.SetAngle(0.0, 0.0, 0.0)
+        VeyraRef.SetPosition(3440.0, 3363.0, 5668.0)
+        VeyraRef.SetAngle(0.0, 0.0, 271.19)
         VeyraRef.EvaluatePackage()
     EndIf
-    PlaceStandoffActor(1, 0x01C3AD, 2510.0, 4760.0, 5620.0, 20.0)
-    PlaceStandoffActor(2, 0x01D4BC, 2790.0, 4750.0, 5620.0, 340.0)
+    PlaceStandoffActor(1, 0x01C3AD, 3520.0, 3300.0, 5668.0, 285.0)
+    PlaceStandoffActor(2, 0x01D4BC, 3520.0, 3430.0, 5668.0, 255.0)
     Actor kFalkreathCicero = Game.GetFormFromFile(0x01E64A, "Skyrim.esm") as Actor
     If !(kFalkreathCicero && kFalkreathCicero.IsDead())
-        PlaceStandoffActor(3, 0x09BCB0, 2700.0, 4650.0, 5620.0, 350.0)
+        PlaceStandoffActor(3, 0x09BCB0, 3640.0, 3363.0, 5668.0, 271.19)
     EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family gathered at the wall")
     ArmVeiledPassagePoll()
@@ -1322,12 +1360,12 @@ Function FinishVeiledPassage()
     MovePassageActor(1, -120.0, 240.0)
     MovePassageActor(2, 120.0, 240.0)
     MovePassageActor(3, 0.0, 420.0)
-    kPlayer.MoveTo(DeepSanctuaryEntryMarker, 0.0, 128.0, 8.0, True)
     Q00.SetStage(50)
+    kPlayer.MoveTo(DeepSanctuaryEntryMarker, 0.0, 128.0, 8.0, True)
     UnlockCutscene()
     NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family entered the Deep Sanctuary")
     ArmMemorialPoll()
-    OnEnterDeepSanctuary() ; return door
+    OnEnterDeepSanctuary() ; arms the memorial poll
 EndFunction
 
 ; The cutscene did not run to its end (did not start, was stopped, or a load cut it off): the veil falls anyway,
@@ -1487,4 +1525,52 @@ Function RecoverActiveCutscene()
         FinishQ00Contract()
     EndIf
     ; MemorialScene: nothing to recover, the Astrid choice is open in dialogue anyway.
+EndFunction
+
+; ---------------------------------------------------------------------------------------------------------
+; E25: real load door to the Deep Sanctuary (NHV_DeepSanctuaryDoorRef in DawnstarSanctuary, initially disabled,
+; linked to the Deep Sanctuary exit door ExitDoorRef). Enabled by SpawnPassageDoor() at the end of the stage 40
+; cutscene; NPCs path through it once the navmesh of both cells is finalized.
+; ---------------------------------------------------------------------------------------------------------
+ObjectReference Property DeepSanctuaryDoorRef Auto
+Location Property DeepSanctuaryLocation Auto
+
+; Migrate 24: remove the script door / script return door of earlier builds and move the rubble.
+Function MigrateToLoadDoor()
+    If !DeepSanctuaryDoorRef
+        NHV_Util.Log(NHV_Cfg_Debug, "MigrateToLoadDoor: DeepSanctuaryDoorRef missing")
+        Return
+    EndIf
+    If ReturnDoorRef
+        ReturnDoorRef.Disable()
+        ReturnDoorRef.Delete()
+        ReturnDoorRef = None
+    EndIf
+    If ExitDoorRef
+        ExitDoorRef.Enable()
+    EndIf
+    Bool bOpen = bVeiledPassageDone || (Q00 && Q00.GetStage() >= 50)
+    If PassageDoorRef && PassageDoorRef != DeepSanctuaryDoorRef
+        PassageDoorRef.Disable()
+        PassageDoorRef.Delete()
+        PassageDoorRef = None
+    EndIf
+    If bOpen
+        If RubbleRef
+            RubbleRef.Disable()
+            RubbleRef.Delete()
+            RubbleRef = None
+        EndIf
+        DeepSanctuaryDoorRef.Enable()
+        PassageDoorRef = DeepSanctuaryDoorRef
+    ElseIf RubbleRef
+        ; Rubble of an earlier build stands at the old wall: put it on the load door, and a family already
+        ; gathered at the old wall (stage 40 before the veil) moves along.
+        RubbleRef.SetPosition(3296.0, 3392.0, 5664.0)
+        RubbleRef.SetAngle(0.0, 0.0, 91.19)
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted
+            PlaceVeiledPassageFamily()
+        EndIf
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Migrated to the Deep Sanctuary load door (open=" + bOpen + ")")
 EndFunction

@@ -1,0 +1,71 @@
+FormKey: 0193EE:Skyrim.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: DawnstarSanctuary
+Version2: 1
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: Dawnstar Sanctuary
+Flags:
+- IsInteriorCell
+- HasWater
+- ShowSky
+Lighting:
+  AmbientColor: '#000C0B07'
+  DirectionalColor: '#003F4749'
+  FogNearColor: '#004B6361'
+  FogNear: 340
+  FogFar: 12000
+  DirectionalFade: 1
+  FogClipDistance: 12000
+  FogPower: 0.7
+  AmbientColors:
+    DirectionalXPlus: '#00FFFFFF'
+    DirectionalXMinus: '#00FFFFFF'
+    DirectionalYPlus: '#00FFFFFF'
+    DirectionalYMinus: '#00FFFFFF'
+    DirectionalZPlus: '#00FFFFFF'
+    DirectionalZMinus: '#00FFFFFF'
+    Specular: '#004B6361'
+    Scale: 1
+  FogFarColor: '#004B6361'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - DirectionalRotation
+  - DirectionalFade
+  - ClipDistance
+  - FogPower
+  - FogMax
+  - LightFadeDistances
+LightingTemplate: 0E2014:Skyrim.esm
+WaterHeight: 0
+Location: 019429:Skyrim.esm
+SkyAndWeatherFromRegion: 0C5852:Skyrim.esm
+AcousticSpace: 04075D:Skyrim.esm
+EncounterZone: 0919A0:Skyrim.esm
+Music: 05615B:Skyrim.esm
+ImageSpace: 0A2687:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 003D8B:NightsHarvest.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: NHV_DeepSanctuaryDoorRef
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 003D8A:NightsHarvest.esp
+  TeleportDestination:
+    Door: 001586:NightsHarvest.esp
+    Position: -5600, -2816, 136
+  Placement:
+    Position: 3296, 3392, 5664
+    Rotation: 0, 0, 1.608386
+MajorFlags:
+- 0x40000

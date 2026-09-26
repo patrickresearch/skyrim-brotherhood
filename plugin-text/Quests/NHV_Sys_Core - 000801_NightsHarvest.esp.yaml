@@ -17,8 +17,14 @@ VirtualMachineAdapter:
       Name: DBRecurringQuest
       Object: 01EA5A:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: DeepSanctuaryDoorRef
+      Object: 003D8B:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: DeepSanctuaryEntryMarker
       Object: 001456:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DeepSanctuaryLocation
+      Object: 000DD3:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: DestroyQuest
       Object: 0934FB:Skyrim.esm

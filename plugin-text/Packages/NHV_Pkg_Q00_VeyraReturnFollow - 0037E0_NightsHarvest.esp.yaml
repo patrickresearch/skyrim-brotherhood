@@ -1,5 +1,4 @@
 FormKey: 0037E0:NightsHarvest.esp
-VersionControl: 13625
 EditorID: NHV_Pkg_Q00_VeyraReturnFollow
 Type: Package
 PreferredSpeed: Run
@@ -24,7 +23,7 @@ ScheduleMonth: -1
 ScheduleDayOfWeek: Any
 ScheduleHour: -1
 ScheduleMinute: -1
-Unknown3: 0x000000
+Unknown3: 0x747572
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:

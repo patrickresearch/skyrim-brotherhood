@@ -5,4 +5,7 @@ Name:
   Value: Night Mother
 Model:
   File: Markers\Marker_LinkMarker.nif
+  Data: 0x020000000000000000000000
+PNAM: 3361996
+FNAM: 0
 Voice: 01BDB6:Skyrim.esm
