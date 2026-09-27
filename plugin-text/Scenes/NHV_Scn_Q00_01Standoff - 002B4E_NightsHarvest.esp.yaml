@@ -34,6 +34,9 @@ Phases:
       Reference: 09BCB0:Skyrim.esm
   Unused2: {}
   EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
 Actors:
 - Flags: []
   BehaviorFlags:
@@ -106,8 +109,8 @@ Actions:
 - Name: NHV_Q00_010_06
   ActorID: 0
   Index: 5
-  StartPhase: 3
-  EndPhase: 3
+  StartPhase: 4
+  EndPhase: 4
   Topic: 002B59:NightsHarvest.esp
   HeadtrackActorID: 1
   LoopingMax: 10
