@@ -130,11 +130,35 @@ def main():
     ap.add_argument("--in", dest="src", type=Path, default=sv.REPO / "voice_in", help="input folder")
     ap.add_argument("--check", action="store_true", help="report only")
     ap.add_argument("--list", metavar="PREFIX", help="list LineIDs starting with PREFIX")
+    ap.add_argument("--from-text", metavar="DIR", type=Path, action="append",
+                    help="copy audio files named after their TEXT (xVASynth default output, cut at ~70 chars) "
+                         "into the input folder as <LineID>.<ext>; repeatable")
     ap.add_argument("--export", metavar="DIR", type=Path,
                     help="write one <VoiceType>.csv (LineID,Text,Missing) per voice type into DIR, for xVASynth/ElevenLabs")
     args = ap.parse_args()
 
     idx = index_lines()
+    if args.from_text:
+        import shutil
+        norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+        texts = [(lid, norm(e["text"])) for lid, e in idx.items() if e["paths"]]
+        args.src.mkdir(parents=True, exist_ok=True)
+        copied = unmatched = 0
+        for d in args.from_text:
+            for f in sorted(d.glob("*")):
+                if f.suffix.lower() not in AUDIO_EXT or f.stem.startswith("temp-"):
+                    continue
+                key = norm(f.stem)
+                hits = sorted({lid for lid, t in texts if key and t.startswith(key)})
+                if len(hits) != 1:
+                    print(f"NOMATCH {f.name}: " + ("no line with this text" if not hits else "ambiguous: " + ", ".join(hits)))
+                    unmatched += 1
+                    continue
+                shutil.copy2(f, args.src / f"{hits[0]}{f.suffix.lower()}")
+                print(f"COPY    {f.name} -> {hits[0]}{f.suffix.lower()}")
+                copied += 1
+        print(f"{copied} copied to {args.src}, {unmatched} unmatched")
+        return 1 if unmatched else 0
     if args.export is not None:
         import csv
         args.export.mkdir(parents=True, exist_ok=True)
