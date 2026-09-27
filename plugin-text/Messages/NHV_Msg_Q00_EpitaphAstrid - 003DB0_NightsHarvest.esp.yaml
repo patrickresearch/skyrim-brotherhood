@@ -1,0 +1,12 @@
+FormKey: 003DB0:NightsHarvest.esp
+EditorID: NHV_Msg_Q00_EpitaphAstrid
+Description:
+  TargetLanguage: English
+  Value: >-
+    ASTRID
+
+
+    She led this family. Her failures do not erase her name.
+INAM: '[]'
+Flags:
+- MessageBox

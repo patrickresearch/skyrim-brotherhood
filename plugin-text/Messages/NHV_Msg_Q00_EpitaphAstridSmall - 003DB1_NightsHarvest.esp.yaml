@@ -1,0 +1,12 @@
+FormKey: 003DB1:NightsHarvest.esp
+EditorID: NHV_Msg_Q00_EpitaphAstridSmall
+Description:
+  TargetLanguage: English
+  Value: >-
+    ASTRID
+
+
+    Remembered, but not honored. Her name remains where the family can see it.
+INAM: '[]'
+Flags:
+- MessageBox

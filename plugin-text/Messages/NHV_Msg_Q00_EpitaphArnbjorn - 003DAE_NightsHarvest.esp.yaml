@@ -1,0 +1,12 @@
+FormKey: 003DAE:NightsHarvest.esp
+EditorID: NHV_Msg_Q00_EpitaphArnbjorn
+Description:
+  TargetLanguage: English
+  Value: >-
+    ARNBJORN
+
+
+    The beast served the family. The man beside it was family too.
+INAM: '[]'
+Flags:
+- MessageBox

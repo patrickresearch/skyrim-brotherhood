@@ -1,0 +1,12 @@
+FormKey: 003DAD:NightsHarvest.esp
+EditorID: NHV_Msg_Q00_EpitaphGabriella
+Description:
+  TargetLanguage: English
+  Value: >-
+    GABRIELLA
+
+
+    A measured voice, a practiced blade. The family remembers both.
+INAM: '[]'
+Flags:
+- MessageBox

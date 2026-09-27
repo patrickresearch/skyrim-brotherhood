@@ -1,0 +1,12 @@
+FormKey: 003DAF:NightsHarvest.esp
+EditorID: NHV_Msg_Q00_EpitaphVeezara
+Description:
+  TargetLanguage: English
+  Value: >-
+    VEEZARA
+
+
+    A hidden blade, a measured breath. His enemies learned too late where the dark began.
+INAM: '[]'
+Flags:
+- MessageBox

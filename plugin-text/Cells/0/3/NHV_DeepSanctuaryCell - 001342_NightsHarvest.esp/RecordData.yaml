@@ -2242,6 +2242,16 @@ Persistent:
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
+  VirtualMachineAdapter:
+    Scripts:
+    - Name: NHV_MemorialPlaqueScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Epitaph
+        Object: 003DAC:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
   Base: 003DA1:NightsHarvest.esp
   Placement:
     Position: -5248, -1728, 128
@@ -2252,6 +2262,16 @@ Persistent:
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
+  VirtualMachineAdapter:
+    Scripts:
+    - Name: NHV_MemorialPlaqueScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Epitaph
+        Object: 003DAD:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
   Base: 003DA2:NightsHarvest.esp
   Placement:
     Position: -5280, -1728, 192
@@ -2262,6 +2282,16 @@ Persistent:
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
+  VirtualMachineAdapter:
+    Scripts:
+    - Name: NHV_MemorialPlaqueScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Epitaph
+        Object: 003DAE:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
   Base: 003DA3:NightsHarvest.esp
   Placement:
     Position: -5280, -1728, 256
@@ -2272,6 +2302,16 @@ Persistent:
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
+  VirtualMachineAdapter:
+    Scripts:
+    - Name: NHV_MemorialPlaqueScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Epitaph
+        Object: 003DAF:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
   Base: 003DA4:NightsHarvest.esp
   Placement:
     Position: -5184, -1728, 256
@@ -2282,6 +2322,16 @@ Persistent:
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
+  VirtualMachineAdapter:
+    Scripts:
+    - Name: NHV_MemorialPlaqueScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Epitaph
+        Object: 003DB0:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
   Base: 003DA5:NightsHarvest.esp
   Placement:
     Position: -5184, -1728, 192
@@ -2292,6 +2342,16 @@ Persistent:
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
+  VirtualMachineAdapter:
+    Scripts:
+    - Name: NHV_MemorialPlaqueScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Epitaph
+        Object: 003DB1:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
   Base: 003DA5:NightsHarvest.esp
   Scale: 0.7
   Placement:

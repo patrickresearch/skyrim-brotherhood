@@ -1,0 +1,12 @@
+FormKey: 003DAC:NightsHarvest.esp
+EditorID: NHV_Msg_Q00_EpitaphFestus
+Description:
+  TargetLanguage: English
+  Value: >-
+    FESTUS KREX
+
+
+    A sharp tongue, a practiced hand. His place at the table remains.
+INAM: '[]'
+Flags:
+- MessageBox

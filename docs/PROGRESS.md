@@ -18,6 +18,8 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 **27.09.2026: Hrefna-Dokumente, Ledger und Gedenkplaketten geschrieben.** `dialogue/Books.csv` enthält 21 Absätze für fünf unveränderte Fundstücke, 13 zusätzliche Ledger-Absätze (`NHV_SYS_BOOK_63–75`) und sechs Memorial-Plaque-Texte (`NHV_SYS_BOOK_76–81`). Die Plaketten bleiben nüchtern und würdevoll; Astrids kleine Variante verwendet denselben Activator-Record mit abweichendem Epitaph. Lint: 0 Fehler bei 393 IDs.
 
+**27.09.2026: Q02-Autorenprofile und Dialogmaster angelegt.** `docs/concept/Q02-Nebenfiguren-Autorenprofile.md` definiert Torbjorn, Drinks-the-Brine, Haldor, Aelius und Hjorald. `dialogue/Q02.csv` führt die Questkette von Veyras Briefing über Hafenuntersuchung, Nachtbeobachtung, Drowned Hollow, Aelius' Prüfung und Sings' Urteil bis zum Debrief; Q02-Journalzeilen stehen in `dialogue/Journal.csv`. Der Lint kennt die neuen Sprecher als eigene VoiceType-Figuren. Lint: 0 Fehler bei 473 IDs.
+
 **27.09.2026: Autorenprofile für neue Questfiguren erstellt.** `docs/concept/Neue-Charakterprofile.md` beschreibt Hrefna, Sings, Nirelda, Corisande, Kharzog, Livia und die wichtigen Contract-Nebenfiguren mit Hintergrund, Motivation, Zielen, Schwächen, Beziehungen und Stimme. Nirelda ist nun verbindlich eine Feuer-Battle-Mage mit Meistergrad in Destruction. GOAL, Konzept und E26 synchronisiert; neue Q03-Dialoge und technische Magiewerte stehen noch aus.
 
 **27.09.2026: Q00-Fehleranalyse abgeschlossen, Fixes ausdrücklich nicht angewendet.** `docs/ck/M1.5-Q00-Fehleranalyse-und-Loesungsplan.md` prüft Commit `c725388` (v26) und den bereits vorhandenen uncommitteten v27-Stand mit Webabgleich und unabhängigem Papyrus-Review. Konkrete Befunde: Veyras `SpeedMultiplier` ist 10 (auch im ESP), Memorial-Marker liegen bei Z −236 unter dem gesamten exportierten Navmesh (Minimum etwa −16), v27 verschiebt den Rückkehrpunkt, aber nicht die in der Wand steckende Tür. Weitere offene Punkte: Walk→Hold auf Stage 60, sichere Gruppenankunft, fehlender Dawnstar-Tür-Navmesh-Anschluss und Reparatur alter Saves. M1.5 bleibt „In Arbeit“; keine Gameplay-Dateien, Builds oder Dev-Kopien durch diese Analyse geändert.
@@ -282,6 +284,12 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 
 ## Log (neueste zuerst)
 
+### 2026-09-27 – Q02 Cold Waters: Autorenprofile und Dialoge
+
+- Neues Autorenprofil `docs/concept/Q02-Nebenfiguren-Autorenprofile.md` für Torbjorn Ice-Vein, Drinks-the-Brine, Haldor Frost-Knuckle, Aelius Varro und Watch-Sergeant Hjorald.
+- `dialogue/Q02.csv` ergänzt die Questzeilen für Hafenhinweise, Knoten-Spur, Nachtbeobachtung, Beschattung/Fallback, Sings' Konfrontation, Veyras Prüfung, Aelius-Szene, Fragment-Wendung, vier Urteilswege und Debrief.
+- Q02-Journalziele `NHV_Q02_010_90` bis `NHV_Q02_100_90` in `dialogue/Journal.csv` ergänzt. `tools/dialogue_lint.py` kennt die neuen Sprecher. Lint: 0 Fehler bei 473 IDs.
+
 ### 2026-09-27 (Tür und Plaketten im CK, v30)
 
 - Test v29: Rückweg landet im Gang, Ledger im Inventar. Entwickler hat im CK die Tür auf 3200/3552/5664, 180°
@@ -289,7 +297,8 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
   Vanilla-Wandstück (092E73) als Override mit → entfernt.
 - v30: Geröll/Fallbacks an die neue Tür, Veil-Marker blicken zur Tür; Memorial-Marker vor die Plaketten
   (Navmesh-geprüft, Z -12), Blick zu den Plaketten; Auslöser der Gedenk-Szene jetzt um -5232/-1690. Migration 30.
-- Offen: Epitaphe von Codex (`NHV_SYS_BOOK_76–81`) anzeigen (Vorschlag: Aktivieren zeigt Nachricht).
+- Epitaphe: Messages `NHV_Msg_Q00_Epitaph…` (003DAC–B1) aus `NHV_SYS_BOOK_76–81`; neues Script
+  `NHV_MemorialPlaqueScript` an den sechs Plaketten-Referenzen zeigt sie beim Aktivieren.
 
 ### 2026-09-27 – Q01-Ledger vertieft
 
