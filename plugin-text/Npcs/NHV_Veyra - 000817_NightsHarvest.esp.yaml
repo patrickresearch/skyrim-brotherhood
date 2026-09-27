@@ -16,7 +16,7 @@ Configuration:
     LevelMult: 1
   CalcMinLevel: 20
   CalcMaxLevel: 60
-  SpeedMultiplier: 10
+  SpeedMultiplier: 100
 Factions:
 - Faction: 000807:NightsHarvest.esp
   Fluff: 0x000000

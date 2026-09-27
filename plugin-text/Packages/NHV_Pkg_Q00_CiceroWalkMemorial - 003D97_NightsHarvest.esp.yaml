@@ -31,7 +31,7 @@ Conditions:
     Quest: 000815:NightsHarvest.esp
   ComparisonValue: 50
 - MutagenObjectType: ConditionFloat
-  CompareOperator: LessThanOrEqualTo
+  CompareOperator: LessThan
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000815:NightsHarvest.esp

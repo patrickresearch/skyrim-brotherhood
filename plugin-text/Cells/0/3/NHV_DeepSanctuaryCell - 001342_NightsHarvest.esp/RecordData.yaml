@@ -2147,8 +2147,8 @@ Persistent:
   Base: 064092:Skyrim.esm
   TeleportDestination:
     Door: 003D8B:NightsHarvest.esp
-    Position: 3420, 3392, 5668.72
-    Rotation: 0, 0, 1.5915657
+    Position: 3180, 3392, 5668.72
+    Rotation: 0, 0, 4.712389
   Scale: 0.75
   NavigationDoorLink:
     NavMesh: 001343:NightsHarvest.esp
@@ -2204,7 +2204,8 @@ Persistent:
   - 0x400
   Base: 000034:Skyrim.esm
   Placement:
-    Position: -5025, -1690, -236
+    Position: -5040, -1660, 36.4
+    Rotation: 0, 0, 0.238225
 - MutagenObjectType: PlacedObject
   FormKey: 003D9D:NightsHarvest.esp
   MajorRecordFlagsRaw: 1024
@@ -2213,8 +2214,8 @@ Persistent:
   - 0x400
   Base: 000034:Skyrim.esm
   Placement:
-    Position: -5140, -1680, -236
-    Rotation: 0, 0, 0.349066
+    Position: -5180, -1620, -12
+    Rotation: 0, 0, 1.431257
 - MutagenObjectType: PlacedObject
   FormKey: 003D9E:NightsHarvest.esp
   MajorRecordFlagsRaw: 1024
@@ -2223,8 +2224,8 @@ Persistent:
   - 0x400
   Base: 000034:Skyrim.esm
   Placement:
-    Position: -4880, -1680, -236
-    Rotation: 0, 0, 5.934119
+    Position: -4955, -1605, 38.4
+    Rotation: 0, 0, 4.808803
 - MutagenObjectType: PlacedObject
   FormKey: 003D9F:NightsHarvest.esp
   MajorRecordFlagsRaw: 1024
@@ -2233,7 +2234,8 @@ Persistent:
   - 0x400
   Base: 000034:Skyrim.esm
   Placement:
-    Position: -5010, -1780, -236
+    Position: -4990, -1670, 36.9
+    Rotation: 0, 0, 5.829451
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 001344:NightsHarvest.esp

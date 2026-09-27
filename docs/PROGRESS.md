@@ -16,6 +16,12 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**27.09.2026: Autorenprofile für neue Questfiguren erstellt.** `docs/concept/Neue-Charakterprofile.md` beschreibt Hrefna, Sings, Nirelda, Corisande, Kharzog, Livia und die wichtigen Contract-Nebenfiguren mit Hintergrund, Motivation, Zielen, Schwächen, Beziehungen und Stimme. Nirelda ist nun verbindlich eine Feuer-Battle-Mage mit Meistergrad in Destruction. GOAL, Konzept und E26 synchronisiert; neue Q03-Dialoge und technische Magiewerte stehen noch aus.
+
+**27.09.2026: Q00-Fehleranalyse abgeschlossen, Fixes ausdrücklich nicht angewendet.** `docs/ck/M1.5-Q00-Fehleranalyse-und-Loesungsplan.md` prüft Commit `c725388` (v26) und den bereits vorhandenen uncommitteten v27-Stand mit Webabgleich und unabhängigem Papyrus-Review. Konkrete Befunde: Veyras `SpeedMultiplier` ist 10 (auch im ESP), Memorial-Marker liegen bei Z −236 unter dem gesamten exportierten Navmesh (Minimum etwa −16), v27 verschiebt den Rückkehrpunkt, aber nicht die in der Wand steckende Tür. Weitere offene Punkte: Walk→Hold auf Stage 60, sichere Gruppenankunft, fehlender Dawnstar-Tür-Navmesh-Anschluss und Reparatur alter Saves. M1.5 bleibt „In Arbeit“; keine Gameplay-Dateien, Builds oder Dev-Kopien durch diese Analyse geändert.
+
+**27.09.2026: Vollständige Q00-Lesefassung erzeugt.** `docs/dialogue/Q00-Gesamtdialoge-2026-09-27.md` enthält alle 192 Q00-Masterzeilen nach Stage sowie die acht Q00-Journalziele. Folge-Topics, Conditions, Notes, Cutscene-Zeilen und Übergänge sind enthalten.
+
 **27.09.2026: Veyras Buchbestand erweitert.** `dialogue/Books.csv` enthält das Ledger plus fünf optionale Bücher: ein rätselhaftes Tagebuch, persönliche Sithis-Notizen, die Harvest-Legende, Sanctuary-Feldnotizen und widersprüchliche Night-Mother-Überlieferungen. Sie vertiefen die Lore, ohne Veyras Herkunft oder offene Geschichte als Ingame-Fakt zu enthüllen. Lint: 0 Fehler bei 353 IDs; CK-Platzierung ist im Q00-Plan beschrieben.
 
 **26.09.2026: Dialoge bis zum gemeinsamen Deep-Sanctuary-Eintritt redaktionell abgeschlossen.** Q00-Standoff, Night-Mother-/Rückkehrdialoge, Proposal, Geröll, Deep-Sanctuary-Erkundung und Memorial wurden auf E23 vertieft; Q01 erhielt zusätzliche Hrefna-/Veyra-Zeilen. Die neue `SCN_DeepSanctuaryEntry` umfasst fünf Phasen mit Nazir, Babette, optional lebendem Cicero, Veyra und einer Spielerbestätigung; sie folgt der vorhandenen Verschleierungs-Szene an Stage 40. CSV-Lint: 0 Fehler bei 312 IDs. CK-Einbau und Ingame-Test stehen aus; die Szene ist ein Record-Vorschlag im CK-Plan.
@@ -251,6 +257,8 @@ Option 1) – Schema jetzt gesichert, nicht mehr raten nötig:
 
 ## Nächster Schritt
 
+**Aktueller Fokus: Q00-Laufwege, Memorial und Tür.** Zuerst den Lösungsplan `docs/ck/M1.5-Q00-Fehleranalyse-und-Loesungsplan.md` prüfen. Der aktuelle Auftrag umfasst ausschließlich Analyse/Dokumentation. Bei späterer Umsetzung: Veyras Geschwindigkeitswert korrigieren, reale Boden-/Navmesh-Höhen und Tür-/Entry-Plätze im CK bestätigen, danach Szenensteuerung und Save-Migration absichern. Die uncommittierten v27-Änderungen sind noch keine bestätigte vollständige Reparatur. Ältere nächste Schritte darunter sind nachgeordnet.
+
 ### Q00/Q01-Dialoge und zweite Sanctuary-Cutscene im CK einbauen
 
 `docs/concept/Veyra-Autorenprofil.md` bleibt verbindlicher Kern. Die CSV-Redaktion ist abgeschlossen; als Nächstes die neuen Q00/Q01-Topics und die zweite Cutscene nach `docs/ck/M1.5-Q00-Dialogausbau.md` im CK einbauen. Herkunftsdetails oder ein Treffen mit der lebenden Night Mother bleiben offen.
@@ -271,6 +279,53 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-27 – Neue Charakterprofile und Feuer-Battle-Mage
+
+- Autorenprofil-Dokument für fünf Story-Rekruten, Livia Maro sowie Hakan, Quintus, Aelius, Aurelian und Varus angelegt.
+- Nireldas Charakterkern auf Feuer-Battle-Mage / Destruction Master erweitert; Grenzen gegen unbalancierte Allzweckmagie festgelegt.
+- Entscheidung E26 und Kurzprofile in GOAL/Konzept ergänzt. Keine CSV-, ESP- oder Papyrus-Änderung in diesem Schritt.
+
+### 2026-09-27 – Q00: unabhängige Fehleranalyse, keine Fix-Anwendung
+
+- Auftrag: Claudes v26-Übergabe und die gemeldeten Ingame-Fehler akribisch prüfen, Webabgleich, Lösung nur als Markdown.
+- Geliefert: `docs/ck/M1.5-Q00-Fehleranalyse-und-Loesungsplan.md` mit Belegstufen, Record-Inventar, Reparaturreihenfolge, Save-Strategie, Diagnose-/Testmatrix und Quellenlinks.
+- Veyra-NPC: `Configuration.SpeedMultiplier: 10` in YAML und binärem ESP bestätigt; starker Kandidat für das individuelle Schneckentempo.
+- Memorial: vier Marker bei Z −236; NAVM 001343 enthält 277 Vertices/283 Dreiecke, Z-Minimum −16,000122. Veyras Marker liegt rechnerisch 268,410 Units unter dem Dreieck an seinem XY. Drei andere Marker liegen bei ihrem exakten XY außerhalb der Dreiecke. Sichere Zielplätze müssen im CK bestimmt werden.
+- v26-Snap kann unmittelbar vor Szenenstart auf diese falschen Ziele teleportieren. Das passt zum Test, ist ohne Vorher-/Nachher-Log aber noch keine vollständig bewiesene Laufzeitursache. Die entsprechende Ursachenaussage im älteren v27-Eintrag unten ist als Hypothese zu lesen.
+- v27 ist bereits als fremde uncommittierte Arbeit vorhanden: spiegelte Dawnstar-Ziele, änderte SnapFamily. Es korrigiert weder Veyras Speed noch Memorial-Höhen oder sichtbare Türposition; alte Stage-60-Saves bleiben offen. Eigenständiger `papyrus-reviewer` bestätigt zusätzliche Validierungs-/Hold-/Migrationslücken.
+- Web: Mutagen-/xEdit-Primärcode, Bethesda-Tutorial-Archiv, direkte CK-Lehr-/Autorenquellen und gekennzeichnete CK-/Papyrus-Dokumentationswiedergaben verwendet; direkte CK-Wiki-Abrufe teilweise HTTP 403. Kein neuer Ingame-Nachweis.
+- Nur Dokumentation geschrieben. Vorhandene ESP-, Script-, PEX-, Dialog-, Zell- und CK-Anleitungsdateien unangetastet; kein Build, Sync, Commit oder Push. Commit-Vorschlag für die Dokumentation: `[Docs] Q00: Fehleranalyse und Reparaturplan fuer Laufwege und Tuer`.
+
+### 2026-09-27 – Night-Mother- und Cheydinhal-Antworten nachgeschärft
+
+- `NHV_Q00_020_21`: Veyra diente der Familie ohne formales Mitglied zu sein.
+- `NHV_Q00_020_36`: Nur Sithis kennt ihre tiefere Natur; keine weitere Wissensbehauptung.
+- `NHV_Q00_030_46`: Veyra nennt den Auftrag des Dread Father und übernimmt ausdrücklich die Verantwortung für Ciceros Preis.
+
+### 2026-09-27 (Test Laufwege, v27)
+
+- Test: Nazir/Babette laufen zur Sackgasse, Veyra läuft fast auf der Stelle; in der Deep Sanctuary stehen alle an
+  ihren Plätzen, Veyra und Babette verschwinden beim Start der Gedenk-Szene; Rückweg durch die Tür landet außerhalb
+  der Map, die Tür steckt in der Wand (öffnen und Name „Deep Sanctuary“ funktionieren).
+- Befund: Der Gang liegt bei **-X** der Tür (Fackel bei X 3284); die Veil-Marker und der Ankunftsmarker lagen bei +X
+  hinter der Wand. Veil-Marker gespiegelt (X 2950–3150, Blick ~91°), Ankunftsmarker 3180/3392/5668.72 Blick 270°,
+  Fallback-Koordinaten im Script ebenso. `SnapFamily` versetzt nur noch Actors aus einer anderen Zelle (MoveTo
+  auf Marker neben dem Navmesh ließ Veyra/Babette verschwinden), sonst nur Drehung und Log der Entfernung.
+  Migration 27 schickt eine laufende Familie zu den neuen Markern.
+- Offen für den Entwickler: `docs/ck/M1.5-Q00-Tuer-und-Laufmarker.md` (Tür bündig setzen, Marker prüfen).
+- Nach Codex-Analyse (`docs/ck/M1.5-Q00-Fehleranalyse-und-Loesungsplan.md`), v28: `NHV_Veyra` SpeedMultiplier
+  10 → 100 (Ursache für ihr Schneckentempo). Memorial-Marker lagen bei Z -236, rund 270 Units unter dem Navmesh
+  (-16..+35) → per Punkt-in-Dreieck-Rechnung auf freie Navmesh-Stellen gesetzt, Blick zum Wandpunkt. Damit ist das
+  Verschwinden erklärt: SnapFamily sah Veyra/Babette als >250 entfernt (Höhe) und setzte sie unter den Boden.
+  WalkMemorial nur noch Stage 50–59 (PassageHold ab 60). Ankunfts-Offsets für Nazir/Babette auf das Navmesh,
+  Deep-Ankunft der Tür Z 136 → 148, Fallback-Höhe -232 → 40. Migration 28: Stage 50 neu ausrichten, Stage 60
+  (vor Contract) Actors unter Z -100 auf ihren Marker.
+
+### 2026-09-27 – Q00-Gesamtdialoge
+
+- Lesefassung aus `dialogue/Q00.csv` und den Q00-Zeilen in `dialogue/Journal.csv` erzeugt.
+- Alle Gesprächsfolgen und Antworten bleiben über LineID/Topic nachvollziehbar; Änderungen weiterhin nur im CSV-Master.
 
 ### 2026-09-27 (Test-Befunde E25-Tür und Memorial-Szene)
 

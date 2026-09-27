@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 26 AutoReadOnly
+Int Property VERSION = 28 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -315,6 +315,30 @@ Function Migrate(Int aiFrom)
             GatherFamily(VeilMarkers)
         ElseIf Q00 && Q00.IsRunning() && Q00.GetStage() == 50 && !bMemorialStarted
             GatherFamily(MemorialMarkers)
+        EndIf
+    EndIf
+    If aiFrom < 27
+        ; Veil markers moved to the corridor side of the door (ESP values); a family walking in stage 40 re-targets.
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted && !bVeiledPassageDone
+            GatherFamily(VeilMarkers)
+        EndIf
+    EndIf
+    If aiFrom < 28
+        ; Memorial markers were ~270 units below the floor (z -236, navmesh -16..+35; Codex analysis 27.09.2026).
+        ; Stage 50: re-target the walk. Stage 60 before the contract: whoever fell below the floor goes to the
+        ; corrected marker.
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 50 && !bMemorialStarted
+            GatherFamily(MemorialMarkers)
+        ElseIf Q00 && Q00.IsRunning() && Q00.GetStage() == 60 && !bContractStarted && MemorialMarkers.Length >= 4
+            Int i = 0
+            While i < 4
+                Actor kActor = GetFamilyActor(i)
+                If kActor && MemorialMarkers[i] && kActor.GetParentCell() == MemorialMarkers[i].GetParentCell() && kActor.GetPositionZ() < -100.0 && MemorialMarkers[i].GetPositionZ() > -100.0
+                    kActor.MoveTo(MemorialMarkers[i])
+                    NHV_Util.Log(NHV_Cfg_Debug, "Migrate 28: alias " + i + " lifted from below the memorial floor")
+                EndIf
+                i += 1
+            EndWhile
         EndIf
     EndIf
 EndFunction
@@ -1289,19 +1313,19 @@ Function PlaceVeiledPassageFamily()
         Return
     EndIf
     ; Fallback without walk markers: teleport.
-    ; E25: load door at 3296/3392 (see SpawnPassageRubble); the room lies at +X, the dead end runs towards -X, the
-    ; family faces the door (angle 271.19). Provisional positions (developer: exact placement later).
+    ; E25: load door at 3296/3392 (see SpawnPassageRubble); the corridor lies at -X (test 27.09.2026), the family
+    ; faces the door (angle ~91). Provisional positions (developer: exact placement later).
     If VeyraRef && !VeyraRef.IsDead()
         VeyraRef.MoveTo(DawnstarAnchorRef)
-        VeyraRef.SetPosition(3440.0, 3363.0, 5668.0)
-        VeyraRef.SetAngle(0.0, 0.0, 271.19)
+        VeyraRef.SetPosition(3150.0, 3363.0, 5668.0)
+        VeyraRef.SetAngle(0.0, 0.0, 91.19)
         VeyraRef.EvaluatePackage()
     EndIf
-    PlaceStandoffActor(1, 0x01C3AD, 3520.0, 3300.0, 5668.0, 285.0)
-    PlaceStandoffActor(2, 0x01D4BC, 3520.0, 3430.0, 5668.0, 255.0)
+    PlaceStandoffActor(1, 0x01C3AD, 3070.0, 3300.0, 5668.0, 75.0)
+    PlaceStandoffActor(2, 0x01D4BC, 3070.0, 3430.0, 5668.0, 105.0)
     Actor kFalkreathCicero = Game.GetFormFromFile(0x01E64A, "Skyrim.esm") as Actor
     If !(kFalkreathCicero && kFalkreathCicero.IsDead())
-        PlaceStandoffActor(3, 0x09BCB0, 3640.0, 3363.0, 5668.0, 271.19)
+        PlaceStandoffActor(3, 0x09BCB0, 2950.0, 3363.0, 5668.0, 91.19)
     EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family gathered at the wall")
     ArmVeiledPassagePoll()
@@ -1393,8 +1417,8 @@ Function FinishVeiledPassage()
     ; Stage first: the moved actors evaluate their packages at once and walk on to the memorial wall.
     Q00.SetStage(50)
     MovePassageActor(0, 0.0, 320.0)
-    MovePassageActor(1, -120.0, 240.0)
-    MovePassageActor(2, 120.0, 240.0)
+    MovePassageActor(1, -10.0, 270.0) ; offsets checked against the exported navmesh (27.09.2026)
+    MovePassageActor(2, 40.0, 250.0)
     MovePassageActor(3, 0.0, 420.0)
     kPlayer.MoveTo(DeepSanctuaryEntryMarker, 0.0, 128.0, 8.0, True)
     UnlockCutscene()
@@ -1485,10 +1509,10 @@ Function PollMemorial()
         EnsureFamilyAliases()
         SnapFamily(MemorialMarkers)
     Else
-        PlaceMemorialActor(0, -5025.0, -1690.0, 0.0)
-        PlaceMemorialActor(1, -5140.0, -1680.0, 20.0)
-        PlaceMemorialActor(2, -4880.0, -1680.0, 340.0)
-        PlaceMemorialActor(3, -5010.0, -1780.0, 0.0)
+        PlaceMemorialActor(0, -5040.0, -1660.0, 13.6)
+        PlaceMemorialActor(1, -5180.0, -1620.0, 82.0)
+        PlaceMemorialActor(2, -4955.0, -1605.0, 275.5)
+        PlaceMemorialActor(3, -4990.0, -1670.0, 334.0)
     EndIf
     If !MemorialScene
         NHV_Util.Log(NHV_Cfg_Debug, "PollMemorial: MemorialScene not set, the choice is still open in dialogue")
@@ -1502,7 +1526,8 @@ Function PollMemorial()
     RegisterForSingleUpdate(2.0) ; watchdog
 EndFunction
 
-; Wall spot -5025/-1598.23/-240, facing +Y (developer, 27.09.2026). Provisional positions in front of it.
+; Wall spot -5025/-1598.23 (wall object origin z -240, platform ~+32), family faces it. Fallback only; normally
+; SnapFamily uses the markers.
 Function PlaceMemorialActor(Int aiAlias, Float afX, Float afY, Float afAngle)
     ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
     If !kAlias
@@ -1511,10 +1536,10 @@ Function PlaceMemorialActor(Int aiAlias, Float afX, Float afY, Float afAngle)
     Actor kActor = kAlias.GetActorReference()
     If kActor && !kActor.IsDead() && !kActor.IsDisabled()
         ; MoveTo with offsets from the entry marker: SetPosition left the actors invisible here (test 27.09.2026).
-        ; Target z = floor -240 + 8 clearance; offsets from the marker's live position, so moving it in the CK is safe.
+        ; Target z 40 = just above the memorial platform (navmesh -16..+35 there; -240 was the wall object's origin).
         Float fOX = afX - DeepSanctuaryEntryMarker.GetPositionX()
         Float fOY = afY - DeepSanctuaryEntryMarker.GetPositionY()
-        Float fOZ = -232.0 - DeepSanctuaryEntryMarker.GetPositionZ()
+        Float fOZ = 40.0 - DeepSanctuaryEntryMarker.GetPositionZ()
         kActor.MoveTo(DeepSanctuaryEntryMarker, fOX, fOY, fOZ, False)
         kActor.SetAngle(0.0, 0.0, afAngle)
         kActor.EvaluatePackage()
@@ -1613,7 +1638,10 @@ Bool Function FamilyGathered(ObjectReference[] akMarkers)
     Return True
 EndFunction
 
-; Cutscene start: stragglers are moved onto their marker, the others only turn to the marker's heading.
+; Cutscene start: only someone in another cell is moved onto the marker; in the same cell everybody stays where the
+; walk ended and turns to the marker's heading (test 27.09.2026: a MoveTo onto a marker off the navmesh made Veyra
+; and Babette vanish; the real cause were memorial markers below the floor, fixed in v28). Someone stuck more than
+; 1000 units away is still moved.
 Function SnapFamily(ObjectReference[] akMarkers)
     If akMarkers.Length < 4
         Return
@@ -1622,9 +1650,13 @@ Function SnapFamily(ObjectReference[] akMarkers)
     While i < 4
         Actor kActor = GetFamilyActor(i)
         If kActor && akMarkers[i]
-            If kActor.GetParentCell() != akMarkers[i].GetParentCell() || kActor.GetDistance(akMarkers[i]) > 250.0
-                kActor.MoveTo(akMarkers[i])
+            Float fDist = kActor.GetDistance(akMarkers[i])
+            If kActor.GetParentCell() != akMarkers[i].GetParentCell() || fDist > 1000.0
+                kActor.MoveTo(akMarkers[i]) ; other cell, or stuck far away after the gather timeout
             Else
+                If fDist > 250.0
+                    NHV_Util.Log(NHV_Cfg_Debug, "SnapFamily: alias " + i + " stopped " + fDist + " units from its marker")
+                EndIf
                 kActor.SetAngle(0.0, 0.0, akMarkers[i].GetAngleZ())
             EndIf
         EndIf
