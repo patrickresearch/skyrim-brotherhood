@@ -36,6 +36,11 @@ LIPGEN = TOOLS / "LipGen" / "LipGenerator" / "LipGenerator.exe"
 XWMA = TOOLS / "Audio" / "xwmaencode.exe"
 AUDIO_EXT = {".mp3", ".wav", ".ogg", ".flac", ".m4a"}
 LINE_ID = re.compile(r"NHV_[A-Z0-9]+_\d{3}_\d{2,3}")
+# Automatic ffmpeg effects per voice type (disable with --no-fx). The Night Mother speaks from the coffin:
+# a short dark echo plus slight muffling, close to her vanilla lines.
+FX_BY_VOICE = {
+    "FemaleUniqueNightMother": "aecho=0.8:0.55:55|110:0.35|0.22,lowpass=f=7000,volume=1.15",
+}
 
 
 def response_items(text):
@@ -95,13 +100,13 @@ def run(cmd):
     return r
 
 
-def make_fuz(src, text, tmp):
+def make_fuz(src, text, tmp, af=None):
     wav, lip, xwm = tmp / "line.wav", tmp / "line.lip", tmp / "line.xwm"
     for f in (wav, lip, xwm):
         if f.exists():
             f.unlink()
-    run([FFMPEG, "-y", "-loglevel", "error", "-i", src, "-ac", "1", "-ar", str(sv.SAMPLE_RATE),
-         "-sample_fmt", "s16", wav])
+    run([FFMPEG, "-y", "-loglevel", "error", "-i", src] + (["-af", af] if af else []) +
+        ["-ac", "1", "-ar", str(sv.SAMPLE_RATE), "-sample_fmt", "s16", wav])
     lip_data = b""
     try:
         run([LIPGEN, wav, text, f"-OutputFileName:{lip}"])
@@ -129,6 +134,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--in", dest="src", type=Path, default=sv.REPO / "voice_in", help="input folder")
     ap.add_argument("--check", action="store_true", help="report only")
+    ap.add_argument("--no-fx", action="store_true", help="no automatic voice-type effects (FX_BY_VOICE)")
     ap.add_argument("--list", metavar="PREFIX", help="list LineIDs starting with PREFIX")
     ap.add_argument("--from-text", metavar="DIR", type=Path, action="append",
                     help="copy audio files named after their TEXT (xVASynth default output, cut at ~70 chars) "
@@ -205,8 +211,12 @@ def main():
             if args.check:
                 ok += 1
                 continue
+            vts = {p.split("/")[0] for p in e["paths"]}
+            fx = None if args.no_fx else next((FX_BY_VOICE[v] for v in vts if v in FX_BY_VOICE), None)
+            if fx:
+                print(f"  fx: {fx}")
             try:
-                data = make_fuz(f, e["text"], tmp)
+                data = make_fuz(f, e["text"], tmp, fx)
             except RuntimeError as err:
                 print(f"  ERROR {err}")
                 bad += 1
