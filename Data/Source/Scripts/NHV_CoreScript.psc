@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 24 AutoReadOnly
+Int Property VERSION = 25 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -304,6 +304,9 @@ Function Migrate(Int aiFrom)
         ; E25: a real load door (NHV_DeepSanctuaryDoorRef, placed in the CK) replaces the script door and the
         ; script return door. Remove what earlier builds spawned and switch over.
         MigrateToLoadDoor()
+    EndIf
+    If aiFrom < 25
+        ; No per-save state: PlaceMemorialActor switched from SetPosition to MoveTo offsets.
     EndIf
 EndFunction
 
@@ -1460,10 +1463,12 @@ Function PlaceMemorialActor(Int aiAlias, Float afX, Float afY, Float afAngle)
     EndIf
     Actor kActor = kAlias.GetActorReference()
     If kActor && !kActor.IsDead() && !kActor.IsDisabled()
-        If kActor.GetParentCell() != DeepSanctuaryEntryMarker.GetParentCell()
-            kActor.MoveTo(DeepSanctuaryEntryMarker)
-        EndIf
-        kActor.SetPosition(afX, afY, -240.0)
+        ; MoveTo with offsets from the entry marker: SetPosition left the actors invisible here (test 27.09.2026).
+        ; Target z = floor -240 + 8 clearance; offsets from the marker's live position, so moving it in the CK is safe.
+        Float fOX = afX - DeepSanctuaryEntryMarker.GetPositionX()
+        Float fOY = afY - DeepSanctuaryEntryMarker.GetPositionY()
+        Float fOZ = -232.0 - DeepSanctuaryEntryMarker.GetPositionZ()
+        kActor.MoveTo(DeepSanctuaryEntryMarker, fOX, fOY, fOZ, False)
         kActor.SetAngle(0.0, 0.0, afAngle)
         kActor.EvaluatePackage()
     EndIf

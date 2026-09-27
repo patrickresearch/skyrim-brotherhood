@@ -6,7 +6,7 @@ SkyrimMajorRecordFlags:
 - Compressed
 Name:
   TargetLanguage: English
-  Value: The Treasury House
+  Value: Deep Sanctuary
 Flags:
 - IsInteriorCell
 - PublicArea
@@ -2147,7 +2147,7 @@ Persistent:
   Base: 064092:Skyrim.esm
   TeleportDestination:
     Door: 003D8B:NightsHarvest.esp
-    Position: 3305.92, 3363.79, 5668.72
+    Position: 3420, 3392, 5668.72
     Rotation: 0, 0, 1.5915657
   Scale: 0.75
   NavigationDoorLink:

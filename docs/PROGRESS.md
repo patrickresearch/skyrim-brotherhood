@@ -272,6 +272,19 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 
 ## Log (neueste zuerst)
 
+### 2026-09-27 (Test-Befunde E25-Tür und Memorial-Szene)
+
+- Test: Tür verkehrt herum (Rückkehr auf der falschen Seite, von der richtigen Seite nicht zu öffnen), Name
+  „The Treasury House“ (Zellname aus der Markarth-Kopie), Familie bei der Memorial-Szene unsichtbar, danach
+  keine Astrid-Wahl möglich.
+- Fix (Spriggit): Tür 003D8B um 180° gedreht (Rotation Z 4.749979 rad = 272.2°), Ankunftsmarker der
+  Ausgangstür 001586 in Dawnstar von direkt vor der Wand (3305.92/3363.79) in den Gang (3420/3392/5668.72),
+  Zellname `NHV_DeepSanctuaryCell` → „Deep Sanctuary“ (Name ggf. später per Codex-Brief).
+- `NHV_CoreScript` v25: `PlaceMemorialActor` nutzt MoveTo mit Offsets zum Eingangsmarker statt SetPosition
+  (Offsets aus der Live-Position des Markers; Ziel-Z -232). Leerer Migrationsschritt 25. Review: freigegeben.
+- Familie bleibt nach Stage 50 am Eingang stehen (PassageHold) und wird beim Erreichen der Wand dorthin versetzt.
+  Auf Wunsch später: Familie folgt dem Spieler / läuft selbst zur Wand.
+
 ### 2026-09-27 (E25 echte Ladetür, Navmesh)
 
 - Entwickler hat `NHV_DeepSanctuaryDoorRef` (003D8B, Basis `NHV_DeepSanctuaryDoor` 003D8A ohne Script)
