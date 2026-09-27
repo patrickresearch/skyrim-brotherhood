@@ -36,7 +36,7 @@ Actions:
   StartPhase: 0
   EndPhase: 0
   Topic: 004326:NightsHarvest.esp
-  HeadtrackActorID: -1
+  HeadtrackActorID: 1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral

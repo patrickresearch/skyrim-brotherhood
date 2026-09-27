@@ -65,7 +65,7 @@ Actions:
   StartPhase: 0
   EndPhase: 0
   Topic: 002B4F:NightsHarvest.esp
-  HeadtrackActorID: -1
+  HeadtrackActorID: 0
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
@@ -76,7 +76,7 @@ Actions:
   StartPhase: 1
   EndPhase: 1
   Topic: 002B53:NightsHarvest.esp
-  HeadtrackActorID: -1
+  HeadtrackActorID: 1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
@@ -87,7 +87,7 @@ Actions:
   StartPhase: 2
   EndPhase: 2
   Topic: 002B55:NightsHarvest.esp
-  HeadtrackActorID: -1
+  HeadtrackActorID: 0
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
@@ -98,7 +98,7 @@ Actions:
   StartPhase: 3
   EndPhase: 3
   Topic: 002B57:NightsHarvest.esp
-  HeadtrackActorID: -1
+  HeadtrackActorID: 0
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
@@ -109,7 +109,7 @@ Actions:
   StartPhase: 3
   EndPhase: 3
   Topic: 002B59:NightsHarvest.esp
-  HeadtrackActorID: -1
+  HeadtrackActorID: 1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral

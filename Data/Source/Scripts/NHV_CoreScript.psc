@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 30 AutoReadOnly
+Int Property VERSION = 31 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -369,6 +369,9 @@ Function Migrate(Int aiFrom)
         ElseIf Q00 && Q00.IsRunning() && Q00.GetStage() == 50 && !bMemorialStarted
             GatherFamily(MemorialMarkers)
         EndIf
+    EndIf
+    If aiFrom < 31
+        ; Standoff markers are new properties (ESP values); the placement only runs when Q00 starts.
     EndIf
 EndFunction
 
@@ -874,9 +877,35 @@ Function PlaceStandoffActor(Int aiAlias, Int aiRefFormID, Float afX, Float afY, 
         Debug.SendAnimationEvent(kActor, "IdleForceDefaultState")
         Utility.Wait(0.5)
     EndIf
-    kActor.MoveTo(DawnstarAnchorRef)
-    kActor.SetPosition(afX, afY, afZ)
-    kActor.SetAngle(0.0, 0.0, afAngle)
+    ; Standoff (stage 10): marker placed in the CK wins over the hard coordinates (developer 27.09.2026: the family
+    ; should stand close together near Veyra and face her). The veiled passage (stage 40) keeps its coordinates.
+    ObjectReference kMarker = None
+    If Q00 && Q00.GetStage() < 20
+        kMarker = GetStandoffMarker(aiAlias)
+    EndIf
+    If kMarker
+        kActor.MoveTo(kMarker)
+    Else
+        kActor.MoveTo(DawnstarAnchorRef)
+        kActor.SetPosition(afX, afY, afZ)
+        kActor.SetAngle(0.0, 0.0, afAngle)
+    EndIf
+EndFunction
+
+; XMarkerHeading refs in DawnstarSanctuary (NHV_Mk_Q00_Standoff<Name>, 004340-004342), heading towards Veyra.
+ObjectReference Property StandoffNazirMarker Auto
+ObjectReference Property StandoffBabetteMarker Auto
+ObjectReference Property StandoffCiceroMarker Auto
+
+ObjectReference Function GetStandoffMarker(Int aiAlias)
+    If aiAlias == 1
+        Return StandoffNazirMarker
+    ElseIf aiAlias == 2
+        Return StandoffBabetteMarker
+    ElseIf aiAlias == 3
+        Return StandoffCiceroMarker
+    EndIf
+    Return None
 EndFunction
 
 ; Debug aid (25.09.2026): one log line per Q00 actor - alias filled, dead, disabled, position, cell.
