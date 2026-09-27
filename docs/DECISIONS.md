@@ -31,12 +31,21 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E25 | KI-Zugang zur Deep Sanctuary (ändert E09/E16) | Script-Tür ohne Navmesh / echte Ladetür mit Navmesh | Echte Ladetür an einer mod-geprüften Sackgasse | M1.5 | Entschieden |
 | E24 | Zugang zur Deep Sanctuary in Q00 | Geröll (Konzept) / magische Verschleierung mit Zwischensequenz | Verschleierung, Zwischensequenz wie der Standoff | M1.5 | Entschieden |
 | E23 | Veyras Natur und Bindung an Sithis | Sterbliche Amtserbin / gebundene Nachleserin / wiederkehrende Gestalt / göttliche Verwandtschaft | Tochter Sithis', ungebunden und freiwillig treu; externe Helferin der Night Mother | vor weiterem Mysteriums-Dialogausbau | Entschieden |
+| E27 | Quelle der Stimmen | Nur stille Dateien / KI-Stimmen | Vanilla-Figuren über xVASynth, Veyra (und neue Figuren) über ElevenLabs; Import per `tools/voice_import.py` | M1.5 | Entschieden |
+| E26 | Charakterprofile und Feuer-Battle-Mage | Nirelda als allgemeine Arkanistin / Feuer-Battle-Mage mit Meistergrad | Fünf Story-Rekruten plus Livia und Missionsfiguren erhalten verbindliche Autorenprofile; Nirelda wird Feuer-Battle-Mage (Destruction Master) | vor Q03-Dialogen | Entschieden |
 
 ### Hintergrund E16
 
 Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin. Die Kopie ändert nichts, kann aber Änderungen anderer Mods an derselben Zelle (z. B. Beleuchtung) überdecken, wenn Night's Harvest später lädt. Das betrifft auch Quest-Referenzen in Städten (Q01–Q05). Grundregel unabhängig von E16: Schlüsselszenen in eigenen Innenzellen, berührte Vanilla-Zellen minimieren und in `docs/ARCHITECTURE.md` listen.
 
 ## Entscheidungs-Einträge
+
+### E27 – Quelle der Stimmen
+
+- **Datum:** 27.09.2026
+- **Entscheidung (Entwickler):** Vanilla-Figuren (Nazir, Babette, Cicero, Night Mother …) werden mit xVASynth vertont, Veyra mit ElevenLabs. Neue Figuren voraussichtlich ebenfalls über ElevenLabs (eigene, nicht geklonte Stimmen).
+- **Technik:** Audio mit LineID im Dateinamen nach `voice_in/`, `python tools/voice_import.py` erzeugt `.fuz` (ffmpeg → WAV 44,1 kHz mono → CK-LipGenerator → xWMAEncode). Stille Dateien (E21) bleiben für alle noch nicht vertonten Zeilen.
+- **Offen bleiben:** E10 (Release mit oder ohne Stimmen) und E11 (Format des Voice-Packs). Risiko: Stimmen von Vanilla-Sprechern per KI sind auf Nexus umstritten; Inhalte können auf Beschwerde entfernt werden. Vor Release neu bewerten.
 
 ### E25 – KI-Zugang zur Deep Sanctuary (ändert E09 und E16)
 
@@ -55,6 +64,13 @@ Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugi
 - **Optionen:** A Geröll wie im Konzept, B durch Magie verborgene Passage, die Veyra (Illusion-Expertin, Abschnitt 3) enthüllt.
 - **Entscheidung:** B. Nach „Agreed. We rebuild.“ (Stage 40) stehen Veyra, Nazir, Babette und ggf. Cicero an der Wand. Betritt der Spieler den Raum, läuft wie beim Standoff eine Zwischensequenz mit Steuerungssperre: Szene A `NHV_Scn_Q00_02VeiledPassage` (`040_10–12`), danach erscheint die Tür; Szene B `NHV_Scn_Q00_03EnterDeep` (`050_01`, `050_08–16` ohne Spielerzeile); danach werden alle in die Deep Sanctuary versetzt, Stage 50. Der Urheber des Schleiers bleibt bewusst offen (lore-editor). Nicht „Dispel“ nennen – Skyrim hat keinen Dispel-Effekt, sie durchschaut und löst die Illusion.
 - **Folgen:** `040_01, 040_03–05` DEPRECATED; `030_72` und Journal-Notizen `040_02`/`050_07` ohne Geröll; Konzept Abschnitt 6 (Stage-Tabelle, Szene 4) angepasst. Das Geröll bleibt vorerst als sichtbarer Platzhalter bis zum Szenenende. Exakte Positionen folgen im CK.
+
+### E26 – Charakterprofile und Nirelda als Feuer-Battle-Mage
+
+- **Datum:** 27.09.2026
+- **Entschieden von:** Entwickler, im Auftrag zur Ausarbeitung der neuen Questfiguren.
+- **Entscheidung:** Die fünf Story-Rekruten, Livia Maro und die wichtigen Missionsfiguren erhalten verbindliche Autorenprofile in `docs/concept/Neue-Charakterprofile.md`. Nirelda Aurantil wird als Feuer-Battle-Mage mit Meistergrad in Destruction geführt. Ihre Stärke bleibt durch Magicka, Kollateralschaden, Distanz und ihre charakterliche Fixierung auf Beobachtung begrenzt.
+- **Folgen:** `docs/GOAL.md`, Konzept Abschnitt 9 und Q03-Profil aktualisiert. Neue Q03-Dialoge, NPC-Records, Perks und Zauberwerte sind noch nicht erstellt. Das Profil ist Autorenwahrheit; es bestätigt keine neuen TES-Kanonfakten.
 
 ### E23 – Veyra als ungebundene Tochter Sithis'
 

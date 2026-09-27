@@ -84,6 +84,7 @@ Der Live-Spielordner enthält ein stark gemoddetes Vortex-Deployment (177 aktive
 | Build (Scripts kompilieren) | `powershell -File tools\build.ps1` (`-Clean` kompiliert alles neu). Ruft Pyro mit `NightsHarvest.ppj` und `--game-path` der Dev-Kopie auf und bricht ab, wenn der Pfad auf das Live-Spiel zeigt |
 | Nur Scripts kompilieren | wie Build |
 | Stille Sprachdateien (E21) | `python tools\silent_voice.py` (schreibt `Data\Sound\Voice\NightsHarvest.esp\`, nutzt `<Dev>\Tools\Audio\xwmaencode.exe`); `--check` prüft nur. Nach jeder Dialogänderung in `plugin-text/` ausführen |
+| Echte Sprachaufnahmen (E27) | Audio (mp3/wav, LineID im Dateinamen, z. B. `NHV_Q00_010_92.mp3`) nach `voice_in\` legen, dann `python tools\voice_import.py` (`--check` nur prüfen, `--list NHV_Q00_010` zeigt LineIDs mit Voice Type und Text). Nutzt ffmpeg, LipGenerator und xWMAEncode aus `<Dev>\Tools`; schreibt `.fuz` mit Lippensync und nimmt die Pfade aus `silent_voice.manifest`, damit `silent_voice.py` sie nie überschreibt. `voice_in\` wird versioniert (Quelle), die `.fuz` nicht |
 | Repo → Dev-Kopie (`.pex`, `NHV_*.psc`, `.fuz`, optional ESP) | `powershell -File tools\sync_dev.ps1 -Direction ToDev [-IncludeEsp]` |
 | Dev-Kopie → Repo (ESP, SEQ, FaceGen vom CK) | `powershell -File tools\sync_dev.ps1 -Direction FromDev` (liest `<Dev>\Data` und `MO2\overwrite`, nimmt die neuere Datei, überschreibt keine neuere Repo-Datei ohne `-Force`) |
 | Release-Archiv (BSA + FOMOD als `dist\NightsHarvest-<Version>.7z`) | `powershell -File tools\package.ps1` (braucht ein echtes ESP in `Data\`) |
