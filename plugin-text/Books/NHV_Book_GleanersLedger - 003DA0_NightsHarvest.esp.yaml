@@ -8,6 +8,7 @@ Name:
   Value: The Gleaner's Ledger
 Model:
   File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
 BookText:
   TargetLanguage: English
   Value: >-
@@ -55,3 +56,6 @@ Teaches:
 Value: 50
 Weight: 1
 InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

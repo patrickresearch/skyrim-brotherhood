@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 29 AutoReadOnly
+Int Property VERSION = 30 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -342,11 +342,11 @@ Function Migrate(Int aiFrom)
         EndIf
     EndIf
     If aiFrom < 29
-        ; Door moved to 3288.75/3650.81 (corridor at +Y): rubble of a stage-40 save moves along, the family re-targets.
+        ; Door moved (now 3200/3552, see step 30; corridor at +Y): rubble of a stage-40 save moves along, the family re-targets.
         ; Q00 already past the contract: plaques and ledger were added in this version.
         If RubbleRef
-            RubbleRef.SetPosition(3288.75, 3650.81, 5649.73)
-            RubbleRef.SetAngle(0.0, 0.0, 0.0)
+            RubbleRef.SetPosition(3200.0, 3552.0, 5664.0)
+            RubbleRef.SetAngle(0.0, 0.0, 180.0)
         EndIf
         If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted && !bVeiledPassageDone
             GatherFamily(VeilMarkers)
@@ -356,6 +356,18 @@ Function Migrate(Int aiFrom)
         EndIf
         If bContractDone && GleanersLedger && Game.GetPlayer().GetItemCount(GleanersLedger) == 0
             GiveLedger()
+        EndIf
+    EndIf
+    If aiFrom < 30
+        ; Door at 3200/3552 (angle 180); the family faces the plaques at -5232/-1728 (developer 27.09.2026).
+        If RubbleRef
+            RubbleRef.SetPosition(3200.0, 3552.0, 5664.0)
+            RubbleRef.SetAngle(0.0, 0.0, 180.0)
+        EndIf
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted && !bVeiledPassageDone
+            GatherFamily(VeilMarkers)
+        ElseIf Q00 && Q00.IsRunning() && Q00.GetStage() == 50 && !bMemorialStarted
+            GatherFamily(MemorialMarkers)
         EndIf
     EndIf
 EndFunction
@@ -387,10 +399,10 @@ Function SpawnPassageRubble()
         ; the rubble landed ~25/121/9 units off from the intended spot.
         Utility.Wait(0.1)
         ; Wall spot in DawnstarSanctuary, taken via getpos/getangle 23.09.2026 (docs/ck/M1.3-Deep-Sanctuary-Stufe1.md).
-        ; E25: on the load door NHV_DeepSanctuaryDoorRef (developer 27.09.2026: 3288.75/3650.81/5649.73, angle 0,
+        ; E25: on the load door NHV_DeepSanctuaryDoorRef (developer 27.09.2026: 3200/3552/5664, angle 180,
         ; the corridor lies at +Y); earlier 3296/3392 and 2648.75/4930.81.
-        RubbleRef.SetPosition(3288.75, 3650.81, 5649.73)
-        RubbleRef.SetAngle(0.0, 0.0, 0.0)
+        RubbleRef.SetPosition(3200.0, 3552.0, 5664.0)
+        RubbleRef.SetAngle(0.0, 0.0, 180.0)
         ; NorRubblePile06's own bounds are still ~4.5x3.5x1.1m - shrunk down so it reads as a
         ; blocked passage, not furniture-sized clutter in the middle of the room. Adjust to taste
         ; once seen in place (23.09.2026: developer testing scale/position live, see PROGRESS.md).
@@ -1330,19 +1342,19 @@ Function PlaceVeiledPassageFamily()
         Return
     EndIf
     ; Fallback without walk markers: teleport.
-    ; E25: load door at 3288.75/3650.81 (see SpawnPassageRubble); the corridor lies at +Y (door moved 27.09.2026), the
+    ; E25: load door at 3200/3552 (see SpawnPassageRubble); the corridor lies at +Y (door moved 27.09.2026), the
     ; family faces the door (angle ~180). Provisional positions (developer: exact placement later).
     If VeyraRef && !VeyraRef.IsDead()
         VeyraRef.MoveTo(DawnstarAnchorRef)
-        VeyraRef.SetPosition(3288.0, 3800.0, 5650.0)
+        VeyraRef.SetPosition(3200.0, 3700.0, 5664.0)
         VeyraRef.SetAngle(0.0, 0.0, 180.0)
         VeyraRef.EvaluatePackage()
     EndIf
-    PlaceStandoffActor(1, 0x01C3AD, 3215.0, 3865.0, 5650.0, 161.0)
-    PlaceStandoffActor(2, 0x01D4BC, 3360.0, 3865.0, 5650.0, 198.4)
+    PlaceStandoffActor(1, 0x01C3AD, 3127.0, 3765.0, 5664.0, 150.0)
+    PlaceStandoffActor(2, 0x01D4BC, 3272.0, 3765.0, 5664.0, 210.0)
     Actor kFalkreathCicero = Game.GetFormFromFile(0x01E64A, "Skyrim.esm") as Actor
     If !(kFalkreathCicero && kFalkreathCicero.IsDead())
-        PlaceStandoffActor(3, 0x09BCB0, 3288.0, 3950.0, 5650.0, 180.0)
+        PlaceStandoffActor(3, 0x09BCB0, 3200.0, 3850.0, 5664.0, 180.0)
     EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family gathered at the wall")
     ArmVeiledPassagePoll()
@@ -1514,8 +1526,8 @@ Function PollMemorial()
     If kPlayer.GetParentCell() != DeepSanctuaryEntryMarker.GetParentCell()
         Return ; OnEnterDeepSanctuary arms it again
     EndIf
-    Float fDX = kPlayer.GetPositionX() + 5025.0
-    Float fDY = kPlayer.GetPositionY() + 1598.23
+    Float fDX = kPlayer.GetPositionX() + 5232.0 ; in front of the plaques at -5232/-1728 (developer 27.09.2026)
+    Float fDY = kPlayer.GetPositionY() + 1690.0
     Bool bFar = fDX * fDX + fDY * fDY > 202500.0 ; 450 units squared (no constant expression: the compiler folds it with the system locale, 27.09.2026)
     Bool bWait = bFar
     If !bFar && !FamilyGathered(MemorialMarkers) && iGatherTicks < 8
@@ -1533,10 +1545,10 @@ Function PollMemorial()
         EnsureFamilyAliases()
         SnapFamily(MemorialMarkers)
     Else
-        PlaceMemorialActor(0, -5040.0, -1660.0, 13.6)
-        PlaceMemorialActor(1, -5180.0, -1620.0, 82.0)
-        PlaceMemorialActor(2, -4955.0, -1605.0, 275.5)
-        PlaceMemorialActor(3, -4990.0, -1670.0, 334.0)
+        PlaceMemorialActor(0, -5212.0, -1620.0, 190.5)
+        PlaceMemorialActor(1, -5320.0, -1625.0, 139.5)
+        PlaceMemorialActor(2, -5220.0, -1550.0, 183.9)
+        PlaceMemorialActor(3, -5195.0, -1485.0, 188.7)
     EndIf
     If !MemorialScene
         NHV_Util.Log(NHV_Cfg_Debug, "PollMemorial: MemorialScene not set, the choice is still open in dialogue")
@@ -1550,7 +1562,7 @@ Function PollMemorial()
     RegisterForSingleUpdate(2.0) ; watchdog
 EndFunction
 
-; Wall spot -5025/-1598.23 (wall object origin z -240, platform ~+32), family faces it. Fallback only; normally
+; Plaques at -5232/-1728 (developer 27.09.2026), floor z ~-16, target z 0; the family faces them.
 ; SnapFamily uses the markers.
 Function PlaceMemorialActor(Int aiAlias, Float afX, Float afY, Float afAngle)
     ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
@@ -1560,10 +1572,10 @@ Function PlaceMemorialActor(Int aiAlias, Float afX, Float afY, Float afAngle)
     Actor kActor = kAlias.GetActorReference()
     If kActor && !kActor.IsDead() && !kActor.IsDisabled()
         ; MoveTo with offsets from the entry marker: SetPosition left the actors invisible here (test 27.09.2026).
-        ; Target z 40 = just above the memorial platform (navmesh -16..+35 there; -240 was the wall object's origin).
+        ; Target z 0 = just above the floor in front of the plaques (navmesh -16 there; -240 was the wall object's origin).
         Float fOX = afX - DeepSanctuaryEntryMarker.GetPositionX()
         Float fOY = afY - DeepSanctuaryEntryMarker.GetPositionY()
-        Float fOZ = 40.0 - DeepSanctuaryEntryMarker.GetPositionZ()
+        Float fOZ = 0.0 - DeepSanctuaryEntryMarker.GetPositionZ()
         kActor.MoveTo(DeepSanctuaryEntryMarker, fOX, fOY, fOZ, False)
         kActor.SetAngle(0.0, 0.0, afAngle)
         kActor.EvaluatePackage()
@@ -1823,8 +1835,8 @@ Function MigrateToLoadDoor()
     ElseIf RubbleRef
         ; Rubble of an earlier build stands at the old wall: put it on the load door, and a family already
         ; gathered at the old wall (stage 40 before the veil) moves along.
-        RubbleRef.SetPosition(3288.75, 3650.81, 5649.73)
-        RubbleRef.SetAngle(0.0, 0.0, 0.0)
+        RubbleRef.SetPosition(3200.0, 3552.0, 5664.0)
+        RubbleRef.SetAngle(0.0, 0.0, 180.0)
         If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted
             PlaceVeiledPassageFamily()
         EndIf

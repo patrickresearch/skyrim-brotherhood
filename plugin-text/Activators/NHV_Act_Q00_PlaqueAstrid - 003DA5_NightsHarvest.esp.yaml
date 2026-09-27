@@ -1,10 +1,13 @@
 FormKey: 003DA5:NightsHarvest.esp
 EditorID: NHV_Act_Q00_PlaqueAstrid
 ObjectBounds:
-  First: -30, -4, -18
-  Second: 30, 4, 18
+  First: -43, 0, -20
+  Second: 43, 2, 20
 Name:
   TargetLanguage: English
   Value: Astrid
 Model:
   File: Clutter\WeaponRack\WRPlaque01.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []

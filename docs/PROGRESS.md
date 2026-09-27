@@ -16,7 +16,7 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
-**27.09.2026: Hrefnas Q01-Fundstücke geschrieben.** `dialogue/Books.csv` enthält 21 neue Absätze für fünf Dokumente: Hofledger, unbeantworteten Brief, Moorjournal, Eiriks Forderungsschreiben und Quintus' Feldnotiz. Die Dokumente vertiefen Hrefnas Hintergrund und lassen die Ermittlungsreihenfolge intakt. CK-Platzierung und Stages stehen in `docs/ck/M1.6-Q01-Hrefna-Dokumente.md`. Lint: 0 Fehler bei 374 IDs.
+**27.09.2026: Hrefna-Dokumente, Ledger und Gedenkplaketten geschrieben.** `dialogue/Books.csv` enthält 21 Absätze für fünf unveränderte Fundstücke, 13 zusätzliche Ledger-Absätze (`NHV_SYS_BOOK_63–75`) und sechs Memorial-Plaque-Texte (`NHV_SYS_BOOK_76–81`). Die Plaketten bleiben nüchtern und würdevoll; Astrids kleine Variante verwendet denselben Activator-Record mit abweichendem Epitaph. Lint: 0 Fehler bei 393 IDs.
 
 **27.09.2026: Autorenprofile für neue Questfiguren erstellt.** `docs/concept/Neue-Charakterprofile.md` beschreibt Hrefna, Sings, Nirelda, Corisande, Kharzog, Livia und die wichtigen Contract-Nebenfiguren mit Hintergrund, Motivation, Zielen, Schwächen, Beziehungen und Stimme. Nirelda ist nun verbindlich eine Feuer-Battle-Mage mit Meistergrad in Destruction. GOAL, Konzept und E26 synchronisiert; neue Q03-Dialoge und technische Magiewerte stehen noch aus.
 
@@ -281,6 +281,27 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-27 (Tür und Plaketten im CK, v30)
+
+- Test v29: Rückweg landet im Gang, Ledger im Inventar. Entwickler hat im CK die Tür auf 3200/3552/5664, 180°
+  gesetzt und die sechs Plaketten an die Wand bei Y -1728 gehängt (X -5184…-5280). CK-Save brachte ein unverändertes
+  Vanilla-Wandstück (092E73) als Override mit → entfernt.
+- v30: Geröll/Fallbacks an die neue Tür, Veil-Marker blicken zur Tür; Memorial-Marker vor die Plaketten
+  (Navmesh-geprüft, Z -12), Blick zu den Plaketten; Auslöser der Gedenk-Szene jetzt um -5232/-1690. Migration 30.
+- Offen: Epitaphe von Codex (`NHV_SYS_BOOK_76–81`) anzeigen (Vorschlag: Aktivieren zeigt Nachricht).
+
+### 2026-09-27 – Q01-Ledger vertieft
+
+- `NHV_SYS_BOOK_63–75` als 13 neue, zusammenhängende Ledger-Absätze ergänzt: Hrefnas Hof, Eirik Ashmark, die sechs Wochen nach dem Black Sacrament, Hakan als erster Ermittlungsanker und Veyras Kriterien für eine mögliche Rekrutierung.
+- Die Erweiterung bleibt im bestehenden `TheGleanersLedger`-Buchrecord und erhält keine neue Stage, Property oder Questlogik. Briefe und Notizen `NHV_SYS_BOOK_42–62` wurden nicht verändert.
+- CK-Hand-off `docs/ck/M1.5-Q00-Dialogausbau.md` auf 25 Ledger-Absätze aktualisiert. Lint: 0 Fehler bei 387 IDs.
+
+### 2026-09-27 – Gedenkplaketten beschriftet
+
+- `NHV_SYS_BOOK_76–81` in `dialogue/Books.csv` ergänzt: Festus Krex, Gabriella, Arnbjorn, Veezara und zwei Astrid-Varianten.
+- Astrid verwendet für beide Einblendungen `NHV_Act_Q00_PlaqueAstrid` (`003DA5`); die kleine Variante erhält den Text „Remembered, but not honored“.
+- Keine neuen Plugin-Records oder Script-Properties. Lint: 0 Fehler bei 393 IDs.
 
 ### 2026-09-27 (Test v28, Ledger, Plaketten, Tür neu, v29)
 
