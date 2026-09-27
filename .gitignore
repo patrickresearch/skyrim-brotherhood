@@ -31,3 +31,6 @@ desktop.ini
 # Heruntergeladene Archive und entpackte Fremdwerkzeuge (lokal, nicht versionieren)
 /downloads/
 /.tools/
+
+# Zeilenlisten fuer Vertonung (tools/voice_import.py --export)
+/voice_lists/

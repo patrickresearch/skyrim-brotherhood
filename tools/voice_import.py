@@ -130,9 +130,28 @@ def main():
     ap.add_argument("--in", dest="src", type=Path, default=sv.REPO / "voice_in", help="input folder")
     ap.add_argument("--check", action="store_true", help="report only")
     ap.add_argument("--list", metavar="PREFIX", help="list LineIDs starting with PREFIX")
+    ap.add_argument("--export", metavar="DIR", type=Path,
+                    help="write one <VoiceType>.csv (LineID,Text,Missing) per voice type into DIR, for xVASynth/ElevenLabs")
     args = ap.parse_args()
 
     idx = index_lines()
+    if args.export is not None:
+        import csv
+        args.export.mkdir(parents=True, exist_ok=True)
+        man = sv.read_manifest()
+        by_vt = {}
+        for lid, e in idx.items():
+            for vt in sorted({p.split("/")[0] for p in e["paths"]}):
+                # "yes" = still silent (no real recording imported yet)
+                silent = any(p in man for p in e["paths"] if p.startswith(vt + "/"))
+                by_vt.setdefault(vt, []).append((lid, e["text"], "yes" if silent else "no"))
+        for vt, rows in sorted(by_vt.items()):
+            with open(args.export / f"{vt}.csv", "w", encoding="utf-8", newline="") as fh:
+                w = csv.writer(fh)
+                w.writerow(["LineID", "Text", "Missing"])
+                w.writerows(sorted(rows))
+            print(f"{vt}: {len(rows)} line(s) -> {args.export / (vt + '.csv')}")
+        return 0
     if args.list is not None:
         for lid in sorted(k for k in idx if k.startswith(args.list)):
             e = idx[lid]
