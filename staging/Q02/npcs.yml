@@ -1,0 +1,38 @@
+# Diskussionsentwurf, KEIN plugin-text/-Ersatz. Grobe NPC-Eckdaten fuer Q02, Details (Gesicht,
+# Stimme, exakte Stats) entstehen im CK. Siehe docs/concept/Q02-Nebenfiguren-Autorenprofile.md
+# und docs/concept/Neue-Charakterprofile.md fuer Charakterisierung.
+
+npcs:
+  - editorId: NHV_SingsBeneathIce
+    race: ArgonianRace
+    sex: Male
+    voiceType: NHV_VoiceSings
+    role: "Rekrutierungskandidat, Hafenarbeiter"
+    birthsign: "Shadow (narrativ, kein Spell-Grant noetig)"
+    factionsAfterRecruit: [NHV_FamilyFaction]
+  - editorId: NHV_TorbjornIceVein
+    race: NordRace
+    sex: Male
+    voiceType: NHV_VoiceTorbjorn
+    role: "Hafenmeister, ~55"
+  - editorId: NHV_DrinksTheBrine
+    race: ArgonianRace
+    sex: Male
+    voiceType: NHV_VoiceDrinksTheBrine
+    role: "Hafenarbeiter, ~32"
+  - editorId: NHV_HaldorFrostKnuckle
+    race: NordRace
+    sex: Male
+    voiceType: NHV_VoiceHaldor
+    role: "Schlaeger, ~30, nur Nachtszene aktiv"
+  - editorId: NHV_AeliusVarro
+    race: ImperialRace
+    sex: Male
+    voiceType: NHV_VoiceAelius
+    role: "Hafenschreiber, ~42, Oculatus-Informant"
+  - editorId: NHV_WatchSergeantHjorald
+    race: NordRace
+    sex: Male
+    voiceType: NHV_VoiceHjorald
+    role: "Wachtsergeant, ~48"
+    note: "Eigener Actor-Record, kein Vanilla-Waechter-Edit (Regel 1)"

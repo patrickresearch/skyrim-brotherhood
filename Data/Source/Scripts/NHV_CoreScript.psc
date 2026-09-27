@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 31 AutoReadOnly
+Int Property VERSION = 32 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -372,6 +372,12 @@ Function Migrate(Int aiFrom)
     EndIf
     If aiFrom < 31
         ; Standoff markers are new properties (ESP values); the placement only runs when Q00 starts.
+    EndIf
+    If aiFrom < 32
+        ; Q00 already finished before the Q01 hook existed: start Q01 now (no-op until the quest exists).
+        If bContractDone
+            StartQ01()
+        EndIf
     EndIf
 EndFunction
 
@@ -1774,7 +1780,33 @@ Function FinishQ00Contract()
     If Q00 && Q00.GetStage() < 100
         Q00.SetStage(100)
     EndIf
-    NHV_Util.Log(NHV_Cfg_Debug, "Q00 finished (stage 100); Q01 start still to come")
+    StartQ01()
+    NHV_Util.Log(NHV_Cfg_Debug, "Q00 finished (stage 100)")
+EndFunction
+
+; Q01 "The Unanswered Sacrament" follows Q00 directly (docs/plan/Q01-The-Unanswered-Sacrament.md, section 8).
+; Q01 is not start-game-enabled; the property stays empty until the quest exists in the CK.
+Quest Property Q01 Auto
+
+Function StartQ01()
+    If !Q01
+        NHV_Util.Log(NHV_Cfg_Debug, "StartQ01: Q01 property not set (quest not created in the CK yet)")
+        Return
+    EndIf
+    If Q01.IsRunning() || Q01.IsCompleted() || Q01.GetStageDone(10)
+        Return ; never restart a Q01 that already ran (also if its stage 100 only stopped it)
+    EndIf
+    If Q01.Start()
+        Q01.SetStage(10)
+        NHV_Util.Log(NHV_Cfg_Debug, "Q01 started")
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "StartQ01: Q01.Start() failed (alias fill?)")
+    EndIf
+EndFunction
+
+; Read-only for the contract quests (NHV_ContractBaseScript): they must not lock while Q00 holds the lock.
+Bool Function IsCutsceneLocked()
+    Return bCutsceneLocked
 EndFunction
 
 ; Idempotent: enabling an enabled ref does nothing.

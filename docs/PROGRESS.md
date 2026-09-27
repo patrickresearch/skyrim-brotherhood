@@ -18,7 +18,7 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 **27.09.2026: Hrefna-Dokumente, Ledger und Gedenkplaketten geschrieben.** `dialogue/Books.csv` enthält 21 Absätze für fünf unveränderte Fundstücke, 13 zusätzliche Ledger-Absätze (`NHV_SYS_BOOK_63–75`) und sechs Memorial-Plaque-Texte (`NHV_SYS_BOOK_76–81`). Die Plaketten bleiben nüchtern und würdevoll; Astrids kleine Variante verwendet denselben Activator-Record mit abweichendem Epitaph. Lint: 0 Fehler bei 393 IDs.
 
-**27.09.2026: Q02-Autorenprofile und Dialogmaster angelegt.** `docs/concept/Q02-Nebenfiguren-Autorenprofile.md` definiert Torbjorn, Drinks-the-Brine, Haldor, Aelius und Hjorald. `dialogue/Q02.csv` führt die Questkette von Veyras Briefing über Hafenuntersuchung, Nachtbeobachtung, Drowned Hollow, Aelius' Prüfung und Sings' Urteil bis zum Debrief; Q02-Journalzeilen stehen in `dialogue/Journal.csv`. Der Lint kennt die neuen Sprecher als eigene VoiceType-Figuren. Lint: 0 Fehler bei 473 IDs.
+**27.09.2026: Q02-Autorenprofile, Dialogmaster und Lore-Gegenstände ausgebaut.** `docs/concept/Q02-Nebenfiguren-Autorenprofile.md` definiert Torbjorn, Drinks-the-Brine, Haldor, Aelius und Hjorald. `dialogue/Q02.csv` führt die Questkette von Veyras Briefing über Hafenuntersuchung, Nachtbeobachtung, Drowned Hollow, Aelius' Prüfung und Sings' Urteil bis zum Debrief. Drei Q02-Loretexte (`NHV_SYS_BOOK_82–84`) dokumentieren Fragment 2, Reed-Walker-Knot und Drowned Pool. Der Lint kennt die neuen Sprecher als eigene VoiceType-Figuren. Lint: 0 Fehler bei 512 IDs.
 
 **27.09.2026: Autorenprofile für neue Questfiguren erstellt.** `docs/concept/Neue-Charakterprofile.md` beschreibt Hrefna, Sings, Nirelda, Corisande, Kharzog, Livia und die wichtigen Contract-Nebenfiguren mit Hintergrund, Motivation, Zielen, Schwächen, Beziehungen und Stimme. Nirelda ist nun verbindlich eine Feuer-Battle-Mage mit Meistergrad in Destruction. GOAL, Konzept und E26 synchronisiert; neue Q03-Dialoge und technische Magiewerte stehen noch aus.
 
@@ -284,11 +284,36 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 
 ## Log (neueste zuerst)
 
+### 2026-09-27 (Team-Lauf: Q00-Dialoge, Standoff, Stimmen, Q01/Q02 vorbereitet)
+
+- **Q00-Dialoge** (Commit 9e0f37a): Codex-Standoff-Ausbau 010_91–127, Lücken 010_22–23/42/52/70–73 und
+  `Veyra_InnWaiting` 020_45–50 im Plugin (Topics/Branches/Scenes 004300–004338); Sprecherwechsel über kurze
+  Scenes aus OnEnd-Fragmenten; `csv_to_plugin.py --check` 0 Abweichungen. CK-Test: `docs/ck/M1.5-Q00-Dialog-Integration.md`.
+- **Standoff-Aufstellung v31** (592fa81): Marker `NHV_Mk_Q00_Standoff{Nazir,Babette,Cicero}` (004340–42) bei
+  Veyras Stuhl, Headtracking in den Standoff-Szenen. Positionen nicht navmesh-geprüft → im CK nachjustieren.
+- **Stimmen** (c08e3fc, E27): `tools/voice_import.py` (mp3/wav mit LineID → WAV → LipGenerator → xWMA → .fuz).
+- **Core v32:** `StartQ01()` (Property `Q01`, am Ende von Q00 und per Migration), `IsCutsceneLocked()` für die
+  Contract-Quests.
+- **Q01/Q02 vorbereitet** (Sonnet-Agents, Review-Schleifen durch papyrus-reviewer, Build -Clean 39/39):
+  `NHV_ContractBaseScript` (gemeinsame Basis Q01–Q05: Lock/Watchdog, Recruit/Judgement, Load-Recovery),
+  `NHV_ContractPlayerAliasScript`, `NHV_ContractRecruitAliasScript`, `NHV_Q01Script`, `NHV_Q01_QuintusAliasScript`,
+  `NHV_Q02Script`, `NHV_Q02_{Haldor,Sings}AliasScript`. Pläne `docs/plan/Q01-*`, `docs/plan/Q02-*`,
+  CK-Anleitungen `docs/ck/M1.6-Q01-CK-Anleitung.md`, `docs/ck/M1.7-Q02-CK-Anleitung.md`, Codex-Aufträge
+  (u. a. `dialogue/Q01.csv` fehlt noch). FormID-Bereiche: Q01 004000–40FF, Q02 004100–41FF.
+- Offen für den Entwickler: Q01/Q02-Records im CK anlegen (Anleitungen), Ortswahl Q01 (Hof/Lager), Standoff-
+  Marker prüfen, Ingame-Test der Q00-Dialoge.
+
 ### 2026-09-27 – Q02 Cold Waters: Autorenprofile und Dialoge
 
 - Neues Autorenprofil `docs/concept/Q02-Nebenfiguren-Autorenprofile.md` für Torbjorn Ice-Vein, Drinks-the-Brine, Haldor Frost-Knuckle, Aelius Varro und Watch-Sergeant Hjorald.
 - `dialogue/Q02.csv` ergänzt die Questzeilen für Hafenhinweise, Knoten-Spur, Nachtbeobachtung, Beschattung/Fallback, Sings' Konfrontation, Veyras Prüfung, Aelius-Szene, Fragment-Wendung, vier Urteilswege und Debrief.
-- Q02-Journalziele `NHV_Q02_010_90` bis `NHV_Q02_100_90` in `dialogue/Journal.csv` ergänzt. `tools/dialogue_lint.py` kennt die neuen Sprecher. Lint: 0 Fehler bei 473 IDs.
+- Q02-Journalziele `NHV_Q02_010_90` bis `NHV_Q02_100_90` in `dialogue/Journal.csv` ergänzt. `tools/dialogue_lint.py` kennt die neuen Sprecher. Lore-Review korrigierte Rettungspfad, Körperzahl, Fragment-Bedingungen, Geografie und Sings' Verantwortungsreaktion. Der Team-Lead dokumentierte CK-Bedingungen und Statuswerte im Q02-Handoff. Lint: 0 Fehler bei 512 IDs.
+
+### 2026-09-27 – Q02-Gegenstände und Drowned Pool
+
+- `NHV_SYS_BOOK_82–84` ergänzt: Oculatus Dispatch Fragment II, Reed-Walker's Knot und die Drowned-Pool-Inschrift.
+- Autoren-Lore und CK-Handoff für `NHV_Armor_ShadowscaleWraps`, `NHV_Note_Dispatch02`, `NHV_MISC_ReedWalkersKnot`, Name Bowl und Pool-Post ergänzt.
+- Q02-Bedingungen wurden auf persistente GlobalVariables ausgerichtet: `NHV_Q02_HaldorSaved`, `NHV_Q02_FragmentFound` und `NHV_Q02_Result`. Keine Scripts oder Plugin-Records geändert.
 
 ### 2026-09-27 (Tür und Plaketten im CK, v30)
 

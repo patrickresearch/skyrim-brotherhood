@@ -1,0 +1,72 @@
+# Diskussionsentwurf, KEIN plugin-text/-Ersatz. Grobe Feldstruktur fuer NHV_Q02_ColdWaters,
+# als Gespraechsgrundlage vor dem Anlegen im CK oder per Spriggit. Siehe docs/plan/Q02-Records.md.
+
+quest:
+  editorId: NHV_Q02_ColdWaters
+  formIdHint: "004100"
+  name: "Cold Waters"
+  script: NHV_Q02Script
+  extends: NHV_ContractBaseScript
+  startGameEnabled: false
+  priority: 60
+  stages:
+    - stage: 10
+      journal: "Investigate the bodies in Windhelm's harbor."
+    - stage: 20
+      journal: "Examine the latest victim."
+    - stage: 30
+      journal: "Watch the docks at night."
+    - stage: 40
+      journal: "Follow the killer without being seen."
+    - stage: 50
+      journal: "Confront the killer."
+    - stage: 60
+      journal: "Help Sings-Beneath-Ice kill Aelius the harbor clerk."
+    - stage: 70
+      journal: "Decide Sings-Beneath-Ice's fate."
+    - stage: 100
+      journal: "Return to Veyra."
+      complete: true
+  aliases:
+    - id: 0
+      name: PlayerRefAlias
+      type: ReferenceAlias
+      fill: PlayerRef
+    - id: 1
+      name: VeyraAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+      optional: true
+      note: "Zeigt auf dieselbe Referenz wie NHV_CoreScript.VeyraRef, Muster aus NHV_Q01Script"
+    - id: 2
+      name: SingsAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+      scripts: [NHV_ContractRecruitAliasScript, NHV_Q02_SingsAliasScript]
+    - id: 3
+      name: TorbjornAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+    - id: 4
+      name: DrinksAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+    - id: 5
+      name: HaldorAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+      scripts: [NHV_Q02_HaldorAliasScript]
+    - id: 6
+      name: AeliusAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+    - id: 7
+      name: HjoraldAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+    - id: 8
+      name: AssemblageWitnessAlias
+      type: ReferenceAlias
+      fill: SpecificReference
+      optional: true
+      note: "Vorschlag, Nebenaufgabe B"
