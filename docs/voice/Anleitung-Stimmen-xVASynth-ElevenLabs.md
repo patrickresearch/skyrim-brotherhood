@@ -74,6 +74,14 @@ Spalte im Export.
 
 ## Teil D – Importieren
 
+**Abkürzung für xVASynth:** Umbenennen ist nicht nötig. xVASynth speichert unter
+`C:\Tools\xVASynth\resources\app\output\skyrim\<Stimme>\` mit dem Text als Dateinamen; das Tool ordnet
+die Dateien über den Text zu und kopiert sie als `<LineID>.wav` nach `voice_in\`:
+```
+python tools/voice_import.py --from-text "C:\Tools\xVASynth\resources\app\output\skyrim\sk_nazir" --from-text "C:\Tools\xVASynth\resources\app\output\skyrim\sk_cicero"
+```
+`NOMATCH` heißt: Text wurde in xVASynth verändert oder gehört zu keiner Zeile.
+
 1. Zuerst prüfen, ohne etwas zu schreiben:
    ```
    python tools/voice_import.py --check
