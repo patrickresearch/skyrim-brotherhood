@@ -64,6 +64,25 @@ if (Test-Path $voiceSrc) {
     Copy-Item (Join-Path $voiceSrc '*') $voiceDst -Recurse -Exclude 'silent_voice.manifest'
 }
 
+# FaceGen of our own NPCs (face mesh + tint). Without it they get the dark-face bug outside the dev copy,
+# where the CK wrote the files loose. Only FormIDs that still exist as NPC records in plugin-text are packed.
+$npcIds = Get-ChildItem (Join-Path $repo 'plugin-text\Npcs') -Filter '*.yaml' -ErrorAction SilentlyContinue |
+    ForEach-Object { if ($_.Name -match ' - ([0-9A-F]{6})_NightsHarvest\.esp\.yaml$') { '00' + $Matches[1] } }
+foreach ($fg in @(@{ Rel = 'Meshes\Actors\Character\FaceGenData\FaceGeom\NightsHarvest.esp'; Ext = '.nif' },
+                  @{ Rel = 'Textures\Actors\Character\FaceGenData\FaceTint\NightsHarvest.esp'; Ext = '.dds' })) {
+    $src = Join-Path $data $fg.Rel
+    $files = Get-ChildItem $src -File -ErrorAction SilentlyContinue |
+        Where-Object { $_.Extension -ieq $fg.Ext -and $npcIds -contains $_.BaseName.ToUpper() }
+    foreach ($id in $npcIds) {
+        if (-not ($files | Where-Object { $_.BaseName.ToUpper() -eq $id })) { Write-Warning "FaceGen fehlt: $($fg.Rel)\$id$($fg.Ext) (im CK: Ctrl+F4 auf dem NPC, dann sync_dev -Direction FromDev)" }
+    }
+    if ($files) {
+        $dst = Join-Path $bsaSrc $fg.Rel
+        New-Item -ItemType Directory -Force $dst | Out-Null
+        Copy-Item $files.FullName $dst
+    }
+}
+
 # No -z: voice files do not play from a compressed BSA (the vanilla voice archives are uncompressed too).
 & $bsarch pack $bsaSrc (Join-Path $core 'NightsHarvest.bsa') -sse -mt | Out-Null
 if ($LASTEXITCODE -or -not (Test-Path (Join-Path $core 'NightsHarvest.bsa'))) { throw 'bsarch konnte das BSA nicht erstellen.' }
