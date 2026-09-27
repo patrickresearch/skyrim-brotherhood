@@ -164,6 +164,8 @@ Aliases:
   - Optional
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 003D90:NightsHarvest.esp
+  - 003D94:NightsHarvest.esp
   - 0037EF:NightsHarvest.esp
   - 0037DE:NightsHarvest.esp
   - 0037DF:NightsHarvest.esp
@@ -176,6 +178,8 @@ Aliases:
   ForcedReference: 01C3AD:Skyrim.esm
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 003D91:NightsHarvest.esp
+  - 003D95:NightsHarvest.esp
   - 0037EF:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 2
@@ -185,6 +189,8 @@ Aliases:
   ForcedReference: 01D4BC:Skyrim.esm
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 003D92:NightsHarvest.esp
+  - 003D96:NightsHarvest.esp
   - 0037EF:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 3
@@ -194,6 +200,8 @@ Aliases:
   ForcedReference: 09BCB0:Skyrim.esm
   PackageData:
   - 000DD7:NightsHarvest.esp
+  - 003D93:NightsHarvest.esp
+  - 003D97:NightsHarvest.esp
   - 0037EF:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 4

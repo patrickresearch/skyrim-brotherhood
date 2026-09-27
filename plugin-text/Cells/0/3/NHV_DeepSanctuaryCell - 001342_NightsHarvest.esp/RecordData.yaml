@@ -2196,6 +2196,44 @@ Persistent:
   Placement:
     Position: -5568, -3200, 384
     Rotation: 0, 0, 5.866381
+- MutagenObjectType: PlacedObject
+  FormKey: 003D9C:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_MemorialVeyra
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -5025, -1690, -236
+- MutagenObjectType: PlacedObject
+  FormKey: 003D9D:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_MemorialNazir
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -5140, -1680, -236
+    Rotation: 0, 0, 0.349066
+- MutagenObjectType: PlacedObject
+  FormKey: 003D9E:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_MemorialBabette
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -4880, -1680, -236
+    Rotation: 0, 0, 5.934119
+- MutagenObjectType: PlacedObject
+  FormKey: 003D9F:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_MemorialCicero
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -5010, -1780, -236
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 001344:NightsHarvest.esp

@@ -37,6 +37,17 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: HailSithisQuest
       Object: 01EA59:Skyrim.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: MemorialMarkers
+      Objects:
+      - Name: ''
+        Object: 003D9C:NightsHarvest.esp
+      - Name: ''
+        Object: 003D9D:NightsHarvest.esp
+      - Name: ''
+        Object: 003D9E:NightsHarvest.esp
+      - Name: ''
+        Object: 003D9F:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: MemorialScene
       Object: 00380A:NightsHarvest.esp
@@ -82,6 +93,17 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: VeiledPassageScene
       Object: 0037F0:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: VeilMarkers
+      Objects:
+      - Name: ''
+        Object: 003D98:NightsHarvest.esp
+      - Name: ''
+        Object: 003D99:NightsHarvest.esp
+      - Name: ''
+        Object: 003D9A:NightsHarvest.esp
+      - Name: ''
+        Object: 003D9B:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraBase
       Object: 000817:NightsHarvest.esp

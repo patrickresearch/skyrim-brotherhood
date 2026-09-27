@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 25 AutoReadOnly
+Int Property VERSION = 26 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -307,6 +307,15 @@ Function Migrate(Int aiFrom)
     EndIf
     If aiFrom < 25
         ; No per-save state: PlaceMemorialActor switched from SetPosition to MoveTo offsets.
+    EndIf
+    If aiFrom < 26
+        ; Family walk: VeilMarkers/MemorialMarkers are new properties (ESP values). A save in stage 40/50 sends the
+        ; family off at once; the gather counter starts at 0.
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted && !bVeiledPassageDone
+            GatherFamily(VeilMarkers)
+        ElseIf Q00 && Q00.IsRunning() && Q00.GetStage() == 50 && !bMemorialStarted
+            GatherFamily(MemorialMarkers)
+        EndIf
     EndIf
 EndFunction
 
@@ -1238,6 +1247,11 @@ EndFunction
 Scene Property VeiledPassageScene Auto
 Scene Property EnterDeepScene Auto
 ObjectReference Property DeepSanctuaryEntryMarker Auto ; NHV_Mk_Q00_DeepSanctuaryEntry (door target marker)
+; Walk targets in alias order (0 Veyra, 1 Nazir, 2 Babette, 3 Cicero), targets of the alias packages
+; NHV_Pkg_Q00_<Name>WalkVeil (stage 40) and NHV_Pkg_Q00_<Name>WalkMemorial (stage 50-60). Developer 27.09.2026:
+; the family walks to the wall itself, both in the Sanctuary and in the Deep Sanctuary.
+ObjectReference[] Property VeilMarkers Auto
+ObjectReference[] Property MemorialMarkers Auto
 
 Scene ActiveCutscene ; the cutscene the lock/watchdog belongs to; None = the Standoff
 Bool bPassagePollPending = False
@@ -1246,6 +1260,7 @@ Bool bVeiledPassageDone = False
 Bool bPassagePlacePending = False
 Bool bCutsceneSeenPlaying = False
 Bool bPassageEndGrace = False
+Int iGatherTicks = 0 ; polls spent waiting for the family to arrive at its markers
 
 ; Stage 40 fragment: no waiting in the fragment, the family is placed in the next update.
 Function BeginVeiledPassage()
@@ -1266,6 +1281,14 @@ Function PlaceVeiledPassageFamily()
         Return
     EndIf
     EnsureSealedPassageState()
+    If VeilMarkers.Length >= 4
+        EnsureFamilyAliases()
+        GatherFamily(VeilMarkers)
+        NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family walks to the wall")
+        ArmVeiledPassagePoll()
+        Return
+    EndIf
+    ; Fallback without walk markers: teleport.
     ; E25: load door at 3296/3392 (see SpawnPassageRubble); the room lies at +X, the dead end runs towards -X, the
     ; family faces the door (angle 271.19). Provisional positions (developer: exact placement later).
     If VeyraRef && !VeyraRef.IsDead()
@@ -1286,6 +1309,7 @@ EndFunction
 
 Function ArmVeiledPassagePoll()
     If !bVeiledPassageStarted && !bVeiledPassageDone && Q00 && Q00.IsRunning() && Q00.GetStage() == 40
+        iGatherTicks = 0
         bPassagePollPending = True
         RegisterForSingleUpdate(2.0)
     EndIf
@@ -1305,8 +1329,15 @@ Function PollVeiledPassage()
     If !kPlayer.IsInLocation(DawnstarSanctuaryLocation)
         Return ; OnEnterDawnstarSanctuary arms it again
     EndIf
-    If RubbleRef.GetDistance(kPlayer) < 700.0
+    Bool bNear = RubbleRef.GetDistance(kPlayer) < 700.0
+    If bNear && !FamilyGathered(VeilMarkers) && iGatherTicks < 8
+        iGatherTicks += 1 ; the player is faster: wait up to ~16 s for the family, then place the rest
+        bPassagePollPending = True
+        RegisterForSingleUpdate(2.0)
+    ElseIf bNear
         bVeiledPassageStarted = True
+        EnsureFamilyAliases()
+        SnapFamily(VeilMarkers)
         ; A vanilla Sanctuary scene holding Nazir or Babette would keep ours from getting them.
         StopOtherScenes()
         ActiveCutscene = VeiledPassageScene
@@ -1359,15 +1390,15 @@ Function FinishVeiledPassage()
         Return
     EndIf
     ; The marker faces +Y into the room (see NHV_SealedPassageDoorScript); the family spreads out ahead.
+    ; Stage first: the moved actors evaluate their packages at once and walk on to the memorial wall.
+    Q00.SetStage(50)
     MovePassageActor(0, 0.0, 320.0)
     MovePassageActor(1, -120.0, 240.0)
     MovePassageActor(2, 120.0, 240.0)
     MovePassageActor(3, 0.0, 420.0)
-    Q00.SetStage(50)
     kPlayer.MoveTo(DeepSanctuaryEntryMarker, 0.0, 128.0, 8.0, True)
     UnlockCutscene()
     NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family entered the Deep Sanctuary")
-    ArmMemorialPoll()
     OnEnterDeepSanctuary() ; arms the memorial poll
 EndFunction
 
@@ -1416,6 +1447,11 @@ Bool bContractDone = False
 
 Function ArmMemorialPoll()
     If !bMemorialStarted && Q00 && Q00.IsRunning() && Q00.GetStage() == 50
+        ; Family members still outside (player went through the door alone) join; the others walk there.
+        GatherFamily(MemorialMarkers)
+        If !bMemorialPollPending
+            iGatherTicks = 0 ; entering again does not extend the wait
+        EndIf
         bMemorialPollPending = True
         RegisterForSingleUpdate(2.0)
     EndIf
@@ -1432,17 +1468,28 @@ Function PollMemorial()
     EndIf
     Float fDX = kPlayer.GetPositionX() + 5025.0
     Float fDY = kPlayer.GetPositionY() + 1598.23
-    If fDX * fDX + fDY * fDY > 202500.0 ; 450 units squared (no constant expression: the compiler folds it with the system locale, 27.09.2026)
+    Bool bFar = fDX * fDX + fDY * fDY > 202500.0 ; 450 units squared (no constant expression: the compiler folds it with the system locale, 27.09.2026)
+    Bool bWait = bFar
+    If !bFar && !FamilyGathered(MemorialMarkers) && iGatherTicks < 8
+        iGatherTicks += 1 ; wait up to ~16 s for the family, then place the rest
+        bWait = True
+    EndIf
+    If bWait
         bMemorialPollPending = True
         RegisterForSingleUpdate(2.0)
         Return
     EndIf
     bMemorialStarted = True
     Q00.SetStage(60)
-    PlaceMemorialActor(0, -5025.0, -1690.0, 0.0)
-    PlaceMemorialActor(1, -5140.0, -1680.0, 20.0)
-    PlaceMemorialActor(2, -4880.0, -1680.0, 340.0)
-    PlaceMemorialActor(3, -5010.0, -1780.0, 0.0)
+    If MemorialMarkers.Length >= 4
+        EnsureFamilyAliases()
+        SnapFamily(MemorialMarkers)
+    Else
+        PlaceMemorialActor(0, -5025.0, -1690.0, 0.0)
+        PlaceMemorialActor(1, -5140.0, -1680.0, 20.0)
+        PlaceMemorialActor(2, -4880.0, -1680.0, 340.0)
+        PlaceMemorialActor(3, -5010.0, -1780.0, 0.0)
+    EndIf
     If !MemorialScene
         NHV_Util.Log(NHV_Cfg_Debug, "PollMemorial: MemorialScene not set, the choice is still open in dialogue")
         Return
@@ -1472,6 +1519,117 @@ Function PlaceMemorialActor(Int aiAlias, Float afX, Float afY, Float afAngle)
         kActor.SetAngle(0.0, 0.0, afAngle)
         kActor.EvaluatePackage()
     EndIf
+EndFunction
+
+; ---------------------------------------------------------------------------------------------------------
+; Family walk (developer, 27.09.2026): the alias packages walk the family to its markers; these helpers only
+; send them off, check arrival and place the stragglers when the cutscene starts.
+; ---------------------------------------------------------------------------------------------------------
+Actor Function GetFamilyActor(Int aiAlias)
+    If !Q00
+        Return None
+    EndIf
+    ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
+    If !kAlias
+        Return None
+    EndIf
+    Actor kActor = kAlias.GetActorReference()
+    If kActor && !kActor.IsDead() && !kActor.IsDisabled()
+        Return kActor
+    EndIf
+    Return None
+EndFunction
+
+; What PlaceStandoffActor does for the aliases, without the move: fill an empty alias, clear a dead actor (a
+; scene does not start with a dead actor among its aliases), no Cicero once the Falkreath Cicero is dead.
+Function EnsureFamilyAliases()
+    EnsureFamilyAlias(0, 0)
+    EnsureFamilyAlias(1, 0x01C3AD)
+    EnsureFamilyAlias(2, 0x01D4BC)
+    Actor kFalkreathCicero = Game.GetFormFromFile(0x01E64A, "Skyrim.esm") as Actor
+    If kFalkreathCicero && kFalkreathCicero.IsDead()
+        ReferenceAlias kCicero = Q00.GetAlias(3) as ReferenceAlias
+        If kCicero
+            kCicero.Clear()
+        EndIf
+    Else
+        EnsureFamilyAlias(3, 0x09BCB0)
+    EndIf
+EndFunction
+
+Function EnsureFamilyAlias(Int aiAlias, Int aiRefFormID)
+    If !Q00
+        Return
+    EndIf
+    ReferenceAlias kAlias = Q00.GetAlias(aiAlias) as ReferenceAlias
+    If !kAlias
+        Return
+    EndIf
+    Actor kActor = kAlias.GetActorReference()
+    If !kActor && aiRefFormID
+        kActor = Game.GetFormFromFile(aiRefFormID, "Skyrim.esm") as Actor
+        If kActor
+            kAlias.ForceRefTo(kActor)
+        EndIf
+    EndIf
+    If kActor && kActor.IsDead()
+        kAlias.Clear()
+        NHV_Util.Log(NHV_Cfg_Debug, "EnsureFamilyAlias: alias " + aiAlias + " actor is dead, alias cleared")
+    EndIf
+EndFunction
+
+; Sends every family member to its marker. Someone outside the marker's cell is moved there (no walk across Skyrim
+; or through a door without navmesh link); the rest walk.
+Function GatherFamily(ObjectReference[] akMarkers)
+    If akMarkers.Length < 4
+        Return
+    EndIf
+    Int i = 0
+    While i < 4
+        Actor kActor = GetFamilyActor(i)
+        If kActor && akMarkers[i]
+            If kActor.GetParentCell() != akMarkers[i].GetParentCell()
+                kActor.MoveTo(akMarkers[i])
+            EndIf
+            kActor.EvaluatePackage()
+        EndIf
+        i += 1
+    EndWhile
+EndFunction
+
+; True when every living family member stands within 250 units of its marker.
+Bool Function FamilyGathered(ObjectReference[] akMarkers)
+    If akMarkers.Length < 4
+        Return True
+    EndIf
+    Int i = 0
+    While i < 4
+        Actor kActor = GetFamilyActor(i)
+        If kActor && akMarkers[i] && (kActor.GetParentCell() != akMarkers[i].GetParentCell() || kActor.GetDistance(akMarkers[i]) > 250.0)
+            Return False
+        EndIf
+        i += 1
+    EndWhile
+    Return True
+EndFunction
+
+; Cutscene start: stragglers are moved onto their marker, the others only turn to the marker's heading.
+Function SnapFamily(ObjectReference[] akMarkers)
+    If akMarkers.Length < 4
+        Return
+    EndIf
+    Int i = 0
+    While i < 4
+        Actor kActor = GetFamilyActor(i)
+        If kActor && akMarkers[i]
+            If kActor.GetParentCell() != akMarkers[i].GetParentCell() || kActor.GetDistance(akMarkers[i]) > 250.0
+                kActor.MoveTo(akMarkers[i])
+            Else
+                kActor.SetAngle(0.0, 0.0, akMarkers[i].GetAngleZ())
+            EndIf
+        EndIf
+        i += 1
+    EndWhile
 EndFunction
 
 ; End fragment of NHV_Scn_Q00_05Memorial: the choice follows in free dialogue.

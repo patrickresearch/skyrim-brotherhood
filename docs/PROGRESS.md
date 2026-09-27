@@ -282,8 +282,12 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
   Zellname `NHV_DeepSanctuaryCell` → „Deep Sanctuary“ (Name ggf. später per Codex-Brief).
 - `NHV_CoreScript` v25: `PlaceMemorialActor` nutzt MoveTo mit Offsets zum Eingangsmarker statt SetPosition
   (Offsets aus der Live-Position des Markers; Ziel-Z -232). Leerer Migrationsschritt 25. Review: freigegeben.
-- Familie bleibt nach Stage 50 am Eingang stehen (PassageHold) und wird beim Erreichen der Wand dorthin versetzt.
-  Auf Wunsch später: Familie folgt dem Spieler / läuft selbst zur Wand.
+- Entwickler-Wunsch: Die Familie läuft selbst zur Wand. `NHV_CoreScript` v26: je Figur ein XMarkerHeading
+  (`NHV_Mk_Q00_Veil<Name>` 003D98–9B in `DawnstarSanctuary`, `NHV_Mk_Q00_Memorial<Name>` 003D9C–9F in der Deep
+  Sanctuary) und Travel-Packages `NHV_Pkg_Q00_<Name>WalkVeil` (Stage 40, 003D90–93) /
+  `…WalkMemorial` (Stage 50–60, 003D94–97) in den Alias-Listen vor `PassageHold`. Properties `VeilMarkers` /
+  `MemorialMarkers`. Die Zwischensequenz wartet bis zu ~16 s, bis alle angekommen sind; Nachzügler werden auf
+  ihren Marker gesetzt. Stage 50 wird jetzt vor dem Versetzen in die Deep Sanctuary gesetzt.
 
 ### 2026-09-27 (E25 echte Ladetür, Navmesh)
 

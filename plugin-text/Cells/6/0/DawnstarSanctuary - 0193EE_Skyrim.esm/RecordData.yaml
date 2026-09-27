@@ -67,5 +67,45 @@ Persistent:
   Placement:
     Position: 3296, 3392, 5664
     Rotation: 0, 0, 4.749979
+- MutagenObjectType: PlacedObject
+  FormKey: 003D98:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_VeilVeyra
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 3440, 3363, 5668
+    Rotation: 0, 0, 4.733158
+- MutagenObjectType: PlacedObject
+  FormKey: 003D99:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_VeilNazir
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 3520, 3300, 5668
+    Rotation: 0, 0, 4.974188
+- MutagenObjectType: PlacedObject
+  FormKey: 003D9A:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_VeilBabette
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 3520, 3430, 5668
+    Rotation: 0, 0, 4.45059
+- MutagenObjectType: PlacedObject
+  FormKey: 003D9B:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_VeilCicero
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 3640, 3363, 5668
+    Rotation: 0, 0, 4.733158
 MajorFlags:
 - 0x40000
