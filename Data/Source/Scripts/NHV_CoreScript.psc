@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 33 AutoReadOnly
+Int Property VERSION = 34 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -385,6 +385,12 @@ Function Migrate(Int aiFrom)
     If aiFrom < 33
         ; Maintenance() now notes the start gate on every load; nothing to migrate.
     EndIf
+    If aiFrom < 34
+        ; Veyra spawned inside a modded table: before the Standoff starts, put her on her new marker.
+        If VeyraRef && StandoffVeyraMarker && Q00 && Q00.IsRunning() && Q00.GetStage() <= 10 && !bStandoffSceneStarted
+            VeyraRef.MoveTo(StandoffVeyraMarker)
+        EndIf
+    EndIf
 EndFunction
 
 ; Idempotent: does nothing once either RubbleRef or PassageDoorRef already exists. Safe to call
@@ -618,8 +624,14 @@ EndEvent
 ; sandbox packages. Script-side freezing (EnableAI/SetDontMove) was removed in version 17.
 Function PrepareStandoff()
     If !VeyraRef && VeyraBase && DawnstarAnchorRef
-        VeyraRef = DawnstarAnchorRef.PlaceAtMe(VeyraBase, 1, True, False) as Actor
-        If VeyraRef
+        If StandoffVeyraMarker
+            ; Marker placed in the CK (main-game test 27.09.2026: a Sanctuary overhaul puts a table on the old
+            ; chair spot and Veyra spawned inside it). PlaceAtMe takes the marker's position and heading.
+            VeyraRef = StandoffVeyraMarker.PlaceAtMe(VeyraBase, 1, True, False) as Actor
+        Else
+            VeyraRef = DawnstarAnchorRef.PlaceAtMe(VeyraBase, 1, True, False) as Actor
+        EndIf
+        If VeyraRef && !StandoffVeyraMarker
             Utility.Wait(0.1) ; see SpawnPassageRubble() - same PlaceAtMe/SetPosition timing issue.
             ; The coordinates were taken standing IN the chair, so she stood inside it; moved ~70 units back
             ; along her heading (80.24 degrees). Sitting down is handled by the Standoff scene (CK).
@@ -905,6 +917,7 @@ Function PlaceStandoffActor(Int aiAlias, Int aiRefFormID, Float afX, Float afY, 
 EndFunction
 
 ; XMarkerHeading refs in DawnstarSanctuary (NHV_Mk_Q00_Standoff<Name>, 004340-004342), heading towards Veyra.
+ObjectReference Property StandoffVeyraMarker Auto ; NHV_Mk_Q00_StandoffVeyra (004343), Veyra's spawn point
 ObjectReference Property StandoffNazirMarker Auto
 ObjectReference Property StandoffBabetteMarker Auto
 ObjectReference Property StandoffCiceroMarker Auto

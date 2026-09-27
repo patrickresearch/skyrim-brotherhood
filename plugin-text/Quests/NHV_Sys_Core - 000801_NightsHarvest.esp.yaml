@@ -123,6 +123,9 @@ VirtualMachineAdapter:
       Name: StandoffScene
       Object: 002B4E:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: StandoffVeyraMarker
+      Object: 004343:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: VeiledPassageScene
       Object: 0037F0:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectListProperty

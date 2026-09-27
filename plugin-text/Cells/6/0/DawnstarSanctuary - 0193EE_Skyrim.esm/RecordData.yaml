@@ -116,7 +116,7 @@ Persistent:
   Base: 000034:Skyrim.esm
   Placement:
     Position: 2495, 4870, 5620
-    Rotation: 0, 0, 3.687598
+    Rotation: 0, 0, 2.305391
 - MutagenObjectType: PlacedObject
   FormKey: 004341:NightsHarvest.esp
   MajorRecordFlagsRaw: 1024
@@ -126,7 +126,7 @@ Persistent:
   Base: 000034:Skyrim.esm
   Placement:
     Position: 2545, 4700, 5620
-    Rotation: 0, 0, 4.917403
+    Rotation: 0, 0, 1.292497
 - MutagenObjectType: PlacedObject
   FormKey: 004342:NightsHarvest.esp
   MajorRecordFlagsRaw: 1024
@@ -136,6 +136,16 @@ Persistent:
   Base: 000034:Skyrim.esm
   Placement:
     Position: 2475, 4580, 5618
-    Rotation: 0, 0, 5.863898
+    Rotation: 0, 0, 0.86217
+- MutagenObjectType: PlacedObject
+  FormKey: 004343:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q00_StandoffVeyra
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 2650, 4730, 5620
+    Rotation: 0, 0, 4.619887
 MajorFlags:
 - 0x40000
