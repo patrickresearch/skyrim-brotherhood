@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 32 AutoReadOnly
+Int Property VERSION = 33 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -118,6 +118,9 @@ Function Maintenance()
         Debug.Notification("Night's Harvest " + VERSION_TEXT + " loaded")
     EndIf
     EnsureSealedPassageState()
+    ; Start the E14 delay on the first load after installing, not only on the next location change (main-game
+    ; test 27.09.2026: a save started indoors and slept through did not count the sleep).
+    NoteHailSithisCompletion()
     ; E25 self-heal: a script door of an earlier build still around (the migration found no load door back then).
     If DeepSanctuaryDoorRef && (ReturnDoorRef || (PassageDoorRef && PassageDoorRef != DeepSanctuaryDoorRef))
         MigrateToLoadDoor()
@@ -378,6 +381,9 @@ Function Migrate(Int aiFrom)
         If bContractDone
             StartQ01()
         EndIf
+    EndIf
+    If aiFrom < 33
+        ; Maintenance() now notes the start gate on every load; nothing to migrate.
     EndIf
 EndFunction
 
