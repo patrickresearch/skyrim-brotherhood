@@ -1,0 +1,57 @@
+FormKey: 003DA0:NightsHarvest.esp
+EditorID: NHV_Book_GleanersLedger
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: The Gleaner's Ledger
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">The Gleaner's Ledger</font></p>
+
+    <p align="left">A name is not a summons. It is a question written down before anyone decides whether to ask it.</p>
+
+    [pagebreak]
+
+    <p align="left">I keep names because memory is a poor lock. It opens for grief, closes for pride, and lets the most convenient story walk out wearing the truth's face.</p>
+
+    <p align="left">First mark the deed. Then mark the silence after it. A killer who can describe the blood but not the hour afterward has told you only half a story.</p>
+
+    [pagebreak]
+
+    <p align="left">Second: watch what remains when anger has spent itself. Remorse is not proof. Cruelty is not proof. The choice that follows is the part worth carrying to the Listener.</p>
+
+    <p align="left">Third: never mistake hunger for devotion. The Dark Brotherhood needs hands that choose the knife, and minds that know when to put it away.</p>
+
+    [pagebreak]
+
+    <p align="left">I have served Sithis in more than one house. The doors bore different names. The silence beyond them did not.</p>
+
+    <p align="left">The Mother speaks to her Listener. The Listener judges those I bring to the door. I offer names not commands.</p>
+
+    [pagebreak]
+
+    <p align="left">When a sanctuary burns, count what can still be taught. Count the doors that remain. Count the people who have not yet learned to call themselves lost.</p>
+
+    [pagebreak]
+
+    <p align="left">First inquiry: Hjaalmarch. Hrefna Stormhollow, a Nord farmer, performed the Black Sacrament against the moneylender taking her farm. No answer came.</p>
+
+    <p align="left">She waited six weeks. Her husband drank, the cupboards emptied, and grief learned the shape of work. Begin in Morthal. Ask what the marsh returned.</p>
+
+    [pagebreak]
+
+    <p align="left">Do not offer a place before you have heard the petitioner's story. Find the fisherman who remembers the water. Learn why the town calls the death an accident.</p>
+
+    <p align="left">If this ledger outlives me, let its keeper cross out every certainty I mistook for wisdom. A record that cannot be corrected is only another kind of lie.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 50
+Weight: 1
+InventoryArt: 0B7E3D:Skyrim.esm

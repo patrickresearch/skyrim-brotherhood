@@ -2147,8 +2147,7 @@ Persistent:
   Base: 064092:Skyrim.esm
   TeleportDestination:
     Door: 003D8B:NightsHarvest.esp
-    Position: 3180, 3392, 5668.72
-    Rotation: 0, 0, 4.712389
+    Position: 3288.75, 3778.81, 5653.73
   Scale: 0.75
   NavigationDoorLink:
     NavMesh: 001343:NightsHarvest.esp
@@ -2236,6 +2235,73 @@ Persistent:
   Placement:
     Position: -4990, -1670, 36.9
     Rotation: 0, 0, 5.829451
+- MutagenObjectType: PlacedObject
+  FormKey: 003DA6:NightsHarvest.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: NHV_Ref_Q00_PlaqueFestus
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 003DA1:NightsHarvest.esp
+  Placement:
+    Position: -5115, -1590, 150
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 003DA7:NightsHarvest.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: NHV_Ref_Q00_PlaqueGabriella
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 003DA2:NightsHarvest.esp
+  Placement:
+    Position: -5065, -1590, 150
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 003DA8:NightsHarvest.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: NHV_Ref_Q00_PlaqueArnbjorn
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 003DA3:NightsHarvest.esp
+  Placement:
+    Position: -4985, -1590, 150
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 003DA9:NightsHarvest.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: NHV_Ref_Q00_PlaqueVeezara
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 003DA4:NightsHarvest.esp
+  Placement:
+    Position: -4935, -1590, 150
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 003DAA:NightsHarvest.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: NHV_Ref_Q00_PlaqueAstrid
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 003DA5:NightsHarvest.esp
+  Placement:
+    Position: -5025, -1590, 150
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 003DAB:NightsHarvest.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: NHV_Ref_Q00_PlaqueAstridSmall
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 003DA5:NightsHarvest.esp
+  Scale: 0.7
+  Placement:
+    Position: -5025, -1590, 105
+    Rotation: 0, 0, 3.141593
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 001344:NightsHarvest.esp

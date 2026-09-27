@@ -5,6 +5,12 @@ VirtualMachineAdapter:
   - Name: NHV_CoreScript
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: AstridPlaque
+      Object: 003DAA:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AstridPlaqueSmall
+      Object: 003DAB:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: ContractScene
       Object: 003819:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
@@ -35,6 +41,9 @@ VirtualMachineAdapter:
       Name: ExitDoorRef
       Object: 001586:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: GleanersLedger
+      Object: 003DA0:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: HailSithisQuest
       Object: 01EA59:Skyrim.esm
     - MutagenObjectType: ScriptObjectListProperty
@@ -48,9 +57,23 @@ VirtualMachineAdapter:
         Object: 003D9E:NightsHarvest.esp
       - Name: ''
         Object: 003D9F:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: MemorialPlaques
+      Objects:
+      - Name: ''
+        Object: 003DA6:NightsHarvest.esp
+      - Name: ''
+        Object: 003DA7:NightsHarvest.esp
+      - Name: ''
+        Object: 003DA8:NightsHarvest.esp
+      - Name: ''
+        Object: 003DA9:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: MemorialScene
       Object: 00380A:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_AstridMemorial
+      Object: 000814:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Cfg_Debug
       Object: 000800:NightsHarvest.esp

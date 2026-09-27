@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 28 AutoReadOnly
+Int Property VERSION = 29 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -341,6 +341,23 @@ Function Migrate(Int aiFrom)
             EndWhile
         EndIf
     EndIf
+    If aiFrom < 29
+        ; Door moved to 3288.75/3650.81 (corridor at +Y): rubble of a stage-40 save moves along, the family re-targets.
+        ; Q00 already past the contract: plaques and ledger were added in this version.
+        If RubbleRef
+            RubbleRef.SetPosition(3288.75, 3650.81, 5649.73)
+            RubbleRef.SetAngle(0.0, 0.0, 0.0)
+        EndIf
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted && !bVeiledPassageDone
+            GatherFamily(VeilMarkers)
+        EndIf
+        If bContractStarted
+            ShowMemorialPlaques()
+        EndIf
+        If bContractDone && GleanersLedger && Game.GetPlayer().GetItemCount(GleanersLedger) == 0
+            GiveLedger()
+        EndIf
+    EndIf
 EndFunction
 
 ; Idempotent: does nothing once either RubbleRef or PassageDoorRef already exists. Safe to call
@@ -370,10 +387,10 @@ Function SpawnPassageRubble()
         ; the rubble landed ~25/121/9 units off from the intended spot.
         Utility.Wait(0.1)
         ; Wall spot in DawnstarSanctuary, taken via getpos/getangle 23.09.2026 (docs/ck/M1.3-Deep-Sanctuary-Stufe1.md).
-        ; E25: on the load door NHV_DeepSanctuaryDoorRef (3296/3392/5664, facing 91.19 = into the room at +X);
-        ; was 2648.75/4930.81/5649.73 before.
-        RubbleRef.SetPosition(3296.0, 3392.0, 5664.0)
-        RubbleRef.SetAngle(0.0, 0.0, 91.19)
+        ; E25: on the load door NHV_DeepSanctuaryDoorRef (developer 27.09.2026: 3288.75/3650.81/5649.73, angle 0,
+        ; the corridor lies at +Y); earlier 3296/3392 and 2648.75/4930.81.
+        RubbleRef.SetPosition(3288.75, 3650.81, 5649.73)
+        RubbleRef.SetAngle(0.0, 0.0, 0.0)
         ; NorRubblePile06's own bounds are still ~4.5x3.5x1.1m - shrunk down so it reads as a
         ; blocked passage, not furniture-sized clutter in the middle of the room. Adjust to taste
         ; once seen in place (23.09.2026: developer testing scale/position live, see PROGRESS.md).
@@ -1313,19 +1330,19 @@ Function PlaceVeiledPassageFamily()
         Return
     EndIf
     ; Fallback without walk markers: teleport.
-    ; E25: load door at 3296/3392 (see SpawnPassageRubble); the corridor lies at -X (test 27.09.2026), the family
-    ; faces the door (angle ~91). Provisional positions (developer: exact placement later).
+    ; E25: load door at 3288.75/3650.81 (see SpawnPassageRubble); the corridor lies at +Y (door moved 27.09.2026), the
+    ; family faces the door (angle ~180). Provisional positions (developer: exact placement later).
     If VeyraRef && !VeyraRef.IsDead()
         VeyraRef.MoveTo(DawnstarAnchorRef)
-        VeyraRef.SetPosition(3150.0, 3363.0, 5668.0)
-        VeyraRef.SetAngle(0.0, 0.0, 91.19)
+        VeyraRef.SetPosition(3288.0, 3800.0, 5650.0)
+        VeyraRef.SetAngle(0.0, 0.0, 180.0)
         VeyraRef.EvaluatePackage()
     EndIf
-    PlaceStandoffActor(1, 0x01C3AD, 3070.0, 3300.0, 5668.0, 75.0)
-    PlaceStandoffActor(2, 0x01D4BC, 3070.0, 3430.0, 5668.0, 105.0)
+    PlaceStandoffActor(1, 0x01C3AD, 3215.0, 3865.0, 5650.0, 161.0)
+    PlaceStandoffActor(2, 0x01D4BC, 3360.0, 3865.0, 5650.0, 198.4)
     Actor kFalkreathCicero = Game.GetFormFromFile(0x01E64A, "Skyrim.esm") as Actor
     If !(kFalkreathCicero && kFalkreathCicero.IsDead())
-        PlaceStandoffActor(3, 0x09BCB0, 2950.0, 3363.0, 5668.0, 91.19)
+        PlaceStandoffActor(3, 0x09BCB0, 3288.0, 3950.0, 5650.0, 180.0)
     EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Veiled passage: family gathered at the wall")
     ArmVeiledPassagePoll()
@@ -1463,6 +1480,13 @@ EndFunction
 ; ---------------------------------------------------------------------------------------------------------
 Scene Property MemorialScene Auto
 Scene Property ContractScene Auto
+; Memorial Wall plaques (27.09.2026), initially disabled refs in the Deep Sanctuary: Festus, Gabriella, Arnbjorn,
+; Veezara; Astrid by NHV_AstridMemorial (1 with the others, 2 none, 3 beneath, smaller).
+ObjectReference[] Property MemorialPlaques Auto
+ObjectReference Property AstridPlaque Auto
+ObjectReference Property AstridPlaqueSmall Auto
+GlobalVariable Property NHV_AstridMemorial Auto
+Book Property GleanersLedger Auto ; The Gleaner's Ledger, Veyra hands it over at the end of Q00
 
 Bool bMemorialPollPending = False
 Bool bMemorialStarted = False
@@ -1679,6 +1703,7 @@ Function OnMemorialChosen()
         Return
     EndIf
     bContractStarted = True
+    ShowMemorialPlaques()
     If !ContractScene
         FinishQ00Contract()
         Return
@@ -1703,10 +1728,47 @@ Function FinishQ00Contract()
     bContractDone = True
     ActiveCutscene = None
     UnlockCutscene()
+    ShowMemorialPlaques()
+    GiveLedger()
     If Q00 && Q00.GetStage() < 100
         Q00.SetStage(100)
     EndIf
-    NHV_Util.Log(NHV_Cfg_Debug, "Q00 finished (stage 100); ledger book and Q01 start still to come")
+    NHV_Util.Log(NHV_Cfg_Debug, "Q00 finished (stage 100); Q01 start still to come")
+EndFunction
+
+; Idempotent: enabling an enabled ref does nothing.
+Function ShowMemorialPlaques()
+    Int i = 0
+    While i < MemorialPlaques.Length
+        If MemorialPlaques[i]
+            MemorialPlaques[i].Enable()
+        EndIf
+        i += 1
+    EndWhile
+    Int iAstrid = 0
+    If NHV_AstridMemorial
+        iAstrid = NHV_AstridMemorial.GetValueInt()
+    EndIf
+    If iAstrid == 1 && AstridPlaque
+        AstridPlaque.Enable()
+    ElseIf iAstrid == 3 && AstridPlaqueSmall
+        AstridPlaqueSmall.Enable()
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Memorial plaques shown (Astrid choice " + iAstrid + ")")
+EndFunction
+
+Bool bLedgerGiven = False
+
+Function GiveLedger()
+    If bLedgerGiven
+        Return
+    EndIf
+    If !GleanersLedger
+        NHV_Util.Log(NHV_Cfg_Debug, "GiveLedger: GleanersLedger not set")
+        Return
+    EndIf
+    bLedgerGiven = True
+    Game.GetPlayer().AddItem(GleanersLedger, 1)
 EndFunction
 
 ; A cutscene lock was released without the scene's End fragment (did not start, watchdog, combat, load).
@@ -1761,8 +1823,8 @@ Function MigrateToLoadDoor()
     ElseIf RubbleRef
         ; Rubble of an earlier build stands at the old wall: put it on the load door, and a family already
         ; gathered at the old wall (stage 40 before the veil) moves along.
-        RubbleRef.SetPosition(3296.0, 3392.0, 5664.0)
-        RubbleRef.SetAngle(0.0, 0.0, 91.19)
+        RubbleRef.SetPosition(3288.75, 3650.81, 5649.73)
+        RubbleRef.SetAngle(0.0, 0.0, 0.0)
         If Q00 && Q00.IsRunning() && Q00.GetStage() == 40 && !bVeiledPassageStarted
             PlaceVeiledPassageFamily()
         EndIf

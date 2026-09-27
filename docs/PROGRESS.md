@@ -16,6 +16,8 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**27.09.2026: Hrefnas Q01-Fundstücke geschrieben.** `dialogue/Books.csv` enthält 21 neue Absätze für fünf Dokumente: Hofledger, unbeantworteten Brief, Moorjournal, Eiriks Forderungsschreiben und Quintus' Feldnotiz. Die Dokumente vertiefen Hrefnas Hintergrund und lassen die Ermittlungsreihenfolge intakt. CK-Platzierung und Stages stehen in `docs/ck/M1.6-Q01-Hrefna-Dokumente.md`. Lint: 0 Fehler bei 374 IDs.
+
 **27.09.2026: Autorenprofile für neue Questfiguren erstellt.** `docs/concept/Neue-Charakterprofile.md` beschreibt Hrefna, Sings, Nirelda, Corisande, Kharzog, Livia und die wichtigen Contract-Nebenfiguren mit Hintergrund, Motivation, Zielen, Schwächen, Beziehungen und Stimme. Nirelda ist nun verbindlich eine Feuer-Battle-Mage mit Meistergrad in Destruction. GOAL, Konzept und E26 synchronisiert; neue Q03-Dialoge und technische Magiewerte stehen noch aus.
 
 **27.09.2026: Q00-Fehleranalyse abgeschlossen, Fixes ausdrücklich nicht angewendet.** `docs/ck/M1.5-Q00-Fehleranalyse-und-Loesungsplan.md` prüft Commit `c725388` (v26) und den bereits vorhandenen uncommitteten v27-Stand mit Webabgleich und unabhängigem Papyrus-Review. Konkrete Befunde: Veyras `SpeedMultiplier` ist 10 (auch im ESP), Memorial-Marker liegen bei Z −236 unter dem gesamten exportierten Navmesh (Minimum etwa −16), v27 verschiebt den Rückkehrpunkt, aber nicht die in der Wand steckende Tür. Weitere offene Punkte: Walk→Hold auf Stage 60, sichere Gruppenankunft, fehlender Dawnstar-Tür-Navmesh-Anschluss und Reparatur alter Saves. M1.5 bleibt „In Arbeit“; keine Gameplay-Dateien, Builds oder Dev-Kopien durch diese Analyse geändert.
@@ -279,6 +281,30 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-27 (Test v28, Ledger, Plaketten, Tür neu, v29)
+
+- Test v28: Szene an der Memorial Wall läuft sauber, alle Figuren sichtbar, Astrid-Wahl möglich, Familie läuft
+  danach selbst zurück. Offen: Tür (3264/3424) transparent, Rückweg landet im Nichts.
+- Tür auf Entwicklerwunsch nach 3288.75 / 3650.81 / 5649.73, Drehung 0 (Gang +Y); Ankunftsmarker der Ausgangstür
+  3288.75 / 3778.81 / 5653.73; Veil-Marker, Geröll und Fallbacks entsprechend (Blick zur Tür).
+- `NHV_Book_GleanersLedger` (003DA0) aus `dialogue/Books.csv` NHV_SYS_BOOK_1–12 (7 Seiten, Modell wie Hamelyns
+  Journal); `GiveLedger()` am Ende von Q00.
+- Gedenkplaketten: Activators `NHV_Act_Q00_Plaque…` (003DA1–A5, provisorisch `WRPlaque01.nif`, Name = Vanilla-Name),
+  Referenzen 003DA6–AB in der Deep Sanctuary (initially disabled); `ShowMemorialPlaques()` nach der Astrid-Wahl
+  (1 groß, 3 klein, 2 keine). Codex-Auftrag `docs/codex/Q00-Gedenkplaketten.md`, CK-Anleitung
+  `docs/ck/M1.5-Q00-Plaketten-und-Tuer.md`. Migration 29.
+
+### 2026-09-27 – Hrefnas Briefe und Journals
+
+- Q01-Fundstücke `NHV_SYS_BOOK_42–62` ergänzt: Hofschulden, Black Sacrament, sechs Wochen Wartezeit, Eiriks Druck, Hrefnas Tat und Quintus' unvollständige Ermittlerperspektive.
+- Neues CK-Hand-off `docs/ck/M1.6-Q01-Hrefna-Dokumente.md` mit Record-Inventar, Fundorten, Kontinuitätsprüfung und Tests.
+- Keine neuen Scripts, Stages, Globals oder Plugin-Records; Lint grün bei 374 IDs.
+
+### 2026-09-27 – Q01-Anker im Ledger überarbeitet
+
+- `NHV_SYS_BOOK_9–11` an Hrefnas Autorenprofil angepasst: Hrefna Stormhollow, Nord-Bäuerin, unbeantwortetes Black Sacrament, sechs Wochen Wartezeit und Hakan als Ermittlungsanker.
+- Die Auflösung um Eiriks Tod bleibt offen; der Ledger führt nur in die Untersuchung von Q01. Lint weiterhin 0 Fehler bei 353 IDs.
 
 ### 2026-09-27 – Neue Charakterprofile und Feuer-Battle-Mage
 
