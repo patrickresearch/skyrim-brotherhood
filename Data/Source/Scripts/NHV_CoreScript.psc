@@ -1429,7 +1429,7 @@ Function PollMemorial()
     EndIf
     Float fDX = kPlayer.GetPositionX() + 5025.0
     Float fDY = kPlayer.GetPositionY() + 1598.23
-    If fDX * fDX + fDY * fDY > 450.0 * 450.0
+    If fDX * fDX + fDY * fDY > 202500.0 ; 450 units squared (no constant expression: the compiler folds it with the system locale, 27.09.2026)
         bMemorialPollPending = True
         RegisterForSingleUpdate(2.0)
         Return

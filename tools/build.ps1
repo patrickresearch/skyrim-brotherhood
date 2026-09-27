@@ -36,14 +36,15 @@ if ($Clean) { $pyroArgs = @('--no-incremental-build') + $pyroArgs }
 
 Push-Location $repo
 try {
-    $out = & $pyro @pyroArgs 2>&1 | Tee-Object -Variable pyroOut
+    & $pyro @pyroArgs 2>&1 | Tee-Object -Variable pyroOut | Out-Host
     $code = $LASTEXITCODE
 } finally {
     Pop-Location
 }
 if ($code -ne 0) { Write-Error "Pyro-Build fehlgeschlagen (Exitcode $code)"; exit $code }
 # Pyro exits with 0 even when a script does not compile (26.09.2026), so the log decides.
-if (($pyroOut | Out-String) -match 'COMPILATION FAILED|\s[1-9]\d* failed') {
+# ... and even reports 'succeeded' when the assembler step fails (no .pex written, 27.09.2026): 'error:' lines decide too.
+if (($pyroOut | Out-String) -match 'COMPILATION FAILED|\s[1-9]\d* failed|: error:') {
     Write-Error 'Pyro-Build fehlgeschlagen: mindestens ein Script kompiliert nicht (siehe Ausgabe oben).'
     exit 1
 }
