@@ -15,3 +15,11 @@ NHV_Q01_050_07,Q01,50,-,Journal,-,Neutral,50,"Help Hrefna silence Quintus Aufidi
 NHV_Q01_060_01,Q01,60,-,Journal,-,Neutral,50,"Search Quintus's belongings.",,Keine Dialogzeilen fuer Stage 60 in Q01.csv
 NHV_Q01_070_01,Q01,70,-,Journal,-,Neutral,50,"Decide Hrefna's fate.",,Keine Dialogzeilen fuer Stage 70 in Q01.csv
 NHV_Q01_100_01,Q01,100,-,Journal,-,Neutral,50,"Return to Veyra.",,Keine Dialogzeilen fuer Stage 100 in Q01.csv
+NHV_Q02_010_90,Q02,10,-,Journal,-,Neutral,50,"Investigate the bodies in Windhelm's harbor.",,"Veyra says Windhelm's harbor has given back four bodies this season. The guards blame the cold. Veyra does not. Torbjorn's ledger points toward repeated violence at the docks."
+NHV_Q02_020_90,Q02,20,-,Journal,-,Neutral,50,"Examine the latest victim.",,"A new body was pulled from the water this morning. The dockworkers say the knots are worth a look. Bruises and a hurried fisherman's hitch suggest the drowning followed a fight."
+NHV_Q02_030_90,Q02,30,-,Journal,-,Neutral,50,"Watch the docks at night.",,"The knot is a marsh hitch, an Argonian fisherman's knot. The killer works after dark."
+NHV_Q02_040_90,Q02,40,-,Journal,-,Neutral,50,"Follow the killer without being seen.",,"I saw an Argonian drag a man into the harbor. If I follow him, he may lead me to his hiding place."
+NHV_Q02_050_98,Q02,50,-,Journal,-,Neutral,50,"Confront the killer.",,"The killer hides beneath the docks in a place he calls the Drowned Hollow."
+NHV_Q02_060_90,Q02,60,-,Journal,-,Neutral,50,"Help Sings-Beneath-Ice kill Aelius the harbor clerk.",,"Veyra's test: Sings-Beneath-Ice must kill the one man at the docks who treated Argonians fairly. Aelius's kindness is genuine, even if his reasons are not simple."
+NHV_Q02_070_90,Q02,70,-,Journal,-,Neutral,50,"Decide Sings-Beneath-Ice's fate.",,"Aelius kept a list in his desk. It changes what we know about him, but it does not erase the choice Sings made."
+NHV_Q02_100_90,Q02,100,-,Journal,-,Neutral,50,"Return to Veyra.",,"I should tell Veyra how it ended."

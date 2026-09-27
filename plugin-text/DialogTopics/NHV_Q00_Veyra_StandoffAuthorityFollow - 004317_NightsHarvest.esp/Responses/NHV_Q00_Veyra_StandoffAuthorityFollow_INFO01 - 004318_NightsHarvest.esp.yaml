@@ -1,0 +1,38 @@
+FormKey: 004318:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_StandoffAuthorityFollow_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: It is an offer. You have the Mother's voice. You will still need someone willing to disagree with yours.
+  ScriptNotes: NHV_Q00_010_125 prompt=NHV_Q00_010_124
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Quietly, if you prefer. I have never found shouting improves advice.
+  ScriptNotes: NHV_Q00_010_126
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: That sounds like a condition.

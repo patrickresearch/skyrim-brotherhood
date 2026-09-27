@@ -24,7 +24,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Ask her, my Listener. Her answer will tell you more than mine.
+    Value: She served my family without belonging to it. Her path is her own.
   ScriptNotes: NHV_Q00_020_21 prompt=NHV_Q00_020_20
   Edits: ''
 Conditions:

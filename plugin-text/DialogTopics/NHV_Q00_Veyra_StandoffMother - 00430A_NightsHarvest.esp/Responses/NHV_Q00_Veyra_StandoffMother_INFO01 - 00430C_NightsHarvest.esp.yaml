@@ -1,0 +1,40 @@
+FormKey: 00430C:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_StandoffMother_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 00430D:NightsHarvest.esp
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I have spoken with the Mother. Not in the way she speaks to you.
+  ScriptNotes: NHV_Q00_010_104 prompt=NHV_Q00_010_103
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That does not give me your place, Listener. Ask her whether she wants my help.
+  ScriptNotes: NHV_Q00_010_105
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You keep invoking the Mother. Has she spoken to you?

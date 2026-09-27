@@ -1,5 +1,15 @@
 FormKey: 000857:NightsHarvest.esp
 EditorID: NHV_Q00_Veyra_Standoff02_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02000857
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02000857
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02000857
+      FragmentName: Fragment_0
 Flags: {}
 PreviousDialog: Null
 FavorLevel: None

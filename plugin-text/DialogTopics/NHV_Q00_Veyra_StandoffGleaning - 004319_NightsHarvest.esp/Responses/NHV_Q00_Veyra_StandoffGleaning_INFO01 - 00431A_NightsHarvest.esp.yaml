@@ -1,0 +1,40 @@
+FormKey: 00431A:NightsHarvest.esp
+EditorID: NHV_Q00_Veyra_StandoffGleaning_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 00431B:NightsHarvest.esp
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: It isn't. Finding one who can put the knife away is considerably harder.
+  ScriptNotes: NHV_Q00_010_116 prompt=NHV_Q00_010_115
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A family must sleep beside its own blades. I look for someone who understands that.
+  ScriptNotes: NHV_Q00_010_117
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Finding killers hardly sounds difficult.

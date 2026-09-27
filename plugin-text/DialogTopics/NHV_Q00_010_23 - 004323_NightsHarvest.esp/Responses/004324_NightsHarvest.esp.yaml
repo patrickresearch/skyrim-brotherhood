@@ -1,0 +1,20 @@
+FormKey: 004324:NightsHarvest.esp
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 10
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Keep the blade, Nazir. I'd be more concerned if you welcomed me.
+  ScriptNotes: NHV_Q00_010_23
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

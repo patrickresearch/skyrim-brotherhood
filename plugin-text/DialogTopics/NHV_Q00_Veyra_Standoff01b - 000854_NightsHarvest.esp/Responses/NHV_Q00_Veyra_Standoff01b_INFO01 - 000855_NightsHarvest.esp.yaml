@@ -3,6 +3,8 @@ EditorID: NHV_Q00_Veyra_Standoff01b_INFO01
 Flags: {}
 PreviousDialog: Null
 FavorLevel: None
+LinkTo:
+- 004319:NightsHarvest.esp
 Responses:
 - EmotionValue: 40
   ResponseNumber: 1

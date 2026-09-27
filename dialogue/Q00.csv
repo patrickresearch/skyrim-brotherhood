@@ -83,12 +83,12 @@ NHV_Q00_020_10,Q00,20,NM_Gleaner,Player,-,Neutral,50,Can she be trusted?,,Option
 NHV_Q00_020_11,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,Trust is for the living to squabble over. I know only this: her heart beats for Sithis.,,
 NHV_Q00_020_12,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,What she does with it is yours to watch.,,
 NHV_Q00_020_20,Q00,20,NM_Gleaner,Player,-,Neutral,50,Why did she leave the family?,,"Option 2 von 5; setzt NHV_Q00_AskedLeave (CK: Alias-Variable oder Stage-Zwischenschritt, im CK festlegen)"
-NHV_Q00_020_21,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"Ask her, my Listener. Her answer will tell you more than mine.",,
+NHV_Q00_020_21,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"She served my family without belonging to it. Her path is her own.",,Veyra gehört nicht formal zur Brotherhood; ihre Verbindung bleibt eigenständig und übergeordnet.
 NHV_Q00_020_30,Q00,20,NM_Gleaner,Player,-,Neutral,50,Why have you never spoken to her?,,Option 3 von 5
 NHV_Q00_020_31,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,I speak to one as Listener. It has always been one.,,E23-Präzisierung: Die Night Mother meint ihre heutige Übermittlung an den Listener; frühere persönliche Gespräche mit Veyra bleiben offen.
 NHV_Q00_020_32,Q00,20,NM_Gleaner,NightMother,Vanilla,Sad,20,"That is the burden of the Listener, and the wound of all the rest.",,
 NHV_Q00_020_35,Q00,20,NM_Gleaner,Player,-,Neutral,50,"What is she, Mother?",,Option 4 von 5
-NHV_Q00_020_36,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"She is the one who gathers. What else she is, the Void keeps. It does not share.",,"Veyras Alter/Natur bleibt bewusst ungeklaert, keine Aufloesung"
+NHV_Q00_020_36,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"She is the one who gathers. What else she is, only Sithis knows.",,"Veyras Alter/Natur bleibt bewusst ungeklaert; Sithis kennt das Geheimnis, eine konkrete Enthüllung bleibt aus."
 NHV_Q00_020_40,Q00,20,NM_Gleaner,Player,-,Neutral,50,"That is all I needed, Mother.",,Option 5 von 5 → Stage 30 (Goodbye); Antwort 020_39
 NHV_Q00_020_39,Q00,20,NM_Gleaner,NightMother,Vanilla,Neutral,20,"Go, then. The Gleaner waits.",,Antwort auf 020_40; eine Option ohne (bzw. mit leerer) Antwort bietet die Engine nicht an (Test 26.09.)
 NHV_Q00_020_42,Q00,20,Veyra_Inn,Veyra,NHV_VoiceVeyra,Neutral,30,"The Mother first, Listener. I have nowhere else to be.",NHV_Q00_VeyraReturned == 0; NHV_Q00_VeyraReturning == 0,Windpeak Inn if player visits Veyra before speaking to the Night Mother
@@ -118,7 +118,7 @@ NHV_Q00_030_42,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Happy,20,"Family. No o
 NHV_Q00_030_43,Q00,30,Veyra_Proposal,Player,-,Neutral,50,The Night Mother vouches for you. I don't. Not yet.,NHV_Q00_VeyraReturned == 1,Option 2 von 3
 NHV_Q00_030_44,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,40,Then let me earn it. The Mother's word brought me through the door. It needn't put your doubts to rest.,,"Redaktion 26.09.2026: Haltung/Subtext vertieft; CSV voraus, Plugin-Abgleich offen."
 NHV_Q00_030_45,Q00,30,Veyra_Proposal,Player,-,Neutral,50,Why did you leave Cheydinhal?,NHV_Q00_AskedLeave == 1; NHV_Q00_VeyraReturned == 1,"Option 3 von 3, nur wenn Stage-20-Option 2 gewaehlt wurde"
-NHV_Q00_030_46,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,Because the Night Mother went quiet. I took her silence to mean my work was finished. I was wrong.,NHV_Q00_AskedLeave == 1,Redaktion E23: eigene Fehlentscheidung statt Zwang oder Anspruch auf die Listenerrolle.
+NHV_Q00_030_46,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,"My Dread Father had other work for me. I chose to answer, and it could not wait. Cicero bore the cost of that choice.",NHV_Q00_AskedLeave == 1,Redaktion E23: persönliche Vater-Anrede Sithis' und eigene Verantwortung für das Zurücklassen; keine Mitgliedschafts- oder Listenerbehauptung.
 NHV_Q00_030_47,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,Cicero stayed. The fool stayed. And he was right about one thing: silence still asks to be endured.,NHV_Q00_AskedLeave == 1,Redaktion E23: Cicero hatte mit seinem Bleiben recht; keine automatische Versöhnung.
 NHV_Q00_030_48,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Happy,10,Don't tell him I said that. He'd never let me forget it.,GetDead Cicero == 0; NHV_Q00_AskedLeave == 1,Platzhalter-Condition fuer Cicero; zweite Bedingung ergaenzt (lore-editor-Fund 23.09.): Zeile folgt inhaltlich nur auf 030_45-47
 NHV_Q00_030_50,Q00,30,Veyra_Proposal,Veyra,NHV_VoiceVeyra,Neutral,30,Then hear my proposal.,,Unabhaengig von der vorherigen Wahl
