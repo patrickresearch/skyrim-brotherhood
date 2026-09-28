@@ -31,6 +31,10 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E25 | KI-Zugang zur Deep Sanctuary (ändert E09/E16) | Script-Tür ohne Navmesh / echte Ladetür mit Navmesh | Echte Ladetür an einer mod-geprüften Sackgasse | M1.5 | Entschieden |
 | E24 | Zugang zur Deep Sanctuary in Q00 | Geröll (Konzept) / magische Verschleierung mit Zwischensequenz | Verschleierung, Zwischensequenz wie der Standoff | M1.5 | Entschieden |
 | E23 | Veyras Natur und Bindung an Sithis | Sterbliche Amtserbin / gebundene Nachleserin / wiederkehrende Gestalt / göttliche Verwandtschaft | Tochter Sithis', ungebunden und freiwillig treu; externe Helferin der Night Mother | vor weiterem Mysteriums-Dialogausbau | Entschieden |
+| E28 | Ermittlung des Oculatus-Zirkels (Hauptbogen) | Heat-Zähler erzählt / sichtbar / ohne Zähler | Verdeckter Heat-Zähler, nur erzählt; im MCM nur als Debug-Wert | M3 | Entschieden |
+| E29 | Chiffre der Oculatus-Depeschen | Schlüsselbuch + Veyra-Dialog / Script-Rätsel / nur Flavour | Schlüsselbuch zum Selberlösen, Veyra-Dialog als Fallback | M3 | Entschieden |
+| E30 | Interludes für v1.0 | Früh / Spät / Spitzel in Dawnstar / keine | Frühes Interlude („First Blood“), spätes Interlude („Knock at Dawnstar“) und Spitzel-NPC in Dawnstar | M3 | Entschieden |
+| E31 | Magischer Faden | Leises Gleaning / + Black-Hand-Relikt / keine Magie | Leises Gleaning (Echos der Toten), innerhalb von E23; kein Relikt in v1.0 | M3 | Entschieden |
 | E27 | Quelle der Stimmen | Nur stille Dateien / KI-Stimmen | Vanilla-Figuren über xVASynth, Veyra (und neue Figuren) über ElevenLabs; Import per `tools/voice_import.py` | M1.5 | Entschieden |
 | E26 | Charakterprofile und Feuer-Battle-Mage | Nirelda als allgemeine Arkanistin / Feuer-Battle-Mage mit Meistergrad | Fünf Story-Rekruten plus Livia und Missionsfiguren erhalten verbindliche Autorenprofile; Nirelda wird Feuer-Battle-Mage (Destruction Master) | vor Q03-Dialogen | Entschieden |
 
@@ -39,6 +43,14 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin. Die Kopie ändert nichts, kann aber Änderungen anderer Mods an derselben Zelle (z. B. Beleuchtung) überdecken, wenn Night's Harvest später lädt. Das betrifft auch Quest-Referenzen in Städten (Q01–Q05). Grundregel unabhängig von E16: Schlüsselszenen in eigenen Innenzellen, berührte Vanilla-Zellen minimieren und in `docs/ARCHITECTURE.md` listen.
 
 ## Entscheidungs-Einträge
+
+### E28–E31 – Hauptbogen Oculatus
+
+- **Datum:** 28.09.2026, Entwickler (Grundlage: `docs/plan/Hauptbogen-Oculatus.md`, `docs/plan/Hauptbogen-Technik.md`).
+- **E28:** Der Oculatus-Zirkel (Livia Maro) ermittelt über die ganze Kampagne mit. Entscheidungen in Q01–Q05 (Beweise liegen lassen, Agenten ausschalten) ändern einen verdeckten Heat-Wert in der System-Quest `NHV_Sys_Oculatus`. Der Wert wird nur erzählt (Veyra, Briefe, Zwischenfälle); im MCM erscheint er nur als Debug-Anzeige.
+- **E29:** Die verschlüsselten Depeschen werden zum optionalen Rätsel: ein Schlüsselbuch zum Selberlösen, Entschlüsselung bei Veyra im Dialog als Fallback. Kein Script-Rätsel, das Finale bleibt nie blockiert.
+- **E30:** v1.0 bekommt das frühe Interlude „First Blood“, das späte Interlude „Knock at Dawnstar“ und einen Spitzel-NPC in Dawnstar, der die Sanctuary beobachtet und entlarvt werden kann (abweichend von der Planempfehlung, die den Spitzel zurückstellen wollte).
+- **E31:** Magie nur als leises Gleaning: Veyra nimmt Echos der Toten wahr (kurze Kommentare, eine Ritual-Szene). Keine Aussage über ihre Herkunft (E23). Kein Black-Hand-Relikt in v1.0.
 
 ### E27 – Quelle der Stimmen
 
