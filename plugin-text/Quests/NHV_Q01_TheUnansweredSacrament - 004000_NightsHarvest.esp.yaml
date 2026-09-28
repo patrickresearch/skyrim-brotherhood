@@ -57,6 +57,9 @@ VirtualMachineAdapter:
       Object: 004000:NightsHarvest.esp
       Alias: 4
     - MutagenObjectType: ScriptObjectProperty
+      Name: QuintusFieldNote
+      Object: 00400D:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: VeyraAlias
       Object: 004000:NightsHarvest.esp
       Alias: 1

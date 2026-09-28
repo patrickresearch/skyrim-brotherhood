@@ -31,6 +31,7 @@ Scene Property VeyraTrialScene Auto  ; NHV_Scn_Q01_02VeyraTrial
 
 ; -- Items --
 Book Property OculatusFragment1 Auto   ; NHV_Item_OculatusFragment1
+Book Property QuintusFieldNote Auto ; NHV_Book_QuintusFieldNote, found on his body
 Weapon Property BogwifesKnife Auto     ; NHV_Weap_BogwifesKnife, Judgement "Recruit" reward
 Book Property HrefnaReleaseLetter Auto ; NHV_Book_HrefnaReleaseLetter, delivered 7 days after Release
 
@@ -193,6 +194,7 @@ Function OnQuintusKilled(Actor akKiller)
     If akKiller == Game.GetPlayer() && NHV_Flag_HrefnaUnproven
         NHV_Flag_HrefnaUnproven.SetValueInt(1) ; player did the killing herself: Trial not passed
     EndIf
+    StockQuintusBody()
     SetStage(60)
 EndFunction
 
@@ -306,6 +308,10 @@ Function OnContractLoadGame()
     If GetStage() >= 50
         MakeQuintusMortal() ; saves that reached stage 50 before this fix (ingame test 29.09.2026)
     EndIf
+    If GetStage() >= 60 && GetStage() < 100
+        StockQuintusBody() ; saves where Quintus died before his body carried the papers
+    EndIf
+    ReturnRecruitHome()
     If fLetterDueGameTime <= 0.0
         Return ; nothing pending
     EndIf
@@ -334,4 +340,44 @@ Function MakeQuintusMortal()
         kBase.SetEssential(False)
         NHV_Util.Log(NHV_Cfg_Debug, "Quintus is no longer essential")
     EndIf
+EndFunction
+
+; Quintus' papers (field note + Oculatus fragment 1) on his body, so stage 60 "search his belongings" has
+; something to find. Idempotent: only adds what the body and the player do not have yet.
+Bool bBodyStocked = False
+Bool bRecruitReturned = False
+
+Function StockQuintusBody()
+    If bBodyStocked || !QuintusAlias
+        Return
+    EndIf
+    Actor kQuintus = QuintusAlias.GetActorRef()
+    If !kQuintus
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    If QuintusFieldNote && kQuintus.GetItemCount(QuintusFieldNote) == 0 && kPlayer.GetItemCount(QuintusFieldNote) == 0
+        kQuintus.AddItem(QuintusFieldNote, 1, True)
+    EndIf
+    If OculatusFragment1 && kQuintus.GetItemCount(OculatusFragment1) == 0 && kPlayer.GetItemCount(OculatusFragment1) == 0
+        kQuintus.AddItem(OculatusFragment1, 1, True)
+    EndIf
+    bBodyStocked = True ; once: items the player drops or sells later are not restocked
+EndFunction
+
+; A recruited Hrefna walked back to her camp (CampWait had no stage condition before 29.09.2026): put her home.
+Function ReturnRecruitHome()
+    If bRecruitReturned || GetStage() < 100 || !HrefnaFamilySlotAlias || !KitchenMarker || !NHV_Status_Hrefna
+        Return
+    EndIf
+    If NHV_Status_Hrefna.GetValueInt() != STATUS_RECRUITED
+        Return
+    EndIf
+    Actor kHrefna = HrefnaFamilySlotAlias.GetActorRef()
+    If kHrefna && !kHrefna.IsDead() && kHrefna.GetParentCell() != KitchenMarker.GetParentCell()
+        kHrefna.MoveTo(KitchenMarker)
+        kHrefna.EvaluatePackage()
+        NHV_Util.Log(NHV_Cfg_Debug, "Hrefna returned to the Kitchen")
+    EndIf
+    bRecruitReturned = True ; one-time repair only; later family logic owns her position
 EndFunction
