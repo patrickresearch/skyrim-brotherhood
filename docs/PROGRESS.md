@@ -284,6 +284,15 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 
 ## Log (neueste zuerst)
 
+### 2026-09-28 (Q00 ingame bestätigt, Start Q01 und Hauptbogen)
+
+- Entwickler: Q00 läuft end to end (Stage 10–100) in der Dev-Kopie und im Hauptspiel mit Mods, auch mit lebendem
+  Cicero; alle Stimmen passen. Fixes aus dem Hauptspiel-Test: Standoff-Phasen getrennt (b11b38d), Veyra-Spawn-Marker
+  wegen Tisch eines Sanctuary-Mods (v34, b00626d), Startwartezeit ab erstem Laden (v33), FaceGen im Paket (8181fca).
+- Offen für später: Dialog-Nacharbeit Q00; Vanilla-Overrides `AlftandZCell` (069858) und
+  `MarkarthTreasuryHouseLocation` entfernen; NAVI-Konflikt vor Release lösen.
+- Gestartet: Q01-Records im Plugin (Agent, FormIDs 004000–40FF) und Planung Hauptbogen Oculatus (Agent).
+
 ### 2026-09-27 (Team-Lauf: Q00-Dialoge, Standoff, Stimmen, Q01/Q02 vorbereitet)
 
 - **Q00-Dialoge** (Commit 9e0f37a): Codex-Standoff-Ausbau 010_91–127, Lücken 010_22–23/42/52/70–73 und
