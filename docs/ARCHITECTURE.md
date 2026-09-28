@@ -21,6 +21,8 @@ Leitlinie: so viel wie möglich über Records und Conditions, so wenig wie mögl
 |---|---|---|
 | `DawnstarSanctuary` (0193EE) | E25: Ladetür `NHV_DeepSanctuaryDoorRef` (003D8B) in einer mod-geprüften Sackgasse; nach Navmesh-Finalisierung zusätzlich der Navmesh-Override dieser Zelle (Tür-Dreieck) | 27.09.2026 |
 | `NavigationMeshInfoMap` 012FB4 | Folge der Deep-Sanctuary-Zelle (Duplikat von `MarkarthTreasuryHouse`, M1.3) | 23.09.2026 |
+| `MorthalExterior08` (Tamriel) | Q01: Außenhülle des Stormhollow-Hofs (Farmhouse-Static) und Ladetür zu `NHV_StormhollowFarmCell` (`NHV_Door_StormhollowFarmEntry`); kein Landscape-/Navmesh-Edit | 28.09.2026 |
+| Morthal-Außenzelle am Steg (Tamriel) | Q01: `NHV_HakanRef` + `NHV_Mk_Q01_HakanSpot` (X -35840 / Y 66432 / Z -13920) | 28.09.2026 |
 
 ## Quest-Architektur
 
