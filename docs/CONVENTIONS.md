@@ -8,6 +8,7 @@ Alle eigenen Records beginnen mit `NHV_`. CamelCase, keine Leerzeichen, keine Um
 |---|---|---|
 | Story-Quest | `NHV_Q<Nr>_<Name>` | `NHV_Q00_ShadowAtTheDoor` |
 | System-Quest | `NHV_Sys_<Name>` | `NHV_Sys_Core` |
+| Interlude-Quest | `NHV_IL<Nr>_<Name>` | `NHV_IL01_FirstBlood` |
 | NPC / Referenz | `NHV_<Name>` / `NHV_<Name>Ref` | `NHV_Veyra`, `NHV_VeyraRef` |
 | VoiceType | `NHV_Voice<Name>` | `NHV_VoiceVeyra` |
 | Global | `NHV_<Bereich>_<Name>` | `NHV_Status_Hrefna`, `NHV_Cfg_FinaleDeath` |
@@ -47,7 +48,7 @@ Nach Release werden EditorIDs nicht mehr umbenannt, wenn Scripts oder Patches si
 7. **States** für Mehrphasen-Logik und gegen doppelte Ausführung (`GotoState("Busy")`).
 8. **Idempotenz.** `OnInit()` und `Maintenance()` dürfen mehrfach laufen, ohne Schaden anzurichten.
 9. **Save-Stabilität ab 0.1.0.** Keine Properties, Variablen, States, Functions mit Event-Bindung oder Scripts umbenennen oder entfernen.
-10. **Versionierung.** `NHV_CoreScript` hält die Script-Version; jede Migration ist ein eigener, nummerierter Schritt in `Maintenance()`.
+10. **Versionierung.** `NHV_CoreScript` hält die Script-Version des Mods; jede Migration ist ein eigener, nummerierter Schritt in `Maintenance()`. **Ausnahme:** ein System-Quest-Script mit eigenständigem, in sich abgeschlossenem Zustand darf eine eigene, unabhängige Versionskette (`VERSION`/`iInstalledVersion`/`Migrate(aiFrom)`) führen, wenn es nicht sinnvoll an `NHV_CoreScript.VERSION` hängt – bereits so gehandhabt bei `NHV_MCMScript` und `NHV_OculatusScript` (E28–E31). Auch hier gilt: nie eine Migrationsstufe umnummerieren oder entfernen.
 
 ## Git
 

@@ -34,6 +34,8 @@ Leitlinie: so viel wie möglich über Records und Conditions, so wenig wie mögl
 | `NHV_Sys_Ledger` | Abschluss Q06 | 12 Slot-Aliase `RecruitSlot01`–`12`, Eignung, Initiation |
 | `NHV_Sys_Banter` | Abschluss Q01 | Banter-Szenen B01–B12 |
 | `NHV_Sys_Debug` | nur über MCM | Test-Sprünge, Reparaturfunktionen |
+| `NHV_Sys_Oculatus` (E28–E31, noch nicht im CK) | Start Game Enabled | Verdeckter Heat-Zähler für den Oculatus-Hauptbogen, eigene PlayerRef-Alias, optionaler Spitzel-Alias; siehe `docs/plan/Hauptbogen-Oculatus.md`, `docs/plan/Hauptbogen-Technik.md` |
+| `NHV_IL01_FirstBlood`, `NHV_IL02_KnockAtDawnstar` (E30, noch nicht im CK) | Story-Manager-Event, Condition auf Heat | Optionale Zwischenepisoden, „Run Once“, melden an `NHV_Sys_Oculatus` |
 
 Grundsatz: Story-Quests enthalten nur Stage-Logik und quest-eigene Aliase. Alles, was eine Quest überdauert, lebt in System-Quests. Abgeschlossene Story-Quests lassen sich stoppen, ohne Rekruten zu verlieren.
 
@@ -87,6 +89,10 @@ Neue Rekruten erhalten nicht die Vanilla-`DarkBrotherhoodFaction`. Die Allianz s
 | `NHV_SealedPassageDoorScript` | ObjectReference | Basis-Objekt-Script auf `NHV_SealedPassageDoor` (M1.3/M1.5 Q00 Szene 4, E16/E09); `OnActivate` → `MoveTo(TargetMarker)`, setzt danach `NHV_Q00_ShadowAtTheDoor` von Stage 40 auf 50 (Property `Q00`). Am Basisobjekt statt per Remote-Event, da `RegisterForRemoteEvent` in dieser SKSE-Version fehlt. |
 | `NHV_ReturnDoorScript` | ObjectReference | Basis-Objekt-Script auf `NHV_SealedPassageReturnDoor`: ersetzt die duplizierte Markarth-Ausgangstür in `NHV_DeepSanctuaryCell` (per `PlaceAtMe` aus `NHV_CoreScript.EnsureReturnDoor()`), `OnActivate` → `NHV_CoreScript.ReturnToSanctuary()`. Das Passage-Tür-Script meldet die Ankunft per `NHV_CoreScript.OnEnterDeepSanctuary()`. |
 | `NHV_Util` | Globale Funktionen | Logging, gemeinsame Prüfungen |
+| `NHV_OculatusScript` (E28–E31, noch nicht im CK) | Quest, `NHV_Sys_Oculatus` | Heat-Zähler 0–5, `ReportEvidence()`, `GetHeat()`, `GetHeatStage()`, `TryClaimInterlude()`, eigene Maintenance/Migrate-Versionskette (Ausnahme zu Regel 10, wie `NHV_MCMScript`) |
+| `NHV_OculatusPlayerAliasScript` (E28–E31, noch nicht im CK) | ReferenceAlias, `NHV_Sys_Oculatus` | `OnPlayerLoadGame()` → `OculatusSys.Maintenance()`, eigenständig neben `NHV_PlayerAliasScript` |
+| `NHV_IL01Script`, `NHV_IL02Script` (E28–E31, noch nicht im CK) | Quest | Interlude-Logik „First Blood“/„Knock at Dawnstar“, `Conclude()`, melden an `NHV_OculatusScript` |
+| `NHV_InformantAliasScript` (E28–E31, noch nicht im CK) | ReferenceAlias, `NHV_Sys_Oculatus` | Spitzel-NPC in Dawnstar: `Expose()`, `Resolve()`, `GetOutcome()`, `OnDeath()` |
 
 ModEvents für Patches/Addons: `NHV_RecruitJoined`, `NHV_RecruitDied`, `NHV_ContractCompleted`.
 
@@ -97,6 +103,7 @@ ModEvents für Patches/Addons: `NHV_RecruitJoined`, `NHV_RecruitDied`, `NHV_Cont
 - `NHV_AstridMemorial` (1–3, Q00 Szene 5)
 - `NHV_CiceroReconciled`
 - `NHV_Cfg_*` für alle MCM-Werte, damit Conditions sie lesen können
+- `NHV_Status_OculatusHeat` (E28–E31, noch nicht im CK): Global, Typ Short, spiegelt den verdeckten Heat-Zähler aus `NHV_OculatusScript` für CK-Conditions und die MCM-Debug-Seite (nie auf einer normalen MCM-Seite); Interludes vergleichen den rohen Wert (`>= 2` First Blood, `>= 4` Knock at Dawnstar/Spitzel-Entlarvung), nie die erzählerische Stufe aus `GetHeatStage()`
 
 ## Dialoge, Szenen, AI, Zellen
 

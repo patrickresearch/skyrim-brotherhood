@@ -1,137 +1,176 @@
 # Hauptbogen-Technik: NHV_Sys_Oculatus
 
-Technisches Skelett für die in `docs/plan/Hauptbogen-Oculatus.md` priorisierten Vorschläge (V1 Heat-Mechanik,
-V3 Chiffre-Schlüssel, V4/V6 Interludes, V9 Gleaning-Text). Alle Angaben sind **Vorschlag**, noch nicht im CK
-umgesetzt. Beschreibt nur additive Erweiterungen; nichts an bestehenden Scripts, Properties oder Stages wird
-geändert oder entfernt (Regel 3, `docs/CONVENTIONS.md` Papyrus-Regel 9).
+Technisches Skelett für den vom Entwickler entschiedenen Hauptbogen (E28–E31, `docs/DECISIONS.md`): Heat-Zähler
+nur erzählt + MCM-Debug (E28), Chiffre = Schlüsselbuch + Veyra-Dialog-Fallback (E29), Interludes „First Blood“ +
+„Knock at Dawnstar“ + Spitzel-NPC in Dawnstar (E30), Magie = leises Gleaning, kein Relikt (E31).
+
+**Umsetzungsstand:** Die vier neuen Scripts unten sind geschrieben und kompiliert (`Data/Source/Scripts/`,
+`Data/Scripts/*.pex`), vom `papyrus-reviewer` geprüft. Noch **nicht** im CK verdrahtet (Quest-Record, Aliase,
+Encounter, Dialoge – das macht der Entwickler laut `docs/ck/M3-Hauptbogen-Oculatus-CK-Anleitung.md`). Nichts an
+`NHV_ContractBaseScript`, `NHV_CoreScript` oder einem anderen bestehenden Script wurde geändert – ein anderer
+Agent bearbeitet parallel das ESP für Q01, deshalb bleibt dieser Hauptbogen rein additiv und ESP-frei.
 
 ## 1. Neue System-Quest
 
 **`NHV_Sys_Oculatus`** (Quest, Start Game Enabled, analog zu `NHV_Sys_Core`/`NHV_Sys_Family`). Lebt neben den
-bestehenden System-Quests, nicht als Kind einer Story-Quest, damit sie Q00–Q06 überdauert und unabhängig von
-laufenden/gestoppten Story-Quests Zustand hält (gleiches Prinzip wie `NHV_Sys_Family`).
+bestehenden System-Quests, nicht als Kind einer Story-Quest, damit sie Q00–Q06 überdauert.
 
-**Script `NHV_OculatusScript`** (neu, Basis Quest):
+**Script `NHV_OculatusScript`** (neu, Basis Quest, `Data/Source/Scripts/NHV_OculatusScript.psc`):
 
+- `GlobalVariable Property NHV_Cfg_Debug Auto` – wie überall, Log-Schalter.
+- `GlobalVariable Property NHV_Status_OculatusHeat Auto` – **neuer Global**, spiegelt `iHeat` für CK-Conditions und
+  die MCM-Debug-Seite (E28: nie auf einer normalen MCM-Seite). Ein Quest-Script-Int ist keine gültige
+  Condition-Quelle; der Global ist es (Papyrus-Regel 2, „Conditions vor Scripts“).
+- `Int Property VERSION = 1 AutoReadOnly` + `Int iInstalledVersion` – eigene, von `NHV_CoreScript.VERSION`
+  unabhängige Versionskette, gleiches Muster wie dort (`Maintenance()`/`Migrate(aiFrom)`, ein nummerierter,
+  idempotenter Block pro Version).
+- `Int iHeat = 0` – der eigentliche Zähler, 0–5.
+- `Function ReportEvidence(Int aiAmount, String asReason)` – **einzige öffentliche Melde-Funktion** (ersetzt die
+  vier einzelnen Funktionen aus dem ersten Entwurf, siehe E28-Vorgabe des Team-Leads: eine Schnittstelle statt
+  vier). `aiAmount` wird auf `iHeat` addiert, auf 0–5 geklemmt; `asReason` ist nur ein Log-Tag, nie im Spiel
+  sichtbar.
+- `Int Function GetHeat()` / `Int Function GetHeatStage()` – Lesezugriff; Stufen 0 Unbemerkt (0–1), 1 Fragt nach
+  (2–3), 2 Handelt (4), 3 Vollalarm (5). CK-Conditions vergleichen immer den rohen Heat-Wert (`GetGlobalValue
+  NHV_Status_OculatusHeat >= N`), nie diese Stufe – siehe Abschnitt 4 für die konkreten Schwellen der
+  Interludes.
+- `Bool Function TryClaimInterlude(Int aiInterludeId)` – maßgebliche, quest-unabhängige Sperre gegen doppelte
+  Heat-Buchung bei einem Interlude-Neustart, siehe Abschnitt 4.
+- `Function Maintenance()` / `Function Migrate(Int aiFrom)` / `Function EnsureHeatMirror()` – Save-sicheres
+  Muster wie `NHV_CoreScript`.
+
+**`NHV_OculatusPlayerAliasScript`** (neu, Basis ReferenceAlias, `Data/Source/Scripts/
+NHV_OculatusPlayerAliasScript.psc`): eigene PlayerRef-Alias-Instanz auf `NHV_Sys_Oculatus` mit
+`OnPlayerLoadGame() → OculatusSys.Maintenance()` – bewusst **nicht** die bestehende `NHV_PlayerAliasScript`
+wiederverwendet oder verändert, sondern eine zweite, unabhängige Instanz derselben Idee (Team-Lead-Vorgabe:
+keine bestehende `.psc` anfassen).
+
+## 2. Patch-Vorschlag für NHV_ContractBaseScript (NICHT umgesetzt, nur beschrieben)
+
+Bewusst **keine Änderung** in diesem Arbeitspaket, da parallel ein anderer Agent das Q01-ESP bearbeitet und die
+Ein-Schreiber-Regel (Regel 7, `CLAUDE.md`) gilt. Für ein späteres, eigenes Arbeitspaket vorgeschlagen:
+
+```papyrus
+; Neue, optionale Property – keine bestehende Property/Funktion/State wird umbenannt oder entfernt.
+NHV_OculatusScript Property OculatusSys Auto Hidden   ; im CK gesetzt, wie Core/VeyraAlias
 ```
-; Eigenschaften (Properties)
-Int Property iHeat = 0 Auto Hidden          ; 0–5, siehe Stufen unten
-Int Property iScriptVersion = 1 Auto Hidden  ; Versionierung wie NHV_CoreScript
 
-; Öffentliche Funktionen (additiv, von Contract-Scripts aufgerufen)
-Function ReportEvidenceLeft()       ; Heat + 1, Obergrenze 5
-Function ReportEvidenceDestroyed()  ; Heat unverändert, Kommentar-Flag setzen
-Function ReportAgentSilenced()      ; Heat - 1, Untergrenze 0
-Function ReportCoverStorySuccess()  ; Heat - 1, Untergrenze 0
-Int Function GetHeatStage()         ; 0–1 = "Unbemerkt", 2–3 = "Fragt nach", 4 = "Handelt", 5 = "Vollalarm"
+Kein Pflichtaufruf in bestehenden Funktionen. Die einzelnen Q0x-Quests (`NHV_Q01Script` … `NHV_Q05Script`)
+rufen `OculatusSys.ReportEvidence(aiAmount, asReason)` gezielt aus **neuen, additiven** Stage-Fragmenten oder
+Dialog-Ergebnis-Skripten auf, nicht aus der Basisklasse selbst. Beispiel-Hook Q01 (illustrativ, Stage-Nummern
+legt das CK-Team fest): nach Stage 60 eine neue, optionale Handlung „Cover his tracks“ am Fundort von Fragment
+1 → `OculatusSys.ReportEvidence(0, "Q01 evidence covered")` (kein Heat-Effekt laut Plan, nur geloggt) bzw. eine
+Variante, die Beweise liegen lässt → `ReportEvidence(1, "Q01 evidence left")`.
 
-; Maintenance (aus NHV_CoreScript.Maintenance() aufgerufen, additiv)
-Function Maintenance()              ; stellt iHeat sicher (nie None/uninitialisiert), Idempotent
-```
+**Wann umsetzen:** erst, wenn kein anderer Agent gleichzeitig an `NHV_ContractBaseScript` oder den Q0x-ESP-
+Records arbeitet. Bis dahin bleibt der Heat-Zähler nur durch die zwei Interludes und den Spitzel gefüttert
+(siehe unten) – funktioniert bereits eigenständig, auch ohne die Q01–Q05-Anbindung.
 
-**Wichtig für Save-Sicherheit:** `NHV_CoreScript.Maintenance()` bekommt einen zusätzlichen, nummerierten
-Migrationsschritt, der `NHV_Sys_Oculatus` bei Bedarf startet und `iHeat` auf 0 setzt, falls die Quest neu
-installiert wird (Bestandsspieler, die vor diesem Update in Q03–Q06 stehen). Kein bestehender Migrationsschritt
-wird verändert, nur ein neuer angehängt (Konvention: „jede Migration ein eigener, nummerierter Schritt“).
+## 3. Chiffre-Puzzle (E29), ohne SKSE-DLL
 
-## 2. Wie Contract-Quests Beweise melden
+Unverändert gegenüber dem ursprünglichen Vorschlag, jetzt als Entscheidung bestätigt: **Schlüsselbuch +
+Veyra-Dialog-Fallback**, kein Script-Rätsel.
 
-`NHV_ContractBaseScript` (Basisklasse Q01–Q05) bekommt **eine neue, optionale Property** und **keine
-Pflichtaufrufe** in bestehenden Funktionen – bestehende Stage-Logik bleibt unangetastet:
+- `NHV_Note_Dispatch01`–`05` bleiben unverändert. Neu: `NHV_Note_Dispatch01_Decoded` bis `_05` (reine
+  Content-Records, kein Script).
+- `NHV_Book_PrefectsKey` (neues Buch) – Fundort noch offen (Livia in Q06 vs. Aelius in Q02), siehe Entscheidung
+  in `docs/plan/Hauptbogen-Oculatus.md` Abschnitt 9.
+- Veyra-Dialog-Branch, Condition `GetItemCount NHV_Book_PrefectsKey >= 1`, Topic „Decode this for me“ pro
+  vorhandenem Fragment, Ergebnis `AddItem()` des `_Decoded`-Buchs. Kein neues Script nötig.
 
-```
-NHV_OculatusScript Property OculatusSys Auto Hidden   ; per CK im Objektfenster gesetzt, wie andere Quest-Properties
-```
+## 4. Interludes (E30): First Blood, Knock at Dawnstar, Spitzel
 
-Die Report-Funktionen (`ReportEvidenceLeft()` usw.) werden **nicht** automatisch von `NHV_ContractBaseScript`
-aufgerufen, sondern gezielt aus neuen, additiven Stage-Fragmenten oder Dialog-Ergebnis-Skripten der einzelnen
-Q01–Q05-Quests heraus (z. B. ein neues Fragment an einer neuen, optionalen Stage-Verzweigung „Burn the
-evidence“ ruft `OculatusSys.ReportEvidenceDestroyed()`). Das hält `NHV_ContractBaseScript` selbst unverändert
-in seiner bestehenden Phasenlogik und vermeidet, dass die Basisklasse für alle fünf Quests gleichzeitig
-angefasst werden muss – jede Quest bindet sich nur dort ein, wo tatsächlich eine neue Spielerentscheidung
-entsteht. **Beschreibung, keine Änderung:** Die bestehenden Funktionen/Properties/States von
-`NHV_ContractBaseScript` selbst bleiben unangetastet; nur eine neue Property wird ergänzt.
+**Doppelte Buchungssperre (Team-Lead-Review Runde 2):** Ein Quest-eigenes `bResolved`-Flag reicht allein
+nicht als Schutz gegen doppelte Heat-Buchung, weil eine Quest-Instanz bei einem Neustart (CK-Reset,
+Dev-Save, versehentliches `resetquest`) ihren lokalen Zustand verliert. Die **maßgebliche** Sperre liegt
+deshalb in `NHV_OculatusScript` selbst: `Bool Function TryClaimInterlude(Int aiInterludeId)` (1 = First
+Blood, 2 = Knock at Dawnstar) liefert nur beim ersten Aufruf `True` und merkt sich das dauerhaft in
+`bIL01Done`/`bIL02Done` – diese Flags gehören zur System-Quest, die nie neu gestartet wird. Beide
+Interlude-Quests rufen diese Funktion vor jeder `ReportEvidence()`-Meldung auf; zusätzlich **müssen**
+beide Quests im CK auf „Run Once“ gesetzt werden (siehe CK-Anleitung Schritt 5) – zwei unabhängige
+Sperren statt einer.
 
-**Beispiel-Hook Q01** (rein illustrativ, tatsächliche Stage-Nummern legt das CK-Team fest): Nach Stage 60
-(„Search Quintus's belongings“, Fund von Fragment 1) eine neue, **optionale** Handlung am Leichnam/Tatort:
-Dialog- oder Aktivator-Option „Cover his tracks“ → Fragment im Fundort verschwindet trotzdem nicht (nie
-blockierend), aber ruft `OculatusSys.ReportEvidenceDestroyed()`.
+**`NHV_IL01Script`** (neu, Basis Quest, „First Blood“): `Conclude(Bool abLetterFound)`. `bResolved` wird
+sofort gesetzt (ein `Bool`-Parameter hat keinen ungültigen Zustand, anders als bei `NHV_IL02Script`),
+dann erst `OculatusSys.TryClaimInterlude(1)` geprüft. Meldet `OculatusSys.ReportEvidence(0, ...)` – reine
+Flavour-Episode ohne Heat-Effekt, aber geloggt. Start über Story-Manager-Quest-Event, Condition
+`GetGlobalValue NHV_Status_OculatusHeat >= 2` (roher Heat-Wert) im CK (kein Polling, Papyrus-Regel 1).
+Encounter: 1 FormList `NHV_FormList_OculatusMercs` (2–3 Templates), platziert über
+Zufallsbegegnungs-Mechanismen entlang der Straßen (Details CK-Anleitung).
 
-## 3. Chiffre-Puzzle (V3), ohne SKSE-DLL
+**`NHV_IL02Script`** (neu, Basis Quest, „Knock at Dawnstar“): `Conclude(Int aiOutcome)` – 0 Kampf gewonnen
+(Heat −1), 1 Verhör erfolgreich (Heat −1), 2 nur beobachtet/gefolgt (kein Heat-Effekt). Ein ungültiger
+`aiOutcome`-Wert wird geloggt und **nicht** als „resolved“ verbucht (`bResolved` bleibt `False`, ein
+späterer, gültiger Aufruf bleibt möglich) – bewusst anders als `NHV_IL01Script`, weil `Int` hier einen
+ungültigen Zustand kennt. Danach `OculatusSys.TryClaimInterlude(2)`. Optionale Property `Informant` (Typ
+`NHV_InformantAliasScript`): **sinnvoll genutzt**, nicht nur als Platzhalter – ist sie gesetzt, hängt
+`Conclude()` den bereits erreichten Ausgang des Spitzels (`Informant.GetOutcome()`) als Diagnose-Zusatz an
+den Log-Text an (kein zusätzlicher Heat-Effekt aus der Verknüpfung selbst, rein informativ für den
+Entwickler beim Testen). `None` bleibt ein gültiger, geprüfter Zustand, falls der Entwickler den Spitzel
+nicht mit diesem Interlude verknüpft. Encounter: 3–4 Agenten-Templates in einer **Wildnis-Zelle im Umland
+von Dawnstar**, ausdrücklich nicht in `DawnstarSanctuary` selbst (keine neue E16-Zellkopie, kein Vorgriff
+auf Q06). Condition `GetGlobalValue NHV_Status_OculatusHeat >= 4` im CK.
 
-**Ansatz:** rein buch-/dialogbasiert, kein eigenes Minigame-UI. Zwei Varianten, siehe unten.
+**`NHV_InformantAliasScript`** (neu, Basis ReferenceAlias, Spitzel-NPC in Dawnstar – **jetzt Teil von v1.0**,
+abweichend von der ursprünglichen Planempfehlung, siehe E30):
 
-**Datenmodell:** Die fünf `[cipher]`-Stellen der bestehenden Dispatches (`NHV_Note_Dispatch01`–`05`) bleiben
-unverändert im Original. Für jede existiert ein neues, additives Buch `NHV_Note_Dispatch01_Decoded` bis `_05`,
-das den gleichen Text mit aufgelösten Klartextstellen zeigt (reiner Content-Unterschied, kein Script-Bezug).
+- `Function Expose()` – vom Erkennungs-/Dialog-Fragment aufgerufen, wenn der Spieler ihn beim Beobachten der
+  Sanctuary ertappt (Condition auf `GetGlobalValue NHV_Status_OculatusHeat >= 2`, roher Heat-Wert,
+  Papyrus-Regel 2, kein eigener Poll-Loop).
+- `Function Resolve(Int aiChoice)` – 0 töten (Heat −1, `Kill()`), 1 umdrehen/Doppelagent (Heat −1, rein
+  narratives Flag, kein Begleiter-Mechanismus), 2 laufen lassen (Heat +1, „berichtet weiter“). Ein
+  ungültiger `aiChoice` ändert nichts und wird nur geloggt – der Spitzel bleibt im entlarvten Zustand
+  wiederholbar ansprechbar. `iOutcome` und, im Töten-Fall, `Kill()` laufen immer, sobald `aiChoice`
+  gültig ist; nur der `ReportEvidence()`-Aufruf selbst ist gegen ein fehlendes `OculatusSys`-Property
+  abgesichert (Team-Lead-Review Runde 2: kein Zustand soll an einem fehlenden CK-Property hängen
+  bleiben, der eigentliche Spielausgang – tot/umgedreht/freigelassen – muss auch ohne die
+  Heat-Anbindung korrekt eintreten).
+- `Int Function GetOutcome()` – Lesezugriff für andere Scripts (aktuell `NHV_IL02Script`, siehe oben).
+- `Event OnDeath(Actor akKiller)` – setzt `iOutcome` immer auf 2, senkt Heat aber nur, wenn `akKiller`
+  dem gesetzten `PlayerRef`-Property entspricht (None-sicherer Vergleich). Ein Tod durch einen Dritten
+  (Wache, wildes Tier, o. Ä.) vor der Entlarvung wird nur geloggt, nicht als Heat-Ereignis gewertet – der
+  Zirkel erfährt so nichts über eine Handlung, an der der Spieler gar nicht beteiligt war.
+- `Actor Property PlayerRef Auto` – im CK auf den Spieler zu setzen, ausschließlich für den
+  Attributions-Check in `OnDeath()` verwendet.
+- `Int iOutcome` – 0 unentdeckt, 1 entlarvt, 2 getötet, 3 umgedreht, 4 freigelassen; nie umnummerieren.
 
-**Schlüssel-Item:** `NHV_Book_PrefectsKey` (neues Buch), Fundort laut Plan-Dokument bei Livia Maro in Q06 oder
-optional früher bei Aelius in Q02 – endgültiger Fundort ist eine offene Entscheidung (siehe Plan-Dokument
-Abschnitt 9).
+**Design (Ort, Tagesablauf, Entlarvung – Ergänzung zum Plan-Dokument):** Der Spitzel ist ein neuer, eigener NPC
+(kein Vanilla-Edit), tagsüber am Dawnstar-Hafen mit einer Fischer-/Händler-Rolle getarnt (Package „Arbeiten am
+Hafen“), nachts in Sichtweite des Sanctuary-Zugangs mit einem „Watch“-Package (Sandbox-Radius, kein
+Navmesh-Edit, nutzt bestehende Dawnstar-Wege). Entlarvung: eine neue, optionale Beobachtungs-/Speech-Szene, die
+ab `NHV_Status_OculatusHeat >= 2 (roher Heat-Wert)` verfügbar wird (der Spieler bemerkt sein Verhalten als zu regelmäßig/gezielt) –
+Details, Dialogtext und genaue Trigger-Bedingung folgen in der CK-Anleitung und im Codex-Brief für den Spitzel.
 
-**Variante A – Veyra-Dialog (empfohlen, schlank):** Neuer Dialog-Branch bei Veyra, Condition
-`GetItemCount NHV_Book_PrefectsKey >= 1`. Für jedes im Spielerinventar oder Aliasbesitz vorhandene
-`NHV_Note_DispatchXX` bietet ein Topic „Decode this for me“ an; Ergebnis: `AddItem` des passenden
-`_Decoded`-Buchs, `RemoveItem` nicht nötig (Original bleibt im Inventar). Keine neuen Scripts, nur Dialog +
-Conditions + Ergebnis-Papyrus-Fragment mit 1–2 `AddItem()`-Aufrufen. Passt zu Papyrus-Regel 2 („Conditions vor
-Scripts“) und Regel 3 (kurze Fragmente).
+## 5. Gleaning-Text (E31)
 
-**Variante B – automatisches Script (mehr Aufwand):** `OnItemAdded()`-Event auf eine Referenzalias oder ein
-Quest-Script, das bei Erhalt des Schlüssels alle bereits vorhandenen Fragmente prüft und automatisch
-decodierte Varianten hinzufügt. Mehr Immersion, aber ein zusätzliches Event-Script nötig; Empfehlung bleibt
-Variante A für v1.0.
-
-**Save-Sicherheit:** Beide Varianten sind rein additiv (neue Items, neuer Dialog-Branch), keine neuen Stages,
-kein Risiko für bestehende Spielstände ohne den Patch.
-
-## 4. Interludes V4/V6 (Encounter-Technik)
-
-**V4 „First Blood“:** 1 neue Encounter-FormList `NHV_FormList_OculatusMercs` (2–3 Templates, wiederverwendbar),
-1 Story-Manager-Quest-Event oder einfacher: ein Encounter-Zone-Eintrag auf bereits vorhandenen
-Zufallsbegegnungs-Mechanismen entlang der Straßen (Details CK-Anleitung). Condition auf
-`NHV_Sys_Oculatus.iHeat >= 1`.
-
-**V6 „Knock at Dawnstar“:** 1 Encounter mit 3–4 Agenten-Templates, platziert in einer **Wildnis-Zelle im
-Umland von Dawnstar**, ausdrücklich **nicht** in `DawnstarSanctuary` selbst (verhindert eine zusätzliche
-Zell-Kopie nach E16 – die bestehende Zell-Kopie-Liste in `docs/ARCHITECTURE.md` bleibt unverändert). Condition
-auf `iHeat >= 3`. Optionales Verhör-Dialogset mit Ergebnis `OculatusSys.ReportAgentSilenced()`.
-
-**Beide:** keine Navmesh-Edits, keine neuen Zell-Kopien, Encounter-Trigger über Story Manager oder
-Trigger-Boxen (Papyrus-Regel 1: kein Polling).
-
-## 5. Gleaning-Text (V9)
-
-Reine Textarbeit, keine neuen Records außer optional 1–2 Notizen/Dialogzeilen pro Mission. Kein technischer
-Aufwand in diesem Dokument gesondert zu beschreiben – siehe Codex-Briefs.
+Reine Textarbeit (Veyra-Kommentare, siehe `docs/codex/2026-09-28-Gleaning-Faden-Texte.md`), kein neues Script,
+kein neues Relikt (E31 schließt das für v1.0 explizit aus).
 
 ## 6. FormID-Bereich
 
-**Vorschlag:** `0x004200`–`0x0042FF` für alle neuen Records dieses Hauptbogens (Quest, Script-Instanzen,
-Bücher, FormList, Dialog-Topics, Encounter-Referenzen). Liegt außerhalb der laut `docs/ARCHITECTURE.md`
-bereits vergebenen Bereiche (dort zuletzt referenziert: `0004DDA0` für FaceGen, `003D8B`/`0193EE`/`012FB4` als
-Vanilla-Zell-Referenzen – beide Bereiche liegen nicht in `0x0042xx`). **Vor endgültiger Nutzung im CK: aktuell
-höchste vergebene NHV-FormID im Plugin prüfen** (z. B. per Housecarl-Record-Abfrage), da diese Übersicht nicht
-alle bisher im CK vergebenen IDs kennt – nur eine Bereichs-Empfehlung, keine Kollisionsgarantie.
+Unverändert: `0x004200`–`0x0042FF` für alle neuen Records dieses Hauptbogens. Vor Nutzung im CK die aktuell
+höchste vergebene NHV-FormID im Plugin prüfen (Kollisionsgefahr, da diese Übersicht nicht jede bisher im CK
+vergebene ID kennt).
 
-## 7. Save-Kompatibilitäts-Checkliste für diesen Hauptbogen
+## 7. Save-Kompatibilitäts-Checkliste
 
-- `NHV_Sys_Oculatus` ist eine **neue** Quest → bei Bestandsspielständen erst nach dem Patch aktiv;
-  `NHV_CoreScript.Maintenance()` muss sie idempotent starten (Prüfung `GetStageDone` o. Ä., analog bestehendem
-  Muster).
-- `iHeat` startet bei 0 für alle – auch für Spieler, die bereits mitten in Q03–Q06 stehen. Das ist akzeptiert
-  (kein rückwirkendes „Bestrafen“ für Alt-Saves), da Heat ohnehin nur Zusatzinhalt freischaltet, nichts
-  blockiert.
-- Keine neue Property, kein neuer State, keine neue Funktion an `NHV_ContractBaseScript` **entfernt oder
-  umbenannt** – nur eine neue, optionale Property (`OculatusSys`) ergänzt.
-- Alle neuen Dialoge/Bücher/Encounter sind rein additiv; keine bestehende Stage wird umnummeriert.
-- Migration in `NHV_CoreScript.Maintenance()`: neuer, eigener nummerierter Schritt, bestehende Schritte
+- `NHV_Sys_Oculatus` ist eine **neue** Quest, unabhängig von `NHV_CoreScript` gestartet (Start Game Enabled,
+  kein Aufruf aus `NHV_CoreScript` nötig oder vorgesehen) – bei Bestandsspielständen ab dem ersten Laden nach
+  dem Patch aktiv, `iHeat` startet bei 0.
+- `NHV_OculatusPlayerAliasScript` übernimmt die Load-Maintenance eigenständig; `NHV_PlayerAliasScript` bleibt
   unverändert.
-- Kein SKSE-DLL, keine neue harte Abhängigkeit; alle Mechaniken (Heat-Zähler, Chiffre, Encounter) laufen über
-  Standard-Papyrus, Globals/Quest-Variablen, Conditions und Dialoge.
+- Kein Zugriff auf oder Änderung an `NHV_ContractBaseScript`, `NHV_CoreScript` oder einem anderen bestehenden
+  Script in diesem Arbeitspaket – nur der Patch-Vorschlag in Abschnitt 2, für später.
+- Alle neuen Dialoge/Bücher/Encounter sind additiv; keine bestehende Stage wird umnummeriert.
+- Migration ausschließlich in `NHV_OculatusScript.Migrate()`, eigene Versionskette, keine Kollision mit
+  `NHV_CoreScript.VERSION`.
+- Kein SKSE-DLL, keine neue harte Abhängigkeit.
 
 ## 8. Was noch fehlt / offen
 
-- Exakte Stage-Nummern für die neuen optionalen Verzweigungen in Q01–Q05 (CK-Arbeit, pro Quest im jeweiligen
-  Arbeitspaket).
-- Entscheidung Fundort Schlüssel-Buch (Livia in Q06 vs. Aelius in Q02) – siehe Plan-Dokument Abschnitt 9.
-- Entscheidung UI-Sichtbarkeit von `iHeat` (nur narrativ über Veyra vs. zusätzlicher MCM-Debug-Wert).
+- CK-Verdrahtung: Quest-Record `NHV_Sys_Oculatus`, PlayerRef-Alias, Spitzel-Alias, Interlude-Quests,
+  Encounter-Zonen, Dialoge, Globals – siehe `docs/ck/M3-Hauptbogen-Oculatus-CK-Anleitung.md`.
+- Patch an `NHV_ContractBaseScript` (Abschnitt 2) – eigenes, späteres Arbeitspaket, erst nach Freigabe durch
+  den Entwickler und außerhalb der aktuellen Q01-ESP-Session.
+- Entscheidung Fundort Schlüsselbuch (Livia in Q06 vs. Aelius in Q02).
+- Name und Autorenprofil-Feinschliff für den Spitzel-NPC (Codex-Brief liegt vor, siehe
+  `docs/codex/2026-09-28-Spitzel-Dawnstar.md`).

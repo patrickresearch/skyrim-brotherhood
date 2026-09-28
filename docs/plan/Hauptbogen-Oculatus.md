@@ -2,9 +2,16 @@
 
 Plan für einen sichtbaren, eskalierenden Antagonisten-Bogen über Q00–Q06, mit Zwischenepisoden, Rätseln und
 einem magischen Faden. Jeder Abschnitt trennt **[Konzept]** (bereits entschieden, siehe Quellen) von
-**[Vorschlag]** (neue Idee dieses Plans, noch nicht beschlossen). Vorschläge sind durchnummeriert (V1, V2, …)
-und am Ende als Entscheidungsliste zusammengefasst – **keine E-Nummern**, die vergibt nur der Entwickler in
-`docs/DECISIONS.md`.
+**[Vorschlag]** (neue Idee dieses Plans, noch nicht beschlossen). Vorschläge sind durchnummeriert (V1, V2, …).
+
+> **Update 28.09.2026 – Entwickler-Entscheidung E28–E31 (`docs/DECISIONS.md`):** V1 (Heat-Zähler) ist
+> beschlossen als *verdeckt, nur erzählt + MCM-Debug* (E28). V3 (Chiffre) ist beschlossen als
+> *Schlüsselbuch + Veyra-Dialog-Fallback* (E29). Für v1.0 bestätigt: V4 „First Blood“, V6 „Knock at
+> Dawnstar“ **und zusätzlich V2 (Spitzel in Dawnstar, entlarvbar)** – abweichend von der ursprünglichen
+> Zurückstell-Empfehlung in Abschnitt 8 (E30). V9 (leises Gleaning) ist beschlossen, V10 (Relikt) explizit
+> **nicht** für v1.0 (E31). Die betroffenen Abschnitte unten sind entsprechend markiert; die Empfehlung in
+> Abschnitt 8 und die Entscheidungsliste in Abschnitt 9 gelten nur noch historisch für die inzwischen
+> entschiedenen Punkte. Technische Umsetzung: `docs/plan/Hauptbogen-Technik.md`.
 
 Quellen: `docs/concept/konzept.md`, `docs/GOAL.md`, `docs/DECISIONS.md` (E08, E23, E26), `docs/concept/
 Veyra-Autorenprofil.md`, `docs/concept/Neue-Charakterprofile.md`, `docs/plan/Q01-*.md`, `docs/plan/Q02-*.md`,
@@ -76,30 +83,46 @@ additive Report-Funktionen (eine pro Contract-Script oder eine gemeinsame Funkti
 (neue Quest/Global, keine Vanilla-Berührung); Save mittel – Variable muss versioniert und in `Maintenance()`
 mit Default abgesichert werden, sonst Fehlerquelle bei Update mitten in Q01–Q05.
 
-### 2.3 V2 – Ein Spitzel in Dawnstar [Vorschlag]
+### 2.3 V2 – Ein Spitzel in Dawnstar [Vorschlag, seit E30 Teil von v1.0]
 
 **Zweck:** Macht den Zirkel lokal spürbar, nicht nur abstrakt über einen Zähler. Liefert eine greifbare
 Bedrohung für die Sanctuary selbst, bevor Q06 beginnt.
 
-**Wo es einhakt:** Ein neuer, kleiner NPC in Dawnstar (z. B. ein Fischhändler oder Wachmann am Hafen – beides
-in Dawnstar bereits als Vanilla-Rollen vorhanden, hier als reiner Alias auf eine bestehende generische
-Dawnstar-Referenz oder als neuer eigener NPC ohne Vanilla-Edit), der den Spieler beobachtet, wenn er die
-Sanctuary betritt/verlässt. Sichtbar wird das erst rückblickend: In Interlude 3 (siehe 3.3) taucht er tot oder
-geflohen auf, mit einem Notizbuch, das seine Berichte an „den Prefect“ zeigt (Bezug zu den Dispatches, die
-bereits einen „Prefect“ als Empfänger nennen).
+**Ort und Tagesablauf [Vorschlag, Ausarbeitung nach E30]:** Ein neuer, eigener NPC (kein Vanilla-Edit), tagsüber
+am Dawnstar-Hafen als Fischer/Händler getarnt (Package „Arbeiten am Hafen“, nutzt bestehende Wege und
+Möbel, keine Navmesh-Edits). Nachts wechselt er auf ein „Watch“-Package in Sichtweite des
+Sanctuary-Zugangs (Sandbox-Radius um einen bestehenden Punkt, ebenfalls ohne neue Navmesh-Kanten,
+analog zu Pathing-Option B aus Q00). Tagsüber wirkt er wie jeder andere Hafenarbeiter; nur die
+nächtliche Wiederholung macht ihn verdächtig.
 
-**Spielerwahl:** Der Spieler kann ihn früh entdecken (optionale Beobachtungsszene, Perception-artig: NPC
-verhält sich verdächtig bei Heat ≥ 2) und ausschalten oder anwerben/ablenken (Speech) → das senkt Heat um 1
-und liefert eine zusätzliche, kleine Szene, aber ist nicht verpflichtend.
+**Wie der Spieler ihn entlarvt:** Ab GetGlobalValue `NHV_Status_OculatusHeat` >= 2 (roher Heat-Wert, siehe 2.2) wird eine optionale
+Beobachtungs-/Speech-Szene verfügbar: Der Spieler kann sein nächtliches Verhalten bemerken (z. B. über eine
+Wachen- oder Bewohner-Bemerkung als Hinweis, dann direkte Konfrontation) und ihn stellen. Technisch ruft die
+Konfrontation `NHV_InformantAliasScript.Expose()` auf (siehe Technik-Dokument); danach bietet ein
+Dialog drei Ausgänge.
 
-**Fehlerfälle:** Wird der Spitzel nie entdeckt, bleibt er bis Interlude 3 unsichtbar und die Ambush-Episode
-läuft ohne Vorwarnung ab – ebenfalls eine gültige, beabsichtigte Spielweise.
+**Ausgänge und Heat-Effekt:**
+- **Töten:** `Resolve(0)` – Heat −1 (der Zirkel verliert seine Augen in Dawnstar), der NPC stirbt.
+- **Umdrehen (Doppelagent):** `Resolve(1)` – Heat −1, rein narrative Konsequenz (kein Begleiter, keine
+  Gameplay-Mechanik in v1.0): Veyra kommentiert einen neuen, stillen Verbündeten; spätere Erweiterung
+  (Phase 2) könnte ihn als Informationsquelle vor Q06 nutzen.
+- **Laufen lassen:** `Resolve(2)` – Heat **+1** (er berichtet weiter, seine Beobachtung war nicht umsonst) –
+  bewusst die einzige Wahl mit negativer Konsequenz, damit „Gnade“ eine echte Abwägung bleibt, kein Freifahrtschein.
 
-**Technik:** 1 neuer NPC (eigener Alias, kein Vanilla-Edit), 1 kleines Package-Set („Watch the Sanctuary
-entrance“), 1 optionale Kurzszene, Verknüpfung mit `iHeat`.
+**Verknüpfung mit Interlude „Knock at Dawnstar“ (V6, 3.3):** optional, per Property `Informant` an
+`NHV_IL02Script` (siehe Technik-Dokument) – wird er vorher nie entdeckt, kann er dort erneut auftauchen
+(gefangener Agent bei der Verhörszene) oder das Interlude läuft unabhängig von ihm ab.
 
-**Umfang:** S–M. **Risiken:** gering; Navmesh-Berührung in Dawnstar vermeiden (Package auf bestehenden Wegen,
-keine neuen Navmesh-Kanten, analog zu Pathing-Option B aus Q00).
+**Fehlerfälle:** Wird der Spitzel nie entdeckt, bleibt er dauerhaft im Zustand „unentdeckt“ (`iOutcome` 0) –
+kein Blocker für Q06 oder irgendeine andere Quest. `Expose()` und `Resolve()` sind idempotent gegen
+Doppelaufrufe (siehe Script).
+
+**Technik:** 1 neuer NPC (eigener Alias auf `NHV_Sys_Oculatus`, kein Vanilla-Edit), 2 Package-Sets (Hafen
+tags, Watch nachts), 1 Konfrontations-/Entscheidungsdialog, Script `NHV_InformantAliasScript` (geschrieben,
+siehe `docs/plan/Hauptbogen-Technik.md` Abschnitt 4).
+
+**Umfang:** S–M. **Risiken:** gering; Navmesh-Berührung in Dawnstar vermeiden (wie oben beschrieben). Name und
+Kurzprofil für Codex: `docs/codex/2026-09-28-Spitzel-Dawnstar.md`.
 
 ### 2.4 V3 – Das Chiffre-Rätsel: Dispatches als echtes Puzzle [Vorschlag]
 
@@ -156,7 +179,7 @@ zeigen. Jedes Interlude ist eigenständig abschließbar in 5–10 Minuten, keine
 alle sind an `iHeat`-Schwellen gekoppelt (siehe 2.2), damit sie sich an den Spielstil anpassen statt starr
 nach Contract-Nummer zu feuern.
 
-### 3.1 V4 – Interlude „First Blood“ (nach Q01, Heat ≥ 1) [Vorschlag]
+### 3.1 V4 – Interlude „First Blood“ (nach Q01, roher Heat-Wert ≥ 2) [Vorschlag]
 
 **Zweck:** Erster, kleiner Nadelstich – zeigt, dass der Zirkel reagiert, ohne die Sanctuary zu gefährden.
 
@@ -196,7 +219,7 @@ im Austausch für Gnade gegenüber einem gefangenen Oculatus-Agenten.
 **Umfang:** S–M. **Risiken:** Lore: Name/Rolle muss mit `lore-editor` abgestimmt werden, bevor Codex Text
 schreibt (Gefahr, zu viel über Livia vorwegzunehmen).
 
-### 3.3 V6 – Interlude „Knock at Dawnstar“, Spitzel-Ambush (nach Q03/Q04, Heat ≥ 3) [Vorschlag]
+### 3.3 V6 – Interlude „Knock at Dawnstar“, Spitzel-Ambush (nach Q03/Q04, roher Heat-Wert ≥ 4) [Vorschlag]
 
 **Zweck:** Der Zirkel greift zum ersten Mal die Sanctuary-Umgebung direkt an – erhöht den Einsatz spürbar vor
 Q06, ohne das Finale vorwegzunehmen. Hier taucht optional der Spitzel aus V2 wieder auf (tot aufgefunden oder
@@ -335,7 +358,7 @@ keine ungeprüfte Lore-Behauptung zu setzen.
 Brotherhood-Bezug braucht `lore-editor`-Prüfung, da nah an Black-Hand-Kanon); am besten ganz weglassen, wenn
 Zeit/Risiko-Budget knapp ist – V9 allein trägt den „magischen Faden“ bereits ausreichend.
 
-## 8. Priorisierte Empfehlung
+## 8. Priorisierte Empfehlung (historisch – siehe E28–E31 für den entschiedenen Stand)
 
 **Für v1.0 (kleiner, sicherer Kern):**
 1. V1 – Heat-Mechanik (`NHV_Sys_Oculatus`) – trägt den ganzen Bogen, moderat im Aufwand (M).
@@ -345,26 +368,30 @@ Zeit/Risiko-Budget knapp ist – V9 allein trägt den „magischen Faden“ bere
 4. V9 – Gleaning als narrativer Faden (S, reine Textarbeit) – erfüllt „magisch“ ohne E23-Risiko.
 
 **Zurückstellen auf später (v1.1/Phase 2) oder nur bei Kapazität:**
-- V2 (Spitzel) und V5 (Zweifler) – schön, aber nicht tragend; erst ergänzen, wenn der Kern steht.
+- ~~V2 (Spitzel)~~ – **durch E30 doch für v1.0 übernommen**, siehe Abschnitt 2.3.
+- V5 (Zweifler) – weiterhin zurückgestellt, nicht Teil der E28–E31-Entscheidung.
 - V7 (Empty Chair) – nett, aber Dialog-Ersatz für V6 möglich, Redundanzgefahr.
 - V8 (verschlossenes Fach) – reines Bonus-Feature, jederzeit nachrüstbar.
-- V10 (Relikt) – höchstes Lore-Risiko im Verhältnis zum Ertrag, nur mit expliziter Freigabe.
+- V10 (Relikt) – durch E31 explizit für v1.0 ausgeschlossen.
 
 **Explizit nicht für v1.0:** Sanctuary-Raid vor Q06 (Abschnitt 4), doppelter Agent unter den Story-Rekruten
 (Abschnitt 5) – beide Ideen kollidieren mit bestehenden Leitplanken oder dupliziert bereits geplante Inhalte.
 
 ## 9. Entscheidungen, die der Entwickler treffen muss
 
-1. Soll die Heat-Mechanik (V1) umgesetzt werden, und wenn ja: mit oder ohne UI-sichtbaren Zahlenwert (MCM-Debug
-   vs. rein narrativ über Veyras Kommentare)?
-2. Soll der Chiffre-Schlüssel (V3) über einen Veyra-Dialog (schlank, empfohlen) oder ein automatisches
-   Item-Script (mehr Immersion, mehr Scripting-Aufwand) laufen?
-3. Welche und wie viele Interludes (V4–V7) sollen in v1.0? Empfehlung: V4 + V6, Rest zurückstellen.
-4. Ist V9 (Gleaning-Faden) als narrative Ausdeutung von „Sense the Darkness“ akzeptabel, oder soll die Lesser
-   Power bewusst ohne zusätzliche Deutung bleiben, bis der Entwickler selbst über Veyras Magie entscheidet?
-5. Soll V10 (Black-Hand-Relikt) überhaupt verfolgt werden, oder bewusst gestrichen bleiben (Empfehlung:
-   streichen für v1.0)?
-6. Soll V2 (Spitzel in Dawnstar) als eigenständiger NPC oder rein narrativ (nur in Interlude V6 erwähnt, ohne
-   eigenen vorherigen Auftritt) umgesetzt werden – Aufwand vs. Wirkung?
-7. Namensfindung für neue Nebenfiguren aus V5/V6 (falls umgesetzt) – an `Neue-Charakterprofile.md`-Konventionen
-   anlehnen, vom Entwickler/`lore-editor` gegenprüfen lassen, bevor Codex Text schreibt.
+Die ursprünglichen Grundsatzfragen 1–4 und 5 sind durch E28–E31 entschieden (siehe Update-Hinweis oben). Es
+bleiben konkrete Ausgestaltungsfragen für die CK-Umsetzung:
+
+1. **[Entschieden, E28]** Heat-Mechanik: verdeckt, nur erzählt + MCM-Debug-Wert.
+2. **[Entschieden, E29]** Chiffre: Schlüsselbuch + Veyra-Dialog-Fallback.
+3. **[Entschieden, E30]** Interludes: First Blood + Knock at Dawnstar + Spitzel-NPC, alle für v1.0.
+4. **[Entschieden, E31]** Magie: leises Gleaning, kein Relikt.
+5. Fundort des Schlüsselbuchs `NHV_Book_PrefectsKey`: Livia Maro in Q06 oder Aelius in Q02 – noch offen,
+   siehe `docs/plan/Hauptbogen-Technik.md` Abschnitt 3.
+6. Wann wird der Patch-Vorschlag an `NHV_ContractBaseScript` (Technik-Dokument Abschnitt 2) tatsächlich
+   umgesetzt? Erst nach Freigabe und außerhalb der aktuell laufenden Q01-ESP-Session eines anderen Agenten.
+7. Name und Autorenprofil-Feinschliff für den Spitzel-NPC – Codex-Brief liegt vor
+   (`docs/codex/2026-09-28-Spitzel-Dawnstar.md`), Name selbst noch mit `lore-editor` gegenzuprüfen, bevor
+   Codex den finalen Text schreibt.
+8. Namensfindung für neue Nebenfiguren aus V5 (falls später umgesetzt) – weiterhin offen, nicht Teil von
+   E28–E31.
