@@ -303,6 +303,9 @@ EndFunction
 ; scheduled again instead of the letter silently never arriving. Safe to call even when a callback IS
 ; still pending - RegisterForSingleUpdateGameTime just replaces it with the same due time.
 Function OnContractLoadGame()
+    If GetStage() >= 50
+        MakeQuintusMortal() ; saves that reached stage 50 before this fix (ingame test 29.09.2026)
+    EndIf
     If fLetterDueGameTime <= 0.0
         Return ; nothing pending
     EndIf
@@ -312,5 +315,23 @@ Function OnContractLoadGame()
         DeliverReleaseLetter()
     Else
         RegisterForSingleUpdateGameTime(fRemainingDays * 24.0)
+    EndIf
+EndFunction
+
+; NHV_Quintus is Essential in the ESP so he cannot die before the trial. From stage 50 on he must be killable
+; (by Hrefna or the player); ActorBase.SetEssential persists in the save. Idempotent.
+Function MakeQuintusMortal()
+    If !QuintusAlias
+        Return
+    EndIf
+    Actor kQuintus = QuintusAlias.GetActorRef()
+    If !kQuintus
+        NHV_Util.Log(NHV_Cfg_Debug, "MakeQuintusMortal: QuintusAlias empty")
+        Return
+    EndIf
+    ActorBase kBase = kQuintus.GetActorBase()
+    If kBase.IsEssential()
+        kBase.SetEssential(False)
+        NHV_Util.Log(NHV_Cfg_Debug, "Quintus is no longer essential")
     EndIf
 EndFunction

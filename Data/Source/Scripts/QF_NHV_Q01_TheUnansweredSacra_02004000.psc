@@ -46,6 +46,8 @@ Function Fragment_4()
 ;BEGIN CODE
 SetObjectiveCompleted(40)
 SetObjectiveDisplayed(50)
+NHV_Q01Script kQ01 = (Self as Quest) as NHV_Q01Script
+kQ01.MakeQuintusMortal()
 ;END CODE
 EndFunction
 ;END FRAGMENT
