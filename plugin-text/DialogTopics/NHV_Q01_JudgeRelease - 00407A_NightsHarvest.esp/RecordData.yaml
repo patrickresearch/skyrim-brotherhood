@@ -1,4 +1,6 @@
 FormKey: 00407A:NightsHarvest.esp
 EditorID: NHV_Q01_JudgeRelease
 Priority: 60
+Branch: 00407C:NightsHarvest.esp
+Quest: 004000:NightsHarvest.esp
 SubtypeName: CUST

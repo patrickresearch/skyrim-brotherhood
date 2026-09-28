@@ -1,4 +1,6 @@
 FormKey: 004073:NightsHarvest.esp
 EditorID: NHV_Q01_QuintusPapers
 Priority: 60
+Branch: 004075:NightsHarvest.esp
+Quest: 004000:NightsHarvest.esp
 SubtypeName: CUST

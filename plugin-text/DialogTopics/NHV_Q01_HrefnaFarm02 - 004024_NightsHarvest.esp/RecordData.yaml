@@ -1,4 +1,6 @@
 FormKey: 004024:NightsHarvest.esp
 EditorID: NHV_Q01_HrefnaFarm02
 Priority: 60
+Branch: 004028:NightsHarvest.esp
+Quest: 004000:NightsHarvest.esp
 SubtypeName: CUST

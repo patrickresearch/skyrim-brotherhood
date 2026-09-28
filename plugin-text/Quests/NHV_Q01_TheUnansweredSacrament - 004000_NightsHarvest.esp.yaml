@@ -66,7 +66,41 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraTrialScene
       Object: 004030:NightsHarvest.esp
-  FileName: ''
+  - Name: QF_NHV_Q01_TheUnansweredSacra_02004000
+  FileName: QF_NHV_Q01_TheUnansweredSacra_02004000
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_1
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_2
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_3
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_4
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_5
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_6
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_7
   Aliases:
   - Property:
       Name: ''
@@ -162,6 +196,47 @@ Stages:
     Entry:
       TargetLanguage: English
       Value: Return to Veyra.
+Objectives:
+- Index: 10
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Travel to Morthal and ask about unusual deaths.
+- Index: 20
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Find the site of the Black Sacrament.
+- Index: 30
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Find Hrefna.
+- Index: 40
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Hear Hrefna's story.
+- Index: 50
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Help Hrefna silence Quintus Aufidius.
+- Index: 60
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Search Quintus's belongings.
+- Index: 70
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Decide Hrefna's fate.
+- Index: 100
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Return to Veyra.
 NextAliasID: 5
 Aliases:
 - Name: PlayerRefAlias
@@ -185,19 +260,6 @@ Aliases:
   Flags:
   - Optional
   UniqueActor: 004007:NightsHarvest.esp
-  Conditions:
-  - MutagenObjectType: ConditionFloat
-    CompareOperator: GreaterThanOrEqualTo
-    Data:
-      MutagenObjectType: GetStageConditionData
-      Quest: 004000:NightsHarvest.esp
-    ComparisonValue: 40
-  - MutagenObjectType: ConditionFloat
-    CompareOperator: LessThan
-    Data:
-      MutagenObjectType: GetStageConditionData
-      Quest: 004000:NightsHarvest.esp
-    ComparisonValue: 60
   PackageData:
   - 00498E:NightsHarvest.esp
   VoiceTypes: Null

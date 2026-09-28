@@ -331,6 +331,16 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 
 ## Log (neueste zuerst)
 
+### 2026-09-29 - Q01 nach erstem Ingame-Test repariert (M1.7)
+
+Befund: Journal leer, Hakan/Hrefna nicht ansprechbar. Ursachen: (1) 38 Q01-Topics ohne `Quest`/`Branch` (nur Szenen-Topics hatten sie),
+(2) keine Objectives/kein Stage-Fragment-Script, (3) Hrefna-Alias mit Stage-Bedingungen (gehoeren auf `NHV_Pkg_Hrefna_EscortPlayer`),
+(4) niemand setzte Stage 20/50, (5) `NHV_Pkg_Hakan_Fish` ist ein Travel-Package (kein Fischen).
+Aenderungen: Topics gepatcht, Objectives 10-100 + `QF_NHV_Q01_TheUnansweredSacra_02004000`, `TIF__0200401E` (Stage 20 nach Rumor 04),
+`StartVeyraTrial()` setzt Stage 50, Alias-Bedingungen ins Package. Round-Trip ok, `build.ps1 -Clean` 61/61, `silent_voice.py --check` 0 Probleme.
+Offen im CK: ESP einmal oeffnen/speichern; Hakan-Package auf Sandbox umstellen + Moebel; Neustart-Test (siehe M1.7-Anleitung).
+Offene Design-Frage: Stage 20 nur ueber Hakan-Gerucht oder auch ueber Hof-Fund.
+
 ### 2026-09-28 – Q00 Stage 80 (Veyras Zweifel) und Lucien-Geist (M1.5), Zwischenstand Block 1-2
 
 - Text-Seite fertig, ESP-Schreiben (ToPlugin) noch offen, weil `CreationKit.exe` lief (E17). Bis dahin liegt alles nur in `plugin-text/` und `Data/Source/Scripts`.

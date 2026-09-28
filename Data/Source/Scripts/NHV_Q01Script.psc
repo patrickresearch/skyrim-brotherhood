@@ -53,7 +53,7 @@ Float fLetterDueGameTime = 0.0 ; absolute Utility.GetCurrentGameTime() the lette
 ; avoids a trigger box and any navmesh edit in a vanilla exterior cell. Guarded against a double
 ; start (e.g. a dialogue branch re-running the fragment) so only one OnUpdate chain is ever alive.
 Function BeginCampWatch()
-    If bCampWatchStarted
+    If bCampWatchStarted || GetStage() >= 30
         Return
     EndIf
     bCampWatchStarted = True
@@ -127,6 +127,22 @@ EndFunction
 
 ; Called from the Stage 40->50 dialogue fragment (Hrefna agrees to hear Veyra out).
 Function StartVeyraTrial()
+    ; Stage 50 (Trial) begins here, even when the appearance scene cannot run below - the Trial01/
+    ; Persuade/Intimidate dialogue is gated on Stage 50 and must stay reachable (fallback path).
+    Int iStage = GetStage()
+    If iStage < 40 || iStage >= 60
+        NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraTrial: called in Stage " + iStage + ", ignored")
+        Return
+    EndIf
+    If VeyraTrialScene && VeyraTrialScene.IsPlaying()
+        Return ; double call (both Offer07 topics); the scene is already running
+    EndIf
+    Bool bFirstCall = (iStage < 50)
+    If bFirstCall
+        SetStage(50)
+    Else
+        Return ; Stage 50 already reached: the trial was started by an earlier call
+    EndIf
     FillVeyraAlias() ; NHV_ContractBaseScript: ForceRefTo from NHV_CoreScript.GetVeyraActor()
     If !VeyraAlias || !VeyraAlias.GetActorRef()
         ; Optional alias unfilled (E16-style soft dependency broke, or a patch removed Veyra) -
@@ -141,6 +157,10 @@ Function StartVeyraTrial()
     EndIf
     ; Veyra lives in the Deep Sanctuary; bring her to the camp (the scene has no travel action).
     Actor kVeyra = VeyraAlias.GetActorRef()
+    If kVeyra.IsDead() || kVeyra.IsDisabled()
+        NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraTrial: Veyra dead or disabled, skipping scene")
+        Return
+    EndIf
     If VeyraTrialMarker
         kVeyra.MoveTo(VeyraTrialMarker)
     ElseIf CampMarker

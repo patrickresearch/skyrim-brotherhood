@@ -1,5 +1,15 @@
 FormKey: 00401E:NightsHarvest.esp
 EditorID: NHV_Q01_HakanRumors04_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200401E
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200401E
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200401E
+      FragmentName: Fragment_0
 Flags: {}
 PreviousDialog: Null
 FavorLevel: None

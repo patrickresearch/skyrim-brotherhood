@@ -1,4 +1,6 @@
 FormKey: 004012:NightsHarvest.esp
 EditorID: NHV_Q01_VeyraBrief01
 Priority: 60
+Branch: 004016:NightsHarvest.esp
+Quest: 004000:NightsHarvest.esp
 SubtypeName: CUST

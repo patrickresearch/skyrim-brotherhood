@@ -26,6 +26,19 @@ ScheduleDayOfWeek: Any
 ScheduleHour: -1
 ScheduleMinute: -1
 Unknown3: 0xF0703F
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 40
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 60
 OwnerQuest: 004000:NightsHarvest.esp
 PackageTemplate: 019B2C:Skyrim.esm
 DataInputVersion: 4

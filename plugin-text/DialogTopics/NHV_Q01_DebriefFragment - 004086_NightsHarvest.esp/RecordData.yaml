@@ -1,4 +1,6 @@
 FormKey: 004086:NightsHarvest.esp
 EditorID: NHV_Q01_DebriefFragment
 Priority: 60
+Branch: 004088:NightsHarvest.esp
+Quest: 004000:NightsHarvest.esp
 SubtypeName: CUST
