@@ -7,6 +7,6 @@ Description:
 
 
     A measured voice, a practiced blade. The family remembers both.
-INAM: '[]'
+INAM: 0x00000000
 Flags:
 - MessageBox

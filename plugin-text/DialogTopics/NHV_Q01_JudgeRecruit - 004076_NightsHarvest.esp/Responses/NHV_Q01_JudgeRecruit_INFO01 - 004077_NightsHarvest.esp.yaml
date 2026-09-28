@@ -11,7 +11,7 @@ VirtualMachineAdapter:
       ScriptName: TIF__02004077
       FragmentName: Fragment_0
 Flags: {}
-PreviousDialog: Null
+PreviousDialog: 004078:NightsHarvest.esp
 FavorLevel: None
 Responses:
 - ResponseNumber: 1

@@ -25,6 +25,7 @@ Race: 013742:Skyrim.esm
 AIData:
   Confidence: Brave
   EnergyLevel: 50
+  Unused: 10
 Class: 0E3A63:Skyrim.esm
 Name:
   TargetLanguage: English

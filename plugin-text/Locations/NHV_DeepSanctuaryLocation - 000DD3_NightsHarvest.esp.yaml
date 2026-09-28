@@ -1,16 +1,20 @@
 FormKey: 000DD3:NightsHarvest.esp
 EditorID: NHV_DeepSanctuaryLocation
 LocationRefTypeReferencesStatic:
-- LocationRefType: 01CF18:Skyrim.esm
-  Ref: 0013AD:NightsHarvest.esp
-  Location: 001342:NightsHarvest.esp
-  Grid: 32767, 32767
 - LocationRefType: 071061:Skyrim.esm
   Ref: 00140F:NightsHarvest.esp
   Location: 001342:NightsHarvest.esp
   Grid: 32767, 32767
 - LocationRefType: 060FD4:Skyrim.esm
   Ref: 0013B8:NightsHarvest.esp
+  Location: 001342:NightsHarvest.esp
+  Grid: 32767, 32767
+- LocationRefType: 01CF18:Skyrim.esm
+  Ref: 0013AD:NightsHarvest.esp
+  Location: 001342:NightsHarvest.esp
+  Grid: 32767, 32767
+- LocationRefType: 01CF1A:Skyrim.esm
+  Ref: 0013D0:NightsHarvest.esp
   Location: 001342:NightsHarvest.esp
   Grid: 32767, 32767
 - LocationRefType: 070E64:Skyrim.esm
@@ -23,10 +27,6 @@ LocationRefTypeReferencesStatic:
   Grid: 32767, 32767
 - LocationRefType: 01CF16:Skyrim.esm
   Ref: 001371:NightsHarvest.esp
-  Location: 001342:NightsHarvest.esp
-  Grid: 32767, 32767
-- LocationRefType: 01CF1A:Skyrim.esm
-  Ref: 0013D0:NightsHarvest.esp
   Location: 001342:NightsHarvest.esp
   Grid: 32767, 32767
 ParentLocation: 019429:Skyrim.esm

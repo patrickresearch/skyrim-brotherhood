@@ -1,5 +1,12 @@
 FormKey: 004008:NightsHarvest.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: NHV_Quintus
+SkyrimMajorRecordFlags:
+- Compressed
+ObjectBounds:
+  First: -22, -14, 0
+  Second: 22, 14, 128
 Configuration:
   Flags:
   - Essential
@@ -15,11 +22,97 @@ Race: 013744:Skyrim.esm
 AIData:
   Confidence: Average
   EnergyLevel: 50
+  Unused: 101
+Packages:
+- 00498D:NightsHarvest.esp
+- 004989:NightsHarvest.esp
 Class: 10B1D8:Skyrim.esm
 Name:
   TargetLanguage: English
   Value: Quintus Aufidius
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 5
+  - Key: TwoHanded
+    Value: 5
+  - Key: Archery
+    Value: 5
+  - Key: Block
+    Value: 5
+  - Key: Smithing
+    Value: 5
+  - Key: HeavyArmor
+    Value: 5
+  - Key: LightArmor
+    Value: 5
+  - Key: Pickpocket
+    Value: 5
+  - Key: Lockpicking
+    Value: 5
+  - Key: Sneak
+    Value: 5
+  - Key: Alchemy
+    Value: 5
+  - Key: Speech
+    Value: 5
+  - Key: Alteration
+    Value: 5
+  - Key: Conjuration
+    Value: 5
+  - Key: Destruction
+    Value: 5
+  - Key: Illusion
+    Value: 5
+  - Key: Restoration
+    Value: 5
+  - Key: Enchanting
+    Value: 5
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 8280
+  Magicka: 20294
+  Stamina: 8274
+  GearedUpWeapons: 1
 NAM5: 255
 Height: 1
 Weight: 50
 DefaultOutfit: 045C34:Skyrim.esm
+TextureLighting: '#00706156'
+MajorFlags:
+- 0x40000

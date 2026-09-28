@@ -3,10 +3,6 @@ EditorID: MarkarthTreasuryHouseLocation
 Version2: 3
 LocationRefTypeReferencesAdded:
 - LocationRefType: 0130F7:Skyrim.esm
-  Ref: 0198E3:Skyrim.esm
-  Location: 016E00:Skyrim.esm
-  Grid: 32767, 32767
-- LocationRefType: 0130F7:Skyrim.esm
   Ref: 0198E4:Skyrim.esm
   Location: 016E00:Skyrim.esm
   Grid: 32767, 32767
@@ -19,19 +15,7 @@ LocationRefTypeReferencesAdded:
   Location: 016E00:Skyrim.esm
   Grid: 32767, 32767
 - LocationRefType: 0130F7:Skyrim.esm
-  Ref: 0198E7:Skyrim.esm
-  Location: 016E00:Skyrim.esm
-  Grid: 32767, 32767
-- LocationRefType: 0130F7:Skyrim.esm
-  Ref: 0198E9:Skyrim.esm
-  Location: 016E00:Skyrim.esm
-  Grid: 32767, 32767
-- LocationRefType: 0130F7:Skyrim.esm
   Ref: 0198FE:Skyrim.esm
-  Location: 016E00:Skyrim.esm
-  Grid: 32767, 32767
-- LocationRefType: 01BDF1:Skyrim.esm
-  Ref: 01F322:Skyrim.esm
   Location: 016E00:Skyrim.esm
   Grid: 32767, 32767
 - LocationRefType: 071061:Skyrim.esm
@@ -44,10 +28,6 @@ LocationRefTypeReferencesAdded:
   Grid: 32767, 32767
 - LocationRefType: 01CF1A:Skyrim.esm
   Ref: 09CE80:Skyrim.esm
-  Location: 016E00:Skyrim.esm
-  Grid: 32767, 32767
-- LocationRefType: 01CF18:Skyrim.esm
-  Ref: 09CE81:Skyrim.esm
   Location: 016E00:Skyrim.esm
   Grid: 32767, 32767
 - LocationRefType: 01CF16:Skyrim.esm

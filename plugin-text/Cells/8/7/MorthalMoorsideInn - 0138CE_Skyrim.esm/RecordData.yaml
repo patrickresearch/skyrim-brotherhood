@@ -1,0 +1,55 @@
+FormKey: 0138CE:Skyrim.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: MorthalMoorsideInn
+Version2: 14
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: Moorside Inn
+Flags:
+- IsInteriorCell
+- PublicArea
+- ShowSky
+Lighting:
+  AmbientColor: '#001E1E28'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00000000'
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#00211E29'
+    DirectionalXMinus: '#001A1E26'
+    DirectionalYPlus: '#001E1F28'
+    DirectionalYMinus: '#001E1C28'
+    DirectionalZPlus: '#000E0E12'
+    DirectionalZMinus: '#002D2D3D'
+    Specular: '#00000000'
+    Scale: 1
+  FogFarColor: '#00000000'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - ClipDistance
+LightingTemplate: 0A1196:Skyrim.esm
+WaterHeight: -2.1474836E+09
+Location: 01EB96:Skyrim.esm
+Owner: 0135ED:Skyrim.esm
+SkyAndWeatherFromRegion: 0C5855:Skyrim.esm
+AcousticSpace: 0C5B6D:Skyrim.esm
+Music: 0622AB:Skyrim.esm
+ImageSpace: 059B60:Skyrim.esm
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 004988:NightsHarvest.esp
+  VersionControl: 13628
+  EditorID: NHV_QuintusRef
+  Base: 004008:NightsHarvest.esp
+  Placement:
+    Position: 1097.9825, 454.27563, 0
+MajorFlags:
+- 0x40000

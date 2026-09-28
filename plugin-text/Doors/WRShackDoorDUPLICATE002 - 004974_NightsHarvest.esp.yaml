@@ -1,0 +1,11 @@
+FormKey: 004974:NightsHarvest.esp
+VersionControl: 13628
+EditorID: WRShackDoorDUPLICATE002
+Name:
+  TargetLanguage: English
+  Value: Door
+Model:
+  File: Architecture\WhiteRun\WRShackDoor01.nif
+  Data: 0x020000000000000000000000
+OpenSound: 03C816:Skyrim.esm
+CloseSound: 03C819:Skyrim.esm

@@ -7,6 +7,6 @@ Description:
 
 
     Remembered, but not honored. Her name remains where the family can see it.
-INAM: '[]'
+INAM: 0x00000000
 Flags:
 - MessageBox

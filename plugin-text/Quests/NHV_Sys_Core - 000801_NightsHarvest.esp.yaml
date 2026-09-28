@@ -46,6 +46,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: HailSithisQuest
       Object: 01EA59:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LucienRef
+      Object: 004401:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectListProperty
       Name: MemorialMarkers
       Objects:
@@ -84,6 +87,9 @@ VirtualMachineAdapter:
       Name: NHV_Cfg_StartDelay
       Object: 000803:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q00_LucienSummoned
+      Object: 004403:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Q00_VeyraReturned
       Object: 00327B:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
@@ -101,12 +107,6 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: PassageDoorBase
       Object: 000DD5:NightsHarvest.esp
-    - MutagenObjectType: ScriptObjectProperty
-      Name: LucienRef
-      Object: 004401:NightsHarvest.esp
-    - MutagenObjectType: ScriptObjectProperty
-      Name: NHV_Q00_LucienSummoned
-      Object: 004403:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: Q00
       Object: 000815:NightsHarvest.esp

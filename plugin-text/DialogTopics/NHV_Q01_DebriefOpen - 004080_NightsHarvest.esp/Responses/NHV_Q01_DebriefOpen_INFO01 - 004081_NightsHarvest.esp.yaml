@@ -3,7 +3,7 @@ EditorID: NHV_Q01_DebriefOpen_INFO01
 Flags:
   Flags:
   - Goodbye
-PreviousDialog: Null
+PreviousDialog: 004082:NightsHarvest.esp
 FavorLevel: None
 LinkTo:
 - 004086:NightsHarvest.esp

@@ -1,7 +1,6 @@
 FormKey: 004404:NightsHarvest.esp
 EditorID: NHV_Pkg_Sys_LucienStand
 Type: Package
-PreferredSpeed: Walk
 InterruptFlags:
 - HellosToPlayer
 - RandomConversations
