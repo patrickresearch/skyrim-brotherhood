@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 35 AutoReadOnly
+Int Property VERSION = 36 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -409,6 +409,9 @@ Function Migrate(Int aiFrom)
         If bContractDone
             bQ00Completed = True
         EndIf
+    EndIf
+    If aiFrom < 36
+        ; Stage 80 without wired doubt dialogue: EnsureQ00Completion() in Maintenance finishes Q00.
     EndIf
 EndFunction
 
@@ -1825,7 +1828,20 @@ Function FinishQ00Contract()
         Q00.SetStage(80)
     EndIf
     fContractDoneTime = Utility.GetCurrentGameTime()
+    If !DoubtDialogueReady()
+        ; The doubt/Lucien lines are not wired yet (Codex): finish Q00 right away as before stage 80 existed.
+        NHV_Util.Log(NHV_Cfg_Debug, "Q00 contract done, doubt dialogue not wired: completing Q00 directly")
+        CompleteQ00()
+        Return
+    EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Q00 contract done (stage 80), waiting for Veyra's doubt dialogue")
+EndFunction
+
+; Veyra's doubt topic (NHV_Q00_Veyra_Doubt…), set in the ESP once the dialogue is wired. Empty = feature off.
+Topic Property VeyraDoubtTopic Auto
+
+Bool Function DoubtDialogueReady()
+    Return VeyraDoubtTopic != None
 EndFunction
 
 ; Q00 stage 100: what FinishQ00Contract() did until script version 34. Called from the fragments of Veyra's
@@ -1913,6 +1929,9 @@ Function EnsureQ00Completion()
     EndIf
     If Q00.GetStageDone(100)
         NHV_Util.Log(NHV_Cfg_Debug, "Q00 at stage 100 without CompleteQ00: completing now")
+        CompleteQ00()
+    ElseIf bContractDone && Q00.GetStageDone(80) && !DoubtDialogueReady()
+        NHV_Util.Log(NHV_Cfg_Debug, "Q00 waits at stage 80 but the doubt dialogue is not wired: completing Q00")
         CompleteQ00()
     ElseIf bContractDone && Q00.GetStageDone(80)
         If fContractDoneTime <= 0.0
