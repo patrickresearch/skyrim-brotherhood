@@ -113,6 +113,12 @@ Stages:
     Entry:
       TargetLanguage: English
       Value: Decide whose names belong on the Memorial Wall.
+- Index: 80
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Veyra senses that you do not trust her yet. She offers to call someone who can vouch for her.
 - Index: 100
   Flags:
   - ShutDownStage

@@ -61,6 +61,10 @@ Compile geprüft, kein Spielstart), danach CK-Anleitung auf die verbleibende rä
 
 **28.09.2026: Chronologische rote Storyfäden für Q02–Q06 ergänzt.** Die Lesefassungen `docs/concept/Q02-Chronologische-Geschichte.md` bis `Q06-Chronologische-Geschichte.md` erzählen die Contracts einschließlich Kandidatenprüfung, Oculatus-Fragmenten, Ausgängen und Übergängen. `docs/concept/Q01-Q06-Roter-Storyfaden.md` bündelt die Kampagnenlinie, den Heat-Faden, den Dawnstar-Spitzel, First Blood, Knock at Dawnstar und Veyras Gleaning. Grundlage sind die aktuellen Oculatus-Entscheidungen und Planungsdokumente; optionale Ereignisse sind als solche markiert.
 
+**28.09.2026: Drei optionale ungeeignete Ernten und der falsche Oculatus-Kandidat ergänzt.** `docs/concept/Q07-Q09-Nichtgeeignete-Rekrutierungen.md` beschreibt Arvena Sorn, Garran Vey und Q09s Spion Lucan Varro unter dem Namen des gefangenen Edrin Vale. `docs/concept/Neue-Charakterprofile.md`, `docs/GOAL.md`, `docs/concept/konzept.md`, `docs/concept/Q06-Chronologische-Geschichte.md` und der rote Storyfaden wurden um `Unfit`/`False Harvest` und die erleichterte Livia-Rekrutierung ergänzt. CSVs, Quest-Stages, Globals und CK-Records für Q07–Q09 sind noch offen.
+
+**28.09.2026: Livia als geheime Oculatus-Schwester präzisiert.** Bei erfolgreicher Rekrutierung bleibt Livia öffentlich eine angesehene Oculatus-Offizierin und erhält den Status `Hidden Sister` statt eines gewöhnlichen Sanctuary-Kerns. `docs/concept/Livia-Hidden-Sister.md` beschreibt Informationsstufen, Übergabeformen und Grenzen; Autorenprofil, Q06-Chronologie, roter Storyfaden, GOAL und E34 wurden angepasst. Verschlüsselte Briefe, Informationsdialoge und der CK-Status sind noch offen.
+
 **27.09.2026: Q02-Autorenprofile, Dialogmaster und Lore-Gegenstände ausgebaut.** `docs/concept/Q02-Nebenfiguren-Autorenprofile.md` definiert Torbjorn, Drinks-the-Brine, Haldor, Aelius und Hjorald. `dialogue/Q02.csv` führt die Questkette von Veyras Briefing über Hafenuntersuchung, Nachtbeobachtung, Drowned Hollow, Aelius' Prüfung und Sings' Urteil bis zum Debrief. Drei Q02-Loretexte (`NHV_SYS_BOOK_82–84`) dokumentieren Fragment 2, Reed-Walker-Knot und Drowned Pool. Der Lint kennt die neuen Sprecher als eigene VoiceType-Figuren. Lint: 0 Fehler bei 512 IDs.
 
 **27.09.2026: Autorenprofile für neue Questfiguren erstellt.** `docs/concept/Neue-Charakterprofile.md` beschreibt Hrefna, Sings, Nirelda, Corisande, Kharzog, Livia und die wichtigen Contract-Nebenfiguren mit Hintergrund, Motivation, Zielen, Schwächen, Beziehungen und Stimme. Nirelda ist nun verbindlich eine Feuer-Battle-Mage mit Meistergrad in Destruction. GOAL, Konzept und E26 synchronisiert; neue Q03-Dialoge und technische Magiewerte stehen noch aus.
@@ -326,6 +330,14 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-28 – Q00 Stage 80 (Veyras Zweifel) und Lucien-Geist (M1.5), Zwischenstand Block 1-2
+
+- Text-Seite fertig, ESP-Schreiben (ToPlugin) noch offen, weil `CreationKit.exe` lief (E17). Bis dahin liegt alles nur in `plugin-text/` und `Data/Source/Scripts`.
+- `NHV_CoreScript` Version 35: `FinishQ00Contract()` setzt nur noch Stage 80; neue `CompleteQ00()` (Plaketten, Ledger, Stage 100, `StartQ01()`), `OnDoubtAccepted/Declined/RetryAccepted`, `SummonLucien()`, `EnsureLucienState()`, `IsLucienSummoned()`, `RetryStartQ01()` (Maintenance). Neue Variable `bQ00Completed`; Migration setzt sie fuer Saves mit `bContractDone`. Build 59/59 ok.
+- Plugin-Text: Q00 Stage 80 (Journal-Platzhalter), NPC `NHV_LucienSpirit` (004400, Template Traits auf `DBSpectralAssassin` 0A0E49, Voice `MaleUniqueDBSpectralLachance` 074765), PlacedNpc `NHV_Ref_Sys_Lucien` (004401, persistent, initially disabled), Marker `NHV_Mk_Sys_LucienSpot` (004402), Global `NHV_Q00_LucienSummoned` (004403), Package `NHV_Pkg_Sys_LucienStand` (004404), Alias `Lucien` (ID 4) in `NHV_Sys_Sanctuary`.
+- Review (papyrus-reviewer) eingearbeitet: `EnsureQ00Completion()` (Selbstheilung Stage 100 ohne CompleteQ00, Fallback nach 3 Spieltagen unbeantwortetem Zweifel), Reihenfolge Complete vor Summon, `Enable(False)` + Shader danach. Build 59/59. Round Trip in Temp (ToPlugin/ToText ohne Ueberschreiben von Data/NightsHarvest.esp) verlustfrei bis auf Standardwerte; `plugin_text.ps1 -Direction ToPlugin` steht aus (CK lief).
+- Dialogzeilen stehen aus (Codex, `docs/codex/2026-09-28-Q00-Zweifel-und-Lucien.md`). CK-Anleitung: `docs/ck/M1.5-Q00-Zweifel-Lucien.md`.
 
 ### 2026-09-28 – Q01 vollständig als Dialog- und Lore-Paket
 

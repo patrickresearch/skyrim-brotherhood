@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 34 AutoReadOnly
+Int Property VERSION = 35 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -118,6 +118,9 @@ Function Maintenance()
         Debug.Notification("Night's Harvest " + VERSION_TEXT + " loaded")
     EndIf
     EnsureSealedPassageState()
+    EnsureLucienState()
+    EnsureQ00Completion()
+    RetryStartQ01()
     ; Start the E14 delay on the first load after installing, not only on the next location change (main-game
     ; test 27.09.2026: a save started indoors and slept through did not count the sleep).
     NoteHailSithisCompletion()
@@ -205,6 +208,15 @@ Function EnsureProperties()
     EndIf
     If !NHV_Q00_VeyraReturning
         NHV_Q00_VeyraReturning = Game.GetFormFromFile(0x00327C, "NightsHarvest.esp") as GlobalVariable
+    EndIf
+    If !NHV_Q00_LucienSummoned
+        NHV_Q00_LucienSummoned = Game.GetFormFromFile(0x004403, "NightsHarvest.esp") as GlobalVariable
+    EndIf
+    If !LucienRef
+        LucienRef = Game.GetFormFromFile(0x004401, "NightsHarvest.esp") as ObjectReference
+    EndIf
+    If !Q01
+        Q01 = Game.GetFormFromFile(0x004000, "NightsHarvest.esp") as Quest
     EndIf
 EndFunction
 
@@ -389,6 +401,13 @@ Function Migrate(Int aiFrom)
         ; Veyra spawned inside a modded table: before the Standoff starts, put her on her new marker.
         If VeyraRef && StandoffVeyraMarker && Q00 && Q00.IsRunning() && Q00.GetStage() <= 10 && !bStandoffSceneStarted
             VeyraRef.MoveTo(StandoffVeyraMarker)
+        EndIf
+    EndIf
+    If aiFrom < 35
+        ; Q00 stage 80 (Veyra's doubt) and Lucien introduced. A Q00 that already finished (bContractDone, stage 100)
+        ; stays untouched: it must never be sent back to stage 80, and CompleteQ00() must not run a second time.
+        If bContractDone
+            bQ00Completed = True
         EndIf
     EndIf
 EndFunction
@@ -1541,7 +1560,7 @@ EndFunction
 ; Q00 stage 50 -> 60 -> 100: the Memorial Wall in the Deep Sanctuary. Coming near the wall (spot given by the
 ; developer 27.09.2026, provisional) sets stage 60 and plays scene C NHV_Scn_Q00_05Memorial (locked). The
 ; Astrid choice is free dialogue with Veyra (Memorial01-03); its fragments call OnMemorialChosen(), which plays
-; scene D NHV_Scn_Q00_06Contract (Nazir's reaction, the first candidate); its end sets stage 100.
+; scene D NHV_Scn_Q00_06Contract (Nazir's reaction, the first candidate); its end sets stage 80 (Veyra's doubt), the doubt dialogue completes Q00 (stage 100).
 ; Not yet: the ledger book (text not transferred) and the Q01 start (Q01 does not exist yet).
 ; ---------------------------------------------------------------------------------------------------------
 Scene Property MemorialScene Auto
@@ -1558,6 +1577,11 @@ Bool bMemorialPollPending = False
 Bool bMemorialStarted = False
 Bool bContractStarted = False
 Bool bContractDone = False
+; Set by CompleteQ00() (script version 35); set for saves that had finished Q00 before, in Migrate().
+Bool bQ00Completed = False
+; Game time of stage 80 and the fallback after which an unanswered doubt completes Q00 as declined.
+Float fContractDoneTime = 0.0
+Float fDoubtFallbackDays = 3.0
 
 Function ArmMemorialPoll()
     If !bMemorialStarted && Q00 && Q00.IsRunning() && Q00.GetStage() == 50
@@ -1787,6 +1811,9 @@ Function OnContractSceneEnd()
     FinishQ00Contract()
 EndFunction
 
+; End of the contract scene. Since script version 35 this only opens Q00 stage 80 (Veyra's doubt): the
+; quest completes in CompleteQ00(), called from the doubt dialogue (accept or decline). Name and guard kept
+; for save compatibility (bContractDone).
 Function FinishQ00Contract()
     If bContractDone
         Return
@@ -1794,18 +1821,132 @@ Function FinishQ00Contract()
     bContractDone = True
     ActiveCutscene = None
     UnlockCutscene()
+    If Q00 && Q00.GetStage() < 80
+        Q00.SetStage(80)
+    EndIf
+    fContractDoneTime = Utility.GetCurrentGameTime()
+    NHV_Util.Log(NHV_Cfg_Debug, "Q00 contract done (stage 80), waiting for Veyra's doubt dialogue")
+EndFunction
+
+; Q00 stage 100: what FinishQ00Contract() did until script version 34. Called from the fragments of Veyra's
+; doubt topics (accept and decline). Maintenance() also calls it (EnsureQ00Completion) for a Q00 that reached
+; stage 100 in another way (console, test save) and, as a fallback, when the doubt dialogue stays unanswered
+; for fDoubtFallbackDays game days. Idempotent (bQ00Completed).
+Function CompleteQ00()
+    If bQ00Completed
+        Return
+    EndIf
+    If !Q00 || Q00.GetStage() < 80
+        NHV_Util.Log(NHV_Cfg_Debug, "CompleteQ00: Q00 not at stage 80 yet, ignored")
+        Return
+    EndIf
+    bQ00Completed = True
+    bContractDone = True
+    ActiveCutscene = None
+    UnlockCutscene()
     ShowMemorialPlaques()
     GiveLedger()
-    If Q00 && Q00.GetStage() < 100
+    If Q00.GetStage() < 100
         Q00.SetStage(100)
     EndIf
     StartQ01()
     NHV_Util.Log(NHV_Cfg_Debug, "Q00 finished (stage 100)")
 EndFunction
 
+; Fragment entry points of the doubt dialogue (docs/ck/M1.5-Q00-Zweifel-Lucien.md).
+Function OnDoubtAccepted()
+    CompleteQ00()
+    SummonLucien()
+EndFunction
+
+Function OnDoubtDeclined()
+    NHV_Util.Log(NHV_Cfg_Debug, "Veyra's doubt declined, Lucien stays unsummoned")
+    CompleteQ00()
+EndFunction
+
+; Later retry topic (Q00 already finished): only the summoning.
+Function OnDoubtRetryAccepted()
+    SummonLucien()
+EndFunction
+
+; Condition hook for the retry topic and Lucien's dialogue: GetGlobalValue NHV_Q00_LucienSummoned.
+Bool Function IsLucienSummoned()
+    Return NHV_Q00_LucienSummoned && NHV_Q00_LucienSummoned.GetValueInt() == 1
+EndFunction
+
+; Lucien Lachance's spirit lives permanently in the Deep Sanctuary (persistent ref, initially disabled).
+; Idempotent: a second call only repeats nothing that is visible (the ref is already enabled).
+Function SummonLucien()
+    If !LucienRef
+        NHV_Util.Log(NHV_Cfg_Debug, "SummonLucien: LucienRef not set")
+        Return
+    EndIf
+    If NHV_Q00_LucienSummoned
+        NHV_Q00_LucienSummoned.SetValue(1.0)
+    EndIf
+    If LucienRef.IsDisabled()
+        ; Vanilla shader of ghosts materialising (GhostEtherealFXShaderIntro, Skyrim.esm 0658E2).
+        EffectShader kFx = Game.GetFormFromFile(0x0658E2, "Skyrim.esm") as EffectShader
+        LucienRef.Enable(False)
+        LucienRef.SetDisplayName("Lucien Lachance", True)
+        If kFx
+            kFx.Play(LucienRef, 6.0)
+        Else
+            NHV_Util.Log(NHV_Cfg_Debug, "SummonLucien: ghost shader 0658E2 not found, no effect")
+        EndIf
+        NHV_Util.Log(NHV_Cfg_Debug, "Lucien summoned")
+    EndIf
+EndFunction
+
+; Maintenance: the global says Lucien was summoned, but his reference is disabled (e.g. reset by a patch).
+Function EnsureLucienState()
+    If IsLucienSummoned() && LucienRef && LucienRef.IsDisabled()
+        LucienRef.Enable(False)
+        NHV_Util.Log(NHV_Cfg_Debug, "Lucien re-enabled by Maintenance")
+    EndIf
+EndFunction
+
+; Maintenance: Q00 at/after stage 80 but never completed by CompleteQ00().
+Function EnsureQ00Completion()
+    If bQ00Completed || !Q00
+        Return
+    EndIf
+    If Q00.GetStageDone(100)
+        NHV_Util.Log(NHV_Cfg_Debug, "Q00 at stage 100 without CompleteQ00: completing now")
+        CompleteQ00()
+    ElseIf bContractDone && Q00.GetStageDone(80)
+        If fContractDoneTime <= 0.0
+            fContractDoneTime = Utility.GetCurrentGameTime() ; save made at stage 80 by a build without the timestamp
+        EndIf
+        If Utility.GetCurrentGameTime() - fContractDoneTime >= fDoubtFallbackDays
+            NHV_Util.Log(NHV_Cfg_Debug, "Veyra's doubt unanswered for " + fDoubtFallbackDays + " days: completing Q00 as declined")
+            CompleteQ00()
+        EndIf
+    EndIf
+EndFunction
+
+; StartQ01() can fail when Q01's aliases cannot fill yet (NPCs not placed in the CK). Cheap retry on every load.
+Function RetryStartQ01()
+    If !Q00 || !Q01
+        Return
+    EndIf
+    If !(Q00.IsCompleted() || Q00.GetStageDone(100))
+        Return
+    EndIf
+    If Q01.IsRunning() || Q01.IsCompleted() || Q01.GetStageDone(10)
+        Return
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Q00 finished but Q01 never ran: retrying StartQ01()")
+    StartQ01()
+EndFunction
+
 ; Q01 "The Unanswered Sacrament" follows Q00 directly (docs/plan/Q01-The-Unanswered-Sacrament.md, section 8).
 ; Q01 is not start-game-enabled; the property stays empty until the quest exists in the CK.
 Quest Property Q01 Auto
+
+; Q00 doubt / Lucien (script version 35). Persistent, initially disabled ref NHV_Ref_Sys_Lucien (004401).
+ObjectReference Property LucienRef Auto
+GlobalVariable Property NHV_Q00_LucienSummoned Auto
 
 Function StartQ01()
     If !Q01
@@ -1870,7 +2011,7 @@ Function RecoverActiveCutscene()
     If kScene == VeiledPassageScene || kScene == EnterDeepScene
         RecoverVeiledPassage()
     ElseIf kScene == ContractScene
-        NHV_Util.Log(NHV_Cfg_Debug, "Contract scene did not finish, stage 100 set as fallback")
+        NHV_Util.Log(NHV_Cfg_Debug, "Contract scene did not finish, stage 80 set as fallback")
         FinishQ00Contract()
     EndIf
     ; MemorialScene: nothing to recover, the Astrid choice is open in dialogue anyway.

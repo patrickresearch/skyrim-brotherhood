@@ -60,6 +60,7 @@ VANILLA_VOICES = {
 # Vanilla voice types our own speakers use (VTYP FormKey -> EditorID), read from Skyrim.esm, 26.09.2026.
 VANILLA_VOICE_TYPES = {
     "01BDB6:Skyrim.esm": "FemaleUniqueNightMother",
+    "074765:Skyrim.esm": "MaleUniqueDBSpectralLachance",  # NHV_LucienSpirit (Spectral Assassin voice), 28.09.2026
 }
 
 

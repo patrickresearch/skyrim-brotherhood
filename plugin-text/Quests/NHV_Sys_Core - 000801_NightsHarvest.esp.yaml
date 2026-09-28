@@ -102,6 +102,12 @@ VirtualMachineAdapter:
       Name: PassageDoorBase
       Object: 000DD5:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: LucienRef
+      Object: 004401:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q00_LucienSummoned
+      Object: 004403:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: Q00
       Object: 000815:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
