@@ -23,6 +23,7 @@ ReferenceAlias Property HrefnaFamilySlotAlias Auto
 ; -- World references (XMarkers, filled in the CK) --
 ObjectReference Property CampMarker Auto      ; NHV_Mk_Q01_CampMarker, ambush poll target
 ObjectReference Property KitchenMarker Auto   ; NHV_Mk_Q01_KitchenSpot, Homecoming destination
+ObjectReference Property VeyraTrialMarker Auto ; NHV_Mk_Q01_VeyraAppearSpot, where Veyra steps out of the dark for the trial
 
 ; -- Scenes --
 Scene Property CampAmbushScene Auto  ; NHV_Scn_Q01_01CampAmbush
@@ -138,6 +139,17 @@ Function StartVeyraTrial()
         NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraTrial: VeyraTrialScene property not set in the CK")
         Return
     EndIf
+    ; Veyra lives in the Deep Sanctuary; bring her to the camp (the scene has no travel action).
+    Actor kVeyra = VeyraAlias.GetActorRef()
+    If VeyraTrialMarker
+        kVeyra.MoveTo(VeyraTrialMarker)
+    ElseIf CampMarker
+        kVeyra.MoveTo(CampMarker, 0.0, 256.0, 0.0)
+        NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraTrial: VeyraTrialMarker not set, Veyra placed near CampMarker")
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraTrial: no marker for Veyra, she stays where she is")
+    EndIf
+    kVeyra.EvaluatePackage()
     LockCutscene(VeyraTrialScene)
     VeyraTrialScene.Start()
 EndFunction
@@ -231,10 +243,10 @@ EndFunction
 ; ---------------------------------------------------------------------------
 ; Release letter (game-time timer, fully independent of the OnUpdate cutscene watchdog above)
 ; ---------------------------------------------------------------------------
-; IMPORTANT CK NOTE: Stage 100 must NOT be flagged "Complete Quest" while a pending release letter
-; needs to fire (Judgement "Release"). Completing/stopping a quest stops its script from receiving
-; further OnUpdateGameTime callbacks and its aliases (incl. PlayerRefAlias) from receiving
-; OnPlayerLoadGame - so a stopped Q01 could never deliver the letter or reconcile the timer on load.
+; CK NOTE (team lead, 28.09.2026): Stage 100 SHOULD be flagged "Complete Quest" - that only marks the
+; quest completed in the journal, it keeps running and still receives OnUpdateGameTime/OnPlayerLoadGame.
+; What must NOT happen before the release letter is delivered is Stop() / "Shut Down Quest": a stopped
+; Q01 could never deliver the letter or reconcile the timer on load.
 ; Leave Stage 100 as the quest's final-but-not-completed stage instead (a common, intentional
 ; Bethesda pattern for exactly this reason); the Journal/Debrief plays identically either way. See
 ; docs/ck/M1.6-Q01-CK-Anleitung.md and docs/plan/Q01-The-Unanswered-Sacrament.md section 8b.
