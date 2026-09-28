@@ -1,0 +1,62 @@
+FormKey: 004037:NightsHarvest.esp
+EditorID: NHV_Scn_Q01_03QuintusApproach
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 1
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Q01_QuintusApproach1
+  ActorID: 0
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 004031:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q01_QuintusApproach2
+  ActorID: 1
+  Index: 2
+  StartPhase: 1
+  EndPhase: 1
+  Topic: 004033:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q01_QuintusApproach3
+  ActorID: 0
+  Index: 3
+  StartPhase: 2
+  EndPhase: 2
+  Topic: 004035:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 004000:NightsHarvest.esp
+LastActionIndex: 3
+VNAM: 0x0000000000000000

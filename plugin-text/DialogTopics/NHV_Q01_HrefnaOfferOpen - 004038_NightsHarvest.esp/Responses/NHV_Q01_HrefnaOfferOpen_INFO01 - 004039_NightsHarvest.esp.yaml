@@ -1,0 +1,27 @@
+FormKey: 004039:NightsHarvest.esp
+EditorID: NHV_Q01_HrefnaOfferOpen_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Six weeks I waited. Heart, skull, flesh, bones, nightshade. I did it all right. I know I did.
+  ScriptNotes: NHV_Q01_040_01
+  Edits: ''
+- EmotionValue: 50
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You came. Now you come. Where were you when he took the farm and my husband took to the bottle?
+  ScriptNotes: NHV_Q01_040_02
+  Edits: ''
+Speaker: 004007:NightsHarvest.esp

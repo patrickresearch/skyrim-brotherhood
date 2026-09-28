@@ -61,7 +61,7 @@ Kitchen-Raum als Zelle (nur der Marker darin ist neu).
 **Spriggit-YAML-Entwurf unter `staging/Q01/`:** bewusst nicht angelegt. Q01 enthält Szenen, Dialog-Branches
 und mehrere neue Zellen – von Hand geschriebenes Spriggit-YAML dafür ist fehleranfällig (Szenen-Phasen,
 INFO-Verknüpfungen, Zell-Kinder) und würde der ESP-schreibende Agent ohnehin gegen den CK-Export prüfen
-müssen. Die Tabelle oben plus die CK-Anleitung (`docs/ck/M1.6-Q01-CK-Anleitung.md`) sind der sicherere Weg
+müssen. Die Tabelle oben plus die CK-Anleitung (`docs/ck/M1.7-Q01-CK-Anleitung.md`) sind der sicherere Weg
 für „ein Schreiber zur Zeit“ (Regel 7). Falls der Entwickler trotzdem YAML-Entwürfe wünscht, bitte für
 einzelne, einfache Record-Typen (Global, Faction-Zugehörigkeit) gezielt nachfragen statt für die ganze
 Quest.

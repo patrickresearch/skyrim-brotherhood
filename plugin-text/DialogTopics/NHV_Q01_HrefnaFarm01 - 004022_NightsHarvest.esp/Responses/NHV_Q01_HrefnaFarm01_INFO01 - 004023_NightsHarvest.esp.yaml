@@ -1,0 +1,40 @@
+FormKey: 004023:NightsHarvest.esp
+EditorID: NHV_Q01_HrefnaFarm01_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004024:NightsHarvest.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Debt happened. Then weather. Then the kind of silence that makes a house forget its own name.
+  ScriptNotes: NHV_Q01_020_02 prompt=NHV_Q01_020_06
+  Edits: ''
+- EmotionValue: 40
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I know what it was. I know what it asks. I do not know why asking changed nothing.
+  ScriptNotes: NHV_Q01_020_04
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: What happened to this place?

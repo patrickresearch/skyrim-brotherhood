@@ -1,0 +1,7 @@
+FormKey: 00407F:NightsHarvest.esp
+EditorID: NHV_Q01_JudgeSilence_Branch
+Quest: 004000:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00407D:NightsHarvest.esp

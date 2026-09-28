@@ -1,0 +1,55 @@
+FormKey: 00406A:NightsHarvest.esp
+EditorID: NHV_Q01_TrialIntimidate_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200406A
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: QuintusScene
+      Object: 004037:NightsHarvest.esp
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200406A
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200406A
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 50
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Do not threaten me. Just... look away.
+  ScriptNotes: NHV_Q01_050_61 prompt=NHV_Q01_050_60
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Tonight, in his room. Or on the road at dawn. Pick one; I will not do it twice.
+  ScriptNotes: NHV_Q01_050_22
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 50
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIntimidateSuccessConditionData
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: (Intimidate) Then you are no use to us. And neither is your silence.

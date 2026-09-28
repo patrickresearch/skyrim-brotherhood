@@ -105,6 +105,9 @@ VirtualMachineAdapter:
       Name: Q00
       Object: 000815:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: Q01
+      Object: 004000:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: ReturnDoorBase
       Object: 000DD6:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty

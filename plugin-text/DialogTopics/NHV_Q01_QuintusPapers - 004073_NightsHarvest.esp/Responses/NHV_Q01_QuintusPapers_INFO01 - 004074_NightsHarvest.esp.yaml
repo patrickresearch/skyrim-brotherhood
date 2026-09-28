@@ -1,0 +1,47 @@
+FormKey: 004074:NightsHarvest.esp
+EditorID: NHV_Q01_QuintusPapers_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02004074
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02004074
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02004074
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Papers. A seal with an eye on it. He was not a trader, was he?
+  ScriptNotes: NHV_Q01_060_06 prompt=NHV_Q01_060_02
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: So he would have come for me eventually. Funny. That does not help either.
+  ScriptNotes: NHV_Q01_060_03
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 60
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Penitus Oculatus. The Emperor's watchdogs.

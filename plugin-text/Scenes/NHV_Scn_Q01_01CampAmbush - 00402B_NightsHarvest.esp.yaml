@@ -1,0 +1,37 @@
+FormKey: 00402B:NightsHarvest.esp
+EditorID: NHV_Scn_Q01_01CampAmbush
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Scn_Q01_01CampAmbush_0200402B
+  ScriptFragments:
+    FileName: SF_NHV_Scn_Q01_01CampAmbush_0200402B
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Scn_Q01_01CampAmbush_0200402B
+      FragmentName: Fragment_0
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Q01_CampAmbushOpen
+  ActorID: 0
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 004029:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 004000:NightsHarvest.esp
+LastActionIndex: 1
+VNAM: 0x00000000

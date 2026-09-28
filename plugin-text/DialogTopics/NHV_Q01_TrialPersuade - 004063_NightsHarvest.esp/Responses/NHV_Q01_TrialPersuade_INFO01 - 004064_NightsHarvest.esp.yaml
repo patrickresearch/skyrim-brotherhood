@@ -1,0 +1,59 @@
+FormKey: 004064:NightsHarvest.esp
+EditorID: NHV_Q01_TrialPersuade_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02004064
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: QuintusScene
+      Object: 004037:NightsHarvest.esp
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02004064
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02004064
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004067:NightsHarvest.esp
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Better him than me. I used to say that about wolves.
+  ScriptNotes: NHV_Q01_050_21 prompt=NHV_Q01_050_20
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Tonight, in his room. Or on the road at dawn. Pick one; I will not do it twice.
+  ScriptNotes: NHV_Q01_050_22
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 50
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    ActorValue: Speech
+  ComparisonValue: 30
+Prompt:
+  TargetLanguage: English
+  Value: (Persuade) If he finds proof, you hang. Better him than you.

@@ -1,0 +1,39 @@
+FormKey: 00400B:NightsHarvest.esp
+EditorID: NHV_Book_HrefnaMoorJournal
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Notes from the Moor
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">Notes from the Moor</font></p>
+
+    <p align="left">Day seven: no answer. Eirik sent another boy to measure the fence. The boy would not meet my eyes.</p>
+
+    <p align="left">Day twenty-one: my husband drank through the morning and slept through the rain. I put the knife away. Then I put it somewhere else.</p>
+
+    [pagebreak]
+
+    <p align="left">Day forty-two: the answer did not come. I found Eirik at the waterline, laughing at the deed in his hand. I asked him to give it back.</p>
+
+    <p align="left">He said the farm was already his. I keep writing that he slipped. I keep crossing it out.</p>
+
+    [pagebreak]
+
+    <p align="left">I washed the cup. Scrubbed the table. There is always something that needs cleaning. It helps until I stop.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 25
+Weight: 1
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

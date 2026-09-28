@@ -1,0 +1,27 @@
+FormKey: 00400F:NightsHarvest.esp
+EditorID: NHV_Item_OculatusFragment1
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Oculatus Dispatch
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">Oculatus Dispatch</font></p>
+
+    <p align="left">Subject: repeated Black Sacrament activity. Record the petitioner, the named target, the local witness, and any surviving household. Do not intervene before the pattern is confirmed.</p>
+
+    <p align="left">Forward copies to the northern desk. A prayer unanswered is still a signal.</p>
+Flags:
+- CantBeTaken
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

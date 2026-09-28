@@ -205,7 +205,7 @@ ohne Risiko für den Rekrutierungspfad übersprungen werden können:
 
 Beide Vorschläge sind bewusst **nicht** in den unten gelieferten Scripts fest verdrahtet – sie sind
 als CK-Anleitung mit Bedingungen vorbereitet (Abschnitt „Optional, Entwickler-Entscheidung“ in
-`docs/ck/M1.7-Q02-CK-Anleitung.md`), damit der Entwickler sie unabhängig bauen oder weglassen kann.
+`docs/ck/M2.2-Q02-CK-Anleitung.md`), damit der Entwickler sie unabhängig bauen oder weglassen kann.
 
 ## 8. Items und Dokumente
 
@@ -292,7 +292,7 @@ Fehlend (nur für die optionalen Erweiterungen in diesem Plan):
 
 **Claude liefert:** diesen Plan, `docs/plan/Q02-Records.md` (Record-Inventar), Spriggit-YAML-Entwürfe
 unter `staging/Q02/` (nicht `plugin-text/`), die Papyrus-Scripts `Data/Source/Scripts/NHV_Q02*.psc`,
-die CK-Anleitung `docs/ck/M1.7-Q02-CK-Anleitung.md`, die Codex-Aufträge oben.
+die CK-Anleitung `docs/ck/M2.2-Q02-CK-Anleitung.md`, die Codex-Aufträge oben.
 
 **Entwickler im CK:** Quest `NHV_Q02` samt Stages/Objectives anlegen, alle in Abschnitt 3–5 genannten
 Records (Actors, Zellen, Türen, Marker, Szenen, Packages) anlegen, Eigenschaften der gelieferten

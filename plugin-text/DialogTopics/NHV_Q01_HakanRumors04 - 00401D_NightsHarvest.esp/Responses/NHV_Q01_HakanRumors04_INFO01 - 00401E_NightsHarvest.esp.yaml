@@ -1,0 +1,38 @@
+FormKey: 00401E:NightsHarvest.esp
+EditorID: NHV_Q01_HakanRumors04_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 00401F:NightsHarvest.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: An Imperial. Calls himself a trader. Traders ask about prices, not about dead moneylenders.
+  ScriptNotes: NHV_Q01_010_41 prompt=NHV_Q01_010_40
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He is lodging at the Moorside. Pays in good coin and watches everyone who pays in bad.
+  ScriptNotes: NHV_Q01_010_42
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004006:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Anyone else been asking about Eirik?

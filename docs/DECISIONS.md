@@ -31,6 +31,7 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E25 | KI-Zugang zur Deep Sanctuary (ändert E09/E16) | Script-Tür ohne Navmesh / echte Ladetür mit Navmesh | Echte Ladetür an einer mod-geprüften Sackgasse | M1.5 | Entschieden |
 | E24 | Zugang zur Deep Sanctuary in Q00 | Geröll (Konzept) / magische Verschleierung mit Zwischensequenz | Verschleierung, Zwischensequenz wie der Standoff | M1.5 | Entschieden |
 | E23 | Veyras Natur und Bindung an Sithis | Sterbliche Amtserbin / gebundene Nachleserin / wiederkehrende Gestalt / göttliche Verwandtschaft | Tochter Sithis', ungebunden und freiwillig treu; externe Helferin der Night Mother | vor weiterem Mysteriums-Dialogausbau | Entschieden |
+| E32 | Q01-Aufbau | Nur CK-Anleitung / komplett per Spriggit | Komplett per Spriggit, nur räumliche Arbeit im CK; einige CSV-Bedingungen technisch ersetzt (Codex-Abgleich offen) | M1.7 | Entschieden |
 | E28 | Ermittlung des Oculatus-Zirkels (Hauptbogen) | Heat-Zähler erzählt / sichtbar / ohne Zähler | Verdeckter Heat-Zähler, nur erzählt; im MCM nur als Debug-Wert | M3 | Entschieden |
 | E29 | Chiffre der Oculatus-Depeschen | Schlüsselbuch + Veyra-Dialog / Script-Rätsel / nur Flavour | Schlüsselbuch zum Selberlösen, Veyra-Dialog als Fallback | M3 | Entschieden |
 | E30 | Interludes für v1.0 | Früh / Spät / Spitzel in Dawnstar / keine | Frühes Interlude („First Blood“), spätes Interlude („Knock at Dawnstar“) und Spitzel-NPC in Dawnstar | M3 | Entschieden |
@@ -51,6 +52,20 @@ Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugi
 - **E29:** Die verschlüsselten Depeschen werden zum optionalen Rätsel: ein Schlüsselbuch zum Selberlösen, Entschlüsselung bei Veyra im Dialog als Fallback. Kein Script-Rätsel, das Finale bleibt nie blockiert.
 - **E30:** v1.0 bekommt das frühe Interlude „First Blood“, das späte Interlude „Knock at Dawnstar“ und einen Spitzel-NPC in Dawnstar, der die Sanctuary beobachtet und entlarvt werden kann (abweichend von der Planempfehlung, die den Spitzel zurückstellen wollte).
 - **E31:** Magie nur als leises Gleaning: Veyra nimmt Echos der Toten wahr (kurze Kommentare, eine Ritual-Szene). Keine Aussage über ihre Herkunft (E23). Kein Black-Hand-Relikt in v1.0.
+
+### E32 – Q01 komplett per Spriggit statt nur CK-Anleitung
+
+- **Datum:** 28.09.2026
+- **Entschieden von:** Team-Lead (Auftrag), Claude (Umsetzung)
+- **Kontext:** `docs/plan/Q01-Record-Inventar.md` hatte empfohlen, Q01s Dialog/Szenen/NPCs nicht per Hand-YAML anzulegen (fehleranfällig bei Szenen-Phasen, INFO-Verknüpfungen), sondern nur eine CK-Anleitung zu liefern. Der Team-Lead hat diese Vorsichtsnotiz ausdrücklich aufgehoben und verwiesen auf Q00, das genau diesen Weg (Topics/Branches/INFOs/Scenes/Bücher/NPC per Spriggit) bereits erfolgreich und ingame bestätigt gegangen ist.
+- **Entscheidung:** Q01 wurde vollständig per Spriggit gebaut (Quest, Global, VoiceTypes, NPCs, Bücher, Waffe, 3 Szenen, 7 Dialog-Branch-Gruppen für alle 101 `dialogue/Q01.csv`-Zeilen). Nur echte räumliche Arbeit (Zellen, Navmesh, FaceGen, Marker-/NPC-Platzierung, das Stage-100-„Complete Quest"-Häkchen) bleibt CK-Arbeit.
+- **Zusätzliche Entscheidungen unterwegs** (`dialogue/Q01.csv` ist an ein paar Stellen unvollständig/mehrdeutig gegenüber dem in `docs/plan/Q01-The-Unanswered-Sacrament.md` beschriebenen Ablauf):
+  - Stage-70-Bedingungen `GetGlobalValue NHV_Q01_Result == 0` in der CSV verweisen auf einen Global, der nirgends existiert oder gesetzt wird → durch direkte `GetStage`-Bedingungen ersetzt (Stage wechselt beim Auslösen ohnehin auf 100, sperrt die drei Urteils-Topics also zuverlässig).
+  - Stage-100-Bedingung `GetGlobalValue NHV_Q01_FragmentFound == ` (Wert fehlte in der CSV) → durch einen echten `GetItemCount`-Check auf `NHV_Item_OculatusFragment1` im Spielerinventar ersetzt.
+  - Stage-20-Zeilen mit Hrefna als Sprecherin (`Q01_Farm`-Topic) ergeben vor der ersten Begegnung mit ihr keinen Sinn → als optionaler Zusatz-Branch erst ab Stage 30 verdrahtet, nicht als eigene Stage-20-Zeilen.
+  - Mehrere „NPC spricht unaufgefordert zuerst"-Momente (z. B. Hrefnas Stage-40-Eröffnung, Veyras Einwurf mitten im Trial) ohne vorangehende Spielerzeile in der CSV → über `Actor.Say()` aus kleinen neuen `TIF__`-Fragmentskripten erzwungen, statt für jeden dieser Momente eine eigene Szene anzulegen.
+  - Quintus' zwei geplante Tötungsvarianten (Zimmer nachts / Straße morgens, laut Konzept) wurden zu einer gemeinsamen, ortsneutralen Szene `NHV_Scn_Q01_03QuintusApproach` zusammengefasst, um den Umfang in dieser Runde handhabbar zu halten.
+- **Folgen:** Diese Vereinfachungen sind ein erster, ungetesteter Entwurf (kein Ingame-Test bisher). Vor „Fertig" muss der Entwickler die Trial-/Judgement-Verzweigung und die Say()-Momente im Spiel prüfen; `docs/ck/M1.7-Q01-CK-Anleitung.md` ist entsprechend auf die verbleibende räumliche Arbeit gekürzt.
 
 ### E27 – Quelle der Stimmen
 

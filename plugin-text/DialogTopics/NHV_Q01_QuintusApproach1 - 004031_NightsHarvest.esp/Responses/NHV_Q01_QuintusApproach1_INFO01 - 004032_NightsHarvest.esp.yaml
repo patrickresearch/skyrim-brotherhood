@@ -1,0 +1,25 @@
+FormKey: 004032:NightsHarvest.esp
+EditorID: NHV_Q01_QuintusApproach1_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He is asleep. Snores like my husband did. That is not helping.
+  ScriptNotes: NHV_Q01_050_30
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He is reading as he walks. A letter. Stupid man, on a road like this.
+  ScriptNotes: NHV_Q01_050_31
+  Edits: ''
+Speaker: 004007:NightsHarvest.esp

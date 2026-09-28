@@ -1,0 +1,185 @@
+FormKey: 004000:NightsHarvest.esp
+EditorID: NHV_Q01_TheUnansweredSacrament
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_Q01Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BogwifesKnife
+      Object: 004011:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CampAmbushScene
+      Object: 00402B:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Core
+      Object: 000801:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HakanAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HrefnaAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HrefnaFamilySlotAlias
+      Object: 000813:NightsHarvest.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HrefnaReleaseLetter
+      Object: 004010:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Debug
+      Object: 000800:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_FamilyFaction
+      Object: 000807:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Flag_HrefnaUnproven
+      Object: 004002:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Status_Hrefna
+      Object: 000811:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OculatusFragment1
+      Object: 00400F:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: QuintusAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraTrialScene
+      Object: 004030:NightsHarvest.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 004000:NightsHarvest.esp
+      Alias: 0
+    Scripts:
+    - Name: NHV_ContractPlayerAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: OwningContract
+        Object: 004000:NightsHarvest.esp
+  - Property:
+      Name: ''
+      Object: 004000:NightsHarvest.esp
+      Alias: 3
+    Scripts:
+    - Name: NHV_ContractRecruitAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NHV_Cfg_Debug
+        Object: 000800:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: OwningContract
+        Object: 004000:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: StatusGlobal
+        Object: 000811:NightsHarvest.esp
+  - Property:
+      Name: ''
+      Object: 004000:NightsHarvest.esp
+      Alias: 4
+    Scripts:
+    - Name: NHV_Q01_QuintusAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NHV_Cfg_Debug
+        Object: 000800:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Q01
+        Object: 004000:NightsHarvest.esp
+Name:
+  TargetLanguage: English
+  Value: The Unanswered Sacrament
+Priority: 90
+Type: DarkBrotherhood
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Travel to Morthal and ask about unusual deaths.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Find the site of the Black Sacrament.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Find Hrefna.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Hear Hrefna's story.
+- Index: 50
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Help Hrefna silence Quintus Aufidius.
+- Index: 60
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Search Quintus's belongings.
+- Index: 70
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Decide Hrefna's fate.
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Return to Veyra.
+NextAliasID: 5
+Aliases:
+- Name: PlayerRefAlias
+  Flags:
+  - Optional
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: VeyraAlias
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- ID: 2
+  Name: HakanAlias
+  Flags:
+  - Optional
+  UniqueActor: 004006:NightsHarvest.esp
+  VoiceTypes: Null
+- ID: 3
+  Name: HrefnaAlias
+  Flags:
+  - Optional
+  UniqueActor: 004007:NightsHarvest.esp
+  VoiceTypes: Null
+- ID: 4
+  Name: QuintusAlias
+  Flags:
+  - Optional
+  UniqueActor: 004008:NightsHarvest.esp
+  VoiceTypes: Null

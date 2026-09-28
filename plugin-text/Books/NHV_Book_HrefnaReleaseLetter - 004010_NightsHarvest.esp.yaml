@@ -1,0 +1,28 @@
+FormKey: 004010:NightsHarvest.esp
+EditorID: NHV_Book_HrefnaReleaseLetter
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: A Letter, Unsigned
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">A Letter, Unsigned</font></p>
+
+    <p align="left">[PLATZHALTER - Text noch nicht von Codex geliefert, siehe docs/codex/2026-09-27-Hrefna-Release-Letter.md. Bis dahin nur das im Konzept bestaetigte Kurzzitat:]</p>
+
+    <p align="left">Thank you for coming. Even late.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 10
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

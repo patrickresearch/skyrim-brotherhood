@@ -246,7 +246,7 @@ dokumentiert/verwendet:
 
 1. **Q01-Start:** `NHV_CoreScript` hat jetzt `Quest Property Q01` und `Function StartQ01()`, aufgerufen
    am Ende von Q00. CK-Schritt: die Property `Q01` an `NHV_Sys_Core` auf
-   `NHV_Q01_TheUnansweredSacrament` setzen (siehe `docs/ck/M1.6-Q01-CK-Anleitung.md` Abschnitt 1b).
+   `NHV_Q01_TheUnansweredSacrament` setzen (siehe `docs/ck/M1.7-Q01-CK-Anleitung.md` Abschnitt 1b).
 2. **Gegenseitiger Ausschluss der beiden Cutscene-Locks:** `NHV_CoreScript` hat jetzt
    `Bool Function IsCutsceneLocked()`. `NHV_ContractBaseScript.LockCutscene()` fragt das über die
    `Core`-Property ab und verzichtet auf das eigene Sperren, solange Q00 noch die Kontrolle hält

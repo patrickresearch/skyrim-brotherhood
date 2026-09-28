@@ -16,7 +16,50 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**28.09.2026: Q01 komplett per Spriggit gebaut (Runde 2, Team-Lead-Freigabe).** Auf ausdrückliche
+Anweisung des Team-Leads (die Vorsichtsnotiz im Record-Inventar galt nur für den Planungs-Agenten) jetzt
+auch Dialog, Szenen und NPCs per YAML statt CK gebaut – Q00 beweist, dass das funktioniert. Alles
+Round-Trip-geprüft (ToPlugin→ToText), `csv_to_plugin.py --check` = 0 Differenzen für alle 101
+`dialogue/Q01.csv`-Zeilen, `silent_voice.py --check` = 217 erwartet/0 fehlend/0 Probleme, `build.ps1
+-Clean` = 59/59 Scripts erfolgreich.
+
+Records: Quest `NHV_Q01_TheUnansweredSacrament` (004000, Stages 10–100, Priority 90 wie Q00), Global
+`NHV_Flag_HrefnaUnproven` (004002), VoiceTypes/NPCs Hakan/Hrefna/Quintus (004003–004008, Race/Klasse/
+Outfit gegen Skyrim.esm mit houseCARL verifiziert), 6 Bücher + Oculatus-Fragment (004009–00400F),
+Release-Letter-Platzhalter (004010, echter Text von Codex noch offen), `NHV_Weap_BogwifesKnife` (004011),
+3 Szenen (`NHV_Scn_Q01_01CampAmbush`, `02VeyraTrial`, `03QuintusApproach` – letztere nicht über eine
+Script-Property verdrahtet, sondern direkt aus einem Dialog-Ergebnisskript gestartet), 7
+Dialog-Branch-Gruppen mit ca. 40 Topics/INFOs für alle 8 Stages. FormID-Bereich 004000–004089, innerhalb
+004000–0040FF. Aliase Hakan/Hrefna/Quintus per `UniqueActor`-Fill auf die neuen NPCs (bleiben `Optional`,
+bis der Entwickler sie im CK platziert). `NHV_Q01Script`-Properties vollständig gefüllt (inkl.
+CampAmbushScene/VeyraTrialScene).
+
+**Wichtige technische Funde:** (1) „Complete Quest" ist ein Flag am `QuestLogEntry`, nicht am
+`QuestStage` – als Stage-Flag stürzt Spriggit mit `ArgumentException` ab. (2) Es gibt keine
+`Intimidation`-ActorValue; Intimidate-Bedingungen laufen über `GetIntimidateSuccessConditionData`, nicht
+`GetActorValue`. (3) `dialogue/Q01.csv`s Bedingungen `GetGlobalValue NHV_Q01_Result` und `...FragmentFound`
+verweisen auf Globals, die nirgends existieren oder gesetzt werden – durch `GetStage`/den echten Global
+`NHV_Status_Hrefna` (000811) bzw. einen `GetItemCount`-Check auf `NHV_Item_OculatusFragment1` ersetzt.
+(4) Bethesda zeigt mehrere gleichzeitige Dialogauswahlen nur, wenn jede ihre eigene `DialogBranch` hat
+(wie bei Q00s Standoff-Zweigen) – ein gemeinsamer Branch mit mehreren `LinkTo`-Zielen reicht nicht.
+(5) Ein Geschichte-Fehler beim eigenen Aufräum-Skript hätte fast 57 bestehende Q00-Records gelöscht
+(FormID-Bereichsprüfung `>= 004012` traf versehentlich auch Q00s Standoff-Zusatzinhalte bei 0043xx) –
+per `git checkout` vollständig wiederhergestellt, danach erneut Round-Trip/Build/Checks grün.
+
+**Offene Interpretationsentscheidungen** (Dialogstruktur mangels vollständigem Szenenskript aus dem
+CSV rekonstruiert, siehe Bericht des Runde-2-Agenten): Stage 20 (`Q01_Farm`, Hrefna-Zeilen) als
+Zusatz-Branch erst ab Stage 30 statt eigener Stage-20-Zeilen; einige „NPC spricht zuerst"-Momente über
+`Actor.Say()` aus kleinen neuen `TIF__`-Fragmenten erzwungen statt über weitere Szenen; Quintus'
+Raum-/Straßen-Variante (Konzept: zwei Tötungsorte) zu einer gemeinsamen `NHV_Scn_Q01_03QuintusApproach`
+vereinfacht. **Nächster Schritt:** Ingame-Test durch den Entwickler (bisher nur Spriggit-Round-Trip und
+Compile geprüft, kein Spielstart), danach CK-Anleitung auf die verbleibende räumliche Arbeit kürzen
+(Zellen, NPC-/Marker-Platzierung, Navmesh, FaceGen, Stage-100-„Complete Quest"-Häkchen).
+
 **27.09.2026: Hrefna-Dokumente, Ledger und Gedenkplaketten geschrieben.** `dialogue/Books.csv` enthält 21 Absätze für fünf unveränderte Fundstücke, 13 zusätzliche Ledger-Absätze (`NHV_SYS_BOOK_63–75`) und sechs Memorial-Plaque-Texte (`NHV_SYS_BOOK_76–81`). Die Plaketten bleiben nüchtern und würdevoll; Astrids kleine Variante verwendet denselben Activator-Record mit abweichendem Epitaph. Lint: 0 Fehler bei 393 IDs.
+
+**28.09.2026: Q01-Nebenfiguren, vollständige Dialoge und Lore-Gegenstände ergänzt.** `docs/concept/Q01-Nebenfiguren-Autorenprofile.md` beschreibt Hakan Reed-Walker, Quintus Aufidius und Eirik Ashmark. `dialogue/Q01.csv` enthält nun 101 Q01-Dialogzeilen; die lesbare Fassung liegt in `docs/dialogue/Q01-Gesamtdialoge-2026-09-28.md`. Die chronologische Lesefassung steht in `docs/concept/Q01-Chronologische-Geschichte.md`. `dialogue/Books.csv` enthält zusätzlich Fragment 1, Hrefnas Diary Excerpt und Bogwife's Knife-Flavortext (`NHV_SYS_BOOK_85–87`). Gegenstände und Lore stehen in `docs/concept/Q01-Gegenstaende-und-Lore.md`. Lint: 0 Fehler bei 602 IDs.
+
+**28.09.2026: Chronologische rote Storyfäden für Q02–Q06 ergänzt.** Die Lesefassungen `docs/concept/Q02-Chronologische-Geschichte.md` bis `Q06-Chronologische-Geschichte.md` erzählen die Contracts einschließlich Kandidatenprüfung, Oculatus-Fragmenten, Ausgängen und Übergängen. `docs/concept/Q01-Q06-Roter-Storyfaden.md` bündelt die Kampagnenlinie, den Heat-Faden, den Dawnstar-Spitzel, First Blood, Knock at Dawnstar und Veyras Gleaning. Grundlage sind die aktuellen Oculatus-Entscheidungen und Planungsdokumente; optionale Ereignisse sind als solche markiert.
 
 **27.09.2026: Q02-Autorenprofile, Dialogmaster und Lore-Gegenstände ausgebaut.** `docs/concept/Q02-Nebenfiguren-Autorenprofile.md` definiert Torbjorn, Drinks-the-Brine, Haldor, Aelius und Hjorald. `dialogue/Q02.csv` führt die Questkette von Veyras Briefing über Hafenuntersuchung, Nachtbeobachtung, Drowned Hollow, Aelius' Prüfung und Sings' Urteil bis zum Debrief. Drei Q02-Loretexte (`NHV_SYS_BOOK_82–84`) dokumentieren Fragment 2, Reed-Walker-Knot und Drowned Pool. Der Lint kennt die neuen Sprecher als eigene VoiceType-Figuren. Lint: 0 Fehler bei 512 IDs.
 
@@ -284,6 +327,14 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 
 ## Log (neueste zuerst)
 
+### 2026-09-28 – Q01 vollständig als Dialog- und Lore-Paket
+
+- Autorenprofile für Hakan Reed-Walker, Quintus Aufidius und Eirik Ashmark angelegt.
+- Q01 von den bisherigen Schlüsselzeilen auf 101 CSV-Dialogzeilen erweitert: Briefing, Hakan-Ermittlung, Farm, Hrefna-Konfrontation, Veyras Prüfung, Quintus-Szenen, Fragment, Urteil und Debrief.
+- Markdown-Lesefassung `docs/dialogue/Q01-Gesamtdialoge-2026-09-28.md` automatisch aus Q01-, Journal- und Book-CSV erzeugt.
+- `NHV_SYS_BOOK_85–87` für Oculatus Dispatch Fragment I, Hrefnas Diary Excerpt und Bogwife's Knife ergänzt; Gegenstands-/Lore-Dokument in `docs/concept/Q01-Gegenstaende-und-Lore.md`.
+- Lint: 0 Fehler bei 602 IDs; CK-Verkabelung und Ingame-Test stehen aus.
+
 ### 2026-09-28 (Q00 ingame bestätigt, Start Q01 und Hauptbogen)
 
 - Entwickler: Q00 läuft end to end (Stage 10–100) in der Dev-Kopie und im Hauptspiel mit Mods, auch mit lebendem
@@ -307,7 +358,7 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
   `NHV_ContractBaseScript` (gemeinsame Basis Q01–Q05: Lock/Watchdog, Recruit/Judgement, Load-Recovery),
   `NHV_ContractPlayerAliasScript`, `NHV_ContractRecruitAliasScript`, `NHV_Q01Script`, `NHV_Q01_QuintusAliasScript`,
   `NHV_Q02Script`, `NHV_Q02_{Haldor,Sings}AliasScript`. Pläne `docs/plan/Q01-*`, `docs/plan/Q02-*`,
-  CK-Anleitungen `docs/ck/M1.6-Q01-CK-Anleitung.md`, `docs/ck/M1.7-Q02-CK-Anleitung.md`, Codex-Aufträge
+  CK-Anleitungen `docs/ck/M1.7-Q01-CK-Anleitung.md`, `docs/ck/M2.2-Q02-CK-Anleitung.md`, Codex-Aufträge
   (u. a. `dialogue/Q01.csv` fehlt noch). FormID-Bereiche: Q01 004000–40FF, Q02 004100–41FF.
 - Offen für den Entwickler: Q01/Q02-Records im CK anlegen (Anleitungen), Ortswahl Q01 (Hof/Lager), Standoff-
   Marker prüfen, Ingame-Test der Q00-Dialoge.

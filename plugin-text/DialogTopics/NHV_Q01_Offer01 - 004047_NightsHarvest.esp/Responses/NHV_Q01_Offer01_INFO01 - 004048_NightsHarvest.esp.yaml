@@ -1,0 +1,30 @@
+FormKey: 004048:NightsHarvest.esp
+EditorID: NHV_Q01_Offer01_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004049:NightsHarvest.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: So I answered myself. Held him under till the bubbles stopped. It was quieter than I thought.
+  ScriptNotes: NHV_Q01_040_04 prompt=NHV_Q01_040_03
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 40
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The family was burning. No one was left to answer.

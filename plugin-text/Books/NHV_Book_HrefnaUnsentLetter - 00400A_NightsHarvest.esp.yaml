@@ -1,0 +1,35 @@
+FormKey: 00400A:NightsHarvest.esp
+EditorID: NHV_Book_HrefnaUnsentLetter
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Unsent Letter
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">Unsent Letter</font></p>
+
+    <p align="left">To the Mother in the dark: Eirik Ashmark is taking the farm, the animals, and whatever is left of my husband's name. I ask for an answer.</p>
+
+    <p align="left">I have followed the words as they were given. Heart, skull, flesh, bones, nightshade. I do not know whether the order matters. I only know that I did it alone.</p>
+
+    [pagebreak]
+
+    <p align="left">If someone comes, let them come before the roof goes. If no one comes, let the dark at least remember that I asked.</p>
+
+    <p align="left">I cannot keep waiting. The flour is nearly gone. If no one comes, I will have to do something myself.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 25
+Weight: 1
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

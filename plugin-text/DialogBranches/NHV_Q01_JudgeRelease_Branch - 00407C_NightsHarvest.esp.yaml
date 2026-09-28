@@ -1,0 +1,7 @@
+FormKey: 00407C:NightsHarvest.esp
+EditorID: NHV_Q01_JudgeRelease_Branch
+Quest: 004000:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00407A:NightsHarvest.esp

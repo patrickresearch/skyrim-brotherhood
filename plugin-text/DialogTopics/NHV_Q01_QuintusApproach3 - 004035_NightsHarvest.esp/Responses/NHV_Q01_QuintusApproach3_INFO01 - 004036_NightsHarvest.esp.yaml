@@ -1,0 +1,18 @@
+FormKey: 004036:NightsHarvest.esp
+EditorID: NHV_Q01_QuintusApproach3_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There is a letter. To a daughter. Home by Frostfall, little owl. I... cannot.
+  ScriptNotes: NHV_Q01_050_40
+  Edits: ''
+Speaker: 004007:NightsHarvest.esp

@@ -1,0 +1,7 @@
+FormKey: 00406F:NightsHarvest.esp
+EditorID: NHV_Q01_TrialStepAside_Branch
+Quest: 004000:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00406D:NightsHarvest.esp

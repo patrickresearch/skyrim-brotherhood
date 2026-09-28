@@ -1,0 +1,38 @@
+FormKey: 004056:NightsHarvest.esp
+EditorID: NHV_Q01_Offer07b_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02004056
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02004056
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02004056
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Everything always does.
+  ScriptNotes: NHV_Q01_040_61 prompt=NHV_Q01_040_60
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 40
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: That depends on what you do next.

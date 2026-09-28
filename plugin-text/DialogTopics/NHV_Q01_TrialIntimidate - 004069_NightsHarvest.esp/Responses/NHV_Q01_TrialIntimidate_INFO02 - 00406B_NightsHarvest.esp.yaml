@@ -1,0 +1,29 @@
+FormKey: 00406B:NightsHarvest.esp
+EditorID: NHV_Q01_TrialIntimidate_INFO02
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Threaten all you like. My hands will not move.
+  ScriptNotes: NHV_Q01_050_62 prompt=NHV_Q01_050_60
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 50
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: (Intimidate) Then you are no use to us. And neither is your silence.

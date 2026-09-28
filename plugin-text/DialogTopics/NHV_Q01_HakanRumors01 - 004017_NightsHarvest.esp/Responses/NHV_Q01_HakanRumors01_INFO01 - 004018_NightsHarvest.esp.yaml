@@ -1,0 +1,38 @@
+FormKey: 004018:NightsHarvest.esp
+EditorID: NHV_Q01_HakanRumors01_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004019:NightsHarvest.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Strangely? It is Hjaalmarch. Dying normally would be strange.
+  ScriptNotes: NHV_Q01_010_11 prompt=NHV_Q01_010_10
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: But Eirik Ashmark, aye. Drowned in the bog, they say. Man never touched water unless it was in his ale.
+  ScriptNotes: NHV_Q01_010_12
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004006:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Anyone die strangely around here lately?

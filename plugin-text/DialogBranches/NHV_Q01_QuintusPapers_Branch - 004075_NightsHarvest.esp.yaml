@@ -1,0 +1,7 @@
+FormKey: 004075:NightsHarvest.esp
+EditorID: NHV_Q01_QuintusPapers_Branch
+Quest: 004000:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 004073:NightsHarvest.esp
