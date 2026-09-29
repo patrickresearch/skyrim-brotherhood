@@ -22,6 +22,10 @@ Factions:
   Fluff: 0x000000
 Voice: 000816:NightsHarvest.esp
 Race: 013742:Skyrim.esm
+Items:
+- Item:
+    Item: 00498F:NightsHarvest.esp
+    Count: 1
 AIData:
   Confidence: Brave
   EnergyLevel: 50

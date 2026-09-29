@@ -101,10 +101,28 @@ Event OnUpdate()
         EndIf
         Return
     EndIf
+    If bArrivalWatch
+        ; Arrival scene watchdog (ingame test 29.09.2026: the scene started but never ended and blocked all
+        ; dialogue with Lucien). Give it ~16 s, then stop it so the player can talk to him.
+        iArrivalTicks += 1
+        If ArrivalScene && (ArrivalScene.IsPlaying() || iArrivalTicks <= 2) && iArrivalTicks < 8
+            RegisterForSingleUpdate(2.0)
+        Else
+            If ArrivalScene && ArrivalScene.IsPlaying()
+                ArrivalScene.Stop()
+                NHV_Util.Log(NHV_Cfg_Debug, "Lucien arrival scene stopped by watchdog")
+            EndIf
+            bArrivalWatch = False
+        EndIf
+        Return
+    EndIf
     If bArrivalPending
         TryArrival()
     EndIf
 EndEvent
+
+Bool bArrivalWatch = False
+Int iArrivalTicks = 0
 
 ; Called from NHV_CoreScript.EnsureSanctuaryQuest() on every load (Maintenance): refills what an old save lacks
 ; (Lucien's alias was added after the quest first ran in test saves) and re-arms the chain if it was lost.
@@ -112,6 +130,11 @@ Function Resume()
     If LucienAlias && !LucienAlias.GetReference() && Core && Core.LucienRef
         LucienAlias.ForceRefTo(Core.LucienRef)
     EndIf
+    If ArrivalScene && ArrivalScene.IsPlaying() && bArrivalPlayed
+        ArrivalScene.Stop() ; a save made while the arrival scene hung
+        NHV_Util.Log(NHV_Cfg_Debug, "Resume: hanging Lucien arrival scene stopped")
+    EndIf
+    bArrivalWatch = False ; the watchdog chain does not survive a load
     If bSummonPending || bArrivalPending
         RegisterForSingleUpdate(2.0)
     EndIf
@@ -145,4 +168,7 @@ Function TryArrival()
     bArrivalPlayed = True
     ArrivalScene.Start()
     NHV_Util.Log(NHV_Cfg_Debug, "Lucien arrival scene started")
+    bArrivalWatch = True
+    iArrivalTicks = 0
+    RegisterForSingleUpdate(2.0)
 EndFunction

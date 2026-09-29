@@ -48,6 +48,8 @@ Conditions:
   CompareOperator: GreaterThanOrEqualTo
   Data:
     MutagenObjectType: GetActorValueConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
     ActorValue: Speech
   ComparisonValue: 30
 Prompt:
