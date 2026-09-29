@@ -25,4 +25,16 @@ Responses:
     Value: Lucien Lachance, Listener. I believe my name has preceded me. What would you ask?
   ScriptNotes: NHV_SYS_LUC_06
   Edits: ''
-Speaker: 004400:NightsHarvest.esp
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004400:NightsHarvest.esp
+  ComparisonValue: 1

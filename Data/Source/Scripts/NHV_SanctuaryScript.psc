@@ -140,6 +140,16 @@ Function Resume()
     EndIf
 EndFunction
 
+; Called by NHV_Sys_LucienAliasScript when the player activates Lucien: once the arrival was played, a scene still
+; holding him only blocks the player's topics.
+Function ReleaseArrivalScene()
+    If bArrivalPlayed && ArrivalScene && ArrivalScene.IsPlaying()
+        ArrivalScene.Stop()
+        bArrivalWatch = False
+        NHV_Util.Log(NHV_Cfg_Debug, "Lucien activated: hanging arrival scene stopped")
+    EndIf
+EndFunction
+
 Function TryArrival()
     If bArrivalPlayed || !bArrivalPending
         bArrivalPending = False

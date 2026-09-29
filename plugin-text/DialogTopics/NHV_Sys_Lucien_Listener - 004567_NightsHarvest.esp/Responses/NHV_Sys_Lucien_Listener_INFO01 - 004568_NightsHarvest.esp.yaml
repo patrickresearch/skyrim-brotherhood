@@ -39,6 +39,8 @@ Conditions:
     Global: 004403:NightsHarvest.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
   Data:
     MutagenObjectType: GetIsAliasRefConditionData
     ReferenceAliasIndex: 4

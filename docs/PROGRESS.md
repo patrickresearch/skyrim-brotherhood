@@ -16,6 +16,19 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**29.09.2026 (Nacht): Lucien-Ansprechbarkeit, Fix-Versuch 3.** Befund aus dem Log: Die Beschwörung und die Ankunftsszene starten sauber, der Watchdog musste nicht eingreifen. Die Records (Branch, Quest, Global, Alias 4) sind korrekt verdrahtet. Package und Geist-Effekt wurden geprüft: `GhostAbilityNew` setzt nur Alpha 0.25 und blockiert nichts.
+
+Verbleibender Hauptverdacht: Lucien übernimmt die Traits des Spectral Assassin (`DBSpectralAssassin` 0A0E49) als Template. Bei solchen Template-NPCs greifen `GetIsID` und das INFO-Feld `Speaker` unzuverlässig. Dann zeigt keine Zeile an, und auch die Ankunftszeile hat keinen gültigen Sprecher.
+
+Änderungen:
+- Alle 10 Lucien-INFOs prüfen jetzt `GetIsAliasRef 4` **ODER** `GetIsID 004400`. Bei der Ankunftszeile ersetzt das den `Speaker`; die Voice-Pfade bleiben gleich.
+- Neues Alias-Script `NHV_Sys_LucienAliasScript` auf Alias 4. Es beendet beim Aktivieren eine hängende Ankunftsszene und loggt bei Debug=1 Global, Base, LeveledBase, Quest, Kampf, KI, Ghost, Szene und „in dialogue after 1 s“.
+- `NHV_SanctuaryScript.ReleaseArrivalScene()` neu.
+
+Build ok (71 .pex), Roundtrip verlustfrei, papyrus-reviewer freigegeben. **Nicht ingame getestet.**
+
+**Test:** Save nach der Lucien-Beschwörung laden oder Q00 bis zur Annahme spielen, `set NHV_Cfg_Debug to 1`, Lucien aktivieren. Erwartet: Das Dialogmenü mit den Lucien-Themen öffnet sich. Wenn nicht: Papyrus-Log mit den Zeilen „Lucien activated: …“ ins Repo kopieren.
+
 **29.09.2026: Veyra führt ein daedrisches Schwert (Ad-hoc, außerhalb eines Arbeitspakets).** Neues WEAP-Record `NHV_Weap_VeyraDaedricSword` (00498F) klont unverändert die Vanilla-Werte von `DaedricSword` (0139B9:Skyrim.esm) – Modell, Sounds, Schaden/Gewicht, keine Verzauberung, kein besonderer Name. In Veyras `Items`-Liste eingetragen (analog Hrefnas Dolch), damit die Kampf-KI es automatisch ausrüstet; ihr Vanilla-`DefaultOutfit` (`NocturnalOutfit`, 052B5F:Skyrim.esm) bleibt unangetastet. Per `tools/plugin_text.ps1 -Direction ToPlugin` gebaut, EditorID im resultierenden `Data/NightsHarvest.esp` verifiziert. **Offen:** Eine spätere Kopie als Spielerbelohnung (Entwickler wollte „Veyra führt es und gibt später eine Kopie") ist nicht verkabelt – welche Quest/Stage das auslöst, ist nicht entschieden. **Nächster Schritt:** Entwickler öffnet und speichert das ESP einmal im CK (E17, Ein-Schreiber-Regel), dann Ingame-Test: Veyra sollte in Nahkampf ein daedrisches Schwert ziehen.
 
 **29.09.2026: Q01 V2 getrennt zum Lesetest bereit (E37).** `dialogue/drafts/Q01-v2/` enthält 218 Dialogzeilen, 28 Journaltexte, vier neue Briefabsätze, 105 Ablaufknoten sowie generierte Markdown- und Offline-HTML-Lesefassungen. Anschluss an Q00 V2, Ermittlung → Geständnis → autorisierte Prüfung → Urteil → Debrief; beide Quintus-Orte, tatsächlicher Täter, Speech-Ausgänge, Freilassungsbrief und Küche berücksichtigt. Lore-Lektorat eingearbeitet; vier Speech-Profile, 48 Endvarianten und 8776 Vorschauzustände geprüft. Aktive Master und Q00 V2 per Hash unverändert. Kein Plugin-/Script-/Voice-Eingriff, nicht ingame geprüft.

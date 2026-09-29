@@ -28,6 +28,23 @@ VirtualMachineAdapter:
       Object: 000809:NightsHarvest.esp
       Alias: 5
   FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000809:NightsHarvest.esp
+      Alias: 4
+    Scripts:
+    - Name: NHV_Sys_LucienAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NHV_Cfg_Debug
+        Object: 000800:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NHV_Q00_LucienSummoned
+        Object: 004403:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Sanctuary
+        Object: 000809:NightsHarvest.esp
 Flags:
 - StartGameEnabled
 NextAliasID: 6
