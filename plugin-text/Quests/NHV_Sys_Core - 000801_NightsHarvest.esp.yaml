@@ -96,6 +96,9 @@ VirtualMachineAdapter:
       Name: NHV_Q00_VeyraReturning
       Object: 00327C:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: NightMotherCallerBase
+      Object: 004990:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: NightMotherCallTopic
       Object: 0037ED:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty

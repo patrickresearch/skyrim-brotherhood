@@ -2,7 +2,6 @@ FormKey: 0037EE:NightsHarvest.esp
 EditorID: NHV_Q00_NM_Call_INFO01
 Flags:
   Flags:
-  - SayOnce
   - ForceSubtitle
 PreviousDialog: Null
 FavorLevel: None
@@ -25,5 +24,5 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 0037EC:NightsHarvest.esp
+    Object: 004990:NightsHarvest.esp
   ComparisonValue: 1

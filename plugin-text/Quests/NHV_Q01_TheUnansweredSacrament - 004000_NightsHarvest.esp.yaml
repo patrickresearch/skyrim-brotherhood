@@ -44,6 +44,9 @@ VirtualMachineAdapter:
       Name: NHV_Flag_HrefnaUnproven
       Object: 004002:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q01_TrialActive
+      Object: 004993:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: NHV_Status_Hrefna
       Object: 000811:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
@@ -254,6 +257,8 @@ Aliases:
   Name: VeyraAlias
   Flags:
   - Optional
+  PackageData:
+  - 004991:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 2
   Name: HakanAlias

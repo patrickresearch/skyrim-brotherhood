@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 37 AutoReadOnly
+Int Property VERSION = 38 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -179,6 +179,9 @@ Function EnsureProperties()
     EndIf
     If !NightMotherCallTopic
         NightMotherCallTopic = Game.GetFormFromFile(0x0037ED, "NightsHarvest.esp") as Topic
+    EndIf
+    If !NightMotherCallerBase
+        NightMotherCallerBase = Game.GetFormFromFile(0x004990, "NightsHarvest.esp") as ActorBase
     EndIf
     If !NightMotherCoffinRef
         NightMotherCoffinRef = Game.GetFormFromFile(0x074766, "Skyrim.esm") as ObjectReference
@@ -440,7 +443,22 @@ Function Migrate(Int aiFrom)
         ; Doubt dialogue wired (objective 80). A save that already waits at stage 80 never ran the stage fragment.
         If Q00 && Q00.GetStageDone(80) && !Q00.GetStageDone(100) && !Q00.IsObjectiveDisplayed(80)
             Q00.SetObjectiveCompleted(60)
-            Q00.SetObjectiveDisplayed(80)
+        EndIf
+    EndIf
+    If aiFrom < 38
+        ; Objective 80 is no longer shown (29.09.2026: it appeared before Veyra's doubt conversation had happened).
+        ; Hide it in saves that display it; the journal entry of stage 80 stays.
+        If Q00 && Q00.IsObjectiveDisplayed(80) && !Q00.IsObjectiveCompleted(80)
+            Q00.SetObjectiveDisplayed(80, False)
+            NHV_Util.Log(NHV_Cfg_Debug, "Migrate 38: Q00 objective 80 hidden")
+        EndIf
+        ; Night Mother call via her own voice actor (NHV_NightMotherVoiceNPC): a save on stage 20 plays it now
+        ; or on the next entry into the Sanctuary, unless she was already answered in person (coffin opened).
+        If bNightMotherCalled || bNightMotherCallPending
+            bNightMotherCallSpoken = True
+        EndIf
+        If Q00 && Q00.IsRunning() && Q00.GetStage() == 20
+            UpdateNightMother()
         EndIf
     EndIf
 EndFunction
@@ -1265,7 +1283,14 @@ TalkingActivator Property NightMotherVoiceBase Auto
 Topic Property NightMotherCallTopic Auto
 ObjectReference Property NightMotherCoffinRef Auto
 
+; The call itself (29.09.2026): Say() from a talking activator never showed subtitles, so a short-lived invisible
+; ghost actor of our own (NHV_NightMotherVoiceNPC, like vanilla DBNightMotherVoiceNPC) stands at the coffin, says
+; NHV_Q00_NM_Call once and is deleted again. Voice type FemaleUniqueNightMother.
+ActorBase Property NightMotherCallerBase Auto
+
 ObjectReference NightMotherVoiceRef
+Actor NightMotherCallerRef
+Bool bNightMotherCallSpoken = False
 Bool bNightMotherCalled = False
 Bool bNightMotherCallPending = False
 Int iNightMotherCallTries = 0 ; unused since 26.09.2026, kept for saves
@@ -1278,6 +1303,65 @@ Function UpdateNightMother()
         Return
     EndIf
     PrepareNightMother()
+    PlayNightMotherCall()
+EndFunction
+
+; The Night Mother calls the Listener, once per save: needs stage 20 and the player inside the Dawnstar Sanctuary
+; (else OnEnterDawnstarSanctuary -> UpdateNightMother tries again). Not latent: the voice actor (script
+; NHV_NightMotherCallerScript) waits, speaks and deletes itself, and reports back in OnNightMotherCallFinished().
+Function PlayNightMotherCall()
+    If NightMotherCallerRef && (NightMotherCallerRef.IsDeleted() || NightMotherCallerRef.IsDead())
+        NightMotherCallerRef = None ; a caller lost to a load/cell reset must not block the call forever
+    EndIf
+    If bNightMotherCallSpoken || NightMotherCallerRef
+        Return
+    EndIf
+    If !NightMotherCallerBase || !NightMotherCallTopic
+        Return
+    EndIf
+    If !CanNightMotherCall()
+        Return
+    EndIf
+    ObjectReference kCoffinRef = FindNightMotherCoffin()
+    If !kCoffinRef
+        NHV_Util.Log(NHV_Cfg_Debug, "PlayNightMotherCall: no coffin")
+        Return
+    EndIf
+    NightMotherCallerRef = kCoffinRef.PlaceAtMe(NightMotherCallerBase, 1, False, False) as Actor
+    If NightMotherCallerRef
+        NHV_Util.Log(NHV_Cfg_Debug, "Night Mother voice actor placed at her coffin: " + NightMotherCallerRef)
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "PlayNightMotherCall: voice actor not created")
+    EndIf
+EndFunction
+
+; True while the call still makes sense: Q00 on stage 20, player in the Dawnstar Sanctuary, not spoken yet.
+Bool Function CanNightMotherCall()
+    If bNightMotherCallSpoken || !Q00 || !Q00.IsRunning() || Q00.GetStage() != 20
+        Return False
+    EndIf
+    If !DawnstarSanctuaryLocation || !Game.GetPlayer().IsInLocation(DawnstarSanctuaryLocation)
+        Return False
+    EndIf
+    Return True
+EndFunction
+
+; NHV_NightMotherCallerScript: it spoke (abSpoken) or gave up. It deletes itself in both cases.
+Function OnNightMotherCallFinished(Bool abSpoken)
+    If abSpoken
+        bNightMotherCallSpoken = True
+    EndIf
+    NightMotherCallerRef = None
+    NHV_Util.Log(NHV_Cfg_Debug, "Night Mother call finished, spoken=" + abSpoken)
+EndFunction
+
+Function RemoveNightMotherCaller()
+    If NightMotherCallerRef
+        NightMotherCallerRef.Disable()
+        NightMotherCallerRef.Delete()
+        NightMotherCallerRef = None
+        NHV_Util.Log(NHV_Cfg_Debug, "Night Mother voice actor removed")
+    EndIf
 EndFunction
 
 ; Places the voice at the coffin (once) and makes sure the coffin alias is filled.
@@ -1371,6 +1455,7 @@ Function OnNightMotherCoffinActivated()
     EndIf
     bNightMotherCalled = True ; legacy flags, only read by the unused CallFromNightMother()
     bNightMotherCallPending = False
+    bNightMotherCallSpoken = True ; she is answered in person, no call needed any more
     PrepareNightMother()
     If !NightMotherVoiceRef
         NHV_Util.Log(NHV_Cfg_Debug, "OnNightMotherCoffinActivated: no Night Mother voice")
@@ -1392,6 +1477,7 @@ Function RemoveNightMotherVoice()
         NightMotherVoiceRef = None
         NHV_Util.Log(NHV_Cfg_Debug, "Night Mother voice removed")
     EndIf
+    RemoveNightMotherCaller()
     bNightMotherCalled = False
     bNightMotherCallPending = False
 EndFunction

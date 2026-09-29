@@ -15,6 +15,7 @@ ReferenceAlias Property QuintusAlias Auto
 ; -- Globals (both already exist in plugin-text, reused, not re-created) --
 GlobalVariable Property NHV_Status_Hrefna Auto      ; 000811:NightsHarvest.esp
 GlobalVariable Property NHV_Flag_HrefnaUnproven Auto ; new, see docs/plan Record-Inventar
+GlobalVariable Property NHV_Q01_TrialActive Auto     ; 004993; 1 while Veyra's trial runs: condition of the alias package NHV_Pkg_Q01_VeyraTrialHold
 
 ; -- NHV_Sys_Family's reserved alias for Hrefna (alias 2, "HrefnaSlot" - already exported with
 ; NHV_RecruitAliasScript and StatusGlobal wired, see plugin-text/Quests/NHV_Sys_Family) --
@@ -204,6 +205,12 @@ Function StartVeyraTrial()
     Else
         NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraTrial: no marker for Veyra, she stays where she is")
     EndIf
+    ; The alias package NHV_Pkg_Q01_VeyraTrialHold (stage 50 + this global) keeps her at the marker for the scene.
+    If NHV_Q01_TrialActive
+        NHV_Q01_TrialActive.SetValueInt(1)
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraTrial: NHV_Q01_TrialActive property not set, Veyra is not held")
+    EndIf
     kVeyra.EvaluatePackage()
     LockCutscene(VeyraTrialScene)
     VeyraTrialScene.Start()
@@ -211,11 +218,26 @@ EndFunction
 
 Function EndVeyraTrial()
     UnlockCutscene()
+    ReleaseVeyraFromTrial()
     If bHrefnaWillKill && !bHrefnaAttacked
         RegisterForSingleUpdate(2.0) ; the trial scene's watchdog chain ended with the unlock: resume the kill watch
     EndIf
     ; Stage stays 50; the Persuade/Intimidate/"Step aside" branch and the Quintus scenes are
     ; dialogue- and package-driven from here (CK), ending in OnQuintusKilled() below.
+EndFunction
+
+; The trial is over (or was abandoned): Veyra's hold package ends, she may leave normally.
+Function ReleaseVeyraFromTrial()
+    If NHV_Q01_TrialActive && NHV_Q01_TrialActive.GetValueInt() != 0
+        NHV_Q01_TrialActive.SetValueInt(0)
+        If VeyraAlias
+            Actor kVeyra = VeyraAlias.GetActorRef()
+            If kVeyra
+                kVeyra.EvaluatePackage()
+            EndIf
+        EndIf
+        NHV_Util.Log(NHV_Cfg_Debug, "Veyra released from the trial hold")
+    EndIf
 EndFunction
 
 ; ---------------------------------------------------------------------------
@@ -403,12 +425,15 @@ Function JudgeRecruit()
         Return
     EndIf
     Actor kHrefna = HrefnaAlias.GetActorRef()
-    CompleteRecruitment(kHrefna, NHV_Status_Hrefna, HrefnaFamilySlotAlias, HrefnaAlias, KitchenMarker)
     Actor kPlayer = Game.GetPlayer()
     If BogwifesKnife && kPlayer
         kPlayer.AddItem(BogwifesKnife, 1, True)
     EndIf
+    ; Stage 100 FIRST: NHV_Pkg_Hrefna_CampWait (Q01 stage < 100) must be invalid before she is moved and
+    ; re-evaluated, otherwise she walks straight back to her camp (ingame test 29.09.2026).
     SetStage(100)
+    CompleteRecruitment(kHrefna, NHV_Status_Hrefna, HrefnaFamilySlotAlias, HrefnaAlias, KitchenMarker)
+    bRecruitHomeChecked = True ; she was placed correctly just now
 EndFunction
 
 Function JudgeRelease()
@@ -490,6 +515,9 @@ EndFunction
 ; scheduled again instead of the letter silently never arriving. Safe to call even when a callback IS
 ; still pending - RegisterForSingleUpdateGameTime just replaces it with the same due time.
 Function OnContractLoadGame()
+    If GetStage() != 50 || (VeyraTrialScene && !VeyraTrialScene.IsPlaying())
+        ReleaseVeyraFromTrial() ; a hold from an interrupted trial must not outlive the trial scene
+    EndIf
     If GetStage() >= 50
         MakeQuintusMortal() ; saves that reached stage 50 before this fix (ingame test 29.09.2026)
     EndIf
@@ -543,7 +571,8 @@ EndFunction
 ; Quintus' papers (field note + Oculatus fragment 1) on his body, so stage 60 "search his belongings" has
 ; something to find. Idempotent: only adds what the body and the player do not have yet.
 Bool bBodyStocked = False
-Bool bRecruitReturned = False
+Bool bRecruitReturned = False       ; legacy one-shot (first repair, 29.09.2026), kept for saves
+Bool bRecruitHomeChecked = False    ; second repair: she left again although the first check ran (CampWait still valid)
 
 Function StockQuintusBody()
     If bBodyStocked || !QuintusAlias
@@ -565,7 +594,7 @@ EndFunction
 
 ; A recruited Hrefna walked back to her camp (CampWait had no stage condition before 29.09.2026): put her home.
 Function ReturnRecruitHome()
-    If bRecruitReturned || GetStage() < 100 || !HrefnaFamilySlotAlias || !KitchenMarker || !NHV_Status_Hrefna
+    If bRecruitHomeChecked || GetStage() < 100 || !HrefnaFamilySlotAlias || !KitchenMarker || !NHV_Status_Hrefna
         Return
     EndIf
     If NHV_Status_Hrefna.GetValueInt() != STATUS_RECRUITED
@@ -574,8 +603,10 @@ Function ReturnRecruitHome()
     Actor kHrefna = HrefnaFamilySlotAlias.GetActorRef()
     If kHrefna && !kHrefna.IsDead() && kHrefna.GetParentCell() != KitchenMarker.GetParentCell()
         kHrefna.MoveTo(KitchenMarker)
-        kHrefna.EvaluatePackage()
         NHV_Util.Log(NHV_Cfg_Debug, "Hrefna returned to the Kitchen")
     EndIf
-    bRecruitReturned = True ; one-time repair only; later family logic owns her position
+    If kHrefna && !kHrefna.IsDead()
+        kHrefna.EvaluatePackage() ; also drops CampWait (stage 100 is done) for a save where she never left
+    EndIf
+    bRecruitHomeChecked = True ; one-time repair only; later family logic owns her position
 EndFunction

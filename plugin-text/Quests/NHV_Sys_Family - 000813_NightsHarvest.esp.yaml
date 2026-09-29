@@ -60,6 +60,8 @@ Aliases:
   Name: HrefnaSlot
   Flags:
   - Optional
+  PackageData:
+  - 004992:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 3
   Name: SingsSlot

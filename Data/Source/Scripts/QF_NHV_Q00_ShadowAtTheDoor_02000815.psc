@@ -80,7 +80,9 @@ EndFunction
 Function Fragment_7()
 ;BEGIN CODE
 SetObjectiveCompleted(60)
-SetObjectiveCompleted(80)
+If IsObjectiveDisplayed(80)
+    SetObjectiveCompleted(80)
+EndIf
 CompleteQuest()
 ;END CODE
 EndFunction
@@ -116,7 +118,6 @@ EndFunction
 Function Fragment_8()
 ;BEGIN CODE
 SetObjectiveCompleted(60)
-SetObjectiveDisplayed(80)
 ;END CODE
 EndFunction
 ;END FRAGMENT
