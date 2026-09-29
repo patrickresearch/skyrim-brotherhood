@@ -1,7 +1,7 @@
 FormKey: 004065:NightsHarvest.esp
 EditorID: NHV_Q01_TrialPersuade_INFO02
 Flags: {}
-PreviousDialog: Null
+PreviousDialog: 004064:NightsHarvest.esp
 FavorLevel: None
 Responses:
 - EmotionValue: 40

@@ -5,7 +5,6 @@ Configuration:
   - Unique
   - Protected
   - DoesNotBleed
-  - IsGhost
   - Invulnerable
   Level:
     MutagenObjectType: PcLevelMult
