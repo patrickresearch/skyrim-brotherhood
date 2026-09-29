@@ -1,0 +1,7 @@
+FormKey: 00415F:NightsHarvest.esp
+EditorID: NHV_Q02_SingsProtect_Branch
+Quest: 004100:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00415E:NightsHarvest.esp

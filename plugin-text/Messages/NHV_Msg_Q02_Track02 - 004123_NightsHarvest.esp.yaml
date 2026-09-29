@@ -1,0 +1,8 @@
+FormKey: 004123:NightsHarvest.esp
+EditorID: NHV_Msg_Q02_Track02
+Description:
+  TargetLanguage: English
+  Value: The footprints stop where the tide begins.
+INAM: 0x00000000
+Flags:
+- MessageBox

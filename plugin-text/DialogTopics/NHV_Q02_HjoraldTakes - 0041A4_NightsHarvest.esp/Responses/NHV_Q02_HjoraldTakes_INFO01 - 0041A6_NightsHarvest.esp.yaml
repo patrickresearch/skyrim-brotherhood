@@ -1,0 +1,64 @@
+FormKey: 0041A6:NightsHarvest.esp
+EditorID: NHV_Q02_HjoraldTakes_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__020041A6
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q02_SurrenderGreeted
+      Object: 00411B:NightsHarvest.esp
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__020041A6
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__020041A6
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Surprise
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: We'll take him. There were complaints, yes. Dock disputes, we thought. Your payment will be recorded.
+  ScriptNotes: NHV_Q02_070_42
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: We called it dock trouble. That was convenient. Trouble does not need a report signed against it.
+  ScriptNotes: NHV_Q02_070_43
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 7
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 00410C:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00410D:NightsHarvest.esp
+  ComparisonValue: 4
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00411B:NightsHarvest.esp
+Speaker: 00410C:NightsHarvest.esp

@@ -1,0 +1,7 @@
+FormKey: 00417F:NightsHarvest.esp
+EditorID: NHV_Q02_SingsIWill_Branch
+Quest: 004100:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00417E:NightsHarvest.esp

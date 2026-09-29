@@ -1,0 +1,109 @@
+FormKey: 004193:NightsHarvest.esp
+EditorID: NHV_Q02_SingsJudgeGreet_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02004193
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q02_JudgeGreeted
+      Object: 00411A:NightsHarvest.esp
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02004193
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02004193
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: His desk is locked. Aelius never locked anything.
+  ScriptNotes: NHV_Q02_070_01
+  Edits: ''
+- Emotion: Anger
+  EmotionValue: 50
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He wrote our names down. Every one. For the Emperor's dogs.
+  ScriptNotes: NHV_Q02_070_02
+  Edits: ''
+- Emotion: Anger
+  EmotionValue: 40
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: So I was right to hate, and wrong about whom.
+  ScriptNotes: NHV_Q02_070_03
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 40
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I agreed to kill him before I knew. His betrayal cannot change that.
+  ScriptNotes: NHV_Q02_070_05
+  Edits: ''
+- Emotion: Anger
+  EmotionValue: 45
+  ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He wrote our names to protect a city that never learned them.
+  ScriptNotes: NHV_Q02_070_06
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: So, Listener. Do I follow you into the dark, or does the water have one more guest?
+  ScriptNotes: NHV_Q02_070_04
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 2
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004107:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00411A:NightsHarvest.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004115:NightsHarvest.esp
+  ComparisonValue: 1
+Speaker: 004107:NightsHarvest.esp

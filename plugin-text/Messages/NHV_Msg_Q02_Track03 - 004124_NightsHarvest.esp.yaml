@@ -1,0 +1,8 @@
+FormKey: 004124:NightsHarvest.esp
+EditorID: NHV_Msg_Q02_Track03
+Description:
+  TargetLanguage: English
+  Value: He kept close to the water. I will search beneath the docks.
+INAM: 0x00000000
+Flags:
+- MessageBox

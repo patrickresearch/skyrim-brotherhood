@@ -1,0 +1,6 @@
+FormKey: 004178:NightsHarvest.esp
+EditorID: NHV_Q02_SingsFrame
+Priority: 60
+Branch: 004179:NightsHarvest.esp
+Quest: 004100:NightsHarvest.esp
+SubtypeName: CUST

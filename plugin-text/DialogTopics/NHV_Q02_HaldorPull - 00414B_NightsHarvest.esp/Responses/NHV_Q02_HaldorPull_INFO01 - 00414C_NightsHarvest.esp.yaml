@@ -1,0 +1,25 @@
+FormKey: 00414C:NightsHarvest.esp
+EditorID: NHV_Q02_HaldorPull_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Fear
+  EmotionValue: 60
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Something pulled me under! Guards! Guards!
+  ScriptNotes: NHV_Q02_030_10
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00410E:NightsHarvest.esp
+  ComparisonValue: 1
+Speaker: 00410A:NightsHarvest.esp

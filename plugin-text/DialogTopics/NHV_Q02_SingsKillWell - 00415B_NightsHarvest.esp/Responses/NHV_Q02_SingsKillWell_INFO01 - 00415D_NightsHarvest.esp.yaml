@@ -1,0 +1,42 @@
+FormKey: 00415D:NightsHarvest.esp
+EditorID: NHV_Q02_SingsKillWell_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: What else is there to kill for? Coin? That is how Nords think.
+  ScriptNotes: NHV_Q02_050_51 prompt=NHV_Q02_050_50
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 50
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 2
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004107:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004119:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You kill well. Do you kill for anything but hate?

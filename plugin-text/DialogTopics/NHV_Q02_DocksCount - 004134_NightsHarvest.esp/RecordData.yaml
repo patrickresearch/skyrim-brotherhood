@@ -1,0 +1,6 @@
+FormKey: 004134:NightsHarvest.esp
+EditorID: NHV_Q02_DocksCount
+Priority: 60
+Branch: 004131:NightsHarvest.esp
+Quest: 004100:NightsHarvest.esp
+SubtypeName: CUST

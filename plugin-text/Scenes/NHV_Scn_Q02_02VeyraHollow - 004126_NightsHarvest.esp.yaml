@@ -1,0 +1,128 @@
+FormKey: 004126:NightsHarvest.esp
+EditorID: NHV_Scn_Q02_02VeyraHollow
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Scn_Q02_02Hollow_02004126
+  ScriptFragments:
+    FileName: SF_NHV_Scn_Q02_02Hollow_02004126
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Scn_Q02_02Hollow_02004126
+      FragmentName: Fragment_0
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- ID: 1
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 2
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Q02_HollowV1
+  ActorID: 1
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 00416A:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q02_HollowS1
+  ActorID: 2
+  Index: 2
+  StartPhase: 1
+  EndPhase: 1
+  Topic: 00416C:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q02_HollowV2
+  ActorID: 1
+  Index: 3
+  StartPhase: 2
+  EndPhase: 2
+  Topic: 00416E:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q02_HollowS2
+  ActorID: 2
+  Index: 4
+  StartPhase: 3
+  EndPhase: 3
+  Topic: 004170:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q02_HollowV3
+  ActorID: 1
+  Index: 5
+  StartPhase: 4
+  EndPhase: 4
+  Topic: 004172:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q02_HollowS3
+  ActorID: 2
+  Index: 6
+  StartPhase: 5
+  EndPhase: 5
+  Topic: 004174:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q02_HollowV4
+  ActorID: 1
+  Index: 7
+  StartPhase: 6
+  EndPhase: 6
+  Topic: 004176:NightsHarvest.esp
+  HeadtrackActorID: 0
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 004100:NightsHarvest.esp
+LastActionIndex: 7
+VNAM: 0x00000000000000000300000003000000

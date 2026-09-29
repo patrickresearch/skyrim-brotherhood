@@ -1,0 +1,19 @@
+FormKey: 004182:NightsHarvest.esp
+EditorID: NHV_Q02_KillA1_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Surprise
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Sings? You are late. Is something wrong at the docks?
+  ScriptNotes: NHV_Q02_060_01
+  Edits: ''
+Speaker: 00410B:NightsHarvest.esp

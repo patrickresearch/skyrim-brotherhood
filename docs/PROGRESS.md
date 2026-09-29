@@ -16,6 +16,30 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**29.09.2026 (Nacht): M2.2 Q02 „Cold Waters“ – nicht-räumliche Records gebaut.** Die Records entstehen per Generator `tools/build_q02_records.py`; er ist wiederholbar und schreibt nur 0041xx-Dateien. Alle Texte stammen aus `dialogue/Q02.csv`.
+
+Gebaute Records (004100–0041AF):
+- Quest `NHV_Q02_ColdWaters` (004100): Stages 10–70 und 100 mit Objectives und Fragmenten, 8 Aliase (Unique Actor), nicht Start Game Enabled.
+- 6 VoiceTypes und 6 NPCs. Die NPCs sind aus Hakan geklont: Klasse und Outfit sind Platzhalter, Gesichter fehlen.
+- 16 Globals, der Dispatch-Brief, 4 Spuren-Activators mit dem neuen `NHV_Q02_StageActivatorScript`, 3 Messages.
+- 3 Szenen, 5 ForceGreet-Packages.
+- 50 Topics mit 19 TIF-Fragmenten.
+
+`NHV_Q02Script` ist additiv erweitert: Kill-Watch, Docks-Watchdog, Surrender, Veyras Rückkehr. Alle Befunde des papyrus-reviewer (1× Hoch, 4× Mittel, 3 Hinweise) sind eingearbeitet. Die CK-Anleitung `docs/ck/M2.2-Q02-CK-Anleitung.md` enthält jetzt nur noch die räumliche Arbeit. Nebenbei behoben: Die Q01-Debrief-Zeile „Oculatus dispatch“ hatte eine `GetItemCount`-Bedingung ohne Item; sie prüft jetzt Fragment 1 (00400F) beim Spieler.
+
+Checks: Build -Clean 97/97, Roundtrip verlustfrei, `csv_to_plugin --check` 0 Differenzen, Lint 0 Fehler, `silent_voice` 0 Probleme. **Nicht ingame getestet.**
+
+Bewusst offen:
+- **Q02-Startauslöser fehlt.** Es gibt keinen Hook in `NHV_CoreScript`; Q02 soll erst nach der CK-Arbeit automatisch starten. Zum Testen `startquest NHV_Q02_ColdWaters`.
+- Shadowscale Wraps (Belohnungsrüstung) nicht gebaut.
+- Nebenpfade A/B und der Assemblage-Zeuge nicht gebaut.
+- Sings' Reise- und Nachtpackages fehlen.
+- Zeile 100_20 nicht verkabelt.
+- Q01-Zeile 100_12 („You left this on the body“, Rückfall bei fehlendem Fragment) ist nicht verkabelt.
+- Die Spuren-Activators haben ein Platzhalter-Modell.
+
+**Nächster Schritt Q02:** Entwickler öffnet das ESP im CK (E17), arbeitet `docs/ck/M2.2-Q02-CK-Anleitung.md` ab (Gesichter, Windhelm-Platzierungen, Innenzellen, Marker-Properties) und speichert. Danach: FromDev → ToText → Aufräumen der Vanilla-Overrides.
+
 **29.09.2026 (Nacht): Lucien-Ansprechbarkeit, Fix-Versuch 3.** Befund aus dem Log: Die Beschwörung und die Ankunftsszene starten sauber, der Watchdog musste nicht eingreifen. Die Records (Branch, Quest, Global, Alias 4) sind korrekt verdrahtet. Package und Geist-Effekt wurden geprüft: `GhostAbilityNew` setzt nur Alpha 0.25 und blockiert nichts.
 
 Verbleibender Hauptverdacht: Lucien übernimmt die Traits des Spectral Assassin (`DBSpectralAssassin` 0A0E49) als Template. Bei solchen Template-NPCs greifen `GetIsID` und das INFO-Feld `Speaker` unzuverlässig. Dann zeigt keine Zeile an, und auch die Ankunftszeile hat keinen gültigen Sprecher.

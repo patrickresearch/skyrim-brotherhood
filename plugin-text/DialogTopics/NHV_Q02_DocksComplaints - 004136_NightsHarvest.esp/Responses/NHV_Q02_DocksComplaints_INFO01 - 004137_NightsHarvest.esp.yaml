@@ -1,0 +1,40 @@
+FormKey: 004137:NightsHarvest.esp
+EditorID: NHV_Q02_DocksComplaints_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004138:NightsHarvest.esp
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Dockhands, mostly. Men who lost cargo, teeth, or both. Haldor Frost-Knuckle's name appears often.
+  ScriptNotes: NHV_Q02_010_16 prompt=NHV_Q02_010_15
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 3
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004108:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Who complained about the men who drowned?

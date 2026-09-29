@@ -101,7 +101,7 @@ In Story-Reihenfolge bauen (Fragmente, Banter-Voraussetzungen, Veyras Dialoge ba
 | ID | Arbeitspaket | Aufgaben | Wer | h | Status |
 |---|---|---|---|---|---|
 | M2.1 | Follower-System komplett | Zwei Slots, Befehle, Inventar, Catch-up, Grundlage Kompatibilitätsmodus, Rekruten-Zeilen Hrefna | Claude, Entwickler | 20 | Offen |
-| M2.2 | Q02 Cold Waters | Windhelm, Sings-Beneath-Ice, Clerk Aelius, Fragment 2, Shadowscale Wraps, Grundausbau Drowned Pool | Claude, Entwickler | 35 | Offen |
+| M2.2 | Q02 Cold Waters | Windhelm, Sings-Beneath-Ice, Clerk Aelius, Fragment 2, Shadowscale Wraps, Grundausbau Drowned Pool | Claude, Entwickler | 35 | In Arbeit |
 | M2.3 | Q03 The Scholar's Sin | Winterhold, Nirelda, Dungeon Hollowfrost Spire, Rätsel, Fragment 3, Circlet of the Last Breath, Grundausbau Arcanum | Claude, Entwickler | 55 | Offen |
 | M2.4 | Q04 Till Death Do Us Part | Riften, Corisande, Dinner-Szene (Zell-Regel E16), Aurelian Cato, Fragment 4, Widow's Ring, Fence, Grundausbau Velvet Counter | Claude, Entwickler | 40 | Offen |
 | M2.5 | Q05 Blood of the Stronghold | The Reach, Kharzog, Arena „The Red Pit“, Buchmacher Varus, Fragment 5, Oathbreaker, Grundausbau Forge | Claude, Entwickler | 40 | Offen |

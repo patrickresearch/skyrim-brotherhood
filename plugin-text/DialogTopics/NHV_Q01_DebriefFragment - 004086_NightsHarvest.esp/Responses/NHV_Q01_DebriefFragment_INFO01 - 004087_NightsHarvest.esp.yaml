@@ -73,6 +73,9 @@ Conditions:
   CompareOperator: GreaterThanOrEqualTo
   Data:
     MutagenObjectType: GetItemCountConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ItemOrList: 00400F:NightsHarvest.esp
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English

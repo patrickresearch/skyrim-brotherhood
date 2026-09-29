@@ -1,0 +1,19 @@
+FormKey: 00416D:NightsHarvest.esp
+EditorID: NHV_Q02_HollowS1_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Surprise
+  EmotionValue: 50
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A dark elf in my Hollow. Is the whole city walking through my door tonight?
+  ScriptNotes: NHV_Q02_050_61
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

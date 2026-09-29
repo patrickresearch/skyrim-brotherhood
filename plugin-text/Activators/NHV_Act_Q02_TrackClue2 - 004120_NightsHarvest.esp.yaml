@@ -1,0 +1,31 @@
+FormKey: 004120:NightsHarvest.esp
+EditorID: NHV_Act_Q02_TrackClue2
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_Q02_StageActivatorScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ClueMessage
+      Object: 004123:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Debug
+      Object: 000800:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OwningQuest
+      Object: 004100:NightsHarvest.esp
+    - MutagenObjectType: ScriptIntProperty
+      Name: RequiredStage
+      Data: 40
+    - MutagenObjectType: ScriptIntProperty
+      Name: TargetStage
+ObjectBounds:
+  First: -43, 0, -20
+  Second: 43, 2, 20
+Name:
+  TargetLanguage: English
+  Value: Examine the marks
+Model:
+  File: Clutter\WeaponRack\WRPlaque01.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []

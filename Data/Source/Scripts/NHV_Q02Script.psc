@@ -43,6 +43,12 @@ GlobalVariable Property NHV_Q02_Flag_RewardGiven Auto   ; guards GiveRecruitRewa
 ; -- World references (XMarkers, filled in the CK) --
 ObjectReference Property DockWatchMarker Auto  ; NHV_Mk_Q02_DockWatch, Stage 30 night-window poll target
 ObjectReference Property SingsHomeMarker Auto  ; NHV_Mk_Q02_SingsHomeMarker, Homecoming destination (Drowned Pool)
+ObjectReference Property VeyraHollowMarker Auto ; NHV_Mk_Q02_VeyraHollow, where Veyra appears for the Stage 50 scene (Drowned Hollow)
+ObjectReference Property SingsHollowMarker Auto ; NHV_Mk_Q02_SingsHollow, where Sings waits from Stage 50 (Drowned Hollow)
+
+; Dialogue-gating Globals set by this script (M2.2 additions)
+GlobalVariable Property NHV_Q02_FragmentFound Auto   ; 1 once the Oculatus fragment is in the player's hands (gates the reveal lines)
+GlobalVariable Property NHV_Q02_TrialAnnounced Auto  ; 1 once Veyra's Stage 50 scene has run (or was skipped): unlocks the acceptance dialogue
 
 ; -- Scenes --
 Scene Property HaldorDocksScene Auto ; NHV_Scn_Q02_01HaldorDocks - deliberately never cutscene-locked, see StartHaldorDocksScene()
@@ -80,6 +86,11 @@ Float Property TailDetectionRadius = 350.0 AutoReadOnly
 Int Property WATCH_NONE = 0 AutoReadOnly
 Int Property WATCH_NIGHT = 1 AutoReadOnly
 Int Property WATCH_TAIL = 2 AutoReadOnly
+Int Property WATCH_KILL = 3 AutoReadOnly
+Int Property WATCH_DOCKS = 4 AutoReadOnly
+Int Property WATCH_TICK_CAP = 200 AutoReadOnly
+Int iWatchTicks = 0
+Bool bSurrenderFinished = False
 Int iWatchMode = 0
 
 ; ---------------------------------------------------------------------------
@@ -183,6 +194,12 @@ Event OnUpdate()
     ElseIf iWatchMode == WATCH_TAIL
         UpdateTailWatch()
         Return
+    ElseIf iWatchMode == WATCH_KILL
+        UpdateKillWatch()
+        Return
+    ElseIf iWatchMode == WATCH_DOCKS
+        UpdateDocksWatch()
+        Return
     EndIf
     Parent.OnUpdate()
 EndEvent
@@ -266,8 +283,34 @@ Function StartHaldorDocksScene()
         NHV_Util.Log(NHV_Cfg_Debug, "StartHaldorDocksScene: HaldorDocksScene property not set in the CK")
         Return
     EndIf
-    iWatchMode = WATCH_NONE
     HaldorDocksScene.Start()
+    ; The scene is not cutscene-locked, so the base watchdog does not cover it: this watch moves on to
+    ; Stage 40 if the scene ends without its end fragment firing (or never really runs).
+    iWatchMode = WATCH_DOCKS
+    iWatchTicks = 0
+    RegisterForSingleUpdate(3.0)
+EndFunction
+
+Function UpdateDocksWatch()
+    If GetStage() != 30
+        iWatchMode = WATCH_NONE
+        Return
+    EndIf
+    iWatchTicks += 1
+    If (HaldorDocksScene && HaldorDocksScene.IsPlaying() && iWatchTicks < WATCH_TICK_CAP)
+        RegisterForSingleUpdate(3.0)
+        Return
+    EndIf
+    If iWatchTicks <= 3 && HaldorDocksScene
+        RegisterForSingleUpdate(3.0) ; start-up grace: IsPlaying() may not have flipped yet
+        Return
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "UpdateDocksWatch: scene over without end fragment, moving on")
+    iWatchMode = WATCH_NONE
+    If HaldorDocksScene && HaldorDocksScene.IsPlaying()
+        HaldorDocksScene.Stop()
+    EndIf
+    EndHaldorDocksScene()
 EndFunction
 
 ; Called by NHV_Q02_HaldorAliasScript.Rescue() the moment the player intervenes (activates Haldor or
@@ -281,9 +324,9 @@ Function OnHaldorRescued()
     If kSings
         kSings.EvaluatePackage() ; the CK-side flee package outranks the scene once the scene stops driving her/him
     EndIf
-    If HaldorDocksScene && HaldorDocksScene.IsPlaying()
-        HaldorDocksScene.Stop()
-    EndIf
+    ; The scene is NOT stopped: it plays on to its end, where Haldor's "Something pulled me under!" line
+    ; (NHV_Q02_030_10, NHV_Q02_HaldorSaved == 1) replaces the drowning line, and EndHaldorDocksScene()
+    ; then routes to the tracking path.
 EndFunction
 
 ; Called from HaldorDocksScene's end fragment (scene ran to completion, no intervention). No
@@ -319,6 +362,9 @@ EndFunction
 
 ; Called from the Stage 50 dialogue fragment once Sings has finished explaining himself.
 Function StartVeyraHollowScene()
+    If GetStage() != 50 || (VeyraHollowScene && VeyraHollowScene.IsPlaying())
+        Return
+    EndIf
     FillVeyraAlias() ; NHV_ContractBaseScript: ForceRefTo from NHV_CoreScript.GetVeyraActor()
     If !VeyraAlias || !VeyraAlias.GetActorRef()
         ; Optional alias unfilled (E16-style soft dependency broke, or Veyra is otherwise
@@ -326,20 +372,54 @@ Function StartVeyraHollowScene()
         ; appearance scene, same escape hatch as NHV_Q01Script.StartVeyraTrial(). The CK wires a
         ; fallback topic for this case (docs/ck/M1.7-Q02-CK-Anleitung.md).
         NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraHollowScene: Veyra unavailable, skipping scene")
+        SetTrialAnnounced()
         Return
     EndIf
     If !VeyraHollowScene
         NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraHollowScene: VeyraHollowScene property not set in the CK")
+        SetTrialAnnounced()
         Return
+    EndIf
+    Actor kVeyra = VeyraAlias.GetActorRef()
+    If kVeyra.IsDead() || kVeyra.IsDisabled()
+        NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraHollowScene: Veyra dead or disabled, skipping scene")
+        SetTrialAnnounced()
+        Return
+    EndIf
+    If VeyraHollowMarker
+        kVeyra.MoveTo(VeyraHollowMarker) ; Veyra appears in the Hollow (no travel across Skyrim)
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "StartVeyraHollowScene: VeyraHollowMarker property not set in the CK")
     EndIf
     LockCutscene(VeyraHollowScene)
     VeyraHollowScene.Start()
 EndFunction
 
+; Stage 60 is NOT set here: after the scene the player still talks to Sings (NHV_Q02_050_70..95), and
+; the last of those answers sets Stage 60. TrialAnnounced unlocks those topics.
 Function EndVeyraHollowScene()
     UnlockCutscene()
-    If GetStage() < 60
-        SetStage(60)
+    SetTrialAnnounced()
+    ; Veyra "leaves for Dawnstar" in the last line: put her back in the Sanctuary (same Core helper Q00 uses
+    ; for her return; no Core change).
+    If Core
+        Core.CompleteVeyraReturnToSanctuary()
+    EndIf
+EndFunction
+
+Function SetTrialAnnounced()
+    If NHV_Q02_TrialAnnounced
+        NHV_Q02_TrialAnnounced.SetValueInt(1)
+    EndIf
+EndFunction
+
+; Stage 50 fragment: Sings waits in the Drowned Hollow (moved out of sight when the player heads for the Hollow).
+Function MoveSingsToHollow()
+    Actor kSings = GetSings()
+    If kSings && SingsHollowMarker
+        kSings.MoveTo(SingsHollowMarker)
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "MoveSingsToHollow: Sings or SingsHollowMarker missing")
     EndIf
 EndFunction
 
@@ -352,6 +432,53 @@ EndFunction
 Bool Function IsAeliusAvailable()
     Actor kAelius = GetAelius()
     Return kAelius && !kAelius.IsDead()
+EndFunction
+
+; Stage 60 fragment: polls until the player is in loaded range of Aelius, then puts Sings next to him and
+; starts the kill scene (the scene needs both actors in one place). Stops itself when the stage moves on.
+Function BeginKillWatch()
+    iWatchMode = WATCH_KILL
+    iWatchTicks = 0
+    RegisterForSingleUpdate(3.0)
+EndFunction
+
+Function UpdateKillWatch()
+    If GetStage() != 60
+        iWatchMode = WATCH_NONE
+        Return
+    EndIf
+    Actor kAelius = GetAelius()
+    Actor kSings = GetSings()
+    iWatchTicks += 1
+    If !kAelius || kAelius.IsDead() || !kSings || kSings.IsDead() || iWatchTicks > WATCH_TICK_CAP
+        NHV_Util.Log(NHV_Cfg_Debug, "UpdateKillWatch: Aelius or Sings unavailable (or tick cap), using the fallback")
+        iWatchMode = WATCH_NONE
+        StartAeliusKillScene() ; fallback: unavailable -> Stage 70
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    If kPlayer && kAelius.Is3DLoaded() && kPlayer.GetDistance(kAelius) <= 1000.0
+        kSings.MoveTo(kAelius, 120.0, 0.0, 0.0)
+        iWatchMode = WATCH_NONE
+        StartAeliusKillScene()
+    Else
+        RegisterForSingleUpdate(3.0)
+    EndIf
+EndFunction
+
+; Scene 03 end fragment: the killing blow is Sings' (concept: the trial is his deed).
+; Returns True if the player was the killer (Aelius already dead by the player's hand) so the caller can
+; pass abPlayerKilled to EndAeliusKillScene().
+Bool Function KillAelius()
+    Actor kAelius = GetAelius()
+    If !kAelius
+        Return False
+    EndIf
+    If kAelius.IsDead()
+        Return kAelius.GetKiller() == Game.GetPlayer()
+    EndIf
+    kAelius.Kill(GetSings())
+    Return False
 EndFunction
 
 Function StartAeliusKillScene()
@@ -391,6 +518,9 @@ EndFunction
 ; section 6.
 Function GiveOculatusFragment()
     GiveFragmentIfMissing(None, OculatusFragment2) ; found in the desk, not on the body - no giver actor
+    If NHV_Q02_FragmentFound
+        NHV_Q02_FragmentFound.SetValueInt(1) ; gates NHV_Q02_070_02/03/05/06 and 100_10/11
+    EndIf
 EndFunction
 
 ; ---------------------------------------------------------------------------
@@ -502,11 +632,26 @@ Function JudgeSurrender()
         kPlayer.AddItem(Gold001, BOUNTY_GOLD, True)
     EndIf
     Actor kHjorald = GetHjorald()
-    Actor kSings = GetSings()
-    If kHjorald && kSings
-        kHjorald.EvaluatePackage() ; CK-side "take the prisoner" package takes over
+    If kHjorald && kPlayer && !kHjorald.IsDead() && !kHjorald.IsDisabled()
+        kHjorald.MoveTo(kPlayer, 250.0, 0.0, 0.0) ; Hjorald arrives; his ForceGreet package (Result == 4) speaks NHV_Q02_070_42/43
+        kHjorald.EvaluatePackage()
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "JudgeSurrender: Hjorald unavailable, taking Sings into custody directly")
+        FinishSurrender()
     EndIf
     SetStage(100)
+EndFunction
+
+; Called after Hjorald's lines: Sings is taken into custody.
+Function FinishSurrender()
+    If bSurrenderFinished || !NHV_Q02_Result || NHV_Q02_Result.GetValueInt() != 4
+        Return
+    EndIf
+    bSurrenderFinished = True
+    Actor kSings = GetSings()
+    If kSings && !kSings.IsDisabled()
+        kSings.Disable()
+    EndIf
 EndFunction
 
 ; ---------------------------------------------------------------------------

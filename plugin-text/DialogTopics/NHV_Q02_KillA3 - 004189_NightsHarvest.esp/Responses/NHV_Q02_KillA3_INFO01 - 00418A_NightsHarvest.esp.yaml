@@ -1,0 +1,19 @@
+FormKey: 00418A:NightsHarvest.esp
+EditorID: NHV_Q02_KillA3_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I know. I write complaints until the ink dries, then I write another.
+  ScriptNotes: NHV_Q02_060_07
+  Edits: ''
+Speaker: 00410B:NightsHarvest.esp

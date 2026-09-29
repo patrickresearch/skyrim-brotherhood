@@ -1,0 +1,7 @@
+FormKey: 00412E:NightsHarvest.esp
+EditorID: NHV_Q02_VeyraBrief_Branch
+Quest: 004100:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00412D:NightsHarvest.esp

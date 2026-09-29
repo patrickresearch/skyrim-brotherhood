@@ -1,0 +1,51 @@
+FormKey: 004139:NightsHarvest.esp
+EditorID: NHV_Q02_DocksArgonians_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02004139
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Q02_LedgerHeard
+      Object: 004117:NightsHarvest.esp
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02004139
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02004139
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: They say less when a Nord is holding the ledger. Ask them yourself. If they stay to answer.
+  ScriptNotes: NHV_Q02_010_18 prompt=NHV_Q02_010_17
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 3
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004108:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: And the Argonians? What do they say?

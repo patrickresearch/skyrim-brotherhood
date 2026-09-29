@@ -1,0 +1,47 @@
+FormKey: 004143:NightsHarvest.esp
+EditorID: NHV_Q02_DrinksAsk_INFO02
+Flags: {}
+PreviousDialog: 004142:NightsHarvest.esp
+FavorLevel: None
+LinkTo:
+- 004144:NightsHarvest.esp
+- 004147:NightsHarvest.esp
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You ask about drowned Nords in the Argonian quarter? Brave, or stupid. Maybe both, stranger.
+  ScriptNotes: NHV_Q02_010_21 prompt=NHV_Q02_010_20
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004109:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: What do you know about the drowned men?

@@ -1,0 +1,18 @@
+FormKey: 004173:NightsHarvest.esp
+EditorID: NHV_Q02_HollowV3_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I ask you to kill without hating. If you cannot, you are a grudge with a knife.
+  ScriptNotes: NHV_Q02_050_65
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

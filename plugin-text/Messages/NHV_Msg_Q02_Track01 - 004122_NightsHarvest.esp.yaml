@@ -1,0 +1,8 @@
+FormKey: 004122:NightsHarvest.esp
+EditorID: NHV_Msg_Q02_Track01
+Description:
+  TargetLanguage: English
+  Value: The water carried him toward the old pilings.
+INAM: 0x00000000
+Flags:
+- MessageBox

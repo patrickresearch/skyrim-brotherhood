@@ -1,0 +1,19 @@
+FormKey: 00418C:NightsHarvest.esp
+EditorID: NHV_Q02_KillS3_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: And did the ink ever open a door?
+  ScriptNotes: NHV_Q02_060_08
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

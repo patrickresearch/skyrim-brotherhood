@@ -1,0 +1,6 @@
+FormKey: 0041A1:NightsHarvest.esp
+EditorID: NHV_Q02_JudgeSurrender
+Priority: 60
+Branch: 0041A2:NightsHarvest.esp
+Quest: 004100:NightsHarvest.esp
+SubtypeName: CUST

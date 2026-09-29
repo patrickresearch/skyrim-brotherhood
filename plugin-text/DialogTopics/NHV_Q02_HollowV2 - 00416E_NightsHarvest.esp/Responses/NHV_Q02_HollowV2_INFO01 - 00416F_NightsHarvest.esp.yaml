@@ -1,0 +1,27 @@
+FormKey: 00416F:NightsHarvest.esp
+EditorID: NHV_Q02_HollowV2_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He kills from hatred, Listener. Hatred is loud. The family is quiet.
+  ScriptNotes: NHV_Q02_050_62
+  Edits: ''
+- EmotionValue: 40
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Aelius, the harbor clerk. He dies before dawn. By your hand, Sings.
+  ScriptNotes: NHV_Q02_050_63
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

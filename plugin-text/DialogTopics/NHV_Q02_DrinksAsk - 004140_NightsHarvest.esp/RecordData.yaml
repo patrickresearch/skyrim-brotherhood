@@ -1,0 +1,6 @@
+FormKey: 004140:NightsHarvest.esp
+EditorID: NHV_Q02_DrinksAsk
+Priority: 60
+Branch: 004141:NightsHarvest.esp
+Quest: 004100:NightsHarvest.esp
+SubtypeName: CUST

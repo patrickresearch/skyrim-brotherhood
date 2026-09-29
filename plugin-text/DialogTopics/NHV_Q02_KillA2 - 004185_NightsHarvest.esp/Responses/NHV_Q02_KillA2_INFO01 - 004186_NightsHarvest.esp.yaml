@@ -1,0 +1,28 @@
+FormKey: 004186:NightsHarvest.esp
+EditorID: NHV_Q02_KillA2_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: At this hour? You are shaking. Here, take my cloak. It is freezing out.
+  ScriptNotes: NHV_Q02_060_03
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You have been quiet all week. Did someone at the docks threaten you?
+  ScriptNotes: NHV_Q02_060_05
+  Edits: ''
+Speaker: 00410B:NightsHarvest.esp

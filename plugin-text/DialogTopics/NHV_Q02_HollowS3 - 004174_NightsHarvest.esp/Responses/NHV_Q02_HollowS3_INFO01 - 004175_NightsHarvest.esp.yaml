@@ -1,0 +1,19 @@
+FormKey: 004175:NightsHarvest.esp
+EditorID: NHV_Q02_HollowS3_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 45
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You call this a test. The warm-blood gets kindness, and I get a blade.
+  ScriptNotes: NHV_Q02_050_67
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

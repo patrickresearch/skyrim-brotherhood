@@ -1,0 +1,24 @@
+FormKey: 00414D:NightsHarvest.esp
+EditorID: NHV_Q02_HaldorPull_INFO02
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: 00414C:NightsHarvest.esp
+FavorLevel: None
+Responses:
+- Emotion: Fear
+  EmotionValue: 70
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: What... something's got my leg! Help!
+  ScriptNotes: NHV_Q02_030_03
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00410E:NightsHarvest.esp
+Speaker: 00410A:NightsHarvest.esp
