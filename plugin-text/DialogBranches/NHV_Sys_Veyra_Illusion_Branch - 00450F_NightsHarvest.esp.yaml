@@ -1,0 +1,7 @@
+FormKey: 00450F:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_Illusion_Branch
+Quest: 000809:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 004510:NightsHarvest.esp

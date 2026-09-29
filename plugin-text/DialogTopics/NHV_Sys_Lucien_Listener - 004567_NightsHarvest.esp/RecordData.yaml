@@ -1,0 +1,6 @@
+FormKey: 004567:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Listener
+Priority: 60
+Branch: 004566:NightsHarvest.esp
+Quest: 000809:NightsHarvest.esp
+SubtypeName: CUST

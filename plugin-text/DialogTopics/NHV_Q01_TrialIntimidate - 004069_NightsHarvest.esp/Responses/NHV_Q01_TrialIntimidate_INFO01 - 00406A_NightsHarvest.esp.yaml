@@ -3,10 +3,6 @@ EditorID: NHV_Q01_TrialIntimidate_INFO01
 VirtualMachineAdapter:
   Scripts:
   - Name: TIF__0200406A
-    Properties:
-    - MutagenObjectType: ScriptObjectProperty
-      Name: QuintusScene
-      Object: 004037:NightsHarvest.esp
   ScriptFragments:
     MutagenObjectType: ScriptFragments
     FileName: TIF__0200406A

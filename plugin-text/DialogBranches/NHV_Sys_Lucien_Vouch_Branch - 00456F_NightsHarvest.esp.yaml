@@ -1,0 +1,7 @@
+FormKey: 00456F:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Vouch_Branch
+Quest: 000809:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 004570:NightsHarvest.esp

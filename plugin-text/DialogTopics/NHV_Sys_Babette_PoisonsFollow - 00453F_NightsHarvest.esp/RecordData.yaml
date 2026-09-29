@@ -1,0 +1,6 @@
+FormKey: 00453F:NightsHarvest.esp
+EditorID: NHV_Sys_Babette_PoisonsFollow
+Priority: 60
+Branch: 00453C:NightsHarvest.esp
+Quest: 000809:NightsHarvest.esp
+SubtypeName: CUST

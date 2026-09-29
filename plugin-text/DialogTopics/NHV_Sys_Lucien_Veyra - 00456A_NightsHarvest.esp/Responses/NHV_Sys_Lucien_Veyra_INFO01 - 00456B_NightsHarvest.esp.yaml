@@ -1,0 +1,53 @@
+FormKey: 00456B:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Veyra_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 20
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Much as you find her now. The same measured voice. The same look when someone wastes her time.
+  ScriptNotes: NHV_SYS_LUC_35 prompt=NHV_SYS_LUC_34
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She was a visitor, not one of my assassins. We could work together without pretending otherwise.
+  ScriptNotes: NHV_SYS_LUC_36
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I found her reliable. I did not find her particularly eager to be understood.
+  ScriptNotes: NHV_SYS_LUC_37
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004403:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004400:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: What was Veyra like when you knew her?

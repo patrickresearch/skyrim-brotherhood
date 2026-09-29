@@ -1,0 +1,42 @@
+FormKey: 004513:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_IllusionFollow_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Until the spell wears off. Then I have a frightened killer with an excellent reason to hate me.
+  ScriptNotes: NHV_SYS_VEY_223 prompt=NHV_SYS_VEY_222
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I need someone who chooses to return when I am not there to watch.
+  ScriptNotes: NHV_SYS_VEY_224
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+Prompt:
+  TargetLanguage: English
+  Value: You could use it to make a recruit obey.

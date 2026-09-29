@@ -1,0 +1,44 @@
+FormKey: 004502:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_Silence_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004503:NightsHarvest.esp
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Yes. Some nights I recite the words. Some nights I am angry enough to mean every one.
+  ScriptNotes: NHV_SYS_VEY_202 prompt=NHV_SYS_VEY_201
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Neither has made me the Listener. The candles burn just as well.
+  ScriptNotes: NHV_SYS_VEY_203
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+Prompt:
+  TargetLanguage: English
+  Value: You still pray, even when she says nothing.

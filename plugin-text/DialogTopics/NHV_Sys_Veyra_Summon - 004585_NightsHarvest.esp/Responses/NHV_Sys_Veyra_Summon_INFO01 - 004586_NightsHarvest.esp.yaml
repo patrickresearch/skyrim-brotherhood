@@ -1,0 +1,27 @@
+FormKey: 004586:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_Summon_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lucien Lachance. There is a place beside the living for you here.
+  ScriptNotes: NHV_SYS_LUC_03
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Listener would hear you. Come, if you will.
+  ScriptNotes: NHV_SYS_LUC_04
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

@@ -50,6 +50,10 @@ VirtualMachineAdapter:
     Unknown2: 1
     ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
     FragmentName: Fragment_6
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_8
   - Stage: 100
     Unknown2: 1
     ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
@@ -118,7 +122,7 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Veyra senses that you do not trust her yet. She offers to call someone who can vouch for her.
+      Value: "You were offered a witness to Veyra's loyalty: Lucien Lachance. Hearing him was your choice."
 - Index: 100
   Flags:
   - ShutDownStage
@@ -163,6 +167,11 @@ Objectives:
   DisplayText:
     TargetLanguage: English
     Value: Decide whose names belong on the Memorial Wall.
+- Index: 80
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Decide whether to hear Veyra's witness.
 NextAliasID: 5
 Aliases:
 - Name: Veyra
@@ -176,6 +185,7 @@ Aliases:
   - 0037DE:NightsHarvest.esp
   - 0037DF:NightsHarvest.esp
   - 0037E0:NightsHarvest.esp
+  - 004590:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 1
   Name: Nazir

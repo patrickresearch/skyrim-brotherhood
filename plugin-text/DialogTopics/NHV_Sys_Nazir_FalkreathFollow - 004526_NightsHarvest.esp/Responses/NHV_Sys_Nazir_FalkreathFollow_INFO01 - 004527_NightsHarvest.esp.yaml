@@ -1,0 +1,48 @@
+FormKey: 004527:NightsHarvest.esp
+EditorID: NHV_Sys_Nazir_FalkreathFollow_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then give me something useful to do with it. Better watches. Fewer secrets between the people keeping them.
+  ScriptNotes: NHV_SYS_NAZ_211 prompt=NHV_SYS_NAZ_210
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: And if you're about to make a bargain for all our lives, tell us before the other party arrives.
+  ScriptNotes: NHV_SYS_NAZ_212
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 01C3AB:Skyrim.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: We can't build this place around avoiding it.

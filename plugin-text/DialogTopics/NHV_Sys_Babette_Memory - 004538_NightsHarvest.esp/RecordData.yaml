@@ -1,0 +1,6 @@
+FormKey: 004538:NightsHarvest.esp
+EditorID: NHV_Sys_Babette_Memory
+Priority: 60
+Branch: 004537:NightsHarvest.esp
+Quest: 000809:NightsHarvest.esp
+SubtypeName: CUST

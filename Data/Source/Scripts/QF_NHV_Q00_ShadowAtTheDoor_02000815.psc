@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 8
+;NEXT FRAGMENT INDEX 9
 Scriptname QF_NHV_Q00_ShadowAtTheDoor_02000815 Extends Quest Hidden
 
 ;BEGIN ALIAS PROPERTY Veyra
@@ -80,6 +80,7 @@ EndFunction
 Function Fragment_7()
 ;BEGIN CODE
 SetObjectiveCompleted(60)
+SetObjectiveCompleted(80)
 CompleteQuest()
 ;END CODE
 EndFunction
@@ -107,6 +108,15 @@ NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NH
 If kCore != None
     kCore.BeginVeiledPassage()
 EndIf
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_8
+Function Fragment_8()
+;BEGIN CODE
+SetObjectiveCompleted(60)
+SetObjectiveDisplayed(80)
 ;END CODE
 EndFunction
 ;END FRAGMENT

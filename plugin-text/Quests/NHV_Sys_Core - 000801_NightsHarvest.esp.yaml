@@ -120,6 +120,9 @@ VirtualMachineAdapter:
       Name: RubbleBase
       Object: 03BC38:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: SanctuaryQuest
+      Object: 000809:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: StandoffBabetteMarker
       Object: 004341:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
@@ -151,6 +154,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraBase
       Object: 000817:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraDoubtTopic
+      Object: 00457B:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraSanctuaryExitMarkerRef
       Object: 09725F:Skyrim.esm

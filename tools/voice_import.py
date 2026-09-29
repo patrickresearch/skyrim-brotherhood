@@ -35,7 +35,7 @@ FFMPEG = TOOLS / "LipGen" / "LipGenerator" / "ffmpeg.exe"
 LIPGEN = TOOLS / "LipGen" / "LipGenerator" / "LipGenerator.exe"
 XWMA = TOOLS / "Audio" / "xwmaencode.exe"
 AUDIO_EXT = {".mp3", ".wav", ".ogg", ".flac", ".m4a"}
-LINE_ID = re.compile(r"NHV_[A-Z0-9]+_\d{3}_\d{2,3}")
+LINE_ID = re.compile(r"NHV_(?:SYS_[A-Z]{3}_\d{2,3}|[A-Z0-9]+_\d{3}_\d{2,3})")
 # Automatic ffmpeg effects per voice type (disable with --no-fx). The Night Mother speaks from the coffin:
 # a short dark echo plus slight muffling, close to her vanilla lines.
 FX_BY_VOICE = {

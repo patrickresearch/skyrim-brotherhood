@@ -28,6 +28,7 @@ ObjectReference Property VeyraTrialMarker Auto ; NHV_Mk_Q01_VeyraAppearSpot, whe
 ; -- Scenes --
 Scene Property CampAmbushScene Auto  ; NHV_Scn_Q01_01CampAmbush
 Scene Property VeyraTrialScene Auto  ; NHV_Scn_Q01_02VeyraTrial
+Scene Property QuintusApproachScene Auto ; NHV_Scn_Q01_03QuintusApproach, played when Hrefna and the player reach Quintus
 
 ; -- Items --
 Book Property OculatusFragment1 Auto   ; NHV_Item_OculatusFragment1
@@ -41,9 +42,21 @@ Book Property HrefnaReleaseLetter Auto ; NHV_Book_HrefnaReleaseLetter, delivered
 ; multiplication such as "450.0 * 450.0").
 Float Property CampAmbushRadius = 700.0 AutoReadOnly
 
+; Player and Hrefna must both be this close to Quintus before the approach scene starts and Hrefna attacks.
+Float Property KillApproachRadius = 600.0 AutoReadOnly
+
 ; Neither variable below needs to be read by a CK Condition, so neither carries "Conditional".
 Bool bCampWatchStarted = False
 Float fLetterDueGameTime = 0.0 ; absolute Utility.GetCurrentGameTime() the letter is due; 0 = none pending
+
+; Stage 50 "Hrefna kills Quintus herself" path (29.09.2026). Additive variables, no CK condition needs them.
+Bool bHrefnaWillKill = False   ; set when Persuade/Intimidate succeeded; cleared by "Step aside"
+Bool bApproachStarted = False  ; approach scene was started (or skipped) once
+Bool bHrefnaAttacked = False   ; Hrefna was sent into combat against Quintus once
+Bool bHrefnaFought = False     ; her aggression/protection were changed and still need restoring
+Int iApproachTicks = 0         ; ticks waited for the approach scene to report IsPlaying() when no lock is held
+Int iAttackTries = 0           ; retries of HrefnaAttacksQuintus() while Hrefna/Quintus are not available
+Float fHrefnaAggression = 0.0  ; her Aggression value before the fight
 
 ; ---------------------------------------------------------------------------
 ; Stage 20 -> 30: ambush watch
@@ -71,6 +84,27 @@ EndFunction
 Event OnUpdate()
     If GetStage() == 20 && !IsCutsceneLocked()
         AmbushDistanceCheck()
+        Return
+    EndIf
+    If GetStage() == 50 && bHrefnaWillKill && !bHrefnaAttacked
+        ; Kill watch (Hrefna will kill Quintus). While the approach scene locks the controls the base
+        ; watchdog runs and this chain is kept alive; the tick after the unlock sends Hrefna in even if
+        ; the scene's end fragment never ran (watchdog recovery, load).
+        If IsCutsceneLocked()
+            Parent.OnUpdate()
+            RegisterForSingleUpdate(2.0)
+        ElseIf bApproachStarted
+            ; No lock held (Core lock skipped it, or the watchdog already released it). Never send Hrefna in
+            ; while the scene is still playing; give a just-started scene a few ticks (IsPlaying() lags).
+            iApproachTicks += 1
+            If QuintusApproachScene && (QuintusApproachScene.IsPlaying() || iApproachTicks <= 3)
+                RegisterForSingleUpdate(2.0)
+            Else
+                HrefnaAttacksQuintus()
+            EndIf
+        Else
+            KillWatchCheck()
+        EndIf
         Return
     EndIf
     Parent.OnUpdate()
@@ -177,8 +211,158 @@ EndFunction
 
 Function EndVeyraTrial()
     UnlockCutscene()
+    If bHrefnaWillKill && !bHrefnaAttacked
+        RegisterForSingleUpdate(2.0) ; the trial scene's watchdog chain ended with the unlock: resume the kill watch
+    EndIf
     ; Stage stays 50; the Persuade/Intimidate/"Step aside" branch and the Quintus scenes are
     ; dialogue- and package-driven from here (CK), ending in OnQuintusKilled() below.
+EndFunction
+
+; ---------------------------------------------------------------------------
+; Stage 50: Hrefna kills Quintus herself (Persuade / Intimidate succeeded)
+; ---------------------------------------------------------------------------
+
+; Called from the end fragments of the successful Persuade and Intimidate responses. Does not start
+; anything by itself: once the flag is set, a distance poll waits until player and Hrefna are near Quintus.
+Function HrefnaAgreesToKill()
+    If GetStage() != 50 || bHrefnaAttacked
+        NHV_Util.Log(NHV_Cfg_Debug, "HrefnaAgreesToKill: ignored (stage " + GetStage() + ")")
+        Return
+    EndIf
+    bHrefnaWillKill = True
+    iAttackTries = 0
+    NHV_Util.Log(NHV_Cfg_Debug, "HrefnaAgreesToKill: Hrefna will kill Quintus, kill watch running")
+    RegisterForSingleUpdate(2.0)
+EndFunction
+
+; Called from the "Step aside" response: the player does it, no scene, Trial counts as unproven.
+Function PlayerWillKill()
+    If bHrefnaAttacked
+        Return ; too late, the fight already started
+    EndIf
+    bHrefnaWillKill = False
+    bApproachStarted = False ; a later HrefnaAgreesToKill() starts from scratch (distance check, scene)
+    iApproachTicks = 0
+    iAttackTries = 0
+    NHV_Util.Log(NHV_Cfg_Debug, "PlayerWillKill: kill watch off")
+EndFunction
+
+Function KillWatchCheck()
+    If GetStage() != 50 || !bHrefnaWillKill || bApproachStarted
+        Return
+    EndIf
+    Actor kPlayer = Game.GetPlayer()
+    Actor kQuintus = None
+    Actor kHrefna = None
+    If QuintusAlias
+        kQuintus = QuintusAlias.GetActorRef()
+    EndIf
+    If HrefnaAlias
+        kHrefna = HrefnaAlias.GetActorRef()
+    EndIf
+    If kQuintus && kQuintus.IsDead()
+        Return ; dead: OnQuintusKilled() advances the quest
+    EndIf
+    If kHrefna && kHrefna.IsDead()
+        bHrefnaWillKill = False ; nobody left to do it; the player can still kill him (unproven)
+        NHV_Util.Log(NHV_Cfg_Debug, "KillWatchCheck: Hrefna is dead, kill watch off")
+        Return
+    EndIf
+    If kPlayer && kQuintus && kHrefna && !kHrefna.IsDead() && kQuintus.Is3DLoaded() && kHrefna.Is3DLoaded()
+        If kPlayer.GetDistance(kQuintus) <= KillApproachRadius && kHrefna.GetDistance(kQuintus) <= KillApproachRadius
+            StartQuintusApproach()
+            Return
+        EndIf
+    EndIf
+    RegisterForSingleUpdate(3.0) ; not there yet (or Hrefna/Quintus not loaded): keep waiting, cheap
+EndFunction
+
+Function StartQuintusApproach()
+    bApproachStarted = True
+    If !QuintusApproachScene
+        NHV_Util.Log(NHV_Cfg_Debug, "StartQuintusApproach: QuintusApproachScene property not set in the CK, attacking without scene")
+        HrefnaAttacksQuintus()
+        Return
+    EndIf
+    iApproachTicks = 0
+    LockCutscene(QuintusApproachScene)
+    QuintusApproachScene.Start()
+    RegisterForSingleUpdate(2.0) ; also when no lock was taken: OnUpdate then waits for the scene
+EndFunction
+
+; Called from the QuintusApproach scene's end fragment.
+Function EndQuintusApproach()
+    UnlockCutscene()
+    If bHrefnaWillKill
+        HrefnaAttacksQuintus()
+    EndIf
+EndFunction
+
+Function HrefnaAttacksQuintus()
+    If bHrefnaAttacked || GetStage() != 50
+        Return
+    EndIf
+    MakeQuintusMortal()
+    Actor kHrefna = None
+    Actor kQuintus = None
+    If HrefnaAlias
+        kHrefna = HrefnaAlias.GetActorRef()
+    EndIf
+    If QuintusAlias
+        kQuintus = QuintusAlias.GetActorRef()
+    EndIf
+    If (kHrefna && kHrefna.IsDead()) || (kQuintus && kQuintus.IsDead())
+        bHrefnaWillKill = False ; one of them is dead: nothing to fight (Quintus' death is handled by OnQuintusKilled)
+        NHV_Util.Log(NHV_Cfg_Debug, "HrefnaAttacksQuintus: Hrefna or Quintus already dead, giving up")
+        Return
+    EndIf
+    If !kHrefna || !kQuintus || !kHrefna.Is3DLoaded() || !kQuintus.Is3DLoaded()
+        iAttackTries += 1
+        If iAttackTries > 10
+            bHrefnaWillKill = False ; give up quietly; the player can still kill him (unproven)
+            bApproachStarted = False
+            NHV_Util.Log(NHV_Cfg_Debug, "HrefnaAttacksQuintus: Hrefna or Quintus not available, giving up")
+        Else
+            RegisterForSingleUpdate(3.0) ; try again (stays in the approach-started branch of OnUpdate)
+        EndIf
+        Return
+    EndIf
+    bHrefnaAttacked = True
+    fHrefnaAggression = kHrefna.GetActorValue("Aggression")
+    kHrefna.SetActorValue("Aggression", 1.0)
+    kHrefna.GetActorBase().SetProtected(True) ; only the player can kill her while she fights (contract must not fail)
+    bHrefnaFought = True
+    kHrefna.StartCombat(kQuintus)
+    NHV_Util.Log(NHV_Cfg_Debug, "HrefnaAttacksQuintus: Hrefna attacks Quintus")
+EndFunction
+
+; Undo the fight state (aggression, protection, combat). Idempotent; called when Quintus dies and on load.
+Function RestoreHrefnaAfterFight()
+    If !bHrefnaFought
+        Return
+    EndIf
+    ; The protection lives on the ActorBase (persistent), so take it off even if the alias is already
+    ; empty (CompleteRecruitment clears it): NHV_Hrefna is 004007 in this plugin.
+    ActorBase kBase = Game.GetFormFromFile(0x004007, "NightsHarvest.esp") as ActorBase
+    If kBase
+        kBase.SetProtected(False)
+    EndIf
+    Actor kHrefna = None
+    If HrefnaAlias
+        kHrefna = HrefnaAlias.GetActorRef()
+    EndIf
+    If kHrefna
+        kHrefna.StopCombat()
+        kHrefna.StopCombatAlarm()
+        kHrefna.SetActorValue("Aggression", fHrefnaAggression)
+        kHrefna.EvaluatePackage()
+    EndIf
+    If kBase
+        bHrefnaFought = False ; only forget the fight state once the protection is really gone
+        NHV_Util.Log(NHV_Cfg_Debug, "RestoreHrefnaAfterFight: Hrefna calm again")
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "RestoreHrefnaAfterFight: NHV_Hrefna base not found, will retry on load")
+    EndIf
 EndFunction
 
 ; ---------------------------------------------------------------------------
@@ -188,6 +372,7 @@ EndFunction
 ; Called by NHV_Q01_QuintusAliasScript.OnDeath(), regardless of which scene/variant played or who
 ; struck the killing blow.
 Function OnQuintusKilled(Actor akKiller)
+    RestoreHrefnaAfterFight() ; before the stage guards: also undoes a fight state left by an odd death
     If GetStage() < 40 || GetStage() >= 60
         Return ; too early (unscripted death, see docs/plan section 10) or already handled
     EndIf
@@ -310,6 +495,19 @@ Function OnContractLoadGame()
     EndIf
     If GetStage() >= 60 && GetStage() < 100
         StockQuintusBody() ; saves where Quintus died before his body carried the papers
+    EndIf
+    If GetStage() >= 60
+        RestoreHrefnaAfterFight() ; no-op unless a fight state was left behind
+    ElseIf GetStage() == 50
+        Actor kQuintusDead = None
+        If QuintusAlias
+            kQuintusDead = QuintusAlias.GetActorRef()
+        EndIf
+        If kQuintusDead && kQuintusDead.IsDead()
+            OnQuintusKilled(None) ; he died while the OnDeath event was missed (load, odd death): move on
+        ElseIf bHrefnaWillKill && !bHrefnaAttacked
+            RegisterForSingleUpdate(2.0) ; resume the kill watch after loading
+        EndIf
     EndIf
     ReturnRecruitHome()
     If fLetterDueGameTime <= 0.0

@@ -1,6 +1,36 @@
 FormKey: 000809:NightsHarvest.esp
 EditorID: NHV_Sys_Sanctuary
-NextAliasID: 5
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_SanctuaryScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ArrivalScene
+      Object: 00458A:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Core
+      Object: 000801:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LucienAlias
+      Object: 000809:NightsHarvest.esp
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Debug
+      Object: 000800:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Q00
+      Object: 000815:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SummonScene
+      Object: 004589:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraAlias
+      Object: 000809:NightsHarvest.esp
+      Alias: 5
+  FileName: ''
+Flags:
+- StartGameEnabled
+NextAliasID: 6
 Aliases:
 - Name: Nazir
   Flags:
@@ -29,4 +59,9 @@ Aliases:
   Flags:
   - Optional
   ForcedReference: 004401:NightsHarvest.esp
+  VoiceTypes: Null
+- ID: 5
+  Name: Veyra
+  Flags:
+  - Optional
   VoiceTypes: Null

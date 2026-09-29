@@ -68,9 +68,9 @@ Reihenfolge: M0.1 → M0.2 → M0.3 → M0.6; M0.4, M0.5, M0.7 parallel.
 | M1.2 | Veyra | NPC-Record, FaceGen-Export (Strg+F4), Outfit, Trainer, `NHV_VoiceVeyra`, nachtaktive Alias-Packages | Entwickler, Claude (Werte, Packages) | 12 | In Arbeit |
 | M1.3 | Deep Sanctuary Stufe 1 | Hall of Whispers, Ledger Room, Shrine of the Void, Memorial Wall, Training Hall (die fünf Q00-Räume laut Konzept Abschnitt 4; Initiates' Dormitory ist Finale-Scope, nicht hier), versiegelte Passage für Q00 Szene 4 (per Script/`PlaceAtMe`, keine Zell-Kopie), Navmesh, Room Bounds, Beleuchtung, Zugang nach E16 | Entwickler, Claude (Raumliste, Anleitung) | 22 | In Arbeit |
 | M1.4 | Sanctuary-Aliase | `NHV_Sys_Sanctuary` mit optionalen Aliasen für Nazir, Babette, Cicero, Night Mother; Testfall „Cicero tot“ | Claude, Entwickler | 6 | Test |
-| M1.5 | Q00 A Shadow at the Door | Stages 10–100, Szenen 1–6, Draugr-Passage, Memorial Wall, Journal, Dialoge aus CSV | Claude (CSV, Fragmente), Entwickler (CK) | 30 | Test (Stage-Pipeline 10–100 ingame bestätigt 28.09.2026, Dev + Hauptspiel mit Mods; Dialog-Nacharbeit offen) |
+| M1.5 | Q00 A Shadow at the Door | Stages 10–100, Szenen 1–6, Draugr-Passage, Memorial Wall, Journal, Dialoge aus CSV | Claude (CSV, Fragmente), Entwickler (CK) | 30 | Test (Stage-Pipeline 10–100 ingame bestätigt 28.09.2026; separate Q00-V2-Redaktion unter dialogue/drafts/Q00-v2 am 29.09. zum Lesetest bereit, inaktiv; Aktivierung und Ingame-Prüfung offen) |
 | M1.6 | Family-Grundgerüst | `NHV_Sys_Family`, Story-Rekruten-Aliase, Status-Globals, `NHV_RecruitAliasScript`, ein Follower-Slot | Claude, Entwickler | 10 | Test |
-| M1.7 | Q01 + Contract-Basis | `NHV_ContractBaseScript` mit Q01 als erster Anwendung; Hrefna, Agent Quintus, Morthal, Fragment 1, Bogwife's Knife, Grundausbau Kitchen | Claude, Entwickler | 20 | In Arbeit |
+| M1.7 | Q01 + Contract-Basis | `NHV_ContractBaseScript` mit Q01 als erster Anwendung; Hrefna, Agent Quintus, Morthal, Fragment 1, Bogwife's Knife, Grundausbau Kitchen | Claude, Entwickler | 20 | In Arbeit (Q01 V2 separat zum Lesetest: dialogue/drafts/Q01-v2, 29.09.2026; inaktiv, Plugin-Einbau und Ingame-Test offen) |
 | M1.8 | Dialog-Pipeline | Lint-Tool v1 (`tools/dialogue_lint.py`), CSV-Eingabe ins CK festlegen, Test mit Fuz Ro D-oh | Claude (Tool), Entwickler (Test) | 4 | Offen |
 | M1.9 | Test & 0.1.0 | DoD für Q00/Q01, Saves T02/T03, BT01–BT05, Record-Inventur für E04, interner Build | Entwickler, Claude (Protokolle) | 8 | Offen |
 
@@ -163,7 +163,7 @@ Frostmere-Zugang berührt eine Tamriel-Außenzelle: Stelle vorher im Heavy-Profi
 
 ## M5 – Lebendige Sanctuary
 
-**Textvorarbeit 26.09.2026:** `dialogue/Sanctuary.csv` enthält fünfzehn optionale Gespräche (90 Zeilen, lore-editor-Prüfung separat in PROGRESS). Die Gespräche sind noch nicht im Plugin; M5.3 bleibt „Offen“. Q00-Dialogausbau/E22 gehört weiterhin zu M1.5, dessen Einbauplan unter `docs/ck/M1.5-Q00-Dialogausbau.md` liegt.
+**Textvorarbeit 26./29.09.2026:** `dialogue/Sanctuary.csv` enthält achtzehn optionale Gespräche (109 Zeilen, lore-editor-Prüfung separat in PROGRESS), darunter neu Babette und Cicero über Veyra sowie Veyra über ihre Aufnahme durch die Familie, jeweils mit Nachfrage. Die Gespräche sind seit 29.09.2026 im Plugin (`tools/csv_to_topics.py`, Quest `NHV_Sys_Sanctuary` jetzt Start Game Enabled); Ingame-Test offen, M5.3 bleibt bis dahin „Offen“. Q00-Dialogausbau/E22 gehört weiterhin zu M1.5, dessen Einbauplan unter `docs/ck/M1.5-Q00-Dialogausbau.md` liegt.
 
 
 | ID | Arbeitspaket | Aufgaben | Wer | h | Status |

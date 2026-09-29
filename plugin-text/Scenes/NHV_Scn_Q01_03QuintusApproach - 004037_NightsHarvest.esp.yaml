@@ -1,5 +1,14 @@
 FormKey: 004037:NightsHarvest.esp
 EditorID: NHV_Scn_Q01_03QuintusApproach
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Scn_Q01_03Approach_02004037
+  ScriptFragments:
+    FileName: SF_NHV_Scn_Q01_03Approach_02004037
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Scn_Q01_03Approach_02004037
+      FragmentName: Fragment_0
 Flags: []
 Phases:
 - Name: ''
@@ -12,12 +21,13 @@ Phases:
   Unused2: {}
   EditorWidth: 200
 Actors:
-- Flags: []
+- ID: 3
+  Flags: []
   BehaviorFlags:
   - DeathEnd
   - CombatEnd
   - DialoguePause
-- ID: 1
+- ID: 4
   Flags: []
   BehaviorFlags:
   - DeathEnd
@@ -25,7 +35,7 @@ Actors:
   - DialoguePause
 Actions:
 - Name: NHV_Q01_QuintusApproach1
-  ActorID: 0
+  ActorID: 3
   Index: 1
   StartPhase: 0
   EndPhase: 0
@@ -36,7 +46,7 @@ Actions:
   Emotion: Neutral
   EmotionValue: 0
 - Name: NHV_Q01_QuintusApproach2
-  ActorID: 1
+  ActorID: 4
   Index: 2
   StartPhase: 1
   EndPhase: 1
@@ -47,7 +57,7 @@ Actions:
   Emotion: Neutral
   EmotionValue: 0
 - Name: NHV_Q01_QuintusApproach3
-  ActorID: 0
+  ActorID: 3
   Index: 3
   StartPhase: 2
   EndPhase: 2

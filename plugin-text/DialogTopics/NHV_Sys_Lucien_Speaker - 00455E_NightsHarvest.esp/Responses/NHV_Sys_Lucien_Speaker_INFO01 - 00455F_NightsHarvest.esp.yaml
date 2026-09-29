@@ -1,0 +1,53 @@
+FormKey: 00455F:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Speaker_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I served on the Black Hand. A Speaker carried the Listener's orders to those who would make them final.
+  ScriptNotes: NHV_SYS_LUC_19 prompt=NHV_SYS_LUC_18
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I also watched for talent. A promising murderer does not always recognize a vocation when it first presents itself.
+  ScriptNotes: NHV_SYS_LUC_20
+  Edits: ''
+- Emotion: Happy
+  EmotionValue: 15
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There was ceremony, certainly. But a fine robe is a poor substitute for choosing the right knife.
+  ScriptNotes: NHV_SYS_LUC_21
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004403:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004400:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: What did being a Speaker demand of you?

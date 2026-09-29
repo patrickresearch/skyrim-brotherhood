@@ -1,0 +1,29 @@
+FormKey: 00458A:NightsHarvest.esp
+EditorID: NHV_Scn_Sys_LucienArrival
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- ID: 4
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Sys_Lucien_Arrival
+  ActorID: 4
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 004587:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 000809:NightsHarvest.esp
+LastActionIndex: 1
+VNAM: 0x00000000030000000300000003000000

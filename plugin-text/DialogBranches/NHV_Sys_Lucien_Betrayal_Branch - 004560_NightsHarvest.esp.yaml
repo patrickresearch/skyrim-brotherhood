@@ -1,0 +1,7 @@
+FormKey: 004560:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Betrayal_Branch
+Quest: 000809:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 004561:NightsHarvest.esp

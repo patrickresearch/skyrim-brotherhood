@@ -1,0 +1,42 @@
+FormKey: 004518:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_SithisFollow_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: It does. I can live with a question. I have had less luck living beside people certain of every answer.
+  ScriptNotes: NHV_SYS_VEY_229 prompt=NHV_SYS_VEY_228
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If you want my faith, I will speak of it. If you want certainty, I have none to sell.
+  ScriptNotes: NHV_SYS_VEY_230
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+Prompt:
+  TargetLanguage: English
+  Value: That leaves a great deal unanswered.

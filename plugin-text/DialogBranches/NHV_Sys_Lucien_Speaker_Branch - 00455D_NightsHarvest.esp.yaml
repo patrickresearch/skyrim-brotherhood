@@ -1,0 +1,7 @@
+FormKey: 00455D:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Speaker_Branch
+Quest: 000809:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00455E:NightsHarvest.esp

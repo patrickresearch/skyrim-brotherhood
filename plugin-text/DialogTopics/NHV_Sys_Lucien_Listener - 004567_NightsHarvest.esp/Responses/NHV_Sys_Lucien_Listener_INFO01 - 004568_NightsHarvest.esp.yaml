@@ -1,0 +1,53 @@
+FormKey: 004568:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Listener_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Night Mother has chosen. I have no appointment to contest and no throne to reclaim.
+  ScriptNotes: NHV_SYS_LUC_31 prompt=NHV_SYS_LUC_30
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I would ask you to know the people carrying out your orders. Especially when those orders concern their own family.
+  ScriptNotes: NHV_SYS_LUC_32
+  Edits: ''
+- Emotion: Happy
+  EmotionValue: 15
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You may find me an attentive adviser. Death has cleared a considerable space in my schedule.
+  ScriptNotes: NHV_SYS_LUC_33
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004403:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004400:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: What do you expect of this Listener?

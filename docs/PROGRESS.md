@@ -16,6 +16,14 @@ Konzept-/Doku-Abschnitte – nicht das ganze Repo und nicht den alten Gesprächs
 
 ## Aktueller Stand (Kurzfassung)
 
+**29.09.2026: Q01 V2 getrennt zum Lesetest bereit (E37).** `dialogue/drafts/Q01-v2/` enthält 218 Dialogzeilen, 28 Journaltexte, vier neue Briefabsätze, 105 Ablaufknoten sowie generierte Markdown- und Offline-HTML-Lesefassungen. Anschluss an Q00 V2, Ermittlung → Geständnis → autorisierte Prüfung → Urteil → Debrief; beide Quintus-Orte, tatsächlicher Täter, Speech-Ausgänge, Freilassungsbrief und Küche berücksichtigt. Lore-Lektorat eingearbeitet; vier Speech-Profile, 48 Endvarianten und 8776 Vorschauzustände geprüft. Aktive Master und Q00 V2 per Hash unverändert. Kein Plugin-/Script-/Voice-Eingriff, nicht ingame geprüft.
+
+**29.09.2026: Q00-Zweifel und Lucien redaktionell geliefert (E35).** 50 neue CSV-Zeilen: drei Stage-80-Wahlen, späterer Ruf mit gemeinsamer Annahmeantwort, Beschwörung, Bürgschaft und sieben Dauerthemen plus Journal. Lint 0 Fehler bei 671 IDs; optionaler Spellchecker fehlt. Lore-Review ohne offene E23-/Lore-Befunde. Vorhandener Core-v35-/Lucien-Vorbau berücksichtigt; keine Scripts oder Plugin-Records geändert. Übergabe: `docs/dialogue/Q00-Zweifel-Lucien-2026-09-29.md`. Einbau und Ingame-Test offen.
+
+**29.09.2026: Q00 V2 als getrennte, inaktive Dialogredaktion fertig zum Lesetest.** `dialogue/drafts/Q00-v2/` enthält nach dem Lesetest-Feinschliff 222 Dialogzeilen, 20 Journaltexte, vollständige Markdown-Lesefassung und einen lokal durchklickbaren HTML-Lesetest. Rekrutierungsziel, Vorgehen und Entscheidungsgewalt des Listeners stehen zwingend vor der Zustimmung; Standoff-Nachfragen, Windpeak, gemeinsamer Eintritt, Memorial, Hrefna und optionaler Lucien sind enthalten. Lore-Lektorat mit fünf eingearbeiteten Befunden; vier Zustandsprofile und alle Abschlüsse validiert. Bestehende Stimmen erhalten; parallele Lucien-Ergänzungen im aktiven Q00-Master gesondert abgeglichen. E36: keine Aktivierung, keine neuen Sprachdateien oder Plugin-Änderungen in diesem Auftrag.
+
+**29.09.2026: Familiengespräche über Veyra im CSV ergänzt.** `dialogue/Sanctuary.csv` enthält drei neue Gespräche mit je einer Nachfrage: `Babette_Veyra`, `Cicero_Veyra`, `Veyra_Family` (19 neue Zeilen). Verfügbar ab Q00 Stage 100, ohne spätere Questbedingungen; Cicero nur lebend. E23 bleibt ohne Herkunftsenthüllung. Lint: 0 Fehler bei 621 IDs, optionale Rechtschreibprüfung nicht verfügbar. Lore-Lektorat freigegeben; Plugin-Einbau und Ingame-Test stehen aus.
+
 **28.09.2026: Q01 komplett per Spriggit gebaut (Runde 2, Team-Lead-Freigabe).** Auf ausdrückliche
 Anweisung des Team-Leads (die Vorsichtsnotiz im Record-Inventar galt nur für den Planungs-Agenten) jetzt
 auch Dialog, Szenen und NPCs per YAML statt CK gebaut – Q00 beweist, dass das funktioniert. Alles
@@ -308,6 +316,14 @@ Option 1) – Schema jetzt gesichert, nicht mehr raten nötig:
 
 ## Nächster Schritt
 
+**Q01 V2 – aktuelle Dialogredaktion:** `dialogue/drafts/Q01-v2/Lesefassung.md` lesen oder `Lesetest.html` lokal öffnen. Besonders Nacht/Straße, fehlgeschlagene Drohung mit anschließender Überredung, übernommene Tötung und alle Urteile vergleichen. Neue Zeilen über LineIDs kommentieren. Erst nach redaktioneller Auswahl einen separaten Plugin-Teststand planen; Ankunft Veyras, Ortsvarianten, echte Sprecher-/Wissensbedingungen und Todesbestätigung sind in der README als Abgleichbedarf dokumentiert. Die aktive vertonte Fassung bleibt erhalten.
+
+**Neue Textlieferung:** Zweifel-/Lucien-Dialoge gemäß `docs/dialogue/Q00-Zweifel-Lucien-2026-09-29.md` in den vorhandenen v35-Vorbau einbinden; `VeyraDoubtTopic` füllen, Journal ersetzen, Rufreihenfolge absichern, dann CK-/Ingame-Prüfung. M1.5 bleibt Test; neue Dialoge selbst noch nicht im Plugin.
+
+**Q00 V2 – aktuelle Dialogredaktion:** Zuerst `dialogue/drafts/Q00-v2/Lesefassung.md` lesen oder `Lesetest.html` lokal öffnen und Entscheidungen durchspielen. Konkrete Änderungswünsche über die neuen LineIDs sammeln. Erst nach Auswahl dieser Fassung einen gesonderten Plugin-Teststand mit vollständigen Gesprächsbedingungen, Szenen und Teststimmen vorbereiten; Hinweise in der zugehörigen README. Die vorhandene aktive Fassung bleibt bis dahin maßgeblich. Die älteren Q00-Einbauhinweise darunter aktivieren V2 nicht.
+
+**Familiengespräche vom 29.09.2026:** Nach redaktioneller Freigabe die sechs neuen Topics aus `dialogue/Sanctuary.csv` beim nächsten Sanctuary-Dialogeinbau übernehmen. Danach mit Saves vor/nach Q00 Stage 100 prüfen: zuvor unsichtbar, danach beim jeweiligen Sprecher verfügbar; Nachfragen nur aus ihrer Elternantwort, wiederholbar ohne Questfortschritt. Mit totem Cicero darf kein Cicero-Thema erscheinen; Veyras Gespräch funktioniert unverändert. Einbau und Ingame-Test gehören zur späteren Übergabe, dieser Auftrag liefert den CSV-Master.
+
 **Aktueller Fokus: Q00-Laufwege, Memorial und Tür.** Zuerst den Lösungsplan `docs/ck/M1.5-Q00-Fehleranalyse-und-Loesungsplan.md` prüfen. Der aktuelle Auftrag umfasst ausschließlich Analyse/Dokumentation. Bei späterer Umsetzung: Veyras Geschwindigkeitswert korrigieren, reale Boden-/Navmesh-Höhen und Tür-/Entry-Plätze im CK bestätigen, danach Szenensteuerung und Save-Migration absichern. Die uncommittierten v27-Änderungen sind noch keine bestätigte vollständige Reparatur. Ältere nächste Schritte darunter sind nachgeordnet.
 
 ### Q00/Q01-Dialoge und zweite Sanctuary-Cutscene im CK einbauen
@@ -330,6 +346,85 @@ Szene 1 selbst ist ingame bestätigt. Jetzt bitte die Anleitung `docs/ck/M1.5-Q0
 5. CK speichern und schließen, dann Codex Bescheid geben. Codex holt den Stand, prüft auf CK-Save-Schaden, repariert ggf. `plugin-text`/Voice-Dateien und committet erst danach.
 
 ## Log (neueste zuerst)
+
+### 2026-09-29 – Q01 V2: schlüssige Folge zu Q00, getrennte Autorenfassung
+
+- Geliefert: eigene Q01-/Journal-/Books-CSV, flow.json, Lesefassung und Offline-Lesetest unter `dialogue/drafts/Q01-v2/`; 218 Dialogzeilen, 28 Journaltexte, vier neue Briefabsätze, 105 Knoten. Unveränderte Fundstücke als referenzierte Auszüge aus Snapshot; alle Sprachtexte stammen aus CSV.
+- Überarbeitung: Hakan kennt keinen unbeobachteten Mord; Hrefna erscheint erst im Lager. Der Listener hört ihr Geständnis und berichtet es Veyra. Quintus' Interesse an Besuchern begründet die Gefahr vor der autorisierten Prüfung; keine falsche Botschaft der Night Mother und keine automatische Mitgliedschaft durch das Sakrament.
+- Nacht-/Straßenweg führen unterschiedlich zur Tochterinformation. Speech-Erfolg ist nicht gleich tatsächlicher Täter. Übernahme bleibt Unproven; eine vorherige Todesdrohung wird auch nach später erfolgreicher Überredung im Bericht erwähnt. Hrefnas Urteil, bestätigter Tod, Küche und Freilassungsbrief sind getrennt geprüft.
+- Lore-Editor: drei Befunde und eine Präzisierung eingearbeitet; keine offenen Lore-Checks. Ältere Chronologie-Zusätze (Svala, endgültiger Quintus-Freilassungsweg) nicht als gesicherte Kernhandlung übernommen; Unterschiede in README dokumentiert.
+- Prüfung: Projekt-Lint-Regeln ohne Fehler; vier Speech-Profile, 48 Endvarianten, 8776 Zustände; Original-/Snapshot-Hashes unverändert. JavaScript-Syntaxprüfung erfolgreich. Browser-Stichprobe konnte wegen gesperrtem file:-Protokoll im Browser-Werkzeug nicht erfolgen; der Nutzer kann die eigenständige HTML-Datei lokal öffnen. Optionaler Spellchecker nicht verfügbar.
+- Status: Lesetest bereit, inaktiv. Keine aktiven CSVs, Sprachdateien, Scripts oder Records durch diesen Auftrag geändert. Vorgeschlagener Commit: `[Q01] Separate V2 mit chronologischer Ermittlung und nachvollziehbarer Prüfung`.
+
+### 2026-09-29 – Q00 V2: rätselhafter Standoff und überraschender Zeuge
+
+- Auf Rückmeldung des Entwicklers beginnt Veyra mit Sithis' Ruf und einer neuen Ernte. Nazir verlangt ihren Namen; zwei Spielerhaltungen führen zur verständlichen Erklärung der Rekrutierung. Der freie Fragenblock folgt erst danach.
+- Zeugenangebot, Stage-80-Journal und Nachholpfad nennen Lucien nicht mehr. Erst nach Annahme erscheint er und stellt sich vor. Neue Nachfragen: Überraschung über den toten Speaker, Veyras Macht und beharrliches Nachhaken nach ihrer ausweichenden Antwort.
+- Nur inaktive V2 überarbeitet: 222 Dialogzeilen, 20 Journaltexte, 89 Knoten. CSV-Master, flow.json, Markdown und Offline-HTML synchronisiert; alte LineIDs erhalten, neue oberhalb der Journal-IDs vergeben. Aktive Originale und Audio unverändert durch diesen Auftrag.
+- Lore-Lektorat: zeitabhängige Formulierung korrigiert, Wiederholung des Gleaner-Titels gestrafft; keine offenen Lore-Befunde. E23 bleibt geheim. Staunen über den Ruf bedeutet keine allgemeine Unmöglichkeit sterblicher Beschwörung.
+- Validator: vier Profile und 24 Endzustände erfolgreich; Pflicht-Erklärung vor Abschied und Zustimmung, ausdrückliche Zeugenannahme, keine vorzeitige Namensenthüllung. Nächster Schritt: aktualisierte Lesefassung prüfen, HTML dafür neu laden. V2 bleibt inaktiv, kein Ingame-Test.
+- Commit-Vorschlag: `[Q00] V2-Standoff und überraschende Lucien-Enthüllung verfeinern`.
+
+### 2026-09-29 - Review Runde 2 (Task D)
+
+- Reviewer Runde 2 eingearbeitet: iAttackTries-Reset, Stale-Guard und IsRunning-Fallback in `StartSummonCall`, Decline ignoriert laufenden Ruf (`IsSummonPending`), Lucien wird nur neben Veyra gesetzt, wenn sie in der Dawnstar-Sanctuary ist. Build 69/69.
+- Accept/Retry: je eigene INFO mit der gemeinsamen Antwort SYS_LUC_02 und End-Fragment (`TIF__0200457F`, `TIF__02004582`), Kette ueber `DoubtAccepted` entfernt. Veyra spricht bei Stage 80 selbst an: ForceGreet-Package `NHV_Pkg_Q00_VeyraDoubtGreet` (004590, Template 03C1C4) am Q00-Alias. `SummonLucien()` setzt Lucien beim Ruf ausserhalb der Deep Sanctuary neben Veyra. Build, Round Trip, csv_to_plugin --check, silent_voice ok.
+
+### 2026-09-29 - Q00 Zweifel und Lucien-Gespraeche im Plugin (Task D, Zwischenstand)
+
+- Verdrahtet (Details und Tests: `docs/ck/M1.5-Q00-Zweifel-Lucien.md`, Abschnitt "Stand 29.09.2026"): `NHV_Q00_Veyra_Doubt` (Veyra beginnt, ohne Prompt), Accept/Decline/Dismiss, Retry,
+  gemeinsame Antwort SYS_LUC_02, Ruf-Szene und Ankunfts-Szene, Buergschaft (Vouch/VouchEnd) und 7 Lucien-Dauerthemen; FormIDs 00457A-00458A und Generator-Themen 00455A-004579.
+- Neu: `NHV_SanctuaryScript` (Quest-Skript auf `NHV_Sys_Sanctuary`, Alias `Veyra` ID 5), `VeyraDoubtTopic` am Core gesetzt (**Stage 80 jetzt aktiv**), Q00 Objective 80 + Stage-80-Fragment, Journaltext aus `080_09`.
+- Pruefung: Round Trip verlustfrei, Build -Clean 68/68, `csv_to_plugin.py --check` 0 Abweichungen / 0 fehlend, `silent_voice.py` 0 Probleme,
+  `lineid_check.py`: Sanctuary 109/109, Q01 101/101, Lucien 28/28, Q00: alle Doubt-/SYS_LUC-Zeilen vorhanden; 46 aeltere Q00-Zeilen (010_127, 015_01, 020_01-04 ... 060_74-76) fehlen weiter im Plugin (nicht Teil von D, vorher schon so).
+- Review-Fixes (papyrus-reviewer): Core VERSION 37 (Migration Objective 80), `NHV_SanctuaryScript.Resume()` aus `EnsureSanctuaryQuest()` (Lucien-Alias nachfuellen, Kette neu armen), Ankunfts-Szene wartet per Langsam-Poll auf Lucien in der Deep Sanctuary, Accept-Fragment faellt auf Core zurueck. Build 68/68.
+- Risiko (im CK/Spiel pruefen): Accept/Retry-INFOs ohne eigene Response verlinken auf eine Antwort ohne Prompt (Auto-Continue).
+
+### 2026-09-29 - Familien-Gespraeche ambient (Task B, Zwischenstand) und Review-Fixes Task A
+
+- Task B: alle 109 Zeilen aus `dialogue/Sanctuary.csv` (36 Themen: Veyra 14, Nazir 8, Babette 8, Cicero 6, inkl. der neuen Babette_Veyra/Cicero_Veyra/Veyra_Family) im Plugin.
+  Neues Werkzeug `tools/csv_to_topics.py` (Branch TopLevel + Topic + INFO je Spielerthema, `...Follow` als LinkTo-Nachfrage, ueberspringt vorhandene EditorIDs, FormID-Bereich 004500-0045FF;
+  naechste freie 00455A). Neue Themen aus Codex-Lieferungen: `python tools/csv_to_topics.py dialogue/Sanctuary.csv --prefix Sys --range 004500-0045FF`.
+  Es gibt keine Sprecherwechsel in einem Thema (je Thema ein NPC), daher keine Szenen noetig. Bedingungen aus der CSV (Q00 Stage >= 100, GetIsAliasRef, GetDead, bei Cicero beide Refs 01E64A/09BCB0)
+  plus GetIsID der Vanilla-Basis (Nazir 01C3AB, Babette 01D4B7, Cicero 09BCAF, verifiziert) fuer `silent_voice.py`.
+- `NHV_Sys_Sanctuary` war weder Start Game Enabled noch per Script gestartet: jetzt StartGameEnabled im ESP und Sicherheitsnetz `NHV_CoreScript.EnsureSanctuaryQuest()` (Property `SanctuaryQuest`, in EnsureProperties gefuellt, Aufruf in Maintenance).
+- `tools/csv_to_plugin.py` LINEID-Regex kennt `NHV_SYS_<X>_<n>`; neues `tools/lineid_check.py` (fehlende LineIDs). `csv_to_plugin.py --check`: 0 Abweichungen, 0 fehlend; `silent_voice.py`: 0 Probleme (73 neue Stimmdateien);
+  lineid_check: Sanctuary 109/109, Q01 101/101.
+- Task A nach papyrus-reviewer nachgebessert: Restore ueber ActorBase per GetFormFromFile (Alias evtl. leer), Restore vor den Stage-Guards und beim Laden, Retry/Abbruch in `HrefnaAttacksQuintus`, Szenen-Wartelogik ohne Lock, TIF-None-Checks.
+
+### 2026-09-29 – Q00-Zweifel und Lucien: Textlieferung
+
+**29.09.2026: Q00-Zweifel und Lucien redaktionell geliefert (E35).** 50 neue CSV-Zeilen: drei Stage-80-Wahlen, späterer Ruf mit gemeinsamer Annahmeantwort, Beschwörung, Bürgschaft und sieben Dauerthemen plus Journal. Lint 0 Fehler bei 671 IDs; optionaler Spellchecker fehlt. Lore-Review ohne offene E23-/Lore-Befunde. Vorhandener Core-v35-/Lucien-Vorbau berücksichtigt; keine Scripts oder Plugin-Records geändert. Übergabe: `docs/dialogue/Q00-Zweifel-Lucien-2026-09-29.md`. Einbau und Ingame-Test offen.
+
+### 2026-09-29 – Q00 V2: vollständige getrennte Autorenredaktion
+
+- Auftrag: verständliche Gesprächsreihenfolge und tiefere Dialoge, ohne die bereits vertonte Fassung zu überschreiben. E36 dokumentiert diese Trennung.
+- Geliefert unter `dialogue/drafts/Q00-v2/`: eigener Q00-/Journal-CSV-Master, 84 Ablaufknoten, Lesefassung, Offline-Lesetest, Validator und bytegetreue Originalreferenz. 204 Dialogzeilen und 20 Journaltexte.
+- Hauptkorrektur: Name und Rekrutierungsangebot im Standoff; Ziel, Methode und Listener-Zuständigkeit vor der Zusage in Stage 30. Alle Informationsfragen führen zurück; Vertagungen, optionaler Cicero, Initiates, drei Memorial-Ausgänge und Stage-80-Lucien berücksichtigt.
+- Lore-Editor-Befunde zu vorausgesetztem Wissen und zeitabhängigen Aussagen eingearbeitet. Veyras Herkunft bleibt geheim, ihre Aufgabe wird konkret.
+- Prüfung: vier Profile, vier korrekt gesperrte Zustimmungszustände und 24 Endzustände; keine aktiven LineID-Kollisionen. Aktiver Dialog-Lint: 621 IDs, 0 Fehler, optionale Rechtschreibprüfung fehlt. Browser-Stichprobe für Standoff und Folgefragen bestanden. Original-Snapshot unverändert; parallele Lucien-Ergänzungen der aktiven Q00-Datei in reviewed-baseline.json dokumentiert.
+- Status: Lesetest bereit; nicht im Plugin aktiviert und nicht ingame geprüft. Keine Änderungen an bestehenden Sprachdateien, ESP oder Papyrus durch diese Redaktion.
+- Vorgeschlagener Commit: `[Q00] Separate V2 mit klarer Rekrutierungsentscheidung und Lesetest`.
+
+### 2026-09-29 - Q01 Stage 50: Hrefna toetet Quintus selbst (Zwischenstand Task A), Lucien-Radius (Task C)
+
+- Task A: `NHV_Q01Script` neu: `HrefnaAgreesToKill()` (aus TIF Persuade/Intimidate-Erfolg, setzt `bHrefnaWillKill`), `PlayerWillKill()` (TIF Step aside),
+  Distanz-Poll `KillWatchCheck()` (Spieler und Hrefna <= 600 zu Quintus, nur Stage 50, ueber die bestehende OnUpdate-Kette), `StartQuintusApproach()` startet
+  `NHV_Scn_Q01_03QuintusApproach`, Szenen-Ende (`SF_NHV_Scn_Q01_03Approach_02004037`) ruft `EndQuintusApproach()` -> `HrefnaAttacksQuintus()` (Aggression 1,
+  Base geschuetzt, `StartCombat(Quintus)`); `RestoreHrefnaAfterFight()` bei Quintus' Tod/Load (StopCombat, Aggression zurueck, Schutz aus).
+  Hrefna bekommt Iron Dagger (01397E) im Inventar. Neue Property `QuintusApproachScene` (verdrahtet). TIF-Skripte rufen jetzt die Quest, die alte Property `QuintusScene` entfaellt.
+- Fund und Fix: die Szenen Q01_01/02/03 nutzten Actor-IDs 0/1 (= Alias PlayerRef/Veyra) statt der Hrefna/Quintus-Aliase 3/4; auf 3 (Hrefna), 1 (Veyra), 4 (Quintus) korrigiert.
+- Task C: `NHV_Pkg_Sys_LucienStand` Sandbox-Radius 128 -> 1500.
+- Build -Clean 63/63, Round Trip (ToPlugin/ToText -Force) verlustfrei. papyrus-reviewer und CK-Anleitung folgen.
+
+### 2026-09-29 – Familie über Veyra: Sanctuary-Dialogmaster
+
+- Entwicklerauftrag umgesetzt: `Babette_Veyra`/`Babette_VeyraFollow` (`NHV_SYS_BAB_219–224`), `Cicero_Veyra`/`Cicero_VeyraFollow` (`NHV_SYS_CIC_213–219`), `Veyra_Family`/`Veyra_FamilyFollow` (`NHV_SYS_VEY_237–242`). Je Topic ein Spielerprompt und zwei Antworten, bei Ciceros Einstieg drei Antworten.
+- Bestehendes Bedingungsschema übernommen: `GetStage NHV_Q00_ShadowAtTheDoor >= 100`, Sprecherfilter und `GetDead == 0`; bei Cicero zusätzlich die vorhandenen Todesprüfungen beider Vanilla-Referenzen. Keine weiteren Quest-Stages erforderlich.
+- Babette deutet Alter nur als Vermutung; Cicero erfährt Mothers Anerkennung über den Listener; Veyra beschreibt soziale Aufnahme ohne formalen Mitgliedschaftsanspruch oder Herkunftsenthüllung. Notes beschreiben Response-Reihenfolge und Follow-Verknüpfung.
+- Lint über `dialogue/`: 621 LineIDs, 0 Fehler; eine Warnung wegen fehlendem optionalem `pyspellchecker`. Da `python` nicht im PATH liegt, mit dem gebündelten Python von Codex ausgeführt. Lore-Lektorat nach einer sprachlichen Korrektur an `NHV_SYS_BAB_223` freigegeben.
+- Nur Textvorarbeit: keine Plugin-/Script-/Voice-Änderungen, kein Ingame-Nachweis. M5.3 bleibt offen.
+- Commit-Vorschlag: `[Family] Gespräche über Veyra im Sanctuary ergänzen`.
 
 ### 2026-09-29 - Q01 nach erstem Ingame-Test repariert (M1.7)
 

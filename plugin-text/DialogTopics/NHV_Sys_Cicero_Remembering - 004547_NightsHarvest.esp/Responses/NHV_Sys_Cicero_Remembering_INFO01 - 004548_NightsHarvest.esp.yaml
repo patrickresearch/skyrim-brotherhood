@@ -1,0 +1,61 @@
+FormKey: 004548:NightsHarvest.esp
+EditorID: NHV_Sys_Cicero_Remembering_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004549:NightsHarvest.esp
+Responses:
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Cicero remembers it that way. Footsteps! Quarrels! Someone telling Cicero to stop making that noise!
+  ScriptNotes: NHV_SYS_CIC_208 prompt=NHV_SYS_CIC_207
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then fewer footsteps. Then his own. Much too loud, with nobody left to complain.
+  ScriptNotes: NHV_SYS_CIC_209
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 2
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 01E64A:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 09BCB0:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 09BCAF:Skyrim.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You make the old sanctuary sound crowded.

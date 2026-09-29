@@ -1,0 +1,7 @@
+FormKey: 00450A:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_Tenets_Branch
+Quest: 000809:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00450B:NightsHarvest.esp

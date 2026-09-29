@@ -1,0 +1,54 @@
+FormKey: 004571:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Vouch_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004572:NightsHarvest.esp
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I knew her in Cheydinhal, when I still had a pulse. Her visits were seldom idle ones.
+  ScriptNotes: NHV_SYS_LUC_08 prompt=NHV_SYS_LUC_07
+  Edits: ''
+- EmotionValue: 50
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'I will vouch for this: she serves Sithis willingly. I have never known her to turn from that purpose.'
+  ScriptNotes: NHV_SYS_LUC_09
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She offers the family her help. She does not command it. That distinction should please you.
+  ScriptNotes: NHV_SYS_LUC_10
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004403:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004400:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Veyra says you know her. Would you trust her?

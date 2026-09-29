@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 36 AutoReadOnly
+Int Property VERSION = 37 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -33,6 +33,9 @@ Quest Property DestroyQuest Auto
 ; NHV_Q00_ShadowAtTheDoor (M1.5). Journal texts for its stages are set directly in the
 ; CK for now, not via Spriggit - see docs/PROGRESS.md "Bekannte Spriggit-Limitation".
 Quest Property Q00 Auto
+; NHV_Sys_Sanctuary (000809): ambient family dialogue (dialogue/Sanctuary.csv) and the Lucien alias. Start Game
+; Enabled in the ESP; EnsureSanctuaryQuest() is the safety net for saves where it did not start.
+Quest Property SanctuaryQuest Auto
 ; DawnstarSanctuaryLocation, verified 22.09.2026 via houseCARL against Skyrim.esm.
 Location Property DawnstarSanctuaryLocation Auto
 
@@ -112,6 +115,7 @@ Function Maintenance()
         Return
     EndIf
     EnsureProperties()
+    EnsureSanctuaryQuest()
     If iInstalledVersion < VERSION
         Migrate(iInstalledVersion)
         iInstalledVersion = VERSION
@@ -217,6 +221,25 @@ Function EnsureProperties()
     EndIf
     If !Q01
         Q01 = Game.GetFormFromFile(0x004000, "NightsHarvest.esp") as Quest
+    EndIf
+    If !SanctuaryQuest
+        SanctuaryQuest = Game.GetFormFromFile(0x000809, "NightsHarvest.esp") as Quest
+    EndIf
+EndFunction
+
+; The ambient Sanctuary conversations (Veyra, Nazir, Babette, Cicero, Lucien) live in NHV_Sys_Sanctuary. Their
+; topics are gated on Q00 stage 100 themselves, so the quest may simply run from the start. Idempotent.
+Function EnsureSanctuaryQuest()
+    If SanctuaryQuest && !SanctuaryQuest.IsRunning()
+        If SanctuaryQuest.Start()
+            NHV_Util.Log(NHV_Cfg_Debug, "NHV_Sys_Sanctuary started")
+        Else
+            NHV_Util.Log(NHV_Cfg_Debug, "EnsureSanctuaryQuest: Start() failed (alias fill?)")
+        EndIf
+    EndIf
+    NHV_SanctuaryScript kSanctuary = SanctuaryQuest as NHV_SanctuaryScript
+    If kSanctuary
+        kSanctuary.Resume()
     EndIf
 EndFunction
 
@@ -412,6 +435,13 @@ Function Migrate(Int aiFrom)
     EndIf
     If aiFrom < 36
         ; Stage 80 without wired doubt dialogue: EnsureQ00Completion() in Maintenance finishes Q00.
+    EndIf
+    If aiFrom < 37
+        ; Doubt dialogue wired (objective 80). A save that already waits at stage 80 never ran the stage fragment.
+        If Q00 && Q00.GetStageDone(80) && !Q00.GetStageDone(100) && !Q00.IsObjectiveDisplayed(80)
+            Q00.SetObjectiveCompleted(60)
+            Q00.SetObjectiveDisplayed(80)
+        EndIf
     EndIf
 EndFunction
 
@@ -1903,6 +1933,11 @@ Function SummonLucien()
     If LucienRef.IsDisabled()
         ; Vanilla shader of ghosts materialising (GhostEtherealFXShaderIntro, Skyrim.esm 0658E2).
         EffectShader kFx = Game.GetFormFromFile(0x0658E2, "Skyrim.esm") as EffectShader
+        ; A late summon (retry) can be spoken anywhere: he appears next to Veyra when she is in the Sanctuary, else at his own marker.
+        Actor kCaller = GetVeyraActor()
+        If kCaller && !kCaller.IsDead() && !kCaller.IsDisabled() && kCaller.Is3DLoaded() && kCaller.GetParentCell() != LucienRef.GetParentCell() && DawnstarSanctuaryLocation && kCaller.IsInLocation(DawnstarSanctuaryLocation)
+            LucienRef.MoveTo(kCaller, 96.0, 96.0, 0.0)
+        EndIf
         LucienRef.Enable(False)
         LucienRef.SetDisplayName("Lucien Lachance", True)
         If kFx

@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-LINEID = re.compile(r"^NHV_[A-Za-z0-9]+_\d{3}_\d{2,3}$")
+LINEID = re.compile(r"^NHV_(?:[A-Za-z0-9]+_\d{3}_\d{2,3}|SYS_[A-Za-z0-9]+_\d+)$")
 
 
 def csv_rows(texts):

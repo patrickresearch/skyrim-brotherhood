@@ -1,0 +1,54 @@
+FormKey: 00455C:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Cheydinhal_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Beneath an abandoned house, we made a home. Above us, respectable people locked their doors and slept.
+  ScriptNotes: NHV_SYS_LUC_15 prompt=NHV_SYS_LUC_14
+  Edits: ''
+- Emotion: Happy
+  EmotionValue: 20
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: We had our quarrels. Put so many accomplished killers under one roof, and even supper requires a little diplomacy.
+  ScriptNotes: NHV_SYS_LUC_16
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 25
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I remember their voices more readily than their kills. An inconvenient distinction, after so many years.
+  ScriptNotes: NHV_SYS_LUC_17
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004403:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004400:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Tell me about your family in Cheydinhal.

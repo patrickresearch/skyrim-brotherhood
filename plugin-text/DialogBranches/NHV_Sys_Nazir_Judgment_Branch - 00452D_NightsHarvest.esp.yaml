@@ -1,0 +1,7 @@
+FormKey: 00452D:NightsHarvest.esp
+EditorID: NHV_Sys_Nazir_Judgment_Branch
+Quest: 000809:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00452E:NightsHarvest.esp

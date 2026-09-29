@@ -1,0 +1,28 @@
+;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
+;NEXT FRAGMENT INDEX 1
+Scriptname TIF__0200457F Extends TopicInfo Hidden
+
+;BEGIN FRAGMENT Fragment_0
+Function Fragment_0(ObjectReference akSpeakerRef)
+Actor akSpeaker = akSpeakerRef as Actor
+;BEGIN CODE
+NHV_SanctuaryScript kS = Game.GetFormFromFile(0x000809, "NightsHarvest.esp") as NHV_SanctuaryScript
+If kS != None
+    kS.StartSummonCall()
+Else
+    ; the quest script is not bound (old save): finish the accept path in the Core directly
+    NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
+    Quest kQ00 = Game.GetFormFromFile(0x000815, "NightsHarvest.esp") as Quest
+    If kCore != None
+        If kQ00 != None && kQ00.GetStage() == 80
+            kCore.OnDoubtAccepted()
+        Else
+            kCore.OnDoubtRetryAccepted()
+        EndIf
+    EndIf
+EndIf
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;END FRAGMENT CODE - Do not edit anything between this and the begin comment

@@ -1,0 +1,42 @@
+FormKey: 004509:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_RecruitingFollow_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I want honesty. Remorse can be honest. So can its absence.
+  ScriptNotes: NHV_SYS_VEY_211 prompt=NHV_SYS_VEY_210
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A recruit who lies about why they killed will soon find reasons to lie about whom.
+  ScriptNotes: NHV_SYS_VEY_212
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+Prompt:
+  TargetLanguage: English
+  Value: You sound as though you want remorse.

@@ -15,14 +15,15 @@ Phases:
   Unused2: {}
   EditorWidth: 200
 Actors:
-- Flags: []
+- ID: 3
+  Flags: []
   BehaviorFlags:
   - DeathEnd
   - CombatEnd
   - DialoguePause
 Actions:
 - Name: NHV_Q01_CampAmbushOpen
-  ActorID: 0
+  ActorID: 3
   Index: 1
   StartPhase: 0
   EndPhase: 0

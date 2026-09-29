@@ -16,6 +16,10 @@ Configuration:
   SpeedMultiplier: 100
 Voice: 004004:NightsHarvest.esp
 Race: 013746:Skyrim.esm
+Items:
+- Item:
+    Item: 01397E:Skyrim.esm
+    Count: 1
 AIData:
   Confidence: Brave
   EnergyLevel: 60

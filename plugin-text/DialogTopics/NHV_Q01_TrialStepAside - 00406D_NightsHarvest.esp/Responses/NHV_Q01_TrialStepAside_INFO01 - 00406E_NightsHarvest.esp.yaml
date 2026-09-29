@@ -1,5 +1,15 @@
 FormKey: 00406E:NightsHarvest.esp
 EditorID: NHV_Q01_TrialStepAside_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200406E
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200406E
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200406E
+      FragmentName: Fragment_0
 Flags: {}
 PreviousDialog: Null
 FavorLevel: None

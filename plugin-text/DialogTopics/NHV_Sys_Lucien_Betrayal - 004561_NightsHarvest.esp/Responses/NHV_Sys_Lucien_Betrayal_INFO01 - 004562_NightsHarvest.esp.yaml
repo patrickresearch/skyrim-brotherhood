@@ -1,0 +1,53 @@
+FormKey: 004562:NightsHarvest.esp
+EditorID: NHV_Sys_Lucien_Betrayal_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Mathieu Bellamont wore our trust as neatly as his robes. He turned our own machinery against us.
+  ScriptNotes: NHV_SYS_LUC_23 prompt=NHV_SYS_LUC_22
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I ordered the Purification of Cheydinhal. The traitor survived elsewhere. My family paid for our certainty.
+  ScriptNotes: NHV_SYS_LUC_24
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then the Hand condemned me. They were very thorough about the killing. Rather less thorough about the proof.
+  ScriptNotes: NHV_SYS_LUC_25
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004403:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 4
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004400:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: How did betrayal reach the Black Hand?

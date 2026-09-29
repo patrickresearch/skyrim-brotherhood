@@ -1,0 +1,6 @@
+FormKey: 004547:NightsHarvest.esp
+EditorID: NHV_Sys_Cicero_Remembering
+Priority: 60
+Branch: 004546:NightsHarvest.esp
+Quest: 000809:NightsHarvest.esp
+SubtypeName: CUST

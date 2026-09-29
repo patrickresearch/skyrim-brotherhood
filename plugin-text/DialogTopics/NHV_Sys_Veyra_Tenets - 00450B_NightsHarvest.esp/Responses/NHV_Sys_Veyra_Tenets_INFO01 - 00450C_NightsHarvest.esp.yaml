@@ -1,0 +1,44 @@
+FormKey: 00450C:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_Tenets_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 00450D:NightsHarvest.esp
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She kept people together. I won't pretend that was nothing.
+  ScriptNotes: NHV_SYS_VEY_214 prompt=NHV_SYS_VEY_213
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: But a family needs something it can hold its leader to. Especially when the leader is frightened.
+  ScriptNotes: NHV_SYS_VEY_215
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+Prompt:
+  TargetLanguage: English
+  Value: Astrid kept a family without the old Tenets.

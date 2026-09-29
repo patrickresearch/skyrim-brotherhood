@@ -1,0 +1,6 @@
+FormKey: 004544:NightsHarvest.esp
+EditorID: NHV_Sys_Cicero_KeeperFollow
+Priority: 60
+Branch: 004541:NightsHarvest.esp
+Quest: 000809:NightsHarvest.esp
+SubtypeName: CUST

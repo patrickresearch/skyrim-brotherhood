@@ -1,0 +1,6 @@
+FormKey: 00450D:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_TenetsFollow
+Priority: 60
+Branch: 00450A:NightsHarvest.esp
+Quest: 000809:NightsHarvest.esp
+SubtypeName: CUST

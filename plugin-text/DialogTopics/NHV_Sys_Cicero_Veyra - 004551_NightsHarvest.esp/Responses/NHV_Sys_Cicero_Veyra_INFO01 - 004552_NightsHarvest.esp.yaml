@@ -1,0 +1,71 @@
+FormKey: 004552:NightsHarvest.esp
+EditorID: NHV_Sys_Cicero_Veyra_INFO01
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+LinkTo:
+- 004553:NightsHarvest.esp
+Responses:
+- Emotion: Happy
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You said Mother welcomed her. Mother knows best. Of course she does!
+  ScriptNotes: NHV_SYS_CIC_214 prompt=NHV_SYS_CIC_213
+  Edits: ''
+- Emotion: Anger
+  EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: But Veyra walks away so quietly. No bowing! No begging for another word!
+  ScriptNotes: NHV_SYS_CIC_215
+  Edits: ''
+- Emotion: Puzzled
+  EmotionValue: 50
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: What does she know about pleasing Mother? Cicero would like to know. Very much.
+  ScriptNotes: NHV_SYS_CIC_216
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    ReferenceAliasIndex: 2
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 01E64A:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 09BCB0:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 09BCAF:Skyrim.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Veyra has the Night Mother's blessing. Is that enough for you?

@@ -35,8 +35,11 @@ HEADER = ["LineID", "Quest", "Stage", "Topic", "Speaker", "VoiceType",
 EMOTIONS = {"Neutral", "Anger", "Disgust", "Fear", "Sad", "Happy", "Surprise", "Puzzled"}
 NON_VOICED_SPEAKERS = {"Player", "Journal", "Book"}
 # Known speakers so far; extend as new recruits/NPCs are written (docs/CONVENTIONS.md VoiceType pattern).
-CUSTOM_VOICED_SPEAKERS = {"Veyra", "Hrefna"}
-VANILLA_SPEAKERS = {"Nazir", "Babette", "Cicero", "NightMother"}
+CUSTOM_VOICED_SPEAKERS = {
+    "Veyra", "Hrefna", "Sings", "Torbjorn", "DrinksTheBrine",
+    "HaldorFrostKnuckle", "Aelius", "Hjorald", "Hakan", "Quintus"
+}
+VANILLA_SPEAKERS = {"Nazir", "Babette", "Cicero", "NightMother", "Lucien"}
 LINEID_RE = re.compile(r"^NHV_(?:[A-Za-z0-9]+_\d{3}_\d{2,}|SYS_[A-Za-z0-9]+_\d+)$")
 
 

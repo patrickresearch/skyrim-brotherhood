@@ -1,0 +1,6 @@
+FormKey: 004503:NightsHarvest.esp
+EditorID: NHV_Sys_Veyra_SilenceFollow
+Priority: 60
+Branch: 004500:NightsHarvest.esp
+Quest: 000809:NightsHarvest.esp
+SubtypeName: CUST

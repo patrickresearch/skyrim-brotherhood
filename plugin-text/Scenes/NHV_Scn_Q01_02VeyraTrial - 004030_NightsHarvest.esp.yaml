@@ -18,12 +18,13 @@ Phases:
   Unused2: {}
   EditorWidth: 200
 Actors:
-- Flags: []
+- ID: 1
+  Flags: []
   BehaviorFlags:
   - DeathEnd
   - CombatEnd
   - DialoguePause
-- ID: 1
+- ID: 3
   Flags: []
   BehaviorFlags:
   - DeathEnd
@@ -31,7 +32,7 @@ Actors:
   - DialoguePause
 Actions:
 - Name: NHV_Q01_VeyraTrialOpenV
-  ActorID: 0
+  ActorID: 1
   Index: 1
   StartPhase: 0
   EndPhase: 0
@@ -42,7 +43,7 @@ Actions:
   Emotion: Neutral
   EmotionValue: 0
 - Name: NHV_Q01_VeyraTrialOpenH
-  ActorID: 1
+  ActorID: 3
   Index: 2
   StartPhase: 1
   EndPhase: 1
