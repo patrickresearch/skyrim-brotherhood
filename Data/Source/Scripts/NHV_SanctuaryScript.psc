@@ -18,25 +18,35 @@ Bool bArrivalPlayed = False   ; the arrival scene ran once (never again, also no
 Int iTicks = 0
 
 ; End fragment of the accept answer (NHV_Sys_Veyra_DoubtAccepted): Veyra calls him in the call scene first.
-Function StartSummonCall()
+Scene kCallScene ; the call scene that is running (Q00 V2 hands in one per Stage-12 variant)
+Bool bStandoffCall = False ; the running call is Q00's Stage-12 summoning (E41)
+
+Function StartSummonCall(Scene akCall = None)
+    Scene kCall = akCall
+    If !kCall
+        kCall = SummonScene
+    EndIf
     If !IsRunning()
         bSummonPending = True ; quest not running: no scene, no timer - summon directly
         FinishSummonCall()
         Return
     EndIf
     If bSummonPending
-        If iTicks > 3 && (!SummonScene || !SummonScene.IsPlaying())
+        If !kCallScene
+            kCallScene = SummonScene ; a save made during the call has no runtime scene yet
+        EndIf
+        If iTicks > 3 && (!kCallScene || !kCallScene.IsPlaying())
             FinishSummonCall() ; a stale pending flag (chain lost) must not block the summoning
         EndIf
         Return
     EndIf
-    If !Core || !SummonScene || !VeyraAlias
+    If !Core || !kCall || !VeyraAlias
         NHV_Util.Log(NHV_Cfg_Debug, "StartSummonCall: property missing, summoning without scene")
         bSummonPending = True
         FinishSummonCall()
         Return
     EndIf
-    If Core.IsLucienSummoned()
+    If Core.IsLucienSummoned() && !(Q00 && Q00.GetStage() == 12)
         If Q00 && Q00.GetStage() == 80
             Core.OnDoubtAccepted() ; already summoned (console/test save) but Q00 still waits: finish it
         EndIf
@@ -51,8 +61,10 @@ Function StartSummonCall()
     EndIf
     VeyraAlias.ForceRefTo(kVeyra)
     bSummonPending = True
+    bStandoffCall = (Q00 && Q00.GetStage() == 12) ; remembered: the stage may move on before the call ends
     iTicks = 0
-    SummonScene.Start()
+    kCallScene = kCall
+    kCall.Start()
     RegisterForSingleUpdate(2.0) ; watchdog: a scene that never reports its end must not swallow the summoning
 EndFunction
 
@@ -69,15 +81,20 @@ Function FinishSummonCall()
     If !Core
         Return
     EndIf
+    Float fArrivalDelay = 4.0
     If Q00 && Q00.GetStage() == 80
         Core.OnDoubtAccepted()
+    ElseIf bStandoffCall || (Q00 && Q00.GetStage() == 12)
+        bStandoffCall = False
+        Core.SummonLucienAtStandoff() ; Q00 V2 (E41): the mandatory summoning at the end of the Standoff
+        fArrivalDelay = 8.0 ; Veyra's ritual (about 3 s) and the ghost shader come first
     Else
         Core.OnDoubtRetryAccepted()
     EndIf
     If !bArrivalPlayed
         bArrivalPending = True
         iTicks = 0
-        RegisterForSingleUpdate(4.0) ; let the ghost shader run before he speaks
+        RegisterForSingleUpdate(fArrivalDelay) ; let the ghost shader run before he speaks
     EndIf
 EndFunction
 
@@ -89,13 +106,16 @@ EndFunction
 Event OnUpdate()
     If bSummonPending
         iTicks += 1
-        If SummonScene && SummonScene.IsPlaying() && iTicks < 45
+        If !kCallScene
+            kCallScene = SummonScene ; a save made during the call has no runtime scene yet
+        EndIf
+        If kCallScene && kCallScene.IsPlaying() && iTicks < 45
             RegisterForSingleUpdate(2.0)
-        ElseIf iTicks <= 3 && SummonScene
+        ElseIf iTicks <= 3 && kCallScene
             RegisterForSingleUpdate(2.0) ; Start() lags: IsPlaying() reads False for a few ticks
         Else
-            If SummonScene && SummonScene.IsPlaying()
-                SummonScene.Stop() ; ran too long: stop it so the arrival cannot overlap
+            If kCallScene && kCallScene.IsPlaying()
+                kCallScene.Stop() ; ran too long: stop it so the arrival cannot overlap
             EndIf
             FinishSummonCall() ; ended without its fragment (save/load, combat), or ran too long
         EndIf

@@ -1,0 +1,14 @@
+;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
+;NEXT FRAGMENT INDEX 1
+Scriptname SF_NHV_Q02E_0200A045 Extends Scene Hidden
+
+;BEGIN FRAGMENT Fragment_0
+Function Fragment_0()
+;BEGIN CODE
+NHV_Util.FlowSet(0x00A006, 0)
+NHV_Util.FlowSet(0x00A002, 16)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;END FRAGMENT CODE - Do not edit anything between this and the begin comment

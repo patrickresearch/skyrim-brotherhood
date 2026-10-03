@@ -5,6 +5,7 @@ attached to the Drowned Hollow entrance door reference in the CK, Stage 40 -> 50
 
 Quest Property OwningQuest Auto
 Int Property RequiredStage = 0 Auto ; only reacts while GetStage() == this (0 = any stage)
+Int Property RequiredStageMax = 0 Auto ; Enhanced (E49): when above RequiredStage the activator reacts for every stage from RequiredStage to this (Hollow door: 40-45)
 Int Property TargetStage = 0 Auto   ; SetStage(this) if the quest is below it (0 = none)
 Message Property ClueMessage Auto   ; optional popup (text lives in the plugin, from dialogue/Q02.csv)
 GlobalVariable Property NHV_Cfg_Debug Auto
@@ -18,8 +19,15 @@ Event OnActivate(ObjectReference akActionRef)
         NHV_Util.Log(NHV_Cfg_Debug, "NHV_Q02_StageActivatorScript: OwningQuest not set")
         Return
     EndIf
-    If RequiredStage > 0 && OwningQuest.GetStage() != RequiredStage
-        Return
+    If RequiredStage > 0
+        Int iStage = OwningQuest.GetStage()
+        Int iMaxStage = RequiredStage
+        If RequiredStageMax > RequiredStage
+            iMaxStage = RequiredStageMax
+        EndIf
+        If iStage < RequiredStage || iStage > iMaxStage
+            Return
+        EndIf
     EndIf
     If ClueMessage && !bShown
         bShown = True

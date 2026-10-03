@@ -2,7 +2,7 @@ Scriptname NHV_CoreScript extends Quest
 {Controller for Night's Harvest: SKSE check, versioning, maintenance, startbedingung. Attached to NHV_Sys_Core (Start Game Enabled). Concept sections 2 and 14.}
 
 ; Script version. Bump for every save-relevant change and add one idempotent step to Migrate().
-Int Property VERSION = 38 AutoReadOnly
+Int Property VERSION = 39 AutoReadOnly
 ; Human-readable mod version, keep in sync with fomod/info.xml and the git tag.
 String Property VERSION_TEXT = "0.0.1" AutoReadOnly
 
@@ -461,6 +461,11 @@ Function Migrate(Int aiFrom)
             UpdateNightMother()
         EndIf
     EndIf
+    If aiFrom < 39
+        ; E41 / Q00 V2: the dialogue is driven by cursor globals (NHV_Q00V2_*), stage 12 (Lucien's summoning) is new and
+        ; stage 80 is no longer set. Nothing to migrate: the cursors start at 0, a save that already waits at stage 80
+        ; is finished by EnsureQ00Completion() as before.
+    EndIf
 EndFunction
 
 ; Idempotent: does nothing once either RubbleRef or PassageDoorRef already exists. Safe to call
@@ -537,6 +542,10 @@ EndFunction
 ; created only now, once the cell is loaded. Cheap no-op on every later visit.
 Function OnEnterDeepSanctuary()
     ArmMemorialPoll()
+    NHV_Q01Script kQ01Script = Q01 as NHV_Q01Script
+    If kQ01Script
+        kQ01Script.ArmHomeWatch() ; Q01 V2: the homecoming scene in the Kitchen, once Hrefna lives here
+    EndIf
     If DeepSanctuaryDoorRef
         Return ; E25: the Deep Sanctuary's own exit door (ExitDoorRef) leads back, no script return door
     EndIf
@@ -775,6 +784,7 @@ Function SendVeyraToWindpeak()
     kVeyra.EnableAI(True)
     kVeyra.SetDontMove(False)
     kVeyra.EvaluatePackage()
+    bProposalSceneStarted = False ; Q00 V2: a new return trip may play the proposal scene again
     kVeyra.MoveTo(VeyraWindpeakMarkerRef)
     kVeyra.SetAngle(0.0, 0.0, VeyraWindpeakMarkerRef.GetAngleZ())
     kVeyra.EvaluatePackage()
@@ -861,6 +871,10 @@ Function CompleteVeyraReturnToSanctuary()
         NHV_Q00_VeyraReturning.SetValue(0.0)
     EndIf
     NHV_Util.Log(NHV_Cfg_Debug, "Veyra returned to Dawnstar Sanctuary")
+    If Q00 && Q00.GetStage() == 30 && !bProposalSceneStarted
+        bProposalPending = True ; Q00 V2: Nazir welcomes her back and Veyra lays out her plan (scene 0x6F01)
+        RegisterForSingleUpdate(3.0)
+    EndIf
 EndFunction
 
 ; Polls (real time, every 2 s) while Q00 sits on stage 10 and the player is in the Sanctuary, until he
@@ -874,6 +888,7 @@ Event OnUpdate()
         If Q00 && Q00.IsRunning() && Q00.GetStage() == 15
             Q00.SetStage(20)
         EndIf
+        RearmIfPending()
         Return
     EndIf
     If bNightMotherCallPending
@@ -883,6 +898,25 @@ Event OnUpdate()
     If bPassagePlacePending
         bPassagePlacePending = False
         PlaceVeiledPassageFamily()
+        RearmIfPending()
+        Return
+    EndIf
+    If bLucienAppearPending
+        bLucienAppearPending = False
+        AppearLucien()
+        RearmIfPending()
+        Return
+    EndIf
+    If bDeepIntroPending
+        bDeepIntroPending = False
+        StartDeepIntroScene()
+        RearmIfPending()
+        Return
+    EndIf
+    If bProposalPending
+        bProposalPending = False
+        StartProposalScene()
+        RearmIfPending()
         Return
     EndIf
     If bMemorialPollPending && !bCutsceneLocked
@@ -1620,9 +1654,106 @@ Function OnVeiledPassageSceneEnd()
     NHV_Util.Log(NHV_Cfg_Debug, "Enter-deep scene started")
 EndFunction
 
-; End fragment of NHV_Scn_Q00_03EnterDeep.
+; End fragment of NHV_Scn_Q00_03EnterDeep. Q00 V2 (E41): the door is revealed (stage 50) but nobody walks in yet: the
+; player decides in dialogue ("We enter together", topic answer calls EnterDeepTogether()). Lucien takes his place in
+; the Deep Sanctuary from stage 50 on.
 Function OnEnterDeepSceneEnd()
-    FinishVeiledPassage()
+    ActiveCutscene = None
+    UnlockCutscene()
+    If Q00 && Q00.GetStage() == 40
+        Q00.SetStage(50)
+    EndIf
+    RestoreLucienHome()
+EndFunction
+
+; Q00 V2: the family and the player go through the door together (what FinishVeiledPassage() did at the end of scene
+; B), then the "cleared / rooms" scene NHV_Scn_Q00_09DeepIntro (0x6F02) plays in the Deep Sanctuary.
+Bool bDeepEntered = False
+Bool bDeepIntroPending = False
+Bool bDeepIntroDone = False
+Int iDeepIntroTicks = 0
+Int iProposalTries = 0
+Bool bProposalPending = False
+Bool bProposalSceneStarted = False
+
+Function EnterDeepTogether()
+    Actor kPlayer = Game.GetPlayer()
+    If bDeepEntered || !Q00 || Q00.GetStage() != 50 || !DeepSanctuaryEntryMarker
+        NHV_Util.Log(NHV_Cfg_Debug, "EnterDeepTogether: not possible now (entered=" + bDeepEntered + ")")
+        Return
+    EndIf
+    bDeepEntered = True
+    EnsureFamilyAliases()
+    MovePassageActor(0, 0.0, 320.0)
+    MovePassageActor(1, -10.0, 270.0)
+    MovePassageActor(2, 40.0, 250.0)
+    MovePassageActor(3, 0.0, 420.0)
+    If kPlayer.GetParentCell() != DeepSanctuaryEntryMarker.GetParentCell()
+        kPlayer.MoveTo(DeepSanctuaryEntryMarker, 0.0, 128.0, 8.0, True)
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Q00 V2: family and player entered the Deep Sanctuary")
+    bDeepIntroPending = True
+    RegisterForSingleUpdate(2.5) ; let the cell load before the scene starts (the memorial poll waits for its end)
+EndFunction
+
+; End fragment of NHV_Scn_Q00_09DeepIntro: only now the memorial poll may run.
+Function OnDeepIntroEnd()
+    bDeepIntroDone = True
+    OnEnterDeepSanctuary() ; arms the memorial poll
+EndFunction
+
+; The update timer is shared: after a branch that returns early, wake up again for whatever else is waiting.
+Function RearmIfPending()
+    If bMemorialPollPending || bPassagePollPending || bPassagePlacePending || bProposalPending || bDeepIntroPending || bLucienAppearPending || bCutsceneLocked
+        RegisterForSingleUpdate(2.0)
+    EndIf
+EndFunction
+
+Function StartDeepIntroScene()
+    Scene kScene = Game.GetFormFromFile(0x006F02, "NightsHarvest.esp") as Scene
+    If !kScene || !Q00
+        NHV_Util.Log(NHV_Cfg_Debug, "StartDeepIntroScene: scene 0x6F02 or Q00 missing")
+        OnDeepIntroEnd()
+        Return
+    EndIf
+    iDeepIntroTicks = 0
+    StopOtherScenes()
+    kScene.Start()
+    NHV_Util.Log(NHV_Cfg_Debug, "Deep Sanctuary intro scene started")
+EndFunction
+
+; Q00 V2: Veyra is back in the Sanctuary (stage 30): Nazir and Babette join her, the proposal scene 0x6F01 plays.
+Function StartProposalScene()
+    If bProposalSceneStarted || !Q00 || Q00.GetStage() != 30
+        Return
+    EndIf
+    Scene kScene = Game.GetFormFromFile(0x006F01, "NightsHarvest.esp") as Scene
+    Actor kVeyra = GetVeyraActor()
+    If !kScene || !kVeyra || kVeyra.IsDead() || kVeyra.IsDisabled()
+        iProposalTries += 1
+        NHV_Util.Log(NHV_Cfg_Debug, "StartProposalScene: scene missing or Veyra unavailable (try " + iProposalTries + ")")
+        If iProposalTries < 20
+            bProposalPending = True
+            RegisterForSingleUpdate(3.0)
+        EndIf
+        Return
+    EndIf
+    iProposalTries = 0
+    bProposalSceneStarted = True
+    EnsureFamilyAliases()
+    BringFamilyMember(1, kVeyra, 90.0, 60.0)
+    BringFamilyMember(2, kVeyra, -90.0, 60.0)
+    StopOtherScenes()
+    kScene.Start()
+    NHV_Util.Log(NHV_Cfg_Debug, "Proposal scene started")
+EndFunction
+
+Function BringFamilyMember(Int aiAlias, Actor akAnchor, Float afX, Float afY)
+    Actor kActor = GetFamilyActor(aiAlias) ; None when dead or disabled
+    If kActor && akAnchor && (kActor.GetParentCell() != akAnchor.GetParentCell() || kActor.GetDistance(akAnchor) > 700.0)
+        kActor.MoveTo(akAnchor, afX, afY, 0.0, False)
+        kActor.EvaluatePackage()
+    EndIf
 EndFunction
 
 ; Everybody through the door together: player and family into the Deep Sanctuary, stage 50, controls back.
@@ -1722,6 +1853,22 @@ Function PollMemorial()
     Actor kPlayer = Game.GetPlayer()
     If kPlayer.GetParentCell() != DeepSanctuaryEntryMarker.GetParentCell()
         Return ; OnEnterDeepSanctuary arms it again
+    EndIf
+    If bDeepEntered && !bDeepIntroDone
+        ; Q00 V2: the "cleared / rooms" scene runs first. Watchdog: a scene that never started or never reports its end
+        ; (load, combat, busy actor) must not hold the poll forever.
+        iDeepIntroTicks += 1
+        Scene kIntro = Game.GetFormFromFile(0x006F02, "NightsHarvest.esp") as Scene
+        If (iDeepIntroTicks > 3 && (!kIntro || !kIntro.IsPlaying())) || iDeepIntroTicks > 40
+            If kIntro && kIntro.IsPlaying()
+                kIntro.Stop()
+            EndIf
+            NHV_Util.Log(NHV_Cfg_Debug, "PollMemorial: deep intro scene did not finish, going on")
+            OnDeepIntroEnd()
+        EndIf
+        bMemorialPollPending = True
+        RegisterForSingleUpdate(2.0)
+        Return
     EndIf
     Float fDX = kPlayer.GetPositionX() + 5232.0 ; in front of the plaques at -5232/-1728 (developer 27.09.2026)
     Float fDY = kPlayer.GetPositionY() + 1690.0
@@ -1937,20 +2084,13 @@ Function FinishQ00Contract()
     If bContractDone
         Return
     EndIf
+    ; Q00 V2 (E41): this scene now plays Veyra's first lead (Hrefna). Stage 80 (the doubt) is no longer set; the
+    ; player answers in free dialogue and the "accept" answer calls CompleteQ00().
     bContractDone = True
     ActiveCutscene = None
     UnlockCutscene()
-    If Q00 && Q00.GetStage() < 80
-        Q00.SetStage(80)
-    EndIf
     fContractDoneTime = Utility.GetCurrentGameTime()
-    If !DoubtDialogueReady()
-        ; The doubt/Lucien lines are not wired yet (Codex): finish Q00 right away as before stage 80 existed.
-        NHV_Util.Log(NHV_Cfg_Debug, "Q00 contract done, doubt dialogue not wired: completing Q00 directly")
-        CompleteQ00()
-        Return
-    EndIf
-    NHV_Util.Log(NHV_Cfg_Debug, "Q00 contract done (stage 80), waiting for Veyra's doubt dialogue")
+    NHV_Util.Log(NHV_Cfg_Debug, "Q00 first-lead scene done, the answer follows in dialogue")
 EndFunction
 
 ; Veyra's doubt topic (NHV_Q00_Veyra_Doubt…), set in the ESP once the dialogue is wired. Empty = feature off.
@@ -1968,8 +2108,8 @@ Function CompleteQ00()
     If bQ00Completed
         Return
     EndIf
-    If !Q00 || Q00.GetStage() < 80
-        NHV_Util.Log(NHV_Cfg_Debug, "CompleteQ00: Q00 not at stage 80 yet, ignored")
+    If !Q00 || Q00.GetStage() < 60
+        NHV_Util.Log(NHV_Cfg_Debug, "CompleteQ00: Q00 not at stage 60 yet, ignored")
         Return
     EndIf
     bQ00Completed = True
@@ -2037,10 +2177,144 @@ EndFunction
 
 ; Maintenance: the global says Lucien was summoned, but his reference is disabled (e.g. reset by a patch).
 Function EnsureLucienState()
-    If IsLucienSummoned() && LucienRef && LucienRef.IsDisabled()
-        LucienRef.Enable(False)
+    If bLucienAppearPending
+        bLucienAppearPending = False ; the appearing timer does not survive a load
+        AppearLucien()
+    EndIf
+    ; Q00 V2: between his summoning (stage 12) and the opened Deep Sanctuary (stage 50) he stays away.
+    If IsLucienSummoned() && LucienRef && LucienRef.IsDisabled() && Q00 && Q00.GetStage() >= 50
+        RestoreLucienHome()
         NHV_Util.Log(NHV_Cfg_Debug, "Lucien re-enabled by Maintenance")
     EndIf
+    ; Developer decision 03.10.2026: from stage 12 to 49 Lucien stays visible and talkable in the Dawnstar Sanctuary.
+    KeepLucienInSanctuary()
+    ; From stage 50 he belongs in the Deep Sanctuary: a save in which he still stands in the Sanctuary hall (the
+    ; stage jump happened while he was not loaded) is corrected silently, only while he is not in sight.
+    If IsLucienSummoned() && LucienRef && !LucienRef.IsDisabled() && !LucienRef.Is3DLoaded() && Q00 && Q00.GetStage() >= 50
+        ObjectReference kHome = Game.GetFormFromFile(0x004402, "NightsHarvest.esp") as ObjectReference
+        If kHome && LucienRef.GetParentCell() != kHome.GetParentCell()
+            LucienRef.MoveTo(kHome)
+            NHV_Util.Log(NHV_Cfg_Debug, "Lucien moved to the Deep Sanctuary by Maintenance")
+        EndIf
+    EndIf
+EndFunction
+
+; Q00 stages 12-49: Lucien stays in the Dawnstar Sanctuary hall (Standoff group), where he can be talked to. His
+; package NHV_Pkg_Sys_LucienSanctuaryIdle (00AC00) holds him within 600 units of NHV_Mk_Q00_StandoffVeyra (004343).
+; Repairs saves in which an earlier build had already disabled him (old DismissLucien at stage 30) or left him in
+; the Deep Sanctuary. Idempotent; never touches him while the summoning ritual runs.
+Function KeepLucienInSanctuary()
+    If !LucienRef || !Q00 || bLucienAppearPending || !IsLucienSummoned()
+        Return
+    EndIf
+    Int iStage = Q00.GetStage()
+    If iStage < 12 || iStage >= 50
+        Return
+    EndIf
+    ObjectReference kSpot = Game.GetFormFromFile(0x004343, "NightsHarvest.esp") as ObjectReference
+    If !kSpot
+        NHV_Util.Log(NHV_Cfg_Debug, "KeepLucienInSanctuary: marker NHV_Mk_Q00_StandoffVeyra (004343) not found")
+        Return
+    EndIf
+    If LucienRef.IsDisabled()
+        LucienRef.MoveTo(kSpot, 150.0, 0.0, 0.0)
+        LucienRef.Enable(False)
+        LucienRef.SetDisplayName("Lucien Lachance", True)
+        NHV_Util.Log(NHV_Cfg_Debug, "Lucien re-enabled in the Sanctuary hall (stage " + iStage + ")")
+    ElseIf LucienRef.GetParentCell() != kSpot.GetParentCell() && !LucienRef.Is3DLoaded()
+        LucienRef.MoveTo(kSpot, 150.0, 0.0, 0.0)
+        NHV_Util.Log(NHV_Cfg_Debug, "Lucien moved to the Sanctuary hall (stage " + iStage + ")")
+    EndIf
+EndFunction
+
+; Q00 V2 (E41), stage 12: Lucien answers Veyra's call next to her, wherever Lucien was before (also in a dev save
+; that summoned him under the old flow). Fades in like SummonLucien().
+Function SummonLucienAtStandoff()
+    If !LucienRef
+        NHV_Util.Log(NHV_Cfg_Debug, "SummonLucienAtStandoff: LucienRef not set")
+        Return
+    EndIf
+    If NHV_Q00_LucienSummoned
+        NHV_Q00_LucienSummoned.SetValue(1.0)
+    EndIf
+    ; A visible ritual: Veyra raises her arms, a summoning light opens in front of her, and after a few seconds
+    ; Lucien steps out of it (AppearLucien()). He stands about 220 units in front of her.
+    Actor kCaller = GetVeyraActor()
+    If kCaller && !kCaller.IsDead() && !kCaller.IsDisabled()
+        Float fAngle = kCaller.GetAngleZ()
+        LucienRef.MoveTo(kCaller, Math.Sin(fAngle) * 220.0, Math.Cos(fAngle) * 220.0, 0.0)
+        Form kRitualFX = Game.GetForm(0x0007CD55) ; SummonTargetFXActivator
+        If kRitualFX
+            LucienRitualFX = LucienRef.PlaceAtMe(kRitualFX)
+        EndIf
+        Idle kRitual = Game.GetForm(0x000FB9AE) as Idle ; IdleMQ206FelldirRitualEnter
+        If kRitual
+            kCaller.PlayIdle(kRitual)
+        EndIf
+    EndIf
+    bLucienAppearPending = True
+    RegisterForSingleUpdate(3.0)
+    NHV_Util.Log(NHV_Cfg_Debug, "Lucien summoning ritual started")
+EndFunction
+
+ObjectReference LucienRitualFX
+Bool bLucienAppearPending = False
+
+; Three seconds into the ritual: Lucien materialises, the light fades, Veyra lowers her arms.
+Function AppearLucien()
+    If !LucienRef
+        Return
+    EndIf
+    EffectShader kFx = Game.GetFormFromFile(0x0658E2, "Skyrim.esm") as EffectShader
+    LucienRef.Enable(False)
+    LucienRef.SetDisplayName("Lucien Lachance", True)
+    If kFx
+        kFx.Play(LucienRef, 6.0)
+    EndIf
+    If LucienRitualFX
+        LucienRitualFX.Disable(True)
+        LucienRitualFX.Delete()
+        LucienRitualFX = None
+    EndIf
+    Actor kCaller = GetVeyraActor()
+    Idle kExit = Game.GetForm(0x000FB9AF) as Idle ; IdleMQ206FelldirRitualExit
+    If kCaller && kExit
+        kCaller.PlayIdle(kExit)
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Lucien appeared")
+EndFunction
+
+; Q00 V2: the vouching scene is over. Lucien lingers in the Sanctuary hall so the player may talk to him; he stays there (03.10.2026) until the
+; Deep Sanctuary opens and takes his place at stage 50 (RestoreLucienHome).
+Function OnLucienVouchEnded()
+    NHV_Util.Log(NHV_Cfg_Debug, "Lucien vouching scene ended, he stays for now")
+EndFunction
+
+; His place is NHV_Mk_Sys_LucienSpot (004402), the marker placed in the Deep Sanctuary in the CK.
+; Developer decision 03.10.2026: he no longer vanishes (the stage-30 fragment still calls this name; it must stay
+; for saves and the compiled fragment). Lucien remains visible in the Sanctuary hall until stage 50.
+Function DismissLucien()
+    If !LucienRef
+        Return
+    EndIf
+    KeepLucienInSanctuary()
+    NHV_Util.Log(NHV_Cfg_Debug, "Lucien stays in the Sanctuary hall (DismissLucien is a legacy no-op)")
+EndFunction
+
+Function RestoreLucienHome()
+    If !LucienRef || !IsLucienSummoned()
+        Return
+    EndIf
+    ObjectReference kSpot = Game.GetFormFromFile(0x004402, "NightsHarvest.esp") as ObjectReference
+    If kSpot
+        LucienRef.MoveTo(kSpot)
+    Else
+        NHV_Util.Log(NHV_Cfg_Debug, "RestoreLucienHome: marker NHV_Mk_Sys_LucienSpot (004402) not found")
+    EndIf
+    If LucienRef.IsDisabled()
+        LucienRef.Enable(False)
+    EndIf
+    NHV_Util.Log(NHV_Cfg_Debug, "Lucien back at his place in the Deep Sanctuary")
 EndFunction
 
 ; Maintenance: Q00 at/after stage 80 but never completed by CompleteQ00().

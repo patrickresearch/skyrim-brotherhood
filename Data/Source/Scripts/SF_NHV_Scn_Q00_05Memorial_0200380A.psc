@@ -9,6 +9,7 @@ NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NH
 If kCore != None
     kCore.OnMemorialSceneEnd()
 EndIf
+NHV_Util.FlowSet(0x006000, 13)
 ;END CODE
 EndFunction
 ;END FRAGMENT

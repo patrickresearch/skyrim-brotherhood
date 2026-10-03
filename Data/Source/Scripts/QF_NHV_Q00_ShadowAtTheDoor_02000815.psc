@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 9
+;NEXT FRAGMENT INDEX 10
 Scriptname QF_NHV_Q00_ShadowAtTheDoor_02000815 Extends Quest Hidden
 
 ;BEGIN ALIAS PROPERTY Veyra
@@ -35,6 +35,8 @@ EndFunction
 Function Fragment_1()
 ;BEGIN CODE
 SetObjectiveDisplayed(10)
+NHV_Util.FlowSet(0x006000, 0)
+NHV_Util.FlowSet(0x006001, 0)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -52,8 +54,13 @@ EndFunction
 Function Fragment_3()
 ;BEGIN CODE
 SetObjectiveCompleted(10)
+If IsObjectiveDisplayed(12)
+    SetObjectiveCompleted(12)
+EndIf
 SetObjectiveCompleted(15)
 SetObjectiveDisplayed(20)
+NHV_Util.FlowSet(0x006001, 6)
+NHV_Util.FlowSet(0x006000, 1002)
 NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
 If kCore != None
     kCore.SendVeyraToWindpeak()
@@ -67,6 +74,9 @@ EndFunction
 Function Fragment_2()
 ;BEGIN CODE
 SetObjectiveCompleted(10)
+If IsObjectiveDisplayed(12)
+    SetObjectiveCompleted(12)
+EndIf
 SetObjectiveDisplayed(15)
 NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
 If kCore != None
@@ -80,6 +90,9 @@ EndFunction
 Function Fragment_7()
 ;BEGIN CODE
 SetObjectiveCompleted(60)
+If IsObjectiveDisplayed(61)
+    SetObjectiveCompleted(61)
+EndIf
 If IsObjectiveDisplayed(80)
     SetObjectiveCompleted(80)
 EndIf
@@ -96,6 +109,7 @@ SetObjectiveDisplayed(30)
 NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
 If kCore != None
     kCore.SendVeyraToWindpeak()
+    kCore.DismissLucien()
 EndIf
 ;END CODE
 EndFunction
@@ -105,6 +119,9 @@ EndFunction
 Function Fragment_0()
 ;BEGIN CODE
 setObjectiveCompleted(30)
+If IsObjectiveDisplayed(31)
+    SetObjectiveCompleted(31)
+EndIf
 setObjectiveDisplayed(40)
 NHV_CoreScript kCore = Game.GetFormFromFile(0x000801, "NightsHarvest.esp") as NHV_CoreScript
 If kCore != None
@@ -118,6 +135,15 @@ EndFunction
 Function Fragment_8()
 ;BEGIN CODE
 SetObjectiveCompleted(60)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_9
+Function Fragment_9()
+;BEGIN CODE
+SetObjectiveCompleted(10)
+SetObjectiveDisplayed(12)
 ;END CODE
 EndFunction
 ;END FRAGMENT
