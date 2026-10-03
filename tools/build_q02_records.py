@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Generate the Q02 "Cold Waters" records (FormIDs 004100-0041FF) as Spriggit YAML in plugin-text/ plus the
+"""STILLGELEGT (01.10.2026, E50): NICHT MEHR AUSFUEHREN.
+Q02 wird seit der Enhanced-Fassung von tools/build_q02_enhanced.py gebaut. Dieser Generator loescht beim Lauf alle
+0041xx-Dateien und schreibt die Quest 004100 neu, kennt aber die CK-Ergaenzungen an der Quest (Properties 005954/005961/0057D1/
+0057D8/0057D9/005956, Alias-Packages 005960/00595F) und die Enhanced-Aenderungen (Stages 15/45/55, Aliase 8-10, Objectives,
+Properties) nicht und wuerde sie ebenso zerstoeren wie die entfernten Alt-Topics wieder anlegen (Lehre 1, docs/plan/Q02-Q03-Enhanced-Plan.md).
+Er bleibt nur als historische Referenz im Repo.
+
+Generate the Q02 "Cold Waters" records (FormIDs 004100-0041FF) as Spriggit YAML in plugin-text/ plus the
 QF/TIF/SF fragment scripts (M2.2). Re-runnable: existing Q02 files (FormID range 0041xx) are deleted first.
 
 Usage: python tools/build_q02_records.py
@@ -7,6 +14,10 @@ Afterwards: tools/plugin_text.ps1 -Direction ToPlugin -Force, then -Direction To
 tools/build.ps1 -Clean, tools/csv_to_plugin.py --check, tools/silent_voice.py.
 Texts are NEVER written by hand here: every response/prompt text is read from dialogue/Q02.csv (Rule 4).
 """
+import sys
+
+if __name__ == "__main__":
+    sys.exit("build_q02_records.py ist stillgelegt (E50): tools/build_q02_enhanced.py benutzen. Dieser Generator wuerde CK-Aenderungen und die Enhanced-Records zerstoeren.")
 import csv
 import glob
 import os
