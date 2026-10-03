@@ -1,0 +1,36 @@
+FormKey: 00A125:NightsHarvest.esp
+EditorID: NHV_Q02E_R_desk_p_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Your hand. Not mine. Do not put that death in my account merely because I stood beside you.
+  ScriptNotes: NHV_Q02_060_4006
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: His desk. I thought there might be someone to send word to.
+  ScriptNotes: NHV_Q02_070_4000
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Why are our shifts here? Our debts? These are not pay records.
+  ScriptNotes: NHV_Q02_070_4001
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

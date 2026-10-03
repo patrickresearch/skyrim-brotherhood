@@ -1,0 +1,27 @@
+FormKey: 00613F:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_09DeepIntro_06_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There is space for my ledger and your reports here. I can work while you are away.
+  ScriptNotes: NHV_Q00_050_1015
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: No point furnishing beds for people we haven't met. Let us begin with the names we already know.
+  ScriptNotes: NHV_Q00_050_1016
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

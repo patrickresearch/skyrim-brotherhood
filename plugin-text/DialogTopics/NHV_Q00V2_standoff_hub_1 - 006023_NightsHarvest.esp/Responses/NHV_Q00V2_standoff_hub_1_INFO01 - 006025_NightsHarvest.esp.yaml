@@ -1,0 +1,67 @@
+FormKey: 006025:NightsHarvest.esp
+EditorID: NHV_Q00V2_standoff_hub_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02006025
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02006025
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02006025
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: After a harvest, someone gathers what the reapers left. That has been my work for a very long time.
+  ScriptNotes: NHV_Q00_010_1014 prompt=NHV_Q00_010_1007
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: In my case, people. A killer without a purpose. A survivor with nowhere to go.
+  ScriptNotes: NHV_Q00_010_1015
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I watch them before I offer their names. Some never make it onto the page.
+  ScriptNotes: NHV_Q00_010_1016
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006000:NightsHarvest.esp
+  ComparisonValue: 2
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00600A:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You speak as though you've done this before.

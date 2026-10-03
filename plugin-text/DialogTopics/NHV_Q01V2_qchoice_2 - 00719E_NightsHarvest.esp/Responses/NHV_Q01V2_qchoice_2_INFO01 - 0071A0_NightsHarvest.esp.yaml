@@ -1,0 +1,44 @@
+FormKey: 0071A0:NightsHarvest.esp
+EditorID: NHV_Q01V2_qchoice_2_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__020071A0
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__020071A0
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__020071A0
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then I will follow the road and meet her there.
+  ScriptNotes: NHV_Q01_045_2333 prompt=NHV_Q01_045_2332
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 45
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004008:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Leave Morthal. Hrefna will return to her farm.

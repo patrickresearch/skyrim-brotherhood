@@ -12,7 +12,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I knew her in Cheydinhal, when I still had a pulse. Her visits were seldom idle ones.
+    Value: I knew her in Cheydinhal, when I still had a pulse. She came as a visitor, never as one of my assassins.
   ScriptNotes: NHV_SYS_LUC_08 prompt=NHV_SYS_LUC_07
   Edits: ''
 - EmotionValue: 50
@@ -21,7 +21,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: 'I will vouch for this: she serves Sithis willingly. I have never known her to turn from that purpose.'
+    Value: She serves Sithis willingly. I have never known her to turn from that purpose.
   ScriptNotes: NHV_SYS_LUC_09
   Edits: ''
 - EmotionValue: 30
@@ -53,4 +53,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: Veyra says you know her. Would you trust her?
+  Value: You knew Veyra in Cheydinhal. Will you vouch for her service?

@@ -4,6 +4,9 @@ MajorRecordFlagsRaw: 262144
 EditorID: NHV_AeliusVarro
 SkyrimMajorRecordFlags:
 - Compressed
+ObjectBounds:
+  First: -22, -14, 0
+  Second: 22, 14, 128
 Configuration:
   Flags:
   - Unique
@@ -15,9 +18,17 @@ Configuration:
   SpeedMultiplier: 100
 Voice: 004105:NightsHarvest.esp
 Race: 013744:Skyrim.esm
+Items:
+- Item:
+    Item: 00AF73:NightsHarvest.esp
+    Count: 1
 AIData:
   Confidence: Average
   EnergyLevel: 40
+Packages:
+- 00AF62:NightsHarvest.esp
+- 00AF63:NightsHarvest.esp
+- 00AF5F:NightsHarvest.esp
 Class: 01326B:Skyrim.esm
 Name:
   TargetLanguage: English
@@ -103,7 +114,7 @@ PlayerSkills:
 NAM5: 255
 Height: 1
 Weight: 50
-DefaultOutfit: 01DC10:Skyrim.esm
-TextureLighting: '#00A7867A'
+DefaultOutfit: 0AD23D:Skyrim.esm
+TextureLighting: '#00706156'
 MajorFlags:
 - 0x40000

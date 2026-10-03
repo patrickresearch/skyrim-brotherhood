@@ -29,7 +29,10 @@ Items:
 AIData:
   Confidence: Brave
   EnergyLevel: 50
-  Unused: 10
+Packages:
+- 00AD10:NightsHarvest.esp
+- 00AD11:NightsHarvest.esp
+- 00AD12:NightsHarvest.esp
 Class: 0E3A63:Skyrim.esm
 Name:
   TargetLanguage: English

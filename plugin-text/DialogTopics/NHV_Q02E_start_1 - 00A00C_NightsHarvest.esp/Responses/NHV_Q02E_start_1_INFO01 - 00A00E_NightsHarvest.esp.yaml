@@ -1,0 +1,53 @@
+FormKey: 00A00E:NightsHarvest.esp
+EditorID: NHV_Q02E_start_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A00E
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A00E
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A00E
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Windhelm's harbor has been giving back bodies. Four in the report I received. The guards blame the cold.
+  ScriptNotes: NHV_Q02_010_4000 prompt=NHV_Q02_010_4090
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The bindings suggest someone helped. Ask Torbjorn Ice-Vein at the docks. He keeps the harbor records.
+  ScriptNotes: NHV_Q02_010_4001
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A005:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Windhelm. What am I walking into?

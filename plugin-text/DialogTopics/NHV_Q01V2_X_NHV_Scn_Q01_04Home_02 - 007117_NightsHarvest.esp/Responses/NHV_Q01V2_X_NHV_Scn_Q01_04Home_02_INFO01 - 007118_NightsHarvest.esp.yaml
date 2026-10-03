@@ -1,0 +1,19 @@
+FormKey: 007118:NightsHarvest.esp
+EditorID: NHV_Q01V2_X_NHV_Scn_Q01_04Home_02_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 15
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You can sleep hungry. Doesn't mean you should.
+  ScriptNotes: NHV_Q01_100_1036
+  Edits: ''
+Speaker: 004007:NightsHarvest.esp

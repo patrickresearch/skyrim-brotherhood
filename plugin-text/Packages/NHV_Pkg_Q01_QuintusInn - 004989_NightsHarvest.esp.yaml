@@ -1,5 +1,4 @@
 FormKey: 004989:NightsHarvest.esp
-VersionControl: 13628
 EditorID: NHV_Pkg_Q01_QuintusInn
 Type: Package
 PreferredSpeed: Run
@@ -24,7 +23,7 @@ ScheduleMonth: -1
 ScheduleDayOfWeek: Any
 ScheduleHour: -1
 ScheduleMinute: -1
-Unknown3: 0x120000
+Unknown3: 0x000000
 PackageTemplate: 01C254:Skyrim.esm
 DataInputVersion: 10
 Data:

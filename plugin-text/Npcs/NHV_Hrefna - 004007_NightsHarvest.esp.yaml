@@ -4,9 +4,13 @@ MajorRecordFlagsRaw: 262144
 EditorID: NHV_Hrefna
 SkyrimMajorRecordFlags:
 - Compressed
+ObjectBounds:
+  First: -22, -14, 0
+  Second: 22, 14, 128
 Configuration:
   Flags:
   - Female
+  - Essential
   - Unique
   Level:
     MutagenObjectType: PcLevelMult
@@ -18,12 +22,20 @@ Voice: 004004:NightsHarvest.esp
 Race: 013746:Skyrim.esm
 Items:
 - Item:
+    Item: 00AD41:NightsHarvest.esp
+    Count: 1
+- Item:
     Item: 01397E:Skyrim.esm
     Count: 1
 AIData:
   Confidence: Brave
   EnergyLevel: 60
+  Unused: 32
 Packages:
+- 00AD0E:NightsHarvest.esp
+- 00AD05:NightsHarvest.esp
+- 00AD03:NightsHarvest.esp
+- 00AD02:NightsHarvest.esp
 - 00498C:NightsHarvest.esp
 Class: 01326B:Skyrim.esm
 Name:

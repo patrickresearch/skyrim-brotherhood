@@ -1,0 +1,65 @@
+FormKey: 007173:NightsHarvest.esp
+EditorID: NHV_Q01V2_camp_5_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007173
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007173
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007173
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 45
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The debts broke my husband. He drank until there was nothing left that could wake him.
+  ScriptNotes: NHV_Q01_030_2216 prompt=NHV_Q01_030_2215
+  Edits: ''
+- Emotion: Fear
+  EmotionValue: 45
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Eirik’s hired man kept cornering my daughter. I found her after she ended her life. The farm became a grave with a roof.
+  ScriptNotes: NHV_Q01_030_2217
+  Edits: ''
+- Emotion: Anger
+  EmotionValue: 40
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Eirik still came for the land. That was when waiting stopped being a virtue.
+  ScriptNotes: NHV_Q01_030_2218
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 57
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: What happened to your husband and your daughter?

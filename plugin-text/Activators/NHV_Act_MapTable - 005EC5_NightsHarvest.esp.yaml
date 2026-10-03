@@ -1,0 +1,13 @@
+FormKey: 005EC5:NightsHarvest.esp
+EditorID: NHV_Act_MapTable
+ObjectBounds:
+  First: -68, -50, 0
+  Second: 68, 50, 5
+Name:
+  TargetLanguage: English
+  Value: Map Table
+Model:
+  File: Clutter\CivilWar\CWMapMarkers02.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []

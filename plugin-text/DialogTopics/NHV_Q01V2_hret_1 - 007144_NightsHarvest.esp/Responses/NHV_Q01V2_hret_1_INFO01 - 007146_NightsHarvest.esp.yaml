@@ -1,0 +1,53 @@
+FormKey: 007146:NightsHarvest.esp
+EditorID: NHV_Q01V2_hret_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007146
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007146
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007146
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I know who had reason, means, and mud on her boots. Hrefna Stormhollow.
+  ScriptNotes: NHV_Q01_012_2028 prompt=NHV_Q01_012_2027
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The farm is east of the reed road. I will mark it.
+  ScriptNotes: NHV_Q01_012_2029
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 12
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007000:NightsHarvest.esp
+  ComparisonValue: 42
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004006:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You know who killed Eirik.

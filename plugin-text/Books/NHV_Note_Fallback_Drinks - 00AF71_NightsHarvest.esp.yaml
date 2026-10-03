@@ -1,0 +1,28 @@
+FormKey: 00AF71:NightsHarvest.esp
+EditorID: NHV_Note_Fallback_Drinks
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Net Tally
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">DRINKS-THE-BRINE - NET TALLY</font></p>
+
+    <p align="left">Knots counted by the dozen, nothing else written. The hitch on the dead men is a marsh hitch, learned where the reeds grow, not on a Nord's boat.</p>
+
+    <p align="left">The old sluice lies behind the salt bins. Haldor's friends watch the yard, so keep low and do not follow the street.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 10
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

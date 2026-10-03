@@ -1,0 +1,44 @@
+FormKey: 007143:NightsHarvest.esp
+EditorID: NHV_Q01V2_reed_1_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007143
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007143
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007143
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: No one hired us. A seal on a page is enough to make hungry men brave.
+  ScriptNotes: NHV_Q01_012_2025 prompt=NHV_Q01_012_2024
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 12
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00711B:NightsHarvest.esp
+  ComparisonValue: 41
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 007F20:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Who hired you?

@@ -1,0 +1,19 @@
+FormKey: 006087:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_method_1_v1_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: And you expect us to sleep beside whatever walks back through that door?
+  ScriptNotes: NHV_Q00_030_1026
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

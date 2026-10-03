@@ -1,0 +1,14 @@
+FormKey: 0089DE:NightsHarvest.esp
+EditorID: MiscSackLargeFlat01_NoRespawnDUPLICATE001
+Name:
+  TargetLanguage: English
+  Value: Large Sack
+Model:
+  File: Clutter\Containers\MiscSackLargeFlat01.nif
+  Data: 0x020000000000000000000000
+Items:
+- Item:
+    Item: 10FCFB:Skyrim.esm
+    Count: 1
+OpenSound: 084D0E:Skyrim.esm
+CloseSound: 084D0F:Skyrim.esm

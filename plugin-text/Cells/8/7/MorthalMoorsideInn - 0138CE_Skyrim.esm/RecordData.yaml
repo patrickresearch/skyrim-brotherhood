@@ -43,13 +43,50 @@ SkyAndWeatherFromRegion: 0C5855:Skyrim.esm
 AcousticSpace: 0C5B6D:Skyrim.esm
 Music: 0622AB:Skyrim.esm
 ImageSpace: 059B60:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 0089FD:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q01_QuintusInnSpot
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 1312, 32, 0
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 004988:NightsHarvest.esp
-  VersionControl: 13628
   EditorID: NHV_QuintusRef
   Base: 004008:NightsHarvest.esp
   Placement:
     Position: 1097.9825, 454.27563, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 008472:NightsHarvest.esp
+  Base: 007F10:NightsHarvest.esp
+  Placement:
+    Position: 1216, 288, 64
+- MutagenObjectType: PlacedObject
+  FormKey: 0089FC:NightsHarvest.esp
+  Base: 007F14:NightsHarvest.esp
+  Placement:
+    Position: 960, -160, 80
+- MutagenObjectType: PlacedObject
+  FormKey: 0E0069:Skyrim.esm
+  Base: 06512C:Skyrim.esm
+  Emittance: 02A72D:Skyrim.esm
+  Scale: 0.77
+  LocationReference: 01EB96:Skyrim.esm
+  Placement:
+    Position: 832, -384, 288
+    Rotation: 0.12955049, 1.0200073, 0.5260734
+- MutagenObjectType: PlacedObject
+  FormKey: 0E006A:Skyrim.esm
+  Base: 06512C:Skyrim.esm
+  Emittance: 02A72D:Skyrim.esm
+  Scale: 0.87
+  LocationReference: 01EB96:Skyrim.esm
+  Placement:
+    Position: 832, -96, 288
+    Rotation: -0.34047753, 0.9987956, 1.2904941
 MajorFlags:
 - 0x40000

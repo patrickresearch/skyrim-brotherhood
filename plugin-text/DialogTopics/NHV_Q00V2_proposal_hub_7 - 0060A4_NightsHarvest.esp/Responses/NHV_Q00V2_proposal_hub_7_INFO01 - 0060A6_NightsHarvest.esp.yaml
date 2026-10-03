@@ -1,0 +1,73 @@
+FormKey: 0060A6:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_hub_7_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__020060A6
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__020060A6
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__020060A6
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I noticed an illusion over one of the walls. It may conceal a passage.
+  ScriptNotes: NHV_Q00_030_1055 prompt=NHV_Q00_030_1036
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If there are usable chambers beyond it, we could make room. I haven't seen what waits inside.
+  ScriptNotes: NHV_Q00_030_1056
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006000:NightsHarvest.esp
+  ComparisonValue: 11
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006007:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006003:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006004:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006005:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Where would we put these new members?

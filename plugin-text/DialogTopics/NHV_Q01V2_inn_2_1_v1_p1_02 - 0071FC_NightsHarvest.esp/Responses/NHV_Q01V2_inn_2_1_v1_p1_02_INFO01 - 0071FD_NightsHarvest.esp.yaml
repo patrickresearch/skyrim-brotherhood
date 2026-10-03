@@ -1,0 +1,37 @@
+FormKey: 0071FD:NightsHarvest.esp
+EditorID: NHV_Q01V2_inn_2_1_v1_p1_02_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I read your letter. I know you were going home.
+  ScriptNotes: NHV_Q01_055_2561
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 40
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am sorry you will not get there.
+  ScriptNotes: NHV_Q01_055_2562
+  Edits: ''
+- EmotionValue: 40
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I choose this knowing who you are.
+  ScriptNotes: NHV_Q01_055_2563
+  Edits: ''
+Speaker: 004007:NightsHarvest.esp

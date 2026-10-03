@@ -1,5 +1,4 @@
 FormKey: 00498B:NightsHarvest.esp
-VersionControl: 13628
 EditorID: NHV_Pkg_Hakan_Fish
 Type: Package
 PreferredSpeed: Run
@@ -24,7 +23,7 @@ ScheduleMonth: -1
 ScheduleDayOfWeek: Any
 ScheduleHour: -1
 ScheduleMinute: -1
-Unknown3: 0x000000
+Unknown3: 0x31290D
 PackageTemplate: 016FAA:Skyrim.esm
 DataInputVersion: 3
 Data:

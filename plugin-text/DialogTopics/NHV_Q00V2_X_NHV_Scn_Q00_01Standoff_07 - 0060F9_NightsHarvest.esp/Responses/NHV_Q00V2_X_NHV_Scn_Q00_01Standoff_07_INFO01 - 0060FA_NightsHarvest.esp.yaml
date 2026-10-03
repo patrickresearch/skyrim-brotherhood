@@ -1,0 +1,19 @@
+FormKey: 0060FA:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_01Standoff_07_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 45
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That face. Cicero has seen that face beside Mother's coffin. It was not smiling then.
+  ScriptNotes: NHV_Q00_010_1005
+  Edits: ''
+Speaker: 09BCAF:Skyrim.esm

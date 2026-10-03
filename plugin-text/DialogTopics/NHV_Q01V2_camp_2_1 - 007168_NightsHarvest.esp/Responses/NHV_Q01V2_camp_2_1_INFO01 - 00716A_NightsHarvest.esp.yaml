@@ -1,0 +1,45 @@
+FormKey: 00716A:NightsHarvest.esp
+EditorID: NHV_Q01V2_camp_2_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200716A
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200716A
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200716A
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 45
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Six weeks of candles, empty cupboards, and a door that stayed shut. Waiting became another kind of work.
+  ScriptNotes: NHV_Q01_030_2204 prompt=NHV_Q01_030_2203
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 54
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Tell me about the six weeks.

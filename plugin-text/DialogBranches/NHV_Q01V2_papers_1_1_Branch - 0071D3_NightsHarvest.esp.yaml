@@ -1,0 +1,7 @@
+FormKey: 0071D3:NightsHarvest.esp
+EditorID: NHV_Q01V2_papers_1_1_Branch
+Quest: 004000:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 0071D2:NightsHarvest.esp

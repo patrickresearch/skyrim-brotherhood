@@ -1,0 +1,19 @@
+FormKey: 0060EE:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_01Standoff_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Listener. She knew the answer to the door. Perhaps she'll tell you what she's doing here.
+  ScriptNotes: NHV_Q00_010_1000
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

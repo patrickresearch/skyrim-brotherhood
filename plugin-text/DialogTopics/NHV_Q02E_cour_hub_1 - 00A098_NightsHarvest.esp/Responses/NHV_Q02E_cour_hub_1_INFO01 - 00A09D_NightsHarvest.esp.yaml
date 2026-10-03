@@ -1,0 +1,47 @@
+FormKey: 00A09D:NightsHarvest.esp
+EditorID: NHV_Q02E_cour_hub_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A09D
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A09D
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A09D
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - Goodbye
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You are not on the roster. Leave the harbor.
+  ScriptNotes: NHV_Q02_070_4503 prompt=NHV_Q02_070_4502
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A000:NightsHarvest.esp
+  ComparisonValue: 32
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 00AF11:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The seal is late. The dead are not.

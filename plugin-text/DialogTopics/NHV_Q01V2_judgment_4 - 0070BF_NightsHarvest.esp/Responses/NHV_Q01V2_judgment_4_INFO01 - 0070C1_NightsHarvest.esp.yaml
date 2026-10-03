@@ -1,0 +1,45 @@
+FormKey: 0070C1:NightsHarvest.esp
+EditorID: NHV_Q01V2_judgment_4_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__020070C1
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__020070C1
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__020070C1
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Fear
+  EmotionValue: 65
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Please. I answered the prayer. Do not make that the only thing I am.
+  ScriptNotes: NHV_Q01_070_2708 prompt=NHV_Q01_070_2707
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 24
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The Brotherhood leaves no witnesses.

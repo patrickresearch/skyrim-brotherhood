@@ -1,0 +1,44 @@
+FormKey: 0070BD:NightsHarvest.esp
+EditorID: NHV_Q01V2_judgment_3_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__020070BD
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__020070BD
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__020070BD
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Square is a word people use when they cannot afford another debt.
+  ScriptNotes: NHV_Q01_070_2706 prompt=NHV_Q01_070_2705
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 24
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Go back to your life. We are square.

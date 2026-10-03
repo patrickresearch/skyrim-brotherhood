@@ -1,0 +1,37 @@
+FormKey: 006F03:NightsHarvest.esp
+EditorID: NHV_Scn_Q00_08LucienExit
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Scn_Q00_08LucienExit_02006F03
+  ScriptFragments:
+    FileName: SF_NHV_Scn_Q00_08LucienExit_02006F03
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Scn_Q00_08LucienExit_02006F03
+      FragmentName: Fragment_0
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Q00_015_1000
+  ActorID: 0
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 00612E:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 000815:NightsHarvest.esp
+LastActionIndex: 1
+VNAM: 0x00000000000000000300000003000000

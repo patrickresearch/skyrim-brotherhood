@@ -1,0 +1,18 @@
+FormKey: 00601F:NightsHarvest.esp
+EditorID: NHV_Q00V2_harvest_question_2_v1_p0_03_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Finding a killer is easy. Finding one worth keeping takes longer.
+  ScriptNotes: NHV_Q00_010_1048
+  Edits: ''
+Speaker: 01D4B7:Skyrim.esm

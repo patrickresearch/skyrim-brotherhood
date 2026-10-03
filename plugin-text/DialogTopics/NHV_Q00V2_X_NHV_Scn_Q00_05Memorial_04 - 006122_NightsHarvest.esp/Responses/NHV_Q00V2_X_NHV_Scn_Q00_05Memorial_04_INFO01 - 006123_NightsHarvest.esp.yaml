@@ -1,0 +1,18 @@
+FormKey: 006123:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_05Memorial_04_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There is one name I will leave to you. Astrid led them. She also betrayed them.
+  ScriptNotes: NHV_Q00_060_1003
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

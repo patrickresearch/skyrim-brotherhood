@@ -1,0 +1,19 @@
+FormKey: 007116:NightsHarvest.esp
+EditorID: NHV_Q01V2_X_NHV_Scn_Q01_04Home_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 15
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Found the kitchen already? Most people ask about the beds first.
+  ScriptNotes: NHV_Q01_100_1035
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

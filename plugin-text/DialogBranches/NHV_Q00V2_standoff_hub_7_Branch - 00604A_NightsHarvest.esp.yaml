@@ -1,0 +1,7 @@
+FormKey: 00604A:NightsHarvest.esp
+EditorID: NHV_Q00V2_standoff_hub_7_Branch
+Quest: 000815:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 006049:NightsHarvest.esp

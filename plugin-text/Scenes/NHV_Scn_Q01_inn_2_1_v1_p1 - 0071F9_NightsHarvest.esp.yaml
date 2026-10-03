@@ -1,0 +1,58 @@
+FormKey: 0071F9:NightsHarvest.esp
+EditorID: NHV_Scn_Q01_inn_2_1_v1_p1
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Q01V2_020071F9
+  ScriptFragments:
+    FileName: SF_NHV_Q01V2_020071F9
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Q01V2_020071F9
+      FragmentName: Fragment_0
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- ID: 4
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 3
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Q01_055_2560
+  ActorID: 4
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 0071FA:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q01_055_2561
+  ActorID: 3
+  Index: 2
+  StartPhase: 1
+  EndPhase: 1
+  Topic: 0071FC:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 004000:NightsHarvest.esp
+LastActionIndex: 2
+VNAM: 0x00000000000000000300000003000000

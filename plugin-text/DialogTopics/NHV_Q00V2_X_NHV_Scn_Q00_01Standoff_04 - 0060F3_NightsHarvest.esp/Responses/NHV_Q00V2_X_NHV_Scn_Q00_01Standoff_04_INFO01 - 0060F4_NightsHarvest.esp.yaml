@@ -1,0 +1,18 @@
+FormKey: 0060F4:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_01Standoff_04_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Not a field. A family that need not spend its remaining years remembering what it used to be.
+  ScriptNotes: NHV_Q00_010_1003
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

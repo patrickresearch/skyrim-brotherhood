@@ -1,0 +1,62 @@
+FormKey: 00A0F4:NightsHarvest.esp
+EditorID: NHV_Q02E_frag_hub_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A0F4
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A0F4
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A0F4
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A net of whispers cast over the docks. Someone at the northern desk is hauling it in.
+  ScriptNotes: NHV_Q02_100_4016 prompt=NHV_Q02_100_4015
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He may have meant the kindness. He also meant the list. Both can be true, and neither repairs the drowned.
+  ScriptNotes: NHV_Q02_100_4019
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Fragment two names a northern desk. It does not name the hand that reads it.
+  ScriptNotes: NHV_Q02_100_4020
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A005:NightsHarvest.esp
+  ComparisonValue: 36
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Aelius kept a list of Argonian names and shifts. It was meant for the Oculatus.

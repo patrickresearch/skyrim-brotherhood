@@ -1,0 +1,7 @@
+FormKey: 00A10A:NightsHarvest.esp
+EditorID: NHV_Q02E_R_tide_enf_p0
+Priority: 80
+Quest: 004100:NightsHarvest.esp
+Category: Misc
+Subtype: Hello
+SubtypeName: HELO

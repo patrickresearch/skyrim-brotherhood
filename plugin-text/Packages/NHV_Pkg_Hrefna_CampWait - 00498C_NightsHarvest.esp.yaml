@@ -1,5 +1,4 @@
 FormKey: 00498C:NightsHarvest.esp
-VersionControl: 13628
 EditorID: NHV_Pkg_Hrefna_CampWait
 Type: Package
 PreferredSpeed: Run
@@ -24,14 +23,14 @@ ScheduleMonth: -1
 ScheduleDayOfWeek: Any
 ScheduleHour: -1
 ScheduleMinute: -1
-Unknown3: 0x000000
+Unknown3: 0x290D0A
 Conditions:
 - MutagenObjectType: ConditionFloat
   CompareOperator: LessThan
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 004000:NightsHarvest.esp
-  ComparisonValue: 100
+  ComparisonValue: 50
 PackageTemplate: 016FAA:Skyrim.esm
 DataInputVersion: 3
 Data:

@@ -1,0 +1,45 @@
+FormKey: 007179:NightsHarvest.esp
+EditorID: NHV_Q01V2_camp_7_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007179
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007179
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007179
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then return with the truth. I have lived too long with other people’s versions of it.
+  ScriptNotes: NHV_Q01_030_2214 prompt=NHV_Q01_030_2213
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 59
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: If I return, we go to the inn together. You read everything I find.

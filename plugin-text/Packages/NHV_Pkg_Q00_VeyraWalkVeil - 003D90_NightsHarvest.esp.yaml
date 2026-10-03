@@ -22,7 +22,7 @@ ScheduleMonth: -1
 ScheduleDayOfWeek: Any
 ScheduleHour: -1
 ScheduleMinute: -1
-Unknown3: 0x5B0C3F
+Unknown3: 0x000000
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:

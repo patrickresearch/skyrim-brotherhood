@@ -39,14 +39,13 @@ TopCell:
   Flags:
   - HasWater
   Grid:
-    Flags: 2128632576
+    Flags: 2137595392
   OcclusionData: 0x03000000000000000000000000000000000000000000000000000000000000000000000000000000000080010000000000000001880000000000000000000000040000C102370020AEFFAF01D83B0009FC3FF60B0C100000000000000000000004000041010300000000000000000000000000000000000000000000000000001E73F9FFFE3F001BACBFFEFBFA030000FCEB6F0000F09FF9EDFF7F0000101C00FE63C70024F055F02E3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   WaterHeight: -2.1474836E+09
   Persistent:
   - MutagenObjectType: PlacedObject
     FormKey: 0048A7:NightsHarvest.esp
     MajorRecordFlagsRaw: 1024
-    VersionControl: 13628
     EditorID: NHV_Mk_Q01_HakanSpot
     SkyrimMajorRecordFlags:
     - 0x400
@@ -56,7 +55,6 @@ TopCell:
   - MutagenObjectType: PlacedObject
     FormKey: 00497B:NightsHarvest.esp
     MajorRecordFlagsRaw: 1024
-    VersionControl: 13628
     SkyrimMajorRecordFlags:
     - 0x400
     Base: 012EB1:Skyrim.esm
@@ -69,7 +67,6 @@ TopCell:
   - MutagenObjectType: PlacedObject
     FormKey: 004980:NightsHarvest.esp
     MajorRecordFlagsRaw: 1024
-    VersionControl: 13628
     EditorID: NHV_Mk_Q01_CampMarker
     SkyrimMajorRecordFlags:
     - 0x400
@@ -79,7 +76,6 @@ TopCell:
   - MutagenObjectType: PlacedObject
     FormKey: 004982:NightsHarvest.esp
     MajorRecordFlagsRaw: 1024
-    VersionControl: 13628
     EditorID: NHV_Mk_Q01_CampAmbushSpot
     SkyrimMajorRecordFlags:
     - 0x400
@@ -89,13 +85,242 @@ TopCell:
   - MutagenObjectType: PlacedObject
     FormKey: 004987:NightsHarvest.esp
     MajorRecordFlagsRaw: 1024
-    VersionControl: 13628
     EditorID: NHV_Mk_Q01_VeyraAppearSpot
     SkyrimMajorRecordFlags:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
       Position: -16209.004, 62901.465, -10868.587
+  - MutagenObjectType: PlacedNpc
+    FormKey: 005192:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_DrinksTheBrineRef
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 004109:NightsHarvest.esp
+    Placement:
+      Position: 141134.56, 34659.812, -13947.324
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 0057D4:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    VirtualMachineAdapter:
+      Scripts:
+      - Name: NHV_Q02_StageActivatorScript
+        Properties:
+        - MutagenObjectType: ScriptObjectProperty
+          Name: NHV_Cfg_Debug
+          Object: 000800:NightsHarvest.esp
+        - MutagenObjectType: ScriptObjectProperty
+          Name: OwningQuest
+          Object: 004100:NightsHarvest.esp
+        - MutagenObjectType: ScriptIntProperty
+          Name: RequiredStage
+          Data: 40
+        - MutagenObjectType: ScriptIntProperty
+          Name: RequiredStageMax
+          Data: 45
+        - MutagenObjectType: ScriptIntProperty
+          Name: TargetStage
+          Data: 50
+    Base: 00519C:NightsHarvest.esp
+    TeleportDestination:
+      Door: 0057D7:NightsHarvest.esp
+      Position: 1568, 1920, 32
+      Rotation: 0, 0, 3.1415927
+    Placement:
+      Position: 143424, 37408, -13824
+  - MutagenObjectType: PlacedObject
+    FormKey: 00595D:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Mk_Q02_SingsWater
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: 142112, 35616, -14016
+  - MutagenObjectType: PlacedObject
+    FormKey: 005961:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Mk_Q02_DockWatch
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: 141204.23, 35510.73, -13945.957
+  - MutagenObjectType: PlacedObject
+    FormKey: 005962:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Mk_Q02_HollowExit
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 142431.98, 36025.36, -13878.586
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0089E2:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Ref_Q01_Scav02
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 007F20:NightsHarvest.esp
+    Placement:
+      Position: -33056, 71744, -13984
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0089E3:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Ref_Q01_Scav01
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 007F20:NightsHarvest.esp
+    Placement:
+      Position: -32896, 71712, -13920
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0089E4:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Ref_Q01_Scav03
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 007F20:NightsHarvest.esp
+    Placement:
+      Position: -33312, 71968, -13952
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 0089E5:NightsHarvest.esp
+    MajorRecordFlagsRaw: 3072
+    EditorID: NHV_MapMk_Q01_Farm
+    SkyrimMajorRecordFlags:
+    - 0x400
+    - InitiallyDisabled
+    Base: 000010:Skyrim.esm
+    MapMarker:
+      Flags:
+      - Visible
+      Name:
+        TargetLanguage: English
+        Value: Stormhollow Farm
+      Type: Farm
+    Placement:
+      Position: -25381.973, 70240.65, -13270.545
+  - MutagenObjectType: PlacedObject
+    FormKey: 0089E6:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Mk_Q01_QuintusFarmSpot
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -25376, 70432, -13216
+  - MutagenObjectType: PlacedObject
+    FormKey: 0089E7:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Mk_Q01_HrefnaFarmSpot
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -25447.447, 70378.414, -13216
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0089F3:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Ref_Q01_Soldier01
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0089F2:NightsHarvest.esp
+    LevelModifier: Easy
+    Placement:
+      Position: -25504, 77600, -13664
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0089F4:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Ref_Q01_Soldier03
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0089F2:NightsHarvest.esp
+    LevelModifier: Easy
+    Placement:
+      Position: -25504, 77088, -13536
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0089F5:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Ref_Q01_Soldier04
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0089F2:NightsHarvest.esp
+    LevelModifier: Easy
+    Placement:
+      Position: -25344, 77568, -13664
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0089F6:NightsHarvest.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: NHV_Ref_Q01_Soldier02
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0089F2:NightsHarvest.esp
+    LevelModifier: Easy
+    Placement:
+      Position: -26016, 77536, -13504
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 0089F8:NightsHarvest.esp
+    MajorRecordFlagsRaw: 3072
+    EditorID: NHV_MapMk_Q01_Watchpost
+    SkyrimMajorRecordFlags:
+    - 0x400
+    - InitiallyDisabled
+    Base: 000010:Skyrim.esm
+    MapMarker:
+      Flags:
+      - Visible
+      Name:
+        TargetLanguage: English
+        Value: Old Watchpost
+      Type: Fort
+    Placement:
+      Position: -25664, 77312, -13568
+  - MutagenObjectType: PlacedObject
+    FormKey: 0089F9:NightsHarvest.esp
+    MajorRecordFlagsRaw: 3072
+    EditorID: NHV_MapMk_Q01_Camp
+    SkyrimMajorRecordFlags:
+    - 0x400
+    - InitiallyDisabled
+    Base: 000010:Skyrim.esm
+    MapMarker:
+      Flags:
+      - Visible
+      Name:
+        TargetLanguage: English
+        Value: Hrefna's Camp
+      Type: Camp
+    Placement:
+      Position: -16400.357, 62811.043, -10857.437
+  - MutagenObjectType: PlacedObject
+    FormKey: 01633D:Skyrim.esm
+    MajorRecordFlagsRaw: 1024
+    Version2: 5
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 024E26:Skyrim.esm
+    LocationReference: 018C90:Skyrim.esm
+    Placement:
+      Position: 31199.28, -9735.158, -3989.018
+      Rotation: 0, 0, 4.2029505
   MajorFlags:
   - Persistent
   - 0x40000

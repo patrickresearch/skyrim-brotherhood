@@ -1,0 +1,2218 @@
+FormKey: 0051AB:NightsHarvest.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: NHV_Q02_DrownedHollowDoorInt
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: Largashbur Cellar
+Flags:
+- IsInteriorCell
+- PublicArea
+Lighting:
+  AmbientColor: '#00000000'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00B0DCF7'
+  FogNear: 340
+  FogFar: 1500
+  DirectionalFade: 1
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#002C2418'
+    DirectionalXMinus: '#00232415'
+    DirectionalYPlus: '#00282517'
+    DirectionalYMinus: '#00282217'
+    DirectionalZPlus: '#0013110A'
+    DirectionalZMinus: '#003C3623'
+    Specular: '#00B0DCF7'
+    Scale: 1
+  FogFarColor: '#00B0DCF7'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - DirectionalRotation
+  - DirectionalFade
+  - ClipDistance
+  - FogPower
+  - FogMax
+  - LightFadeDistances
+LightingTemplate: 0345A4:Skyrim.esm
+WaterHeight: 0
+Location: 03BC2B:Skyrim.esm
+Owner: 02C005:Skyrim.esm
+AcousticSpace: 0E3261:Skyrim.esm
+Music: 06D546:Skyrim.esm
+ImageSpace: 0A2687:Skyrim.esm
+NavigationMeshes:
+- FormKey: 0051AC:NightsHarvest.esp
+  IsCompressed: True
+  MajorRecordFlagsRaw: 262144
+  SkyrimMajorRecordFlags:
+  - Compressed
+  Data:
+    Parent:
+      MutagenObjectType: CellNavmeshParent
+      Parent: 0051AB:NightsHarvest.esp
+    Vertices:
+    - 1604.2146, 2256.7725, 57.588898
+    - 1523.511, 2259.8467, 57.420273
+    - 1515.6582, 2194.811, 49.559067
+    - 1606.7012, 2179.892, 54.514236
+    - 1478.6073, 2045.4686, 53.407623
+    - 1616.6339, 2039.096, 51.393585
+    - 1714.6477, 2023.0708, 49.938904
+    - 1711.483, 2169.0764, 55.115055
+    - 1709.3823, 2283.78, 58.99185
+    - 1618.2192, 2302.4746, 62.745438
+    - 1476.4126, 2278.4666, 58.45111
+    - 1412.9778, 2245.1345, 55.18219
+    - 1425.3152, 2308.347, 64.979126
+    - 1358.2288, 2309.4956, 63.793945
+    - 1347.1809, 2244.1213, 56.29297
+    - 1303.4049, 2305.0593, 62.193813
+    - 1292.4574, 2241.444, 59.92801
+    - 1220.7418, 2313.887, 86.17676
+    - 1231.2538, 2241.6677, 75.12961
+    - 1420.441, 2167.3467, 59.56015
+    - 1420.388, 2046.4844, 53.824463
+    - 1470.4381, 2007.1764, 49.31836
+    - 1598.5314, 1951.415, 47.014618
+    - 1478.7142, 1940.0397, 47.36859
+    - 1420.4619, 2001.4833, 47.445007
+    - 1420.7357, 1961.3767, 51.569794
+    - 1586.2123, 1834.9678, 54.56009
+    - 1483.719, 1808.631, 55.740875
+    - 1553.2183, 1803.2595, 56.871094
+    - 1405.2649, 1936.6117, 100.25252
+    - 1450.5558, 1783.8751, 67.52672
+    - 1404.3279, 1782.6628, 100.252396
+    - 1326.2749, 1803.4828, 100.25258
+    - 1350.5421, 1952.2578, 100.25258
+    - 1252.6832, 1837.144, 100.25267
+    - 1258.2622, 1811.8868, 100.25264
+    - 1237.0273, 1963.8394, 100.2527
+    - 1221.8887, 1898.9861, 100.25264
+    - 1205.7981, 1941.5056, 100.25267
+    - 1174.9955, 1889.5985, 100.25261
+    - 1174.8694, 1944.9391, 100.25258
+    - 1350.339, 1995.5538, 100.311905
+    - 1228.8608, 1999.0078, 100.311966
+    - 1232.5547, 2029.0922, 100.311905
+    - 1336.1073, 2076.837, 100.311905
+    - 1230.866, 2058.28, 100.311935
+    - 1226.1472, 2101.492, 100.312
+    - 1205.4675, 2076.204, 100.311966
+    - 1260.4104, 2156.4287, 100.311844
+    - 1224.135, 2133.487, 100.311905
+    - 1226.2174, 2165.336, 100.311874
+    - 1205.9724, 2149.3367, 100.311905
+    - 1296.5681, 2163.4255, 100.311905
+    - 1389.6576, 2163.2817, 100.311905
+    - 1389.1593, 2081.3086, 100.311874
+    - 1383.6593, 2001.6228, 100.311905
+    - 1311.6595, 1748.7611, 100.25264
+    - 1374.2932, 1748.3038, 100.252335
+    - 1725.5128, 1929.5839, 49.438995
+    - 1724.325, 1859.9124, 52.94754
+    - 1657.3066, 1815.4967, 55.727783
+    - 1721.5619, 1792.9391, 57.321808
+    - 1761.1727, 2012.4955, 52.86673
+    - 1777.8619, 1927.7107, 47.83734
+    - 1834.699, 1925.6757, 51.884186
+    - 1827.2365, 2029.1825, 50.589783
+    - 1906.3086, 1919.0103, 59.126373
+    - 1884.6226, 1832.7224, 56.974823
+    - 1926.5868, 1878.8711, 59.81082
+    - 1925.8672, 1841.3367, 58.73288
+    - 1830.0715, 1834.2057, 54.6091
+    - 1870.8534, 1801.7435, 57.01529
+    - 1833.5236, 1809.2661, 56.60251
+    - 1901.9845, 2027.232, 50.368805
+    - 1950.1355, 1946.2443, 51.171234
+    - 1922.568, 2121.433, 58.1373
+    - 1830.0663, 2161.7446, 53.56015
+    - 1927.544, 2223.7761, 57.93576
+    - 1829.6897, 2292.1018, 59.291534
+    - 1876.7449, 2304.8225, 63.638824
+    - 1831.9861, 2333.4001, 70.21744
+    - 1939.229, 2301.5388, 71.51224
+    - 1993.8739, 2277.6702, 58.42038
+    - 2028.1958, 2191.8203, 49.418945
+    - 2026.0767, 2269.205, 57.87793
+    - 2027.8389, 2106.7874, 47.027832
+    - 2027.5923, 2033.434, 53.383392
+    - 2016.8964, 1921.5635, 48.337555
+    - 2059.7708, 2016.8477, 51.29892
+    - 1978.3591, 1901.5381, 52.506622
+    - 2090.1365, 1926.5857, 51.711945
+    - 2094.9956, 2041.1735, 51.562042
+    - 2176.3062, 1941.0453, 58.924133
+    - 2199.8977, 2035.807, 64.28793
+    - 2244.6895, 1979.926, 73.679535
+    - 2241.7817, 2054.256, 67.206055
+    - 2230.6602, 1891.7241, 68.95627
+    - 2274.7463, 1917.8684, 74.76587
+    - 2258.4946, 1867.0331, 73.55478
+    - 2117.4678, 1859.2578, 54.70282
+    - 2043.1185, 1876.8936, 52.144165
+    - 2130.835, 1803.5879, 60.322815
+    - 2050.4268, 1804.5182, 72.398895
+    - 2009.4246, 1852.5074, 49.649384
+    - 1997.7593, 1813.1274, 55.299866
+    - 2166.0862, 2124.6604, 58.3356
+    - 2092.2686, 2128.6052, 52.570038
+    - 2092.6367, 2204.5146, 54.56015
+    - 2172.6997, 2208.2168, 65.66452
+    - 2096.3464, 2290.2502, 59.2175
+    - 2164.3787, 2289.2988, 75.07852
+    - 2098.048, 2330.7673, 69.03784
+    - 2204.8923, 2242.7031, 88.076904
+    - 2241.8062, 2180.832, 69.44043
+    - 2240.0134, 2116.101, 81.63394
+    - 2274.156, 2151.208, 74.458435
+    Triangles:
+    - Vertices: 0, 1, 2
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 9
+      EdgeLink_2_0: 1
+      Flags:
+      - Found
+      CoverFlags: 16431
+      IsCover: True
+    - Vertices: 2, 3, 0
+      EdgeLink_0_1: 2
+      EdgeLink_1_2: 6
+      Flags:
+      - Door
+      - Found
+    - Vertices: 2, 4, 3
+      EdgeLink_0_1: 19
+      EdgeLink_1_2: 3
+      EdgeLink_2_0: 1
+      Flags:
+      - Found
+    - Vertices: 3, 4, 5
+      EdgeLink_0_1: 2
+      EdgeLink_1_2: 21
+      EdgeLink_2_0: 4
+      Flags:
+      - Found
+    - Vertices: 5, 6, 3
+      EdgeLink_0_1: 64
+      EdgeLink_1_2: 5
+      EdgeLink_2_0: 3
+      Flags:
+      - Found
+    - Vertices: 3, 6, 7
+      EdgeLink_0_1: 4
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 6
+      Flags:
+      - Found
+      CoverFlags: 19008
+      IsCover: True
+    - Vertices: 7, 0, 3
+      EdgeLink_0_1: 7
+      EdgeLink_1_2: 1
+      EdgeLink_2_0: 5
+      Flags:
+      - Found
+    - Vertices: 7, 8, 0
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 8
+      EdgeLink_2_0: 6
+      Flags:
+      - Found
+      CoverFlags: 16392
+      IsCover: True
+    - Vertices: 0, 8, 9
+      EdgeLink_0_1: 7
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 1, 10, 2
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 10
+      Flags:
+      - Found
+      CoverFlags: 16388
+      IsCover: True
+    - Vertices: 2, 10, 11
+      EdgeLink_0_1: 9
+      EdgeLink_1_2: 11
+      EdgeLink_2_0: 18
+      Flags:
+      - Found
+    - Vertices: 10, 12, 11
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 12
+      EdgeLink_2_0: 10
+      Flags:
+      - Found
+      CoverFlags: 16399
+      IsCover: True
+    - Vertices: 11, 12, 13
+      EdgeLink_0_1: 11
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 13
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 11, 13, 14
+      EdgeLink_0_1: 12
+      EdgeLink_1_2: 14
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 13, 15, 14
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 15
+      EdgeLink_2_0: 13
+      Flags:
+      - Found
+      CoverFlags: 16399
+      IsCover: True
+    - Vertices: 15, 16, 14
+      EdgeLink_0_1: 16
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 14
+      Flags:
+      - Found
+    - Vertices: 16, 15, 17
+      EdgeLink_0_1: 15
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 17
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 17, 18, 16
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 16
+      Flags:
+      - Found
+      CoverFlags: 16399
+      IsCover: True
+    - Vertices: 11, 19, 2
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 19
+      EdgeLink_2_0: 10
+      Flags:
+      - Found
+    - Vertices: 2, 19, 4
+      EdgeLink_0_1: 18
+      EdgeLink_1_2: 20
+      EdgeLink_2_0: 2
+      Flags:
+      - Found
+    - Vertices: 19, 20, 4
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 19
+      Flags:
+      - Found
+    - Vertices: 4, 21, 5
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 22
+      EdgeLink_2_0: 3
+      Flags:
+      - Found
+    - Vertices: 5, 21, 22
+      EdgeLink_0_1: 21
+      EdgeLink_1_2: 23
+      EdgeLink_2_0: 63
+      Flags:
+      - Found
+    - Vertices: 21, 23, 22
+      EdgeLink_0_1: 24
+      EdgeLink_1_2: 26
+      EdgeLink_2_0: 22
+      Flags:
+      - Found
+    - Vertices: 23, 21, 24
+      EdgeLink_0_1: 23
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 25
+      Flags:
+      - Found
+    - Vertices: 24, 25, 23
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 24
+      Flags:
+      - Found
+    - Vertices: 23, 26, 22
+      EdgeLink_0_1: 27
+      EdgeLink_1_2: 59
+      EdgeLink_2_0: 23
+      Flags:
+      - Found
+    - Vertices: 26, 23, 27
+      EdgeLink_0_1: 26
+      EdgeLink_1_2: 29
+      EdgeLink_2_0: 28
+      Flags:
+      - Found
+    - Vertices: 27, 28, 26
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 27
+      Flags:
+      - Found
+      CoverFlags: 16399
+      IsCover: True
+    - Vertices: 27, 23, 29
+      EdgeLink_0_1: 27
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 30
+      Flags:
+      - Found
+    - Vertices: 29, 30, 27
+      EdgeLink_0_1: 60
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 29
+      Flags:
+      - Found
+    - Vertices: 105, 93, 95
+      EdgeLink_0_1: 113
+      EdgeLink_1_2: 101
+      EdgeLink_2_0: 126
+      Flags:
+      - Found
+    - Vertices: 29, 32, 31
+      EdgeLink_0_1: 33
+      EdgeLink_1_2: 57
+      EdgeLink_2_0: 60
+      Flags:
+      - Found
+    - Vertices: 32, 29, 33
+      EdgeLink_0_1: 32
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 34
+      Flags:
+      - Found
+    - Vertices: 33, 34, 32
+      EdgeLink_0_1: 36
+      EdgeLink_1_2: 35
+      EdgeLink_2_0: 33
+      Flags:
+      - Found
+    - Vertices: 32, 34, 35
+      EdgeLink_0_1: 34
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 34, 33, 36
+      EdgeLink_0_1: 34
+      EdgeLink_1_2: 41
+      EdgeLink_2_0: 37
+      Flags:
+      - Found
+    - Vertices: 36, 37, 34
+      EdgeLink_0_1: 38
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 36
+      Flags:
+      - Found
+    - Vertices: 36, 38, 37
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 39
+      EdgeLink_2_0: 37
+      Flags:
+      - Found
+    - Vertices: 37, 38, 39
+      EdgeLink_0_1: 38
+      EdgeLink_1_2: 40
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 38, 40, 39
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 39
+      Flags:
+      - Found
+    - Vertices: 36, 33, 41
+      EdgeLink_0_1: 36
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 42
+      Flags:
+      - Found
+    - Vertices: 41, 42, 36
+      EdgeLink_0_1: 43
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 41
+      Flags:
+      - Found
+    - Vertices: 42, 41, 43
+      EdgeLink_0_1: 42
+      EdgeLink_1_2: 44
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 41, 44, 43
+      EdgeLink_0_1: 56
+      EdgeLink_1_2: 45
+      EdgeLink_2_0: 43
+      Flags:
+      - Found
+    - Vertices: 43, 44, 45
+      EdgeLink_0_1: 44
+      EdgeLink_1_2: 46
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 44, 46, 45
+      EdgeLink_0_1: 48
+      EdgeLink_1_2: 47
+      EdgeLink_2_0: 45
+      Flags:
+      - Found
+    - Vertices: 45, 46, 47
+      EdgeLink_0_1: 46
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 46, 44, 48
+      EdgeLink_0_1: 46
+      EdgeLink_1_2: 52
+      EdgeLink_2_0: 49
+      Flags:
+      - Found
+    - Vertices: 48, 49, 46
+      EdgeLink_0_1: 50
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 48
+      Flags:
+      - Found
+    - Vertices: 49, 48, 50
+      EdgeLink_0_1: 49
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 51
+      Flags:
+      - Found
+    - Vertices: 50, 51, 49
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 50
+      Flags:
+      - Found
+    - Vertices: 48, 44, 52
+      EdgeLink_0_1: 48
+      EdgeLink_1_2: 53
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 44, 53, 52
+      EdgeLink_0_1: 54
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 52
+      Flags:
+      - Found
+      CoverFlags: 16512
+      IsCover: True
+    - Vertices: 53, 44, 54
+      EdgeLink_0_1: 53
+      EdgeLink_1_2: 55
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 44, 55, 54
+      EdgeLink_0_1: 56
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 54
+      Flags:
+      - Found
+    - Vertices: 55, 44, 41
+      EdgeLink_0_1: 55
+      EdgeLink_1_2: 44
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 32, 56, 31
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 58
+      EdgeLink_2_0: 32
+      Flags:
+      - Found
+    - Vertices: 31, 56, 57
+      EdgeLink_0_1: 57
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 26, 58, 22
+      EdgeLink_0_1: 62
+      EdgeLink_1_2: 63
+      EdgeLink_2_0: 26
+      Flags:
+      - Found
+    - Vertices: 29, 31, 30
+      EdgeLink_0_1: 32
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 30
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 26, 60, 59
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 68
+      EdgeLink_2_0: 62
+      Flags:
+      - Found
+      CoverFlags: 16431
+      IsCover: True
+    - Vertices: 26, 59, 58
+      EdgeLink_0_1: 61
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 59
+      Flags:
+      - Found
+      CoverFlags: 17984
+      IsCover: True
+    - Vertices: 58, 5, 22
+      EdgeLink_0_1: 64
+      EdgeLink_1_2: 22
+      EdgeLink_2_0: 59
+      Flags:
+      - Found
+    - Vertices: 58, 6, 5
+      EdgeLink_0_1: 65
+      EdgeLink_1_2: 4
+      EdgeLink_2_0: 63
+      Flags:
+      - Found
+    - Vertices: 58, 62, 6
+      EdgeLink_0_1: 66
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 64
+      Flags:
+      - Found
+    - Vertices: 62, 58, 63
+      EdgeLink_0_1: 65
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 67
+      Flags:
+      - Found
+      CoverFlags: 19008
+      IsCover: True
+    - Vertices: 63, 64, 62
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 79
+      EdgeLink_2_0: 66
+      Flags:
+      - Found
+      CoverFlags: 16409
+      IsCover: True
+    - Vertices: 60, 61, 59
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 61
+      Flags:
+      - Found
+      CoverFlags: 16968
+      IsCover: True
+    - Vertices: 64, 66, 65
+      EdgeLink_0_1: 70
+      EdgeLink_1_2: 76
+      EdgeLink_2_0: 79
+      Flags:
+      - Found
+    - Vertices: 66, 64, 67
+      EdgeLink_0_1: 69
+      EdgeLink_1_2: 73
+      EdgeLink_2_0: 71
+      Flags:
+      - Found
+    - Vertices: 67, 68, 66
+      EdgeLink_0_1: 72
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 70
+      Flags:
+      - Found
+    - Vertices: 68, 67, 69
+      EdgeLink_0_1: 71
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 67, 64, 70
+      EdgeLink_0_1: 70
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 74
+      Flags:
+      - Found
+      CoverFlags: 19008
+      IsCover: True
+    - Vertices: 70, 71, 67
+      EdgeLink_0_1: 75
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 73
+      Flags:
+      - Found
+    - Vertices: 71, 70, 72
+      EdgeLink_0_1: 74
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 66, 73, 65
+      EdgeLink_0_1: 77
+      EdgeLink_1_2: 78
+      EdgeLink_2_0: 69
+      Flags:
+      - Found
+    - Vertices: 73, 66, 74
+      EdgeLink_0_1: 76
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 92
+      Flags:
+      - Found
+    - Vertices: 73, 75, 65
+      EdgeLink_0_1: 91
+      EdgeLink_1_2: 81
+      EdgeLink_2_0: 76
+      Flags:
+      - Found
+    - Vertices: 64, 65, 62
+      EdgeLink_0_1: 69
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 67
+      Flags:
+      - Found
+      CoverFlags: 19008
+      IsCover: True
+    - Vertices: 75, 77, 76
+      EdgeLink_0_1: 88
+      EdgeLink_1_2: 84
+      EdgeLink_2_0: 81
+      Flags:
+      - Found
+    - Vertices: 75, 76, 65
+      EdgeLink_0_1: 80
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 78
+      Flags:
+      - Found
+      CoverFlags: 17984
+      IsCover: True
+    - Vertices: 77, 79, 78
+      EdgeLink_0_1: 89
+      EdgeLink_1_2: 83
+      EdgeLink_2_0: 84
+      Flags:
+      - Found
+    - Vertices: 78, 79, 80
+      EdgeLink_0_1: 82
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+      CoverFlags: 16896
+      IsCover: True
+    - Vertices: 77, 78, 76
+      EdgeLink_0_1: 82
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 80
+      Flags:
+      - Found
+      CoverFlags: 16960
+      IsCover: True
+    - Vertices: 77, 82, 81
+      EdgeLink_0_1: 86
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 89
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 82, 77, 83
+      EdgeLink_0_1: 85
+      EdgeLink_1_2: 88
+      EdgeLink_2_0: 87
+      Flags:
+      - Found
+    - Vertices: 83, 84, 82
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 86
+      Flags:
+      - Found
+      CoverFlags: 16388
+      IsCover: True
+    - Vertices: 77, 75, 83
+      EdgeLink_0_1: 80
+      EdgeLink_1_2: 104
+      EdgeLink_2_0: 86
+      Flags:
+      - Found
+    - Vertices: 77, 81, 79
+      EdgeLink_0_1: 85
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 82
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 75, 86, 85
+      EdgeLink_0_1: 91
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 104
+      Flags:
+      - Found
+      CoverFlags: 18688
+      IsCover: True
+    - Vertices: 86, 75, 73
+      EdgeLink_0_1: 90
+      EdgeLink_1_2: 78
+      EdgeLink_2_0: 92
+      Flags:
+      - Found
+    - Vertices: 86, 73, 74
+      EdgeLink_0_1: 91
+      EdgeLink_1_2: 77
+      EdgeLink_2_0: 93
+      Flags:
+      - Found
+    - Vertices: 86, 74, 87
+      EdgeLink_0_1: 92
+      EdgeLink_1_2: 95
+      EdgeLink_2_0: 94
+      Flags:
+      - Found
+    - Vertices: 87, 88, 86
+      EdgeLink_0_1: 96
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 93
+      Flags:
+      - Found
+    - Vertices: 87, 74, 89
+      EdgeLink_0_1: 93
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 87, 90, 88
+      EdgeLink_0_1: 108
+      EdgeLink_1_2: 97
+      EdgeLink_2_0: 94
+      Flags:
+      - Found
+    - Vertices: 88, 90, 91
+      EdgeLink_0_1: 96
+      EdgeLink_1_2: 98
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 90, 92, 91
+      EdgeLink_0_1: 106
+      EdgeLink_1_2: 99
+      EdgeLink_2_0: 97
+      Flags:
+      - Found
+    - Vertices: 91, 92, 93
+      EdgeLink_0_1: 98
+      EdgeLink_1_2: 100
+      EdgeLink_2_0: 113
+      Flags:
+      - Found
+    - Vertices: 92, 94, 93
+      EdgeLink_0_1: 102
+      EdgeLink_1_2: 101
+      EdgeLink_2_0: 99
+      Flags:
+      - Found
+    - Vertices: 93, 94, 95
+      EdgeLink_0_1: 100
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 31
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 94, 92, 96
+      EdgeLink_0_1: 100
+      EdgeLink_1_2: 110
+      EdgeLink_2_0: 103
+      Flags:
+      - Found
+    - Vertices: 96, 97, 94
+      EdgeLink_0_1: 105
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 102
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 75, 85, 83
+      EdgeLink_0_1: 90
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 88
+      Flags:
+      - Found
+      CoverFlags: 16704
+      IsCover: True
+    - Vertices: 96, 98, 97
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 103
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 92, 90, 99
+      EdgeLink_0_1: 98
+      EdgeLink_1_2: 107
+      EdgeLink_2_0: 110
+      Flags:
+      - Found
+    - Vertices: 99, 90, 100
+      EdgeLink_0_1: 106
+      EdgeLink_1_2: 108
+      EdgeLink_2_0: 109
+      Flags:
+      - Found
+    - Vertices: 90, 87, 100
+      EdgeLink_0_1: 96
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 107
+      Flags:
+      - Found
+    - Vertices: 100, 101, 99
+      EdgeLink_0_1: 112
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 107
+      Flags:
+      - Found
+      CoverFlags: 17664
+      IsCover: True
+    - Vertices: 92, 99, 96
+      EdgeLink_0_1: 106
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 102
+      Flags:
+      - Found
+      CoverFlags: 20416
+      IsCover: True
+    - Vertices: 100, 103, 102
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: 115
+      EdgeLink_2_0: 112
+      Flags:
+      - Found
+    - Vertices: 100, 102, 101
+      EdgeLink_0_1: 111
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 109
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 91, 93, 105
+      EdgeLink_0_1: 99
+      EdgeLink_1_2: 31
+      EdgeLink_2_0: 114
+      Flags:
+      - Found
+    - Vertices: 105, 106, 91
+      EdgeLink_0_1: 117
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 113
+      Flags:
+      - Found
+      CoverFlags: 17664
+      IsCover: True
+    - Vertices: 103, 104, 102
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 111
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 105, 108, 107
+      EdgeLink_0_1: 122
+      EdgeLink_1_2: 120
+      EdgeLink_2_0: 117
+      Flags:
+      - Found
+    - Vertices: 105, 107, 106
+      EdgeLink_0_1: 116
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 114
+      Flags:
+      - Found
+      CoverFlags: 16640
+      IsCover: True
+    - Vertices: 108, 110, 109
+      EdgeLink_0_1: 125
+      EdgeLink_1_2: 119
+      EdgeLink_2_0: 120
+      Flags:
+      - Found
+    - Vertices: 109, 110, 111
+      EdgeLink_0_1: 118
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: -1
+      Flags:
+      - Found
+    - Vertices: 108, 109, 107
+      EdgeLink_0_1: 118
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 116
+      Flags:
+      - Found
+      CoverFlags: 16640
+      IsCover: True
+    - Vertices: 108, 113, 112
+      EdgeLink_0_1: 122
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 125
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 113, 108, 105
+      EdgeLink_0_1: 121
+      EdgeLink_1_2: 116
+      EdgeLink_2_0: 123
+      Flags:
+      - Found
+    - Vertices: 113, 105, 114
+      EdgeLink_0_1: 122
+      EdgeLink_1_2: 126
+      EdgeLink_2_0: 124
+      Flags:
+      - Found
+    - Vertices: 114, 115, 113
+      EdgeLink_0_1: -1
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 123
+      Flags:
+      - Found
+      CoverFlags: 16399
+      IsCover: True
+    - Vertices: 108, 112, 110
+      EdgeLink_0_1: 121
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 118
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    - Vertices: 105, 95, 114
+      EdgeLink_0_1: 31
+      EdgeLink_1_2: -1
+      EdgeLink_2_0: 123
+      Flags:
+      - Found
+      CoverFlags: 17344
+      IsCover: True
+    DoorTriangles:
+    - TriangleBeforeDoor: 1
+      Unknown: -460622861
+      Door: 0501E9:Skyrim.esm
+    NavmeshGridDivisor: 4
+    MaxDistanceX: 274.96924
+    MaxDistanceY: 146.27408
+    Min: 1174.8694, 1748.3038, 47.014618
+    Max: 2274.7463, 2333.4001, 100.312
+    NavmeshGrid: 0x0D0000001D001E002000210022002300240025002700280039003A003C000A0000001A001B001C001D001E003B003C003D003E004400080000003E0046004700480049004A004B0073000B0000006600670069006A006B006C006D006E006F007000730014000000180019001D001E002000210022002400250026002700280029002A002B002C002D00370038003C0010000000030004000500150016001700180019001A001B001D003B003E003F0040004100140000003B003E003F00400041004200430045004600470049004C004D004E004F0051005B005C005D005F00150000001F005A005B005C005D005E005F006000610062006300640065006600670069006A006B006C006E007100100000001200130014002C002D002E002F003000310032003300340035003600370038000B00000001000200030004000500060007001200130014001500080000004E0050005100540058005A005B006800120000001F0058005A005B0061006200630065006800710072007400750079007A007B007C007E00090000000A000B000C000D000E000F001000110012000B00000000000100020006000700080009000A000B0012001300090000005000520053005400550056005700580059000C00000056005700580068007400750076007700780079007A007D00
+  MajorFlags:
+  - 0x40000
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B9:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: LargashburBasementToExterior001
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 05AD3C:Skyrim.esm
+  Placement:
+    Position: 1563.8241, 2250.1226, -125.138725
+    Rotation: 0, 0, 3.1415927
+- MutagenObjectType: PlacedObject
+  FormKey: 0057D7:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 0057D6:NightsHarvest.esp
+  TeleportDestination:
+    Door: 0057D4:NightsHarvest.esp
+    Position: 143360, 37408, -13856
+  Placement:
+    Position: 1568, 1920, 32
+    Rotation: 0, 0, 3.1415927
+- MutagenObjectType: PlacedObject
+  FormKey: 0057D8:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q02_SingsHollow
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 00003B:Skyrim.esm
+  Placement:
+    Position: 1360.981, 1879.6046, 100.25255
+- MutagenObjectType: PlacedObject
+  FormKey: 0057D9:NightsHarvest.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: NHV_Mk_Q02_VeyraHollow
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 00003B:Skyrim.esm
+  Placement:
+    Position: 1568, 2048, 64
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 0051AD:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1811.4812, 1905.3717, 110.36227
+    Rotation: -0.007902136, -0.00033660093, 5.190969
+- MutagenObjectType: PlacedObject
+  FormKey: 0051AE:NightsHarvest.esp
+  Base: 0F5D0A:Skyrim.esm
+  Placement:
+    Position: 1743.9714, 2072.6816, 111.35721
+    Rotation: -1.646328, -1.2980868, 3.2423592
+- MutagenObjectType: PlacedObject
+  FormKey: 0051AF:NightsHarvest.esp
+  Base: 064B31:Skyrim.esm
+  Placement:
+    Position: 1949.4313, 1860.3728, 112.02612
+    Rotation: 0, 0, 0.18621838
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B0:NightsHarvest.esp
+  Base: 03A1EC:Skyrim.esm
+  Placement:
+    Position: 1607.0392, 2003.2203, 278.1698
+    Rotation: 3.1415927, 0, 3.1415927
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B1:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1804.0103, 1819.3584, 65.37817
+    Rotation: 0.00061320764, -0.0014942087, 3.356262
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B2:NightsHarvest.esp
+  Base: 03A1EF:Skyrim.esm
+  Placement:
+    Position: 1174.6068, 2174.9607, 311.51923
+    Rotation: 0, 0, 3.333191
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B3:NightsHarvest.esp
+  Base: 03807B:Skyrim.esm
+  Placement:
+    Position: 1737.306, 2067.0806, 155.36374
+    Rotation: -0.0004933808, 0.00019353128, 1.1128064
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B4:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2071.979, 2147.4177, 106.17552
+    Rotation: 0.0014505251, -0.008223318, 1.9006723
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B5:NightsHarvest.esp
+  Base: 10C0E3:Skyrim.esm
+  Scale: 0.79
+  Placement:
+    Position: 1748.6259, 1866.7234, 177.80228
+    Rotation: -1.5707964, 0.0042047645, 1.5707964
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B6:NightsHarvest.esp
+  Base: 02702E:Skyrim.esm
+  Placement:
+    Position: 2057.6602, 2170.1543, 50.36722
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B7:NightsHarvest.esp
+  Base: 03A1EC:Skyrim.esm
+  Placement:
+    Position: 1878.3729, 1948.1968, 278.1698
+    Rotation: -3.1415927, -8.530034E-08, 4.491591
+- MutagenObjectType: PlacedObject
+  FormKey: 0051B8:NightsHarvest.esp
+  Base: 034C5D:Skyrim.esm
+  Placement:
+    Position: 2061.7585, 2178.9177, 66.54054
+    Rotation: -0.0019326177, -0.0043571084, 1.200081
+- MutagenObjectType: PlacedObject
+  FormKey: 0051BA:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 1455.5415, 2027.0632, 199.96082
+    Rotation: 2.3563206, 1.5295069, 3.9266927
+- MutagenObjectType: PlacedObject
+  FormKey: 0051BB:NightsHarvest.esp
+  Base: 01B1A5:Skyrim.esm
+  Placement:
+    Position: 1970.5627, 2284.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 0051BC:NightsHarvest.esp
+  Base: 03A1EF:Skyrim.esm
+  Placement:
+    Position: 1171.7847, 1851.5438, 302.85437
+- MutagenObjectType: PlacedObject
+  FormKey: 0051BD:NightsHarvest.esp
+  Base: 054181:Skyrim.esm
+  Placement:
+    Position: 1739.3735, 2086.4084, 165
+- MutagenObjectType: PlacedObject
+  FormKey: 0051BE:NightsHarvest.esp
+  Base: 042D3D:Skyrim.esm
+  Placement:
+    Position: 1969.6604, 1865.2952, 49.77781
+    Rotation: 0, 0, 0.2853995
+- MutagenObjectType: PlacedObject
+  FormKey: 0051BF:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2040.3505, 2115.7798, 128.36674
+    Rotation: 0, 0, 4.083192
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C0:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1825.1908, 1773.0048, 278.99994
+    Rotation: 2.7831967, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C1:NightsHarvest.esp
+  Base: 042D44:Skyrim.esm
+  Placement:
+    Position: 1744.7079, 2222.6875, 48
+    Rotation: 0, 0, 1.5707964
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C2:NightsHarvest.esp
+  Base: 01E3A3:Skyrim.esm
+  Placement:
+    Position: 1798.858, 2218.3367, 109.967026
+    Rotation: 0, 0, 4.5831904
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C3:NightsHarvest.esp
+  Base: 01C9CC:Skyrim.esm
+  Placement:
+    Position: 2168.8767, 1797.0026, 25.141228
+    Rotation: 0, 0, 1.2800013
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C4:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2069.232, 2104.963, 106.20217
+    Rotation: 0.007945167, -0.010174422, 1.3005694
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C5:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1985.4302, 1879.2722, 112.026115
+    Rotation: 0, 0, 5.2331324
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C6:NightsHarvest.esp
+  Base: 097F54:Skyrim.esm
+  Scale: 0.54
+  Placement:
+    Position: 1744.4465, 2173.9338, 124.35278
+    Rotation: -0.29999915, 0.0007077293, 1.5730842
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C7:NightsHarvest.esp
+  Base: 02702E:Skyrim.esm
+  Placement:
+    Position: 2057.6602, 2106.1543, 50.36722
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C8:NightsHarvest.esp
+  Base: 01E3A3:Skyrim.esm
+  Placement:
+    Position: 2070.1516, 2216.8123, 128.36674
+    Rotation: 0, 0, 4.883189
+- MutagenObjectType: PlacedObject
+  FormKey: 0051C9:NightsHarvest.esp
+  Base: 03A1EC:Skyrim.esm
+  Placement:
+    Position: 1963.7043, 2184.525, 278.1698
+    Rotation: -3.1415927, -8.530034E-08, 4.491591
+- MutagenObjectType: PlacedObject
+  FormKey: 0051CA:NightsHarvest.esp
+  Base: 06A07E:Skyrim.esm
+  LeveledItemBaseObject: 03A06B:Skyrim.esm
+  Placement:
+    Position: 1770.3606, 1896.6426, 160.47025
+- MutagenObjectType: PlacedObject
+  FormKey: 0051CB:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 1798.7902, 2067.306, 64.97301
+    Rotation: 0, 0, 0.75289154
+- MutagenObjectType: PlacedObject
+  FormKey: 0051CC:NightsHarvest.esp
+  Base: 042D44:Skyrim.esm
+  Placement:
+    Position: 1806.4387, 1859.5753, 48
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 0051CD:NightsHarvest.esp
+  Base: 03133C:Skyrim.esm
+  Placement:
+    Position: 2062.1653, 2120.8606, 66.71292
+    Rotation: 0.0036049879, 0.002113805, 4.683257
+- MutagenObjectType: PlacedObject
+  FormKey: 0051CE:NightsHarvest.esp
+  Base: 08943F:Skyrim.esm
+  Placement:
+    Position: 1583.8887, 2134.6028, 47.944244
+    Rotation: -0.060000066, 0.029999916, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0051CF:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 2072.4727, 2239.4634, 111.17536
+    Rotation: 0.0061658663, 0.0041388567, 6.283179
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D0:NightsHarvest.esp
+  Base: 0224FD:Skyrim.esm
+  Placement:
+    Position: 1446.039, 2303.8428, 381.8222
+    Rotation: -2.841242, -0.2741012, 6.07638
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D1:NightsHarvest.esp
+  Base: 08836B:Skyrim.esm
+  Placement:
+    Position: 1431.0356, 1747.3058, 57.153748
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D2:NightsHarvest.esp
+  Base: 097F68:Skyrim.esm
+  Placement:
+    Position: 1760.0154, 1843.1255, 76.1086
+    Rotation: 0, 0, 4.66319
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D3:NightsHarvest.esp
+  Base: 01F24A:Skyrim.esm
+  Placement:
+    Position: 1970.9398, 1846.3889, 109.202354
+    Rotation: 0, 0, 0.2853995
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D4:NightsHarvest.esp
+  Base: 0533D1:Skyrim.esm
+  Placement:
+    Position: 1298.2535, 2033.861, 264.28876
+    Rotation: -1.4167292, 0.028859124, 1.5752774
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D5:NightsHarvest.esp
+  Base: 01E3A3:Skyrim.esm
+  Placement:
+    Position: 1802.1919, 2262.895, 155
+    Rotation: 0, 0, 4.78319
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D6:NightsHarvest.esp
+  Base: 097F6E:Skyrim.esm
+  Scale: 0.9
+  Placement:
+    Position: 1746.1826, 2245.075, 127.17378
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D7:NightsHarvest.esp
+  Base: 10C0E3:Skyrim.esm
+  Placement:
+    Position: 1206.1012, 2042.9779, 100.311966
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D8:NightsHarvest.esp
+  Base: 0533D1:Skyrim.esm
+  Placement:
+    Position: 1910.9977, 2025.9719, 264.28876
+    Rotation: -1.4167292, 0.028859124, 1.5752774
+- MutagenObjectType: PlacedObject
+  FormKey: 0051D9:NightsHarvest.esp
+  Base: 01B1A4:Skyrim.esm
+  Placement:
+    Position: 1458.5627, 2028.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 0051DA:NightsHarvest.esp
+  Base: 06A07E:Skyrim.esm
+  LeveledItemBaseObject: 03A1BE:Skyrim.esm
+  Placement:
+    Position: 1790.621, 2132.8384, 154.99997
+- MutagenObjectType: PlacedObject
+  FormKey: 0051DB:NightsHarvest.esp
+  Base: 042BE8:Skyrim.esm
+  Placement:
+    Position: 1200.8263, 1869.3868, 100.25264
+    Rotation: 0, 0, 2.8115923
+- MutagenObjectType: PlacedObject
+  FormKey: 0051DC:NightsHarvest.esp
+  Base: 022503:Skyrim.esm
+  Placement:
+    Position: 1654.7258, 2238.3262, 316.12415
+    Rotation: -3.1415925, 0, 0.24160014
+- MutagenObjectType: PlacedObject
+  FormKey: 0051DD:NightsHarvest.esp
+  Base: 0319E5:Skyrim.esm
+  Placement:
+    Position: 1755.6261, 2113.916, 159.26898
+    Rotation: 0.009221391, 0.3586688, 0.01829848
+- MutagenObjectType: PlacedObject
+  FormKey: 0051DE:NightsHarvest.esp
+  Base: 042D44:Skyrim.esm
+  Placement:
+    Position: 1797.3916, 2093.304, 48
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 0051DF:NightsHarvest.esp
+  Base: 01B1AC:Skyrim.esm
+  Placement:
+    Position: 2226.5627, 2284.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E0:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1803.4377, 1853.0966, 65.3782
+    Rotation: 0.0025098568, -0.000808969, 3.503734
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E1:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1537.3083, 2119.5662, 301.98138
+    Rotation: -3.1415925, 0, 3.2248056
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E2:NightsHarvest.esp
+  Base: 097F68:Skyrim.esm
+  Placement:
+    Position: 1754.8685, 1888.0392, 76.1086
+    Rotation: 0, 0, 1.5731939
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E3:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 1783.7605, 2181.3682, 270.54047
+    Rotation: 0, 0, 3.2831926
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E4:NightsHarvest.esp
+  Base: 03A1EC:Skyrim.esm
+  Placement:
+    Position: 2110.9097, 2009.9421, 278.1698
+    Rotation: 3.1415925, 0.14999944, 4.491591
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E5:NightsHarvest.esp
+  Base: 042D2F:Skyrim.esm
+  Placement:
+    Position: 1292.0181, 1777.9303, 100.25258
+    Rotation: 0, 0, 4.9823895
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E6:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 1759.1823, 2024.4384, 199.96082
+    Rotation: 2.3563206, 1.5295069, 3.9266927
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E7:NightsHarvest.esp
+  Base: 01ACBA:Skyrim.esm
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080D576484000B80145BA9E1740060072B900E8542C000000800000008063A5C93F
+  Placement:
+    Position: 1811.0393, 2065.6206, 122.266426
+    Rotation: 1.3665028, 0.11873197, 6.2585044
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E8:NightsHarvest.esp
+  Base: 01B1AB:Skyrim.esm
+  Placement:
+    Position: 2226.5627, 1772.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 0051E9:NightsHarvest.esp
+  Base: 01B1A7:Skyrim.esm
+  Placement:
+    Position: 1970.5627, 1772.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 0051EA:NightsHarvest.esp
+  Base: 01ACBC:Skyrim.esm
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080D576484000E20045BA9E1740060072B900E8542C000000800000008063A5C93F
+  Placement:
+    Position: 1811.8757, 2089.76, 111.12466
+    Rotation: 0.89724994, 0.09535172, 6.207652
+- MutagenObjectType: PlacedObject
+  FormKey: 0051EB:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 1815.791, 1869.2152, 155.23009
+    Rotation: 0, 0, 0.7418828
+- MutagenObjectType: PlacedObject
+  FormKey: 0051EC:NightsHarvest.esp
+  Base: 10C0E3:Skyrim.esm
+  Placement:
+    Position: 1200.0038, 2183.6443, 100.311966
+- MutagenObjectType: PlacedObject
+  FormKey: 0051ED:NightsHarvest.esp
+  Base: 022503:Skyrim.esm
+  Placement:
+    Position: 1480.7438, 2247.7144, 316.12415
+    Rotation: -3.1415925, 0, 0.64159906
+- MutagenObjectType: PlacedObject
+  FormKey: 0051EE:NightsHarvest.esp
+  Base: 088241:Skyrim.esm
+  Radius: -126.0508
+  LightData:
+    FadeOffset: 1.5588005
+    ShadowDepthBias: 1
+  Placement:
+    Position: 1979.3729, 1865.8923, 202.76639
+- MutagenObjectType: PlacedObject
+  FormKey: 0051EF:NightsHarvest.esp
+  Base: 034C5D:Skyrim.esm
+  Placement:
+    Position: 2058.7908, 2191.4104, 66.54054
+    Rotation: -0.0033127756, -0.0033639292, 6.2831087
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F0:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2071.123, 2132.9841, 106.17464
+    Rotation: 0.0040173056, -0.007639866, 1.5006634
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F1:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1651.5977, 2182.5378, 284.29288
+    Rotation: -3.1415925, 0, 4.8416014
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F2:NightsHarvest.esp
+  Base: 092B10:Skyrim.esm
+  Scale: 0.79
+  Placement:
+    Position: 1738.2759, 2207.394, 175.71413
+    Rotation: 0, -1.5707964, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F3:NightsHarvest.esp
+  Base: 03133C:Skyrim.esm
+  Placement:
+    Position: 2064.5823, 2141.4497, 66.71624
+    Rotation: -0.0016477254, -0.001371203, 0.53834355
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F4:NightsHarvest.esp
+  Base: 042D2E:Skyrim.esm
+  Placement:
+    Position: 1939.2944, 1915.5219, 51.386395
+    Rotation: 0, 0, 2.641594
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F5:NightsHarvest.esp
+  Base: 01B1A5:Skyrim.esm
+  Placement:
+    Position: 1458.5627, 2284.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F6:NightsHarvest.esp
+  Base: 042D2E:Skyrim.esm
+  Placement:
+    Position: 2012.4049, 1889.9454, 49.820213
+    Rotation: 0, 0, 4.2123904
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F7:NightsHarvest.esp
+  Base: 01B1A8:Skyrim.esm
+  Placement:
+    Position: 2226.5627, 2028.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F8:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1628.5206, 2128.9795, 301.98138
+    Rotation: -3.1415925, 0, 1.0416101
+- MutagenObjectType: PlacedObject
+  FormKey: 0051F9:NightsHarvest.esp
+  Base: 034C5D:Skyrim.esm
+  Placement:
+    Position: 2061.686, 2205.02, 66.5419
+    Rotation: -0.0045529483, -0.0010237875, 2.302413
+- MutagenObjectType: PlacedObject
+  FormKey: 0051FA:NightsHarvest.esp
+  Base: 0224FE:Skyrim.esm
+  Placement:
+    Position: 1568.8566, 2400.9993, 253.50385
+    Rotation: -1.6012464, 0.050765615, 1.5214297
+- MutagenObjectType: PlacedObject
+  FormKey: 0051FB:NightsHarvest.esp
+  Base: 042D44:Skyrim.esm
+  Placement:
+    Position: 1753.6582, 1858.5065, 51.709057
+    Rotation: 0, 0, 1.5707964
+- MutagenObjectType: PlacedObject
+  FormKey: 0051FC:NightsHarvest.esp
+  Base: 0EF0D7:Skyrim.esm
+  Placement:
+    Position: 1280, 2112, -95.6378
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 0051FD:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1814.9297, 1871.6951, 65.3782
+    Rotation: -0.0018760811, 0.0023593933, 0.88330513
+- MutagenObjectType: PlacedObject
+  FormKey: 0051FE:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1946.5968, 1885.4891, 112.02612
+    Rotation: 0, 0, 4.8802314
+- MutagenObjectType: PlacedObject
+  FormKey: 0051FF:NightsHarvest.esp
+  Base: 097F6E:Skyrim.esm
+  Scale: 0.9
+  Placement:
+    Position: 1759.766, 2189.9246, 81.97601
+    Rotation: 0, 0, 4.8081884
+- MutagenObjectType: PlacedObject
+  FormKey: 005200:NightsHarvest.esp
+  Base: 097F54:Skyrim.esm
+  Scale: 0.54
+  Placement:
+    Position: 1803.4462, 2047.3491, 123.55867
+    Rotation: 0, 0, 2.7181911
+- MutagenObjectType: PlacedObject
+  FormKey: 005201:NightsHarvest.esp
+  Base: 03A1EF:Skyrim.esm
+  Placement:
+    Position: 2252.3955, 1879.7286, 326.04468
+    Rotation: 0, 0, 0.42500052
+- MutagenObjectType: PlacedObject
+  FormKey: 005202:NightsHarvest.esp
+  Base: 03807B:Skyrim.esm
+  Placement:
+    Position: 1740.5037, 2049.8948, 155.35123
+    Rotation: 5.55639E-05, 0.0013137539, 0.025589315
+- MutagenObjectType: PlacedObject
+  FormKey: 005203:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1611.2023, 1789.3077, 47.517345
+    Rotation: 0, 0, 0.4
+- MutagenObjectType: PlacedObject
+  FormKey: 005204:NightsHarvest.esp
+  Base: 0533D1:Skyrim.esm
+  Placement:
+    Position: 1695.3644, 1786.1744, 199.96082
+    Rotation: -1.4966968, 0.29922506, 0.021879606
+- MutagenObjectType: PlacedObject
+  FormKey: 005205:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1675.5095, 2139.962, 302.97028
+    Rotation: -3.0999918, -0.19999945, 4.0831914
+- MutagenObjectType: PlacedObject
+  FormKey: 005206:NightsHarvest.esp
+  Base: 097F6E:Skyrim.esm
+  Scale: 0.89
+  Placement:
+    Position: 1799.8285, 2249.8005, 81.46988
+    Rotation: 0, 0, 6.1331854
+- MutagenObjectType: PlacedObject
+  FormKey: 005207:NightsHarvest.esp
+  Base: 0EF0D7:Skyrim.esm
+  Placement:
+    Position: 1280, 1856, -95.6378
+- MutagenObjectType: PlacedObject
+  FormKey: 005208:NightsHarvest.esp
+  Base: 05AD5B:Skyrim.esm
+  Scale: 0.65
+  Placement:
+    Position: 1615.8027, 2024.187, 235.63347
+- MutagenObjectType: PlacedObject
+  FormKey: 005209:NightsHarvest.esp
+  Base: 000003:Skyrim.esm
+  Placement:
+    Position: 1580.5073, 2546.9941, 280.4903
+    Rotation: 0, 0, 3.8581924
+- MutagenObjectType: PlacedObject
+  FormKey: 00520A:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 1804.062, 2099.7017, 64.97301
+    Rotation: 0, 0, 1.5706258
+- MutagenObjectType: PlacedObject
+  FormKey: 00520B:NightsHarvest.esp
+  Base: 01ACB9:Skyrim.esm
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080D57648400035F644BA9E1740060072B900E8542C000000800000008063A5C93F
+  Placement:
+    Position: 1750.5303, 1825.2416, 120.88842
+    Rotation: 1.5707964, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00520C:NightsHarvest.esp
+  Base: 01AFC3:Skyrim.esm
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080D5764840006EE144BA9E1740060072B900E8542C000000800000008063A5C93F
+  Placement:
+    Position: 1750.5505, 1835.083, 120.69897
+    Rotation: 1.5707964, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00520D:NightsHarvest.esp
+  Base: 0318FA:Skyrim.esm
+  Placement:
+    Position: 1809.5333, 2127.381, 109.97122
+    Rotation: 0, 0, 5.0736885
+- MutagenObjectType: PlacedObject
+  FormKey: 00520E:NightsHarvest.esp
+  Base: 08943F:Skyrim.esm
+  Placement:
+    Position: 1577.9908, 2250.258, 53.758133
+    Rotation: -0.060000066, 0.029999916, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00520F:NightsHarvest.esp
+  Base: 097F68:Skyrim.esm
+  Placement:
+    Position: 1754.5802, 1864.2366, 83.73678
+    Rotation: -0.0020260923, 0.11998286, 6.26626
+- MutagenObjectType: PlacedObject
+  FormKey: 005210:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2080.6357, 2088.451, 128.36674
+    Rotation: 0, 0, 1.2
+- MutagenObjectType: PlacedObject
+  FormKey: 005211:NightsHarvest.esp
+  Base: 0533BE:Skyrim.esm
+  Placement:
+    Position: 1280, 1856, 96.3622
+    Rotation: 0, 0, 3.1415927
+- MutagenObjectType: PlacedObject
+  FormKey: 005212:NightsHarvest.esp
+  Base: 01B1A9:Skyrim.esm
+  Placement:
+    Position: 1202.5627, 2284.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 005213:NightsHarvest.esp
+  Base: 097F64:Skyrim.esm
+  Scale: 0.9
+  Placement:
+    Position: 1763.1404, 1807.746, 88.499954
+    Rotation: -0.47997665, -0.0049853097, 1.5612202
+- MutagenObjectType: PlacedObject
+  FormKey: 005214:NightsHarvest.esp
+  Base: 0691D2:Skyrim.esm
+  Radius: 211.71378
+  LightData:
+    FadeOffset: 1.4316711
+    ShadowDepthBias: 50
+  Placement:
+    Position: 1650.9349, 2053.7944, 135.23502
+- MutagenObjectType: PlacedObject
+  FormKey: 005215:NightsHarvest.esp
+  Base: 034C5D:Skyrim.esm
+  Placement:
+    Position: 2063.4573, 2235.3997, 66.54057
+    Rotation: -0.0034872217, 9.0249116E-05, 2.3000515
+- MutagenObjectType: PlacedObject
+  FormKey: 005216:NightsHarvest.esp
+  Base: 042D44:Skyrim.esm
+  Placement:
+    Position: 1799.7483, 2227.3423, 48
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 005217:NightsHarvest.esp
+  Base: 02F83C:Skyrim.esm
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080D576484000F9E244BA9E1740060072B900E8542C000000800000008063A5C93F
+  Placement:
+    Position: 1747.363, 1847.8247, 121.43975
+    Rotation: 2.5957985, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 005218:NightsHarvest.esp
+  Base: 01F24A:Skyrim.esm
+  Placement:
+    Position: 1265.6871, 2190.3767, 178.07784
+    Rotation: 0, 0, 0.2853995
+- MutagenObjectType: PlacedObject
+  FormKey: 005219:NightsHarvest.esp
+  Base: 01F24A:Skyrim.esm
+  Placement:
+    Position: 1194.7578, 1778.5144, 162.62634
+    Rotation: 0, 0, 0.2853995
+- MutagenObjectType: PlacedObject
+  FormKey: 00521A:NightsHarvest.esp
+  Base: 097F64:Skyrim.esm
+  Scale: 0.9
+  Placement:
+    Position: 1753.8085, 1896.0369, 91.506485
+    Rotation: -0.92957556, -0.025352262, 4.671348
+- MutagenObjectType: PlacedObject
+  FormKey: 00521B:NightsHarvest.esp
+  Base: 06CF36:Skyrim.esm
+  Placement:
+    Position: 2111.3208, 2145.297, 53.56018
+    Rotation: 0, 0, 4.7081895
+- MutagenObjectType: PlacedObject
+  FormKey: 00521C:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 2101.4656, 1759.3965, 44.679962
+    Rotation: 0, 0, 3.9831917
+- MutagenObjectType: PlacedObject
+  FormKey: 00521D:NightsHarvest.esp
+  Base: 0533BF:Skyrim.esm
+  Placement:
+    Position: 1280, 2112, 96.3622
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 00521E:NightsHarvest.esp
+  Base: 0774C8:Skyrim.esm
+  Scale: 0.9
+  Placement:
+    Position: 2185.5703, 1844.5396, 57.349102
+    Rotation: -0.044873536, 0.1113316, 5.97069
+- MutagenObjectType: PlacedObject
+  FormKey: 00521F:NightsHarvest.esp
+  Base: 01F24A:Skyrim.esm
+  Placement:
+    Position: 2035.6509, 2170.912, 128.36674
+- MutagenObjectType: PlacedObject
+  FormKey: 005220:NightsHarvest.esp
+  Base: 034C5D:Skyrim.esm
+  Placement:
+    Position: 2060.5964, 2221.769, 66.545364
+    Rotation: 0.0017146079, -0.0021472748, 0.89999914
+- MutagenObjectType: PlacedObject
+  FormKey: 005221:NightsHarvest.esp
+  Base: 06A07E:Skyrim.esm
+  LeveledItemBaseObject: 03A1BE:Skyrim.esm
+  Placement:
+    Position: 1734.5739, 2179.241, 154.99997
+- MutagenObjectType: PlacedObject
+  FormKey: 005222:NightsHarvest.esp
+  Base: 02702E:Skyrim.esm
+  Placement:
+    Position: 2057.6602, 2234.1543, 50.36722
+- MutagenObjectType: PlacedObject
+  FormKey: 005223:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 2072.5825, 2266.7432, 111.172195
+    Rotation: -0.0027176042, 0.000508478, 6.283163
+- MutagenObjectType: PlacedObject
+  FormKey: 005224:NightsHarvest.esp
+  Base: 01AE13:Skyrim.esm
+  Placement:
+    Position: 1497.3358, 1923.7498, -103.261444
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 005225:NightsHarvest.esp
+  Base: 034C5D:Skyrim.esm
+  Placement:
+    Position: 2058.9028, 2165.2927, 66.54058
+    Rotation: -0.0041427384, -0.002650447, 0.19989663
+- MutagenObjectType: PlacedObject
+  FormKey: 005226:NightsHarvest.esp
+  Base: 01B1A4:Skyrim.esm
+  Placement:
+    Position: 1714.5627, 2028.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 005227:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 1163.4825, 2038.4347, 199.96082
+    Rotation: 0.045436665, 0.999328, 1.6248033
+- MutagenObjectType: PlacedObject
+  FormKey: 005228:NightsHarvest.esp
+  Base: 097F68:Skyrim.esm
+  Placement:
+    Position: 1761.2319, 1870.7644, 93.72176
+    Rotation: 0.20950666, 0.12486507, 4.7021894
+- MutagenObjectType: PlacedObject
+  FormKey: 005229:NightsHarvest.esp
+  Base: 01ACB7:Skyrim.esm
+  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008034AE48400000B8444A2039400000A0B60000C028000000800000008045FCCA3F
+  Placement:
+    Position: 1760.2119, 1878.5378, 123.694954
+    Rotation: 1.5707964, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00522A:NightsHarvest.esp
+  Base: 01B1A7:Skyrim.esm
+  Placement:
+    Position: 1472, 1760, 32
+- MutagenObjectType: PlacedObject
+  FormKey: 00522B:NightsHarvest.esp
+  Base: 022501:Skyrim.esm
+  Placement:
+    Position: 1614.9009, 2146.8994, 296.05157
+    Rotation: 2.0421834, 1.061904, 3.509018
+- MutagenObjectType: PlacedObject
+  FormKey: 00522C:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1235.3063, 1786.378, 162.25916
+    Rotation: 0, 0, 4.083192
+- MutagenObjectType: PlacedObject
+  FormKey: 00522D:NightsHarvest.esp
+  Base: 01B1A6:Skyrim.esm
+  Placement:
+    Position: 1202.5627, 2028.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 00522E:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 1806.409, 1825.6349, 155.22403
+    Rotation: 0, 0, 1.9191155
+- MutagenObjectType: PlacedObject
+  FormKey: 00522F:NightsHarvest.esp
+  Base: 10C0E3:Skyrim.esm
+  Scale: 0.84
+  Placement:
+    Position: 1354.4045, 1971.84, 119.62435
+    Rotation: 0, -1.5707964, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 005230:NightsHarvest.esp
+  Base: 06E7A4:Skyrim.esm
+  Placement:
+    Position: 2078.3743, 2124.2158, 129.80695
+    Rotation: 0, 0, 5.2931867
+- MutagenObjectType: PlacedObject
+  FormKey: 005231:NightsHarvest.esp
+  Base: 01AE13:Skyrim.esm
+  Placement:
+    Position: 1498.9037, 1841.626, -103.261444
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 005232:NightsHarvest.esp
+  Base: 01B1AA:Skyrim.esm
+  Placement:
+    Position: 1202.5627, 1772.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 005233:NightsHarvest.esp
+  Base: 01B1A5:Skyrim.esm
+  Placement:
+    Position: 1714.5627, 2284.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 005234:NightsHarvest.esp
+  Base: 01E3A3:Skyrim.esm
+  Placement:
+    Position: 1799.8729, 2262.3062, 109.967026
+    Rotation: 0, 0, 4.78319
+- MutagenObjectType: PlacedObject
+  FormKey: 005235:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1493.6187, 2182.7876, 292.77863
+    Rotation: -3.1415925, 0, 5.041601
+- MutagenObjectType: PlacedObject
+  FormKey: 005236:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2068.979, 2120.2087, 106.17415
+    Rotation: 0.0030195764, -0.0076713786, 1.6006582
+- MutagenObjectType: PlacedObject
+  FormKey: 005237:NightsHarvest.esp
+  Base: 0D790C:Skyrim.esm
+  Placement:
+    Position: 2075.5422, 2060.2786, 66.36722
+- MutagenObjectType: PlacedObject
+  FormKey: 005238:NightsHarvest.esp
+  Base: 02702D:Skyrim.esm
+  Placement:
+    Position: 2057.6602, 2234.1543, 50.36722
+- MutagenObjectType: PlacedObject
+  FormKey: 005239:NightsHarvest.esp
+  Base: 042D32:Skyrim.esm
+  Placement:
+    Position: 1214.2346, 1792.4869, 100.252594
+- MutagenObjectType: PlacedObject
+  FormKey: 00523A:NightsHarvest.esp
+  Base: 01B1A4:Skyrim.esm
+  Placement:
+    Position: 1970.5627, 2028.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 00523B:NightsHarvest.esp
+  Base: 02D847:Skyrim.esm
+  Placement:
+    Position: 2040.2899, 2083.9128, 130.36674
+    Rotation: 0, 0, 3.053276
+- MutagenObjectType: PlacedObject
+  FormKey: 00523C:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1446.8046, 2201.726, 302.03015
+    Rotation: -3.1415925, 0, 1.8416091
+- MutagenObjectType: PlacedObject
+  FormKey: 00523D:NightsHarvest.esp
+  Base: 03133B:Skyrim.esm
+  Placement:
+    Position: 2070.7205, 2214.9197, 111.61756
+    Rotation: -1.5767857, -0.008000877, 0.3109288
+- MutagenObjectType: PlacedObject
+  FormKey: 00523E:NightsHarvest.esp
+  Base: 03A1EC:Skyrim.esm
+  Placement:
+    Position: 1362.7207, 1981.3156, 278.1698
+    Rotation: -3.1415925, -3.8245986E-08, 2.4415903
+- MutagenObjectType: PlacedObject
+  FormKey: 00523F:NightsHarvest.esp
+  Base: 0533D1:Skyrim.esm
+  Placement:
+    Position: 1791.479, 2304.464, 199.96082
+    Rotation: -1.8683747, -0.8899603, 0.25983828
+- MutagenObjectType: PlacedObject
+  FormKey: 005240:NightsHarvest.esp
+  Base: 0533D2:Skyrim.esm
+  Placement:
+    Position: 1935.9812, 2266.1025, 264.28876
+    Rotation: -1.4167292, 0.028859124, 1.5752774
+- MutagenObjectType: PlacedObject
+  FormKey: 005241:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 2072.5908, 2266.7754, 106.10873
+    Rotation: -0.0030046985, -0.0027425517, 6.2828946
+- MutagenObjectType: PlacedObject
+  FormKey: 005242:NightsHarvest.esp
+  Base: 0224FD:Skyrim.esm
+  Placement:
+    Position: 1687.7034, 2293.1438, 364.37457
+    Rotation: -2.9999924, 0, 4.2831917
+- MutagenObjectType: PlacedObject
+  FormKey: 005243:NightsHarvest.esp
+  Base: 10D9C1:Skyrim.esm
+  Placement:
+    Position: 1260.4161, 2185.602, 100.311905
+- MutagenObjectType: PlacedObject
+  FormKey: 005244:NightsHarvest.esp
+  Base: 01AF90:Skyrim.esm
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080D5764840009A0045BA9E1740060072B900E8542C000000800000008063A5C93F
+  Placement:
+    Position: 1754.8649, 1815.0018, 120.900955
+    Rotation: 1.5707964, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 005245:NightsHarvest.esp
+  Base: 01AFF2:Skyrim.esm
+  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008034AE4840000EDA444A2039400000A0B60000C028000000800000008045FCCA3F
+  Placement:
+    Position: 1752.097, 1864.8322, 123.9023
+    Rotation: 1.5707964, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 005246:NightsHarvest.esp
+  Base: 088241:Skyrim.esm
+  Radius: -154.86491
+  LightData:
+    FadeOffset: 0.5443392
+    ShadowDepthBias: 1
+  Placement:
+    Position: 1230.2675, 1789.3726, 194.87431
+- MutagenObjectType: PlacedObject
+  FormKey: 005247:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 2057.197, 2031.133, 199.96082
+    Rotation: -1.5999956, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 005248:NightsHarvest.esp
+  Base: 088241:Skyrim.esm
+  Radius: -126.0508
+  LightData:
+    FadeOffset: 1.5588005
+    ShadowDepthBias: 1
+  Placement:
+    Position: 1262.8047, 2174.7437, 226.58322
+- MutagenObjectType: PlacedObject
+  FormKey: 005249:NightsHarvest.esp
+  Base: 0691D2:Skyrim.esm
+  Radius: 192.48508
+  LightData:
+    FadeOffset: 0.8919537
+    ShadowDepthBias: 20.131233
+  Placement:
+    Position: 2054.482, 2171.0032, 200.4464
+- MutagenObjectType: PlacedObject
+  FormKey: 00524A:NightsHarvest.esp
+  Base: 01B1A7:Skyrim.esm
+  Placement:
+    Position: 1714.5627, 1772.8171, 39.56015
+- MutagenObjectType: PlacedObject
+  FormKey: 00524B:NightsHarvest.esp
+  Base: 012FEB:Skyrim.esm
+  Scale: 0.83
+  Placement:
+    Position: 1742.8055, 2126.8215, 64.973015
+- MutagenObjectType: PlacedObject
+  FormKey: 00524C:NightsHarvest.esp
+  Base: 02D847:Skyrim.esm
+  Placement:
+    Position: 2059.4768, 2055.512, 130.36673
+    Rotation: 0, 0, 2.4310713
+- MutagenObjectType: PlacedObject
+  FormKey: 00524D:NightsHarvest.esp
+  Base: 042D44:Skyrim.esm
+  Placement:
+    Position: 1744.7671, 2092.7483, 48
+    Rotation: 0, 0, 1.5707964
+- MutagenObjectType: PlacedObject
+  FormKey: 00524E:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1812.5646, 1833.7191, 65.37354
+    Rotation: -0.0017217208, 0.0022284063, 4.2193093
+- MutagenObjectType: PlacedObject
+  FormKey: 00524F:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1806.5046, 1854.7013, 110.36671
+    Rotation: -0.0014556785, 0.011879563, 1.3142824
+- MutagenObjectType: PlacedObject
+  FormKey: 005250:NightsHarvest.esp
+  Base: 0318FB:Skyrim.esm
+  Placement:
+    Position: 1802.8999, 2070.0796, 155
+    Rotation: 0, 0, 0.48204994
+- MutagenObjectType: PlacedObject
+  FormKey: 005251:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2066.5215, 2168.0889, 128.36676
+    Rotation: 0, 0, 4.083192
+- MutagenObjectType: PlacedObject
+  FormKey: 005252:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 1207.6934, 1820.1553, 162.25916
+    Rotation: 0, 0, 4.083192
+- MutagenObjectType: PlacedObject
+  FormKey: 005253:NightsHarvest.esp
+  Base: 065C98:Skyrim.esm
+  Placement:
+    Position: 1231.5442, 1804.1014, 162.25916
+    Rotation: 0, 0, 0.84033835
+- MutagenObjectType: PlacedObject
+  FormKey: 005254:NightsHarvest.esp
+  Base: 064B33:Skyrim.esm
+  Placement:
+    Position: 2044.8635, 2282.5989, 128.3667
+    Rotation: 0, 0, 0.61814356
+- MutagenObjectType: PlacedObject
+  FormKey: 005255:NightsHarvest.esp
+  Base: 022502:Skyrim.esm
+  Placement:
+    Position: 1694.8762, 2206.6125, 297.3257
+    Rotation: -3.0999918, -0.19999945, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 005256:NightsHarvest.esp
+  Base: 077772:Skyrim.esm
+  Emittance: 0668F2:Skyrim.esm
+  Placement:
+    Position: 1642.3218, 1962.3953, 55.649582
+    Rotation: 0, 0, 2.8998997
+- MutagenObjectType: PlacedObject
+  FormKey: 005257:NightsHarvest.esp
+  Base: 06717F:Skyrim.esm
+  Placement:
+    Position: 2037.075, 2034.8396, 113.435745
+    Rotation: 0.19165035, -0.21264742, 5.2652206
+- MutagenObjectType: PlacedObject
+  FormKey: 005258:NightsHarvest.esp
+  Base: 013921:Skyrim.esm
+  Placement:
+    Position: 1752.7249, 1901.2692, 120.18262
+    Rotation: 0.43795332, 0.029740157, 6.254717
+- MutagenObjectType: PlacedObject
+  FormKey: 005259:NightsHarvest.esp
+  Base: 02F2F4:Skyrim.esm
+  Placement:
+    Position: 1738.0886, 2109.1997, 113.429535
+    Rotation: 0.00039099774, 0.00089564355, 0.06520909
+- MutagenObjectType: PlacedObject
+  FormKey: 00525A:NightsHarvest.esp
+  Base: 0D8E80:Skyrim.esm
+  Placement:
+    Position: 1798.8401, 1906.1155, 64.97305
+- MutagenObjectType: PlacedObject
+  FormKey: 00525B:NightsHarvest.esp
+  Base: 0D790C:Skyrim.esm
+  Placement:
+    Position: 1753.2665, 2271.3845, 155
+- MutagenObjectType: PlacedObject
+  FormKey: 00525C:NightsHarvest.esp
+  Base: 01C9CA:Skyrim.esm
+  Placement:
+    Position: 1809, 1012, 25
+    Rotation: 0.42768574, 0.4346089, 2.3958225
+- MutagenObjectType: PlacedObject
+  FormKey: 00525D:NightsHarvest.esp
+  Base: 01ACB9:Skyrim.esm
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080D5764840006BDA44BA9E1740060072B900E8542C000000800000008063A5C93F
+  Placement:
+    Position: 1810.3607, 2061.4565, 122.272575
+    Rotation: 1.4758865, 0.11940338, 6.272595
+- MutagenObjectType: PlacedObject
+  FormKey: 00525E:NightsHarvest.esp
+  Base: 10C0E3:Skyrim.esm
+  Placement:
+    Position: 1200.0234, 2114.7556, 100.311935
+- MutagenObjectType: PlacedObject
+  FormKey: 00525F:NightsHarvest.esp
+  Base: 0533D1:Skyrim.esm
+  Placement:
+    Position: 1608.3457, 2021.512, 271.1492
+    Rotation: -1.4167292, 0.028859124, 1.5752774
+- MutagenObjectType: PlacedObject
+  FormKey: 005260:NightsHarvest.esp
+  Base: 0533D2:Skyrim.esm
+  Placement:
+    Position: 1911.2842, 1780.8287, 264.28876
+    Rotation: -3.1336884, -0.010904305, 1.5929478
+- MutagenObjectType: PlacedObject
+  FormKey: 005261:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 1719.4171, 1875.3699, 270.54047
+    Rotation: 0, 0, 0.3
+- MutagenObjectType: PlacedObject
+  FormKey: 005262:NightsHarvest.esp
+  Base: 0533D1:Skyrim.esm
+  Placement:
+    Position: 2068.6506, 1772.0605, 199.96082
+    Rotation: -1.5999956, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 005263:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 2066.5525, 1873.6968, 270.54047
+- MutagenObjectType: PlacedObject
+  FormKey: 005264:NightsHarvest.esp
+  Base: 0533D0:Skyrim.esm
+  Placement:
+    Position: 2059.038, 2181.116, 264.28876
+- MutagenObjectType: PlacedObject
+  FormKey: 005265:NightsHarvest.esp
+  Base: 03199A:Skyrim.esm
+  Placement:
+    Position: 2072.4705, 2239.4995, 106.10729
+    Rotation: 0.0039486014, 0.00089355133, 0.00016680038
+- MutagenObjectType: PlacedObject
+  FormKey: 005266:NightsHarvest.esp
+  Base: 0319E3:Skyrim.esm
+  Placement:
+    Position: 2070.3125, 2090.43, 106.17551
+    Rotation: 0.0075265365, 0.0032084205, 0.00068367965
+- MutagenObjectType: PlacedObject
+  FormKey: 005267:NightsHarvest.esp
+  Base: 022503:Skyrim.esm
+  Placement:
+    Position: 1929.9027, 1784.4799, 44.206722
+    Rotation: 0, 0, 5.0831885
+- MutagenObjectType: PlacedObject
+  FormKey: 005268:NightsHarvest.esp
+  Base: 097F54:Skyrim.esm
+  Scale: 0.54
+  Placement:
+    Position: 1743.9764, 2046.6497, 79.85781
+    Rotation: 0, 0, 4.3931866
+- MutagenObjectType: PlacedObject
+  FormKey: 005269:NightsHarvest.esp
+  Base: 02702C:Skyrim.esm
+  Placement:
+    Position: 2057.6602, 2106.1543, 50.36722
+- MutagenObjectType: PlacedObject
+  FormKey: 00526A:NightsHarvest.esp
+  Base: 000845:Skyrim.esm
+  Placement:
+    Position: 1206.1208, 1974.0892, 100.311935
+- MutagenObjectType: PlacedObject
+  FormKey: 00526B:NightsHarvest.esp
+  Base: 03A1EC:Skyrim.esm
+  Placement:
+    Position: 1273.1876, 2184.59, 278.1698
+    Rotation: -3.1415925, -3.8245986E-08, 2.4415903
+MajorFlags:
+- 0x40000

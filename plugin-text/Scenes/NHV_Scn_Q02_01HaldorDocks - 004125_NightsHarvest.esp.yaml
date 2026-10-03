@@ -22,7 +22,6 @@ Actors:
   Flags: []
   BehaviorFlags:
   - DeathEnd
-  - CombatEnd
   - DialoguePause
 - ID: 5
   Flags: []
@@ -53,6 +52,14 @@ Actions:
   LoopingMin: 1
   Emotion: Neutral
   EmotionValue: 0
+- Type: Package
+  Name: SingsNightHunt
+  ActorID: 2
+  Index: 3
+  StartPhase: 0
+  EndPhase: 1
+  Packages:
+  - 00595E:NightsHarvest.esp
 Quest: 004100:NightsHarvest.esp
-LastActionIndex: 2
-VNAM: 0x00000000000000000300000003000000
+LastActionIndex: 3
+VNAM: 0x03000000030000000300000003000000

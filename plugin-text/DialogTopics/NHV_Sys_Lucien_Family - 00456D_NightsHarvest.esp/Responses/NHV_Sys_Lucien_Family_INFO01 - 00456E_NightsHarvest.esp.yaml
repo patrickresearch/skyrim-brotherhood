@@ -10,26 +10,44 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Devotion gives us a purpose. Trust lets us sleep among people exceptionally qualified to murder us.
+    Value: Devotion is our purpose. Conviction in our servitude to Death.
   ScriptNotes: NHV_SYS_LUC_39 prompt=NHV_SYS_LUC_38
   Edits: ''
-- EmotionValue: 30
+- EmotionValue: 40
   ResponseNumber: 2
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The first is easily proclaimed. The second is built in small acts, and destroyed in rather larger ones.
-  ScriptNotes: NHV_SYS_LUC_40
+    Value: And the trust we place in the crimson hands of our Brothers and Sisters to not coat themselves in our blood.
+  ScriptNotes: NHV_SYS_LUC_52
   Edits: ''
-- Emotion: Happy
-  EmotionValue: 15
+- EmotionValue: 30
   ResponseNumber: 3
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Learn their names, Listener. Preferably while they are still available to answer to them.
+    Value: The first is an easy lie. The second a practiced response.
+  ScriptNotes: NHV_SYS_LUC_40
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The last is built like stone upon stone, and can be just as diligently destroyed.
+  ScriptNotes: NHV_SYS_LUC_53
+  Edits: ''
+- Emotion: Happy
+  EmotionValue: 15
+  ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Learn your Family as you learn your Enemies, Listener.
   ScriptNotes: NHV_SYS_LUC_41
   Edits: ''
 Conditions:

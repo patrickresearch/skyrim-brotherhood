@@ -1,0 +1,49 @@
+FormKey: 00A10B:NightsHarvest.esp
+EditorID: NHV_Q02E_R_tide_enf_p0_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A10B
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A10B
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A10B
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Sergeant said the tidehouse stays shut. Turn around.
+  ScriptNotes: NHV_Q02_015_4210
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 15
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A002:NightsHarvest.esp
+  ComparisonValue: 1000
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 00AF10:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsInDialogueWithPlayerConditionData
+  ComparisonValue: 1
+Speaker: 00AF10:NightsHarvest.esp

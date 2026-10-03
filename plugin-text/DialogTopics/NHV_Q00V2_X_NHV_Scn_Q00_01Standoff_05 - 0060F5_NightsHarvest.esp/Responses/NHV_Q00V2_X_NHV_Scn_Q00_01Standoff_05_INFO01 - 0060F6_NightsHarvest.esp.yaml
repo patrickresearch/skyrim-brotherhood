@@ -1,0 +1,18 @@
+FormKey: 0060F6:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_01Standoff_05_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: We're still here. You can start with a name.
+  ScriptNotes: NHV_Q00_010_1004
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

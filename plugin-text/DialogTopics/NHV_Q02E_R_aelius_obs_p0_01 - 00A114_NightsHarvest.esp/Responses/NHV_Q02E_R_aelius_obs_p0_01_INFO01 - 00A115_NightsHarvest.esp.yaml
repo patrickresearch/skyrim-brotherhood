@@ -1,0 +1,27 @@
+FormKey: 00A115:NightsHarvest.esp
+EditorID: NHV_Q02E_R_aelius_obs_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Argonian net crew gets the dry shift. Their hands are split enough.
+  ScriptNotes: NHV_Q02_055_4402
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: No one loses pay because a clerk prefers a clean ledger.
+  ScriptNotes: NHV_Q02_055_4403
+  Edits: ''
+Speaker: 00410B:NightsHarvest.esp

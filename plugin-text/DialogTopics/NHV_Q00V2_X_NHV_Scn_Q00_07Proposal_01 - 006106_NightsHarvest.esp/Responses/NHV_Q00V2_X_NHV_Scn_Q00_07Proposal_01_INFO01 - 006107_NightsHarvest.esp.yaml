@@ -1,0 +1,18 @@
+FormKey: 006107:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_07Proposal_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She's back. I assume the Mother has her reasons.
+  ScriptNotes: NHV_Q00_030_1015
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

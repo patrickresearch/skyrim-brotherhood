@@ -1,0 +1,19 @@
+FormKey: 00A10E:NightsHarvest.esp
+EditorID: NHV_Q02E_R_courier_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The desk is too clean. Someone expected the papers to vanish.
+  ScriptNotes: NHV_Q02_070_4500
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

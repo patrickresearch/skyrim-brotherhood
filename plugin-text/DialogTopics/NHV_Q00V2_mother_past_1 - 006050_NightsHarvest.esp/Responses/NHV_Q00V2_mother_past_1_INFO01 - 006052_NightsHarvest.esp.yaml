@@ -1,0 +1,44 @@
+FormKey: 006052:NightsHarvest.esp
+EditorID: NHV_Q00V2_mother_past_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02006052
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02006052
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02006052
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Nor choose in yours. Ask her about me. You needn't take my history on trust.
+  ScriptNotes: NHV_Q00_010_1032 prompt=NHV_Q00_010_1030
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006000:NightsHarvest.esp
+  ComparisonValue: 4
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Then you won't speak in her place.

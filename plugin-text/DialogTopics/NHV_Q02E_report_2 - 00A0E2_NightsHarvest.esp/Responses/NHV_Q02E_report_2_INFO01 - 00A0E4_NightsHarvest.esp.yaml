@@ -1,0 +1,75 @@
+FormKey: 00A0E4:NightsHarvest.esp
+EditorID: NHV_Q02E_report_2_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A0E4
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A0E4
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A0E4
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You removed the danger. You did not answer my question about him.
+  ScriptNotes: NHV_Q02_100_4007 prompt=NHV_Q02_100_4001
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Leave the question in his record. A family can carry uncertainty without lying about it.
+  ScriptNotes: NHV_Q02_100_4008
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A005:NightsHarvest.esp
+  ComparisonValue: 35
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00410D:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00410F:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004113:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004115:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: I killed Aelius. I recruited Sings under an open question.

@@ -1,0 +1,10 @@
+FormKey: 03BC2B:Skyrim.esm
+EditorID: LargashburLonghouseLocation
+Version2: 12
+Name:
+  TargetLanguage: English
+  Value: Largashbur's Longhouse
+Keywords:
+- 0130DC:Skyrim.esm
+- 01CB85:Skyrim.esm
+ParentLocation: 019263:Skyrim.esm

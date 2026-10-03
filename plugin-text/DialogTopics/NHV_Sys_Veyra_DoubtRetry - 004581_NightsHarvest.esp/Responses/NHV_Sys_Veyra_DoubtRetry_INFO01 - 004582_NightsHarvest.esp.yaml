@@ -23,7 +23,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Very well. Let him speak for himself.
+    Value: The family knows a voice from before this ruin. I will call him.
   ScriptNotes: NHV_SYS_LUC_02 prompt=NHV_SYS_LUC_01
   Edits: ''
 Conditions:

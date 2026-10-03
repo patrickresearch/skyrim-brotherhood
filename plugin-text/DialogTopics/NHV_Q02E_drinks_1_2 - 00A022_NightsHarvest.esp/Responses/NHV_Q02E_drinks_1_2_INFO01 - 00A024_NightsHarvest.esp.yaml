@@ -1,0 +1,70 @@
+FormKey: 00A024:NightsHarvest.esp
+EditorID: NHV_Q02E_drinks_1_2_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A024
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A024
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A024
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: For my time, then. Not another worker's name. Keep that distinction clear.
+  ScriptNotes: NHV_Q02_010_4018 prompt=NHV_Q02_010_4015
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Look at the bindings. Some of us learned that hitch in the marshes. Anyone willing to learn could tie it.
+  ScriptNotes: NHV_Q02_010_4019
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Rope has no scales, warm-blood. Remember that when you begin pointing.
+  ScriptNotes: NHV_Q02_010_4020
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A001:NightsHarvest.esp
+  ComparisonValue: 6
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004109:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetItemCountConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ItemOrList: 00000F:Skyrim.esm
+  ComparisonValue: 25
+Prompt:
+  TargetLanguage: English
+  Value: (Bribe) For your time. Tell me what I should examine.

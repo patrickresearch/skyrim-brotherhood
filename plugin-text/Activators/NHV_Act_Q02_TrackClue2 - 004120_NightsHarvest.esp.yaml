@@ -19,13 +19,16 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptIntProperty
       Name: TargetStage
 ObjectBounds:
-  First: -43, 0, -20
-  Second: 43, 2, 20
+  First: 121, -225, 32
+  Second: 130, 257, 49
 Name:
   TargetLanguage: English
   Value: Examine the marks
 Model:
-  File: Clutter\WeaponRack\WRPlaque01.nif
+  File: Architecture\Docks\DockRopeStr02.nif
   Data: 0x020000000000000000000000
 MarkerColor: '#00CC4C33'
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: Examine
 Flags: []

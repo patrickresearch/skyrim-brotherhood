@@ -1,0 +1,6 @@
+FormKey: 00A062:NightsHarvest.esp
+EditorID: NHV_Q02E_rescue_question_2
+Priority: 60
+Branch: 00A063:NightsHarvest.esp
+Quest: 004100:NightsHarvest.esp
+SubtypeName: CUST

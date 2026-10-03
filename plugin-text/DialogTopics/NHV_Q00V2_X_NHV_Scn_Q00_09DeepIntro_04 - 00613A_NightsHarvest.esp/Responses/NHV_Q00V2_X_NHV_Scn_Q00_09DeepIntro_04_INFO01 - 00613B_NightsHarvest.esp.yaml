@@ -1,0 +1,18 @@
+FormKey: 00613B:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_09DeepIntro_04_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: This hall could take a table. A place to eat, hear reports, and discover whom not to sit beside whom.
+  ScriptNotes: NHV_Q00_050_1013
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

@@ -20,6 +20,12 @@ Phases:
 - Name: ''
   Unused2: {}
   EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
 Actors:
 - Flags: []
   BehaviorFlags:
@@ -38,46 +44,62 @@ Actors:
   - DeathEnd
   - CombatEnd
   - DialoguePause
-- ID: 3
-  Flags: []
-  BehaviorFlags:
-  - DeathEnd
-  - CombatEnd
-  - DialoguePause
 Actions:
-- Name: NHV_Q00_040_10
+- Name: NHV_Q00_040_1000
   ActorID: 0
   Index: 1
   StartPhase: 0
   EndPhase: 0
-  Topic: 0037F1:NightsHarvest.esp
+  Topic: 00610A:NightsHarvest.esp
   HeadtrackActorID: -1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
   EmotionValue: 0
-- Name: NHV_Q00_040_11
+- Name: NHV_Q00_040_1001
   ActorID: 1
   Index: 2
   StartPhase: 1
   EndPhase: 1
-  Topic: 0037F3:NightsHarvest.esp
+  Topic: 00610C:NightsHarvest.esp
   HeadtrackActorID: -1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
   EmotionValue: 0
-- Name: NHV_Q00_040_12
+- Name: NHV_Q00_040_1002
   ActorID: 0
   Index: 3
   StartPhase: 2
   EndPhase: 2
-  Topic: 0037F5:NightsHarvest.esp
+  Topic: 00610E:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_040_1003
+  ActorID: 2
+  Index: 4
+  StartPhase: 3
+  EndPhase: 3
+  Topic: 006110:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_040_1004
+  ActorID: 0
+  Index: 5
+  StartPhase: 4
+  EndPhase: 4
+  Topic: 006112:NightsHarvest.esp
   HeadtrackActorID: -1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
   EmotionValue: 0
 Quest: 000815:NightsHarvest.esp
-LastActionIndex: 3
-VNAM: 0x03000000030000000300000003000000
+LastActionIndex: 5
+VNAM: 0x00000000000000000300000003000000

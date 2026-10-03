@@ -1,0 +1,18 @@
+FormKey: 006092:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_hub_2_v1_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: And if they can't, we find out before they learn where we sleep.
+  ScriptNotes: NHV_Q00_030_1044
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

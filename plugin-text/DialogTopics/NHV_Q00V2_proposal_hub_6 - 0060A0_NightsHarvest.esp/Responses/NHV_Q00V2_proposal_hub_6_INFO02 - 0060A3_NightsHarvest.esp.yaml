@@ -1,0 +1,97 @@
+FormKey: 0060A3:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_hub_6_INFO02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__020060A3
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__020060A3
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__020060A3
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: 0060A2:NightsHarvest.esp
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: My Dread Father had other work for me. Work that could not wait.
+  ScriptNotes: NHV_Q00_030_1052 prompt=NHV_Q00_030_1035
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I left. Cicero remained with the Mother. Duty does not spare the people we leave behind.
+  ScriptNotes: NHV_Q00_030_1053
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006000:NightsHarvest.esp
+  ComparisonValue: 11
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006007:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006003:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006004:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006005:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 09BCB0:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 01E64A:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 09BCB0:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 01E64A:Skyrim.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Why did you leave Cheydinhal?

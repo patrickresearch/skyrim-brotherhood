@@ -1,0 +1,51 @@
+FormKey: 00604C:NightsHarvest.esp
+EditorID: NHV_Q00V2_standoff_hub_7_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200604C
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200604C
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200604C
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - Goodbye
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then I will wait at the Windpeak Inn. If you want me back, you know where to look.
+  ScriptNotes: NHV_Q00_010_1035 prompt=NHV_Q00_010_1013
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006000:NightsHarvest.esp
+  ComparisonValue: 2
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00600A:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Leave. I'll hear the Mother's judgment before yours.

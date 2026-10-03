@@ -10,26 +10,44 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The Night Mother has chosen. I have no appointment to contest and no throne to reclaim.
+    Value: The Night Mother has chosen. I have neither the appointment to contest nor a throne to reclaim.
   ScriptNotes: NHV_SYS_LUC_31 prompt=NHV_SYS_LUC_30
   Edits: ''
-- EmotionValue: 35
+- EmotionValue: 40
   ResponseNumber: 2
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I would ask you to know the people carrying out your orders. Especially when those orders concern their own family.
-  ScriptNotes: NHV_SYS_LUC_32
+    Value: Nor does anyone in this Family, now or in years to come.
+  ScriptNotes: NHV_SYS_LUC_50
   Edits: ''
-- Emotion: Happy
-  EmotionValue: 15
+- EmotionValue: 35
   ResponseNumber: 3
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You may find me an attentive adviser. Death has cleared a considerable space in my schedule.
+    Value: Yet if it is my counsel you seek, then I advise you to know the people carrying out your word.
+  ScriptNotes: NHV_SYS_LUC_32
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Look to Our Matron, Listener, and you'll find that even she had waited to entrust her voice to the worthy.
+  ScriptNotes: NHV_SYS_LUC_51
+  Edits: ''
+- Emotion: Happy
+  EmotionValue: 15
+  ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: But of course, the Dead do have a peculiar understanding of time, don't they? You alone must decide whether trust deserves to arrive swiftly.
   ScriptNotes: NHV_SYS_LUC_33
   Edits: ''
 Conditions:
@@ -52,4 +70,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: What do you expect of this Listener?
+  Value: What do you expect of me as Listener?

@@ -1,0 +1,18 @@
+FormKey: 00A11D:NightsHarvest.esp
+EditorID: NHV_Q02E_X_NHV_Scn_Q02_03AeliusKill_03_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You're shaking. Take my cloak. We can talk without you freezing.
+  ScriptNotes: NHV_Q02_060_4003
+  Edits: ''
+Speaker: 00410B:NightsHarvest.esp

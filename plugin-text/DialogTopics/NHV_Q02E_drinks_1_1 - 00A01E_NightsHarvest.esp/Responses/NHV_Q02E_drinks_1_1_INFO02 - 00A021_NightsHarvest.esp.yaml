@@ -1,0 +1,52 @@
+FormKey: 00A021:NightsHarvest.esp
+EditorID: NHV_Q02E_drinks_1_1_INFO02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A021
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A021
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A021
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: 00A020:NightsHarvest.esp
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You can promise that. I cannot afford to believe it. The body is still there. Look for yourself.
+  ScriptNotes: NHV_Q02_010_4017 prompt=NHV_Q02_010_4014
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A001:NightsHarvest.esp
+  ComparisonValue: 6
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004109:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ActorValue: Speech
+  ComparisonValue: 30
+Prompt:
+  TargetLanguage: English
+  Value: (Persuade) I want a witness, not a name to give the guards.

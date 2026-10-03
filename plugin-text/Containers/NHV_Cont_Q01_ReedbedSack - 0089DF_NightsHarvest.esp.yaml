@@ -1,0 +1,17 @@
+FormKey: 0089DF:NightsHarvest.esp
+EditorID: NHV_Cont_Q01_ReedbedSack
+ObjectBounds:
+  First: -20, -24, -28
+  Second: 20, 31, 33
+Name:
+  TargetLanguage: English
+  Value: Scavenger's Sack
+Model:
+  File: Clutter\Containers\MiscSackLargeFlat01.nif
+  Data: 0x020000000000000000000000
+Items:
+- Item:
+    Item: 007F24:NightsHarvest.esp
+    Count: 1
+OpenSound: 084D0E:Skyrim.esm
+CloseSound: 084D0F:Skyrim.esm

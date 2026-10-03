@@ -1,0 +1,46 @@
+FormKey: 00A0A1:NightsHarvest.esp
+EditorID: NHV_Q02E_cour_hub2_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A0A1
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A0A1
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A0A1
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - Goodbye
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: '...'
+  ScriptNotes: NHV_SILENT prompt=NHV_Q02_070_4505
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A000:NightsHarvest.esp
+  ComparisonValue: 33
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 00AF11:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The papers stay with the family.

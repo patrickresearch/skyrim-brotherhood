@@ -1,0 +1,18 @@
+FormKey: 00613D:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_09DeepIntro_05_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The other chambers need clearing. We can make them useful a few at a time.
+  ScriptNotes: NHV_Q00_050_1014
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

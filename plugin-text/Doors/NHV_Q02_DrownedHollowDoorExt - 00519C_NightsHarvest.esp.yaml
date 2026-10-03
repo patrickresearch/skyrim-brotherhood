@@ -1,0 +1,29 @@
+FormKey: 00519C:NightsHarvest.esp
+EditorID: NHV_Q02_DrownedHollowDoorExt
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NHV_Q02_StageActivatorScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NHV_Cfg_Debug
+      Object: 000800:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OwningQuest
+      Object: 004100:NightsHarvest.esp
+    - MutagenObjectType: ScriptIntProperty
+      Name: RequiredStage
+      Data: 40
+    - MutagenObjectType: ScriptIntProperty
+      Name: TargetStage
+      Data: 50
+ObjectBounds:
+  First: -48, -48, -26
+  Second: 48, 48, 7
+Name:
+  TargetLanguage: English
+  Value: Trapdoor
+Model:
+  File: Architecture\Winterhold\WinterholdTrapdoor01.nif
+  Data: 0x020000000000000000000000
+OpenSound: 03C813:Skyrim.esm
+CloseSound: 03C810:Skyrim.esm

@@ -1,0 +1,33 @@
+FormKey: 00AD40:NightsHarvest.esp
+EditorID: NHV_Note_Fallback_Hakan
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Hakan's Notes
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">Hakan's Notes</font></p>
+
+    <p align="left">Found Eirik face down in the reeds, purse still tied, boots dry inside.</p>
+
+    <p align="left">The bog did not take him.</p>
+
+    <p align="left">Men with hooks work the reedbed and took my red ferry marker.</p>
+
+    <p align="left">Look to the Stormhollow farm, east of the reed road.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 1
+Weight: 1
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

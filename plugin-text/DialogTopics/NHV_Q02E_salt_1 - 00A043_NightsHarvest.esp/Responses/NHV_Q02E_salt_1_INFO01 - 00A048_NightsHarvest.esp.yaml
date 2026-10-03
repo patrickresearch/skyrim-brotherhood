@@ -1,0 +1,47 @@
+FormKey: 00A048:NightsHarvest.esp
+EditorID: NHV_Q02E_salt_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A048
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A048
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A048
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - Goodbye
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Fear
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Haldor's friends are searching for his knife. I saw them pull crates apart.
+  ScriptNotes: NHV_Q02_035_4301 prompt=NHV_Q02_035_4300
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 45
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A006:NightsHarvest.esp
+  ComparisonValue: 15
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004109:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The trail ends at the salt yard. Someone searched it after Sings passed.

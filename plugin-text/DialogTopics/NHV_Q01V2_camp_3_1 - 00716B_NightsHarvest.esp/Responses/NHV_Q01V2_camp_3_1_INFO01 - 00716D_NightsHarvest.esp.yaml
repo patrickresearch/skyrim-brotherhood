@@ -1,0 +1,45 @@
+FormKey: 00716D:NightsHarvest.esp
+EditorID: NHV_Q01V2_camp_3_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200716D
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200716D
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200716D
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 45
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He took the farm on paper. I took his breath in the water. Neither of us called it murder while we were doing it.
+  ScriptNotes: NHV_Q01_030_2206 prompt=NHV_Q01_030_2205
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 55
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: And Eirik?

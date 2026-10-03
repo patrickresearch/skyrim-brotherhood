@@ -1,0 +1,6 @@
+FormKey: 00600B:NightsHarvest.esp
+EditorID: NHV_Q00V2_harvest_question_1
+Priority: 60
+Branch: 00600C:NightsHarvest.esp
+Quest: 000815:NightsHarvest.esp
+SubtypeName: CUST

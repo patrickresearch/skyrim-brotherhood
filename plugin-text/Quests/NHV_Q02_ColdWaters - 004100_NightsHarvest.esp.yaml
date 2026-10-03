@@ -12,12 +12,30 @@ VirtualMachineAdapter:
       Name: AeliusKillScene
       Object: 004127:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: BabetteAlias
+      Object: 004100:NightsHarvest.esp
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
       Name: Core
       Object: 000801:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CourierAlias
+      Object: 004100:NightsHarvest.esp
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DispatchDeskRef
+      Object: 005954:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DockWatchMarker
+      Object: 005961:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: DrinksAlias
       Object: 004100:NightsHarvest.esp
       Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EnforcerAlias
+      Object: 004100:NightsHarvest.esp
+      Alias: 8
     - MutagenObjectType: ScriptObjectProperty
       Name: Gold001
       Object: 00000F:Skyrim.esm
@@ -78,6 +96,9 @@ VirtualMachineAdapter:
       Name: PlayerRef
       Object: 000014:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: ShadowscaleWraps
+      Object: 0057D1:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: SingsAlias
       Object: 004100:NightsHarvest.esp
       Alias: 2
@@ -86,6 +107,15 @@ VirtualMachineAdapter:
       Object: 000813:NightsHarvest.esp
       Alias: 3
     - MutagenObjectType: ScriptObjectProperty
+      Name: SingsHollowMarker
+      Object: 0057D8:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SingsHomeMarker
+      Object: 005956:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TidehouseLedger
+      Object: 00AF30:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: TorbjornAlias
       Object: 004100:NightsHarvest.esp
       Alias: 3
@@ -93,6 +123,9 @@ VirtualMachineAdapter:
       Name: VeyraAlias
       Object: 004100:NightsHarvest.esp
       Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VeyraHollowMarker
+      Object: 0057D9:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraHollowScene
       Object: 004126:NightsHarvest.esp
@@ -103,34 +136,46 @@ VirtualMachineAdapter:
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_0
-  - Stage: 20
+  - Stage: 15
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_1
-  - Stage: 30
+  - Stage: 20
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_2
-  - Stage: 40
+  - Stage: 30
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_3
-  - Stage: 50
+  - Stage: 40
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_4
-  - Stage: 60
+  - Stage: 45
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_5
-  - Stage: 70
+  - Stage: 50
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_6
-  - Stage: 100
+  - Stage: 55
     Unknown2: 1
     ScriptName: QF_NHV_Q02_ColdWaters_02004100
     FragmentName: Fragment_7
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_NHV_Q02_ColdWaters_02004100
+    FragmentName: Fragment_8
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_NHV_Q02_ColdWaters_02004100
+    FragmentName: Fragment_9
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_NHV_Q02_ColdWaters_02004100
+    FragmentName: Fragment_10
   Aliases:
   - Property:
       Name: ''
@@ -190,56 +235,79 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Investigate the bodies in Windhelm's harbor.
+      Value: Veyra sent you to identify the hand behind the harbor deaths. Torbjorn's records and the workers' silence point toward the docks.
+- Index: 15
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: The tidehouse ledger links late shifts, missing names, and Aelius's corrections, but still gives no killer.
 - Index: 20
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Examine the latest victim.
+      Value: A marsh hitch and signs of a struggle offer a place to watch, not a culprit.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Watch the docks at night.
+      Value: Haldor Frost-Knuckle was attacked after dark. Sings-Beneath-Ice fled or led you onward, depending on your intervention.
 - Index: 40
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Follow the killer without being seen.
+      Value: The trail under the docks leads toward a hidden shore entrance.
+- Index: 45
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Haldor's associates are searching the salt yard. Drinks-the-Brine points toward a forgotten sluice.
 - Index: 50
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Confront the killer.
+      Value: Sings-Beneath-Ice confessed the drownings. You named Aelius, the harbor clerk, as a test he would never have chosen himself.
+- Index: 55
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Aelius's kindness at the harbor is real. That makes the hidden list a harder truth, not an easier one.
 - Index: 60
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Help Sings-Beneath-Ice kill Aelius the harbor clerk.
+      Value: You authorized the test against Aelius. His kindness to the Argonians of the harbor made the choice no easier.
 - Index: 70
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Decide Sings-Beneath-Ice's fate.
+      Value: Aelius is dead, but his list has not yet explained whether kindness and surveillance were both genuine.
 - Index: 100
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Return to Veyra.
+      Value: Your report must name the actual killer and the decision you made about Sings.
 Objectives:
 - Index: 10
   Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Investigate the bodies in Windhelm's harbor.
+- Index: 15
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Secure the sealed tidehouse log.
 - Index: 20
   Flags: []
   DisplayText:
@@ -255,27 +323,47 @@ Objectives:
   DisplayText:
     TargetLanguage: English
     Value: Follow the killer without being seen.
+- Index: 45
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Cross the salt yard and find the sluice.
 - Index: 50
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Confront the killer.
+    Value: Confront Sings-Beneath-Ice.
+- Index: 55
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Watch Aelius before the trial begins.
 - Index: 60
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Help Sings-Beneath-Ice kill Aelius the harbor clerk.
+    Value: "Witness Sings-Beneath-Ice's test: the killing of Aelius."
 - Index: 70
   Flags: []
   DisplayText:
     TargetLanguage: English
     Value: Decide Sings-Beneath-Ice's fate.
+- Index: 71
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Stop the courier from sealing Aelius's desk.
 - Index: 100
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Return to Veyra.
-NextAliasID: 8
+    Value: Report the outcome to Veyra.
+- Index: 101
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Compare Oculatus Fragment Two with earlier reports.
+NextAliasID: 11
 Aliases:
 - Name: PlayerRefAlias
   Flags:
@@ -286,9 +374,6 @@ Aliases:
   Name: VeyraAlias
   Flags:
   - Optional
-  PackageData:
-  - 004128:NightsHarvest.esp
-  - 00412C:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 2
   Name: SingsAlias
@@ -296,13 +381,17 @@ Aliases:
   - Optional
   UniqueActor: 004107:NightsHarvest.esp
   PackageData:
-  - 004129:NightsHarvest.esp
-  - 00412A:NightsHarvest.esp
+  - 00AF40:NightsHarvest.esp
+  - 005960:NightsHarvest.esp
+  - 00595F:NightsHarvest.esp
+  - 00AF53:NightsHarvest.esp
+  - 00AF54:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 3
   Name: TorbjornAlias
   Flags:
   - Optional
+  - Protected
   UniqueActor: 004108:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 4
@@ -327,7 +416,22 @@ Aliases:
   Name: HjoraldAlias
   Flags:
   - Optional
+  - Protected
   UniqueActor: 00410C:NightsHarvest.esp
-  PackageData:
-  - 00412B:NightsHarvest.esp
+  VoiceTypes: Null
+- ID: 8
+  Name: EnforcerAlias
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- ID: 9
+  Name: CourierAlias
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- ID: 10
+  Name: BabetteAlias
+  Flags:
+  - Optional
+  UniqueActor: 01D4B7:Skyrim.esm
   VoiceTypes: Null

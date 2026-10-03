@@ -1,0 +1,44 @@
+FormKey: 00714F:NightsHarvest.esp
+EditorID: NHV_Q01V2_farm_2_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200714F
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200714F
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200714F
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then find what the fire spared. Truth is often the least flammable part of a lie.
+  ScriptNotes: NHV_Q01_020_2105 prompt=NHV_Q01_020_2104
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 45
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: There is ash beneath the altar. Someone burned a second note.

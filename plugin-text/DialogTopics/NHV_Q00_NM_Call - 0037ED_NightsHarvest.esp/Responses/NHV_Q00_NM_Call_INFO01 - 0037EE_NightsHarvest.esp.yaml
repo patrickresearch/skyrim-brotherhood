@@ -6,14 +6,32 @@ Flags:
 PreviousDialog: Null
 FavorLevel: None
 Responses:
-- EmotionValue: 20
+- EmotionValue: 30
   ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Come to me, my Listener. A stranger stood among my children. She is no stranger to me.
-  ScriptNotes: NHV_Q00_020_00
+    Value: My Listener. You have heard the Gleaner's offer. Now hear me.
+  ScriptNotes: NHV_Q00_020_1005
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She has found servants for my family before. Let her bring you names again.
+  ScriptNotes: NHV_Q00_020_1006
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You shall judge those she finds. My children are not hers to choose.
+  ScriptNotes: NHV_Q00_020_1007
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

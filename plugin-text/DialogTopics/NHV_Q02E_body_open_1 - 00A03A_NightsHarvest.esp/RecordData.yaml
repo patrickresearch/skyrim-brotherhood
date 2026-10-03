@@ -1,0 +1,6 @@
+FormKey: 00A03A:NightsHarvest.esp
+EditorID: NHV_Q02E_body_open_1
+Priority: 60
+Branch: 00A03B:NightsHarvest.esp
+Quest: 004100:NightsHarvest.esp
+SubtypeName: CUST

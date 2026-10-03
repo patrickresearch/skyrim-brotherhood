@@ -1,0 +1,45 @@
+FormKey: 006131:NightsHarvest.esp
+EditorID: NHV_Q00V2_R_stage12_blade_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If Nazir's blade is your answer, let a witness speak before it falls.
+  ScriptNotes: NHV_Q00_012_1002
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Someone who knew my service can answer. I will call him, even if you would rather see me go.
+  ScriptNotes: NHV_Q00_012_1003
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Someone in this family's memory can speak for me. I will call him now.
+  ScriptNotes: NHV_Q00_012_1006
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lucien Lachance. If you still answer Sithis, come and speak.
+  ScriptNotes: NHV_Q00_012_1007
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

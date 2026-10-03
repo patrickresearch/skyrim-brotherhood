@@ -1,0 +1,47 @@
+FormKey: 007188:NightsHarvest.esp
+EditorID: NHV_Q01V2_qintro_2_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007188
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007188
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007188
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - Goodbye
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then the unanswered prayer has a living witness. I cannot leave that loose.
+  ScriptNotes: NHV_Q01_040_2310 prompt=NHV_Q01_040_2309
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 40
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 63
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004008:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Hrefna is alive. She performed the Sacrament.

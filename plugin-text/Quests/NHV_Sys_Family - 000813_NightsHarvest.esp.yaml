@@ -61,6 +61,7 @@ Aliases:
   Flags:
   - Optional
   PackageData:
+  - 00AD06:NightsHarvest.esp
   - 004992:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 3

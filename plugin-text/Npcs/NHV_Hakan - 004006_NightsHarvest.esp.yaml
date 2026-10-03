@@ -4,6 +4,9 @@ MajorRecordFlagsRaw: 262144
 EditorID: NHV_Hakan
 SkyrimMajorRecordFlags:
 - Compressed
+ObjectBounds:
+  First: -22, -14, 0
+  Second: 22, 14, 128
 Configuration:
   Flags:
   - Unique
@@ -15,10 +18,18 @@ Configuration:
   SpeedMultiplier: 100
 Voice: 004003:NightsHarvest.esp
 Race: 013746:Skyrim.esm
+Items:
+- Item:
+    Item: 00AD40:NightsHarvest.esp
+    Count: 1
 AIData:
   Confidence: Average
   EnergyLevel: 40
+  Unused: 10
 Packages:
+- 00AD01:NightsHarvest.esp
+- 00AD30:NightsHarvest.esp
+- 00AD00:NightsHarvest.esp
 - 00498B:NightsHarvest.esp
 Class: 01326B:Skyrim.esm
 Name:

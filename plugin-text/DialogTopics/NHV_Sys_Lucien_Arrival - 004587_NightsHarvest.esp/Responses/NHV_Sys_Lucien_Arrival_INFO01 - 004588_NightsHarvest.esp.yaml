@@ -13,7 +13,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A summons without a corpse to arrange. Veyra, you do cultivate unusual habits.
+    Value: A summons in a sanctuary. Veyra, you do cultivate unusual meetings.
   ScriptNotes: NHV_SYS_LUC_05
   Edits: ''
 - EmotionValue: 35
@@ -22,7 +22,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Lucien Lachance, Listener. I believe my name has preceded me. What would you ask?
+    Value: Lucien Lachance, Listener. I served this family as a Speaker. What would you ask?
   ScriptNotes: NHV_SYS_LUC_06
   Edits: ''
 Conditions:

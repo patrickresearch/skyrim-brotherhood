@@ -22,17 +22,17 @@ Actors:
   - CombatEnd
   - DialoguePause
 Actions:
-- Name: NHV_Q01_CampAmbushOpen
+- Name: NHV_Q01_020_2110
   ActorID: 3
   Index: 1
   StartPhase: 0
   EndPhase: 0
-  Topic: 004029:NightsHarvest.esp
-  HeadtrackActorID: 0
+  Topic: 007103:NightsHarvest.esp
+  HeadtrackActorID: -1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
   EmotionValue: 0
 Quest: 004000:NightsHarvest.esp
 LastActionIndex: 1
-VNAM: 0x00000000030000000300000003000000
+VNAM: 0x00000000000000000300000003000000

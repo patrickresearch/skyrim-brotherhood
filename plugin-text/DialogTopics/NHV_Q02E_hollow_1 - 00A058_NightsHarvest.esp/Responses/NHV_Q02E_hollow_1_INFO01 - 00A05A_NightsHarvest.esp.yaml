@@ -1,0 +1,44 @@
+FormKey: 00A05A:NightsHarvest.esp
+EditorID: NHV_Q02E_hollow_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A05A
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A05A
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A05A
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Stop there. You have followed far enough. You are not wearing a guard's colors. Whose work brings you here?
+  ScriptNotes: NHV_Q02_050_4000 prompt=NHV_Q02_050_4096
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 50
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A007:NightsHarvest.esp
+  ComparisonValue: 19
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004107:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You are the one the docks whisper about.

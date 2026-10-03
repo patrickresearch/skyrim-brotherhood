@@ -1,0 +1,7 @@
+FormKey: 007157:NightsHarvest.esp
+EditorID: NHV_Q01V2_tracks_1_1_Branch
+Quest: 004000:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 007156:NightsHarvest.esp

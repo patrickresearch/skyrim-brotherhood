@@ -1,0 +1,45 @@
+FormKey: 00A051:NightsHarvest.esp
+EditorID: NHV_Q02E_salt_d_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A051
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A051
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A051
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 45
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Make us.
+  ScriptNotes: NHV_Q02_035_4307 prompt=NHV_Q02_035_4306
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 45
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A002:NightsHarvest.esp
+  ComparisonValue: 17
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 00AF10:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Then we go through the yard.

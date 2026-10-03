@@ -1,0 +1,114 @@
+FormKey: 0209F2:Skyrim.esm
+EditorID: WindhelmPalaceOfTheKingsLocation
+Version2: 7
+UniqueActorReferencesAdded:
+- Actor: 029D96:Skyrim.esm
+  Ref: 0A05D2:Skyrim.esm
+  Location: 0209F2:Skyrim.esm
+LocationRefTypeReferencesAdded:
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 01B131:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0422B9:Skyrim.esm
+  Ref: 0422BA:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0205F0:Skyrim.esm
+  Ref: 059477:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 041FA8:Skyrim.esm
+  Ref: 0596D0:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 041FA8:Skyrim.esm
+  Ref: 0596D1:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0504F4:Skyrim.esm
+  Ref: 059731:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D145F:Skyrim.esm
+  Ref: 0659C8:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D145D:Skyrim.esm
+  Ref: 0659CD:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D1472:Skyrim.esm
+  Ref: 0659E2:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0208C7:Skyrim.esm
+  Ref: 094124:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D1469:Skyrim.esm
+  Ref: 0C0E0D:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D1469:Skyrim.esm
+  Ref: 0C0E0E:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D1469:Skyrim.esm
+  Ref: 0C0E0F:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 0CC86B:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 0CC86C:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 0CC86D:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D5172:Skyrim.esm
+  Ref: 0E1B48:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D5171:Skyrim.esm
+  Ref: 0E1B49:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D5174:Skyrim.esm
+  Ref: 0E1B4A:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D5173:Skyrim.esm
+  Ref: 0E1B4B:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D516B:Skyrim.esm
+  Ref: 0E1B4C:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D516C:Skyrim.esm
+  Ref: 0E1B4E:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D5167:Skyrim.esm
+  Ref: 0E1B4F:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0D5166:Skyrim.esm
+  Ref: 0E1B51:Skyrim.esm
+  Location: 01677C:Skyrim.esm
+  Grid: 32767, 32767
+Name:
+  TargetLanguage: English
+  Value: Palace of the Kings
+Keywords:
+- 01CD57:Skyrim.esm
+- 0504F9:Skyrim.esm
+- 0205ED:Skyrim.esm
+- 0C6726:Skyrim.esm
+- 0130DC:Skyrim.esm
+ParentLocation: 018A57:Skyrim.esm

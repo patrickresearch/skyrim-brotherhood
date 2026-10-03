@@ -1,0 +1,19 @@
+FormKey: 0060F2:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_01Standoff_03_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 25
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A harvest? You've come a long way to find a field.
+  ScriptNotes: NHV_Q00_010_1002
+  Edits: ''
+Speaker: 01D4B7:Skyrim.esm

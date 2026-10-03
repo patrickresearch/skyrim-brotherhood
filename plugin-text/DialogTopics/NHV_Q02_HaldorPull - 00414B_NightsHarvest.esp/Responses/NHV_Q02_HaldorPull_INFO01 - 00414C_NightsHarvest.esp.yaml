@@ -6,15 +6,14 @@ Flags:
 PreviousDialog: Null
 FavorLevel: None
 Responses:
-- Emotion: Fear
-  EmotionValue: 60
+- EmotionValue: 30
   ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Something pulled me under! Guards! Guards!
-  ScriptNotes: NHV_Q02_030_10
+    Value: Guards! Something pulled me under! What are you staring at? Go after it!
+  ScriptNotes: NHV_Q02_030_4002
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

@@ -11,7 +11,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Much as you find her now. The same measured voice. The same look when someone wastes her time.
+    Value: Much as you find her now. The same measured voice. The same disregard in her eyes when someone wastes her time.
   ScriptNotes: NHV_SYS_LUC_35 prompt=NHV_SYS_LUC_34
   Edits: ''
 - EmotionValue: 30
@@ -20,7 +20,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: She was a visitor, not one of my assassins. We could work together without pretending otherwise.
+    Value: She was ever a visitor, not one of my assassins. Living alongside the family rather than in our midst.
   ScriptNotes: NHV_SYS_LUC_36
   Edits: ''
 - EmotionValue: 30

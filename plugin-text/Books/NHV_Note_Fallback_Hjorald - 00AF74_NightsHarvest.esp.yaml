@@ -1,0 +1,28 @@
+FormKey: 00AF74:NightsHarvest.esp
+EditorID: NHV_Note_Fallback_Hjorald
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Watch Key Tag
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">TIDEHOUSE KEY - SERGEANT HJORALD</font></p>
+
+    <p align="left">Tidehouse sealed after the fourth body. The log stays inside, and nobody takes it out.</p>
+
+    <p align="left">The log records late shifts, missing names, and Aelius Varro's neat corrections. It shows a pattern, not a killer.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 10
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

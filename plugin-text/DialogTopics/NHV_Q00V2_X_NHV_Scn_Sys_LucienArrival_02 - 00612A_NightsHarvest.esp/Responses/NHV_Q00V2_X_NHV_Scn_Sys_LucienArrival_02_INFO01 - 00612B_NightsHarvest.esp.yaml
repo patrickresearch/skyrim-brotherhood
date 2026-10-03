@@ -1,0 +1,18 @@
+FormKey: 00612B:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Sys_LucienArrival_02_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A witness is not a pardon. But it is more than a stranger's word.
+  ScriptNotes: NHV_Q00_012_1012
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

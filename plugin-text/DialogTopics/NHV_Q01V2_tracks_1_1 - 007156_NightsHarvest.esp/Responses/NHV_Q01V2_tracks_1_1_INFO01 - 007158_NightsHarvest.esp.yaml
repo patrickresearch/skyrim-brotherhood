@@ -1,0 +1,44 @@
+FormKey: 007158:NightsHarvest.esp
+EditorID: NHV_Q01V2_tracks_1_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007158
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007158
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007158
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: '...'
+  ScriptNotes: NHV_SILENT prompt=NHV_Q01_020_2109
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 48
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: They lead toward an old watchpost near the road.

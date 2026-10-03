@@ -26,6 +26,10 @@ VirtualMachineAdapter:
     Unknown2: 1
     ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
     FragmentName: Fragment_1
+  - Stage: 12
+    Unknown2: 1
+    ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
+    FragmentName: Fragment_9
   - Stage: 15
     Unknown2: 1
     ScriptName: QF_NHV_Q00_ShadowAtTheDoor_02000815
@@ -80,7 +84,13 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Find out who has entered the Sanctuary.
+      Value: A stranger entered the Sanctuary. She spoke of Sithis' call and a new harvest, but had yet to explain what she meant.
+- Index: 12
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Before Veyra left the Sanctuary, Lucien Lachance appeared and vouched for her willing service to Sithis.
 - Index: 15
   LogEntries:
   - Flags: []
@@ -92,31 +102,31 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Consult the Night Mother about Veyra.
+      Value: Veyra agreed to wait at the Windpeak Inn while you sought the Night Mother's judgment.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Return to Veyra.
+      Value: The Night Mother permitted Veyra to offer her service. You still had to hear and decide upon her plan.
 - Index: 40
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Open the sealed passage with Veyra.
+      Value: You agreed to investigate possible recruits and judge each yourself. Veyra offered to uncover rooms that might house them.
 - Index: 50
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Explore the Deep Sanctuary.
+      Value: Veyra revealed a doorway. The chambers beyond still needed to be explored and secured.
 - Index: 60
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Decide whose names belong on the Memorial Wall.
+      Value: You reached the memorial wall. Veyra left Astrid's place among the fallen to your judgment.
 - Index: 80
   LogEntries:
   - Flags: []
@@ -136,7 +146,12 @@ Objectives:
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Find out who has entered the Sanctuary.
+    Value: Find out why the stranger has come to the Sanctuary.
+- Index: 12
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Witness Veyra's proof.
 - Index: 15
   Flags: []
   DisplayText:
@@ -146,27 +161,37 @@ Objectives:
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Consult the Night Mother about Veyra.
+    Value: Ask the Night Mother about Veyra.
 - Index: 30
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Return to Veyra.
+    Value: Bring Veyra back from the Windpeak Inn.
+- Index: 31
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Hear Veyra's recruitment plan in the Sanctuary.
 - Index: 40
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Open the sealed passage with Veyra.
+    Value: Inspect the concealed passage with Veyra.
 - Index: 50
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Explore the Deep Sanctuary.
+    Value: Enter and explore the hidden chambers with the family.
 - Index: 60
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Decide whose names belong on the Memorial Wall.
+    Value: Decide how Astrid should be remembered.
+- Index: 61
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Hear the first lead in Veyra's ledger.
 - Index: 80
   Flags: []
   DisplayText:
@@ -185,7 +210,6 @@ Aliases:
   - 0037DE:NightsHarvest.esp
   - 0037DF:NightsHarvest.esp
   - 0037E0:NightsHarvest.esp
-  - 004590:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 1
   Name: Nazir
@@ -215,6 +239,7 @@ Aliases:
   - Optional
   ForcedReference: 09BCB0:Skyrim.esm
   PackageData:
+  - 006102:NightsHarvest.esp
   - 000DD7:NightsHarvest.esp
   - 003D93:NightsHarvest.esp
   - 003D97:NightsHarvest.esp

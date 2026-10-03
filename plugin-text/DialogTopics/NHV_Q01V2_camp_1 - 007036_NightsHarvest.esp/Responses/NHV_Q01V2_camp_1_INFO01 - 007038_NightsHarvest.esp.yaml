@@ -1,0 +1,54 @@
+FormKey: 007038:NightsHarvest.esp
+EditorID: NHV_Q01V2_camp_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007038
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007038
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007038
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then he has more sense than the men he brought.
+  ScriptNotes: NHV_Q01_020_2112 prompt=NHV_Q01_020_2111
+  Edits: ''
+- Emotion: Anger
+  EmotionValue: 55
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Hands where I can see them. You have been in my cellar.
+  ScriptNotes: NHV_Q01_030_2200
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 7
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The Scout lived. He gave us your camp.

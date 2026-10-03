@@ -1,0 +1,45 @@
+FormKey: 006125:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_06Contract_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Now, the first name in my ledger. Hrefna Stormhollow, near Morthal.
+  ScriptNotes: NHV_Q00_060_1016
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She performed the Black Sacrament against a moneylender who took her farm. No assassin came.
+  ScriptNotes: NHV_Q00_060_1017
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Weeks later, he was found dead in the marsh. An accident, according to those who prefer not to ask.
+  ScriptNotes: NHV_Q00_060_1018
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I want you to find Hrefna. Learn whether she killed him, and what she has become since.
+  ScriptNotes: NHV_Q00_060_1019
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

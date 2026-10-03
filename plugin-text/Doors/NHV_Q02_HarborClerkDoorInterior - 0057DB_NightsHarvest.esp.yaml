@@ -1,0 +1,13 @@
+FormKey: 0057DB:NightsHarvest.esp
+EditorID: NHV_Q02_HarborClerkDoorInterior
+ObjectBounds:
+  First: -50, -68, 7
+  Second: 0, 67, 176
+Name:
+  TargetLanguage: English
+  Value: Door
+Model:
+  File: Architecture\Windhelm\Doors\WHDoor01.nif
+  Data: 0x020000000000000000000000
+OpenSound: 0C6D11:Skyrim.esm
+CloseSound: 0C6D12:Skyrim.esm

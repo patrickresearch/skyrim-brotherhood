@@ -1,0 +1,159 @@
+FormKey: 00B4B9:Skyrim.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: WindhelmDocksExterior01
+Version2: 5
+SkyrimMajorRecordFlags:
+- Compressed
+Flags:
+- HasWater
+- HandChanged
+Grid:
+  Point: 34, 8
+  Flags: 2137595392
+OcclusionData: 0x03000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000008001C80000001C00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000080000000000004A026000030003907A0EFF7FCF8FFFFAF23020000F083BF03B0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000180000000000000000000004000041010000000000000000000000000000000000000000000000000000003E00007F49312800000080EF7FFF021F0405800300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000010000004115400001014000200000000B04500260000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+MaxHeightData:
+  Offset: -13952
+  HeightMap:
+  - [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, 13, 13, 13, 16, 16, 16, 16, 16, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [0, 0, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 11, 13, 15, 16, 16, 16, 16, 16, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 11, 13, 16, 16, 16, 16, 14, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 11, 13, 16, 16, 14, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [6, 1, 1, 1, 1, 1, 0, 0, 0, 1, 2, 2, 1, 1, 1, 9, 11, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [6, 1, 1, 1, 1, 0, 0, 0, 1, 1, 2, 2, 1, 1, 1, 1, 1, 11, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 11, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2, 11, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]
+  - [0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 2, 13, 13, 13, 13, 13, 13, 14, 14, 14, 14, 13]
+  - [0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 13, 13, 13, 13, 13, 13, 17, 17, 17, 17, 13]
+  - [1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 9, 13, 13, 13, 13, 13, 17, 17, 17, 17, 13]
+  - [1, 1, 1, 1, 0, 2, 2, 2, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 13, 13, 13, 13, 17, 17, 17, 17, 13]
+  - [1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 3, 3, 2, 2, 13, 13, 13, 16, 16, 16, 16, 13]
+  - [0, 0, 0, 3, 3, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 2, 2, 13, 13, 13, 13, 13, 13, 13]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 3, 1, 3, 3, 3, 2, 2, 12, 12, 12, 12, 12, 12]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 2, 3, 2, 3, 2, 3, 3]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 3, 3, 3, 2, 2, 2, 3, 3, 15]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 3, 3, 2, 2, 2, 15, 15, 15]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 15, 15, 15]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 6, 6, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 15, 15, 15]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 7, 6, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 13]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 6, 6, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 9, 13]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 6, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 9, 13]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 13]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 1, 13]
+  - [0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 2, 2, 15, 15, 15]
+  - [0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 2, 1, 2, 15, 15, 15]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 1, 1, 2, 15, 15, 15]
+  - [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+  - [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+  - [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+  - [2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+WaterHeight: 3.4028235E+38
+Regions:
+- 0C5859:Skyrim.esm
+- 0C5853:Skyrim.esm
+- 0412EA:Skyrim.esm
+- 092045:Skyrim.esm
+Location: 018A57:Skyrim.esm
+Water: 001232:Update.esm
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 005190:NightsHarvest.esp
+  MajorRecordFlagsRaw: 2048
+  EditorID: NHV_SingsBeneathIceRef
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 004107:NightsHarvest.esp
+  Placement:
+    Position: 139744, 34304, -13952
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 005191:NightsHarvest.esp
+  EditorID: NHV_TorbjornIceVeinRef
+  Base: 004108:NightsHarvest.esp
+  Placement:
+    Position: 141598.94, 36375.49, -13700.041
+- MutagenObjectType: PlacedNpc
+  FormKey: 005194:NightsHarvest.esp
+  EditorID: NHV_WatchSergeantHjoraldRef
+  Base: 00410C:NightsHarvest.esp
+  Placement:
+    Position: 139589.33, 34509.344, -13950.294
+- MutagenObjectType: PlacedNpc
+  FormKey: 005195:NightsHarvest.esp
+  EditorID: NHV_HaldorFrostKnuckleRef
+  Base: 00410A:NightsHarvest.esp
+  Placement:
+    Position: 142048, 36000, -13920
+- MutagenObjectType: PlacedObject
+  FormKey: 0051AA:NightsHarvest.esp
+  Base: 0051A9:NightsHarvest.esp
+  Placement:
+    Position: 141184, 35680, -13952
+    Rotation: 0, 0, 4
+- MutagenObjectType: PlacedNpc
+  FormKey: 005959:NightsHarvest.esp
+  MajorRecordFlagsRaw: 512
+  EditorID: NHV_Q02_VictimCorpseRef
+  SkyrimMajorRecordFlags:
+  - 0x200
+  VirtualMachineAdapter:
+    Scripts:
+    - Name: NHV_Q02_StageActivatorScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NHV_Cfg_Debug
+        Object: 000800:NightsHarvest.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: OwningQuest
+        Object: 004100:NightsHarvest.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: RequiredStage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: TargetStage
+        Data: 20
+  Base: 005958:NightsHarvest.esp
+  RagdollData: 0x021D0043FEC934B6DE54B43696D2894200000080000000800000008008000000A9AED3C00040D43900000000F2B046C06125CA3D7C6646C009FFFFFF0000C035000098B48B610E42FF2705BE349CB3BAB51C79BC0A0000000000A834000010371299DF4174B98D3F7BD118BEE96E643E0EFE7D42A9AED3400040D4390000000021B146C03D14CABD7A6646400F00803F000020B60000E8B38C610E42302605BE7215B13A5E87793C10000000000000B6000030371299DF410BB98D3F29DE183EF26564BE02000000FDBA1837DCACA7C0E0A972409A91323D46D686331E05B2350300803F000080B100000000C0FA0B4141801ABEEE8245B397FECA330400000000001534801F8CBC3DD31D41C917773E274816352FDDB4350000000000806EB700E2DC3CD450B04196A96E3DB8140538F47E2D3C01000000000080B30000A0357791EC4003EC43BEC29A65BAB2D05C390B000000000030B6000028370DB46041CB475A3FB48F1DBF562EF3BE0C0000000000A0B60000A83504ACB641EFEEE03EF8F81838664B13B90D000000000008370000C036965F8041A411453C8624D9BD275AC0BF050000000000E0B600002C360CB46041D0475A3FA38F1D3F912DF33E060000000000E0360000B0B604ACB641E1C5E03EB04D883270A6FFB207000000000060B70000C0B5965F8041A411453C8424D93D275AC03F00000000000000000000884100002041000000800000008000000080
+  Placement:
+    Position: 142235.08, 36068.09, -13945.709
+  MajorFlags:
+  - StartsDead
+- MutagenObjectType: PlacedObject
+  FormKey: 00595A:NightsHarvest.esp
+  Base: 004120:NightsHarvest.esp
+  Placement:
+    Position: 140928, 35040, -13920
+- MutagenObjectType: PlacedObject
+  FormKey: 00595B:NightsHarvest.esp
+  Base: 00411F:NightsHarvest.esp
+  Placement:
+    Position: 141856, 36032, -13888
+- MutagenObjectType: PlacedObject
+  FormKey: 00595C:NightsHarvest.esp
+  Base: 004121:NightsHarvest.esp
+  Placement:
+    Position: 142848, 36640, -13920
+- MutagenObjectType: PlacedObject
+  FormKey: 09A3AD:Skyrim.esm
+  Base: 024F39:Skyrim.esm
+  LocationReference: 018A57:Skyrim.esm
+  Placement:
+    Position: 141088, 35584, -13952
+    Rotation: 0, 0, 3.1415927
+- MutagenObjectType: PlacedObject
+  FormKey: 0B1819:Skyrim.esm
+  Base: 0E758D:Skyrim.esm
+  LocationReference: 018A57:Skyrim.esm
+  Placement:
+    Position: 142784, 36736, -14016
+    Rotation: 0, 0, 2.14
+- MutagenObjectType: PlacedObject
+  FormKey: 0F473D:Skyrim.esm
+  Base: 0747FB:Skyrim.esm
+  LocationReference: 018A57:Skyrim.esm
+  Placement:
+    Position: 141728, 36032, -13952
+    Rotation: 0.08705557, 0.0042610285, 0.015133622
+MajorFlags:
+- 0x40000

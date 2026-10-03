@@ -1,0 +1,7 @@
+FormKey: 0060B0:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_hub_9_Branch
+Quest: 000815:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 0060AF:NightsHarvest.esp

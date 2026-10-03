@@ -47,6 +47,7 @@ VirtualMachineAdapter:
         Object: 000809:NightsHarvest.esp
 Flags:
 - StartGameEnabled
+- 0x10
 NextAliasID: 6
 Aliases:
 - Name: Nazir

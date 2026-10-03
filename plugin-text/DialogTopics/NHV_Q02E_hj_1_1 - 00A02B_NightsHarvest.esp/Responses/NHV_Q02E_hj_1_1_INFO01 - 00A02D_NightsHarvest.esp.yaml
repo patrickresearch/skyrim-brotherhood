@@ -1,0 +1,44 @@
+FormKey: 00A02D:NightsHarvest.esp
+EditorID: NHV_Q02E_hj_1_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A02D
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A02D
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A02D
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Because names become questions. Questions become reports. Reports become trouble.
+  ScriptNotes: NHV_Q02_015_4202 prompt=NHV_Q02_015_4201
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 15
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A003:NightsHarvest.esp
+  ComparisonValue: 8
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 00410C:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Why keep a room that keeps giving you names?

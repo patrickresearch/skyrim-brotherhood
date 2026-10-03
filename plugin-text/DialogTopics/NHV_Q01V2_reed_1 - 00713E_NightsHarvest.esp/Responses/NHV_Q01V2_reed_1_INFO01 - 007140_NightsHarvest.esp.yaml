@@ -1,0 +1,52 @@
+FormKey: 007140:NightsHarvest.esp
+EditorID: NHV_Q01V2_reed_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007140
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007140
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007140
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Fear
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You are late. The woman was later. Everyone is late in this marsh.
+  ScriptNotes: NHV_Q01_012_2023 prompt=NHV_Q01_012_2022
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 12
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00711B:NightsHarvest.esp
+  ComparisonValue: 40
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00711B:NightsHarvest.esp
+  ComparisonValue: 1009
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 007F20:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Drop the ledger and step away from the marker.

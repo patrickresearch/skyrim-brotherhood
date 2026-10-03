@@ -1,0 +1,45 @@
+FormKey: 00A076:NightsHarvest.esp
+EditorID: NHV_Q02E_prop_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A076
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A076
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A076
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: No hatred. Then you do not mean anyone I have drowned. Whom do you mean?
+  ScriptNotes: NHV_Q02_050_4603 prompt=NHV_Q02_050_4602
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 50
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A007:NightsHarvest.esp
+  ComparisonValue: 23
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004107:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The family tests its own. One killing, with no hatred in it.

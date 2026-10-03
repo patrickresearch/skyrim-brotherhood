@@ -1,0 +1,9 @@
+FormKey: 00AF14:NightsHarvest.esp
+EditorID: NHV_Fac_DockEnforcer
+Name:
+  TargetLanguage: English
+  Value: Dock Enforcers
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorValues: {}

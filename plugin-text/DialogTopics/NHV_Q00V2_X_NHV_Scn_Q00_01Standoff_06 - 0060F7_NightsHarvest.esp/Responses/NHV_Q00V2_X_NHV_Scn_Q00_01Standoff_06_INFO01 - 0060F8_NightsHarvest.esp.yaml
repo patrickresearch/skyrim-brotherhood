@@ -1,0 +1,18 @@
+FormKey: 0060F8:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_01Standoff_06_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Veyra Othren. Though some in the old sanctuaries knew me as the Gleaner.
+  ScriptNotes: NHV_Q00_010_1041
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

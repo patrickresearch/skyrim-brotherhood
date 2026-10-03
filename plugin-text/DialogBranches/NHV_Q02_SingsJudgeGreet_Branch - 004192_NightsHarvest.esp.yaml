@@ -1,7 +1,0 @@
-FormKey: 004192:NightsHarvest.esp
-EditorID: NHV_Q02_SingsJudgeGreet_Branch
-Quest: 004100:NightsHarvest.esp
-Category: Player
-Flags:
-- TopLevel
-StartingTopic: 004191:NightsHarvest.esp

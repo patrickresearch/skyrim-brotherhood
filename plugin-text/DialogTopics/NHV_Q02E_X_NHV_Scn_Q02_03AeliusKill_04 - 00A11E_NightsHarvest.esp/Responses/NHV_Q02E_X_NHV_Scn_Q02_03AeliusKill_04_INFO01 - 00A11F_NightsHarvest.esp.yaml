@@ -1,0 +1,27 @@
+FormKey: 00A11F:NightsHarvest.esp
+EditorID: NHV_Q02E_X_NHV_Scn_Q02_03AeliusKill_04_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He offered me his cloak. I took it before I remembered why I had come.
+  ScriptNotes: NHV_Q02_060_4004
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Keep walking. If I stay here, I will start finding excuses.
+  ScriptNotes: NHV_Q02_060_4005
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

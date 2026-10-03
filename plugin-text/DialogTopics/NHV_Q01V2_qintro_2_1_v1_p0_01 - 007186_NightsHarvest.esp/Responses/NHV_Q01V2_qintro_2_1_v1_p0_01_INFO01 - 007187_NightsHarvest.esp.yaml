@@ -1,0 +1,18 @@
+FormKey: 007187:NightsHarvest.esp
+EditorID: NHV_Q01V2_qintro_2_1_v1_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Now he knows enough to become dangerous. That does not make him wrong.
+  ScriptNotes: NHV_Q01_040_2311
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

@@ -6,24 +6,13 @@ Flags:
 PreviousDialog: Null
 FavorLevel: None
 Responses:
-- Emotion: Anger
-  EmotionValue: 60
+- EmotionValue: 30
   ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Back to work, lizard, before I feed you your own tail.
-  ScriptNotes: NHV_Q02_030_01
-  Edits: ''
-- Emotion: Happy
-  EmotionValue: 30
-  ResponseNumber: 2
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: What, no hissing tonight? Good. You're learning.
-  ScriptNotes: NHV_Q02_030_02
+    Value: Move that crate. Or shall I show you which end of a boot gives orders?
+  ScriptNotes: NHV_Q02_030_4000
   Edits: ''
 Speaker: 00410A:NightsHarvest.esp

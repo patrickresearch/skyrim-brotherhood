@@ -1,0 +1,33 @@
+FormKey: 00AD43:NightsHarvest.esp
+EditorID: NHV_Note_Fallback_Scavenger
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Debt Paper
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">Debt Paper</font></p>
+
+    <p align="left">Debt of Eirik Ashmark, sold on to the bearer.</p>
+
+    <p align="left">A seal on the page, no name beneath it.</p>
+
+    <p align="left">Search the reedbed sack and keep the red ferry marker.</p>
+
+    <p align="left">Hungry men need no other order.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 1
+Weight: 1
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,19 @@
+FormKey: 006098:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_hub_3_v1_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 25
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: And this time, if someone starts making private arrangements for our safety, we ask whose throat pays for them.
+  ScriptNotes: NHV_Q00_030_1047
+  Edits: ''
+Speaker: 01D4B7:Skyrim.esm

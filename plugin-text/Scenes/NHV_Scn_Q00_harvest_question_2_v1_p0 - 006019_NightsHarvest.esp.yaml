@@ -1,0 +1,91 @@
+FormKey: 006019:NightsHarvest.esp
+EditorID: NHV_Scn_Q00_harvest_question_2_v1_p0
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Q00V2_02006019
+  ScriptFragments:
+    FileName: SF_NHV_Q00V2_02006019
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Q00V2_02006019
+      FragmentName: Fragment_0
+Flags: []
+Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+Actors:
+- ID: 1
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 2
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: NHV_Q00_010_1046
+  ActorID: 1
+  Index: 1
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 00601A:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_010_1047
+  ActorID: 0
+  Index: 2
+  StartPhase: 1
+  EndPhase: 1
+  Topic: 00601C:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_010_1048
+  ActorID: 2
+  Index: 3
+  StartPhase: 2
+  EndPhase: 2
+  Topic: 00601E:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_010_1049
+  ActorID: 0
+  Index: 4
+  StartPhase: 3
+  EndPhase: 3
+  Topic: 006020:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+Quest: 000815:NightsHarvest.esp
+LastActionIndex: 4
+VNAM: 0x00000000000000000300000003000000

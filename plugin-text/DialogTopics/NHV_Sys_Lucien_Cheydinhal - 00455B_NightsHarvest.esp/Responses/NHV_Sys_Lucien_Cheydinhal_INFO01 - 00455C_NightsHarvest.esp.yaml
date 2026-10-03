@@ -20,17 +20,27 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: We had our quarrels. Put so many accomplished killers under one roof, and even supper requires a little diplomacy.
+    Value: There had ever been discord in our midst, the kind that every family knows.
   ScriptNotes: NHV_SYS_LUC_16
   Edits: ''
-- Emotion: Sad
-  EmotionValue: 25
+- Emotion: Happy
+  EmotionValue: 20
   ResponseNumber: 3
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I remember their voices more readily than their kills. An inconvenient distinction, after so many years.
+    Value: But what bound us more than blood was pride in servitude to Our Lady.
+  ScriptNotes: NHV_SYS_LUC_43
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 25
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: And yet... I remember their voices more distinctly than their kills. Even centuries cannot diminish the distant fondness I had for my Brothers and Sisters.
   ScriptNotes: NHV_SYS_LUC_17
   Edits: ''
 Conditions:

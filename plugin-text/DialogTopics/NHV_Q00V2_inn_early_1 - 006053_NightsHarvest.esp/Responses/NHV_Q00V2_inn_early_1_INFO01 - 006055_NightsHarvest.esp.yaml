@@ -1,0 +1,44 @@
+FormKey: 006055:NightsHarvest.esp
+EditorID: NHV_Q00V2_inn_early_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02006055
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02006055
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02006055
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then we are both waiting. She is in the Sanctuary, Listener. I shall remain here.
+  ScriptNotes: NHV_Q00_020_1003 prompt=NHV_Q00_020_1001
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006000:NightsHarvest.esp
+  ComparisonValue: 5
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: I haven't spoken to her yet.

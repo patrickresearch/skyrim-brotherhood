@@ -1,0 +1,45 @@
+FormKey: 006127:NightsHarvest.esp
+EditorID: NHV_Q00V2_R_stage12_departure_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then ask the Mother. Before I leave, let someone this family knows speak for me.
+  ScriptNotes: NHV_Q00_012_1000
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I will call him now. Judge the witness as you judge me.
+  ScriptNotes: NHV_Q00_012_1001
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Someone in this family's memory can speak for me. I will call him now.
+  ScriptNotes: NHV_Q00_012_1006
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lucien Lachance. If you still answer Sithis, come and speak.
+  ScriptNotes: NHV_Q00_012_1007
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

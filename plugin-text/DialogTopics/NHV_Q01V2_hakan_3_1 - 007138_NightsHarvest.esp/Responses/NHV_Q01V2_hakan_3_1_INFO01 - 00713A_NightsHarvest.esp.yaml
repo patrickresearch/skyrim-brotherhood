@@ -1,0 +1,44 @@
+FormKey: 00713A:NightsHarvest.esp
+EditorID: NHV_Q01V2_hakan_3_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200713A
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200713A
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200713A
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Bring back my red ferry marker. The marsh swallowed it when I found the body. Then I will show you where Hrefna crossed.
+  ScriptNotes: NHV_Q01_010_2018 prompt=NHV_Q01_010_2017
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007000:NightsHarvest.esp
+  ComparisonValue: 38
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004006:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Take me to the reeds.

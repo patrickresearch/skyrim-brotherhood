@@ -1,0 +1,24 @@
+FormKey: 005EC4:NightsHarvest.esp
+EditorID: NHV_Msg_MapTable
+Description:
+  TargetLanguage: English
+  Value: Veyra's map of Skyrim. Four pins, four names. One blade at a time.
+INAM: 0x00000000
+Flags:
+- MessageBox
+MenuButtons:
+- Text:
+    TargetLanguage: English
+    Value: Windhelm
+- Text:
+    TargetLanguage: English
+    Value: Winterhold
+- Text:
+    TargetLanguage: English
+    Value: Riften
+- Text:
+    TargetLanguage: English
+    Value: The Reach
+- Text:
+    TargetLanguage: English
+    Value: Step away

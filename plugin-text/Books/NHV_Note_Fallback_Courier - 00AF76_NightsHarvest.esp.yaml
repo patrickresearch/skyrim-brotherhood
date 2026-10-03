@@ -1,0 +1,28 @@
+FormKey: 00AF76:NightsHarvest.esp
+EditorID: NHV_Note_Fallback_Courier
+ObjectBounds:
+  First: -6, -9, 0
+  Second: 6, 8, 1
+Name:
+  TargetLanguage: English
+  Value: Sealed Order
+Model:
+  File: Clutter\Books\JournalLowPoly01.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <p align="center"><font size="32">WINDHELM WATCH - ORDER OF SEALING</font></p>
+
+    <p align="left">By order of the Windhelm Watch, the desk of the harbor clerk is sealed upon his death. His papers are to be collected under escort and forwarded to the northern desk.</p>
+
+    <p align="left">No person outside the roster may handle them.</p>
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+Value: 10
+InventoryArt: 0B7E3D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

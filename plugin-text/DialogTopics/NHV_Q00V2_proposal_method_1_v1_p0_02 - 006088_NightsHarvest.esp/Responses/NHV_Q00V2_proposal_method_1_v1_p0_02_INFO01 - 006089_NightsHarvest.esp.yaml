@@ -1,0 +1,36 @@
+FormKey: 006089:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_method_1_v1_p0_02_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Only those the Listener admits. You know this house, Nazir. We will need your judgment here.
+  ScriptNotes: NHV_Q00_030_1027
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Members need beds, food, training. Rebuilding means giving them work and a place in this Sanctuary.
+  ScriptNotes: NHV_Q00_030_1028
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That is my offer. I can begin with one lead. You needn't promise me a full table.
+  ScriptNotes: NHV_Q00_030_1029
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

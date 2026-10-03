@@ -10,26 +10,44 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I served on the Black Hand. A Speaker carried the Listener's orders to those who would make them final.
+    Value: I served on the Black Hand. As Speaker, I carried the Listener's orders to those who would bring the Silence.
   ScriptNotes: NHV_SYS_LUC_19 prompt=NHV_SYS_LUC_18
   Edits: ''
-- EmotionValue: 30
+- EmotionValue: 40
   ResponseNumber: 2
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I also watched for talent. A promising murderer does not always recognize a vocation when it first presents itself.
-  ScriptNotes: NHV_SYS_LUC_20
+    Value: A tradition you would do well to remember, Listener.
+  ScriptNotes: NHV_SYS_LUC_44
   Edits: ''
-- Emotion: Happy
-  EmotionValue: 15
+- EmotionValue: 30
   ResponseNumber: 3
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: There was ceremony, certainly. But a fine robe is a poor substitute for choosing the right knife.
+    Value: Being a Speaker also meant speaking on behalf of those who bore promise.
+  ScriptNotes: NHV_SYS_LUC_20
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: An aspiring murderer does not always recognize a vocation when it first presents itself.
+  ScriptNotes: NHV_SYS_LUC_45
+  Edits: ''
+- Emotion: Happy
+  EmotionValue: 15
+  ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Yet even then, this harvest had not always proven fruitful. At times, a sharpened blade cuts ever more recklessly.
   ScriptNotes: NHV_SYS_LUC_21
   Edits: ''
 Conditions:

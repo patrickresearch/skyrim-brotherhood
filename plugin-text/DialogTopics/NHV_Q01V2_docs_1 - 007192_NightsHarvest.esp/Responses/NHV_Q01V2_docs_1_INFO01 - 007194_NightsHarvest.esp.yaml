@@ -1,0 +1,52 @@
+FormKey: 007194:NightsHarvest.esp
+EditorID: NHV_Q01V2_docs_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007194
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007194
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007194
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: '...'
+  ScriptNotes: NHV_SILENT prompt=NHV_Q01_042_2320
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 42
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 67
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004008:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetItemCountConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ItemOrList: 007F10:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The room holds a letter addressed to his daughter.

@@ -1,0 +1,53 @@
+FormKey: 00A042:NightsHarvest.esp
+EditorID: NHV_Q02E_body_2_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A042
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A042
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A042
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Nobody who has spoken to me. The night shift hears plenty and remembers less when the guards arrive.
+  ScriptNotes: NHV_Q02_020_4004 prompt=NHV_Q02_020_4003
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Watch after the late bell. You'll find Haldor making himself useful to no one.
+  ScriptNotes: NHV_Q02_020_4005
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A008:NightsHarvest.esp
+  ComparisonValue: 14
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004108:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Who saw this happen?

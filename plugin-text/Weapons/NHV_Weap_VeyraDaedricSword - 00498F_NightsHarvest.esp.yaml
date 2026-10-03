@@ -8,6 +8,7 @@ Name:
   Value: Daedric Sword
 Model:
   File: Weapons\Daedric\DaedricSword.nif
+  Data: 0x020000000000000000000000
 EquipmentType: 013F42:Skyrim.esm
 BlockBashImpact: 0183FF:Skyrim.esm
 AlternateBlockMaterial: 0774C2:Skyrim.esm
@@ -15,6 +16,9 @@ Keywords:
 - 01E71F:Skyrim.esm
 - 01E711:Skyrim.esm
 - 08F958:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
 ImpactDataSet: 013CAC:Skyrim.esm
 FirstPersonModel: 05FF33:Skyrim.esm
 AttackFailSound: 03C730:Skyrim.esm
@@ -42,10 +46,10 @@ Data:
   Stagger: 0.75
 Critical:
   Damage: 7
-  Unused: 21
+  Unused: 32616
   PercentMult: 1
   Flags:
   - OnDeath
-  Unused2: 0x000000
+  Unused2: 0xFFFFFF
   Unused3: 1
 DetectionSoundLevel: Normal

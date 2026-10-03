@@ -1,0 +1,19 @@
+FormKey: 00A09C:NightsHarvest.esp
+EditorID: NHV_Q02E_cour_hub_1_v1_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He carries the same seal as Aelius's papers.
+  ScriptNotes: NHV_Q02_070_4504
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

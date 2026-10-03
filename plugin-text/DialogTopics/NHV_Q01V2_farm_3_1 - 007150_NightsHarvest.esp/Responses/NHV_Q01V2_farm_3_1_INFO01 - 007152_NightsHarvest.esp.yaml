@@ -1,0 +1,44 @@
+FormKey: 007152:NightsHarvest.esp
+EditorID: NHV_Q01V2_farm_3_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007152
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007152
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007152
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Now you have a route, not an answer. Follow it.
+  ScriptNotes: NHV_Q01_020_2107 prompt=NHV_Q01_020_2106
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 46
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The note names a debt, a date, and a place by the watchpost.

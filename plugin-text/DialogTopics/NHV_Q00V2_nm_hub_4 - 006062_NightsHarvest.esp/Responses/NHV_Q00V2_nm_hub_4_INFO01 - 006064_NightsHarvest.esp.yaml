@@ -1,0 +1,53 @@
+FormKey: 006064:NightsHarvest.esp
+EditorID: NHV_Q00V2_nm_hub_4_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02006064
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02006064
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02006064
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She is the one who gathers. What else she is remains a secret in Sithis' keeping.
+  ScriptNotes: NHV_Q00_020_1019 prompt=NHV_Q00_020_1011
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Seek the worth of her work, my Listener. Her beginning is not your task.
+  ScriptNotes: NHV_Q00_020_1020
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000815:NightsHarvest.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 006001:NightsHarvest.esp
+  ComparisonValue: 6
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 0037EC:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: What is she?

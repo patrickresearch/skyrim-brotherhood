@@ -1,0 +1,53 @@
+FormKey: 007137:NightsHarvest.esp
+EditorID: NHV_Q01V2_hakan_2_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007137
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007137
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007137
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: An Imperial calling himself a trader. Asked about the cellar, not the debt. Traders ask about prices.
+  ScriptNotes: NHV_Q01_010_2015 prompt=NHV_Q01_010_2014
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He paid for lamp oil, then watched who watched him. That is no way to sell grain.
+  ScriptNotes: NHV_Q01_010_2016
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007000:NightsHarvest.esp
+  ComparisonValue: 37
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004006:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Who else was asking about him?

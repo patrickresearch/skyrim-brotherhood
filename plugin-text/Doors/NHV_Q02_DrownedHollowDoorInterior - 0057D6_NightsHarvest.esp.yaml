@@ -1,0 +1,13 @@
+FormKey: 0057D6:NightsHarvest.esp
+EditorID: NHV_Q02_DrownedHollowDoorInterior
+ObjectBounds:
+  First: -37, -38, -2
+  Second: 38, 56, 232
+Name:
+  TargetLanguage: English
+  Value: Trapdoor
+Model:
+  File: Architecture\Farmhouse\Interior\Basement\FarmBTrapdoor01.nif
+  Data: 0x020000000000000000000000
+OpenSound: 03C813:Skyrim.esm
+CloseSound: 03C810:Skyrim.esm

@@ -1,0 +1,49 @@
+FormKey: 007206:NightsHarvest.esp
+EditorID: NHV_Q01V2_inn_2_2_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__02007206
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__02007206
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__02007206
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 40
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Bring him here. I will face him in the inn.
+  ScriptNotes: NHV_Q01_050_2373 prompt=NHV_Q01_050_2372
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 50
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 82
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004007:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007123:NightsHarvest.esp
+  ComparisonValue: 2
+Prompt:
+  TargetLanguage: English
+  Value: Quintus is at the farm. I will bring him back to the inn.

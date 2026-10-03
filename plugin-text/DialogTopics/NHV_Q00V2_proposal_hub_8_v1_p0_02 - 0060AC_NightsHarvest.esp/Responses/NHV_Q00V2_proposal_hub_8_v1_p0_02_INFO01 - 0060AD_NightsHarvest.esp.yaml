@@ -1,0 +1,18 @@
+FormKey: 0060AD:NightsHarvest.esp
+EditorID: NHV_Q00V2_proposal_hub_8_v1_p0_02_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: First, let us look for room. There is a concealed passage I would like you to see.
+  ScriptNotes: NHV_Q00_030_1060
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

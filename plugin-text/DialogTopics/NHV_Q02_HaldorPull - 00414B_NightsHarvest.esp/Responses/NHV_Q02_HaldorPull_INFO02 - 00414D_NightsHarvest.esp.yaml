@@ -6,15 +6,14 @@ Flags:
 PreviousDialog: 00414C:NightsHarvest.esp
 FavorLevel: None
 Responses:
-- Emotion: Fear
-  EmotionValue: 70
+- EmotionValue: 30
   ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: What... something's got my leg! Help!
-  ScriptNotes: NHV_Q02_030_03
+    Value: What... let go! Someone's got me! Help!
+  ScriptNotes: NHV_Q02_030_4001
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat

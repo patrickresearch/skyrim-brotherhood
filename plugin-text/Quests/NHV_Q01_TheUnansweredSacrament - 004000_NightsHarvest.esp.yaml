@@ -11,11 +11,17 @@ VirtualMachineAdapter:
       Name: CampAmbushScene
       Object: 00402B:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: CampMapMarker
+      Object: 0089F9:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: CampMarker
       Object: 004980:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: Core
       Object: 000801:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FarmMapMarker
+      Object: 0089E5:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: HakanAlias
       Object: 004000:NightsHarvest.esp
@@ -28,6 +34,9 @@ VirtualMachineAdapter:
       Name: HrefnaFamilySlotAlias
       Object: 000813:NightsHarvest.esp
       Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HrefnaFarmSpot
+      Object: 0089E7:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: HrefnaReleaseLetter
       Object: 004010:NightsHarvest.esp
@@ -60,11 +69,38 @@ VirtualMachineAdapter:
       Object: 004000:NightsHarvest.esp
       Alias: 4
     - MutagenObjectType: ScriptObjectProperty
-      Name: QuintusApproachScene
-      Object: 004037:NightsHarvest.esp
+      Name: QuintusFarmSpot
+      Object: 0089E6:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: QuintusFieldNote
       Object: 00400D:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: QuintusInnSpot
+      Object: 0089FD:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: ScavengerRefs
+      Objects:
+      - Name: ''
+        Object: 0089E3:NightsHarvest.esp
+      - Name: ''
+        Object: 0089E4:NightsHarvest.esp
+      - Name: ''
+        Object: 0089E2:NightsHarvest.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ScoutAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 6
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: SoldierRefs
+      Objects:
+      - Name: ''
+        Object: 0089F3:NightsHarvest.esp
+      - Name: ''
+        Object: 0089F6:NightsHarvest.esp
+      - Name: ''
+        Object: 0089F4:NightsHarvest.esp
+      - Name: ''
+        Object: 0089F5:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: VeyraAlias
       Object: 004000:NightsHarvest.esp
@@ -73,43 +109,96 @@ VirtualMachineAdapter:
       Name: VeyraTrialMarker
       Object: 004987:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: VeyraTrialScene
-      Object: 004030:NightsHarvest.esp
+      Name: WatchpostMapMarker
+      Object: 0089F8:NightsHarvest.esp
   - Name: QF_NHV_Q01_TheUnansweredSacra_02004000
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HakanAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HrefnaAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NazirAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_PlayerRefAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_QuintusAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ScoutAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VeyraAlias
+      Object: 004000:NightsHarvest.esp
+      Alias: 1
   FileName: QF_NHV_Q01_TheUnansweredSacra_02004000
   Fragments:
   - Stage: 10
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_0
-  - Stage: 20
+  - Stage: 12
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_1
-  - Stage: 30
+  - Stage: 20
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_2
-  - Stage: 40
+  - Stage: 25
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_3
-  - Stage: 50
+  - Stage: 30
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_4
-  - Stage: 60
+  - Stage: 40
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_5
-  - Stage: 70
+  - Stage: 42
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_6
-  - Stage: 100
+  - Stage: 45
     Unknown2: 1
     ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
     FragmentName: Fragment_7
+  - Stage: 48
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_8
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_9
+  - Stage: 55
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_10
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_11
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_12
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_NHV_Q01_TheUnansweredSacra_02004000
+    FragmentName: Fragment_13
   Aliases:
   - Property:
       Name: ''
@@ -161,92 +250,193 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Travel to Morthal and ask about unusual deaths.
+      Value: Travel to Morthal and find Hakan Reed-Walker.
+- Index: 12
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Recover Hakan’s red ferry marker from the reedbed scavengers.
 - Index: 20
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Find the site of the Black Sacrament.
+      Value: Search the Stormhollow cellar and reconstruct the Black Sacrament.
+- Index: 25
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Defeat the soldiers and question the surviving Oculatus scout.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Find Hrefna.
+      Value: Confront Hrefna at the camp beyond the drowned shrine.
 - Index: 40
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Hear Hrefna's story.
+      Value: Return to Morthal and expose the trader’s contradictions.
+- Index: 42
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Find Quintus’s letter to his daughter and the remaining documents.
+- Index: 45
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Decide whether Quintus stays in the inn or follows the false lead to the farm.
+- Index: 48
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Return to Hrefna and bring her to the inn.
 - Index: 50
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Help Hrefna silence Quintus Aufidius.
+      Value: Return to Hrefna and bring her to the inn.
+- Index: 55
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Let Hrefna read the documents and choose Quintus’s fate.
 - Index: 60
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Search Quintus's belongings.
+      Value: Secure Quintus’s dispatch fragment.
 - Index: 70
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Decide Hrefna's fate.
+      Value: Decide whether Hrefna belongs in the family.
 - Index: 100
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Return to Veyra.
+      Value: Report what Hrefna chose and what the unanswered Sacrament revealed.
 Objectives:
-- Index: 10
+- Index: 9001
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Travel to Morthal and ask about unusual deaths.
-- Index: 20
+    Value: Travel to Morthal and find Hakan Reed-Walker.
+- Index: 9002
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Find the site of the Black Sacrament.
-- Index: 30
+    Value: Ask what the marsh returned and what it kept.
+- Index: 9003
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Find Hrefna.
-- Index: 40
+    Value: Recover Hakan’s red ferry marker from the reedbed scavengers.
+- Index: 9004
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Hear Hrefna's story.
-- Index: 50
+    Value: Follow Hakan’s suspicion to Hrefna’s farm.
+- Index: 9005
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Help Hrefna silence Quintus Aufidius.
-- Index: 60
+    Value: Search the Stormhollow cellar and reconstruct the Black Sacrament.
+- Index: 9006
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Search Quintus's belongings.
-- Index: 70
+    Value: Follow the Imperial boot prints to the old watchpost.
+- Index: 9007
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Decide Hrefna's fate.
-- Index: 100
+    Value: Defeat the soldiers and question the surviving Oculatus scout.
+- Index: 9008
   Flags: []
   DisplayText:
     TargetLanguage: English
-    Value: Return to Veyra.
-NextAliasID: 5
+    Value: Confront Hrefna at the camp beyond the drowned shrine.
+- Index: 9009
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Hear what Hrefna lost before she performed the Sacrament.
+- Index: 9010
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Return to Morthal and expose the trader’s contradictions.
+- Index: 9011
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Force Quintus to admit that he is Penitus Oculatus.
+- Index: 9012
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Find Quintus’s letter to his daughter and the remaining documents.
+- Index: 9013
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Decide whether Quintus stays in the inn or follows the false lead to the farm.
+- Index: 9014
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Return to Hrefna and bring her to the inn.
+- Index: 9015
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Let Hrefna read the documents and choose Quintus’s fate.
+- Index: 9016
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Secure Quintus’s dispatch fragment.
+- Index: 9017
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Determine what the Oculatus pattern proves—and what it does not.
+- Index: 9018
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Decide whether Hrefna belongs in the family.
+- Index: 9019
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Record Hrefna’s answer and the Listener’s judgment.
+- Index: 9020
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Report what Hrefna chose and what the unanswered Sacrament revealed.
+- Index: 9021
+  Flags: []
+  DisplayText:
+    TargetLanguage: English
+    Value: Choose the next name from the Black Ledger.
+NextAliasID: 7
 Aliases:
 - Name: PlayerRefAlias
   Flags:
@@ -258,7 +448,10 @@ Aliases:
   Flags:
   - Optional
   PackageData:
+  - 007F30:NightsHarvest.esp
   - 004991:NightsHarvest.esp
+  - 00AD0B:NightsHarvest.esp
+  - 00AD0C:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 2
   Name: HakanAlias
@@ -272,11 +465,26 @@ Aliases:
   - Optional
   UniqueActor: 004007:NightsHarvest.esp
   PackageData:
+  - 00AD0F:NightsHarvest.esp
+  - 00AD0D:NightsHarvest.esp
   - 00498E:NightsHarvest.esp
+  - 00AD04:NightsHarvest.esp
   VoiceTypes: Null
 - ID: 4
   Name: QuintusAlias
   Flags:
   - Optional
   UniqueActor: 004008:NightsHarvest.esp
+  VoiceTypes: Null
+- ID: 5
+  Name: NazirAlias
+  Flags:
+  - Optional
+  ForcedReference: 01C3AD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: ScoutAlias
+  Flags:
+  - Optional
+  UniqueActor: 007F21:NightsHarvest.esp
   VoiceTypes: Null

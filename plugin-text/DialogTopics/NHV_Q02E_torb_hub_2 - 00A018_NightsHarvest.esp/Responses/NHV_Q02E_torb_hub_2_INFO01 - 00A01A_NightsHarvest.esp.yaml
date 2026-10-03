@@ -1,0 +1,44 @@
+FormKey: 00A01A:NightsHarvest.esp
+EditorID: NHV_Q02E_torb_hub_2_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A01A
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A01A
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A01A
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The east pier will keep. The old tidehouse will not. Sergeant Hjorald sealed it after the fourth body. Read the log first.
+  ScriptNotes: NHV_Q02_010_4091 prompt=NHV_Q02_010_4010
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A008:NightsHarvest.esp
+  ComparisonValue: 4
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004108:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Show me the latest body.

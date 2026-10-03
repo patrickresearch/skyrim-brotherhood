@@ -1,0 +1,18 @@
+FormKey: 00A0BE:NightsHarvest.esp
+EditorID: NHV_Q02E_j_s_4_v1_p1_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There were complaints. We called them dock trouble. That was convenient.
+  ScriptNotes: NHV_Q02_070_4034
+  Edits: ''
+Speaker: 00410C:NightsHarvest.esp

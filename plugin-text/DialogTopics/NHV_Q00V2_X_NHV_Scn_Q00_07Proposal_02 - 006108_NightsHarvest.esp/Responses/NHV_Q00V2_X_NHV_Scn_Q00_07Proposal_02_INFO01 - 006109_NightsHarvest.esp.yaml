@@ -1,0 +1,36 @@
+FormKey: 006109:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_07Proposal_02_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She permits me to help. The Listener has agreed to hear how.
+  ScriptNotes: NHV_Q00_030_1016
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I want to help you rebuild the Brotherhood by finding new members. People who can serve it beyond their next killing.
+  ScriptNotes: NHV_Q00_030_1017
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I have kept a ledger of possible candidates across Skyrim. Observations, habits, places to begin looking.
+  ScriptNotes: NHV_Q00_030_1018
+  Edits: ''
+Speaker: 000817:NightsHarvest.esp

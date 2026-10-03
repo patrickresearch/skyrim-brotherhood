@@ -1,0 +1,44 @@
+FormKey: 00712E:NightsHarvest.esp
+EditorID: NHV_Q01V2_briefing_2_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200712E
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200712E
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200712E
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Hrefna Stormhollow is the name in the ledger. A name is an invitation to look, not permission to decide.
+  ScriptNotes: NHV_Q01_010_2006 prompt=NHV_Q01_010_2005
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 34
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: And the woman who made the Sacrament?

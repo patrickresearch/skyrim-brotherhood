@@ -1,0 +1,45 @@
+FormKey: 00719D:NightsHarvest.esp
+EditorID: NHV_Q01V2_qchoice_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200719D
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200719D
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200719D
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You mean to bring the witness to me.
+  ScriptNotes: NHV_Q01_045_2331 prompt=NHV_Q01_045_2330
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 45
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004008:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Stay here until I return.

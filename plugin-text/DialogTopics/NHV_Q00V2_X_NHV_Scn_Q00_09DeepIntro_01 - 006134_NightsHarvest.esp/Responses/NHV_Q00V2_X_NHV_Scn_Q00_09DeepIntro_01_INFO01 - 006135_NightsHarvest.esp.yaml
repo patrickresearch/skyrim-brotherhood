@@ -1,0 +1,18 @@
+FormKey: 006135:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Q00_09DeepIntro_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That accounts for the welcome. Let's check the remaining corners.
+  ScriptNotes: NHV_Q00_050_1010
+  Edits: ''
+Speaker: 01C3AB:Skyrim.esm

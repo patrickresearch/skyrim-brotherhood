@@ -1,0 +1,98 @@
+FormKey: 00A0ED:NightsHarvest.esp
+EditorID: NHV_Q02E_report_4_INFO02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A0ED
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A0ED
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A0ED
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: 00A0EC:NightsHarvest.esp
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A waste. You had the right to decide, Listener. Rights do not make every result wise.
+  ScriptNotes: NHV_Q02_100_4011 prompt=NHV_Q02_100_4003
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Drowned Pool will wait for another shadow.
+  ScriptNotes: NHV_Q02_100_4012
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You left the desk unopened. I went back before the harbor could lose the paper.
+  ScriptNotes: NHV_Q02_100_4017
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Aelius kept Argonian names, shifts, debts, and absences. The seal is Penitus Oculatus.
+  ScriptNotes: NHV_Q02_100_4018
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He may have meant the kindness. He also meant the list. Both can be true, and neither repairs the drowned.
+  ScriptNotes: NHV_Q02_100_4019
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Fragment two names a northern desk. It does not name the hand that reads it.
+  ScriptNotes: NHV_Q02_100_4020
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A005:NightsHarvest.esp
+  ComparisonValue: 35
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00410D:NightsHarvest.esp
+  ComparisonValue: 2
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004115:NightsHarvest.esp
+Prompt:
+  TargetLanguage: English
+  Value: Sings is dead.

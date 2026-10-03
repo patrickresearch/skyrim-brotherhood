@@ -1,0 +1,19 @@
+FormKey: 00A117:NightsHarvest.esp
+EditorID: NHV_Q02E_R_aelius_obs_p0_02_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Puzzled
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He says it like he means it.
+  ScriptNotes: NHV_Q02_055_4404
+  Edits: ''
+Speaker: 004107:NightsHarvest.esp

@@ -1,0 +1,44 @@
+FormKey: 00A054:NightsHarvest.esp
+EditorID: NHV_Q02E_salt_d_2_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A054
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A054
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A054
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Keep low. We use the sluice. The city forgets this edge.
+  ScriptNotes: NHV_Q02_035_4310 prompt=NHV_Q02_035_4311
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 45
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A002:NightsHarvest.esp
+  ComparisonValue: 17
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004109:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Lead on. I will not make the water announce us.

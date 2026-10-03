@@ -1,7 +1,22 @@
 FormKey: 00458A:NightsHarvest.esp
 EditorID: NHV_Scn_Sys_LucienArrival
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_NHV_Scn_Sys_LucienArrival_0200458A
+  ScriptFragments:
+    FileName: SF_NHV_Scn_Sys_LucienArrival_0200458A
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: SF_NHV_Scn_Sys_LucienArrival_0200458A
+      FragmentName: Fragment_0
 Flags: []
 Phases:
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
+- Name: ''
+  Unused2: {}
+  EditorWidth: 200
 - Name: ''
   Unused2: {}
   EditorWidth: 200
@@ -12,18 +27,45 @@ Actors:
   - DeathEnd
   - CombatEnd
   - DialoguePause
+- Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
 Actions:
-- Name: NHV_Sys_Lucien_Arrival
+- Name: NHV_Q00_012_1008
   ActorID: 4
   Index: 1
   StartPhase: 0
   EndPhase: 0
-  Topic: 004587:NightsHarvest.esp
+  Topic: 006128:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_012_1012
+  ActorID: 0
+  Index: 2
+  StartPhase: 1
+  EndPhase: 1
+  Topic: 00612A:NightsHarvest.esp
+  HeadtrackActorID: -1
+  LoopingMax: 10
+  LoopingMin: 1
+  Emotion: Neutral
+  EmotionValue: 0
+- Name: NHV_Q00_012_1013
+  ActorID: 4
+  Index: 3
+  StartPhase: 2
+  EndPhase: 2
+  Topic: 00612C:NightsHarvest.esp
   HeadtrackActorID: -1
   LoopingMax: 10
   LoopingMin: 1
   Emotion: Neutral
   EmotionValue: 0
 Quest: 000809:NightsHarvest.esp
-LastActionIndex: 1
-VNAM: 0x00000000030000000300000003000000
+LastActionIndex: 3
+VNAM: 0x00000000000000000300000003000000

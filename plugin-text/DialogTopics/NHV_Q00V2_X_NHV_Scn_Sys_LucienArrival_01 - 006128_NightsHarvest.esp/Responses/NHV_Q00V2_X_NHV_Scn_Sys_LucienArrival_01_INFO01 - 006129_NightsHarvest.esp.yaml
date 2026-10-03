@@ -1,0 +1,46 @@
+FormKey: 006129:NightsHarvest.esp
+EditorID: NHV_Q00V2_X_NHV_Scn_Sys_LucienArrival_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 20
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A summons in a sanctuary. Veyra, you do cultivate unusual meetings.
+  ScriptNotes: NHV_Q00_012_1008
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lucien Lachance, Listener. I served this family as a Speaker. What would you ask?
+  ScriptNotes: NHV_Q00_012_1009
+  Edits: ''
+- EmotionValue: 35
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I knew Veyra in Cheydinhal, when I still had a pulse. She came as a visitor, never as one of my assassins.
+  ScriptNotes: NHV_Q00_012_1010
+  Edits: ''
+- EmotionValue: 50
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She serves Sithis willingly. I have never known her to turn from that purpose.
+  ScriptNotes: NHV_Q00_012_1011
+  Edits: ''
+Speaker: 004400:NightsHarvest.esp

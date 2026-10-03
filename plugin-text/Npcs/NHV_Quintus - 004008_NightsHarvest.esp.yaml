@@ -22,8 +22,10 @@ Race: 013744:Skyrim.esm
 AIData:
   Confidence: Average
   EnergyLevel: 50
-  Unused: 101
 Packages:
+- 00AD07:NightsHarvest.esp
+- 00AD09:NightsHarvest.esp
+- 00AD08:NightsHarvest.esp
 - 00498D:NightsHarvest.esp
 - 004989:NightsHarvest.esp
 Class: 10B1D8:Skyrim.esm

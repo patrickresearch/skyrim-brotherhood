@@ -1,0 +1,18 @@
+FormKey: 0071CA:NightsHarvest.esp
+EditorID: NHV_Q01V2_c_common_1_v1_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then return to the farm. I will be there before nightfall.
+  ScriptNotes: NHV_Q01_055_2573
+  Edits: ''
+Speaker: 004008:NightsHarvest.esp

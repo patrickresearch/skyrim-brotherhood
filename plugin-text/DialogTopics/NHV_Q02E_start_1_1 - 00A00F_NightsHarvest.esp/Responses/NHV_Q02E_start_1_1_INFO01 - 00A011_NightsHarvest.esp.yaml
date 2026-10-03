@@ -1,0 +1,53 @@
+FormKey: 00A011:NightsHarvest.esp
+EditorID: NHV_Q02E_start_1_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A011
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A011
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A011
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Perhaps. First learn whose work it is. A length of rope cannot tell us whether its owner belongs with you.
+  ScriptNotes: NHV_Q02_010_4004 prompt=NHV_Q02_010_4002
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Find the person before you decide what to make of the skill.
+  ScriptNotes: NHV_Q02_010_4005
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A005:NightsHarvest.esp
+  ComparisonValue: 2
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You think the killer could serve the family?

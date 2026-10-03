@@ -1,0 +1,19 @@
+FormKey: 00A047:NightsHarvest.esp
+EditorID: NHV_Q02E_salt_1_v1_p0_01_INFO01
+Flags:
+  Flags:
+  - ForceSubtitle
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Argonian, step away from the rope. This yard is under watch.
+  ScriptNotes: NHV_Q02_035_4302
+  Edits: ''
+Speaker: 00AF10:NightsHarvest.esp

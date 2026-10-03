@@ -5,18 +5,24 @@ ObjectBounds:
   Second: 6, 8, 1
 Name:
   TargetLanguage: English
-  Value: A Letter, Unsigned
+  Value: A Letter from Hrefna
 Model:
   File: Clutter\Books\JournalLowPoly01.nif
   Data: 0x020000000000000000000000
 BookText:
   TargetLanguage: English
   Value: >-
-    <p align="center"><font size="32">A Letter, Unsigned</font></p>
+    <p align="center"><font size="32">A Letter from Hrefna</font></p>
 
-    <p align="left">[PLATZHALTER - Text noch nicht von Codex geliefert, siehe docs/codex/2026-09-27-Hrefna-Release-Letter.md. Bis dahin nur das im Konzept bestaetigte Kurzzitat:]</p>
+    <p align="left">To the one who came,</p>
 
-    <p align="left">Thank you for coming. Even late.</p>
+    <p align="left">I am still in Hjaalmarch. There is work if you do not ask too much about the roof over it. I have been mending nets. The hands remember that work too.</p>
+
+    <p align="left">I will not write down what happened. You know. I know. I wanted to tell you I have lit no more candles in the cellar. There are things I must decide without waiting for someone at the door.</p>
+
+    <p align="left">Thank you for letting me leave.</p>
+
+    <p align="left">Hrefna</p>
 Keywords:
 - 0937A2:Skyrim.esm
 Teaches:

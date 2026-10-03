@@ -1,0 +1,44 @@
+FormKey: 00717F:NightsHarvest.esp
+EditorID: NHV_Q01V2_qintro_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200717F
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200717F
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200717F
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 35
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am asking why this prayer went unanswered.
+  ScriptNotes: NHV_Q01_040_2305 prompt=NHV_Q01_040_2304
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 40
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 61
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 004008:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: You are asking about Hjaalmarch’s Black Sacraments.

@@ -48,7 +48,7 @@ Data:
   Skill: OneHanded
 Critical:
   Damage: 4
-  Unused: 32604
+  Unused: 32616
   PercentMult: 1
   Flags:
   - OnDeath

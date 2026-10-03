@@ -158,9 +158,6 @@ VirtualMachineAdapter:
       Name: VeyraBase
       Object: 000817:NightsHarvest.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: VeyraDoubtTopic
-      Object: 00457B:NightsHarvest.esp
-    - MutagenObjectType: ScriptObjectProperty
       Name: VeyraSanctuaryExitMarkerRef
       Object: 09725F:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty

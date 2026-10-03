@@ -10,27 +10,55 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Mathieu Bellamont wore our trust as neatly as his robes. He turned our own machinery against us.
+    Value: Mathieu Bellamont wore our trust as neatly as his robes. And discarded it just as easily.
   ScriptNotes: NHV_SYS_LUC_23 prompt=NHV_SYS_LUC_22
   Edits: ''
-- Emotion: Sad
-  EmotionValue: 30
+- EmotionValue: 40
   ResponseNumber: 2
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I ordered the Purification of Cheydinhal. The traitor survived elsewhere. My family paid for our certainty.
+    Value: His treachery was as calamitous as it was convincing. In the end, he turned our own virtue against us, our very Family.
+  ScriptNotes: NHV_SYS_LUC_46
+  Edits: ''
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I was not without blame, Listener. I ordered the Purification of Cheydinhal.
   ScriptNotes: NHV_SYS_LUC_24
   Edits: ''
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I had hoped to see the betrayer among the perished and made my Brothers and Sisters pay.
+  ScriptNotes: NHV_SYS_LUC_47
+  Edits: ''
 - EmotionValue: 30
-  ResponseNumber: 3
+  ResponseNumber: 5
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
     Value: Then the Hand condemned me. They were very thorough about the killing. Rather less thorough about the proof.
   ScriptNotes: NHV_SYS_LUC_25
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The only solace I find in this is that I joined my fallen Family in the eternity of the Void.
+  ScriptNotes: NHV_SYS_LUC_48
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
@@ -52,4 +80,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: How did betrayal reach the Black Hand?
+  Value: There had been a betrayal, I heard. How could such a thing come to be?

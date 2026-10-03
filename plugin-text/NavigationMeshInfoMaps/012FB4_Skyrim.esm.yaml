@@ -2,6 +2,15 @@ FormKey: 012FB4:Skyrim.esm
 Version2: 2
 NavMeshVersion: 12
 MapInfos:
+- NavigationMesh: 0051AC:NightsHarvest.esp
+  Point: 1695.9879, 2040.7968, 68.831
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 0501E9:Skyrim.esm
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 0051AB:NightsHarvest.esp
 - NavigationMesh: 001343:NightsHarvest.esp
   Point: -5682.573, -788.4622, 73.08368
   LinkedDoors:
@@ -118,6 +127,21 @@ MapInfos:
     MutagenObjectType: NavigationMapInfoWorldParent
     ParentWorldspace: 00003C:Skyrim.esm
     ParentWorldspaceCoord: 5, 33
+- NavigationMesh: 0D5A67:Skyrim.esm
+  Point: -263.85477, 71.95282, 64.782875
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 0163A8:Skyrim.esm
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 016204:Skyrim.esm
+- NavigationMesh: 004FD9:NightsHarvest.esp
+  Point: -263.85477, 71.95282, 64.782875
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 004FD8:NightsHarvest.esp
 - NavigationMesh: 1030CB:Skyrim.esm
   Unknown: 64
   Point: -161513.11, 5981.7256, -4981.5986
@@ -195,6 +219,28 @@ MapInfos:
     MutagenObjectType: NavigationMapInfoWorldParent
     ParentWorldspace: 00003C:Skyrim.esm
     ParentWorldspaceCoord: 14, -9
+- NavigationMesh: 0057DD:NightsHarvest.esp
+  Point: -2539.2976, -1498.7775, 809.2985
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 0C0E10:Skyrim.esm
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 0057DC:NightsHarvest.esp
+- NavigationMesh: 079BDB:Skyrim.esm
+  Point: 30706.352, -10650.399, -4146.463
+  MergedTo:
+  - 0F46EA:Skyrim.esm
+  - 0B32A1:Skyrim.esm
+  - 0EA087:Skyrim.esm
+  - 0EA082:Skyrim.esm
+  - 0EA089:Skyrim.esm
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoWorldParent
+    ParentWorldspace: 00003C:Skyrim.esm
+    ParentWorldspaceCoord: -3, 7
 PreferredPathing:
   NavmeshSets:
   - Navmeshes:
@@ -6600,22 +6646,22 @@ PreferredPathing:
   - Navmeshes:
     - 0A3F44:Skyrim.esm
   NavmeshTree:
-  - NavMesh: 0A3F44:Skyrim.esm
-    NodeIndex: 9
-  - NavMesh: 0E88CC:Skyrim.esm
-    NodeIndex: 7
-  - NavMesh: 103120:Skyrim.esm
-    NodeIndex: 2
-  - NavMesh: 10377B:Skyrim.esm
-    NodeIndex: 1
-  - NavMesh: 1030CB:Skyrim.esm
-    NodeIndex: 8
   - NavMesh: 100F4B:Skyrim.esm
     NodeIndex: 3
-  - NavMesh: 0B87DF:Skyrim.esm
-    NodeIndex: 4
-  - NavMesh: 105E9A:Skyrim.esm
   - NavMesh: 079BBF:Skyrim.esm
     NodeIndex: 6
   - NavMesh: 098776:Skyrim.esm
     NodeIndex: 5
+  - NavMesh: 105E9A:Skyrim.esm
+  - NavMesh: 0E88CC:Skyrim.esm
+    NodeIndex: 7
+  - NavMesh: 0A3F44:Skyrim.esm
+    NodeIndex: 9
+  - NavMesh: 0B87DF:Skyrim.esm
+    NodeIndex: 4
+  - NavMesh: 103120:Skyrim.esm
+    NodeIndex: 2
+  - NavMesh: 1030CB:Skyrim.esm
+    NodeIndex: 8
+  - NavMesh: 10377B:Skyrim.esm
+    NodeIndex: 1

@@ -1,0 +1,7 @@
+FormKey: 00A01F:NightsHarvest.esp
+EditorID: NHV_Q02E_drinks_1_1_Branch
+Quest: 004100:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00A01E:NightsHarvest.esp

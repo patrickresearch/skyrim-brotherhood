@@ -4,6 +4,9 @@ MajorRecordFlagsRaw: 262144
 EditorID: NHV_SingsBeneathIce
 SkyrimMajorRecordFlags:
 - Compressed
+ObjectBounds:
+  First: -22, -14, 0
+  Second: 22, 14, 128
 Configuration:
   Flags:
   - Unique
@@ -15,10 +18,17 @@ Configuration:
   SpeedMultiplier: 100
 Voice: 004101:NightsHarvest.esp
 Race: 013740:Skyrim.esm
+Items:
+- Item:
+    Item: 00AF77:NightsHarvest.esp
+    Count: 1
 AIData:
-  Confidence: Average
   EnergyLevel: 40
-Class: 01326B:Skyrim.esm
+Packages:
+- 00AF50:NightsHarvest.esp
+- 00AF51:NightsHarvest.esp
+- 00AF52:NightsHarvest.esp
+Class: 01317F:Skyrim.esm
 Name:
   TargetLanguage: English
   Value: Sings-Beneath-Ice
@@ -103,7 +113,8 @@ PlayerSkills:
 NAM5: 255
 Height: 1
 Weight: 50
-DefaultOutfit: 01DC10:Skyrim.esm
-TextureLighting: '#00A7867A'
+DefaultOutfit: 09CCA2:Skyrim.esm
+SleepingOutfit: 02D75F:Skyrim.esm
+TextureLighting: '#007F7F3F'
 MajorFlags:
 - 0x40000

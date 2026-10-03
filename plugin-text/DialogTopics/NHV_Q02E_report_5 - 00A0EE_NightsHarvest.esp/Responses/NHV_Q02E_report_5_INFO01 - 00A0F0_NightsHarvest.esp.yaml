@@ -1,0 +1,63 @@
+FormKey: 00A0F0:NightsHarvest.esp
+EditorID: NHV_Q02E_report_5_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__0200A0F0
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__0200A0F0
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__0200A0F0
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: An interesting choice. The Jarl will call it order; the harbor may call it relief.
+  ScriptNotes: NHV_Q02_100_4013 prompt=NHV_Q02_100_4004
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You have bought a bounty with a man's silence. Keep the receipt.
+  ScriptNotes: NHV_Q02_100_4014
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004100:NightsHarvest.esp
+  ComparisonValue: 100
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00A005:NightsHarvest.esp
+  ComparisonValue: 35
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00410D:NightsHarvest.esp
+  ComparisonValue: 4
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 004115:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: I handed Sings to the Jarl.

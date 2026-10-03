@@ -1,7 +1,6 @@
 FormKey: 0048A8:NightsHarvest.esp
 IsCompressed: True
 MajorRecordFlagsRaw: 262144
-VersionControl: 13628
 EditorID: NHV_StormhollowFarmCell
 SkyrimMajorRecordFlags:
 - Compressed
@@ -45,7 +44,6 @@ NavigationMeshes:
 - FormKey: 0048A9:NightsHarvest.esp
   IsCompressed: True
   MajorRecordFlagsRaw: 262144
-  VersionControl: 13628
   SkyrimMajorRecordFlags:
   - Compressed
   Data:
@@ -536,7 +534,6 @@ Persistent:
 - MutagenObjectType: PlacedObject
   FormKey: 004976:NightsHarvest.esp
   MajorRecordFlagsRaw: 1024
-  VersionControl: 13628
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 004975:NightsHarvest.esp
@@ -549,14 +546,12 @@ Persistent:
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 0048AB:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B958D:Skyrim.esm
   Placement:
     Position: -128.62018, 26.80774, 69.350555
     Rotation: 0, 0, 4.7831903
 - MutagenObjectType: PlacedObject
   FormKey: 0048AC:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B40:Skyrim.esm
   Scale: 1.5
   Placement:
@@ -564,48 +559,41 @@ Temporary:
     Rotation: -0.97049236, -0.31909856, 4.484471
 - MutagenObjectType: PlacedObject
   FormKey: 0048AD:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566DB:Skyrim.esm
   Placement:
     Position: 251.71384, 9.763283, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048AE:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631F0:Skyrim.esm
   Placement:
     Position: -260.28613, 9.763786, 64
 - MutagenObjectType: PlacedObject
   FormKey: 0048AF:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B3D:Skyrim.esm
   Placement:
     Position: 318.89014, 56.68092, 130.22385
     Rotation: 0.39339226, 0.24172601, 0.92760295
 - MutagenObjectType: PlacedObject
   FormKey: 0048B0:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0EDB2E:Skyrim.esm
   Placement:
     Position: -277.9494, 534.6428, 185.32372
     Rotation: -0.0010203135, 0.00026760437, 2.2993937
 - MutagenObjectType: PlacedObject
   FormKey: 0048B1:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDA:Skyrim.esm
   Placement:
     Position: 4.614458, 589.91656, 146.16414
     Rotation: -0.001367804, 0.016514836, 6.282923
 - MutagenObjectType: PlacedObject
   FormKey: 0048B2:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566E1:Skyrim.esm
   Placement:
     Position: -4.286331, -246.23654, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 0048B3:NightsHarvest.esp
-  VersionControl: 13628
   Base: 033DA9:Skyrim.esm
   Scale: 2.26
   Placement:
@@ -613,123 +601,105 @@ Temporary:
     Rotation: 0, 0, 4.0831923
 - MutagenObjectType: PlacedObject
   FormKey: 0048B4:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631E8:Skyrim.esm
   Placement:
     Position: -4.2861786, 9.763435, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048B5:NightsHarvest.esp
-  VersionControl: 13628
   Base: 10D666:Skyrim.esm
   Placement:
     Position: -211.1708, 554.2926, 99.39284
     Rotation: 0.6395776, -0.098074086, 0.37096712
 - MutagenObjectType: PlacedObject
   FormKey: 0048B6:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B2E:Skyrim.esm
   Placement:
     Position: -332.4606, -115.66432, 139.01698
     Rotation: -1.1026541, -1.4832516, 1.5731903
 - MutagenObjectType: PlacedObject
   FormKey: 0048B7:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0176B2:Skyrim.esm
-  RagdollData: 0x00C5014340EA2CB50000000050A4694000000000DB0FC9BF0000000001000000539E4441D5DD7E36E8B55C3305D00135079017B5C9A93B3402000000AD1C4A416CC3A0B5D46DE4356CC66536F0BAABB50CF7FCB60300000077141241E01492360000E0AC5598F93400E0923B81A72FB6
+  RagdollData: 0x00C5014340EA2CB50000000050A4694000000000DB0FC9BF0000000001000000539E4441D5DD7E36E8B55C331DC70135079017B5E99C3B3402000000AD1C4A416CC3A0B5D46DE435A9B66536F0BAABB5B2E5FCB60300000077141241E01492360000E0AC3687F93400E0923B759B2FB6
   Placement:
     Position: 114.26475, 500.666, 281.0218
 - MutagenObjectType: PlacedObject
   FormKey: 0048B8:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D18F:Skyrim.esm
   Placement:
     Position: -4.286133, 265.7636, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 0048B9:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D1C9:Skyrim.esm
   Placement:
     Position: -260.28616, 521.7638, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 0048BA:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0C842B:Skyrim.esm
   Placement:
     Position: -328.56018, -170.37685, 130.77803
     Rotation: 0, 0, 3.9831917
 - MutagenObjectType: PlacedObject
   FormKey: 0048BB:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566E1:Skyrim.esm
   Placement:
     Position: 251.71387, 521.76385, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048BC:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B2E:Skyrim.esm
   Placement:
     Position: -327.07187, -124.8278, 143.48865
     Rotation: 0.48530427, -1.1859542, 6.0228043
 - MutagenObjectType: PlacedObject
   FormKey: 0048BD:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: -251.80739, 539.17487, 146.61253
     Rotation: 8.317697E-05, -0.009368463, 8.179609E-05
 - MutagenObjectType: PlacedObject
   FormKey: 0048BE:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BCC:Skyrim.esm
   Placement:
     Position: -322.09695, 33.334743, 136.89314
     Rotation: -0.0069666025, 0.007036499, 6.234134
 - MutagenObjectType: PlacedObject
   FormKey: 0048BF:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D17C:Skyrim.esm
   Placement:
     Position: -260.28635, -246.23639, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048C0:NightsHarvest.esp
-  VersionControl: 13628
   Base: 000845:Skyrim.esm
   Placement:
     Position: -232.54791, -293.8582, 70.01679
     Rotation: 0, 0, 6.1161304
 - MutagenObjectType: PlacedObject
   FormKey: 0048C1:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8A4:Skyrim.esm
   Placement:
     Position: 251.71384, 9.763283, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048C2:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631F7:Skyrim.esm
   Placement:
     Position: 251.71399, 265.76328, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedNpc
   FormKey: 0048C3:NightsHarvest.esp
-  VersionControl: 13628
   EditorID: GwendolynREF001
   Base: 02C930:Skyrim.esm
   LevelModifier: Easy
-  LocationReference: 03AFE8:Skyrim.esm
   LocationRefTypes:
   - 0130F7:Skyrim.esm
   Placement:
     Position: 42.3692, -132.93561, 63.999992
 - MutagenObjectType: PlacedObject
   FormKey: 0048C4:NightsHarvest.esp
-  VersionControl: 13628
   Base: 097F6C:Skyrim.esm
   Scale: 0.87
   Placement:
@@ -737,131 +707,112 @@ Temporary:
     Rotation: 0, 0, 4.983189
 - MutagenObjectType: PlacedObject
   FormKey: 0048C5:NightsHarvest.esp
-  VersionControl: 13628
   Base: 023D77:Skyrim.esm
   Placement:
     Position: 300.77118, 443.443, 107.35415
     Rotation: 1.3212016, -0.72342694, 1.5177431
 - MutagenObjectType: PlacedObject
   FormKey: 0048C6:NightsHarvest.esp
-  VersionControl: 13628
   Base: 024CA4:Skyrim.esm
   Placement:
     Position: -247.18153, 545.3962, 32.000008
     Rotation: 0, 0, 6.0727654
 - MutagenObjectType: PlacedObject
   FormKey: 0048C7:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0A894C:Skyrim.esm
   Placement:
     Position: -4.286156, 265.76343, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 0048C8:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566E4:Skyrim.esm
   Placement:
     Position: -132.28625, -118.23647, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 0048C9:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BCC:Skyrim.esm
   Placement:
     Position: 294.93347, 346.1661, 100.87961
     Rotation: 0.00040960684, -0.0059579182, 6.2823005
 - MutagenObjectType: PlacedObject
   FormKey: 0048CA:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566EC:Skyrim.esm
   Placement:
     Position: 251.71384, 137.76358, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048CB:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9DFF:Skyrim.esm
   Placement:
     Position: -41.41136, -304.70505, 67.99997
     Rotation: 0, 0, 6.1831913
 - MutagenObjectType: PlacedObject
   FormKey: 0048CC:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD2:Skyrim.esm
   Placement:
     Position: 53.689583, -270.7327, 129.98045
     Rotation: -0.0008796179, -0.001998747, 6.283161
 - MutagenObjectType: PlacedObject
   FormKey: 0048CD:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D17C:Skyrim.esm
   Placement:
     Position: 251.71384, 9.763283, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048CE:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631F2:Skyrim.esm
   Placement:
     Position: -260.28616, 265.76376, 64
 - MutagenObjectType: PlacedObject
   FormKey: 0048CF:NightsHarvest.esp
-  VersionControl: 13628
   Base: 065C98:Skyrim.esm
   Placement:
     Position: 272.93948, 311.47226, 104.72864
     Rotation: 0.0039451583, -0.003965723, 6.282688
 - MutagenObjectType: PlacedObject
   FormKey: 0048D0:NightsHarvest.esp
-  VersionControl: 13628
   Base: 000845:Skyrim.esm
   Placement:
     Position: -312.3854, -294.963, 149.61198
     Rotation: 0, 0, 0.32163662
 - MutagenObjectType: PlacedObject
   FormKey: 0048D1:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9E05:Skyrim.esm
   Placement:
     Position: 239.20532, 355.64337, 32
     Rotation: 0, 0, 1.5486238
 - MutagenObjectType: PlacedObject
   FormKey: 0048D2:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B2E:Skyrim.esm
   Placement:
     Position: -335.9109, -114.077156, 140.69867
     Rotation: -0.03976735, -0.0027771695, 5.9770937
 - MutagenObjectType: PlacedObject
   FormKey: 0048D3:NightsHarvest.esp
-  VersionControl: 13628
   Base: 044E70:Skyrim.esm
   Placement:
     Position: -330.73425, 45.75837, 175.40585
     Rotation: -0.00081278937, -0.0015755726, 3.7821746
 - MutagenObjectType: PlacedObject
   FormKey: 0048D4:NightsHarvest.esp
-  VersionControl: 13628
   Base: 012FEC:Skyrim.esm
   Scale: 0.81
   Placement:
     Position: -283.8632, 536.37085, 139.00003
 - MutagenObjectType: PlacedObject
   FormKey: 0048D5:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0A8949:Skyrim.esm
   Placement:
     Position: -4.286331, -246.23654, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048D7:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8A4:Skyrim.esm
   Placement:
     Position: -260.28616, 521.7638, 64
 - MutagenObjectType: PlacedObject
   FormKey: 0048D8:NightsHarvest.esp
-  VersionControl: 13628
   Base: 097F6C:Skyrim.esm
   Scale: 0.82
   Placement:
@@ -869,380 +820,326 @@ Temporary:
     Rotation: 0, 0, 5.28319
 - MutagenObjectType: PlacedObject
   FormKey: 0048D9:NightsHarvest.esp
-  VersionControl: 13628
   Base: 023D77:Skyrim.esm
   Placement:
     Position: 293.60138, 435.82016, 107.32237
     Rotation: -0.8740159, 1.3765265, 4.8634033
 - MutagenObjectType: PlacedObject
   FormKey: 0048DA:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD8:Skyrim.esm
   Placement:
     Position: 315.35336, 61.012493, 126.38084
     Rotation: -1.6090404E-05, -0.0009519396, 6.2830925
 - MutagenObjectType: PlacedObject
   FormKey: 0048DB:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0CE783:Skyrim.esm
   Placement:
     Position: 235.55943, 160.8074, 63.69423
 - MutagenObjectType: PlacedObject
   FormKey: 0048DC:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0185B2:Skyrim.esm
   Placement:
     Position: -38.9305, 535.1452, 32
 - MutagenObjectType: PlacedObject
   FormKey: 0048DD:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDA:Skyrim.esm
   Placement:
     Position: 21.101725, -292.68927, 129.671
     Rotation: 0.0070833494, 0.007354569, 3.0227422E-05
 - MutagenObjectType: PlacedObject
   FormKey: 0048DE:NightsHarvest.esp
-  VersionControl: 13628
   Base: 065C97:Skyrim.esm
   Placement:
     Position: 236.52943, 160.20107, 138.01427
     Rotation: 0.79530835, 0.5985798, 6.2493024
 - MutagenObjectType: PlacedObject
   FormKey: 0048DF:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F61E:Skyrim.esm
   Placement:
     Position: -260.28613, 9.763786, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 0048E0:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0C842B:Skyrim.esm
   Placement:
     Position: 279.68967, 389.39105, 100.572556
     Rotation: 0, 0, 1.8831966
 - MutagenObjectType: PlacedObject
   FormKey: 0048E1:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD2:Skyrim.esm
   Placement:
     Position: -214.8216, 548.97974, 139.64713
     Rotation: -0.00088051584, -0.0020022856, 6.283161
 - MutagenObjectType: PlacedObject
   FormKey: 0048E2:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D17C:Skyrim.esm
   Placement:
     Position: -4.2861786, 9.763435, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048E3:NightsHarvest.esp
-  VersionControl: 13628
   Base: 034D2D:Skyrim.esm
   Scale: 0.75
   Placement:
     Position: 127.39945, 216.69083, 279
 - MutagenObjectType: PlacedObject
   FormKey: 0048E4:NightsHarvest.esp
-  VersionControl: 13628
   Base: 063200:Skyrim.esm
   Placement:
     Position: 123.71399, 265.76334, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048E5:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8A5:Skyrim.esm
   Placement:
     Position: 251.71417, 521.76324, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 0048E6:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0209A5:Skyrim.esm
   Placement:
     Position: 141.38483, -34.920414, 68.47668
     Rotation: 0.0013365418, -0.0019517612, 5.397796
 - MutagenObjectType: PlacedObject
   FormKey: 0048E7:NightsHarvest.esp
-  VersionControl: 13628
   Base: 012FE7:Skyrim.esm
   Placement:
     Position: -233.33746, -296.35968, 148.0168
     Rotation: 0, 0, 1.037222
 - MutagenObjectType: PlacedObject
   FormKey: 0048E8:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8B0:Skyrim.esm
   Placement:
     Position: -132.28635, -246.23639, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048E9:NightsHarvest.esp
-  VersionControl: 13628
   Base: 012FEA:Skyrim.esm
   Placement:
     Position: 131.31285, -66.31219, 68.27059
 - MutagenObjectType: PlacedObject
   FormKey: 0048EA:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B3B:Skyrim.esm
   Placement:
     Position: 246.80641, 426.81683, 104.57965
     Rotation: -0.0021099988, 0.0030329446, 5.583316
 - MutagenObjectType: PlacedObject
   FormKey: 0048EB:NightsHarvest.esp
-  VersionControl: 13628
+  EditorID: NHV_Ref_Q01_HrefnaFarmBed
   Base: 03B420:Skyrim.esm
   Placement:
     Position: 245.16156, -29.007076, 68
     Rotation: 0, 0, 4.6774826
 - MutagenObjectType: PlacedObject
   FormKey: 0048EC:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACD5:Skyrim.esm
-  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080CF76484000DEF8C2BA9E1740060072B900E8542C000000800000008067A5C93F
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080DB76484000DEF8C2BA9E1740060072B900E8542C00000080000000805FA5C93F
   Placement:
     Position: -320.1804, 96.057236, 182.48904
 - MutagenObjectType: PlacedObject
   FormKey: 0048ED:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631F6:Skyrim.esm
   Placement:
     Position: -4.286133, 265.7638, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 0048EE:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9E01:Skyrim.esm
   Placement:
     Position: 264.47696, 547.0431, 33.699715
     Rotation: 0, 0, 3.1368735
 - MutagenObjectType: PlacedObject
   FormKey: 0048EF:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B43:Skyrim.esm
   Placement:
     Position: 98.901566, 316.05234, 76.52115
     Rotation: 0.006117733, 0.0025966389, 6.209278
 - MutagenObjectType: PlacedObject
   FormKey: 0048F0:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8B2:Skyrim.esm
   Placement:
     Position: -4.286133, 521.7638, 64
 - MutagenObjectType: PlacedObject
   FormKey: 0048F1:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9522:Skyrim.esm
   Radius: -6.192322
   Placement:
     Position: -299.68677, -175.05801, 213.54636
 - MutagenObjectType: PlacedObject
   FormKey: 0048F2:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D1CA:Skyrim.esm
   Placement:
     Position: 251.71384, 265.76358, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 0048F3:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566DB:Skyrim.esm
   Placement:
     Position: -260.28616, 521.7638, 64
 - MutagenObjectType: PlacedObject
   FormKey: 0048F4:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: -339.77707, 45.73161, 221.91826
     Rotation: 0.013986345, -0.0026164518, 6.283047
 - MutagenObjectType: PlacedObject
   FormKey: 0048F5:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: -251.91971, 540.05707, 139.1554
     Rotation: -0.00062866707, -0.0027192303, 1.4148733E-05
 - MutagenObjectType: PlacedObject
   FormKey: 0048F6:NightsHarvest.esp
-  VersionControl: 13628
   Base: 024CA6:Skyrim.esm
   Placement:
     Position: 310.71252, 77.48338, 64
     Rotation: 0, 0, 1.6123971
 - MutagenObjectType: PlacedObject
   FormKey: 0048F7:NightsHarvest.esp
-  VersionControl: 13628
   Base: 033DA9:Skyrim.esm
   Scale: 2.26
   Placement:
     Position: 25.982391, 250.36325, 36.284042
 - MutagenObjectType: PlacedObject
   FormKey: 0048F8:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B41:Skyrim.esm
   Placement:
     Position: 250.73161, 438.2757, 109.789696
     Rotation: 1.5718483, 0.48734084, 0.5228943
 - MutagenObjectType: PlacedObject
   FormKey: 0048F9:NightsHarvest.esp
-  VersionControl: 13628
   Base: 034C5E:Skyrim.esm
   Placement:
-    Position: -248.68077, 541.2844, 94.1764
+    Position: -256, 544, 96
     Rotation: -0.00054109516, 0.0031077878, 6.2831106
 - MutagenObjectType: PlacedObject
   FormKey: 0048FA:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: 200.21373, 159.22287, 126.98246
     Rotation: 0.02625606, 0.02599951, 0.00023377416
 - MutagenObjectType: PlacedObject
   FormKey: 0048FB:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D18F:Skyrim.esm
   Placement:
     Position: -4.286133, 521.7636, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 0048FC:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: -277.74384, 527.95557, 94.20746
     Rotation: 0.0018217673, 0.0029504814, 5.066084E-06
 - MutagenObjectType: PlacedObject
   FormKey: 0048FD:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03199A:Skyrim.esm
   Placement:
     Position: -205.24445, 544.9241, 184.84439
 - MutagenObjectType: PlacedObject
   FormKey: 0048FE:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDA:Skyrim.esm
   Placement:
     Position: 24.602694, 597.48956, 146.37491
     Rotation: -0.0008341438, 0.017682873, 6.2829223
 - MutagenObjectType: PlacedObject
   FormKey: 0048FF:NightsHarvest.esp
-  VersionControl: 13628
   Base: 034C5E:Skyrim.esm
   Placement:
     Position: -237.65588, 545.70984, 94.24369
     Rotation: -0.002306919, -0.0005189754, 4.3831434
 - MutagenObjectType: PlacedObject
   FormKey: 004900:NightsHarvest.esp
-  VersionControl: 13628
   Base: 034D2D:Skyrim.esm
   Placement:
     Position: 122.07513, 252.16435, 277.6472
     Rotation: 0, 0, 4.4831905
 - MutagenObjectType: PlacedObject
   FormKey: 004901:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0800E4:Skyrim.esm
   Placement:
     Position: 3.3987882, 595.1649, 216.98686
     Rotation: -0.005171864, 0.025376823, 0.059760008
 - MutagenObjectType: PlacedObject
   FormKey: 004902:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BCC:Skyrim.esm
   Placement:
     Position: -329.20404, -120.06383, 130.81462
     Rotation: -0.008727933, -0.0024502892, 0.0009534728
 - MutagenObjectType: PlacedObject
   FormKey: 004903:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0176CD:Skyrim.esm
-  RagdollData: 0x00C5014340EA2CB50000000050A46940DB0F49C08A04C9BFDB0F49C001000000E1F8634120C1933600E87F3360332F34069017B5D7A93B340200000053207141CCCBBFB5FE4208368DCE1536A47617B54EFADCB60300000005DA2B4161DAAB36000028ADDB1881B400E0923BC43D00B5
+  RagdollData: 0x00C5014340EA2CB50000000050A46940DB0F49C08A04C9BFDB0F49C001000000E1F8634120C1933600E87F335C272F34069017B5F79C3B340200000053207141CCCBBFB5FE42083647C41536A47617B526EBDCB60300000005DA2B4161DAAB36000028AD001081B400E0923BF83400B5
   Placement:
     Position: 114.48483, 434.4997, 280.03125
 - MutagenObjectType: PlacedObject
   FormKey: 004904:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: 241.34917, 352.21967, 100.696884
     Rotation: -0.0022648915, 0.0023303882, 8.0101603E-07
 - MutagenObjectType: PlacedObject
   FormKey: 004905:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: -330.1696, 97.1461, 99.7887
     Rotation: -3.1187036, 0.0015502038, 0.9300559
 - MutagenObjectType: PlacedObject
   FormKey: 004906:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9522:Skyrim.esm
   Radius: -27.271698
   Placement:
     Position: 210.05362, 272.05652, 202.68623
 - MutagenObjectType: PlacedObject
   FormKey: 004907:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01B26A:Skyrim.esm
-  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080CF76484000316A43BA9E1740060072B900E8542C000000800000008067A5C93F
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080DB76484000316A43BA9E1740060072B900E8542C00000080000000805FA5C93F
   Placement:
     Position: -338.42755, 96.0898, 132.35384
     Rotation: 0, 0, 3.2831936
 - MutagenObjectType: PlacedObject
   FormKey: 004908:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACB9:Skyrim.esm
-  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080CF764840002889C0BA9E1740060072B900E8542C000000800000008067A5C93F
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080DB764840002889C0BA9E1740060072B900E8542C00000080000000805FA5C93F
   Placement:
     Position: -333.84296, 54.347282, 97.83821
 - MutagenObjectType: PlacedObject
   FormKey: 004909:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDA:Skyrim.esm
   Placement:
     Position: 41.931965, 588.2052, 146.6078
     Rotation: -0.0005770703, 0.017090252, 6.282932
 - MutagenObjectType: PlacedObject
   FormKey: 00490A:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566DB:Skyrim.esm
   Placement:
     Position: -260.28635, -246.23639, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 00490B:NightsHarvest.esp
-  VersionControl: 13628
   Base: 02A563:Skyrim.esm
-  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080CF764840004904C3BA9E1740060072B900E8542C000000800000008067A5C93F
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080DB764840004904C3BA9E1740060072B900E8542C00000080000000805FA5C93F
   Placement:
     Position: -315.1585, 22.787907, 90.26242
 - MutagenObjectType: PlacedObject
   FormKey: 00490C:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDE:Skyrim.esm
   Placement:
     Position: 309.8889, 94.11208, 126.47453
     Rotation: -0.0077739335, 0.014917493, 4.583146
 - MutagenObjectType: PlacedObject
   FormKey: 00490D:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: 99.34539, 314.49478, 67.26225
     Rotation: 0.00070916535, 0.00042117355, 6.0612397
 - MutagenObjectType: PlacedObject
   FormKey: 00490E:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9FD4:Skyrim.esm
   Placement:
     Position: 350.10815, 457.9451, 215.50453
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 00490F:NightsHarvest.esp
-  VersionControl: 13628
   Base: 077FCE:Skyrim.esm
   Radius: -266.46463
   LightData:
@@ -1252,63 +1149,54 @@ Temporary:
     Position: -1.399246, 261.55548, 143.65848
 - MutagenObjectType: PlacedObject
   FormKey: 004910:NightsHarvest.esp
-  VersionControl: 13628
   Base: 02E6CD:Skyrim.esm
   Placement:
     Position: -328.7478, 61.05132, 68.027
     Rotation: 0, 0, 4.68319
 - MutagenObjectType: PlacedObject
   FormKey: 004911:NightsHarvest.esp
-  VersionControl: 13628
   Base: 068ADB:Skyrim.esm
   Placement:
     Position: -5.439426, 167.80156, 66.909546
 - MutagenObjectType: PlacedObject
   FormKey: 004912:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACD6:Skyrim.esm
-  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008030AE4840006497434A2039400000A0B60000C028000000800000008055FCCA3F
+  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008038AE4840006497434A2039400000A0B60000C028000000800000008035FCCA3F
   Placement:
     Position: -337.53403, 101.926575, 138.59518
     Rotation: 0, 0, 3.883192
 - MutagenObjectType: PlacedObject
   FormKey: 004913:NightsHarvest.esp
-  VersionControl: 13628
   Base: 02F239:Skyrim.esm
   Placement:
     Position: 31.884205, -279.05115, 67.33595
     Rotation: 0, 0, 1.0952353E-06
 - MutagenObjectType: PlacedObject
   FormKey: 004914:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0176B2:Skyrim.esm
-  RagdollData: 0x00C5014340EA2CB50000000050A4694000000000DB0FC9BF0000000001000000539E4441D5DD7E36E8B55C3305D00135079017B5C9A93B3402000000AD1C4A416CC3A0B5D46DE4356CC66536F0BAABB50CF7FCB60300000077141241E01492360000E0AC5598F93400E0923B81A72FB6
+  RagdollData: 0x00C5014340EA2CB50000000050A4694000000000DB0FC9BF0000000001000000539E4441D5DD7E36E8B55C331DC70135079017B5E99C3B3402000000AD1C4A416CC3A0B5D46DE435A9B66536F0BAABB5B2E5FCB60300000077141241E01492360000E0AC3687F93400E0923B759B2FB6
   Placement:
     Position: 114.31435, 463.97653, 280.79858
 - MutagenObjectType: PlacedObject
   FormKey: 004915:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: 187.39937, 159.2664, 127.00485
     Rotation: 0.024133999, 0.01686706, 6.283142
 - MutagenObjectType: PlacedObject
   FormKey: 004916:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9FD2:Skyrim.esm
   Placement:
     Position: 351.91098, 76.59874, 226.30331
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 004917:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9522:Skyrim.esm
   Radius: 15.643234
   Placement:
     Position: -167.3283, 547.974, 208.77754
 - MutagenObjectType: PlacedObject
   FormKey: 004918:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B40:Skyrim.esm
   Scale: 1.5
   Placement:
@@ -1316,72 +1204,62 @@ Temporary:
     Rotation: -1.130527, 0.5054326, 6.021374
 - MutagenObjectType: PlacedObject
   FormKey: 00491A:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACD8:Skyrim.esm
-  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008030AE48400036A9C34A2039400000A0B60000C028000000800000008055FCCA3F
+  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008038AE48400036A9C34A2039400000A0B60000C028000000800000008035FCCA3F
   Placement:
     Position: -330.57062, 54.322422, 87.37762
     Rotation: 0, 0, 3.1831934
 - MutagenObjectType: PlacedObject
   FormKey: 00491B:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACB8:Skyrim.esm
-  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008030AE4840008F6B434A2039400000A0B60000C028000000800000008055FCCA3F
+  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008038AE4840008F6B434A2039400000A0B60000C028000000800000008035FCCA3F
   Placement:
     Position: -330.28183, 35.832764, 132.47159
     Rotation: 0, 0, 3.2831936
 - MutagenObjectType: PlacedObject
   FormKey: 00491C:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9645:Skyrim.esm
   Placement:
     Position: -32.705048, -252.48232, 70.4056
     Rotation: 0, 0, 4.683191
 - MutagenObjectType: PlacedObject
   FormKey: 00491D:NightsHarvest.esp
-  VersionControl: 13628
   Base: 012FEA:Skyrim.esm
   Placement:
     Position: -271.90933, -258.67673, 69.96078
     Rotation: 0, 0, 1.2292076
 - MutagenObjectType: PlacedObject
   FormKey: 00491E:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631F7:Skyrim.esm
   Placement:
     Position: -260.28616, 265.76376, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 00491F:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD8:Skyrim.esm
   Placement:
     Position: 234.05504, 161.13844, 126.99549
     Rotation: 0.003761163, 0.00037849872, 0.00044448228
 - MutagenObjectType: PlacedObject
   FormKey: 004920:NightsHarvest.esp
-  VersionControl: 13628
   Base: 06717F:Skyrim.esm
   Placement:
     Position: -323.8786, 517.3355, 61.47474
     Rotation: 1.1228806, 0.5648422, 5.112944
 - MutagenObjectType: PlacedObject
   FormKey: 004921:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0318FB:Skyrim.esm
   Placement:
     Position: -105.28615, 327.76343, 66
     Rotation: 0, 0, 2.3561945
 - MutagenObjectType: PlacedObject
   FormKey: 004922:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9522:Skyrim.esm
   Radius: 15.643234
   Placement:
     Position: 177.79102, 542.9507, 208.77754
 - MutagenObjectType: PlacedObject
   FormKey: 004923:NightsHarvest.esp
-  VersionControl: 13628
   Base: 012FEB:Skyrim.esm
   Scale: 0.65
   Placement:
@@ -1389,95 +1267,81 @@ Temporary:
     Rotation: -0.007823733, -0.005958109, 6.2592893
 - MutagenObjectType: PlacedObject
   FormKey: 004924:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: 280.9705, 458.5367, 100.83831
     Rotation: 0.014148061, 0.032099463, 0.00023889591
 - MutagenObjectType: PlacedObject
   FormKey: 004925:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F61E:Skyrim.esm
   Placement:
     Position: -4.2858276, 521.7634, 64
 - MutagenObjectType: PlacedObject
   FormKey: 004926:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9522:Skyrim.esm
   Radius: 40.923874
   Placement:
     Position: -277.27054, 268.58624, 213.54636
 - MutagenObjectType: PlacedObject
   FormKey: 004927:NightsHarvest.esp
-  VersionControl: 13628
   Base: 06032D:Skyrim.esm
   Placement:
     Position: -180.28615, 201.76361, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 004928:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9E01:Skyrim.esm
   Placement:
     Position: 54.783928, -195.33173, 67.99994
     Rotation: 0, 0, 4.1831913
 - MutagenObjectType: PlacedObject
   FormKey: 004929:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9E05:Skyrim.esm
   Placement:
     Position: 238.72166, 433.56714, 32
     Rotation: 0, 0, 1.5486238
 - MutagenObjectType: PlacedObject
   FormKey: 00492A:NightsHarvest.esp
-  VersionControl: 13628
   Base: 097F6A:Skyrim.esm
   Placement:
     Position: -60.44192, 598.45917, 221.33295
     Rotation: 0, 0, 5.9831862
 - MutagenObjectType: PlacedObject
   FormKey: 00492B:NightsHarvest.esp
-  VersionControl: 13628
   Base: 000845:Skyrim.esm
   Placement:
     Position: -147.74408, 552.9531, 32
 - MutagenObjectType: PlacedObject
   FormKey: 00492C:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631EB:Skyrim.esm
   Placement:
     Position: -4.2861786, 9.763435, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 00492D:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9674:Skyrim.esm
   Placement:
     Position: 191.16287, 18.53379, 69.02638
     Rotation: 0, 0, 4.6831903
 - MutagenObjectType: PlacedObject
   FormKey: 00492E:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9FD1:Skyrim.esm
   Placement:
     Position: 232.75948, 141.02898, 197.87166
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 00492F:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D1CA:Skyrim.esm
   Placement:
     Position: 251.7139, 521.7636, 64
 - MutagenObjectType: PlacedObject
   FormKey: 004930:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: 250.12762, 434.20242, 100.68495
     Rotation: -0.001824565, 0.00027159223, 6.2831616
 - MutagenObjectType: PlacedObject
   FormKey: 004931:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B40:Skyrim.esm
   Scale: 1.5
   Placement:
@@ -1485,27 +1349,23 @@ Temporary:
     Rotation: -0.6053728, -0.71297514, 0.09945229
 - MutagenObjectType: PlacedObject
   FormKey: 004932:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACD5:Skyrim.esm
-  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080CF764840000EA6C3BA9E1740060072B900E8542C000000800000008067A5C93F
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080DB764840000EA6C3BA9E1740060072B900E8542C00000080000000805FA5C93F
   Placement:
     Position: -327.87018, 105.84434, 88.43236
 - MutagenObjectType: PlacedObject
   FormKey: 004933:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD6:Skyrim.esm
   Placement:
     Position: 292.1218, 162.49312, 127.3744
     Rotation: -0.009223212, -0.0065842853, 5.6824946
 - MutagenObjectType: PlacedObject
   FormKey: 004934:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDA:Skyrim.esm
   Placement:
     Position: -159.61424, 546.9521, 110.227585
 - MutagenObjectType: PlacedObject
   FormKey: 004935:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0185B6:Skyrim.esm
   Scale: 0.96
   Placement:
@@ -1513,104 +1373,89 @@ Temporary:
     Rotation: 0, 0, 5.0539904
 - MutagenObjectType: PlacedObject
   FormKey: 004936:NightsHarvest.esp
-  VersionControl: 13628
   Base: 097F6A:Skyrim.esm
   Placement:
     Position: -37.28939, 601.81366, 223.9238
     Rotation: 0.03142739, -0.3698957, 0.5051291
 - MutagenObjectType: PlacedObject
   FormKey: 004937:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8A2:Skyrim.esm
   Placement:
     Position: -260.28616, 265.76376, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 004938:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: -252.47037, 534.9797, 150.48706
     Rotation: -0.00044529734, -0.011473103, 6.2831845
 - MutagenObjectType: PlacedObject
   FormKey: 004939:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B2E:Skyrim.esm
   Placement:
     Position: -335.79355, -121.42284, 153.13168
     Rotation: -2.3274422, -1.1351138, 5.124814
 - MutagenObjectType: PlacedObject
   FormKey: 00493A:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDE:Skyrim.esm
   Placement:
     Position: -59.00415, 592.9166, 146.8837
     Rotation: 0.017996766, -0.0140122175, 3.8825881
 - MutagenObjectType: PlacedObject
   FormKey: 00493B:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0A894A:Skyrim.esm
   Placement:
     Position: -260.28635, -246.23639, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 00493C:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0C841C:Skyrim.esm
   Placement:
     Position: -228.9695, 540.61304, 184.7536
     Rotation: 0, 0, 0.90000194
 - MutagenObjectType: PlacedObject
   FormKey: 00493D:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D1CA:Skyrim.esm
   Placement:
     Position: -260.28616, 265.76376, 64
     Rotation: 0, 0, 3.1415925
 - MutagenObjectType: PlacedObject
   FormKey: 00493E:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BCC:Skyrim.esm
   Placement:
     Position: 299.9368, 436.66833, 100.87961
     Rotation: 0.00040960684, -0.0059579182, 6.2823005
 - MutagenObjectType: PlacedObject
   FormKey: 00493F:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631F2:Skyrim.esm
   Placement:
     Position: 251.71399, 265.76328, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 004940:NightsHarvest.esp
-  VersionControl: 13628
   Base: 013980:Skyrim.esm
   Placement:
     Position: -63.293903, 518.4094, 93.395775
     Rotation: 3.0273304, 0.13237125, 2.0667257
 - MutagenObjectType: PlacedObject
   FormKey: 004941:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0319E3:Skyrim.esm
   Placement:
     Position: -202.13445, 546.4518, 93.99999
 - MutagenObjectType: PlacedObject
   FormKey: 004942:NightsHarvest.esp
-  VersionControl: 13628
   Base: 023D77:Skyrim.esm
   Placement:
     Position: 304.26505, 433.2751, 107.35415
     Rotation: -1.3287815, -0.6879722, 4.3366914
 - MutagenObjectType: PlacedObject
   FormKey: 004943:NightsHarvest.esp
-  VersionControl: 13628
   Base: 000845:Skyrim.esm
   Placement:
     Position: -325.23117, -262.68018, 70.38679
     Rotation: 0, 0, 5.2085586
 - MutagenObjectType: PlacedObject
   FormKey: 004944:NightsHarvest.esp
-  VersionControl: 13628
   Base: 04318B:Skyrim.esm
   Scale: 1.39
   Placement:
@@ -1618,198 +1463,170 @@ Temporary:
     Rotation: 0, 0, 4.0831923
 - MutagenObjectType: PlacedObject
   FormKey: 004945:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F7F8:Skyrim.esm
   Placement:
     Position: -333.4757, 73.836624, 188.6522
     Rotation: -2.3113434, 0.2656174, 4.953588
 - MutagenObjectType: PlacedObject
   FormKey: 004946:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9F12:Skyrim.esm
   Placement:
     Position: 348.9136, 460.39673, 138.44519
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 004947:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B2E:Skyrim.esm
   Placement:
     Position: -334.33902, -125.37108, 136.0967
     Rotation: 0.026776452, -0.33714756, 5.9152994
 - MutagenObjectType: PlacedObject
   FormKey: 004948:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9522:Skyrim.esm
   Radius: -6.192322
   Placement:
     Position: 179.42636, -25.471397, 213.54636
 - MutagenObjectType: PlacedObject
   FormKey: 004949:NightsHarvest.esp
-  VersionControl: 13628
   Base: 024CB9:Skyrim.esm
   Placement:
     Position: 274.08908, 391.8039, 37.565987
     Rotation: 0, 0, 1.5660771
 - MutagenObjectType: PlacedObject
   FormKey: 00494A:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B3F:Skyrim.esm
   Placement:
     Position: -329.1216, -263.64865, 158.88445
     Rotation: 0.10069782, -0.5663334, 6.155461
 - MutagenObjectType: PlacedObject
   FormKey: 00494B:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: 173.84377, 157.83119, 127.0444
     Rotation: 0.020654587, 0.0028478554, 6.283027
 - MutagenObjectType: PlacedObject
   FormKey: 00494C:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B35:Skyrim.esm
   Placement:
     Position: -279.0127, 527.1252, 98.061264
     Rotation: 0.00058128557, 0.0036319257, 2.8833237
 - MutagenObjectType: PlacedObject
   FormKey: 00494D:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD4:Skyrim.esm
   Placement:
     Position: -332.11646, -65.67653, 131.14629
     Rotation: -0.0003515682, -0.021078087, 0.032893647
 - MutagenObjectType: PlacedObject
   FormKey: 00494E:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B3B:Skyrim.esm
   Placement:
     Position: 266.6221, 299.08304, 104.61616
     Rotation: 0.0007210365, 0.0034941717, 4.984148
 - MutagenObjectType: PlacedObject
   FormKey: 00494F:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B31:Skyrim.esm
   Placement:
     Position: 242.1735, 349.96677, 104.517334
     Rotation: -0.0045700036, 0.0016368739, 4.1821027
 - MutagenObjectType: PlacedObject
   FormKey: 004950:NightsHarvest.esp
-  VersionControl: 13628
   Base: 065C97:Skyrim.esm
   Placement:
     Position: 234.19502, 162.12125, 142.67273
     Rotation: 0.7972454, 0.65810543, 0.53932667
 - MutagenObjectType: PlacedObject
   FormKey: 004951:NightsHarvest.esp
-  VersionControl: 13628
   Base: 065C97:Skyrim.esm
   Placement:
     Position: 242.73662, 152.87007, 139.23093
     Rotation: 0.78058547, 0.61264783, 0.7946412
 - MutagenObjectType: PlacedObject
   FormKey: 004952:NightsHarvest.esp
-  VersionControl: 13628
   Base: 034D2D:Skyrim.esm
   Placement:
     Position: 125.53044, 192.82666, 279
     Rotation: 0, 0, 3.4831932
 - MutagenObjectType: PlacedObject
   FormKey: 004953:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0176B2:Skyrim.esm
-  RagdollData: 0x0000000040EA2CB50000000050A4694000000000DB0FC9BF0000000001000000539E4441D5DD7E36E8B55C3305D00135079017B5C9A93B3402A3CE8EAD1C4A416CC3A0B5D46DE4356CC66536F0BAABB50CF7FCB6039D58C677141241E01492360000E0AC5598F93400E0923B81A72FB6
+  RagdollData: 0x0000000040EA2CB50000000050A4694000000000DB0FC9BF0000000001000000539E4441D5DD7E36E8B55C331DC70135079017B5E99C3B3402A3CE8EAD1C4A416CC3A0B5D46DE435A9B66536F0BAABB5B2E5FCB6039D58C677141241E01492360000E0AC3687F93400E0923B759B2FB6
   Placement:
     Position: 113.876854, 526.603, 282.76727
 - MutagenObjectType: PlacedObject
   FormKey: 004954:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D17C:Skyrim.esm
   Placement:
     Position: -4.286331, -246.23654, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 004955:NightsHarvest.esp
-  VersionControl: 13628
   Base: 05D17C:Skyrim.esm
   Placement:
     Position: -260.28616, 9.763618, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 004956:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B3C:Skyrim.esm
   Placement:
     Position: 272.55426, 472.70776, 104.70873
     Rotation: -0.0058306223, -0.005365762, 6.2789087
 - MutagenObjectType: PlacedObject
   FormKey: 004957:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01B27A:Skyrim.esm
-  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008030AE4840008FA4C34A2039400000A0B60000C028000000800000008055FCCA3F
+  RagdollData: 0x00C501433E452541F77C6C33B03CA1BFDE0FC9BF0000008038AE4840008FA4C34A2039400000A0B60000C028000000800000008035FCCA3F
   Placement:
     Position: -335.48502, 92.98623, 177.3372
     Rotation: 0, 0, 3.4831932
 - MutagenObjectType: PlacedObject
   FormKey: 004958:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACBC:Skyrim.esm
-  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080CF76484000B67B43BA9E1740060072B900E8542C000000800000008067A5C93F
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080DB76484000B67B43BA9E1740060072B900E8542C00000080000000805FA5C93F
   Placement:
     Position: -329.63046, 60.444084, 94.211235
 - MutagenObjectType: PlacedObject
   FormKey: 004959:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566ED:Skyrim.esm
   Placement:
     Position: -132.28616, -118.2364, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 00495A:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8A6:Skyrim.esm
   Placement:
     Position: -132.28625, -118.23647, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 00495B:NightsHarvest.esp
-  VersionControl: 13628
   Base: 01ACD2:Skyrim.esm
-  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080CF764840006DF742BA9E1740060072B900E8542C000000800000008067A5C93F
+  RagdollData: 0x00C50143B4390541D5BD5B33BBD195BFDE0FC9BF00000080DB764840006DF742BA9E1740060072B900E8542C00000080000000805FA5C93F
   Placement:
     Position: -337.1595, 24.271704, 86.097626
     Rotation: 0, 0, 3.483193
 - MutagenObjectType: PlacedObject
   FormKey: 00495D:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0631FC:Skyrim.esm
   Placement:
     Position: 123.71399, 265.76334, 64
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 00495E:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: -251.88918, 542.2989, 142.89043
     Rotation: -0.0010365555, -0.0070627746, 6.283098
 - MutagenObjectType: PlacedObject
   FormKey: 00495F:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0D790C:Skyrim.esm
   Placement:
     Position: 297.33292, 79.31906, 125.40386
     Rotation: -0.0030766022, 0.011884344, 6.2826533
 - MutagenObjectType: PlacedObject
   FormKey: 004960:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0318EC:Skyrim.esm
   Placement:
     Position: -326.58765, 22.098026, 175.37614
     Rotation: 0.0005855368, -0.003013039, 5.7832723
 - MutagenObjectType: PlacedObject
   FormKey: 004961:NightsHarvest.esp
-  VersionControl: 13628
   Base: 097F6E:Skyrim.esm
   Scale: 0.87
   Placement:
@@ -1817,28 +1634,24 @@ Temporary:
     Rotation: 0, 0, 5.9831862
 - MutagenObjectType: PlacedObject
   FormKey: 004962:NightsHarvest.esp
-  VersionControl: 13628
   Base: 097F6C:Skyrim.esm
   Placement:
     Position: -327.84943, -211.75693, 96.34421
     Rotation: 0, 0, 1.9
 - MutagenObjectType: PlacedObject
   FormKey: 004963:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0A894C:Skyrim.esm
   Placement:
     Position: -260.28616, 265.76346, 64
     Rotation: 0, 0, 4.712389
 - MutagenObjectType: PlacedObject
   FormKey: 004964:NightsHarvest.esp
-  VersionControl: 13628
   Base: 044E70:Skyrim.esm
   Placement:
     Position: 36.531887, 596.7927, 214.57532
     Rotation: 0.0010852322, 0.012906263, 5.583247
 - MutagenObjectType: PlacedObject
   FormKey: 004965:NightsHarvest.esp
-  VersionControl: 13628
   Base: 064B42:Skyrim.esm
   Scale: 1.5
   Placement:
@@ -1846,118 +1659,116 @@ Temporary:
     Rotation: -0.15906684, -0.04778871, 0.01057327
 - MutagenObjectType: PlacedObject
   FormKey: 004966:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: 268.20914, 361.36063, 100.850555
     Rotation: 0.023328092, 0.022715846, 0.00019628943
 - MutagenObjectType: PlacedObject
   FormKey: 004967:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BDC:Skyrim.esm
   Placement:
     Position: 274.53815, 423.70886, 100.85109
     Rotation: 0.019202994, 0.015845105, 6.498194E-05
 - MutagenObjectType: PlacedObject
   FormKey: 004968:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: 269.47128, 476.5577, 100.7474
     Rotation: -0.0044682855, -0.004304962, 9.339516E-06
 - MutagenObjectType: PlacedObject
   FormKey: 004969:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9BD0:Skyrim.esm
   Placement:
     Position: 269.59628, 305.8833, 100.75123
     Rotation: 0.00017582151, -0.0022421083, 1.4936051E-05
 - MutagenObjectType: PlacedObject
   FormKey: 00496A:NightsHarvest.esp
-  VersionControl: 13628
   Base: 033245:Skyrim.esm
   Placement:
     Position: -8.1875, 600.3945, 198.67941
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 00496B:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9E00:Skyrim.esm
   Placement:
     Position: 268.52505, 246.81512, 33.85006
     Rotation: 0, 0, 5.897787
 - MutagenObjectType: PlacedObject
   FormKey: 00496C:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0CE783:Skyrim.esm
   Placement:
     Position: -333.64206, -116.31225, 67.77147
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 00496D:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B9522:Skyrim.esm
   Radius: -6.192322
   Placement:
     Position: 4.3420486, -191.08629, 213.54636
 - MutagenObjectType: PlacedObject
   FormKey: 00496E:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0B958D:Skyrim.esm
   Scale: 0.97
   Placement:
     Position: 209.5841, 394.93594, 33.096455
 - MutagenObjectType: PlacedObject
   FormKey: 00496F:NightsHarvest.esp
-  VersionControl: 13628
   Base: 000845:Skyrim.esm
   Placement:
     Position: -292.83847, -314.77832, 70.38679
     Rotation: 0, 0, 1.2292079
 - MutagenObjectType: PlacedObject
   FormKey: 004970:NightsHarvest.esp
-  VersionControl: 13628
   Base: 03F8A2:Skyrim.esm
   Placement:
     Position: 251.71387, 265.7638, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 004971:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0616F0:Skyrim.esm
   Placement:
     Position: -4.286133, 265.7636, 64
     Rotation: 0, 0, 1.5707964
 - MutagenObjectType: PlacedObject
   FormKey: 004972:NightsHarvest.esp
-  VersionControl: 13628
   Base: 033245:Skyrim.esm
   Placement:
     Position: -8.1875, 600.3945, 130.65039
     Rotation: 0, 0, 3.1415927
 - MutagenObjectType: PlacedObject
   FormKey: 004973:NightsHarvest.esp
-  VersionControl: 13628
   Base: 0566ED:Skyrim.esm
   Placement:
     Position: 123.71384, 137.76358, 64
 - MutagenObjectType: PlacedObject
   FormKey: 004977:NightsHarvest.esp
-  VersionControl: 13628
   Base: 004009:NightsHarvest.esp
   Placement:
     Position: -34.7204, 591.2396, 146.6641
 - MutagenObjectType: PlacedObject
   FormKey: 004978:NightsHarvest.esp
-  VersionControl: 13628
   Base: 00400C:NightsHarvest.esp
   Placement:
     Position: -144.08733, 554.17566, 112
 - MutagenObjectType: PlacedObject
   FormKey: 004979:NightsHarvest.esp
-  VersionControl: 13628
   Base: 00400A:NightsHarvest.esp
   Placement:
     Position: 6.4567776, -261.31638, 129.6
+- MutagenObjectType: PlacedObject
+  FormKey: 0089FA:NightsHarvest.esp
+  Base: 007F11:NightsHarvest.esp
+  Placement:
+    Position: 292.63293, 61.147507, 125.999985
+- MutagenObjectType: PlacedObject
+  FormKey: 0089FB:NightsHarvest.esp
+  Base: 007F12:NightsHarvest.esp
+  Placement:
+    Position: -256, 527, 95
+- MutagenObjectType: PlacedObject
+  FormKey: 008F61:NightsHarvest.esp
+  Base: 007F15:NightsHarvest.esp
+  Placement:
+    Position: -111.83101, -235.04507, 70.82923
 MajorFlags:
 - 0x40000

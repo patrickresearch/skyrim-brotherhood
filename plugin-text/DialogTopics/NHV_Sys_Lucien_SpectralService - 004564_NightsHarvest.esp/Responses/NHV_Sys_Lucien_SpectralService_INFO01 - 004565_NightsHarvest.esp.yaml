@@ -11,7 +11,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Travel is lighter. No provisions, no aching feet. One discovers how much of an assassin's life was spent maintaining the assassin.
+    Value: There is no pain in the Void. No restraint. Our Dread Father rewards us generously in His endless kingdom.
   ScriptNotes: NHV_SYS_LUC_27 prompt=NHV_SYS_LUC_26
   Edits: ''
 - EmotionValue: 35
@@ -20,16 +20,25 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The work still requires attention. Death has not made me careless, and the living remain wonderfully inventive about resisting it.
+    Value: Death has made me receptive to your realm in ways that life had never done.
   ScriptNotes: NHV_SYS_LUC_28
   Edits: ''
-- EmotionValue: 30
+- EmotionValue: 35
   ResponseNumber: 3
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Sithis still has my service. You have my counsel. For the moment, that arrangement suits me.
+    Value: Such a shame that the living remain wonderfully inventive about resisting it.
+  ScriptNotes: NHV_SYS_LUC_49
+  Edits: ''
+- EmotionValue: 30
+  ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Even so, Sithis has my unrelenting loyalty. Therefore you shall have my counsel. For the moment, that arrangement suits me.
   ScriptNotes: NHV_SYS_LUC_29
   Edits: ''
 Conditions:

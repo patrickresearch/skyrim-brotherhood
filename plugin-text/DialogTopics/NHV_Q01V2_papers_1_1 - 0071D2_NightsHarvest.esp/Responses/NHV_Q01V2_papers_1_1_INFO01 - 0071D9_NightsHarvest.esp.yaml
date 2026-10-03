@@ -1,0 +1,47 @@
+FormKey: 0071D9:NightsHarvest.esp
+EditorID: NHV_Q01V2_papers_1_1_INFO01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__020071D9
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__020071D9
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__020071D9
+      FragmentName: Fragment_0
+Flags:
+  Flags:
+  - Goodbye
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Sad
+  EmotionValue: 30
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then someone is watching the spaces where our family fails to arrive.
+  ScriptNotes: NHV_Q01_060_2604 prompt=NHV_Q01_060_2603
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 004000:NightsHarvest.esp
+  ComparisonValue: 60
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 007001:NightsHarvest.esp
+  ComparisonValue: 78
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000817:NightsHarvest.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: 'The report says: “A prayer unanswered is still a signal.”'

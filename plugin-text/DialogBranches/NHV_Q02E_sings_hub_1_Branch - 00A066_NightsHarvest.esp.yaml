@@ -1,0 +1,7 @@
+FormKey: 00A066:NightsHarvest.esp
+EditorID: NHV_Q02E_sings_hub_1_Branch
+Quest: 004100:NightsHarvest.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00A065:NightsHarvest.esp
