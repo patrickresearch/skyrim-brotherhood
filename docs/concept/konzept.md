@@ -281,7 +281,8 @@ Das Intro führt Veyra über eine Konfrontation mit Nazir ein, lässt die Night 
 | 40 | Open the sealed passage with Veyra. | Proposal-Dialog beendet |
 | 50 | Explore the Deep Sanctuary. | Zwischensequenz an der verschleierten Wand, gemeinsamer Eintritt (E24) |
 | 60 | Decide whose names belong on the Memorial Wall. | Veyra erreicht die Memorial Wall |
-| 100 | (Quest abgeschlossen) | Gespräch über den ersten Contract; startet Q01 |
+| 80 | Siehe `dialogue/Journal.csv`, `NHV_Q00_080_09` | Nach dem Contract: Veyras Zweifel-Angebot (E35) |
+| 100 | (Quest abgeschlossen) | Annahme nach dem Ruf oder Ablehnung des Zeugen; startet Q01 |
 
 ### Skript-Legende
 
@@ -407,11 +408,17 @@ Ergebnis in `NHV_AstridMemorial` (1–3), später von Nazir und Cicero kommentie
 ### Szene 6: Der erste Contract
 
 - **VEYRA**: "Before Falkreath burned, the Night Mother heard a prayer from Hjaalmarch. A Black Sacrament. No one answered it. There was no one left to answer."
-- **VEYRA**: "Let's find out what became of the one who performed it." → Stage 100, Q01 startet
+- **VEYRA**: "Let's find out what became of the one who performed it." → Stage 80, Veyras Zweifel-Angebot (E35)
 
 Optionales Thema zu den Vanilla-Initiates (nur wenn vorhanden):
 
 - Spieler: "What about the initiates who are already here?" → **VEYRA**: "They found the door by luck, not judgement. Luck is a fine thing. Judgement lasts longer. I'll keep an eye on them."
+
+### Nachgespräch: Zweifel und Luciens Geist (E35)
+
+Nach dem Contract spricht Veyra den Listener auf sein Misstrauen an. Er kann ihren Zeugen annehmen, höflich ablehnen oder schroff ablehnen. Alle Wege beenden Q00 und starten Q01; nach einer Ablehnung bleibt der Ruf später bei Veyra möglich. Lucien kennt sie aus Cheydinhal und bürgt für ihre freiwillige Treue zu Sithis, ohne E23 zu enthüllen. Er bleibt als Geist in der Deep Sanctuary und bietet sieben dauerhafte Gesprächsthemen. Die Formulierungen setzen keine frühere Vanilla-Beschwörung voraus.
+
+Verbindliche Texte: `dialogue/Q00.csv`, `dialogue/Lucien.csv`, `dialogue/Journal.csv`. Zuordnung, Übergänge und Tests: `docs/dialogue/Q00-Zweifel-Lucien-2026-09-29.md`. Die gemeinsame Annahmeantwort, Ruf, Bürgschaft und Dauerdialoge gehören zur System-Quest Sanctuary. Technischer Vorbau vorhanden; neue Dialoge noch nicht eingebaut.
 
 ### Belohnungen
 
@@ -720,11 +727,13 @@ Die Familie versammelt sich im Raum der Night Mother (per `MoveTo` hinter einem 
 
 Fünf Story-Rekruten plus die optionale Livia Maro. Jeder hat eine feste Rolle in der Sanctuary, einen Service, einen Trainer-Skill und einen eigenen VoiceType für die spätere Vertonung.
 
+Die ausführlichen Autorenprofile aller fünf Rekruten, Livia Maro und der wichtigsten Missionsfiguren stehen in `docs/concept/Neue-Charakterprofile.md`. Sie sind die Grundlage für spätere CSV-Dialoge, Banter, Services und Tagesabläufe.
+
 | Rekrut | Rasse, Alter | Rolle / Service | Trainer | Kampfstil | VoiceType |
 | --- | --- | --- | --- | --- | --- |
 | Hrefna Stormhollow | Nord, w, ca. 35 | Köchin und Verwalterin, verkauft Proviant | Archery (Expert) | Bogen + Jagdmesser | `NHV_VoiceHrefna` |
 | Sings-Beneath-Ice | Argonier, m, ca. 40 | Schattenkämpfer | Sneak (Expert) | zwei Dolche, Wasseratmung | `NHV_VoiceSings` |
-| Nirelda Aurantil | Altmer, w, ca. 120 (wirkt 40) | Arkanistin: Zauberbücher, Schriftrollen, Arcane Enchanter | Destruction (Expert) | Frost- und Schockmagie | `NHV_VoiceNirelda` |
+| Nirelda Aurantil | Altmer, w, ca. 120 (wirkt 40) | Feuer-Battle-Mage und Arkanistin: Zauberbücher, Schriftrollen, Arcane Enchanter | Destruction (Master) | Feuerzauber, mittlere Distanz | `NHV_VoiceNirelda` |
 | Corisande Marchand | Bretonin, w, ca. 38 | Hehlerin und Händlerin, Fence mit 2.000 Gold, Gifte | Speech (Expert) | Dolch + Gift, leichte Illusion | `NHV_VoiceCorisande` |
 | Kharzog gro-Ulgar | Ork, m, ca. 45 | Schmied | Smithing (Expert) | Zweihänder, schwere Rüstung, Tank | `NHV_VoiceKharzog` |
 | Livia Maro (optional) | Imperiale, w, ca. 30 | Taktikerin, Ex-Oculatus-Wissen | Block (Expert) | Schwert + Schild | `NHV_VoiceLivia` |
@@ -751,7 +760,7 @@ Geboren unter dem Shadow, hätte er in Black Marsh ein Shadowscale werden sollen
 
 ### Nirelda Aurantil
 
-Brillant, arrogant, völlig ohne Schuldgefühl, aber mit echter Faszination für Sithis als Forschungsgegenstand. Ihre Entwicklung: vom Studieren zum Glauben. Aussehen: goldene Haut, kurz geschorenes Haar, Tintenflecken an den Fingern, Robe des College mit abgetrenntem Wappen.
+Brillant, arrogant, neugierig und zunächst überzeugt, dass jede religiöse Erfahrung als Datenpunkt erklärbar ist. Nirelda ist eine Feuer-Battle-Mage mit Meistergrad in Destruction: Sie kämpft aus mittlerer Distanz mit Flammenstrahlen, Feuerwänden und kontrollierten Explosionen. Ihre Stärke ist Präzision, nicht grenzenlose Magicka; enge Räume, Verbündete im Wirkbereich und lange Kämpfe zwingen sie zur Zurückhaltung. Ihre Entwicklung führt vom Studieren zu einer freiwilligen, nie vollständig sicheren Form von Glauben. Aussehen: goldene Haut, kurz geschorenes Haar, Tintenflecken an den Fingern, Robe des College mit abgetrenntem Wappen.
 
 - Greeting: "Ah. My favorite variable."
 - Idle: "Babette insists she's three hundred years old. I've asked for a tissue sample. She declined. Rudely."
@@ -1642,3 +1651,11 @@ Falls der Aufwand zu groß wird, lässt sich v1.0 ohne Bruch der Architektur ver
 - Veröffentlichung auf Nexus Mods ist geplant; andere Plattformen (z. B. Bethesda.net Creations für Konsolen) sind wegen der SKSE-Abhängigkeit ausgeschlossen.
 
 Die Umsetzung Schritt für Schritt: [Entwicklungs-Roadmap](file/1925663a-a348)
+
+## Addendum E33 – Optionale ungeeignete Ernten
+
+Die fünf Contracts Q01–Q05 bleiben die kanonischen Rekrutierungen der Kampagne. Ergänzend können nach dem Kernbogen drei optionale Contracts Q07–Q09 gespielt werden. Arvena Sorn, Garran Vey und der scheinbare Edrin Vale können töten, passen aber wegen ihrer von Hass, Vergeltung oder persönlichem Nutzen getriebenen Motivation nicht selbstverständlich zu Sithis' übergeordnetem Dienst. Eine Aufnahme markiert sie als `Unfit`; sie ersetzen keinen Kernrekruten und sind für den Start von Q06 nicht erforderlich.
+
+Q09 enthält den Oculatus-Twist: Der echte Edrin Vale wurde gefangen genommen. Lucan Varro trägt seine Identität und führt den Contract als falscher Kandidat durch. Der Spieler kann die Täuschung nicht erkennen; Veyra erkennt beim ersten persönlichen Kontakt, dass der Name nicht zum inneren Echo der Tatorte passt. Eine scheinbare Aufnahme erhält den Status `False Harvest` und darf keinen Kernraum übernehmen.
+
+Wer alle drei ungeeigneten Ernten ablehnt, tötet oder freigibt und keinen `False Harvest` in der Familie hält, erleichtert den geheimen Livia-Rekrutierungspfad. Die geplante Arbeitsregel senkt den Speech-Schwellenwert von 75 auf 50. Die genaue CK-Bedingung bleibt vor der Umsetzung offen.

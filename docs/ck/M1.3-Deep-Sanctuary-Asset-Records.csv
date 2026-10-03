@@ -1,0 +1,98 @@
+Source,RecordType,FormID,EditorID,CKFilterName,Mesh,Room,Use,Status
+Skyrim.esm,STAT,00066AF6,ArcheryTarget,ArcheryTarget,Clutter\Common\ArcheryTarget01.nif,Training,archery target,training
+Skyrim.esm,STAT,00066AF4,ArcheryTargetTripod,ArcheryTargetTripod,Clutter\Common\ArcheryTargetTripod01.nif,Training,archery target tripod,training
+Skyrim.esm,CONT,00000845,BarrelFood01,BarrelFood01,Clutter\Barrel01.NIF,Kitchen,food barrel,storage
+Skyrim.esm,CONT,00092B10,BarrelIngredientCommon01,BarrelIngredientCommon01,Clutter\Barrel01.NIF,Kitchen/Garden,ingredient barrel,storage
+Skyrim.esm,ACTI,000DB894,CombatDummy01,CombatDummy01,Clutter\PracticeDummy\PracticeDummy01.nif,Training,practice dummy activator,training
+Skyrim.esm,ACTI,00072E9F,CombatDummy02,CombatDummy02,Clutter\PracticeDummy\PracticeDummy02.nif,Training,alternate practice dummy activator,training
+Skyrim.esm,ACTI,000DB895,CombatDummy03,CombatDummy03,Clutter\PracticeDummy\PracticeDummy03.nif,Training,third practice dummy activator,training
+Skyrim.esm,FURN,00030091,CommonBed01,CommonBed01,Furniture\Common\CommonBed01.nif,Dormitory,single bed,furniture
+Skyrim.esm,FURN,0003B6E8,CommonBedDouble01,CommonBedDouble01,Furniture\Common\CommonBedDouble01.nif,Dormitory,double bed,furniture
+Skyrim.esm,FURN,0002E6CF,CommonBench01,CommonBench01,Furniture\Common\CommonBench01.nif,Hall/Training,bench,furniture
+Skyrim.esm,FURN,0002EC1C,CommonChair01,CommonChair01,Furniture\Common\CommonChair01.nif,Hall/Ledger,chair,furniture
+Skyrim.esm,FURN,000B0105,CommonTableOneBench,CommonTableOneBench,Furniture\CommonTableOneBench.nif,Hall,table with one bench,furniture
+Skyrim.esm,FURN,000B0104,CommonTableTwoBenches,CommonTableTwoBenches,Furniture\CommonTableTwoBenches.nif,Hall,table with two benches,furniture
+Skyrim.esm,CONT,00024CA7,CommonWardrobe01,CommonWardrobe01,Clutter\Common\Wardrobe01.nif,Dormitory,wardrobe,storage
+Skyrim.esm,FURN,000BAD0C,CraftingAlchemyWorkbench,CraftingAlchemyWorkbench,Furniture\AlchemyWorkbench.nif,Arcanum,alchemy lab furniture,crafting station
+Skyrim.esm,FURN,0001A2AD,CraftingBlacksmithAnvil,CraftingBlacksmithAnvil,Furniture\Clutter\BlacksmithAnvil.nif,Forge,anvil furniture,crafting station
+Skyrim.esm,FURN,000D932F,CraftingBlacksmithArmorWorkbench,CraftingBlacksmithArmorWorkbench,Furniture\BlacksmithWorkbench01.nif,Forge,armor workbench,crafting station
+Skyrim.esm,FURN,000CAE0B,CraftingBlackSmithForge,CraftingBlackSmithForge,Furniture\BlacksmithForgeMarker.nif,Forge,blacksmith forge marker,crafting station
+Skyrim.esm,ACTI,00048748,CraftingBlacksmithForgeSTATIC,CraftingBlacksmithForgeSTATIC,Clutter\Blacksmith\BlacksmithForge01\BlacksmithForge01.nif,Forge,blacksmith forge static activator,crafting station
+Skyrim.esm,FURN,00068ADB,CraftingCookingFireSpit,CraftingCookingFireSpit,Furniture\FireSpitCooking.nif,Kitchen,cooking spit,crafting station
+Skyrim.esm,FURN,00104110,CraftingCookingPotLG,CraftingCookingPotLG,Furniture\LargeCookingPot.nif,Kitchen,large cooking pot,crafting station
+Skyrim.esm,FURN,001010B3,CraftingCookingPotSm,CraftingCookingPotSm,Furniture\SmallCookingPot.nif,Kitchen,small cooking pot,crafting station
+Skyrim.esm,FURN,000BAD0D,CraftingEnchantingWorkbench,CraftingEnchantingWorkbench,Furniture\EnchantingWorkbench.nif,Arcanum,arcane enchanter furniture,crafting station
+Skyrim.esm,FURN,0009C6CE,CraftingSmelterMarker1,CraftingSmelterMarker1,Furniture\SmelterMarker.nif,Forge,smelter marker,crafting station
+Skyrim.esm,FURN,000727A1,CraftingTanningRackMarker,CraftingTanningRackMarker,Furniture\TanningRackMarker.nif,Forge,tanning rack marker,crafting station
+Skyrim.esm,CONT,00024CA4,Cupboard01,Cupboard01,Clutter\Common\Cupboard01.nif,Kitchen,cupboard,storage
+Skyrim.esm,CONT,00097F78,DB03Barrel,DB03Barrel,Clutter\Barrel01.NIF,Kitchen,Brotherhood barrel,storage
+Skyrim.esm,STAT,000B343D,DBBannerAnchor,DBBannerAnchor,Clutter\DBhood\DBBannerAnchor.nif,Hall/Memorial,Dark Brotherhood banner anchor,DB visual
+Skyrim.esm,STAT,000B343E,DBBannerAnchor02,DBBannerAnchor02,Clutter\DBhood\DBBannerAnchor02.nif,Hall/Memorial,alternate banner anchor,DB visual
+Skyrim.esm,LIGH,000B346D,DBCandlePost01NS,DBCandlePost01NS,,Lighting,Dark Brotherhood candle post light,lighting
+Skyrim.esm,LIGH,000B345A,DBFireLight01,DBFireLight01,,Lighting,Dark Brotherhood fire light,lighting
+Skyrim.esm,LIGH,000B345B,DBFireLight01NS,DBFireLight01NS,,Lighting,"Dark Brotherhood fire light, no shadow",lighting
+Skyrim.esm,STAT,0001E649,DBNightMotherCoffin,DBNightMotherCoffin,Clutter\Ruins\Ruins_Altar01.nif,Shrine,Night Mother coffin prop,optional lore prop
+Skyrim.esm,STAT,0003B673,DBNightMotherCoffin2,DBNightMotherCoffin2,Clutter\Ruins\Ruins_Altar01.nif,Shrine,alternate Night Mother coffin prop,optional lore prop
+Skyrim.esm,FLOR,000B202C,FloraCreepClusterRock,FloraCreepClusterRock,Plants\FloraCreepCluster02.nif,Garden/Drowned Pool,creep cluster,flora
+Skyrim.esm,FLOR,0004D9FF,FloraMushroom01,FloraMushroom01,Plants\FloraMushroom01.nif,Garden/Drowned Pool,mushroom,flora
+Skyrim.esm,FLOR,0004DA04,FloraMushroom02,FloraMushroom02,Plants\FloraMushroom02.nif,Garden/Drowned Pool,mushroom variant,flora
+Skyrim.esm,CONT,000C04C0,FVDStrongbox,FVDStrongbox,Clutter\Common\StrongBox01.nif,Ledger,strongbox,storage
+Skyrim.esm,FLOR,0007EE00,GlowingMushroomCluster,GlowingMushroomCluster,Plants\GlowingMushroomCluster01.nif,Drowned Pool,glowing mushroom cluster,flora
+Skyrim.esm,CONT,000F8476,LargeChestNoRespawn,LargeChestNoRespawn,Clutter\Ruins\Ruins_LargeChest.nif,Ledger/Dormitory,non-respawning chest,storage
+Skyrim.esm,STAT,00052570,NorBookPedestal,NorBookPedestal,Furniture\Nordic\RuinsBookPedestal.nif,Shrine/Arcanum,book or relic pedestal,decor
+Skyrim.esm,STAT,000C226A,NorDoorMediumSTATIC,NorDoorMediumSTATIC,Dungeons\Nordic\Doors\Animated\MediumDoor\RuinsMediumDoor01.nif,Architecture,Nordic medium doorway,core shell
+Skyrim.esm,STAT,00013BEF,NorHallBg1wayStairs256,NorHallBg1wayStairs256,Dungeons\Nordic\BgHalls\NorHallBg1wayStairs256.nif,Vertical route,large Nordic stair flight,stair candidate
+Skyrim.esm,STAT,0001A4B3,NorHallOfStoriesArch01,NorHallOfStoriesArch01,Dungeons\Nordic\Chambers\NorHallOfStoriesArch01.nif,Architecture,interior arch,core shell
+Skyrim.esm,STAT,0001384F,NorHallSm1wayStairs128,NorHallSm1wayStairs128,Dungeons\Nordic\SmHalls\NorHallSm1wayStairs128.nif,Vertical route,small Nordic stair flight,stair candidate
+Skyrim.esm,STAT,0001E1DB,NorRmBgMidCeilingOnlyLow01,NorRmBgMidCeilingOnlyLow01,Dungeons\Nordic\BgRooms\NorRmBgMidCeilingOnlyLow01.nif,Architecture,low Nordic ceiling,core shell
+Skyrim.esm,STAT,0001E1DC,NorRmBgMidFloorOnly01,NorRmBgMidFloorOnly01,Dungeons\Nordic\BgRooms\NorRmBgMidFloorOnly01.nif,Architecture,large Nordic room floor,core shell
+Skyrim.esm,STAT,0001600A,NorRmBgWallFront01,NorRmBgWallFront01,Dungeons\Nordic\BgRooms\NorRmBgWallFront01.nif,Architecture,Nordic wall front,core shell
+Skyrim.esm,STAT,0001600C,NorRmBgWallSide01,NorRmBgWallSide01,Dungeons\Nordic\BgRooms\NorRmBgWallSide01.nif,Architecture,Nordic wall side,core shell
+Skyrim.esm,STAT,00026E5E,NorRmShaftMidStair01,NorRmShaftMidStair01,Dungeons\Nordic\Shafts\NorRmShaftMidStair01.nif,Vertical route,stair shaft middle,stair candidate
+Skyrim.esm,STAT,00026E5B,NorRmShaftMidStairBot01,NorRmShaftMidStairBot01,Dungeons\Nordic\Shafts\NorRmShaftMidStairBot01.nif,Vertical route,stair shaft bottom,stair candidate
+Skyrim.esm,STAT,00026E5C,NorRmShaftMidStairDeck01,NorRmShaftMidStairDeck01,Dungeons\Nordic\Shafts\NorRmShaftMidStairDeck01.nif,Vertical route,stair shaft landing,stair candidate
+Skyrim.esm,STAT,00026E5F,NorRmShaftMidStairTop01,NorRmShaftMidStairTop01,Dungeons\Nordic\Shafts\NorRmShaftMidStairTop01.nif,Vertical route,stair shaft top,stair candidate
+Skyrim.esm,STAT,0002B899,NorRmSmMidFloorOnly01,NorRmSmMidFloorOnly01,Dungeons\Nordic\SmRooms\NorRmSmMidFloorOnly01.nif,Architecture,small room floor,core shell
+Skyrim.esm,STAT,00013F82,NorRmSmWallFront01,NorRmSmWallFront01,Dungeons\Nordic\SmRooms\NorRmSmWallFront01.nif,Architecture,small room wall front,core shell
+Skyrim.esm,STAT,0003CB82,NorRmSmWallFrontFireplace01,NorRmSmWallFrontFireplace01,Dungeons\Nordic\SmRooms\NorRmSmWallFrontFireplace01.nif,Hall/Fireplace,wall with fireplace opening,core shell
+Skyrim.esm,STAT,00013F86,NorRmSmWallSide01,NorRmSmWallSide01,Dungeons\Nordic\SmRooms\NorRmSmWallSide01.nif,Architecture,small room wall side,core shell
+Skyrim.esm,STAT,0003CB81,NorRmSmWallSideFireplace01,NorRmSmWallSideFireplace01,Dungeons\Nordic\SmRooms\NorRmSmWallSideFireplace01.nif,Hall/Fireplace,side wall with fireplace opening,core shell
+Skyrim.esm,STAT,00034458,NorRubblePiece01,NorRubblePiece01,Dungeons\Nordic\Rubble\NorRubblePiece01.nif,Ruined dressing,loose rubble,ruined state
+Skyrim.esm,STAT,00034459,NorRubblePiece02,NorRubblePiece02,Dungeons\Nordic\Rubble\NorRubblePiece02.nif,Ruined dressing,loose rubble,ruined state
+Skyrim.esm,STAT,00030123,NorRubblePile01,NorRubblePile01,Dungeons\Nordic\Rubble\NorRubblePile01.nif,Ruined dressing,rubble pile,ruined state
+Skyrim.esm,STAT,000267CD,NorTable01NoShadow,NorTable01NoShadow,Clutter\Ruins\RuinsTable01.nif,Hall/Ledger,Nordic table,decor
+Skyrim.esm,STAT,0005A405,NorTableLong01,NorTableLong01,Clutter\Ruins\RuinsLongTable01.nif,Hall/Ledger,long Nordic table,decor
+Skyrim.esm,FURN,000F5B9A,NorTableOneBench,NorTableOneBench,Furniture\Nordic\RuinsBenchTable1sided.nif,Hall,Nordic table with one bench,furniture
+Skyrim.esm,FURN,000F5B98,NorTableTwoBenches,NorTableTwoBenches,Furniture\Nordic\RuinsBenchTable2sided.nif,Hall,Nordic table with two benches,furniture
+Skyrim.esm,STAT,0001B1B4,NorTmpHallBg1wayStairsDown01,NorTmpHallBg1wayStairsDown01,Dungeons\Nordic\Temple\BgHalls\NorTmpHallBg1wayStairsDown01.nif,Vertical route,downward hall stair,stair candidate
+Skyrim.esm,STAT,0001B1B5,NorTmpHallBg1wayStairsUp01,NorTmpHallBg1wayStairsUp01,Dungeons\Nordic\Temple\BgHalls\NorTmpHallBg1wayStairsUp01.nif,Vertical route,upward hall stair,stair candidate
+Skyrim.esm,STAT,000BB8BC,RockL01Wet,RockL01Wet,Landscape\Rocks\WetRocks\RockL01Wet.nif,Drowned Pool,wet large rock,pool dressing
+Skyrim.esm,STAT,000BB8C2,RockM02Wet,RockM02Wet,Landscape\Rocks\WetRocks\RockM02Wet.nif,Drowned Pool,wet medium rock,pool dressing
+Skyrim.esm,STAT,000289DA,RuinsAltar,RuinsAltar,Clutter\Ruins\Ruins_Altar01.nif,Shrine,ruined altar,decor
+Skyrim.esm,STAT,00040616,RuinsBench01Static,RuinsBench01Static,Furniture\Nordic\Ruins_Bench01.nif,Hall/Training,ruined bench,decor
+Skyrim.esm,STAT,0003F7EC,RuinsBrokenBench01,RuinsBrokenBench01,Clutter\Ruins\RuinsFurnitureRubble09.nif,Ruined dressing,broken bench,ruined state
+Skyrim.esm,STAT,0003F7E4,RuinsBrokenShelf01,RuinsBrokenShelf01,Clutter\Ruins\RuinsFurnitureRubble05.nif,Ruined dressing,broken shelf,ruined state
+Skyrim.esm,STAT,0003F7E0,RuinsBrokenTable01,RuinsBrokenTable01,Clutter\Ruins\RuinsFurnitureRubble03.nif,Ruined dressing,broken table,ruined state
+Skyrim.esm,STAT,0007EA44,RuinsCandleSconceNoCandle,RuinsCandleSconceNoCandle,Clutter\Ruins\RuinsCandleSconceNoCandle01.nif,Lighting,empty wall sconce,ruined state
+Skyrim.esm,STAT,0007EA46,RuinsCandleSconceOff01,RuinsCandleSconceOff01,Clutter\Ruins\RuinsCandleSconceOff01.nif,Lighting,unlit wall sconce,decor
+Skyrim.esm,STAT,0007EA40,RuinsCandleSconceOn1,RuinsCandleSconceOn1,Clutter\Ruins\RuinsCandleSconceOn01.nif,Lighting,lit wall sconce,decor
+Skyrim.esm,STAT,0007EA42,RuinsCandleSconceOn2,RuinsCandleSconceOn2,Clutter\Ruins\RuinsCandleSconceOn02.nif,Lighting,lit double wall sconce,decor
+Skyrim.esm,STAT,0001B061,RuinsLargeCeilingSconce,RuinsLargeCeilingSconce,Clutter\Ruins\RuinCeilingSconce01.nif,Lighting,large ceiling sconce,decor
+Skyrim.esm,STAT,00019E27,RuinsLargeFloorSconce,RuinsLargeFloorSconce,Clutter\Ruins\RuinLargeFloorSconce.nif,Lighting,large floor sconce,decor
+Skyrim.esm,STAT,000194B9,RuinsSconceAndBase,RuinsSconceAndBase,Clutter\Ruins\RuinSconce01WithBase.nif,Lighting,sconce with base,decor
+Skyrim.esm,STAT,00037E89,RuinsShelfLargeFull,RuinsShelfLargeFull,Clutter\Ruins\RuinShelfLargeFull01.nif,Ledger/Arcanum,large shelf,decor
+Skyrim.esm,STAT,00037E8D,RuinsShelfSmallFull,RuinsShelfSmallFull,Clutter\Ruins\RuinShelfSmallFull01.nif,Ledger/Arcanum,small shelf,decor
+Skyrim.esm,STAT,0001B410,RuinsWallSconce,RuinsWallSconce,Clutter\Ruins\RuinWallSconce01.nif,Lighting,wall sconce,decor
+Skyrim.esm,STAT,00070D88,SBigPlanter01,SBigPlanter01,Architecture\Solitude\Clutter\SBigPlanter01.nif,Garden,large planter,garden
+Skyrim.esm,STAT,000C8CFC,SBigPlanter02,SBigPlanter02,Architecture\Solitude\Clutter\SBigPlanter02.nif,Garden,alternate large planter,garden
+Skyrim.esm,STAT,0007F3A6,Splanter01,Splanter01,Architecture\Solitude\Splanter01.nif,Garden,small planter,garden
+Skyrim.esm,ACTI,0008AF5B,WeaponRackMid,WeaponRackMid,Clutter\WeaponRack\WRSingle01.nif,Training/Memorial,single weapon rack,display pair
+Skyrim.esm,ACTI,0008AF59,WeaponRackMidACTIVATOR,WeaponRackMidACTIVATOR,Clutter\WeaponRack\WRSingleTrigger02.nif,Training/Memorial,weapon rack activator,display pair
+Skyrim.esm,ACTI,00084CF2,WeaponRackPlaque,WeaponRackPlaque,Clutter\WeaponRack\WRPlaque01.nif,Memorial,weapon plaque,display pair
+Skyrim.esm,ACTI,00084CF1,WeaponRackPlaqueACTIVATOR,WeaponRackPlaqueACTIVATOR,Clutter\WeaponRack\WRPlaqueTrigger01.nif,Memorial,weapon plaque activator,display pair
+Skyrim.esm,STAT,00073BBA,WRTempIntPool01,WRTempIntPool01,Architecture\WhiteRun\WRInteriors\WRTemple\WRTempIntPool01.nif,Drowned Pool,interior pool segment,pool candidate
+Skyrim.esm,STAT,00074EDD,WRTemplePlanter,WRTemplePlanter,Architecture\WhiteRun\WRClutter\WRTemplePlanter.nif,Garden,stone temple planter,garden
+Night's Harvest,ACTI,—,NHV_Act_MapTable,NHV_Act_MapTable,CWMapMarkers02.nif,Ledger Room,Map Table,existing custom record
+Night's Harvest,ACTI,—,NHV_Act_Q00_Plaque*,NHV_Act_Q00_Plaque*,Clutter\WeaponRack\WRPlaque01.nif,Memorial Wall,Memorial plaque activators,existing custom records; see individual IDs
+Night's Harvest,ACTI,—,NHV_Act_DrownedPoolNameBowl,NHV_Act_DrownedPoolNameBowl,TBD in CK,Drowned Pool,Name bowl,existing custom record; choose mesh in CK
+Night's Harvest,STAT/ACTI,—,NHV_Act_DrownedPoolPost,NHV_Act_DrownedPoolPost,TBD in CK,Drowned Pool,Pool post,existing custom record; choose mesh in CK

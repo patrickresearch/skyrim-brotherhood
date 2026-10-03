@@ -38,12 +38,81 @@ Offene Fragen und getroffene Entscheidungen. Claude legt nichts fest, was hier a
 | E31 | Magischer Faden | Leises Gleaning / + Black-Hand-Relikt / keine Magie | Leises Gleaning (Echos der Toten), innerhalb von E23; kein Relikt in v1.0 | M3 | Entschieden |
 | E27 | Quelle der Stimmen | Nur stille Dateien / KI-Stimmen | Vanilla-Figuren über xVASynth, Veyra (und neue Figuren) über ElevenLabs; Import per `tools/voice_import.py` | M1.5 | Entschieden |
 | E26 | Charakterprofile und Feuer-Battle-Mage | Nirelda als allgemeine Arkanistin / Feuer-Battle-Mage mit Meistergrad | Fünf Story-Rekruten plus Livia und Missionsfiguren erhalten verbindliche Autorenprofile; Nirelda wird Feuer-Battle-Mage (Destruction Master) | vor Q03-Dialogen | Entschieden |
+| E33 | Zusätzliche ungeeignete Rekrutierungen und falscher Kandidat | Nur fünf Kernrekruten / drei optionale Unfit-Ernten / Spion-Twist | Q07–Q09 ergänzen drei optionale Kandidaten; einer ist Oculatus-Spion Lucan Varro unter Edrin Vales Namen; nur Veyra erkennt die Identität zunächst | vor Q07–Q09-Dialogen | Entschieden |
+| E34 | Livias Funktion nach geheimer Rekrutierung | Sanctuary-Rekrutin / geheime Oculatus-Schwester | Livia bleibt öffentlich eine angesehene Oculatus-Offizierin und liefert der Brotherhood als `Hidden Sister` verschlüsselte Informationen; kein gewöhnlicher sechster Kernraum | vor Q06-Dialogen | Entschieden |
+| E35 | Q00-Zweifel und Luciens Geist | Sofortiger Abschluss / optionaler Zeuge mit späterem Ruf | Stage 80 mit Annahme und zwei Ablehnungen; danach Q01; Lucien bleibt dauerhaft in der Deep Sanctuary | M1.5 | Entschieden |
+| E38 | Veyras persönliches Schwert (Unique-Waffe, neues Mesh) | Nur visuell (Veyra trägt es, kein Spieler-Zugriff) / auch später erhältlich | Schwert ist Veyras dauerhafte Standardausrüstung; zusätzlich als lootbares/erhältliches Unique-Item vorgesehen – **Weg der Beschaffung noch offen** (nicht über Veyras Tod, siehe E23/M1.2: ihre Verwundbarkeit durch gewöhnliche Mittel ist unentschieden; eher Fund- oder Belohnungsgegenstand) | vor Einbau in eine Quest | Offen (nur „ob“ entschieden, „wie“ noch nicht) |
+| E39 | Haldors Schicksal in Q02 Pfad A (niemand greift ein) | Leiche bleibt auffindbar / verschwindet im Wasser | Leiche bleibt am Pier liegen | M2.2 | Entschieden |
+| E40 | Hrefna tötet Quintus (Q01, Stage 50) | Kampf / Attentat | Attentat: ein Dolchstich, Quintus sofort tot; Kill-Move optional | M1.7 | Entschieden |
+| E41 | Zeitpunkt von Luciens Beschwörung in Q00 (ersetzt Teile von E35) | Nach dem Contract als Angebot (Stage 80) / Pflicht am Ende des Standoffs | Pflicht am Ende des Standoffs (neue Stage 12), danach Night Mother; Stage 80 entfällt; Lucien verschwindet nicht: Er bleibt von Stage 12 bis 49 sichtbar und ansprechbar in der Vanilla Dawnstar Sanctuary bei den anderen (Änderung 03.10.2026, Entwickler; Package `NHV_Pkg_Sys_LucienSanctuaryIdle`, Radius 600 um `NHV_Mk_Q00_StandoffVeyra`) und zieht ab Stage 50 dauerhaft in die geöffnete Deep Sanctuary | M1.5 | Entschieden (Stage-12-Texte geliefert, CK/Szene/Ingame offen) |
+| E42 | Auswahl der Contracts nach Q01 | Feste Reihenfolge (Q02 direkt nach Q01) / Map Table | Map Table in der Sanctuary; zunächst nur Q02, Q03–Q05 werden später ergänzt | M2 | Entschieden; Design 30.09.2026: Aktivator im Ledger Room, Message-Menü (4 Pins + Abbruch), Freigabe Q01 Stage 100, ein Contract zugleich, Briefing per vorhandenem ForceGreet, siehe `docs/ck/M2.0-Map-Table.md` |
+| E43 | Mechanik der V2-Dialoge (Q00, Q01, später Q02–Q05) | Quest-Script-Variablen mit `GetVMQuestVariable` / Globals (wie Q02) / handgebaute Topic-Tabellen je Quest | Globals als Zustand: ein Cursor je Gesprächsstrang (Sichtbarkeit der Auswahlzeilen) plus Zustands-Flags; Topics, Szenen und Fragmente erzeugt `tools/flow_compiler.py` aus `flow.json` + CSV; Einstiege als bestehende Szene, `Hello`-Topic, ForceGreet oder Say; Spielerzeilen ohne NPC-Antwort als INFO mit leerem Response-Text | M1.5, M1.7 | Entschieden (Entwickler bestätigte Quest-Variablen-Konzept, Umsetzung als Globals wegen `GetGlobalValue`-Praxis im Projekt); Hello-Topics und stille INFOs ingame zu bestätigen |
+| E45 | Q01 Enhanced ersetzt Q01 V2 | V2 behalten / Enhanced-Arc (Reedbed, Farm, Wachposten, Scout, Quintus-Enthüllung, drei Konfrontationswege) einbauen | Enhanced ist der aktive Q01-Arc; die V2-Küchenszene (Home) bleibt; die linearen Enhanced-Austausche werden zu Ketten aus Ein-Wahl-Hubs (Generator `tools/build_q01_enhanced.py`); Veyra begleitet den Spieler in Stage 20–69 (Package); Hrefna folgt ab Stage 48; Kartenmarker, Scavenger, Soldaten, Scout, Quintus-Orte sind CK-Objekte, die über Script-Properties angesprochen werden; Wachposten-Soldaten werden per Script feindlich | M1.7 | Entschieden; Ingame-Test und CK-Durchgang offen |
+| E44 | Vereinfachungen der V2-Umsetzung | Erst alles Räumliche/Ereignisgesteuerte bauen / mit Näherungen testen | Näherungen für den Erst-Test: „Tagebuch gelesen“ = Buch im Inventar, „Fragment gefunden“ = Item im Inventar, Route Zimmer/Straße = Hrefna/Quintus ansprechen (keine Ortsprüfung), Silence setzt den Tod sofort, Drei-Tage-Fallback entfällt, `initiates` nie wahr, ein Journal-Log je Stage (Teilphasen als zusätzliche Objectives) | M1.5, M1.7 | Entschieden; nach dem Ingame-Test nachschärfen |
+| E45 | Q01 Enhanced: Ermittlungsroute und Hrefnas Familienhintergrund | Kurzer Reise-/Mordauftrag mit lebender Tochter / mehrstufige Ermittlung mit Verlustgeschichte | Der separate Enhanced-Entwurf führt Hakan von einer Vermutung über den roten Fährmarker zur Farm, über einen verpflichtenden Watchpost-Kampf und den überlebenden Scout zu Hrefnas Lager. Quintus wird erst nach Widerspruch als Oculatus-Agent enttarnt; Dokumente, ortsabhängige Konfrontationen und die Wahl zwischen Sichern oder Zurücklassen eines Fragmentes folgen. Hrefnas Ehemann starb durch selbstzerstörerisches Trinken unter Schuldendruck, ihre Tochter nach der Belästigung durch Eiriks Angestellten durch Suizid. Aktive Master/V2 bleiben unverändert, bis der Enhanced-Entwurf ausgewählt wird. | M1.7 | Entschieden (Enhanced-Draft; CK/Vertonung offen) |
+| E46 | Q02 Enhanced: Ermittlungsvertiefung | Bestehende V2-Kette / zusätzliche Tidehouse-, Salzplatz-, Aelius- und Kurierphasen | Der separate Q02-Entwurf ergänzt nur kausal begründete Schritte: versiegelte Schichtakte vor der Nachtwache, Salzplatz und Sluice als Spur nach Haldors Angriff, Aelius-Beobachtung vor der Prüfung und ein generischer Oculatus-Kurier nach seinem Tod. Neue Orte, NPCs, Items und Globals bleiben bis zur Auswahl des Entwurfs inaktiv; Livia und eine fertige Verschwörung werden nicht enthüllt. | M2.2 | Entschieden (Enhanced-Draft; CK/Vertonung offen) |
+| E47 | Q03 Enhanced: Erkenntnis und Grenze | Bestehende V2-Kette / zusätzliche College-Zeugin, Wegstation, Resonanzkammer, Consent-Ledger und Gegenzeichen | Der separate Q03-Entwurf vertieft Nireldas Prüfung kausal: Selveni ergänzt die widersprüchliche College-Akte, eine Wegstation gibt den Opfern eine konkrete Stimme, die Resonanzkammer macht Nireldas Methode spielbar, und das Consent-Ledger bereitet ihre Fragen vor. Das Gegenzeichen erweitert Fragment 3, ohne L.M. oder Sithis vorzeitig zu erklären. Neue Orte, NPCs, Items und Globals bleiben bis zur Auswahl des Entwurfs inaktiv. | M2.3 | Entschieden (Enhanced-Draft; CK/Vertonung offen) |
+| E48 | Reihenfolge Q02/Q03 | Fest Q02→Q03 / frei wählbar | Frei wählbar durch den Spieler (Konzept). Nur im Test gilt eine feste Reihenfolge. Q02/Q03-Texte, Debriefs und Fragmenttexte setzen keine Reihenfolge voraus; der Map Table gibt Winterhold unabhängig vom Q02-Stand frei. Betrifft Q3-15/T-03. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E49 | Q02-Stagefolge | Draft-Rücksprung / lineare Folge | 10 Hafen → 15 Tidehouse → 20 Leiche → 30 Nacht → 40 Beschattung/Spur → 45 Salzplatz/Sluice (nur Pfad „Haldor gerettet“) → 50 Hollow → 55 Aelius beobachten → 60 Prüfung → 70 Urteil → 100. Salzplatz ersetzt die Fallback-Spurensuche; bestehende Stages bleiben gültig. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E50 | Q02-Altdialog | Alt-Topics behalten / ersetzen | Wie Q01 (E45): Enhanced ersetzt die 50 Alt-Topics; Quest, NPCs, Globals, Szenen, Packages bleiben. `build_q02_records.py` wird stillgelegt. Q02-Test-Saves gelten als verbraucht (Regel 3 greift erst ab 0.1.0). | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E51 | Veyras Anwesenheit | Veyra im Hollow / Veyra in der Sanctuary | Ab Q02 bleibt Veyra in der Dawnstar Sanctuary; der Spieler berichtet am Ende nur ihr (Debrief dort). Sie verlässt die Sanctuary nicht für den Hollow; Draft-Antworten von `trial_hub` bei Veyra entfallen oder wechseln den Sprecher. Q03: Veyra begleitet nicht. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E52 | Aelius-Beobachtung | Vor / nach Autorisierung | Vor der Autorisierung (Stage 55), danach `authorize` → Stage 60. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E53 | Pfad „Aelius lebt“ | Eigener Ausgang / nur Aufschub | Nicht in v1.0 als eigener Ausgang; „Vertagen“ ist ein Aufschub mit Hub-Rückkehr. Heat-Effekt für M3 vorgemerkt. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E54 | Kurier und Dock Enforcers | Feindlich / nicht feindlich | Enforcer in eigener feindlicher Fraktion ohne Kopfgeld. Kurier nicht feindlich, flieht nach den Spielerzeilen, wird dann deaktiviert, erscheint nur bei geöffnetem Pult. Mord am Kurier möglich, unbelohnt. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E55 | Fragment 2 und Liste | Zwei Items / ein Item | Ein Item (`NHV_Note_Dispatch02`, Text um 6000/6001 ergänzt). Imperial Seal ist Flavour-Misc. Wer das Pult nicht öffnet, bekommt das Fragment einmalig im Debrief (`GiveFragmentIfMissing`). | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E56 | Chiffre-Schlüsselbuch (E29) | Q02 / Q06 | Bei Aelius im Pult (Q02), optional; Veyra-Fallback bleibt. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E57 | Q03-Prüfungswertung | Gewichtet / zählend | Zählend +1 je tragfähige Antwort, Bestehen ab 2 von 3. Zeile 4010 „Two points“ wird neutral umformuliert (danach lore-editor). | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E58 | Q03-Rätsel und College-Ausgang | Dialogwahl / Activators | Vier Säulen-Activators mit Zustandsarray im Script. Arch-Mage nur lesend über Vanilla-Questzustand, Tolfdir-Freigabe über eigenes Topic an einen Alias. Stab, Abschiedsbrief und Circlet kommen in den Enhanced-Bau. | M2.2/M2.3 | Entschieden 01.10.2026 (Entwickler) |
+| E59 | NPC-Alltag Q01/Q02 (Packages) | Stehen bleiben / Tagesroutinen | Alle Q01-/Q02-NPCs bekommen Idle-Packages. Schlafen: festes Bett (CK-Bett-Ref), Inn-NPCs (Quintus) freies Bett im Inn. Q02: Drinks nachts im Argonian Assemblage (Vanilla-Zelle 016776, Bett 0C92F3); Sings vor Stage 30 nicht sichtbar (Ref Initially Disabled + Enable per Script); Aelius schläft im Büro; Haldor ab Stage 45 deaktiviert, ab Stage 100 lebend wieder aktiv und läuft am Hafen, tot bleibt er liegen; Hjorald/Haldor ohne Schlaf-Package. Q01: Veyra hält während der Prüfung nicht am Lager (TrialHold bleibt toter Record); ab Stage 100 läuft Veyra in Dawnstar Sanctuary und Deep Sanctuary; Hrefna wartet in Stage 55–69 auf ihrer Farm (Farmtür-Rückweg im CK korrigieren); `NHV_Q01_QuintusAtFarm` wird beim Quest-Reset zurückgesetzt. Details: `docs/plan/Q01-NPC-Packages.md`, `docs/plan/Q02-NPC-Packages.md`. | M2.2 | Entschieden 02.10.2026 (Entwickler) |
+
+### E35 – Q00-Nachgespräch und Lucien
+
+- **Datum:** Entwicklerwunsch 28.09.2026; Dialoglieferung 29.09.2026.
+- **Entscheidung:** Nach dem Contract bietet Veyra auf Stage 80 Lucien als Zeugen an. Annahme und beide Ablehnungen beenden Q00 und starten Q01. Nach Ablehnung bleibt der Ruf bei Veyra nachholbar. Lucien wird dauerhafter Bewohner; seine Gespräche liegen auf `NHV_Sys_Sanctuary`.
+- **Lore:** Die Bekanntschaft in Cheydinhal ist autorisierte Mod-Fiktion. Lucien bürgt nur für ihre freiwillige Treue zu Sithis; E23 bleibt verborgen. Keine frühere Beschwörung vorausgesetzt.
+- **Stand:** CSV-Texte geliefert und gelintet; vorhandener v35-/Record-Vorbau wird weiterverwendet. Dialogeinbau und Ingame-Test offen. Übergabe: `docs/dialogue/Q00-Zweifel-Lucien-2026-09-29.md`.
 
 ### Hintergrund E16
 
 Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugin. Die Kopie ändert nichts, kann aber Änderungen anderer Mods an derselben Zelle (z. B. Beleuchtung) überdecken, wenn Night's Harvest später lädt. Das betrifft auch Quest-Referenzen in Städten (Q01–Q05). Grundregel unabhängig von E16: Schlüsselszenen in eigenen Innenzellen, berührte Vanilla-Zellen minimieren und in `docs/ARCHITECTURE.md` listen.
 
 ## Entscheidungs-Einträge
+
+### E39 – Haldors Leiche in Q02 Pfad A
+
+- **Datum:** 30.09.2026
+- **Entschieden von:** Entwickler
+- **Kontext:** In der Nachtszene (Stage 30) zieht Sings Haldor ins Wasser, wenn der Spieler nicht eingreift. Bisher tötete kein Script Haldor; er stand nach „Something's got my leg!“ weiter am Pier.
+- **Optionen:** A: Haldor stirbt, Leiche bleibt auffindbar. B: Haldor wird deaktiviert („verschwunden“).
+- **Entscheidung:** A. Haldor stirbt mit Sings als Täter und bleibt als Leiche am Szenenort liegen.
+- **Folgen:** `NHV_Q02Script.KillHaldorInWater()` (neu, additiv), aufgerufen aus `EndHaldorDocksScene()` nur in Pfad A. Pfad B (gerettet) unverändert. CK: keine Änderung nötig; Haldor darf nicht Essential/Protected sein.
+
+### E38 – Q02- und Q03-Dialogrevision als getrennte, inaktive V2
+
+- **Datum:** 29.09.2026
+- **Entschieden von:** Entwickler (Folgeauftrag nach Q01 V2)
+- **Entscheidung:** Q02 und Q03 erhalten jeweils eigene V2-Ordner unter `dialogue/drafts/`. Die aktiven Q02-Master bleiben unverändert. Für Q03 existiert derzeit kein aktiver `dialogue/Q03.csv`; die neue Datei ist deshalb ein eigenständiger Vorschlag und keine Überschreibung vertonter Zeilen.
+- **Folgen:** Lesefassungen und Offline-Vorschauen werden aus den Entwürfen erzeugt. Vor einer Aktivierung braucht jeder Contract einen separaten CK-Abgleich für Topics, Aliase, Szenen, Conditions, Packages und echte Stage-/Papyrus-Logik. Die V2-JSON-Zustände sind keine Produktionsvariablen.
+
+### E37 – Q01-Dialogrevision als getrennte, inaktive V2
+
+- **Datum:** 29.09.2026
+- **Entschieden von:** Entwickler (ausdrücklicher Folgeauftrag nach Q00 V2)
+- **Entscheidung:** Q01 dramaturgisch und sprachlich überarbeiten, an Q00 anschließen und in `dialogue/drafts/Q01-v2/` separat zum Lesetest bereitstellen. Aktive vertonte Dialoge erhalten; Aktivierung und neue Stimmen erst nach Auswahl der Fassung.
+- **Redaktioneller Kern:** Ermittlung vor Geständnis, Geständnis vor Prüfungsangebot, verständliche Gefahr durch Quintus vor Freigabe. Ein Black Sacrament ist keine Aufnahme. Der Listener entscheidet; Veyra schlägt vor und erhält ihr Wissen aus den Berichten. Nacht-/Straßenweg, übernommene Tötung, Unproven, Recruit/Release/Silence und ihre Nachwirkungen bleiben unterscheidbar.
+- **Quellenabgleich:** Keine neue Tochter Hrefnas oder endgültige Freilassung Quintus' aus widersprüchlichen Nebenfassungen als bestehende Kernhandlung übernehmen. Konkrete Abweichungen und Unterschiede zum aktiven technischen Stand stehen in der V2-README.
+- **Folgen:** Eigene CSV-IDs, getrennte Journal-/Buchtexte, generierte Markdown-/HTML-Lesefassung und geprüftes Ablaufmodell. Keine Änderung aktiver CSV-Master, Scripts, Records, Quest-Stages oder Stimmen. M1.7-Plugin-Arbeit und Ingame-Test bleiben offen.
+
+### E36 – Q00-Dialogrevision als getrennte, inaktive V2
+
+- **Präzisierung nach Lesetest, 29.09.2026:** Auf Entwicklerwunsch beginnt Veyra mit Sithis' Ruf und der Ernte; Name und greifbares Rekrutierungsangebot folgen aus den Reaktionen. Der angebotene Zeuge bleibt bis zum angenommenen Ruf namenlos; erst bei der Erscheinung stellt sich Lucien vor. Nachfrage und Nachhaken zur Macht Veyras erweitern das Mysterium, ohne ihre Herkunft zu erklären. Diese Änderungen gelten ausschließlich für V2, nicht automatisch für die aktive E35-Redaktion.
+
+- **Datum:** 29.09.2026
+- **Entschieden von:** Entwickler (ausdrücklicher Auftrag)
+- **Kontext:** Die bestehende Fassung ist bereits vertont; ihre Reihenfolge erklärt Veyras Rekrutierungsangebot vor der Zustimmung nicht ausreichend.
+- **Entscheidung:** Eine zweite Fassung unter `dialogue/drafts/Q00-v2/` ausarbeiten und separat lesbar/testbar machen. Die aktiven CSV-Master und ihre Sprachdateien bleiben erhalten. Veyras Ziel, Vorgehen und die Entscheidungshoheit des Listeners müssen vor der Zusage verständlich sein; ihre Herkunft bleibt gemäß E23 geheim.
+- **Folgen:** Eigene LineIDs und generierte Leseansichten; keine automatische Aufnahme in Plugin-/Voice-Pipelines. Der HTML-Lesetest prüft Gesprächsfolge und Entscheidungen, nicht Skyrim-Verhalten. Auswahl, Aktivierung in einem späteren Test-Build und neue Vertonung stehen noch aus. Betrifft M1.5; bestehende Quest-Stages und Save-Daten werden nicht geändert.
+
 
 ### E28–E31 – Hauptbogen Oculatus
 
@@ -98,6 +167,22 @@ Jede Referenz in einer Vanilla-Zelle zieht eine Kopie des Zell-Records ins Plugi
 - **Entschieden von:** Entwickler, im Auftrag zur Ausarbeitung der neuen Questfiguren.
 - **Entscheidung:** Die fünf Story-Rekruten, Livia Maro und die wichtigen Missionsfiguren erhalten verbindliche Autorenprofile in `docs/concept/Neue-Charakterprofile.md`. Nirelda Aurantil wird als Feuer-Battle-Mage mit Meistergrad in Destruction geführt. Ihre Stärke bleibt durch Magicka, Kollateralschaden, Distanz und ihre charakterliche Fixierung auf Beobachtung begrenzt.
 - **Folgen:** `docs/GOAL.md`, Konzept Abschnitt 9 und Q03-Profil aktualisiert. Neue Q03-Dialoge, NPC-Records, Perks und Zauberwerte sind noch nicht erstellt. Das Profil ist Autorenwahrheit; es bestätigt keine neuen TES-Kanonfakten.
+
+### E33 – Drei ungeeignete Ernten und ein Oculatus-Spion
+
+- **Datum:** 28.09.2026
+- **Entscheidung:** Die fünf bestehenden Story-Rekruten bleiben der kanonische Kern der Kampagne. Drei zusätzliche optionale Rekrutierungs-Contracts (Q07–Q09) führen Kandidaten ein, die zwar töten können, aber zu stark von Hass, Vergeltung oder persönlichem Nutzen getrieben sind. Sie werden bei Aufnahme als `Unfit` markiert und ersetzen keinen der fünf Kernrekruten.
+- **Spion-Twist:** In Q09 ist der scheinbare Kandidat nicht der echte Rekrut. Edrin Vale wurde vom Oculatus gefangen genommen; Lucan Varro trägt seine Identität und spielt den Contract für den Spieler glaubwürdig durch. Nur Veyra erkennt zunächst, dass Name und inneres Echo nicht zusammenpassen. Eine scheinbare Aufnahme erhält den Status `False Harvest` und darf keinen Kernraum übernehmen.
+- **Livia-Pfad:** Werden alle drei ungeeigneten Ernten abgelehnt, getötet oder freigegeben und bleibt kein `False Harvest` in der Familie, wird die geheime Livia-Rekrutierung erleichtert. Als Arbeitsregel sinkt der Speech-Schwellenwert von 75 auf 50. Die endgültige CK-Bedingung und die genaue Behandlung eines geretteten Edrin bleiben für die Q07–Q09-Verkabelung offen.
+- **Folgen:** Autorenprofile und roter Storyfaden stehen in `docs/concept/Q07-Q09-Nichtgeeignete-Rekrutierungen.md`, `docs/concept/Neue-Charakterprofile.md`, `docs/concept/Q01-Q06-Roter-Storyfaden.md` und `docs/concept/Q06-Chronologische-Geschichte.md`. CSVs, Stages, Globals und Records sind noch nicht erstellt.
+
+### E34 – Livia als geheime Schwester im Oculatus
+
+- **Datum:** 28.09.2026
+- **Entscheidung:** Eine erfolgreich rekrutierte Livia zieht nicht dauerhaft als gewöhnliche Sanctuary-Rekrutin ein. Sie behält öffentlich ihren angesehenen Rang im Oculatus und arbeitet innerhalb dieser Organisation als geheime Schwester der Brotherhood.
+- **Nutzen:** Livia liefert verschlüsselte Informationen über Truppenbewegungen, Ermittlungen, Haftbefehle, Versorgungslinien und interne Machtkämpfe. Ihr Rang und Zugang sind der eigentliche Lohn des geheimen Pfades.
+- **Grenze:** Livia erhält keinen sechsten Kernraum und wird nicht automatisch als normaler Follower behandelt. Briefe, geheime Übergaben und kurze Treffen tragen ihre Informationen; ein späterer Verrat oder Tod benötigt einen eigenen Storyzustand.
+- **Folgen:** `docs/concept/Neue-Charakterprofile.md`, `docs/concept/Q06-Chronologische-Geschichte.md`, `docs/concept/Q01-Q06-Roter-Storyfaden.md` und `docs/GOAL.md` führen Livia nun als `Hidden Sister`. Dialoge, verschlüsselte Briefe und Records sind noch offen.
 
 ### E23 – Veyra als ungebundene Tochter Sithis'
 

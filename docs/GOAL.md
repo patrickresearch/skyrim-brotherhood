@@ -35,10 +35,12 @@ Nach „Hail Sithis!“ ist die Dark Brotherhood fast ausgelöscht. Night's Harv
 | Veyra Othren („the Gleaner“) | Dunmer-Erscheinung; E23 | Externe Recruiterin, Questgeberin | Trainerin Illusion (Expert) | alle |
 | Hrefna Stormhollow | Nord | Köchin | Trainerin Archery | Q01 |
 | Sings-Beneath-Ice | Argonier | Schleicher | Trainer Sneak | Q02 |
-| Nirelda Aurantil | Altmer | Magierin | Trainerin Destruction | Q03 |
+| Nirelda Aurantil | Altmer | Feuer-Battle-Mage, Arkanistin | Trainerin Destruction (Master) | Q03 |
 | Corisande Marchand | Bretonin | Hehlerin | Fence (2.000 Gold), Trainerin Speech | Q04 |
 | Kharzog gro-Ulgar | Ork | Schmied | Trainer Smithing | Q05 |
-| Livia Maro | Kaiserliche | Antagonistin, optional rekrutierbar | Trainerin Block | Q06 |
+| Livia Maro | Kaiserliche | angesehene Oculatus-Offizierin, geheime Schwester | Oculatus-Informationen, Trainerin Block | Q06 |
+
+Die fünf oben genannten Story-Rekruten sind der kanonische Kern. Drei zusätzliche, optionale Kandidaten aus Q07–Q09 können aufgenommen werden, gelten aber als ungeeignet (`Unfit`); einer dieser Contracts enthält den Oculatus-Spion Lucan Varro unter dem Namen des gefangenen Edrin Vale (`False Harvest`). Wird Livia rekrutiert, bleibt sie öffentlich im Oculatus und arbeitet als geheime Schwester innerhalb der Organisation. Ihr Wert liegt in ihrem Rang und dem Zugang zu internen Informationen.
 
 Vanilla-Figuren mit neuen Zeilen: Nazir, Babette, Cicero, Night Mother, Delvin Mallory.
 
@@ -53,14 +55,17 @@ Vanilla-Figuren mit neuen Zeilen: Nazir, Babette, Cicero, Night Mother, Delvin M
 | Q04 | Till Death Do Us Part | Riften | Corisande, Dinner im Bee and Barb, Aurelian Cato, Fragment 4 |
 | Q05 | Blood of the Stronghold | The Reach | Kharzog, Arena „The Red Pit“, Buchmacher Varus, Fragment 5 |
 | Q06 | Blood Harvest | Sanctuary / Frostmere Watch | Finale gegen Livia Maro, Ansatz „Strike First“ oder „Hold the Door“ |
+| Q07 | The Red Witness | wechselnde Straßen und Grenzorte | Arvena Sorn, Rache ohne Ende |
+| Q08 | The Hound's Due | Falkreath- und Handelswege | Garran Vey, Hass auf Schuld und Besitz |
+| Q09 | The Borrowed Name | Oculatus-Spuren im Norden | Edrin Vale / Lucan Varro, falsche Rekrutierung |
 | – | The Black Ledger | ganz Skyrim | Freies Rekrutieren nach dem Finale |
 
 Jeder Contract folgt dem Schema Whisper → Hunt → Observation → Trial → Judgement → Homecoming. Es ist immer nur ein Contract aktiv. Die fünf Oculatus-Dispatch-Fragmente bilden den roten Faden zum Finale und blockieren nie den Fortschritt.
 
 ## Scope v1.0
 
-- 1 Recruiterin, 5 Story-Rekruten, 1 Antagonistin (optional rekrutierbar), ca. 15 Neben-NPCs
-- 7 Quests plus Black Ledger
+- 1 Recruiterin, 5 kanonische Story-Rekruten, 3 optionale ungeeignete Kandidaten, 1 Antagonistin (optional rekrutierbar), ca. 20 Neben-NPCs
+- 10 Quests plus Black Ledger (Q00–Q09; Q07–Q09 optional)
 - ca. 2.100–2.300 eindeutige Dialogzeilen, Englisch, zunächst unvertont
 - eigener Flügel „Deep Sanctuary“ mit 11 Räumen
 - 8–12 Stunden Spielzeit
