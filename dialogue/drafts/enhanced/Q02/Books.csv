@@ -1,0 +1,10 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q02_070_6000,Q02,70,Enhanced_AeliusList,Book,-,Neutral,50,PENITUS OCULATUS — EASTERN HARBOR\n\nObserve the laborers who move after the bell. Offer fair measure before asking for names. A frightened witness is a door; a grateful one is a key.,GetStage NHV_Q02_ColdWaters == 70,Enhanced draft; Draft-only duplicate kept out of active Books.csv; cite active NHV_SYS_BOOK_82 when replacing.
+NHV_Q02_070_6001,Q02,70,Enhanced_AeliusList,Book,-,Neutral,50,"Argonian workers: record shifts, debts, quarrels, and absences. Do not call this persecution. Call it prevention. Forward all patterns to the northern desk under seal.",GetStage NHV_Q02_ColdWaters == 70,Enhanced draft; Draft-only continuation for the existing Fragment 2 text.
+NHV_Q02_070_6200,Q02,70,Enhanced_TidehouseLedger,Book,-,Neutral,50,"TIDEHOUSE WATCH LEDGER - EASTERN PIER
+
+Late bell: south net crew.
+Missing: two names from the night shift.
+Correction in Aelius Varro's hand: Ask what the water returned before you ask who cast it.
+
+The ink stops where the page was torn.",GetStage NHV_Q02_ColdWaters == 70,Enhanced draft evidence recovered at the tidehouse; partial link to Aelius.

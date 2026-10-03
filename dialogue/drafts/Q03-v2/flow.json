@@ -1,0 +1,914 @@
+{
+  "version": 2,
+  "status": "INACTIVE_EDITORIAL_DRAFT",
+  "start": "start",
+  "initial": {
+    "archmage": false,
+    "tolfdir": false,
+    "record": false,
+    "foundTower": false,
+    "pillars": false,
+    "healed": false,
+    "examScore": 0,
+    "examPassed": false,
+    "combatYield": false,
+    "correspondence": false,
+    "outcome": "none",
+    "alive": true
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "stage": 10,
+      "title": "Ein neuer Name im Ledger",
+      "lines": [
+        "NHV_Q03_010_1000",
+        "NHV_Q03_010_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_010_1002",
+          "to": "urag"
+        },
+        {
+          "line": "NHV_Q03_010_1003",
+          "to": "brief"
+        }
+      ]
+    },
+    {
+      "id": "brief",
+      "stage": 10,
+      "title": "Die Untersuchung bleibt offen",
+      "lines": [
+        "NHV_Q03_010_1004",
+        "NHV_Q03_010_1005"
+      ],
+      "next": "urag"
+    },
+    {
+      "id": "urag",
+      "stage": 10,
+      "title": "Urag hütet die Akten",
+      "lines": [
+        "NHV_Q03_010_1006",
+        "NHV_Q03_010_1007"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_010_1008",
+          "to": "persuade_record"
+        },
+        {
+          "line": "NHV_Q03_010_1009",
+          "to": "bribe_record"
+        },
+        {
+          "line": "NHV_Q03_010_1010",
+          "to": "archmage_record"
+        },
+        {
+          "line": "NHV_Q03_010_1011",
+          "to": "widow"
+        }
+      ]
+    },
+    {
+      "id": "persuade_record",
+      "stage": 10,
+      "title": "Überzeugung statt Autoritätsbehauptung",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Speech check succeeds",
+          "to": "record"
+        },
+        {
+          "ui": "Speech check fails",
+          "to": "record_fail"
+        }
+      ],
+      "direction": "Der echte Speech-Check wird später im CK umgesetzt."
+    },
+    {
+      "id": "record_fail",
+      "stage": 10,
+      "title": "Ein Fehlschlag verschließt nur diese Tür",
+      "lines": [
+        "NHV_Q03_010_1012",
+        "NHV_Q03_010_1013"
+      ],
+      "next": "widow"
+    },
+    {
+      "id": "bribe_record",
+      "stage": 10,
+      "title": "Eine Zahlung öffnet den Aktenschrank",
+      "lines": [
+        "NHV_Q03_010_1014"
+      ],
+      "next": "record",
+      "effects": {
+        "record": true
+      }
+    },
+    {
+      "id": "archmage_record",
+      "stage": 10,
+      "title": "Der Arch-Mage erhält die Akte",
+      "lines": [
+        "NHV_Q03_010_1015",
+        "NHV_Q03_010_1016"
+      ],
+      "next": "record",
+      "effects": {
+        "record": true
+      }
+    },
+    {
+      "id": "record",
+      "stage": 10,
+      "title": "Die Disziplinarakte ist widersprüchlich",
+      "lines": [
+        "NHV_Q03_010_1017",
+        "NHV_Q03_010_1018"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_010_1019",
+          "to": "record_tower"
+        },
+        {
+          "line": "NHV_Q03_010_1020",
+          "to": "record_witness"
+        },
+        {
+          "line": "NHV_Q03_010_1021",
+          "to": "widow"
+        }
+      ],
+      "effects": {
+        "record": true
+      }
+    },
+    {
+      "id": "record_tower",
+      "stage": 10,
+      "title": "Ein Ort und noch keine Schuld",
+      "lines": [
+        "NHV_Q03_010_1022",
+        "NHV_Q03_010_1023"
+      ],
+      "next": "widow"
+    },
+    {
+      "id": "record_witness",
+      "stage": 10,
+      "title": "Die Akte bleibt unvollständig",
+      "lines": [
+        "NHV_Q03_010_1024",
+        "NHV_Q03_010_1025"
+      ],
+      "next": "record"
+    },
+    {
+      "id": "widow",
+      "stage": 20,
+      "title": "Thyra erzählt vom fehlenden Heimweg",
+      "lines": [
+        "NHV_Q03_020_1000",
+        "NHV_Q03_020_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_020_1002",
+          "to": "widow_nirelda"
+        },
+        {
+          "line": "NHV_Q03_020_1003",
+          "to": "tower"
+        }
+      ]
+    },
+    {
+      "id": "widow_nirelda",
+      "stage": 20,
+      "title": "Ein Zeugenbericht, kein Monsterbeweis",
+      "lines": [
+        "NHV_Q03_020_1004",
+        "NHV_Q03_020_1005"
+      ],
+      "next": "widow"
+    },
+    {
+      "id": "tower",
+      "stage": 20,
+      "title": "Der Weg zum Turm",
+      "lines": [
+        "NHV_Q03_020_1006"
+      ],
+      "choices": [
+        {
+          "ui": "Zum Hollowfrost Spire reisen",
+          "to": "defenses"
+        }
+      ],
+      "effects": {
+        "foundTower": true
+      }
+    },
+    {
+      "id": "defenses",
+      "stage": 30,
+      "title": "The Four Stillnesses",
+      "lines": [
+        "NHV_Q03_030_1000",
+        "NHV_Q03_030_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_030_1002",
+          "to": "pillars_notes"
+        },
+        {
+          "line": "NHV_Q03_030_1003",
+          "to": "pillars_force"
+        },
+        {
+          "line": "NHV_Q03_030_1004",
+          "to": "pillars_careful"
+        }
+      ],
+      "requires": {
+        "foundTower": true
+      }
+    },
+    {
+      "id": "pillars_notes",
+      "stage": 30,
+      "title": "Notizen lesen statt Opfer nachspielen",
+      "lines": [
+        "NHV_Q03_030_1005",
+        "NHV_Q03_030_1006"
+      ],
+      "next": "observation",
+      "effects": {
+        "pillars": true
+      }
+    },
+    {
+      "id": "pillars_force",
+      "stage": 30,
+      "title": "Feuer gegen eine Feuergelehrte",
+      "lines": [
+        "NHV_Q03_030_1007",
+        "NHV_Q03_030_1008"
+      ],
+      "next": "observation",
+      "effects": {
+        "pillars": true
+      }
+    },
+    {
+      "id": "pillars_careful",
+      "stage": 30,
+      "title": "Vorsicht ist keine Feigheit",
+      "lines": [
+        "NHV_Q03_030_1009",
+        "NHV_Q03_030_1010"
+      ],
+      "next": "observation",
+      "effects": {
+        "pillars": true
+      }
+    },
+    {
+      "id": "observation",
+      "stage": 40,
+      "title": "Nirelda beobachtet einen Sterbenden",
+      "lines": [
+        "NHV_Q03_040_1000",
+        "NHV_Q03_040_1001",
+        "NHV_Q03_040_1002"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_040_1003",
+          "to": "heal"
+        },
+        {
+          "line": "NHV_Q03_040_1004",
+          "to": "let_die"
+        },
+        {
+          "line": "NHV_Q03_040_1005",
+          "to": "interrupt"
+        }
+      ],
+      "requires": {
+        "pillars": true
+      }
+    },
+    {
+      "id": "heal",
+      "stage": 40,
+      "title": "Mitleid verändert ihren Versuch",
+      "lines": [
+        "NHV_Q03_040_1006",
+        "NHV_Q03_040_1007"
+      ],
+      "next": "question_intro",
+      "effects": {
+        "healed": true
+      }
+    },
+    {
+      "id": "let_die",
+      "stage": 40,
+      "title": "Beobachten heißt nicht verstehen",
+      "lines": [
+        "NHV_Q03_040_1008",
+        "NHV_Q03_040_1009"
+      ],
+      "next": "question_intro"
+    },
+    {
+      "id": "interrupt",
+      "stage": 40,
+      "title": "Der Listener setzt eine Grenze",
+      "lines": [
+        "NHV_Q03_040_1010",
+        "NHV_Q03_040_1011"
+      ],
+      "next": "question_intro"
+    },
+    {
+      "id": "question_intro",
+      "stage": 40,
+      "title": "Nirelda stellt die Bedingungen",
+      "lines": [
+        "NHV_Q03_040_1012",
+        "NHV_Q03_040_1013"
+      ],
+      "next": "exam",
+      "effects": {
+        "briefed": true
+      }
+    },
+    {
+      "id": "exam",
+      "stage": 50,
+      "title": "Nireldas Prüfung des Listeners",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q03_050_1000",
+          "to": "q1_uncertain"
+        },
+        {
+          "line": "NHV_Q03_050_1001",
+          "to": "q1_service"
+        },
+        {
+          "line": "NHV_Q03_050_1002",
+          "to": "q1_choice"
+        }
+      ],
+      "requires": {
+        "briefed": true
+      }
+    },
+    {
+      "id": "q1_uncertain",
+      "stage": 50,
+      "title": "Eine ehrliche Grenze",
+      "lines": [
+        "NHV_Q03_050_1003"
+      ],
+      "next": "exam2",
+      "effects": {
+        "examScore": 1
+      }
+    },
+    {
+      "id": "q1_service",
+      "stage": 50,
+      "title": "Dienst ohne Allwissenheit",
+      "lines": [
+        "NHV_Q03_050_1004"
+      ],
+      "next": "exam2",
+      "effects": {
+        "examScore": 1
+      }
+    },
+    {
+      "id": "q1_choice",
+      "stage": 50,
+      "title": "Verantwortung statt kosmischer Behauptung",
+      "lines": [
+        "NHV_Q03_050_1005"
+      ],
+      "next": "exam2",
+      "effects": {
+        "examScore": 1
+      }
+    },
+    {
+      "id": "exam2",
+      "stage": 50,
+      "title": "Die zweite Frage",
+      "lines": [
+        "NHV_Q03_050_1006"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_050_1007",
+          "to": "q2_consent"
+        },
+        {
+          "line": "NHV_Q03_050_1008",
+          "to": "q2_gold"
+        },
+        {
+          "line": "NHV_Q03_050_1009",
+          "to": "q2_honest"
+        }
+      ]
+    },
+    {
+      "id": "q2_consent",
+      "stage": 50,
+      "title": "Grenzen der Forschung",
+      "lines": [
+        "NHV_Q03_050_1010"
+      ],
+      "next": "exam3",
+      "effects": {
+        "examScore": 2
+      }
+    },
+    {
+      "id": "q2_gold",
+      "stage": 50,
+      "title": "Ein ehrlicher, aber dünner Grund",
+      "lines": [
+        "NHV_Q03_050_1011"
+      ],
+      "next": "exam3"
+    },
+    {
+      "id": "q2_honest",
+      "stage": 50,
+      "title": "Tod als bloße Klarheit",
+      "lines": [
+        "NHV_Q03_050_1012"
+      ],
+      "next": "exam3"
+    },
+    {
+      "id": "exam3",
+      "stage": 50,
+      "title": "Die letzte Frage",
+      "lines": [
+        "NHV_Q03_050_1013"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_050_1014",
+          "to": "q3_sister"
+        },
+        {
+          "line": "NHV_Q03_050_1015",
+          "to": "q3_tool"
+        },
+        {
+          "line": "NHV_Q03_050_1016",
+          "to": "q3_subject"
+        }
+      ]
+    },
+    {
+      "id": "q3_sister",
+      "stage": 50,
+      "title": "Eine Einladung mit Bedingung",
+      "lines": [
+        "NHV_Q03_050_1017"
+      ],
+      "next": "exam_result"
+    },
+    {
+      "id": "q3_tool",
+      "stage": 50,
+      "title": "Nützlichkeit ist kein Vertrag",
+      "lines": [
+        "NHV_Q03_050_1018"
+      ],
+      "next": "exam_result"
+    },
+    {
+      "id": "q3_subject",
+      "stage": 50,
+      "title": "Der Listener dreht die Forschung zurück",
+      "lines": [
+        "NHV_Q03_050_1019"
+      ],
+      "next": "exam_result"
+    },
+    {
+      "id": "exam_result",
+      "stage": 50,
+      "title": "Die Prüfung endet mit Nireldas Wahl",
+      "lines": [],
+      "when": {
+        "examScore": 2
+      },
+      "otherwise": "exam_failed",
+      "next": "exam_passed"
+    },
+    {
+      "id": "exam_passed",
+      "stage": 50,
+      "title": "Freiwilliges Unterordnen",
+      "lines": [
+        "NHV_Q03_050_1020",
+        "NHV_Q03_050_1021"
+      ],
+      "next": "correspondence",
+      "effects": {
+        "examPassed": true
+      }
+    },
+    {
+      "id": "exam_failed",
+      "stage": 50,
+      "title": "Feuer statt Zustimmung",
+      "lines": [
+        "NHV_Q03_050_1022",
+        "NHV_Q03_050_1023"
+      ],
+      "choices": [
+        {
+          "ui": "Fight until Nirelda yields",
+          "to": "combat"
+        }
+      ],
+      "direction": "Combat simulation; Nirelda is a master Destruction fire battle-mage. A kill is not required or intended."
+    },
+    {
+      "id": "combat",
+      "stage": 50,
+      "title": "Nirelda yields at the edge of defeat",
+      "lines": [
+        "NHV_Q03_050_1024"
+      ],
+      "next": "correspondence",
+      "effects": {
+        "combatYield": true
+      }
+    },
+    {
+      "id": "correspondence",
+      "stage": 60,
+      "title": "Die Korrespondenz wird nach der Prüfung gelesen",
+      "lines": [
+        "NHV_Q03_060_1000",
+        "NHV_Q03_060_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_060_1002",
+          "to": "poison_reveal"
+        },
+        {
+          "line": "NHV_Q03_060_1003",
+          "to": "poison_limit"
+        }
+      ],
+      "effects": {
+        "correspondence": true
+      },
+      "bookLines": [
+        "NHV_Q03_060_3000"
+      ]
+    },
+    {
+      "id": "poison_reveal",
+      "stage": 60,
+      "title": "Die persönliche Gefahr wird konkret",
+      "lines": [
+        "NHV_Q03_060_1004",
+        "NHV_Q03_060_1005"
+      ],
+      "next": "judgment"
+    },
+    {
+      "id": "poison_limit",
+      "stage": 60,
+      "title": "Wissen und Verantwortung bleiben getrennt",
+      "lines": [
+        "NHV_Q03_060_1006"
+      ],
+      "next": "judgment"
+    },
+    {
+      "id": "judgment",
+      "stage": 70,
+      "title": "Nireldas Zukunft bleibt eine Entscheidung",
+      "lines": [
+        "NHV_Q03_070_1000",
+        "NHV_Q03_070_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_070_1002",
+          "to": "recruit"
+        },
+        {
+          "line": "NHV_Q03_070_1003",
+          "to": "college",
+          "requires": {
+            "archmage": true
+          }
+        },
+        {
+          "line": "NHV_Q03_070_1020",
+          "to": "college",
+          "requires": {
+            "tolfdir": true
+          }
+        },
+        {
+          "line": "NHV_Q03_070_1004",
+          "to": "release"
+        },
+        {
+          "line": "NHV_Q03_070_1005",
+          "to": "silence"
+        }
+      ],
+      "requires": {
+        "correspondence": true
+      }
+    },
+    {
+      "id": "recruit",
+      "stage": 70,
+      "title": "Aufnahme mit Grenzen",
+      "lines": [
+        "NHV_Q03_070_1006",
+        "NHV_Q03_070_1007"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "recruited"
+      }
+    },
+    {
+      "id": "college",
+      "stage": 70,
+      "title": "Übergabe an das College",
+      "lines": [
+        "NHV_Q03_070_1008",
+        "NHV_Q03_070_1009"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "college"
+      }
+    },
+    {
+      "id": "release",
+      "stage": 70,
+      "title": "Freilassung aus Skyrim",
+      "lines": [
+        "NHV_Q03_070_1010",
+        "NHV_Q03_070_1011"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "released"
+      }
+    },
+    {
+      "id": "silence",
+      "stage": 70,
+      "title": "Das Ende der Forschung",
+      "lines": [
+        "NHV_Q03_070_1012"
+      ],
+      "choices": [
+        {
+          "ui": "Weltvorgang: Nirelda stirbt",
+          "to": "dead"
+        }
+      ],
+      "direction": "Der Todesausgang wird erst durch den Weltvorgang bestätigt. Kein toter NPC spricht danach."
+    },
+    {
+      "id": "dead",
+      "stage": 100,
+      "title": "Nireldas Tod bestätigt",
+      "lines": [],
+      "next": "return",
+      "effects": {
+        "outcome": "dead",
+        "alive": false
+      }
+    },
+    {
+      "id": "return",
+      "stage": 100,
+      "title": "Bericht in der Sanctuary",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Nach Dawnstar zurückkehren und Veyra Bericht erstatten",
+          "to": "report"
+        }
+      ],
+      "direction": "Alle Ausgänge führen zum Debrief; nur Recruit schaltet das Arcanum frei."
+    },
+    {
+      "id": "report",
+      "stage": 100,
+      "title": "Der Listener berichtet den Ausgang",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q03_100_1000",
+          "to": "debrief_recruit",
+          "requires": {
+            "outcome": "recruited"
+          }
+        },
+        {
+          "line": "NHV_Q03_100_1001",
+          "to": "debrief_recruit",
+          "requires": {
+            "outcome": "recruited"
+          }
+        },
+        {
+          "line": "NHV_Q03_100_1002",
+          "to": "debrief_college",
+          "requires": {
+            "outcome": "college"
+          }
+        },
+        {
+          "line": "NHV_Q03_100_1003",
+          "to": "debrief_release",
+          "requires": {
+            "outcome": "released"
+          }
+        },
+        {
+          "line": "NHV_Q03_100_1004",
+          "to": "debrief_dead",
+          "requires": {
+            "outcome": "dead"
+          }
+        }
+      ]
+    },
+    {
+      "id": "debrief_recruit",
+      "stage": 100,
+      "title": "Veyras Urteil über die Feuergelehrte",
+      "lines": [
+        "NHV_Q03_100_1005",
+        "NHV_Q03_100_1006"
+      ],
+      "next": "debrief_fragment"
+    },
+    {
+      "id": "debrief_college",
+      "stage": 100,
+      "title": "Missbilligung ohne große Rede",
+      "lines": [
+        "NHV_Q03_100_1007",
+        "NHV_Q03_100_1008"
+      ],
+      "next": "debrief_fragment"
+    },
+    {
+      "id": "debrief_release",
+      "stage": 100,
+      "title": "Freilassung mit offener Forschung",
+      "lines": [
+        "NHV_Q03_100_1009",
+        "NHV_Q03_100_1010"
+      ],
+      "next": "debrief_fragment"
+    },
+    {
+      "id": "debrief_dead",
+      "stage": 100,
+      "title": "Verlust ohne Verklärung",
+      "lines": [
+        "NHV_Q03_100_1011",
+        "NHV_Q03_100_1012"
+      ],
+      "next": "debrief_fragment",
+      "requires": {
+        "alive": false
+      }
+    },
+    {
+      "id": "debrief_fragment",
+      "stage": 100,
+      "title": "Fragment drei wird eingeordnet",
+      "lines": [],
+      "when": {
+        "correspondence": true
+      },
+      "next": "fragment"
+    },
+    {
+      "id": "fragment",
+      "stage": 100,
+      "title": "L.M. ist eine Spur, kein vollständiger Name",
+      "lines": [
+        "NHV_Q03_100_1013",
+        "NHV_Q03_100_1014"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q03_100_1015",
+          "to": "fragment_limit"
+        },
+        {
+          "line": "NHV_Q03_100_1016",
+          "to": "fragment_watch"
+        },
+        {
+          "line": "NHV_Q03_100_1017",
+          "to": "finish"
+        }
+      ]
+    },
+    {
+      "id": "fragment_limit",
+      "stage": 100,
+      "title": "Keine vorzeitige Enthüllung",
+      "lines": [
+        "NHV_Q03_100_1018"
+      ],
+      "next": "fragment"
+    },
+    {
+      "id": "fragment_watch",
+      "stage": 100,
+      "title": "Vorsicht für den nächsten Contract",
+      "lines": [
+        "NHV_Q03_100_1019"
+      ],
+      "next": "fragment"
+    },
+    {
+      "id": "finish",
+      "stage": 100,
+      "title": "Q03 abgeschlossen",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Lesetest abschließen",
+          "to": "finished"
+        },
+        {
+          "ui": "Nirelda im Arcanum begrüßen",
+          "to": "home",
+          "requires": {
+            "outcome": "recruited"
+          }
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "stage": 100,
+      "title": "Nirelda beginnt im Arcanum",
+      "lines": [
+        "NHV_Q03_100_1020",
+        "NHV_Q03_100_1021"
+      ],
+      "choices": [
+        {
+          "ui": "Lesetest abschließen",
+          "to": "finished"
+        }
+      ],
+      "requires": {
+        "outcome": "recruited"
+      }
+    },
+    {
+      "id": "finished",
+      "stage": 100,
+      "title": "Ende des Q03-Lesetests",
+      "lines": [],
+      "terminal": true
+    }
+  ]
+}

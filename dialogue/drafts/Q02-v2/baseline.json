@@ -1,0 +1,17 @@
+[
+  {
+    "path": "dialogue/Q02.csv",
+    "snapshot": "Q02-original.csv.snapshot",
+    "sha256": "292e9de0ebae8a6a1e0f9bf4e04c1b3b0aeb24d1403bbd547f9cf9f8abfadcaa"
+  },
+  {
+    "path": "dialogue/Journal.csv",
+    "snapshot": "Journal-original.csv.snapshot",
+    "sha256": "695dfd948ef0b69101703eb215e7b5ca293ee33f9d7414831a928cbd46387a95"
+  },
+  {
+    "path": "dialogue/Books.csv",
+    "snapshot": "Books-original.csv.snapshot",
+    "sha256": "2d31730801f9ef206277bd3af8379f577ac55045440cfb821b25255620894c72"
+  }
+]

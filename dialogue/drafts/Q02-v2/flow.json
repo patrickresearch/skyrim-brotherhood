@@ -1,0 +1,1117 @@
+{
+  "version": 2,
+  "status": "INACTIVE_EDITORIAL_DRAFT",
+  "start": "start",
+  "initial": {
+    "persuade": true,
+    "bribe": true,
+    "rescued": false,
+    "watched": false,
+    "tracked": false,
+    "confessed": false,
+    "briefed": false,
+    "authorized": false,
+    "killer": "none",
+    "listRead": false,
+    "outcome": "none",
+    "dead": false
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "stage": 10,
+      "title": "Ein ausgewählter Contract – unabhängig von anderen Rekrutierungen",
+      "lines": [
+        "NHV_Q02_010_1000",
+        "NHV_Q02_010_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_010_1002",
+          "to": "brief"
+        },
+        {
+          "line": "NHV_Q02_010_1003",
+          "to": "torbjorn"
+        }
+      ],
+      "direction": "Q01-Debrief abgeschlossen; Q02 am Map Table ausgewählt. Kein anderer Kernrekrut wird vorausgesetzt."
+    },
+    {
+      "id": "brief",
+      "stage": 10,
+      "title": "Die Ermittlung bleibt offen",
+      "lines": [
+        "NHV_Q02_010_1004",
+        "NHV_Q02_010_1005"
+      ],
+      "next": "torbjorn"
+    },
+    {
+      "id": "torbjorn",
+      "stage": 10,
+      "title": "Vier im Bericht, ein neuer Fund",
+      "lines": [
+        "NHV_Q02_010_1006",
+        "NHV_Q02_010_1007"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_010_1008",
+          "to": "complaints"
+        },
+        {
+          "line": "NHV_Q02_010_1009",
+          "to": "brine"
+        },
+        {
+          "line": "NHV_Q02_010_1010",
+          "to": "body"
+        }
+      ]
+    },
+    {
+      "id": "complaints",
+      "stage": 10,
+      "title": "Hafenakten sind keine Mordbeweise",
+      "lines": [
+        "NHV_Q02_010_1011",
+        "NHV_Q02_010_1012"
+      ],
+      "next": "torbjorn"
+    },
+    {
+      "id": "brine",
+      "stage": 10,
+      "title": "Drinks-the-Brine schützt die Namen der Arbeiter",
+      "lines": [
+        "NHV_Q02_010_1013"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_010_1014",
+          "to": "brine_check"
+        },
+        {
+          "line": "NHV_Q02_010_1015",
+          "to": "brine_bribe",
+          "requires": {
+            "bribe": true
+          }
+        },
+        {
+          "line": "NHV_Q02_010_1016",
+          "to": "body"
+        }
+      ]
+    },
+    {
+      "id": "brine_check",
+      "stage": 10,
+      "title": "Überredung auswerten",
+      "lines": [],
+      "when": {
+        "persuade": true
+      },
+      "otherwise": "brine_no",
+      "next": "brine_yes"
+    },
+    {
+      "id": "brine_no",
+      "stage": 10,
+      "title": "Misstrauen blockiert nicht die Quest",
+      "lines": [
+        "NHV_Q02_010_1017"
+      ],
+      "next": "body"
+    },
+    {
+      "id": "brine_bribe",
+      "stage": 10,
+      "title": "Bezahlung kauft keinen Schuldigen",
+      "lines": [
+        "NHV_Q02_010_1018"
+      ],
+      "next": "brine_yes",
+      "direction": "Vorschau: Bestechung verfügbar bei mindestens 25 Gold; bei späterem Einbau Geld genau einmal abziehen."
+    },
+    {
+      "id": "brine_yes",
+      "stage": 10,
+      "title": "Ein Handwerkshinweis statt ethnischer Schuldzuweisung",
+      "lines": [
+        "NHV_Q02_010_1019",
+        "NHV_Q02_010_1020"
+      ],
+      "next": "body"
+    },
+    {
+      "id": "body",
+      "stage": 20,
+      "title": "Den Befund von seiner Deutung trennen",
+      "lines": [
+        "NHV_Q02_020_1000",
+        "NHV_Q02_020_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_020_1002",
+          "to": "watch_plan"
+        },
+        {
+          "line": "NHV_Q02_020_1003",
+          "to": "body_witness"
+        }
+      ],
+      "direction": "Weltvorgang: Leiche tatsächlich untersuchen. Keine medizinische Gewissheit aus bloßem Sehen behaupten."
+    },
+    {
+      "id": "body_witness",
+      "stage": 20,
+      "title": "Kein allwissender Hafenmeister",
+      "lines": [
+        "NHV_Q02_020_1004",
+        "NHV_Q02_020_1005"
+      ],
+      "next": "watch_plan"
+    },
+    {
+      "id": "watch_plan",
+      "stage": 20,
+      "title": "Die Nachtwache wird begründet",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Zwischen 22 und 4 Uhr den Hafen beobachten",
+          "to": "night"
+        }
+      ],
+      "direction": "Zeitfenster der vorhandenen Nachtszene. Kein fünfter Mord wurde dem unbekannten Täter bereits bewiesen."
+    },
+    {
+      "id": "night",
+      "stage": 30,
+      "title": "Haldors Gewalt und der Angriff aus dem Wasser",
+      "lines": [
+        "NHV_Q02_030_1000",
+        "NHV_Q02_030_1001"
+      ],
+      "choices": [
+        {
+          "ui": "Eingreifen und Haldor aus dem Wasser retten",
+          "to": "rescue"
+        },
+        {
+          "ui": "Verborgen bleiben und den Angreifer beobachten",
+          "to": "observe"
+        }
+      ],
+      "direction": "Sings zieht Haldor ins Wasser. Die Regiewahl simuliert die echte Spielerintervention; Haldors Tod oder Rettung muss später aus dem Weltvorgang folgen."
+    },
+    {
+      "id": "rescue",
+      "stage": 30,
+      "title": "Ein Geretteter wird dadurch kein anderer Mensch",
+      "lines": [
+        "NHV_Q02_030_1002"
+      ],
+      "next": "trail",
+      "effects": {
+        "rescued": true,
+        "watched": true
+      },
+      "direction": "Haldor lebt. Sings flieht; die normale Beschattung wird durch Spuren ersetzt."
+    },
+    {
+      "id": "observe",
+      "stage": 30,
+      "title": "Die Beobachtung hat einen Preis",
+      "lines": [],
+      "next": "tail",
+      "effects": {
+        "watched": true
+      },
+      "direction": "Haldor ertrinkt. Der Angreifer löst sich vom Wasser und bewegt sich unter den Stegen entlang. Keine Schlussfolgerung über frühere Opfer allein aus dieser Szene."
+    },
+    {
+      "id": "tail",
+      "stage": 40,
+      "title": "Beschatten oder die verlorene Spur aufnehmen",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Unbemerkt bis zum Zugang der Drowned Hollow folgen",
+          "to": "hollow"
+        },
+        {
+          "ui": "Entdeckt werden – Sings entkommt vorerst",
+          "to": "trail"
+        }
+      ],
+      "direction": "Distanz und Entdeckung sind simuliert. Der zweite Pfad muss die Suche ermöglichen statt die Quest scheitern zu lassen."
+    },
+    {
+      "id": "trail",
+      "stage": 40,
+      "title": "Spuren unter den Docks",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Wasserspur und nassen Tritten zum landseitigen Zugang folgen",
+          "to": "hollow"
+        }
+      ],
+      "direction": "Längerer Fallback nach Rettung oder Entdeckung. Keine tauchende KI und kein Wissen über ein noch unbekanntes Versteck voraussetzen."
+    },
+    {
+      "id": "hollow",
+      "stage": 50,
+      "title": "Der Täter wird angesprochen",
+      "lines": [
+        "NHV_Q02_050_1000"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_050_1001",
+          "to": "identity"
+        }
+      ],
+      "effects": {
+        "tracked": true
+      },
+      "requires": {
+        "watched": true
+      }
+    },
+    {
+      "id": "identity",
+      "stage": 50,
+      "title": "Name und Verbindung statt übernatürlichem Erkennen",
+      "lines": [
+        "NHV_Q02_050_1099",
+        "NHV_Q02_050_1002",
+        "NHV_Q02_050_1003"
+      ],
+      "next": "rescue_gate"
+    },
+    {
+      "id": "rescue_gate",
+      "stage": 50,
+      "title": "Sings erinnert sich an den Eingriff",
+      "lines": [],
+      "when": {
+        "rescued": true
+      },
+      "otherwise": "confess",
+      "next": "rescue_question"
+    },
+    {
+      "id": "rescue_question",
+      "stage": 50,
+      "title": "Rettung verlangt keine Billigung Haldors",
+      "lines": [
+        "NHV_Q02_050_1004"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_050_1005",
+          "to": "rescue_reply"
+        },
+        {
+          "line": "NHV_Q02_050_1006",
+          "to": "rescue_reply"
+        }
+      ]
+    },
+    {
+      "id": "rescue_reply",
+      "stage": 50,
+      "title": "Kein Dank für den geretteten Peiniger",
+      "lines": [
+        "NHV_Q02_050_1007"
+      ],
+      "next": "confess"
+    },
+    {
+      "id": "confess",
+      "stage": 50,
+      "title": "Sings benennt seine Taten selbst",
+      "lines": [
+        "NHV_Q02_050_1008",
+        "NHV_Q02_050_1009"
+      ],
+      "next": "sings_hub",
+      "effects": {
+        "confessed": true
+      }
+    },
+    {
+      "id": "sings_hub",
+      "stage": 50,
+      "title": "Wut, Herkunft und eine noch offene Zukunft",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q02_050_1010",
+          "to": "reprisal"
+        },
+        {
+          "line": "NHV_Q02_050_1011",
+          "to": "veezara"
+        },
+        {
+          "line": "NHV_Q02_050_1012",
+          "to": "shadow"
+        },
+        {
+          "line": "NHV_Q02_050_1013",
+          "to": "purpose"
+        },
+        {
+          "line": "NHV_Q02_050_1014",
+          "to": "veyra"
+        }
+      ]
+    },
+    {
+      "id": "reprisal",
+      "stage": 50,
+      "title": "Schutz kann andere gefährden",
+      "lines": [
+        "NHV_Q02_050_1015",
+        "NHV_Q02_050_1016"
+      ],
+      "next": "sings_hub"
+    },
+    {
+      "id": "veezara",
+      "stage": 50,
+      "title": "Verehrung ist keine erfundene Bekanntschaft",
+      "lines": [
+        "NHV_Q02_050_1017",
+        "NHV_Q02_050_1018"
+      ],
+      "next": "sings_hub"
+    },
+    {
+      "id": "shadow",
+      "stage": 50,
+      "title": "Das Sternzeichen ersetzt keine Ausbildung",
+      "lines": [
+        "NHV_Q02_050_1019",
+        "NHV_Q02_050_1020"
+      ],
+      "next": "sings_hub"
+    },
+    {
+      "id": "purpose",
+      "stage": 50,
+      "title": "Die eigentliche Leerstelle",
+      "lines": [
+        "NHV_Q02_050_1021",
+        "NHV_Q02_050_1022"
+      ],
+      "next": "sings_hub"
+    },
+    {
+      "id": "veyra",
+      "stage": 50,
+      "title": "Veyra tritt hinzu und erhält einen Bericht",
+      "lines": [
+        "NHV_Q02_050_1023",
+        "NHV_Q02_050_1024"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_050_1025",
+          "to": "trial"
+        }
+      ],
+      "direction": "Veyra kommt sichtbar durch den landseitigen Eingang. Keine magische Kenntnis des Geständnisses; der Listener berichtet es."
+    },
+    {
+      "id": "trial",
+      "stage": 50,
+      "title": "Aelius wird vor der Prüfung vorgestellt",
+      "lines": [
+        "NHV_Q02_050_1026",
+        "NHV_Q02_050_1027",
+        "NHV_Q02_050_1028"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_050_1029",
+          "to": "trial_plain"
+        }
+      ],
+      "direction": "Aelius' öffentliches Amt und sein Ruf werden benannt. Keine Kenntnis der geheimen Liste oder seiner Oculatus-Verbindung."
+    },
+    {
+      "id": "trial_plain",
+      "stage": 50,
+      "title": "Der Vorschlag erhält keine erfundene Rechtfertigung",
+      "lines": [
+        "NHV_Q02_050_1030",
+        "NHV_Q02_050_1031",
+        "NHV_Q02_050_1032"
+      ],
+      "next": "trial_hub",
+      "effects": {
+        "briefed": true
+      }
+    },
+    {
+      "id": "trial_hub",
+      "stage": 50,
+      "title": "Verständnis, Zustimmung und Vertagung",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q02_050_1033",
+          "to": "hate"
+        },
+        {
+          "line": "NHV_Q02_050_1034",
+          "to": "sings_choice"
+        },
+        {
+          "line": "NHV_Q02_050_1035",
+          "to": "trial_wait"
+        }
+      ]
+    },
+    {
+      "id": "hate",
+      "stage": 50,
+      "title": "Keine Wunderheilung durch einen weiteren Mord",
+      "lines": [
+        "NHV_Q02_050_1036",
+        "NHV_Q02_050_1037"
+      ],
+      "next": "trial_hub"
+    },
+    {
+      "id": "trial_wait",
+      "stage": 50,
+      "title": "Die Entscheidung bleibt offen",
+      "lines": [
+        "NHV_Q02_050_1038"
+      ],
+      "pause": true,
+      "next": "trial_hub"
+    },
+    {
+      "id": "sings_choice",
+      "stage": 50,
+      "title": "Sings' Zustimmung ist keine Vorfreude",
+      "lines": [
+        "NHV_Q02_050_1039",
+        "NHV_Q02_050_1040"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_050_1041",
+          "to": "authorize"
+        },
+        {
+          "line": "NHV_Q02_050_1042",
+          "to": "trial_wait"
+        }
+      ]
+    },
+    {
+      "id": "authorize",
+      "stage": 50,
+      "title": "Klare Zuständigkeit vor der Tat",
+      "lines": [
+        "NHV_Q02_050_1043",
+        "NHV_Q02_050_1044"
+      ],
+      "next": "aelius_state",
+      "effects": {
+        "authorized": true
+      }
+    },
+    {
+      "id": "aelius_state",
+      "stage": 60,
+      "title": "Den tatsächlichen Weltzustand beachten",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Aelius lebt – Sings spricht ihn nach Feierabend an",
+          "to": "aelius"
+        },
+        {
+          "ui": "Aelius ist bereits aus unbekannter Ursache tot",
+          "to": "aelius_early"
+        }
+      ],
+      "direction": "Fallback aus vorhandenem Q02-Plan. Ein früher Tod ist kein von Sings bestandener Auftrag und wird nicht als göttliche Absicht erklärt."
+    },
+    {
+      "id": "aelius_early",
+      "stage": 60,
+      "title": "Eine verhinderte Prüfung",
+      "lines": [
+        "NHV_Q02_060_1000"
+      ],
+      "next": "desk",
+      "effects": {
+        "killer": "other"
+      }
+    },
+    {
+      "id": "aelius",
+      "stage": 60,
+      "title": "Aelius bleibt freundlich",
+      "lines": [
+        "NHV_Q02_060_1001",
+        "NHV_Q02_060_1002",
+        "NHV_Q02_060_1003"
+      ],
+      "choices": [
+        {
+          "ui": "Sings führt den vereinbarten Auftrag aus",
+          "to": "sings_kill"
+        },
+        {
+          "ui": "Spieler greift ein und tötet Aelius selbst",
+          "to": "player_kill"
+        },
+        {
+          "ui": "Noch nicht handeln – Begegnung vertagen",
+          "to": "aelius_wait"
+        }
+      ]
+    },
+    {
+      "id": "aelius_wait",
+      "stage": 60,
+      "title": "Vertagung ist keine endgültige Begnadigung",
+      "lines": [],
+      "pause": true,
+      "next": "aelius",
+      "direction": "Der Auftrag bleibt offen. Der Lesetest ersetzt nicht die später erforderliche Unterbrechungs- und Wiederaufnahmelogik."
+    },
+    {
+      "id": "sings_kill",
+      "stage": 60,
+      "title": "Die eigene Tat",
+      "lines": [
+        "NHV_Q02_060_1004",
+        "NHV_Q02_060_1005"
+      ],
+      "next": "desk",
+      "effects": {
+        "killer": "sings"
+      },
+      "direction": "Erst nach tatsächlichem Tod durch Sings. Keine Tötungsanimation wird aus dem Gespräch allein abgeleitet."
+    },
+    {
+      "id": "player_kill",
+      "stage": 60,
+      "title": "Ein fremder Schlag beantwortet seine Prüfung nicht",
+      "lines": [
+        "NHV_Q02_060_1006"
+      ],
+      "next": "desk",
+      "effects": {
+        "killer": "player"
+      }
+    },
+    {
+      "id": "desk",
+      "stage": 70,
+      "title": "Die Liste wird erst nach der Tat gefunden",
+      "lines": [
+        "NHV_Q02_070_1000",
+        "NHV_Q02_070_1001"
+      ],
+      "choices": [
+        {"ui": "Open the locked desk and read the list", "to": "list"},
+        {"ui": "Leave the papers and decide Sings' fate", "to": "judgment_gate"}
+      ],
+      "bookLines": [
+        "NHV_SYS_BOOK_82",
+        "NHV_Q02_070_3000",
+        "NHV_Q02_070_3001"
+      ],
+      "direction": "Weltvorgang: verschlossene Arbeitsunterlagen durchsuchen. Den Liste-Dialog nicht vor Aelius' tatsächlichem Tod zeigen."
+    },
+    {
+      "id": "list",
+      "stage": 70,
+      "title": "Verrat löscht die vorherige Entscheidung nicht",
+      "lines": [
+        "NHV_Q02_070_1002",
+        "NHV_Q02_070_1003"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_070_1004",
+          "to": "list_kindness"
+        },
+        {
+          "line": "NHV_Q02_070_1005",
+          "to": "list_limits"
+        },
+        {
+          "line": "NHV_Q02_070_1006",
+          "to": "judgment_gate"
+        }
+      ],
+      "effects": {
+        "listRead": true
+      }
+    },
+    {
+      "id": "list_kindness",
+      "stage": 70,
+      "title": "Keine einfache Umwertung",
+      "lines": [
+        "NHV_Q02_070_1007",
+        "NHV_Q02_070_1008"
+      ],
+      "next": "list"
+    },
+    {
+      "id": "list_limits",
+      "stage": 70,
+      "title": "Das Fragment bleibt ein Teil",
+      "lines": [
+        "NHV_Q02_070_1009"
+      ],
+      "next": "list"
+    },
+    {
+      "id": "judgment_gate",
+      "stage": 70,
+      "title": "Urteil nach dem tatsächlichen Täter",
+      "lines": [],
+      "when": {"killer": "sings"},
+      "otherwise": "judgment_gate_player",
+      "next": "judgment"
+    },
+    {
+      "id": "judgment_gate_player",
+      "stage": 70,
+      "title": "Urteil nach dem tatsächlichen Täter",
+      "lines": [],
+      "when": {"killer": "player"},
+      "otherwise": "judgment_other",
+      "next": "judgment_player"
+    },
+    {
+      "id": "judgment",
+      "stage": 70,
+      "title": "Aelius' Tat ändert die Frage nicht",
+      "lines": [
+        "NHV_Q02_070_1010",
+        "NHV_Q02_070_1011"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_070_1012",
+          "to": "recruit"
+        },
+        {
+          "line": "NHV_Q02_070_1013",
+          "to": "release"
+        },
+        {
+          "line": "NHV_Q02_070_1014",
+          "to": "silence"
+        },
+        {
+          "line": "NHV_Q02_070_1015",
+          "to": "surrender"
+        }
+      ],
+      "requires": {
+        "killer": "sings"
+      },
+      "direction": "Recruit/Release/Silence/Surrender bleiben getrennte Urteile. Die Liste wird berücksichtigt, aber nicht als nachträgliche Rechtfertigung verwendet."
+    },
+    {
+      "id": "judgment_player",
+      "stage": 70,
+      "title": "Eine übernommene Tat bleibt ungeklärt",
+      "lines": [
+        "NHV_Q02_070_1016"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_070_1017",
+          "to": "recruit_unproven"
+        },
+        {
+          "line": "NHV_Q02_070_1018",
+          "to": "release"
+        },
+        {
+          "line": "NHV_Q02_070_1019",
+          "to": "silence"
+        },
+        {
+          "line": "NHV_Q02_070_1020",
+          "to": "surrender"
+        }
+      ],
+      "requires": {
+        "killer": "player"
+      }
+    },
+    {
+      "id": "judgment_other",
+      "stage": 70,
+      "title": "Ein fremder Tod lässt keine Prüfung bestehen",
+      "lines": [
+        "NHV_Q02_070_1021"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_070_1022",
+          "to": "recruit_unproven"
+        },
+        {
+          "line": "NHV_Q02_070_1023",
+          "to": "release"
+        },
+        {
+          "line": "NHV_Q02_070_1024",
+          "to": "silence"
+        },
+        {
+          "line": "NHV_Q02_070_1025",
+          "to": "surrender"
+        }
+      ],
+      "requires": {
+        "killer": "other"
+      }
+    },
+    {
+      "id": "recruit",
+      "stage": 70,
+      "title": "Sings entscheidet sich für einen anderen Schatten",
+      "lines": [
+        "NHV_Q02_070_1026",
+        "NHV_Q02_070_1027"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "recruited"
+      }
+    },
+    {
+      "id": "recruit_unproven",
+      "stage": 70,
+      "title": "Aufnahme mit offener Prüfung",
+      "lines": [
+        "NHV_Q02_070_1028",
+        "NHV_Q02_070_1029"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "recruited",
+        "unproven": true
+      }
+    },
+    {
+      "id": "release",
+      "stage": 70,
+      "title": "Freilassung ohne geheime Rückkehrpflicht",
+      "lines": [
+        "NHV_Q02_070_1030",
+        "NHV_Q02_070_1031"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "released"
+      }
+    },
+    {
+      "id": "silence",
+      "stage": 70,
+      "title": "Das Urteil gegen Sings",
+      "lines": [
+        "NHV_Q02_070_1032"
+      ],
+      "choices": [
+        {
+          "ui": "Weltvorgang: Sings stirbt",
+          "to": "dead"
+        }
+      ],
+      "direction": "Der Regieknopf simuliert den bestätigten Tod. Kein toter Sings spricht danach."
+    },
+    {
+      "id": "surrender",
+      "stage": 70,
+      "title": "Auslieferung an den Jarl",
+      "lines": [
+        "NHV_Q02_070_1033",
+        "NHV_Q02_070_1034"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "surrendered"
+      },
+      "direction": "Vorschau des bestehenden JudgeSurrender: 500 Gold Kopfgeld und VeyraDisapproval; Status bleibt eigener Ausgang."
+    },
+    {
+      "id": "dead",
+      "stage": 100,
+      "title": "Sings' Tod bestätigt",
+      "lines": [],
+      "next": "return",
+      "effects": {
+        "outcome": "dead",
+        "dead": true
+      },
+      "direction": "Weltvorgang bestätigt den Tod. Kein Homecoming als Rekrut."
+    },
+    {
+      "id": "return",
+      "stage": 100,
+      "title": "Bericht in der Sanctuary",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Nach Dawnstar zurückkehren und Veyra Bericht erstatten",
+          "to": "report"
+        }
+      ],
+      "direction": "Alle Ausgänge führen zum Bericht; nur Recruit aktiviert den Drowned Pool."
+    },
+    {
+      "id": "report",
+      "stage": 100,
+      "title": "Der Listener berichtet Tat und Entscheidung",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q02_100_1000",
+          "to": "report_recruit"
+        },
+        {
+          "line": "NHV_Q02_100_1001",
+          "to": "report_unproven"
+        },
+        {
+          "line": "NHV_Q02_100_1002",
+          "to": "report_release"
+        },
+        {
+          "line": "NHV_Q02_100_1003",
+          "to": "report_dead"
+        },
+        {
+          "line": "NHV_Q02_100_1004",
+          "to": "report_surrender"
+        }
+      ]
+    },
+    {
+      "id": "report_recruit",
+      "stage": 100,
+      "title": "Veyras Urteil über die bestandene Prüfung",
+      "lines": [
+        "NHV_Q02_100_1005",
+        "NHV_Q02_100_1006"
+      ],
+      "next": "report_fragment"
+    },
+    {
+      "id": "report_unproven",
+      "stage": 100,
+      "title": "Veyras Urteil über die übernommene Tat",
+      "lines": [
+        "NHV_Q02_100_1007",
+        "NHV_Q02_100_1008"
+      ],
+      "next": "report_fragment"
+    },
+    {
+      "id": "report_release",
+      "stage": 100,
+      "title": "Freilassung beendet keine Freundschaft",
+      "lines": [
+        "NHV_Q02_100_1009",
+        "NHV_Q02_100_1010"
+      ],
+      "next": "report_fragment"
+    },
+    {
+      "id": "report_dead",
+      "stage": 100,
+      "title": "Verlust ohne nachträgliche Verherrlichung",
+      "lines": [
+        "NHV_Q02_100_1011",
+        "NHV_Q02_100_1012"
+      ],
+      "next": "report_fragment"
+    },
+    {
+      "id": "report_surrender",
+      "stage": 100,
+      "title": "Auslieferung und Missbilligung",
+      "lines": [
+        "NHV_Q02_100_1013",
+        "NHV_Q02_100_1014"
+      ],
+      "next": "report_fragment"
+    },
+    {
+      "id": "report_fragment",
+      "stage": 100,
+      "title": "Fragment zwei – die Liste bleibt ein Beweisstück",
+      "lines": [],
+      "when": {
+        "listRead": true
+      },
+      "otherwise": "fragment_recovery",
+      "next": "fragment_player"
+    },
+    {
+      "id": "fragment_player",
+      "stage": 100,
+      "title": "Der Listener legt die Namensliste vor",
+      "lines": [
+        "NHV_Q02_100_1015",
+        "NHV_Q02_100_1016"
+      ],
+      "next": "fragment_analysis"
+    },
+    {
+      "id": "fragment_recovery",
+      "stage": 100,
+      "title": "Veyra holt das Beweisstück nach",
+      "lines": [
+        "NHV_Q02_100_1017",
+        "NHV_Q02_100_1018"
+      ],
+      "next": "fragment_analysis",
+      "effects": {
+        "listRead": true
+      },
+      "direction": "Gewöhnliche Bergung; im späteren Plugin muss die Vergabe des Fragments einmalig abgesichert werden."
+    },
+    {
+      "id": "fragment_analysis",
+      "stage": 100,
+      "title": "Freundlichkeit und Überwachung zugleich",
+      "lines": [
+        "NHV_Q02_100_1019",
+        "NHV_Q02_100_1020"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_100_1021",
+          "to": "pattern"
+        },
+        {
+          "line": "NHV_Q02_100_1022",
+          "to": "connect"
+        },
+        {
+          "line": "NHV_Q02_100_1023",
+          "to": "finish"
+        }
+      ]
+    },
+    {
+      "id": "pattern",
+      "stage": 100,
+      "title": "Der Zirkel bleibt ein Verdacht",
+      "lines": [
+        "NHV_Q02_100_1024"
+      ],
+      "next": "fragment_analysis"
+    },
+    {
+      "id": "connect",
+      "stage": 100,
+      "title": "Der größere Faden wächst langsam",
+      "lines": [
+        "NHV_Q02_100_1025"
+      ],
+      "next": "fragment_analysis"
+    },
+    {
+      "id": "finish",
+      "stage": 100,
+      "title": "Q02 abgeschlossen",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Lesetest abschließen",
+          "to": "finished"
+        },
+        {
+          "ui": "Sings in the Drowned Pool begrüßen",
+          "to": "home",
+          "requires": {
+            "outcome": "recruited"
+          }
+        }
+      ],
+      "direction": "Der nächste Contract bleibt am Map Table wählbar. Der Surrender-Ausgang setzt die bestehende Missbilligung, nicht eine neue Lore-Tatsache."
+    },
+    {
+      "id": "home",
+      "stage": 100,
+      "title": "Sings beginnt mit einer Aufgabe",
+      "lines": [
+        "NHV_Q02_100_1026",
+        "NHV_Q02_100_1027"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q02_100_1028",
+          "to": "home_more"
+        },
+        {
+          "line": "NHV_Q02_100_1029",
+          "to": "home_babette"
+        },
+        {
+          "ui": "Lesetest abschließen",
+          "to": "finished"
+        }
+      ],
+      "requires": {
+        "outcome": "recruited"
+      },
+      "direction": "Mehrsprecherszene nach tatsächlicher Ankunft; kein automatischer Followervertrag."
+    },
+    {
+      "id": "home_more",
+      "stage": 100,
+      "title": "Ein anderer Schatten als Rache",
+      "lines": [
+        "NHV_Q02_100_1030",
+        "NHV_Q02_100_1031"
+      ],
+      "next": "home"
+    },
+    {
+      "id": "home_babette",
+      "stage": 100,
+      "title": "Wasser und Erinnerung",
+      "lines": [
+        "NHV_Q02_100_1032",
+        "NHV_Q02_100_1033"
+      ],
+      "next": "home"
+    },
+    {
+      "id": "finished",
+      "stage": 100,
+      "title": "Ende des Q02-Lesetests",
+      "lines": [],
+      "terminal": true
+    }
+  ]
+}

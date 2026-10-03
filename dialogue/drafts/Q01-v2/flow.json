@@ -1,0 +1,1594 @@
+{
+  "version": 2,
+  "status": "INACTIVE_EDITORIAL_DRAFT",
+  "start": "start",
+  "initial": {
+    "diary": false,
+    "confessed": false,
+    "briefed": false,
+    "authorized": false,
+    "route": "none",
+    "persuade": true,
+    "intimidate": true,
+    "triedPersuade": false,
+    "triedIntimidate": false,
+    "coerced": false,
+    "killer": "none",
+    "fragment": false,
+    "outcome": "none",
+    "hrefnaDead": false,
+    "investigated": false
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "stage": 10,
+      "title": "Nach Q00 – eine Kandidatin suchen, keine Aufnahme versprechen",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Nach Morthal reisen und Hakan ansprechen",
+          "to": "hakan_start"
+        },
+        {
+          "ui": "Vor der Reise Veyra noch einmal nach dem Auftrag fragen",
+          "to": "brief"
+        }
+      ],
+      "direction": "Q00 ist abgeschlossen, The Gleaner's Ledger erhalten. Hrefna, Eirik und Hakan sind eingeführt. Der Rückblick ist optional; kein Wissen über Lucien erforderlich."
+    },
+    {
+      "id": "brief",
+      "stage": 10,
+      "title": "Der Auftrag bleibt eine Ermittlung",
+      "lines": [
+        "NHV_Q01_010_1000",
+        "NHV_Q01_010_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_010_1002",
+          "to": "brief_place"
+        },
+        {
+          "line": "NHV_Q01_010_1003",
+          "to": "brief_empty"
+        },
+        {
+          "line": "NHV_Q01_010_1004",
+          "to": "hakan_start"
+        }
+      ]
+    },
+    {
+      "id": "brief_place",
+      "stage": 10,
+      "title": "Keine Zusage hinter dem Rücken des Listeners",
+      "lines": [
+        "NHV_Q01_010_1005"
+      ],
+      "next": "brief"
+    },
+    {
+      "id": "brief_empty",
+      "stage": 10,
+      "title": "Ergebnisoffene Untersuchung",
+      "lines": [
+        "NHV_Q01_010_1006"
+      ],
+      "next": "brief"
+    },
+    {
+      "id": "hakan_start",
+      "stage": 10,
+      "title": "Morthal – den genannten Zeugen finden",
+      "lines": [
+        "NHV_Q01_010_1007"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_010_1008",
+          "to": "hakan_body"
+        }
+      ]
+    },
+    {
+      "id": "hakan_body",
+      "stage": 10,
+      "title": "Was Hakan sah – und was nicht",
+      "lines": [
+        "NHV_Q01_010_1009",
+        "NHV_Q01_010_1010"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_010_1011",
+          "to": "hakan_farm"
+        },
+        {
+          "line": "NHV_Q01_010_1012",
+          "to": "hakan_doubt"
+        }
+      ]
+    },
+    {
+      "id": "hakan_doubt",
+      "stage": 10,
+      "title": "Verdacht ist kein Augenzeugenbericht",
+      "lines": [
+        "NHV_Q01_010_1013",
+        "NHV_Q01_010_1014"
+      ],
+      "next": "hakan_body"
+    },
+    {
+      "id": "hakan_farm",
+      "stage": 10,
+      "title": "Pfändung, Hof und verschwundene Bäuerin",
+      "lines": [
+        "NHV_Q01_010_1015",
+        "NHV_Q01_010_1016"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_010_1017",
+          "to": "hakan_warning"
+        },
+        {
+          "line": "NHV_Q01_010_1018",
+          "to": "hakan_hrefna"
+        }
+      ]
+    },
+    {
+      "id": "hakan_hrefna",
+      "stage": 10,
+      "title": "Hrefna war bereits jemand vor ihrem Mord",
+      "lines": [
+        "NHV_Q01_010_1019",
+        "NHV_Q01_010_1020"
+      ],
+      "next": "hakan_farm"
+    },
+    {
+      "id": "hakan_warning",
+      "stage": 10,
+      "title": "Der andere Fragesteller wird eingeführt",
+      "lines": [
+        "NHV_Q01_010_1021",
+        "NHV_Q01_010_1022"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_010_1023",
+          "to": "hakan_pressure"
+        },
+        {
+          "line": "NHV_Q01_010_1024",
+          "to": "quintus_cover"
+        },
+        {
+          "line": "NHV_Q01_010_1025",
+          "to": "farm"
+        }
+      ]
+    },
+    {
+      "id": "hakan_pressure",
+      "stage": 10,
+      "title": "Hakan spricht aus eigenem Interesse",
+      "lines": [
+        "NHV_Q01_010_1026",
+        "NHV_Q01_010_1027"
+      ],
+      "next": "hakan_warning"
+    },
+    {
+      "id": "quintus_cover",
+      "stage": 10,
+      "title": "Optional: der höfliche Ermittler unter Tarnung",
+      "lines": [
+        "NHV_Q01_010_1028"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_010_1029",
+          "to": "quintus_accounts"
+        },
+        {
+          "line": "NHV_Q01_010_1030",
+          "to": "quintus_trade"
+        },
+        {
+          "line": "NHV_Q01_010_1031",
+          "to": "farm"
+        }
+      ],
+      "direction": "Optionales frühes Gespräch im Moorside. Quintus bestätigt hier keine Oculatus-Zugehörigkeit; Hakan hat zuvor seinen Namen genannt."
+    },
+    {
+      "id": "quintus_accounts",
+      "stage": 10,
+      "title": "Eine Tarnantwort, kein Beweis",
+      "lines": [
+        "NHV_Q01_010_1032",
+        "NHV_Q01_010_1033"
+      ],
+      "next": "quintus_cover",
+      "direction": "Quintus gibt eine unverbindliche geschäftliche Erklärung. Kein Nachweis seiner Behörde."
+    },
+    {
+      "id": "quintus_trade",
+      "stage": 10,
+      "title": "Zuvorkommend und kontrollierend",
+      "lines": [
+        "NHV_Q01_010_1034",
+        "NHV_Q01_010_1035"
+      ],
+      "next": "quintus_cover"
+    },
+    {
+      "id": "farm",
+      "stage": 20,
+      "title": "Den leeren Hof und den Wurzelkeller untersuchen",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Tagebuchauszug und Hofunterlagen lesen",
+          "to": "diary"
+        },
+        {
+          "ui": "Ritualreste untersuchen und Hrefnas Spur zum Jagdlager folgen",
+          "to": "camp"
+        }
+      ],
+      "direction": "Weltvorgang: Hakan hat den Hof und das Jagdlager genannt. Der Spieler findet Ritualreste im Keller. Hrefna ist hier noch keine Gesprächspartnerin. Die Untersuchung startet erst danach die Begegnung am Lager.",
+      "bookLines": [
+        "NHV_SYS_BOOK_55",
+        "NHV_SYS_BOOK_46"
+      ],
+      "effects": {
+        "investigated": true
+      }
+    },
+    {
+      "id": "diary",
+      "stage": 20,
+      "title": "Freiwillige Lektüre – keine automatische Schuldzuweisung",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Nachts das Jagdlager aufsuchen",
+          "to": "camp"
+        }
+      ],
+      "effects": {
+        "diary": true
+      },
+      "bookLines": [
+        "NHV_SYS_BOOK_50",
+        "NHV_SYS_BOOK_52",
+        "NHV_SYS_BOOK_53",
+        "NHV_SYS_BOOK_86"
+      ],
+      "direction": "Unveränderte Buchauszüge aus dem aktiven Master als Referenz. Hrefnas Selbstkorrektur begründet Verdacht; sie ersetzt ihr späteres Geständnis nicht."
+    },
+    {
+      "id": "camp",
+      "stage": 30,
+      "title": "Hrefna stellt den Fremden aus ihrem Keller",
+      "lines": [
+        "NHV_Q01_030_1000",
+        "NHV_Q01_030_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_030_1002",
+          "to": "identify"
+        },
+        {
+          "line": "NHV_Q01_030_1003",
+          "to": "calm"
+        },
+        {
+          "line": "NHV_Q01_030_1004",
+          "to": "diary_confront",
+          "requires": {
+            "diary": true
+          }
+        }
+      ],
+      "requires": {
+        "investigated": true
+      }
+    },
+    {
+      "id": "calm",
+      "stage": 30,
+      "title": "Keine falsche Sicherheitsgarantie",
+      "lines": [
+        "NHV_Q01_030_1005"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_030_1006",
+          "to": "identify"
+        }
+      ]
+    },
+    {
+      "id": "diary_confront",
+      "stage": 30,
+      "title": "Wissen stammt aus tatsächlich gelesenen Unterlagen",
+      "lines": [
+        "NHV_Q01_030_1007",
+        "NHV_Q01_030_1008"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_030_1009",
+          "to": "identify"
+        }
+      ]
+    },
+    {
+      "id": "identify",
+      "stage": 30,
+      "title": "Erst die Identität klären, dann ihre Geschichte",
+      "lines": [
+        "NHV_Q01_030_1010",
+        "NHV_Q01_030_1011"
+      ],
+      "next": "accusation"
+    },
+    {
+      "id": "accusation",
+      "stage": 40,
+      "title": "Sechs Wochen – ihre Erwartung, keine göttliche Diagnose",
+      "lines": [
+        "NHV_Q01_040_1000",
+        "NHV_Q01_040_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_040_1002",
+          "to": "loss"
+        },
+        {
+          "line": "NHV_Q01_040_1003",
+          "to": "late_answer"
+        },
+        {
+          "line": "NHV_Q01_040_1004",
+          "to": "listen"
+        }
+      ]
+    },
+    {
+      "id": "loss",
+      "stage": 40,
+      "title": "Falkreath erklärt Verluste, keine exakte Ritualchronologie",
+      "lines": [
+        "NHV_Q01_040_1005",
+        "NHV_Q01_040_1006"
+      ],
+      "next": "confession"
+    },
+    {
+      "id": "late_answer",
+      "stage": 40,
+      "title": "Verspätete Hilfe wird nicht romantisiert",
+      "lines": [
+        "NHV_Q01_040_1007"
+      ],
+      "next": "confession"
+    },
+    {
+      "id": "listen",
+      "stage": 40,
+      "title": "Der Listener lässt ihr die Aussage",
+      "lines": [
+        "NHV_Q01_040_1008"
+      ],
+      "next": "confession"
+    },
+    {
+      "id": "confession",
+      "stage": 40,
+      "title": "Das Geständnis kommt von Hrefna selbst",
+      "lines": [
+        "NHV_Q01_040_1009",
+        "NHV_Q01_040_1010",
+        "NHV_Q01_040_1011"
+      ],
+      "next": "story_hub",
+      "effects": {
+        "confessed": true
+      }
+    },
+    {
+      "id": "story_hub",
+      "stage": 40,
+      "title": "Was die Tat erklärt – und was sie nicht entschuldigt",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_040_1012",
+          "to": "farm_after"
+        },
+        {
+          "line": "NHV_Q01_040_1013",
+          "to": "prayer"
+        },
+        {
+          "line": "NHV_Q01_040_1014",
+          "to": "husband"
+        },
+        {
+          "line": "NHV_Q01_040_1015",
+          "to": "remorse"
+        },
+        {
+          "line": "NHV_Q01_040_1016",
+          "to": "threat"
+        },
+        {
+          "line": "NHV_Q01_040_1017",
+          "to": "story_wait"
+        }
+      ],
+      "requires": {
+        "confessed": true
+      }
+    },
+    {
+      "id": "farm_after",
+      "stage": 40,
+      "title": "Keine wundersame Aufhebung der Schulden",
+      "lines": [
+        "NHV_Q01_040_1018",
+        "NHV_Q01_040_1019"
+      ],
+      "next": "story_hub"
+    },
+    {
+      "id": "prayer",
+      "stage": 40,
+      "title": "Sakrament bedeutet Bitte, nicht Mitgliedschaft",
+      "lines": [
+        "NHV_Q01_040_1020",
+        "NHV_Q01_040_1021"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_040_1022",
+          "to": "prayer_limit"
+        },
+        {
+          "line": "NHV_Q01_040_1023",
+          "to": "prayer_family"
+        }
+      ]
+    },
+    {
+      "id": "prayer_limit",
+      "stage": 40,
+      "title": "Der Listener erfindet keine Botschaft",
+      "lines": [
+        "NHV_Q01_040_1024"
+      ],
+      "next": "story_hub"
+    },
+    {
+      "id": "prayer_family",
+      "stage": 40,
+      "title": "Eine offene Zukunft statt einer rückwirkenden Weihe",
+      "lines": [
+        "NHV_Q01_040_1025",
+        "NHV_Q01_040_1026"
+      ],
+      "next": "story_hub"
+    },
+    {
+      "id": "husband",
+      "stage": 40,
+      "title": "Kein erfundenes Ende seiner Geschichte",
+      "lines": [
+        "NHV_Q01_040_1027",
+        "NHV_Q01_040_1028"
+      ],
+      "next": "story_hub"
+    },
+    {
+      "id": "remorse",
+      "stage": 40,
+      "title": "Widerspruch statt vollständiger Läuterung",
+      "lines": [
+        "NHV_Q01_040_1029",
+        "NHV_Q01_040_1030"
+      ],
+      "next": "story_hub"
+    },
+    {
+      "id": "story_wait",
+      "stage": 40,
+      "title": "Nachdenken ist noch keine Entscheidung",
+      "lines": [
+        "NHV_Q01_040_1031"
+      ],
+      "pause": true,
+      "next": "story_hub"
+    },
+    {
+      "id": "threat",
+      "stage": 40,
+      "title": "Die Verbindung zwischen Quintus und der Bruderschaft",
+      "lines": [
+        "NHV_Q01_040_1032",
+        "NHV_Q01_040_1033"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_040_1034",
+          "to": "offer"
+        }
+      ]
+    },
+    {
+      "id": "offer",
+      "stage": 40,
+      "title": "Eine Prüfung anbieten, keinen Platz versprechen",
+      "lines": [
+        "NHV_Q01_040_1035"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_040_1036",
+          "to": "hear_offer"
+        }
+      ]
+    },
+    {
+      "id": "hear_offer",
+      "stage": 40,
+      "title": "Hrefna stimmt einem Gespräch zu",
+      "lines": [
+        "NHV_Q01_040_1037"
+      ],
+      "next": "veyra_arrives",
+      "direction": "Hier endet das Geständnis. Vor dem Prüfungsbriefing muss Veyra sichtbar zum Gespräch kommen; kein unsichtbarer Sprecherwechsel."
+    },
+    {
+      "id": "veyra_arrives",
+      "stage": 50,
+      "title": "Veyra tritt hinzu – erst Bericht, dann Urteil",
+      "lines": [
+        "NHV_Q01_050_1000",
+        "NHV_Q01_050_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1002",
+          "to": "field_report"
+        }
+      ],
+      "requires": {
+        "confessed": true
+      },
+      "direction": "Veyra nähert sich sichtbar aus dem Moor. Aufstellung im späteren Test-Build erforderlich; bestehendes MoveTo allein erzählt diese Ankunft nicht."
+    },
+    {
+      "id": "field_report",
+      "stage": 50,
+      "title": "Der Spieler übergibt das tatsächlich Erfahrene",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1003",
+          "to": "trial_brief"
+        }
+      ]
+    },
+    {
+      "id": "trial_brief",
+      "stage": 50,
+      "title": "Warum dieser Mann ein Ziel wird",
+      "lines": [
+        "NHV_Q01_050_1004",
+        "NHV_Q01_050_1005"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1006",
+          "to": "trial_meaning"
+        }
+      ]
+    },
+    {
+      "id": "trial_meaning",
+      "stage": 50,
+      "title": "Die Aufgabe ist zugleich Gefahr und Prüfung",
+      "lines": [
+        "NHV_Q01_050_1007",
+        "NHV_Q01_050_1008",
+        "NHV_Q01_050_1009",
+        "NHV_Q01_050_1010"
+      ],
+      "next": "trial_hub",
+      "effects": {
+        "briefed": true
+      }
+    },
+    {
+      "id": "trial_hub",
+      "stage": 50,
+      "title": "Nachfragen und ausdrückliche Freigabe",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1011",
+          "to": "trial_mother"
+        },
+        {
+          "line": "NHV_Q01_050_1012",
+          "to": "trial_evidence"
+        },
+        {
+          "line": "NHV_Q01_050_1013",
+          "to": "trial_failure"
+        },
+        {
+          "line": "NHV_Q01_050_1014",
+          "to": "candidate_choice"
+        },
+        {
+          "line": "NHV_Q01_050_1015",
+          "to": "trial_wait"
+        }
+      ],
+      "requires": {
+        "briefed": true
+      }
+    },
+    {
+      "id": "trial_mother",
+      "stage": 50,
+      "title": "Keine geliehene göttliche Autorität",
+      "lines": [
+        "NHV_Q01_050_1016"
+      ],
+      "next": "trial_hub"
+    },
+    {
+      "id": "trial_evidence",
+      "stage": 50,
+      "title": "Verdacht und bekannte Gefahr auseinanderhalten",
+      "lines": [
+        "NHV_Q01_050_1017",
+        "NHV_Q01_050_1018"
+      ],
+      "next": "trial_hub"
+    },
+    {
+      "id": "trial_failure",
+      "stage": 50,
+      "title": "Unproven wird vor dem entscheidenden Moment erklärt",
+      "lines": [
+        "NHV_Q01_050_1019",
+        "NHV_Q01_050_1020"
+      ],
+      "next": "trial_hub"
+    },
+    {
+      "id": "trial_wait",
+      "stage": 50,
+      "title": "Eine noch nicht erteilte Freigabe",
+      "lines": [
+        "NHV_Q01_050_1021"
+      ],
+      "pause": true,
+      "next": "trial_hub"
+    },
+    {
+      "id": "candidate_choice",
+      "stage": 50,
+      "title": "Hrefna sagt zu, ohne Stärke vorzutäuschen",
+      "lines": [
+        "NHV_Q01_050_1022",
+        "NHV_Q01_050_1023"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1024",
+          "to": "authorize"
+        },
+        {
+          "line": "NHV_Q01_050_1025",
+          "to": "trial_wait"
+        }
+      ]
+    },
+    {
+      "id": "authorize",
+      "stage": 50,
+      "title": "Freigabe und praktische Übergabe",
+      "lines": [
+        "NHV_Q01_050_1026",
+        "NHV_Q01_050_1027"
+      ],
+      "next": "route_choice",
+      "effects": {
+        "authorized": true
+      }
+    },
+    {
+      "id": "route_choice",
+      "stage": 50,
+      "title": "Die beiden vorgesehenen Begegnungen",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1028",
+          "to": "room"
+        },
+        {
+          "line": "NHV_Q01_050_1029",
+          "to": "road"
+        },
+        {
+          "line": "NHV_Q01_050_1030",
+          "to": "route_wait"
+        }
+      ]
+    },
+    {
+      "id": "route_wait",
+      "stage": 50,
+      "title": "Vorbereitung ohne automatische Tötung",
+      "lines": [
+        "NHV_Q01_050_1031"
+      ],
+      "pause": true,
+      "next": "route_choice"
+    },
+    {
+      "id": "room",
+      "stage": 50,
+      "title": "Zimmer nachts – hinter der Tarnung liegt ein Privatleben",
+      "lines": [
+        "NHV_Q01_050_1032",
+        "NHV_Q01_050_1033"
+      ],
+      "next": "hesitation",
+      "effects": {
+        "route": "room"
+      },
+      "direction": "Weltvorgang: Zimmer erreichen, Brief sichtbar lesen; Quintus schläft. Weder Anreise noch Schleichen werden durch den Lesetest simuliert. Der neue Brieftext liegt nur im V2-Books-Master.",
+      "bookLines": [
+        "NHV_Q01_050_1053",
+        "NHV_Q01_050_1054"
+      ]
+    },
+    {
+      "id": "road",
+      "stage": 50,
+      "title": "Straße morgens – Quintus erkennt Hrefna",
+      "lines": [
+        "NHV_Q01_050_1034"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1035",
+          "to": "road_letter"
+        }
+      ],
+      "effects": {
+        "route": "road"
+      }
+    },
+    {
+      "id": "road_letter",
+      "stage": 50,
+      "title": "Seine private Bindung wird hörbar",
+      "lines": [
+        "NHV_Q01_050_1036",
+        "NHV_Q01_050_1037"
+      ],
+      "next": "hesitation",
+      "direction": "In dieser Variante hört Hrefna selbst von der Tochter. Sie behauptet nicht, einen unzugänglichen Brief aus Quintus' Tasche gelesen zu haben. Kurzer Seitenwechsel zum Listener vor dem Angriff."
+    },
+    {
+      "id": "hesitation",
+      "stage": 50,
+      "title": "Eine Tochter macht ihn menschlich, nicht ungefährlich",
+      "lines": [
+        "NHV_Q01_050_1038",
+        "NHV_Q01_050_1039"
+      ],
+      "next": "choice_kill"
+    },
+    {
+      "id": "choice_kill",
+      "stage": 50,
+      "title": "Der entscheidende Moment bleibt beim Spieler",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_1040",
+          "to": "persuade_test",
+          "requires": {
+            "triedPersuade": false
+          }
+        },
+        {
+          "line": "NHV_Q01_050_1041",
+          "to": "intimidate_test",
+          "requires": {
+            "triedIntimidate": false
+          }
+        },
+        {
+          "line": "NHV_Q01_050_1042",
+          "to": "player_takes_over"
+        },
+        {
+          "line": "NHV_Q01_050_1043",
+          "to": "withdraw"
+        }
+      ],
+      "requires": {
+        "authorized": true
+      },
+      "direction": "Persuade im späteren Spiel gemäß bestehendem Schwellenwert Speech 30; Intimidate über den Engine-Check, nicht einen erfundenen ActorValue. Jeder Versuch einmal pro Begegnung. Kein Erfolg tötet Quintus unmittelbar."
+    },
+    {
+      "id": "persuade_test",
+      "stage": 50,
+      "title": "Überredung auswerten",
+      "lines": [],
+      "when": {
+        "persuade": true
+      },
+      "otherwise": "persuade_fail",
+      "next": "persuade_pass"
+    },
+    {
+      "id": "persuade_pass",
+      "stage": 50,
+      "title": "Hrefna nimmt die Verantwortung an",
+      "lines": [
+        "NHV_Q01_050_1044",
+        "NHV_Q01_050_1045"
+      ],
+      "next": "hrefna_attack",
+      "effects": {
+        "triedPersuade": true
+      }
+    },
+    {
+      "id": "persuade_fail",
+      "stage": 50,
+      "title": "Ein Argument beseitigt keine Blockade",
+      "lines": [
+        "NHV_Q01_050_1046",
+        "NHV_Q01_050_1047"
+      ],
+      "next": "choice_kill",
+      "effects": {
+        "triedPersuade": true
+      }
+    },
+    {
+      "id": "intimidate_test",
+      "stage": 50,
+      "title": "Einschüchterung auswerten",
+      "lines": [],
+      "when": {
+        "intimidate": true
+      },
+      "otherwise": "intimidate_fail",
+      "next": "intimidate_pass"
+    },
+    {
+      "id": "intimidate_pass",
+      "stage": 50,
+      "title": "Erzwungene Tat bleibt erzwungen",
+      "lines": [
+        "NHV_Q01_050_1048",
+        "NHV_Q01_050_1049"
+      ],
+      "next": "hrefna_attack",
+      "effects": {
+        "triedIntimidate": true,
+        "coerced": true
+      }
+    },
+    {
+      "id": "intimidate_fail",
+      "stage": 50,
+      "title": "Auch die Drohung kann scheitern",
+      "lines": [
+        "NHV_Q01_050_1050"
+      ],
+      "next": "choice_kill",
+      "effects": {
+        "triedIntimidate": true
+      }
+    },
+    {
+      "id": "withdraw",
+      "stage": 50,
+      "title": "Abbruch für den Moment – kein erfundener Freilassungsabschluss",
+      "lines": [
+        "NHV_Q01_050_1051"
+      ],
+      "pause": true,
+      "next": "choice_kill",
+      "direction": "Stage 50 bleibt offen. Wiederansprechen setzt die noch verfügbaren Entscheidungen fort; erfolglose Checks werden nicht neu gewürfelt. Quintus wurde nicht endgültig freigelassen."
+    },
+    {
+      "id": "player_takes_over",
+      "stage": 50,
+      "title": "Die Prüfung bleibt offen",
+      "lines": [
+        "NHV_Q01_050_1052"
+      ],
+      "choices": [
+        {
+          "ui": "Weltvorgang: Spieler tötet Quintus",
+          "to": "kill_player"
+        }
+      ],
+      "direction": "Ein Gesprächsabschluss ist noch kein Tod. Übergang erst nach tatsächlichem Kampf-/Todesereignis. Kein technischer Combat-Test."
+    },
+    {
+      "id": "hrefna_attack",
+      "stage": 50,
+      "title": "Hrefna setzt zur Tat an",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Weltvorgang: Hrefna tötet Quintus selbst",
+          "to": "kill_hrefna"
+        },
+        {
+          "ui": "Weltvorgang: Spieler greift ein und tötet Quintus selbst",
+          "to": "kill_player"
+        }
+      ],
+      "direction": "Die Reaktion richtet sich nach dem tatsächlichen Täter, nicht nach dem zuvor gewählten Speech-Check. Fremde Todesursachen bleiben vor Plugin-Aktivierung gesondert zu behandeln."
+    },
+    {
+      "id": "kill_hrefna",
+      "stage": 60,
+      "title": "Nach ihrer zweiten Tat",
+      "lines": [
+        "NHV_Q01_060_1000",
+        "NHV_Q01_060_1001"
+      ],
+      "next": "papers",
+      "effects": {
+        "killer": "hrefna"
+      }
+    },
+    {
+      "id": "kill_player",
+      "stage": 60,
+      "title": "Nach der übernommenen Tat",
+      "lines": [
+        "NHV_Q01_060_1002"
+      ],
+      "next": "papers",
+      "effects": {
+        "killer": "player"
+      }
+    },
+    {
+      "id": "papers",
+      "stage": 60,
+      "title": "Quintus ist tot – die Unterlagen sind noch eine eigene Aufgabe",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Quintus' dienstliche Papiere sichern und lesen",
+          "to": "papers_read"
+        },
+        {
+          "ui": "Die Unterlagen vorerst zurücklassen; mit Hrefna sprechen",
+          "to": "judgment"
+        }
+      ],
+      "direction": "Erst jetzt bestätigt ein Dokument seine Behörde. Das Übersehen des Fragments blockiert den Abschluss nicht; Veyras spätere Bergung wird ausdrücklich erzählt."
+    },
+    {
+      "id": "papers_read",
+      "stage": 60,
+      "title": "Eine Behörde wird belegt, keine Verschwörung vollständig erklärt",
+      "lines": [
+        "NHV_Q01_060_1003"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_060_1004",
+          "to": "papers_confirm"
+        }
+      ],
+      "effects": {
+        "fragment": true
+      },
+      "bookLines": [
+        "NHV_SYS_BOOK_59",
+        "NHV_SYS_BOOK_60",
+        "NHV_SYS_BOOK_61",
+        "NHV_SYS_BOOK_62",
+        "NHV_SYS_BOOK_85"
+      ]
+    },
+    {
+      "id": "papers_confirm",
+      "stage": 60,
+      "title": "Was im Bericht tatsächlich steht",
+      "lines": [
+        "NHV_Q01_060_1005",
+        "NHV_Q01_060_1006"
+      ],
+      "next": "judgment"
+    },
+    {
+      "id": "judgment",
+      "stage": 70,
+      "title": "Die Tat entscheidet nicht automatisch über die Aufnahme",
+      "lines": [
+        "NHV_Q01_070_1000",
+        "NHV_Q01_070_1001"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_070_1002",
+          "to": "skills"
+        },
+        {
+          "line": "NHV_Q01_070_1003",
+          "to": "future"
+        },
+        {
+          "line": "NHV_Q01_070_1004",
+          "to": "recruit_gate"
+        },
+        {
+          "line": "NHV_Q01_070_1005",
+          "to": "release"
+        },
+        {
+          "line": "NHV_Q01_070_1006",
+          "to": "silence"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "stage": 70,
+      "title": "Versorgung als Fähigkeit, nicht Trostpreis",
+      "lines": [
+        "NHV_Q01_070_1007",
+        "NHV_Q01_070_1008"
+      ],
+      "next": "judgment"
+    },
+    {
+      "id": "future",
+      "stage": 70,
+      "title": "Mitgliedschaft ist keine einmalige Schuldtilgung",
+      "lines": [
+        "NHV_Q01_070_1009",
+        "NHV_Q01_070_1010"
+      ],
+      "next": "judgment"
+    },
+    {
+      "id": "recruit_gate",
+      "stage": 70,
+      "title": "Antwort nach tatsächlichem Ausgang der Prüfung",
+      "lines": [],
+      "when": {
+        "killer": "player"
+      },
+      "otherwise": "recruit_proven",
+      "next": "recruit_unproven"
+    },
+    {
+      "id": "recruit_proven",
+      "stage": 70,
+      "title": "Hrefna nimmt die angebotene Aufnahme an",
+      "lines": [
+        "NHV_Q01_070_1011",
+        "NHV_Q01_070_1012"
+      ],
+      "next": "recruit_knife",
+      "effects": {
+        "outcome": "recruited"
+      }
+    },
+    {
+      "id": "recruit_unproven",
+      "stage": 70,
+      "title": "Aufnahme trotz offener Prüfung",
+      "lines": [
+        "NHV_Q01_070_1013"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_070_1014",
+          "to": "recruit_unproven_yes"
+        }
+      ]
+    },
+    {
+      "id": "recruit_unproven_yes",
+      "stage": 70,
+      "title": "Keine rückwirkend bestandene Prüfung",
+      "lines": [
+        "NHV_Q01_070_1015"
+      ],
+      "next": "recruit_knife",
+      "effects": {
+        "outcome": "recruited"
+      }
+    },
+    {
+      "id": "recruit_knife",
+      "stage": 70,
+      "title": "Die persönliche Klinge und der Weg nach Dawnstar",
+      "lines": [
+        "NHV_Q01_070_1016",
+        "NHV_Q01_070_1017"
+      ],
+      "next": "return",
+      "direction": "Aufnahme abschließen, Bogwife's Knife einmal vergeben; Unproven anhand des tatsächlichen Prüfungsergebnisses. Erst jetzt Zugang zur Familie. Transport/Ankunft nicht durch den Lesetest bewiesen."
+    },
+    {
+      "id": "release",
+      "stage": 70,
+      "title": "Freilassung ist ein eigener Abschluss",
+      "lines": [
+        "NHV_Q01_070_1018"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_070_1019",
+          "to": "release_confirm"
+        }
+      ]
+    },
+    {
+      "id": "release_confirm",
+      "stage": 70,
+      "title": "Kein versteckter Dienst gegen Freilassung",
+      "lines": [
+        "NHV_Q01_070_1020",
+        "NHV_Q01_070_1021"
+      ],
+      "next": "return",
+      "effects": {
+        "outcome": "released"
+      },
+      "direction": "Status Freigelassen; Brief nach sieben Spieltagen. Keine Sanctuary-Mitgliedschaft, keine Küche oder Rekrutierungsbelohnung."
+    },
+    {
+      "id": "silence",
+      "stage": 70,
+      "title": "Die Drohung löst Widerstand aus",
+      "lines": [
+        "NHV_Q01_070_1022",
+        "NHV_Q01_070_1023"
+      ],
+      "choices": [
+        {
+          "ui": "Kampf ausspielen – Hrefnas Tod bestätigen",
+          "to": "silence_dead"
+        },
+        {
+          "ui": "Hrefna entkommt zunächst; Tod ist nicht bestätigt",
+          "to": "silence_unfinished"
+        }
+      ],
+      "direction": "Kein Tod allein durch die Auswahl. Diese V2 unterscheidet Urteil und tatsächlichen Tod. Der aktive JudgeSilence-Code setzt Status 2 bereits vor dem Kampf; vor Aktivierung ist dieser Unterschied zu lösen."
+    },
+    {
+      "id": "silence_unfinished",
+      "stage": 70,
+      "title": "Das Urteil ist gesprochen, der Kampf nicht abgeschlossen",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Zum offenen Kampf zurückkehren",
+          "to": "silence"
+        }
+      ],
+      "pause": true,
+      "direction": "Kein Todesbericht, solange Hrefna lebt. Die Vorschau bewertet nicht, ob Flucht oder Kampf ingame funktionieren."
+    },
+    {
+      "id": "silence_dead",
+      "stage": 100,
+      "title": "Todesausgang erst nach dem Ereignis",
+      "lines": [],
+      "next": "return",
+      "effects": {
+        "outcome": "dead",
+        "hrefnaDead": true
+      },
+      "direction": "Weltvorgang bestätigt Hrefnas Tod. Kein Dialog einer Toten danach."
+    },
+    {
+      "id": "return",
+      "stage": 100,
+      "title": "Bericht in der Sanctuary",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Nach Dawnstar zurückkehren und Veyra Bericht erstatten",
+          "to": "report"
+        }
+      ],
+      "direction": "Alle gewählten Ausgänge führen zum Bericht. Bei Aufnahme reist Hrefna zur Deep Sanctuary; sonst erscheint sie dort nicht als neue Bewohnerin."
+    },
+    {
+      "id": "report",
+      "stage": 100,
+      "title": "Der Listener berichtet Tatsachen statt Schlagworte",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_100_1000",
+          "to": "debrief_proven",
+          "requires": {
+            "outcome": "recruited",
+            "killer": "hrefna",
+            "coerced": false,
+            "triedIntimidate": false
+          }
+        },
+        {
+          "line": "NHV_Q01_100_1057",
+          "to": "debrief_after_threat",
+          "requires": {
+            "outcome": "recruited",
+            "killer": "hrefna",
+            "coerced": false,
+            "triedIntimidate": true
+          }
+        },
+        {
+          "line": "NHV_Q01_100_1001",
+          "to": "debrief_coerced",
+          "requires": {
+            "outcome": "recruited",
+            "killer": "hrefna",
+            "coerced": true
+          }
+        },
+        {
+          "line": "NHV_Q01_100_1002",
+          "to": "debrief_unproven",
+          "requires": {
+            "outcome": "recruited",
+            "killer": "player"
+          }
+        },
+        {
+          "line": "NHV_Q01_100_1003",
+          "to": "debrief_release",
+          "requires": {
+            "outcome": "released"
+          }
+        },
+        {
+          "line": "NHV_Q01_100_1004",
+          "to": "debrief_dead",
+          "requires": {
+            "outcome": "dead"
+          }
+        }
+      ]
+    },
+    {
+      "id": "debrief_proven",
+      "stage": 100,
+      "title": "Bestandene Prüfung macht keine fertige Assassinin",
+      "lines": [
+        "NHV_Q01_100_1005",
+        "NHV_Q01_100_1006"
+      ],
+      "next": "report_questions"
+    },
+    {
+      "id": "debrief_after_threat",
+      "stage": 100,
+      "title": "Nach erfolgloser Drohung überzeugt – der Bericht verschweigt nichts",
+      "lines": [
+        "NHV_Q01_100_1058",
+        "NHV_Q01_100_1059"
+      ],
+      "next": "report_questions"
+    },
+    {
+      "id": "debrief_coerced",
+      "stage": 100,
+      "title": "Veyra verwechselt Furcht nicht mit freier Überzeugung",
+      "lines": [
+        "NHV_Q01_100_1007",
+        "NHV_Q01_100_1008"
+      ],
+      "next": "report_questions",
+      "direction": "Keine neue Strafe. Erzählerische Reaktion auf Einschüchterung; der bestehende Unproven-Ausgang bleibt der übernommenen Tötung vorbehalten."
+    },
+    {
+      "id": "debrief_unproven",
+      "stage": 100,
+      "title": "Die offene Prüfung bleibt sichtbar",
+      "lines": [
+        "NHV_Q01_100_1009",
+        "NHV_Q01_100_1010"
+      ],
+      "next": "report_questions"
+    },
+    {
+      "id": "debrief_release",
+      "stage": 100,
+      "title": "Freilassung ohne nachträgliche Verdrehung der Tat",
+      "lines": [
+        "NHV_Q01_100_1011",
+        "NHV_Q01_100_1012"
+      ],
+      "next": "report_questions"
+    },
+    {
+      "id": "debrief_dead",
+      "stage": 100,
+      "title": "Verlust ohne nachträgliche Gutheißung",
+      "lines": [
+        "NHV_Q01_100_1013",
+        "NHV_Q01_100_1014"
+      ],
+      "next": "report_questions",
+      "requires": {
+        "hrefnaDead": true
+      }
+    },
+    {
+      "id": "report_questions",
+      "stage": 100,
+      "title": "Was die erste Ernte gezeigt hat",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_100_1015",
+          "to": "debrief_candidate"
+        },
+        {
+          "line": "NHV_Q01_100_1016",
+          "to": "debrief_silence"
+        },
+        {
+          "line": "NHV_Q01_100_1017",
+          "to": "fragment_gate"
+        }
+      ]
+    },
+    {
+      "id": "debrief_candidate",
+      "stage": 100,
+      "title": "Veyra bleibt fehlbar",
+      "lines": [
+        "NHV_Q01_100_1018",
+        "NHV_Q01_100_1019"
+      ],
+      "next": "report_questions"
+    },
+    {
+      "id": "debrief_silence",
+      "stage": 100,
+      "title": "Keine erfundene Antwort der Night Mother",
+      "lines": [
+        "NHV_Q01_100_1020",
+        "NHV_Q01_100_1021"
+      ],
+      "next": "report_questions"
+    },
+    {
+      "id": "fragment_gate",
+      "stage": 100,
+      "title": "Spielerfund oder nachvollziehbare Bergung",
+      "lines": [],
+      "when": {
+        "fragment": true
+      },
+      "otherwise": "fragment_recovery",
+      "next": "fragment_player"
+    },
+    {
+      "id": "fragment_player",
+      "stage": 100,
+      "title": "Das gesicherte Fragment vorlegen",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q01_100_1022",
+          "to": "fragment_analysis"
+        }
+      ]
+    },
+    {
+      "id": "fragment_recovery",
+      "stage": 100,
+      "title": "Veyra erklärt, wie die Unterlagen zu ihr kamen",
+      "lines": [
+        "NHV_Q01_100_1023",
+        "NHV_Q01_100_1024"
+      ],
+      "next": "fragment_analysis",
+      "effects": {
+        "fragment": true
+      },
+      "bookLines": [
+        "NHV_SYS_BOOK_85"
+      ],
+      "direction": "Gewöhnliche Bergung, keine magische Kenntnis. Im späteren Plugin überprüfbarer Übergabepfad ohne doppelte Fragmentvergabe erforderlich."
+    },
+    {
+      "id": "fragment_analysis",
+      "stage": 100,
+      "title": "Fragment eins – Beobachtung, noch kein vollständiger Plan",
+      "lines": [
+        "NHV_Q01_100_1025",
+        "NHV_Q01_100_1026"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_100_1027",
+          "to": "fragment_suspicion"
+        },
+        {
+          "line": "NHV_Q01_100_1028",
+          "to": "fragment_limit"
+        },
+        {
+          "line": "NHV_Q01_100_1029",
+          "to": "next_work"
+        }
+      ]
+    },
+    {
+      "id": "fragment_suspicion",
+      "stage": 100,
+      "title": "Ein begründeter Verdacht bleibt ein Verdacht",
+      "lines": [
+        "NHV_Q01_100_1030",
+        "NHV_Q01_100_1031"
+      ],
+      "next": "fragment_analysis"
+    },
+    {
+      "id": "fragment_limit",
+      "stage": 100,
+      "title": "Kein vorzeitiger Livia-/Spion-Spoiler",
+      "lines": [
+        "NHV_Q01_100_1032"
+      ],
+      "next": "fragment_analysis"
+    },
+    {
+      "id": "next_work",
+      "stage": 100,
+      "title": "Weitere Contracts werden möglich – keiner startet zwangsläufig",
+      "lines": [
+        "NHV_Q01_100_1033",
+        "NHV_Q01_100_1034"
+      ],
+      "next": "after",
+      "direction": "Q01-Debrief abschließen. Der Map-Table-Fortgang öffnet die verbleibenden vier Kern-Contracts; kein automatischer Start nur von Q02."
+    },
+    {
+      "id": "after",
+      "stage": 100,
+      "title": "Abschluss und passende Nachwirkung",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Hrefna in der neuen Küche begrüßen",
+          "to": "home",
+          "requires": {
+            "outcome": "recruited"
+          }
+        },
+        {
+          "ui": "Sieben Spieltage später: Hrefnas Brief lesen",
+          "to": "release_letter",
+          "requires": {
+            "outcome": "released"
+          }
+        },
+        {
+          "ui": "Lesetest abschließen",
+          "to": "finished"
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "stage": 100,
+      "title": "Eine neue Bewohnerin beginnt mit Arbeit",
+      "lines": [
+        "NHV_Q01_100_1035",
+        "NHV_Q01_100_1036",
+        "NHV_Q01_100_1037"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_100_1038",
+          "to": "home_hrefna"
+        },
+        {
+          "line": "NHV_Q01_100_1039",
+          "to": "home_nazir"
+        },
+        {
+          "line": "NHV_Q01_100_1040",
+          "to": "finished"
+        }
+      ],
+      "requires": {
+        "outcome": "recruited"
+      },
+      "direction": "Mehrsprecherszene nach tatsächlicher Ankunft; Hrefna lebt. Küche und Rekrutierungsstatus sind Voraussetzung, kein bloßer Questabschluss."
+    },
+    {
+      "id": "home_hrefna",
+      "stage": 100,
+      "title": "Wärme erscheint in einer konkreten Aufgabe",
+      "lines": [
+        "NHV_Q01_100_1041",
+        "NHV_Q01_100_1042"
+      ],
+      "next": "home"
+    },
+    {
+      "id": "home_nazir",
+      "stage": 100,
+      "title": "Der Küchendienst ersetzt keine Ausbildung",
+      "lines": [
+        "NHV_Q01_100_1043",
+        "NHV_Q01_100_1044"
+      ],
+      "next": "home"
+    },
+    {
+      "id": "release_letter",
+      "stage": 100,
+      "title": "Ein Brief nach sieben Spieltagen",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Lesetest nach dem Brief abschließen",
+          "to": "finished"
+        }
+      ],
+      "requires": {
+        "outcome": "released"
+      },
+      "bookLines": [
+        "NHV_Q01_100_1045",
+        "NHV_Q01_100_1046"
+      ],
+      "direction": "Nur Freilassung, Hrefna lebt. Vorschau des bestehenden Sieben-Tage-Nachklangs; kein tatsächlicher Zeitablauf oder Kurier-Test."
+    },
+    {
+      "id": "finished",
+      "stage": 100,
+      "title": "Ende des Q01-Lesetests",
+      "lines": [],
+      "terminal": true
+    }
+  ]
+}

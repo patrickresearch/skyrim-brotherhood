@@ -1,0 +1,105 @@
+LineID,Topic,Text,Kind
+NHV_Q02_100_11,NHV_Q02_DebriefFragment,A net of whispers cast over the docks. Someone high up is hauling it in.,response
+NHV_Q02_100_10,NHV_Q02_DebriefFragment,"Aelius kept a list. Argonian names, for the Oculatus.",prompt
+NHV_Q02_100_06,NHV_Q02_DebriefMoral,"Truth can wear two faces, Listener. Your task is not to make one disappear.",response
+NHV_Q02_100_05,NHV_Q02_DebriefMoral,Aelius was kind to them. That was true.,prompt
+NHV_Q02_020_01,NHV_Q02_Docks,"That knot? Fisherman's hitch, marsh style. My lads use a bowline. Theirs use that.",response
+NHV_Q02_020_02,NHV_Q02_Docks,"Whoever it is, they work after dark. Nobody's that brave at noon.",response
+NHV_Q02_010_10,NHV_Q02_Docks,I hear the harbor has been giving back bodies.,prompt
+NHV_Q02_010_11,NHV_Q02_Docks,Four since the thaw. All Nords. The names were familiar from complaints. I recorded those too.,response
+NHV_Q02_010_12,NHV_Q02_Docks,The fifth came up this morning. East pier. Bring a strong stomach and a sharper question.,response
+NHV_Q02_010_18,NHV_Q02_DocksArgonians,They say less when a Nord is holding the ledger. Ask them yourself. If they stay to answer.,response
+NHV_Q02_010_17,NHV_Q02_DocksArgonians,And the Argonians? What do they say?,prompt
+NHV_Q02_020_06,NHV_Q02_DocksBody,No bruising on the hands. He did not fight the water. He fought someone before it took him.,response
+NHV_Q02_020_05,NHV_Q02_DocksBody,What was different about this body?,prompt
+NHV_Q02_010_16,NHV_Q02_DocksComplaints,"Dockhands, mostly. Men who lost cargo, teeth, or both. Haldor Frost-Knuckle's name appears often.",response
+NHV_Q02_010_15,NHV_Q02_DocksComplaints,Who complained about the men who drowned?,prompt
+NHV_Q02_010_14,NHV_Q02_DocksCount,"Names come after the count. If the count is wrong, the names do not help.",response
+NHV_Q02_010_13,NHV_Q02_DocksCount,You count the dead before you ask who they were.,prompt
+NHV_Q02_020_04,NHV_Q02_DocksKnot,"Because the killer knows rope. Or wants us to think he does. Either way, the knot was tied in a hurry.",response
+NHV_Q02_020_03,NHV_Q02_DocksKnot,Why use a fisherman's knot for a killing?,prompt
+NHV_Q02_020_08,NHV_Q02_DocksLast,Haldor. He said they were settling a debt. Haldor calls every beating a debt.,response
+NHV_Q02_020_07,NHV_Q02_DocksLast,Who was the last man seen with him?,prompt
+NHV_Q02_010_19,NHV_Q02_DrinksAsk,"There. You see the ledger now, warm-blood. It has teeth even when the ink is dry.",response
+NHV_Q02_010_21,NHV_Q02_DrinksAsk,"You ask about drowned Nords in the Argonian quarter? Brave, or stupid. Maybe both, stranger.",response
+NHV_Q02_010_20,NHV_Q02_DrinksAsk,What do you know about the drowned men?,prompt
+NHV_Q02_010_41,NHV_Q02_DrinksBribe,"Coin remembers better than I do. The knots, stranger. Look at the knots.",response
+NHV_Q02_010_40,NHV_Q02_DrinksBribe,(Bribe) Maybe this helps you remember.,prompt
+NHV_Q02_010_31,NHV_Q02_DrinksPersuade,"Then look at the knots, stranger. Not every hand in this harbor learned them in Skyrim.",response
+NHV_Q02_010_30,NHV_Q02_DrinksPersuade,(Persuade) I'm not a guard. I'm the last one who'd report this.,prompt
+NHV_Q02_010_32,NHV_Q02_DrinksPersuade,Everyone is the last one until they aren't. Go away.,response
+NHV_Q02_030_01,NHV_Q02_HaldorHarass,"Back to work, lizard, before I feed you your own tail.",response
+NHV_Q02_030_02,NHV_Q02_HaldorHarass,"What, no hissing tonight? Good. You're learning.",response
+NHV_Q02_030_10,NHV_Q02_HaldorPull,Something pulled me under! Guards! Guards!,response
+NHV_Q02_030_03,NHV_Q02_HaldorPull,What... something's got my leg! Help!,response
+NHV_Q02_070_42,NHV_Q02_HjoraldTakes,"We'll take him. There were complaints, yes. Dock disputes, we thought. Your payment will be recorded.",response
+NHV_Q02_070_43,NHV_Q02_HjoraldTakes,We called it dock trouble. That was convenient. Trouble does not need a report signed against it.,response
+NHV_Q02_050_61,NHV_Q02_HollowS1,A dark elf in my Hollow. Is the whole city walking through my door tonight?,response
+NHV_Q02_050_64,NHV_Q02_HollowS2,Aelius paid us fair. He learned our names. You ask me to drown the only warm-blood here who ever...,response
+NHV_Q02_050_67,NHV_Q02_HollowS3,"You call this a test. The warm-blood gets kindness, and I get a blade.",response
+NHV_Q02_050_60,NHV_Q02_HollowV1,"Good evening, Sings-Beneath-Ice. You drown beautifully. You also drown loudly.",response
+NHV_Q02_050_62,NHV_Q02_HollowV2,"He kills from hatred, Listener. Hatred is loud. The family is quiet.",response
+NHV_Q02_050_63,NHV_Q02_HollowV2,"Aelius, the harbor clerk. He dies before dawn. By your hand, Sings.",response
+NHV_Q02_050_65,NHV_Q02_HollowV3,"I ask you to kill without hating. If you cannot, you are a grudge with a knife.",response
+NHV_Q02_050_68,NHV_Q02_HollowV4,Kindness is not innocence. A hand may soothe and still keep a list.,response
+NHV_Q02_050_69,NHV_Q02_HollowV4,"You will learn what he kept. First, decide what you are keeping inside yourself.",response
+NHV_Q02_050_66,NHV_Q02_HollowV4,"I will be in Dawnstar. Do not keep me waiting, Listener. Do not keep him waiting either.",response
+NHV_Q02_070_11,NHV_Q02_JudgeRecruit,A pool in the dark. You know how to tempt an Argonian.,response
+NHV_Q02_070_10,NHV_Q02_JudgeRecruit,Come to Dawnstar. There is a pool there that needs a shadow.,prompt
+NHV_Q02_070_21,NHV_Q02_JudgeRelease,"I will take the road south. May your water stay calm, Listener.",response
+NHV_Q02_070_20,NHV_Q02_JudgeRelease,Leave Windhelm and do not come back.,prompt
+NHV_Q02_070_31,NHV_Q02_JudgeSilence,Then do it quickly. I would do the same for you.,response
+NHV_Q02_070_30,NHV_Q02_JudgeSilence,The family has no room for you.,prompt
+NHV_Q02_070_41,NHV_Q02_JudgeSurrender,You lead me into the dark only to hand me to the light? Coward.,response
+NHV_Q02_070_40,NHV_Q02_JudgeSurrender,The Jarl's guards will want a word with you.,prompt
+NHV_Q02_060_01,NHV_Q02_KillA1,Sings? You are late. Is something wrong at the docks?,response
+NHV_Q02_060_03,NHV_Q02_KillA2,"At this hour? You are shaking. Here, take my cloak. It is freezing out.",response
+NHV_Q02_060_05,NHV_Q02_KillA2,You have been quiet all week. Did someone at the docks threaten you?,response
+NHV_Q02_060_07,NHV_Q02_KillA3,"I know. I write complaints until the ink dries, then I write another.",response
+NHV_Q02_060_09,NHV_Q02_KillA4,Not often enough. But a closed door is still better than a grave.,response
+NHV_Q02_060_02,NHV_Q02_KillS1,"Nothing is wrong, Aelius. Walk with me to the water.",response
+NHV_Q02_060_06,NHV_Q02_KillS2,Everyone threatens someone. Most only call it work.,response
+NHV_Q02_060_08,NHV_Q02_KillS3,And did the ink ever open a door?,response
+NHV_Q02_060_04,NHV_Q02_KillS4,Close your eyes. The water is not cold after the first breath.,response
+NHV_Q02_070_08,NHV_Q02_SingsAccountable,Clean water is a story. I can choose what I put into it next.,response
+NHV_Q02_070_07,NHV_Q02_SingsAccountable,You can condemn the list without pretending the killing was clean.,prompt
+NHV_Q02_050_57,NHV_Q02_SingsAelius,No. That is why your knife feels heavier when you speak his name.,response
+NHV_Q02_050_56,NHV_Q02_SingsAelius,Then Aelius is not on that list.,prompt
+NHV_Q02_050_41,NHV_Q02_SingsBodies,Let it notice. The water keeps what it takes. Mostly.,response
+NHV_Q02_050_40,NHV_Q02_SingsBodies,Five bodies before tonight. The city will notice the next.,prompt
+NHV_Q02_050_11,NHV_Q02_SingsBrotherhood,I knew the name before I knew the face. Veezara's family. I thought the Emperor's dogs had drowned you all.,response
+NHV_Q02_050_30,NHV_Q02_SingsBrotherhood,"In the Marsh, they might have taken me young and taught me the Shadowscale's work. Here, I was a dockhand.",response
+NHV_Q02_050_31,NHV_Q02_SingsBrotherhood,They beat us with the same hands they pray with. I only introduced those hands to the water.,response
+NHV_Q02_050_10,NHV_Q02_SingsBrotherhood,The Dark Brotherhood.,prompt
+NHV_Q02_050_71,NHV_Q02_SingsFrame,Family. A word the Nords never had for us.,response
+NHV_Q02_050_95,NHV_Q02_SingsFrame,He works late. He always works late. That is the kind of man he is.,response
+NHV_Q02_050_70,NHV_Q02_SingsFrame,"Do this, and I will judge you for more than your anger.",prompt
+NHV_Q02_050_55,NHV_Q02_SingsHands,Hands. Boots. Doors that closed before I reached them. A body learns its list.,response
+NHV_Q02_050_54,NHV_Q02_SingsHands,You remember every hand that hurt you.,prompt
+NHV_Q02_050_01,NHV_Q02_SingsHollowGreet,"You smell of the Void, stranger. Not a guard, then. Something worse.",response
+NHV_Q02_050_02,NHV_Q02_SingsHollowGreet,Haldor. You pulled him out. Why? He would not have pulled you.,response
+NHV_Q02_050_91,NHV_Q02_SingsIWill,"No. If it must be done, it will be done by the one who owes him.",response
+NHV_Q02_050_90,NHV_Q02_SingsIWill,"If you will not, I will.",prompt
+NHV_Q02_070_01,NHV_Q02_SingsJudgeGreet,His desk is locked. Aelius never locked anything.,response
+NHV_Q02_070_02,NHV_Q02_SingsJudgeGreet,He wrote our names down. Every one. For the Emperor's dogs.,response
+NHV_Q02_070_03,NHV_Q02_SingsJudgeGreet,"So I was right to hate, and wrong about whom.",response
+NHV_Q02_070_05,NHV_Q02_SingsJudgeGreet,I agreed to kill him before I knew. His betrayal cannot change that.,response
+NHV_Q02_070_06,NHV_Q02_SingsJudgeGreet,He wrote our names to protect a city that never learned them.,response
+NHV_Q02_070_04,NHV_Q02_SingsJudgeGreet,"So, Listener. Do I follow you into the dark, or does the water have one more guest?",response
+NHV_Q02_050_51,NHV_Q02_SingsKillWell,What else is there to kill for? Coin? That is how Nords think.,response
+NHV_Q02_050_50,NHV_Q02_SingsKillWell,You kill well. Do you kill for anything but hate?,prompt
+NHV_Q02_050_81,NHV_Q02_SingsLeash,A leash. Yes. I have felt it tighten every night.,response
+NHV_Q02_050_80,NHV_Q02_SingsLeash,"(Persuade) Hate is a leash. Kill him, and you will never wear it again.",prompt
+NHV_Q02_050_53,NHV_Q02_SingsProtect,The water has no fear. It only remembers what is given to it.,response
+NHV_Q02_050_52,NHV_Q02_SingsProtect,You protected them by making the water afraid of them.,prompt
+NHV_Q02_050_59,NHV_Q02_SingsVeezara,A name for the dark. A place where scales were not a crime. I have not decided if that is enough.,response
+NHV_Q02_050_58,NHV_Q02_SingsVeezara,What did Veezara's family give you?,prompt
+NHV_Q02_050_21,NHV_Q02_SingsWitness,Then you watched justice. It is quieter than the priests promise.,response
+NHV_Q02_050_20,NHV_Q02_SingsWitness,Someone who watched what happened at the docks.,prompt
+NHV_Q02_010_01,NHV_Q02_VeyraBrief,Windhelm's harbor has been giving back bodies. Four this season. The guards blame the cold.,response
+NHV_Q02_010_02,NHV_Q02_VeyraBrief,The cold does not tie knots.,response
+NHV_Q02_010_03,NHV_Q02_VeyraBrief,Find out who ties them. Then find out whether he can tie one without hating the neck inside it.,response
+NHV_Q02_100_01,NHV_Q02_VeyraDebrief,He came. Good. He will read Veezara's name on the wall every night.,response
+NHV_Q02_100_02,NHV_Q02_VeyraDebrief,"Gone south, then. I hope he finds something worth staying for.",response
+NHV_Q02_100_03,NHV_Q02_VeyraDebrief,...Sithis takes them all eventually.,response
+NHV_Q02_100_04,NHV_Q02_VeyraDebrief,Handed to the Jarl. An interesting choice for a Listener.,response

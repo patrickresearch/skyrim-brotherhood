@@ -1,0 +1,10 @@
+[
+  {
+    "path": "dialogue/Q00.csv",
+    "sha256": "2b7cc486bff17088e2ccdbb673babacea8048301441d360bd0f05494a5a42745"
+  },
+  {
+    "path": "dialogue/Journal.csv",
+    "sha256": "48a417ae3fbaed4f18b95aded583bdfcb42ec955e1a1b290646737467694b567"
+  }
+]

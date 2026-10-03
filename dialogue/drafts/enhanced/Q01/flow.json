@@ -1,0 +1,494 @@
+{
+  "version": 3,
+  "status": "INACTIVE_ENHANCED_DRAFT",
+  "start": "briefing",
+  "nodes": [
+    {
+      "id": "briefing",
+      "stage": 10,
+      "title": "Der Auftrag wird eine Ermittlung",
+      "lines": [
+        "NHV_Q01_010_2000",
+        "NHV_Q01_010_2001",
+        "NHV_Q01_010_2002",
+        "NHV_Q01_010_2003",
+        "NHV_Q01_010_2004",
+        "NHV_Q01_010_2005",
+        "NHV_Q01_010_2006"
+      ],
+      "next": "hakan"
+    },
+    {
+      "id": "hakan",
+      "stage": 10,
+      "title": "Hakan kennt eine Vermutung, keinen Beweis",
+      "lines": [
+        "NHV_Q01_010_2010",
+        "NHV_Q01_010_2011",
+        "NHV_Q01_010_2012",
+        "NHV_Q01_010_2013",
+        "NHV_Q01_010_2014",
+        "NHV_Q01_010_2015",
+        "NHV_Q01_010_2016",
+        "NHV_Q01_010_2017",
+        "NHV_Q01_010_2018",
+        "NHV_Q01_010_2019",
+        "NHV_Q01_010_2020"
+      ],
+      "next": "reedbed_encounter"
+    },
+    {
+      "id": "reedbed_encounter",
+      "stage": 12,
+      "title": "Subquest: Den roten Fährmarker zurückholen",
+      "lines": [
+        "NHV_Q01_012_2021",
+        "NHV_Q01_012_2022",
+        "NHV_Q01_012_2023",
+        "NHV_Q01_012_2024",
+        "NHV_Q01_012_2025",
+        "NHV_Q01_012_2026"
+      ],
+      "next": "hakan_suspicion",
+      "effects": {
+        "NHV_Q01_ReedbedMarkerReturned": 1
+      }
+    },
+    {
+      "id": "hakan_suspicion",
+      "stage": 12,
+      "title": "Hakan nennt Hrefna",
+      "lines": [
+        "NHV_Q01_012_2027",
+        "NHV_Q01_012_2028",
+        "NHV_Q01_012_2029"
+      ],
+      "next": "farm_search",
+      "effects": {
+        "NHV_Q01_HrefnaFarmMarker": 1
+      }
+    },
+    {
+      "id": "farm_search",
+      "stage": 20,
+      "title": "Stormhollow untersuchen",
+      "lines": [
+        "NHV_Q01_020_2100",
+        "NHV_Q01_020_2101",
+        "NHV_Q01_020_2102",
+        "NHV_Q01_020_2103",
+        "NHV_Q01_020_2104",
+        "NHV_Q01_020_2105",
+        "NHV_Q01_020_2106",
+        "NHV_Q01_020_2107"
+      ],
+      "next": "farm_tracks",
+      "effects": {
+        "NHV_Q01_FarmInspected": 1
+      }
+    },
+    {
+      "id": "farm_tracks",
+      "stage": 20,
+      "title": "Imperiale Fußspuren",
+      "lines": [
+        "NHV_Q01_020_2108",
+        "NHV_Q01_020_2109"
+      ],
+      "next": "watchpost_battle",
+      "effects": {
+        "NHV_Q01_WatchpostMarker": 1
+      }
+    },
+    {
+      "id": "watchpost_battle",
+      "stage": 25,
+      "title": "Soldaten und Scout am alten Wachposten",
+      "lines": [],
+      "next": "watchpost_scout_dialogue",
+      "effects": {}
+    },
+    {
+      "id": "watchpost_scout_dialogue",
+      "stage": 25,
+      "title": "Der überlebende Scout nach dem Kampf",
+      "lines": [
+        "NHV_Q01_025_2120",
+        "NHV_Q01_025_2121",
+        "NHV_Q01_025_2122",
+        "NHV_Q01_025_2123",
+        "NHV_Q01_025_2124",
+        "NHV_Q01_025_2125",
+        "NHV_Q01_025_2126"
+      ],
+      "next": "camp",
+      "effects": {
+        "NHV_Q01_ScoutEncountered": 1,
+        "NHV_Q01_HrefnaCampMarker": 1,
+        "NHV_Q01_HrefnaCampReady": 1
+      }
+    },
+    {
+      "id": "camp",
+      "stage": 30,
+      "title": "Hrefnas Lager",
+      "lines": [
+        "NHV_Q01_020_2110",
+        "NHV_Q01_020_2111",
+        "NHV_Q01_020_2112",
+        "NHV_Q01_030_2200",
+        "NHV_Q01_030_2201",
+        "NHV_Q01_030_2202",
+        "NHV_Q01_030_2203",
+        "NHV_Q01_030_2204",
+        "NHV_Q01_030_2205",
+        "NHV_Q01_030_2206",
+        "NHV_Q01_030_2207",
+        "NHV_Q01_030_2208",
+        "NHV_Q01_030_2209",
+        "NHV_Q01_030_2210",
+        "NHV_Q01_030_2211",
+        "NHV_Q01_030_2212",
+        "NHV_Q01_030_2213",
+        "NHV_Q01_030_2214",
+        "NHV_Q01_030_2215",
+        "NHV_Q01_030_2216",
+        "NHV_Q01_030_2217",
+        "NHV_Q01_030_2218"
+      ],
+      "next": "quintus_intro"
+    },
+    {
+      "id": "quintus_intro",
+      "stage": 40,
+      "title": "Quintus als Händler",
+      "lines": [
+        "NHV_Q01_040_2303",
+        "NHV_Q01_040_2304",
+        "NHV_Q01_040_2305",
+        "NHV_Q01_040_2306",
+        "NHV_Q01_040_2307",
+        "NHV_Q01_040_2308",
+        "NHV_Q01_040_2309",
+        "NHV_Q01_040_2310",
+        "NHV_Q01_040_2311"
+      ],
+      "next": "quintus_reveal"
+    },
+    {
+      "id": "quintus_reveal",
+      "stage": 40,
+      "title": "Die Widersprüche erzwingen die Wahrheit",
+      "lines": [
+        "NHV_Q01_040_2312",
+        "NHV_Q01_040_2313",
+        "NHV_Q01_040_2314",
+        "NHV_Q01_040_2315"
+      ],
+      "next": "quintus_truth",
+      "effects": {
+        "NHV_Q01_QuintusTruth": 1
+      }
+    },
+    {
+      "id": "quintus_truth",
+      "stage": 40,
+      "title": "Quintus nennt seine Behörde",
+      "lines": [
+        "NHV_Q01_040_2316",
+        "NHV_Q01_040_2317"
+      ],
+      "next": "documents_search"
+    },
+    {
+      "id": "documents_search",
+      "stage": 42,
+      "title": "Brief an die Tochter und Einsatzunterlagen",
+      "lines": [
+        "NHV_Q01_042_2320",
+        "NHV_Q01_042_2321"
+      ],
+      "next": "documents_confront",
+      "effects": {
+        "NHV_Q01_DocumentsFound": 1
+      }
+    },
+    {
+      "id": "documents_confront",
+      "stage": 42,
+      "title": "Quintus erkennt die Durchsuchung",
+      "lines": [
+        "NHV_Q01_042_2322",
+        "NHV_Q01_042_2323"
+      ],
+      "next": "quintus_choice"
+    },
+    {
+      "id": "quintus_choice",
+      "stage": 45,
+      "title": "Quintus bleibt oder folgt einer Lüge",
+      "choices": [
+        {
+          "line": "NHV_Q01_045_2330",
+          "to": "quintus_stays"
+        },
+        {
+          "line": "NHV_Q01_045_2332",
+          "to": "quintus_lie"
+        }
+      ]
+    },
+    {
+      "id": "quintus_stays",
+      "stage": 45,
+      "title": "Quintus bleibt in der Herberge",
+      "lines": [
+        "NHV_Q01_045_2331"
+      ],
+      "next": "camp_return",
+      "effects": {
+        "NHV_Q01_QuintusLocation": 1
+      }
+    },
+    {
+      "id": "quintus_lie",
+      "stage": 45,
+      "title": "Die falsche Nachricht über Hrefnas Rückkehr",
+      "lines": [
+        "NHV_Q01_045_2332"
+      ],
+      "next": "quintus_lie_follow",
+      "effects": {
+        "NHV_Q01_QuintusLocation": 2
+      }
+    },
+    {
+      "id": "quintus_lie_follow",
+      "stage": 45,
+      "title": "Quintus folgt zur Farm",
+      "lines": [
+        "NHV_Q01_045_2333"
+      ],
+      "next": "camp_return"
+    },
+    {
+      "id": "camp_return",
+      "stage": 48,
+      "title": "Hrefna kommt mit in die Herberge",
+      "lines": [
+        "NHV_Q01_048_2340",
+        "NHV_Q01_048_2341",
+        "NHV_Q01_048_2342"
+      ],
+      "next": "inn_documents"
+    },
+    {
+      "id": "inn_documents",
+      "stage": 50,
+      "title": "Hrefna liest die Dokumente",
+      "lines": [
+        "NHV_Q01_050_2360",
+        "NHV_Q01_050_2361",
+        "NHV_Q01_050_2362"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q01_050_2370",
+          "to": "hrefna_kill",
+          "condition": "GetGlobalValue NHV_Q01_QuintusLocation == 1"
+        },
+        {
+          "line": "NHV_Q01_050_2372",
+          "to": "hrefna_kill",
+          "condition": "GetGlobalValue NHV_Q01_QuintusLocation == 2"
+        },
+        {
+          "line": "NHV_Q01_050_2380",
+          "to": "hrefna_capture",
+          "condition": "GetGlobalValue NHV_Q01_QuintusLocation == 1"
+        },
+        {
+          "line": "NHV_Q01_050_2382",
+          "to": "hrefna_capture",
+          "condition": "GetGlobalValue NHV_Q01_QuintusLocation == 2"
+        },
+        {
+          "line": "NHV_Q01_050_2390",
+          "to": "player_kill",
+          "condition": "GetGlobalValue NHV_Q01_QuintusLocation == 2"
+        },
+        {
+          "line": "NHV_Q01_050_2392",
+          "to": "player_kill",
+          "condition": "GetGlobalValue NHV_Q01_QuintusLocation == 1"
+        }
+      ]
+    },
+    {
+      "id": "hrefna_kill",
+      "stage": 55,
+      "title": "Hrefna tötet Quintus in der Herberge",
+      "lines": [
+        "NHV_Q01_050_2371",
+        "NHV_Q01_050_2373",
+        "NHV_Q01_055_2560",
+        "NHV_Q01_055_2561",
+        "NHV_Q01_055_2562",
+        "NHV_Q01_055_2563"
+      ],
+      "next": "papers",
+      "effects": {
+        "NHV_Q01_FinalChoice": 1,
+        "NHV_Q01_Result": 1,
+        "NHV_Q01_HrefnaProven": 1,
+        "NHV_Q01_QuintusLocation": 1
+      }
+    },
+    {
+      "id": "hrefna_capture",
+      "stage": 55,
+      "title": "Hrefna lässt sich festnehmen",
+      "lines": [
+        "NHV_Q01_050_2381",
+        "NHV_Q01_055_2570",
+        "NHV_Q01_055_2571",
+        "NHV_Q01_055_2572",
+        "NHV_Q01_055_2573"
+      ],
+      "next": "papers",
+      "effects": {
+        "NHV_Q01_FinalChoice": 2,
+        "NHV_Q01_Result": 2,
+        "NHV_Q01_HrefnaCaptured": 1,
+        "NHV_Q01_QuintusLocation": 2
+      }
+    },
+    {
+      "id": "player_kill",
+      "stage": 55,
+      "title": "Der Listener tötet Quintus auf der Farm",
+      "lines": [
+        "NHV_Q01_050_2391",
+        "NHV_Q01_050_2393",
+        "NHV_Q01_055_2580",
+        "NHV_Q01_055_2581",
+        "NHV_Q01_055_2582"
+      ],
+      "next": "papers",
+      "effects": {
+        "NHV_Q01_FinalChoice": 3,
+        "NHV_Q01_Result": 2,
+        "NHV_Q01_HrefnaProven": 0,
+        "NHV_Q01_QuintusLocation": 2
+      }
+    },
+    {
+      "id": "papers",
+      "stage": 60,
+      "title": "Das Fragment sichern",
+      "lines": [
+        "NHV_Q01_060_2600",
+        "NHV_Q01_060_2601",
+        "NHV_Q01_060_2602",
+        "NHV_Q01_060_2603",
+        "NHV_Q01_060_2604",
+        "NHV_Q01_060_2605",
+        "NHV_Q01_060_2606"
+      ],
+      "next": "fragment_choice"
+    },
+    {
+      "id": "fragment_choice",
+      "stage": 60,
+      "title": "Das unvollständige Fragment bewerten",
+      "choices": [
+        {
+          "line": "NHV_Q01_060_2620",
+          "to": "fragment_missed"
+        },
+        {
+          "line": "NHV_Q01_060_2622",
+          "to": "fragment_found"
+        }
+      ]
+    },
+    {
+      "id": "fragment_found",
+      "stage": 60,
+      "title": "Das Fragment sichern",
+      "lines": [],
+      "next": "judgment",
+      "effects": {
+        "NHV_Q01_FragmentFound": 1
+      }
+    },
+    {
+      "id": "fragment_missed",
+      "stage": 60,
+      "title": "Die Lücke zurücklassen",
+      "lines": [
+        "NHV_Q01_060_2621"
+      ],
+      "next": "judgment",
+      "effects": {
+        "NHV_Q01_FragmentFound": 0
+      }
+    },
+    {
+      "id": "judgment",
+      "stage": 70,
+      "title": "Der Listener urteilt",
+      "lines": [
+        "NHV_Q01_070_2700",
+        "NHV_Q01_070_2701",
+        "NHV_Q01_070_2702",
+        "NHV_Q01_070_2703",
+        "NHV_Q01_070_2704",
+        "NHV_Q01_070_2705",
+        "NHV_Q01_070_2706",
+        "NHV_Q01_070_2707",
+        "NHV_Q01_070_2708"
+      ],
+      "choices": [
+        {
+          "ui": "Recruit proven",
+          "to": "debrief"
+        },
+        {
+          "ui": "Recruit unproven",
+          "to": "debrief"
+        },
+        {
+          "ui": "Release",
+          "to": "debrief"
+        },
+        {
+          "ui": "Silence",
+          "to": "debrief"
+        }
+      ]
+    },
+    {
+      "id": "debrief",
+      "stage": 100,
+      "title": "Die Ernte hinterlässt eine Spur",
+      "lines": [
+        "NHV_Q01_100_2800",
+        "NHV_Q01_100_2801",
+        "NHV_Q01_100_2802",
+        "NHV_Q01_100_2803",
+        "NHV_Q01_100_2804",
+        "NHV_Q01_100_2805",
+        "NHV_Q01_100_2806"
+      ],
+      "next": "end"
+    },
+    {
+      "id": "end",
+      "stage": 100,
+      "title": "Q01 abgeschlossen",
+      "lines": [],
+      "next": null
+    }
+  ]
+}

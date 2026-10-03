@@ -1,0 +1,11 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q03_060_6000,Q03,60,V2_WhisperbaneLetter,Book,-,Neutral,50,"ORDER: WHISPERBANE\n\nTwo doses. One for the old woman, one for the Redguard. Payment in Imperial gold. Sign only L.M.",GetStage NHV_Q03_TheScholarsSin == 60,Enhanced draft; inherited Q03 V2 baseline. CK conditions remain to be wired.
+NHV_Q03_015_6150,Q03,15,Enhanced_CollegeMargin,Book,-,Neutral,50,"COLLEGE MARGIN
+
+The focus crystal failed before the second flare. Aurantil pulled Selveni clear. Three witnesses called it an accident; none agreed on who lit the room. The file closes around the uncertainty.",GetStage NHV_Q03_TheScholarsSin == 15,Found in the College witness's copied notes.
+NHV_Q03_035_6350,Q03,35,Enhanced_FrostfireNote,Book,-,Neutral,50,"FROSTFIRE WARD
+
+The ward responds to carried evidence. A fragment remembers the hand that broke it. Fire opens nothing by force alone; patience leaves fewer burns.",GetStage NHV_Q03_TheScholarsSin == 35,Found beneath the resonance chamber.
+NHV_Q03_065_6650,Q03,65,Enhanced_Countermark,Book,-,Neutral,50,"COUNTERMARK
+
+A black seal pressed into wax. No name, no office, only a route and a payment mark. The hand that orders a death need not stand near the body.",GetStage NHV_Q03_TheScholarsSin == 65,Optional evidence beside the Whisperbane order.

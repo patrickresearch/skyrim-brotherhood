@@ -1,0 +1,1336 @@
+{
+  "version": 2,
+  "status": "INACTIVE_EDITORIAL_DRAFT",
+  "start": "standoff",
+  "initial": {
+    "cicero": true,
+    "initiates": false,
+    "heardPlan": false,
+    "heardMethod": false,
+    "heardAuthority": false,
+    "accepted": false,
+    "returned": false,
+    "memorial": 0,
+    "lucien": false,
+    "heardInvitation": false,
+    "witnessAccepted": false
+  },
+  "nodes": [
+    {
+      "id": "standoff",
+      "stage": 10,
+      "title": "Standoff – Ruf, Ernte, dann erst ein Name",
+      "lines": [
+        "NHV_Q00_010_1000",
+        "NHV_Q00_010_1001",
+        "NHV_Q00_010_1002",
+        "NHV_Q00_010_1003",
+        "NHV_Q00_010_1004",
+        "NHV_Q00_010_1041"
+      ],
+      "next": "recognition",
+      "direction": "Veyra bleibt trotz der Klinge ruhig. Sithis' Ruf ist ihre eigene religiöse Aussage, kein objektiver Erzählerbeleg. Erst Nazir verlangt ihren Namen."
+    },
+    {
+      "id": "recognition",
+      "stage": 10,
+      "title": "Cicero erkennt eine Bekannte",
+      "lines": [
+        "NHV_Q00_010_1005",
+        "NHV_Q00_010_1006"
+      ],
+      "when": {
+        "cicero": true
+      },
+      "otherwise": "harvest_question",
+      "next": "harvest_question"
+    },
+    {
+      "id": "harvest_question",
+      "stage": 10,
+      "title": "Der Listener verlangt eine greifbare Erklärung",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q00_010_1042",
+          "to": "harvest_plain"
+        },
+        {
+          "line": "NHV_Q00_010_1043",
+          "to": "harvest_plain"
+        }
+      ]
+    },
+    {
+      "id": "harvest_plain",
+      "stage": 10,
+      "title": "Die Ernte bekommt Bedeutung – mögliche neue Mitglieder",
+      "lines": [
+        "NHV_Q00_010_1044",
+        "NHV_Q00_010_1045",
+        "NHV_Q00_010_1046",
+        "NHV_Q00_010_1047",
+        "NHV_Q00_010_1048",
+        "NHV_Q00_010_1049"
+      ],
+      "effects": {
+        "heardInvitation": true
+      },
+      "next": "standoff_hub"
+    },
+    {
+      "id": "standoff_hub",
+      "stage": 10,
+      "title": "Freie Befragung – keine Frage beendet den Standoff",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q00_010_1007",
+          "to": "gleaner"
+        },
+        {
+          "line": "NHV_Q00_010_1008",
+          "to": "door"
+        },
+        {
+          "line": "NHV_Q00_010_1009",
+          "to": "late"
+        },
+        {
+          "line": "NHV_Q00_010_1010",
+          "to": "mother_past"
+        },
+        {
+          "line": "NHV_Q00_010_1011",
+          "to": "blade"
+        },
+        {
+          "line": "NHV_Q00_010_1012",
+          "to": "departure"
+        },
+        {
+          "line": "NHV_Q00_010_1013",
+          "to": "dismiss"
+        }
+      ],
+      "requires": {
+        "heardInvitation": true
+      }
+    },
+    {
+      "id": "gleaner",
+      "stage": 10,
+      "title": "Die Nachleserin – Metapher mit greifbarer Bedeutung",
+      "lines": [
+        "NHV_Q00_010_1014",
+        "NHV_Q00_010_1015",
+        "NHV_Q00_010_1016"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q00_010_1017",
+          "to": "murderers"
+        },
+        {
+          "line": "NHV_Q00_010_1018",
+          "to": "standoff_hub"
+        }
+      ]
+    },
+    {
+      "id": "murderers",
+      "stage": 10,
+      "title": "Ein Mord allein genügt nicht",
+      "lines": [
+        "NHV_Q00_010_1019",
+        "NHV_Q00_010_1020"
+      ],
+      "next": "standoff_hub"
+    },
+    {
+      "id": "door",
+      "stage": 10,
+      "title": "Zugang ist kein Vertrauensbeweis",
+      "lines": [
+        "NHV_Q00_010_1021",
+        "NHV_Q00_010_1022",
+        "NHV_Q00_010_1023"
+      ],
+      "next": "standoff_hub"
+    },
+    {
+      "id": "late",
+      "stage": 10,
+      "title": "Falkreath und die Grenzen ihrer Hilfe",
+      "lines": [
+        "NHV_Q00_010_1024",
+        "NHV_Q00_010_1025",
+        "NHV_Q00_010_1026",
+        "NHV_Q00_010_1027"
+      ],
+      "next": "standoff_hub"
+    },
+    {
+      "id": "mother_past",
+      "stage": 10,
+      "title": "Die Mutter – das persönliche Mysterium bleibt",
+      "lines": [
+        "NHV_Q00_010_1028",
+        "NHV_Q00_010_1029"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q00_010_1030",
+          "to": "mother_limit"
+        },
+        {
+          "line": "NHV_Q00_010_1031",
+          "to": "standoff_hub"
+        }
+      ]
+    },
+    {
+      "id": "mother_limit",
+      "stage": 10,
+      "title": "Kein zweiter Listener",
+      "lines": [
+        "NHV_Q00_010_1032"
+      ],
+      "next": "standoff_hub"
+    },
+    {
+      "id": "blade",
+      "stage": 10,
+      "title": "Nazirs Klinge – die Befragung läuft weiter",
+      "lines": [
+        "NHV_Q00_010_1033",
+        "NHV_Q00_010_1034"
+      ],
+      "next": "stage12_blade",
+      "direction": "Die Drohung beendet die Befragung. Veyra ruft den Zeugen aus Trotz, nicht aus Zustimmung."
+    },
+    {
+      "id": "dismiss",
+      "stage": 10,
+      "title": "Scharfer Abschied",
+      "lines": [
+        "NHV_Q00_010_1035"
+      ],
+      "next": "stage12_dismiss"
+    },
+    {
+      "id": "departure",
+      "stage": 10,
+      "title": "Bewusster Abschluss",
+      "lines": [
+        "NHV_Q00_010_1036"
+      ],
+      "next": "departure_reason"
+    },
+    {
+      "id": "departure_reason",
+      "stage": 10,
+      "title": "Warum die Night Mother befragt wird",
+      "lines": [
+        "NHV_Q00_010_1037",
+        "NHV_Q00_010_1038"
+      ],
+      "next": "stage12_departure",
+      "direction": "Erst nach letzter Response folgt Stage 12; die Beschwörung liegt vor Veyras Abgang."
+    },
+    {
+      "id": "stage12_departure",
+      "stage": 12,
+      "title": "Zeuge nach dem Urteil der Night Mother",
+      "lines": [
+        "NHV_Q00_012_1000",
+        "NHV_Q00_012_1001"
+      ],
+      "next": "lucien_standoff"
+    },
+    {
+      "id": "stage12_blade",
+      "stage": 12,
+      "title": "Zeuge trotz der Drohung",
+      "lines": [
+        "NHV_Q00_012_1002",
+        "NHV_Q00_012_1003"
+      ],
+      "next": "lucien_standoff"
+    },
+    {
+      "id": "stage12_dismiss",
+      "stage": 12,
+      "title": "Zeuge an der Tür",
+      "lines": [
+        "NHV_Q00_012_1004",
+        "NHV_Q00_012_1005"
+      ],
+      "next": "lucien_standoff"
+    },
+    {
+      "id": "lucien_standoff",
+      "stage": 12,
+      "title": "Luciens Bürgschaft im Standoff",
+      "lines": [
+        "NHV_Q00_012_1006",
+        "NHV_Q00_012_1007",
+        "NHV_Q00_012_1008",
+        "NHV_Q00_012_1009",
+        "NHV_Q00_012_1010",
+        "NHV_Q00_012_1011",
+        "NHV_Q00_012_1012",
+        "NHV_Q00_012_1013"
+      ],
+      "next": "exit",
+      "effects": {
+        "lucien": true
+      },
+      "direction": "Veyra ruft verpflichtend. Lucien bürgt für ihre freiwillige Treue, Nazir bleibt misstrauisch, dann löst Lucien sich auf."
+    },
+    {
+      "id": "exit",
+      "stage": 15,
+      "title": "Veyra verlässt die Sanctuary",
+      "lines": [
+        "NHV_Q00_015_1000"
+      ],
+      "next": "before_mother",
+      "direction": "Räumlicher Übergang: sichtbarer Abschied, dann Windpeak; Vorschau simuliert den vorhandenen Stage-15/20-Ablauf."
+    },
+    {
+      "id": "before_mother",
+      "stage": 20,
+      "title": "Vor der Befragung",
+      "lines": [],
+      "choices": [
+        {
+          "ui": "Die Night Mother aufsuchen",
+          "to": "nm_start"
+        },
+        {
+          "ui": "Veyra vorher im Windpeak Inn besuchen",
+          "to": "inn_early"
+        }
+      ]
+    },
+    {
+      "id": "inn_early",
+      "stage": 20,
+      "title": "Zu früh im Gasthaus",
+      "lines": [
+        "NHV_Q00_020_1000"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q00_020_1001",
+          "to": "inn_wait"
+        },
+        {
+          "line": "NHV_Q00_020_1002",
+          "to": "inn_patience"
+        }
+      ]
+    },
+    {
+      "id": "inn_wait",
+      "stage": 20,
+      "title": "Zur Mutter zurück",
+      "lines": [
+        "NHV_Q00_020_1003"
+      ],
+      "next": "before_mother"
+    },
+    {
+      "id": "inn_patience",
+      "stage": 20,
+      "title": "Veyras Geduld",
+      "lines": [
+        "NHV_Q00_020_1004"
+      ],
+      "next": "before_mother"
+    },
+    {
+      "id": "nm_start",
+      "stage": 20,
+      "title": "Die Night Mother bestätigt den Auftrag",
+      "lines": [
+        "NHV_Q00_020_1005",
+        "NHV_Q00_020_1006",
+        "NHV_Q00_020_1007"
+      ],
+      "next": "nm_hub"
+    },
+    {
+      "id": "nm_hub",
+      "stage": 20,
+      "title": "Fragen an die Night Mother",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q00_020_1008",
+          "to": "nm_trust"
+        },
+        {
+          "line": "NHV_Q00_020_1009",
+          "to": "nm_family"
+        },
+        {
+          "line": "NHV_Q00_020_1010",
+          "to": "nm_voice"
+        },
+        {
+          "line": "NHV_Q00_020_1011",
+          "to": "nm_nature"
+        },
+        {
+          "line": "NHV_Q00_020_1012",
+          "to": "nm_close"
+        }
+      ]
+    },
+    {
+      "id": "nm_trust",
+      "stage": 20,
+      "title": "Vertrauen ersetzt keine Verantwortung",
+      "lines": [
+        "NHV_Q00_020_1013",
+        "NHV_Q00_020_1014"
+      ],
+      "next": "nm_hub"
+    },
+    {
+      "id": "nm_family",
+      "stage": 20,
+      "title": "Zugehörigkeit ohne Mitgliedschaft",
+      "lines": [
+        "NHV_Q00_020_1015",
+        "NHV_Q00_020_1016"
+      ],
+      "next": "nm_hub"
+    },
+    {
+      "id": "nm_voice",
+      "stage": 20,
+      "title": "Amt des Listeners",
+      "lines": [
+        "NHV_Q00_020_1017",
+        "NHV_Q00_020_1018"
+      ],
+      "next": "nm_hub",
+      "direction": "Kein Datum, keine lebende Night Mother als bestätigtes Ereignis; kein Anspruch auf ein historisch immer einziges Listeneramt."
+    },
+    {
+      "id": "nm_nature",
+      "stage": 20,
+      "title": "Sithis bewahrt das Geheimnis",
+      "lines": [
+        "NHV_Q00_020_1019",
+        "NHV_Q00_020_1020"
+      ],
+      "next": "nm_hub"
+    },
+    {
+      "id": "nm_close",
+      "stage": 20,
+      "title": "Erlaubnis, noch keine Zusage",
+      "lines": [
+        "NHV_Q00_020_1021"
+      ],
+      "next": "cicero_memory"
+    },
+    {
+      "id": "cicero_memory",
+      "stage": 30,
+      "title": "Optional – Ciceros Erinnerung",
+      "lines": [
+        "NHV_Q00_030_1000",
+        "NHV_Q00_030_1001"
+      ],
+      "when": {
+        "cicero": true
+      },
+      "otherwise": "inn_return",
+      "choices": [
+        {
+          "line": "NHV_Q00_030_1002",
+          "to": "cicero_validate"
+        },
+        {
+          "line": "NHV_Q00_030_1003",
+          "to": "cicero_duty"
+        },
+        {
+          "line": "NHV_Q00_030_1004",
+          "to": "cicero_later"
+        }
+      ]
+    },
+    {
+      "id": "cicero_validate",
+      "stage": 30,
+      "title": "Cicero fühlt sich gehört",
+      "lines": [
+        "NHV_Q00_030_1005"
+      ],
+      "next": "inn_return"
+    },
+    {
+      "id": "cicero_duty",
+      "stage": 30,
+      "title": "Cicero respektiert die Mother",
+      "lines": [
+        "NHV_Q00_030_1006"
+      ],
+      "next": "inn_return"
+    },
+    {
+      "id": "cicero_later",
+      "stage": 30,
+      "title": "Keine erzwungene Versöhnung",
+      "lines": [
+        "NHV_Q00_030_1007"
+      ],
+      "next": "inn_return"
+    },
+    {
+      "id": "inn_return",
+      "stage": 30,
+      "title": "Windpeak – Einladung zurück",
+      "lines": [
+        "NHV_Q00_030_1008"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q00_030_1009",
+          "to": "return_yes"
+        },
+        {
+          "line": "NHV_Q00_030_1010",
+          "to": "return_caution"
+        },
+        {
+          "line": "NHV_Q00_030_1011",
+          "to": "return_wait"
+        }
+      ]
+    },
+    {
+      "id": "return_wait",
+      "stage": 30,
+      "title": "Vertagen im Windpeak",
+      "lines": [
+        "NHV_Q00_030_1012"
+      ],
+      "pause": true,
+      "next": "inn_return"
+    },
+    {
+      "id": "return_yes",
+      "stage": 30,
+      "title": "Gemeinsamer Rückweg",
+      "lines": [
+        "NHV_Q00_030_1013"
+      ],
+      "next": "travel"
+    },
+    {
+      "id": "return_caution",
+      "stage": 30,
+      "title": "Misstrauen bleibt zulässig",
+      "lines": [
+        "NHV_Q00_030_1014"
+      ],
+      "next": "travel"
+    },
+    {
+      "id": "travel",
+      "stage": 30,
+      "title": "Rückkehr in die Dawnstar Sanctuary",
+      "lines": [],
+      "next": "proposal_start",
+      "effects": {
+        "returned": true
+      },
+      "direction": "Vorschau-Ereignis für CompleteVeyraReturnToSanctuary. Im Spiel erst nach tatsächlicher Rückkehr."
+    },
+    {
+      "id": "proposal_start",
+      "stage": 30,
+      "title": "Pflicht 1 – Was Veyra tatsächlich anbietet",
+      "lines": [
+        "NHV_Q00_030_1015",
+        "NHV_Q00_030_1016",
+        "NHV_Q00_030_1017",
+        "NHV_Q00_030_1018"
+      ],
+      "requires": {
+        "returned": true
+      },
+      "effects": {
+        "heardPlan": true
+      },
+      "choices": [
+        {
+          "line": "NHV_Q00_030_1019",
+          "to": "proposal_method"
+        }
+      ]
+    },
+    {
+      "id": "proposal_method",
+      "stage": 30,
+      "title": "Pflicht 2 – Beobachten, prüfen, urteilen",
+      "lines": [
+        "NHV_Q00_030_1020",
+        "NHV_Q00_030_1021",
+        "NHV_Q00_030_1022",
+        "NHV_Q00_030_1023"
+      ],
+      "effects": {
+        "heardMethod": true
+      },
+      "choices": [
+        {
+          "line": "NHV_Q00_030_1024",
+          "to": "proposal_authority"
+        }
+      ]
+    },
+    {
+      "id": "proposal_authority",
+      "stage": 30,
+      "title": "Pflicht 3 – Wer entscheidet und wer hier arbeitet",
+      "lines": [
+        "NHV_Q00_030_1025",
+        "NHV_Q00_030_1026",
+        "NHV_Q00_030_1027",
+        "NHV_Q00_030_1028",
+        "NHV_Q00_030_1029"
+      ],
+      "effects": {
+        "heardAuthority": true
+      },
+      "next": "proposal_hub"
+    },
+    {
+      "id": "proposal_hub",
+      "stage": 30,
+      "title": "Angebot verstanden – Nachfragen und bewusste Entscheidung",
+      "lines": [],
+      "requires": {
+        "returned": true,
+        "heardPlan": true,
+        "heardMethod": true,
+        "heardAuthority": true
+      },
+      "choices": [
+        {
+          "line": "NHV_Q00_030_1030",
+          "to": "motive"
+        },
+        {
+          "line": "NHV_Q00_030_1031",
+          "to": "trust"
+        },
+        {
+          "line": "NHV_Q00_030_1032",
+          "to": "astrid_warning"
+        },
+        {
+          "line": "NHV_Q00_030_1033",
+          "to": "refusal"
+        },
+        {
+          "line": "NHV_Q00_030_1034",
+          "to": "initiates",
+          "requires": {
+            "initiates": true
+          }
+        },
+        {
+          "line": "NHV_Q00_030_1035",
+          "to": "cheydinhal",
+          "requires": {
+            "cicero": true
+          }
+        },
+        {
+          "line": "NHV_Q00_030_1036",
+          "to": "space"
+        },
+        {
+          "line": "NHV_Q00_030_1037",
+          "to": "accept",
+          "requires": {
+            "heardPlan": true,
+            "heardMethod": true,
+            "heardAuthority": true,
+            "returned": true
+          }
+        },
+        {
+          "line": "NHV_Q00_030_1038",
+          "to": "proposal_wait"
+        }
+      ]
+    },
+    {
+      "id": "motive",
+      "stage": 30,
+      "title": "Veyras Dienst – My Dread Father",
+      "lines": [
+        "NHV_Q00_030_1039",
+        "NHV_Q00_030_1040",
+        "NHV_Q00_030_1041"
+      ],
+      "next": "proposal_hub"
+    },
+    {
+      "id": "trust",
+      "stage": 30,
+      "title": "Glaube ist keine Absolution",
+      "lines": [
+        "NHV_Q00_030_1042",
+        "NHV_Q00_030_1043",
+        "NHV_Q00_030_1044"
+      ],
+      "next": "proposal_hub"
+    },
+    {
+      "id": "astrid_warning",
+      "stage": 30,
+      "title": "Kein Versprechen vollkommener Sicherheit",
+      "lines": [
+        "NHV_Q00_030_1045",
+        "NHV_Q00_030_1046",
+        "NHV_Q00_030_1047"
+      ],
+      "next": "proposal_hub"
+    },
+    {
+      "id": "refusal",
+      "stage": 30,
+      "title": "Ablehnung und Gefahr unterscheiden",
+      "lines": [
+        "NHV_Q00_030_1048",
+        "NHV_Q00_030_1049"
+      ],
+      "next": "proposal_hub"
+    },
+    {
+      "id": "initiates",
+      "stage": 30,
+      "title": "Vorhandene Initiates respektieren",
+      "lines": [
+        "NHV_Q00_030_1050",
+        "NHV_Q00_030_1051"
+      ],
+      "requires": {
+        "initiates": true
+      },
+      "next": "proposal_hub"
+    },
+    {
+      "id": "cheydinhal",
+      "stage": 30,
+      "title": "Der Abschied und seine Kosten",
+      "lines": [
+        "NHV_Q00_030_1052",
+        "NHV_Q00_030_1053"
+      ],
+      "next": "cheydinhal_tail"
+    },
+    {
+      "id": "cheydinhal_tail",
+      "stage": 30,
+      "title": "Cicero lebt – die offene Wunde",
+      "lines": [
+        "NHV_Q00_030_1054"
+      ],
+      "when": {
+        "cicero": true
+      },
+      "otherwise": "proposal_hub",
+      "next": "proposal_hub"
+    },
+    {
+      "id": "space",
+      "stage": 30,
+      "title": "Eine Spur zum Raum, keine Zusage über seinen Zustand",
+      "lines": [
+        "NHV_Q00_030_1055",
+        "NHV_Q00_030_1056"
+      ],
+      "next": "proposal_hub"
+    },
+    {
+      "id": "proposal_wait",
+      "stage": 30,
+      "title": "Angebot vertagt",
+      "lines": [
+        "NHV_Q00_030_1057"
+      ],
+      "pause": true,
+      "next": "proposal_hub"
+    },
+    {
+      "id": "accept",
+      "stage": 30,
+      "title": "Ausdrücklicher Auftrag zur Rekrutierung",
+      "lines": [
+        "NHV_Q00_030_1058",
+        "NHV_Q00_030_1059",
+        "NHV_Q00_030_1060"
+      ],
+      "effects": {
+        "accepted": true
+      },
+      "next": "veil",
+      "direction": "Erst nach letzter Response Stage 40. Einstieg fordert alle drei Pflichtblöcke; noch kein Q01-Start."
+    },
+    {
+      "id": "veil",
+      "stage": 40,
+      "title": "Türszene A – Warum diese Wand",
+      "lines": [
+        "NHV_Q00_040_1000",
+        "NHV_Q00_040_1001",
+        "NHV_Q00_040_1002",
+        "NHV_Q00_040_1003",
+        "NHV_Q00_040_1004"
+      ],
+      "requires": {
+        "accepted": true
+      },
+      "next": "door_revealed",
+      "direction": "Szene A: fünf Phasen. Tür erst nach Veyras letzter Zeile enthüllen; kein erfundener Urheber."
+    },
+    {
+      "id": "door_revealed",
+      "stage": 50,
+      "title": "Türszene B – Reaktion auf die sichtbare Tür",
+      "lines": [
+        "NHV_Q00_050_1000",
+        "NHV_Q00_050_1001",
+        "NHV_Q00_050_1002"
+      ],
+      "next": "entry_cicero",
+      "direction": "Sichtbare Tür ist Voraussetzung. Szene B vor Bewegung; keine Behauptung, dass Kammern bereits sicher sind."
+    },
+    {
+      "id": "entry_cicero",
+      "stage": 50,
+      "title": "Optionaler Kommentar des Keepers",
+      "lines": [
+        "NHV_Q00_050_1003"
+      ],
+      "when": {
+        "cicero": true
+      },
+      "otherwise": "entry_hub",
+      "next": "entry_hub"
+    },
+    {
+      "id": "entry_hub",
+      "stage": 50,
+      "title": "Vor dem gemeinsamen Eintritt",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q00_050_1004",
+          "to": "entry"
+        },
+        {
+          "line": "NHV_Q00_050_1005",
+          "to": "entry_wait"
+        }
+      ]
+    },
+    {
+      "id": "entry_wait",
+      "stage": 50,
+      "title": "An der offenen Tür warten",
+      "lines": [
+        "NHV_Q00_050_1006"
+      ],
+      "pause": true,
+      "next": "entry_hub"
+    },
+    {
+      "id": "entry",
+      "stage": 50,
+      "title": "Gemeinsamer Eintritt und Sicherung",
+      "lines": [
+        "NHV_Q00_050_1007",
+        "NHV_Q00_050_1008",
+        "NHV_Q00_050_1009"
+      ],
+      "next": "cleared",
+      "direction": "Danach gemeinsam eintreten; im Spiel Eintritt und Draugr-Kampf abwarten. Vorschau-Schaltfläche simuliert das Ende beider Ereignisse."
+    },
+    {
+      "id": "cleared",
+      "stage": 50,
+      "title": "Nach den Draugr – vorsichtige Bestandsaufnahme",
+      "lines": [
+        "NHV_Q00_050_1010",
+        "NHV_Q00_050_1011",
+        "NHV_Q00_050_1012"
+      ],
+      "next": "rooms"
+    },
+    {
+      "id": "rooms",
+      "stage": 50,
+      "title": "Was die Räume mit Rekrutierung zu tun haben",
+      "lines": [
+        "NHV_Q00_050_1013",
+        "NHV_Q00_050_1014",
+        "NHV_Q00_050_1015",
+        "NHV_Q00_050_1016"
+      ],
+      "next": "memorial_intro",
+      "direction": "Rundgang zu Hall/Ledger Room; keine Freischaltung des späteren Dormitory. Danach erst zur Memorial Wall und Stage 60."
+    },
+    {
+      "id": "memorial_intro",
+      "stage": 60,
+      "title": "Gedenkwand vor der nächsten Einladung",
+      "lines": [
+        "NHV_Q00_060_1000",
+        "NHV_Q00_060_1001"
+      ],
+      "next": "cicero_dead"
+    },
+    {
+      "id": "cicero_dead",
+      "stage": 60,
+      "title": "Optional – der tote Keeper",
+      "lines": [
+        "NHV_Q00_060_1002"
+      ],
+      "when": {
+        "cicero": false
+      },
+      "otherwise": "memorial_hub",
+      "next": "memorial_hub"
+    },
+    {
+      "id": "memorial_hub",
+      "stage": 60,
+      "title": "Erinnerung und Astrids Eintrag",
+      "lines": [
+        "NHV_Q00_060_1003"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q00_060_1004",
+          "to": "memorial_knowledge"
+        },
+        {
+          "line": "NHV_Q00_060_1005",
+          "to": "memorial_equal"
+        },
+        {
+          "line": "NHV_Q00_060_1006",
+          "to": "memorial_none"
+        },
+        {
+          "line": "NHV_Q00_060_1007",
+          "to": "memorial_small"
+        }
+      ]
+    },
+    {
+      "id": "memorial_knowledge",
+      "stage": 60,
+      "title": "Kein erfundener gemeinsamer Lebenslauf",
+      "lines": [
+        "NHV_Q00_060_1008",
+        "NHV_Q00_060_1009"
+      ],
+      "next": "memorial_hub"
+    },
+    {
+      "id": "memorial_equal",
+      "stage": 60,
+      "title": "Astrid – gemeinsamer Eintrag",
+      "lines": [
+        "NHV_Q00_060_1010",
+        "NHV_Q00_060_1011"
+      ],
+      "effects": {
+        "memorial": 1
+      },
+      "next": "first_lead"
+    },
+    {
+      "id": "memorial_none",
+      "stage": 60,
+      "title": "Astrid – kein Eintrag",
+      "lines": [
+        "NHV_Q00_060_1012",
+        "NHV_Q00_060_1013"
+      ],
+      "effects": {
+        "memorial": 2
+      },
+      "next": "first_lead"
+    },
+    {
+      "id": "memorial_small",
+      "stage": 60,
+      "title": "Astrid – kleiner Eintrag darunter",
+      "lines": [
+        "NHV_Q00_060_1014",
+        "NHV_Q00_060_1015"
+      ],
+      "effects": {
+        "memorial": 3
+      },
+      "next": "first_lead"
+    },
+    {
+      "id": "first_lead",
+      "stage": 60,
+      "title": "Der erste Auftrag – Person und Zweck",
+      "lines": [
+        "NHV_Q00_060_1016",
+        "NHV_Q00_060_1017",
+        "NHV_Q00_060_1018",
+        "NHV_Q00_060_1019"
+      ],
+      "next": "lead_hub",
+      "direction": "Tod ist Gerücht, Hrefnas Täterschaft bleibt Q01-Ermittlung. Kein direkt empfangener Night-Mother-Auftrag behauptet."
+    },
+    {
+      "id": "lead_hub",
+      "stage": 60,
+      "title": "Den Untersuchungsauftrag klären",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q00_060_1020",
+          "to": "lead_judgment"
+        },
+        {
+          "line": "NHV_Q00_060_1021",
+          "to": "lead_where"
+        },
+        {
+          "line": "NHV_Q00_060_1022",
+          "to": "lead_silence"
+        },
+        {
+          "line": "NHV_Q00_060_1023",
+          "to": "lead_accept"
+        },
+        {
+          "line": "NHV_Q00_060_1024",
+          "to": "lead_wait"
+        }
+      ]
+    },
+    {
+      "id": "lead_judgment",
+      "stage": 60,
+      "title": "Keine Vorentscheidung für den Spieler",
+      "lines": [
+        "NHV_Q00_060_1025",
+        "NHV_Q00_060_1026"
+      ],
+      "next": "lead_hub"
+    },
+    {
+      "id": "lead_where",
+      "stage": 60,
+      "title": "Konkreter nächster Schritt",
+      "lines": [
+        "NHV_Q00_060_1027",
+        "NHV_Q00_060_1028"
+      ],
+      "next": "lead_hub"
+    },
+    {
+      "id": "lead_silence",
+      "stage": 60,
+      "title": "Keine erfundene Antwort auf das Schweigen",
+      "lines": [
+        "NHV_Q00_060_1029",
+        "NHV_Q00_060_1030"
+      ],
+      "next": "lead_hub"
+    },
+    {
+      "id": "lead_wait",
+      "stage": 60,
+      "title": "Auftrag noch nicht angenommen",
+      "lines": [
+        "NHV_Q00_060_1031"
+      ],
+      "pause": true,
+      "next": "lead_hub"
+    },
+    {
+      "id": "lead_accept",
+      "stage": 60,
+      "title": "Briefing abgeschlossen",
+      "lines": [
+        "NHV_Q00_060_1032"
+      ],
+      "next": "end",
+      "direction": "FinishQ00Contract beendet Q00 nach dem ersten Contract; Lucien wurde bereits im Standoff gerufen."
+    },
+    {
+      "id": "doubt",
+      "obsolete": true,
+      "stage": 80,
+      "title": "Optionaler Bürge – der Auftrag steht bereits fest",
+      "lines": [
+        "NHV_Q00_080_1000",
+        "NHV_Q00_080_1001",
+        "NHV_Q00_080_1002"
+      ],
+      "choices": [
+        {
+          "line": "NHV_Q00_080_1003",
+          "to": "summon_accept"
+        },
+        {
+          "line": "NHV_Q00_080_1004",
+          "to": "doubt_decline"
+        },
+        {
+          "line": "NHV_Q00_080_1005",
+          "to": "doubt_sharp"
+        }
+      ],
+      "direction": "Identität und Zustand des Zeugen bleiben bis nach der Annahme ungenannt. Auch Journal und Nachholpfad nennen keinen Namen."
+    },
+    {
+      "id": "summon_accept",
+      "obsolete": true,
+      "stage": 80,
+      "title": "Zeugenangebot angenommen; Q00 abschließen",
+      "lines": [
+        "NHV_Q00_080_1006"
+      ],
+      "next": "summon",
+      "direction": "Am Response-Ende OnDoubtAccepted: vorhandene Reihenfolge CompleteQ00, dann SummonLucien; Q01 startet unabhängig von Lucien-Gespräch.",
+      "effects": {
+        "witnessAccepted": true
+      }
+    },
+    {
+      "id": "doubt_decline",
+      "obsolete": true,
+      "stage": 80,
+      "title": "Höfliche Ablehnung",
+      "lines": [
+        "NHV_Q00_080_1007"
+      ],
+      "next": "end",
+      "direction": "OnDoubtDeclined; Q00 Stage 100 und Q01 starten; späterer Ruf bleibt möglich."
+    },
+    {
+      "id": "doubt_sharp",
+      "obsolete": true,
+      "stage": 80,
+      "title": "Scharfe Ablehnung ohne Strafe",
+      "lines": [
+        "NHV_Q00_080_1008"
+      ],
+      "next": "end",
+      "direction": "Gleicher Abschluss wie höfliche Ablehnung; kein versteckter Malus."
+    },
+    {
+      "id": "summon",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Der Zeuge erscheint und nennt seinen Namen",
+      "lines": [
+        "NHV_Q00_100_1000",
+        "NHV_Q00_100_1001",
+        "NHV_Q00_100_1002",
+        "NHV_Q00_100_1003"
+      ],
+      "effects": {
+        "lucien": true
+      },
+      "next": "lucien_hub",
+      "direction": "Erst nach ausdrücklicher Annahme: Veyra ruft ruhig, ohne sichtbare Ritualhandlung. Der Geist erscheint zwischen ihrem Ruf und seiner Antwort; Lucien nennt seinen Namen selbst. Kein Treffen mit dem Vanilla-Spectral-Assassin voraussetzen. Vor Plugin-Aktivierung Doppelbeschwörung abgleichen.",
+      "requires": {
+        "witnessAccepted": true
+      }
+    },
+    {
+      "id": "lucien_hub",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Luciens Bürgschaft – Q01 läuft bereits",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q00_100_1019",
+          "to": "lucien_reveal"
+        },
+        {
+          "line": "NHV_Q00_100_1020",
+          "to": "veyra_calling"
+        },
+        {
+          "line": "NHV_Q00_100_1004",
+          "to": "lucien_vouch"
+        },
+        {
+          "line": "NHV_Q00_100_1005",
+          "to": "lucien_judgment"
+        },
+        {
+          "line": "NHV_Q00_100_1006",
+          "to": "lucien_limit"
+        },
+        {
+          "line": "NHV_Q00_100_1007",
+          "to": "end"
+        }
+      ]
+    },
+    {
+      "id": "lucien_reveal",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Die Überraschung darf ausgesprochen werden",
+      "lines": [
+        "NHV_Q00_100_1021"
+      ],
+      "next": "lucien_hub"
+    },
+    {
+      "id": "veyra_calling",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Nachfrage an Veyra – wie konnte sie ihn erreichen?",
+      "lines": [
+        "NHV_Q00_100_1022",
+        "NHV_Q00_100_1023"
+      ],
+      "direction": "Mehrsprecher-Nachfrage an die anwesende Veyra, mit Luciens Einwurf. Staunen des Spielers, keine Lore-Behauptung, dass sterbliche Beschwörung unmöglich sei. Keine Enthüllung von E23.",
+      "choices": [
+        {
+          "line": "NHV_Q00_100_1024",
+          "to": "veyra_calling_secret"
+        },
+        {
+          "line": "NHV_Q00_100_1025",
+          "to": "lucien_hub"
+        }
+      ]
+    },
+    {
+      "id": "veyra_calling_secret",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Der Listener erkennt ihr Ausweichen",
+      "lines": [
+        "NHV_Q00_100_1026",
+        "NHV_Q00_100_1027"
+      ],
+      "next": "lucien_hub"
+    },
+    {
+      "id": "lucien_vouch",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Loyalität, keine vollständige Biografie",
+      "lines": [
+        "NHV_Q00_100_1008",
+        "NHV_Q00_100_1009"
+      ],
+      "next": "lucien_hub"
+    },
+    {
+      "id": "lucien_judgment",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Der Listener behält Verantwortung",
+      "lines": [
+        "NHV_Q00_100_1010",
+        "NHV_Q00_100_1011"
+      ],
+      "next": "lucien_hub"
+    },
+    {
+      "id": "lucien_limit",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Die Grenze seines Zeugnisses",
+      "lines": [
+        "NHV_Q00_100_1012"
+      ],
+      "next": "lucien_hub"
+    },
+    {
+      "id": "end",
+      "stage": 100,
+      "title": "Q00 abgeschlossen – Q01 und spätere Nachfrage",
+      "lines": [],
+      "direction": "The Gleaner's Ledger erhalten; Q01 Morthal-Ziel aktiv. Vorschau simuliert nur die Übergabe.",
+      "choices": [
+        {
+          "ui": "Lesetest beenden",
+          "to": "finished"
+        }
+      ]
+    },
+    {
+      "id": "retry",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Spätere Nachfrage ohne erneuten Questabschluss",
+      "lines": [],
+      "choices": [
+        {
+          "line": "NHV_Q00_100_1013",
+          "to": "retry_yes"
+        },
+        {
+          "line": "NHV_Q00_100_1014",
+          "to": "retry_wait"
+        }
+      ]
+    },
+    {
+      "id": "retry_yes",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Ruf nachholen",
+      "lines": [
+        "NHV_Q00_100_1015"
+      ],
+      "next": "summon",
+      "direction": "Nur OnDoubtRetryAccepted, wenn Lucien noch nicht gerufen. Keine erneute Ledger-Vergabe und kein erneuter Q01-Start.",
+      "effects": {
+        "witnessAccepted": true
+      }
+    },
+    {
+      "id": "retry_wait",
+      "obsolete": true,
+      "stage": 100,
+      "title": "Nachholen vertagt",
+      "lines": [
+        "NHV_Q00_100_1016"
+      ],
+      "next": "end"
+    },
+    {
+      "id": "finished",
+      "stage": 100,
+      "title": "Ende des Lesetests",
+      "lines": [],
+      "terminal": true
+    }
+  ]
+}

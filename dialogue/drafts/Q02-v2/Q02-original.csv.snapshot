@@ -1,0 +1,109 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q02_010_01,Q02,10,Veyra_Q02_Brief,Veyra,NHV_VoiceVeyra,Neutral,40,"Windhelm's harbor has been giving back bodies. Four this season. The guards blame the cold.",,Veyra briefing at the map table.
+NHV_Q02_010_02,Q02,10,Veyra_Q02_Brief,Veyra,NHV_VoiceVeyra,Neutral,30,The cold does not tie knots.,,Short continuation of the briefing.
+NHV_Q02_010_03,Q02,10,Veyra_Q02_Brief,Veyra,NHV_VoiceVeyra,Neutral,40,"Find out who ties them. Then find out whether he can tie one without hating the neck inside it.",,Sets Sings' central test.
+NHV_Q02_010_10,Q02,10,Q02_Docks,Player,-,Neutral,50,I hear the harbor has been giving back bodies.,,Player opens the dock conversation with Torbjorn.
+NHV_Q02_010_11,Q02,10,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Neutral,40,"Four since the thaw. All Nords. The names were familiar from complaints. I recorded those too.",,Torbjorn counts bodies as harbor work.
+NHV_Q02_010_12,Q02,10,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Neutral,30,"The fifth came up this morning. East pier. Bring a strong stomach and a sharper question.",,Advances to Stage 20 after the body is examined.
+NHV_Q02_010_20,Q02,10,Q02_Docks,Player,-,Neutral,50,What do you know about the drowned men?,,Player opens the Argonian-quarter branch.
+NHV_Q02_010_21,Q02,10,Q02_Docks,DrinksTheBrine,NHV_VoiceDrinksTheBrine,Puzzled,40,"You ask about drowned Nords in the Argonian quarter? Brave, or stupid. Maybe both, stranger.",,Drinks-the-Brine tests the player's intent.
+NHV_Q02_010_30,Q02,10,Q02_Docks,Player,-,Neutral,50,"(Persuade) I'm not a guard. I'm the last one who'd report this.",GetActorValue Speech >= 30,Speech check.
+NHV_Q02_010_31,Q02,10,Q02_Docks,DrinksTheBrine,NHV_VoiceDrinksTheBrine,Neutral,30,"Then look at the knots, stranger. Not every hand in this harbor learned them in Skyrim.",GetActorValue Speech >= 30,Successful persuasion reveals the knot clue.
+NHV_Q02_010_32,Q02,10,Q02_Docks,DrinksTheBrine,NHV_VoiceDrinksTheBrine,Anger,30,"Everyone is the last one until they aren't. Go away.",GetActorValue Speech < 30,Failed persuasion leaves the branch.
+NHV_Q02_010_40,Q02,10,Q02_Docks,Player,-,Neutral,50,"(Bribe) Maybe this helps you remember.",GetItemCount Gold001 >= 25,Bribe branch.
+NHV_Q02_010_41,Q02,10,Q02_Docks,DrinksTheBrine,NHV_VoiceDrinksTheBrine,Neutral,30,"Coin remembers better than I do. The knots, stranger. Look at the knots.",GetItemCount Gold001 >= 25,Bribe reveals the knot clue.
+NHV_Q02_020_01,Q02,20,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Puzzled,40,"That knot? Fisherman's hitch, marsh style. My lads use a bowline. Theirs use that.",,Response after examining the latest victim.
+NHV_Q02_020_02,Q02,20,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Neutral,30,"Whoever it is, they work after dark. Nobody's that brave at noon.",,Moves the investigation to the night watch.
+NHV_Q02_030_01,Q02,30,SCN_HaldorDocks,HaldorFrostKnuckle,NHV_VoiceHaldor,Anger,60,"Back to work, lizard, before I feed you your own tail.",,Night scene between 22:00 and 04:00.
+NHV_Q02_030_02,Q02,30,SCN_HaldorDocks,HaldorFrostKnuckle,NHV_VoiceHaldor,Happy,30,"What, no hissing tonight? Good. You're learning.",,Haldor continues harassing the dockworker.
+NHV_Q02_030_03,Q02,30,SCN_HaldorDocks,HaldorFrostKnuckle,NHV_VoiceHaldor,Fear,70,"What... something's got my leg! Help!",GetGlobalValue NHV_Q02_HaldorSaved == 0,Sings pulls Haldor into the water on the unrescued path.
+NHV_Q02_030_10,Q02,30,SCN_HaldorDocks,HaldorFrostKnuckle,NHV_VoiceHaldor,Fear,60,"Something pulled me under! Guards! Guards!",GetGlobalValue NHV_Q02_HaldorSaved == 1,"If the player intervenes, Sings flees and the direct follow is replaced by tracking."
+NHV_Q02_040_01,Q02,40,Q02_Tracking,Player,-,Neutral,50,The water carried him toward the old pilings.,,Fallback clue after intervention.
+NHV_Q02_040_02,Q02,40,Q02_Tracking,Player,-,Neutral,50,The footprints stop where the tide begins.,,Tracking clue at the lower dock.
+NHV_Q02_040_03,Q02,40,Q02_Tracking,Player,-,Neutral,50,"He kept close to the water. I will search beneath the docks.",,Player observation; advances to the Drowned Hollow.
+NHV_Q02_050_01,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Puzzled,40,"You smell of the Void, stranger. Not a guard, then. Something worse.",,Sings confronts the player in the Drowned Hollow.
+NHV_Q02_050_02,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Anger,30,"Haldor. You pulled him out. Why? He would not have pulled you.",GetGlobalValue NHV_Q02_HaldorSaved == 1,Only if the player intervened; rescue flag must be set by the scene fragment.
+NHV_Q02_050_10,Q02,50,Sings_Hollow,Player,-,Neutral,50,The Dark Brotherhood.,,Player identifies the family.
+NHV_Q02_050_11,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Surprise,40,"I knew the name before I knew the face. Veezara's family. I thought the Emperor's dogs had drowned you all.",,"Sings knows Veezara from old stories, not personal acquaintance."
+NHV_Q02_050_20,Q02,50,Sings_Hollow,Player,-,Neutral,50,Someone who watched what happened at the docks.,GetGlobalValue NHV_Q02_HaldorSaved == 0,Player identifies the witness path.
+NHV_Q02_050_21,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Neutral,30,"Then you watched justice. It is quieter than the priests promise.",GetGlobalValue NHV_Q02_HaldorSaved == 0,Sings defends the killing.
+NHV_Q02_050_30,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Sad,30,"In the Marsh, they might have taken me young and taught me the Shadowscale's work. Here, I was a dockhand.",,Sings explains the path he never took.
+NHV_Q02_050_31,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Anger,40,"They beat us with the same hands they pray with. I only introduced those hands to the water.",,His anger is precise rather than loud.
+NHV_Q02_050_40,Q02,50,Sings_Hollow,Player,-,Neutral,50,"Five bodies before tonight. The city will notice the next.",,Player challenges his pattern without creating a body-count contradiction.
+NHV_Q02_050_41,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Neutral,30,"Let it notice. The water keeps what it takes. Mostly.",,Sings refuses fear.
+NHV_Q02_050_50,Q02,50,Sings_Hollow,Player,-,Neutral,50,You kill well. Do you kill for anything but hate?,,Player asks the central question.
+NHV_Q02_050_51,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Puzzled,30,"What else is there to kill for? Coin? That is how Nords think.",,Sings has not yet imagined another motive.
+NHV_Q02_050_60,Q02,50,SCN_VeyraHollow,Veyra,NHV_VoiceVeyra,Neutral,20,"Good evening, Sings-Beneath-Ice. You drown beautifully. You also drown loudly.",,Veyra enters the Hollow.
+NHV_Q02_050_61,Q02,50,SCN_VeyraHollow,Sings,NHV_VoiceSings,Surprise,50,"A dark elf in my Hollow. Is the whole city walking through my door tonight?",,Sings reacts to Veyra.
+NHV_Q02_050_62,Q02,50,SCN_VeyraHollow,Veyra,NHV_VoiceVeyra,Neutral,40,"He kills from hatred, Listener. Hatred is loud. The family is quiet.",,Veyra addresses the player.
+NHV_Q02_050_63,Q02,50,SCN_VeyraHollow,Veyra,NHV_VoiceVeyra,Neutral,40,"Aelius, the harbor clerk. He dies before dawn. By your hand, Sings.",,Veyra announces the trial.
+NHV_Q02_050_64,Q02,50,SCN_VeyraHollow,Sings,NHV_VoiceSings,Sad,60,"Aelius paid us fair. He learned our names. You ask me to drown the only warm-blood here who ever...",,Sings breaks off before naming his gratitude.
+NHV_Q02_050_65,Q02,50,SCN_VeyraHollow,Veyra,NHV_VoiceVeyra,Neutral,40,"I ask you to kill without hating. If you cannot, you are a grudge with a knife.",,Veyra states the test.
+NHV_Q02_050_66,Q02,50,SCN_VeyraHollow,Veyra,NHV_VoiceVeyra,Neutral,30,"I will be in Dawnstar. Do not keep me waiting, Listener. Do not keep him waiting either.",,Veyra leaves for the Sanctuary.
+NHV_Q02_050_70,Q02,50,SCN_VeyraHollow,Player,-,Neutral,50,"Do this, and I will judge you for more than your anger.",,Player frames the test without promising recruitment.
+NHV_Q02_050_71,Q02,50,SCN_VeyraHollow,Sings,NHV_VoiceSings,Sad,40,"Family. A word the Nords never had for us.",,Sings accepts the challenge without accepting the promise.
+NHV_Q02_050_80,Q02,50,SCN_VeyraHollow,Player,-,Neutral,50,"(Persuade) Hate is a leash. Kill him, and you will never wear it again.",GetActorValue Speech >= 30,Speech check.
+NHV_Q02_050_81,Q02,50,SCN_VeyraHollow,Sings,NHV_VoiceSings,Neutral,30,"A leash. Yes. I have felt it tighten every night.",GetActorValue Speech >= 30,Successful persuasion.
+NHV_Q02_050_90,Q02,50,SCN_VeyraHollow,Player,-,Neutral,50,"If you will not, I will.",,Moral impulse only; the scene still requires Sings to make the choice.
+NHV_Q02_050_91,Q02,50,SCN_VeyraHollow,Sings,NHV_VoiceSings,Anger,30,"No. If it must be done, it will be done by the one who owes him.",,Sings claims responsibility.
+NHV_Q02_050_95,Q02,50,SCN_VeyraHollow,Sings,NHV_VoiceSings,Neutral,30,"He works late. He always works late. That is the kind of man he is.",,"After any accepted branch, advances to Stage 60."
+NHV_Q02_060_01,Q02,60,SCN_Aelius,Aelius,NHV_VoiceAelius,Surprise,30,"Sings? You are late. Is something wrong at the docks?",,Aelius opens the office door; scene must run before dawn.
+NHV_Q02_060_02,Q02,60,SCN_Aelius,Sings,NHV_VoiceSings,Sad,40,"Nothing is wrong, Aelius. Walk with me to the water.",,Sings brings him outside.
+NHV_Q02_060_03,Q02,60,SCN_Aelius,Aelius,NHV_VoiceAelius,Puzzled,30,"At this hour? You are shaking. Here, take my cloak. It is freezing out.",,Aelius remains genuinely kind.
+NHV_Q02_060_04,Q02,60,SCN_Aelius,Sings,NHV_VoiceSings,Sad,60,"Close your eyes. The water is not cold after the first breath.",,Final line before the scripted kill.
+NHV_Q02_070_01,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Puzzled,40,"His desk is locked. Aelius never locked anything.",,Sings discovers the hidden list.
+NHV_Q02_070_02,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Anger,50,"He wrote our names down. Every one. For the Emperor's dogs.",GetGlobalValue NHV_Q02_FragmentFound == 1,After the player finds and reads Fragment 2.
+NHV_Q02_070_03,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Anger,40,"So I was right to hate, and wrong about whom.",GetGlobalValue NHV_Q02_FragmentFound == 1,The truth does not erase the moral test.
+NHV_Q02_070_05,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Sad,40,"I agreed to kill him before I knew. His betrayal cannot change that.",GetGlobalValue NHV_Q02_FragmentFound == 1,Adds accountability after the fragment reveal.
+NHV_Q02_070_04,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Neutral,30,"So, Listener. Do I follow you into the dark, or does the water have one more guest?",,Opens the judgement menu.
+NHV_Q02_070_10,Q02,70,Sings_Judgement,Player,-,Neutral,50,Come to Dawnstar. There is a pool there that needs a shadow.,GetGlobalValue NHV_Q02_Result == 0,Recruit branch; fragment sets result 1 and status 1.
+NHV_Q02_070_11,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Happy,20,"A pool in the dark. You know how to tempt an Argonian.",,Recruit response; unlocks The Drowned Pool.
+NHV_Q02_070_20,Q02,70,Sings_Judgement,Player,-,Neutral,50,Leave Windhelm and do not come back.,GetGlobalValue NHV_Q02_Result == 0,Release branch; fragment sets result 3 and status 3.
+NHV_Q02_070_21,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Neutral,30,"I will take the road south. May your water stay calm, Listener.",,Release response; Sings leaves Windhelm by road.
+NHV_Q02_070_30,Q02,70,Sings_Judgement,Player,-,Neutral,50,The family has no room for you.,GetGlobalValue NHV_Q02_Result == 0,Silence branch; fragment sets result 2 and status 2.
+NHV_Q02_070_31,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Neutral,20,"Then do it quickly. I would do the same for you.",,Combat branch if rejected.
+NHV_Q02_070_40,Q02,70,Sings_Judgement,Player,-,Neutral,50,The Jarl's guards will want a word with you.,GetGlobalValue NHV_Q02_Result == 0,Surrender branch; fragment sets result 4 and status 4.
+NHV_Q02_070_41,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Anger,60,"You lead me into the dark only to hand me to the light? Coward.",,Sings reacts to betrayal.
+NHV_Q02_070_42,Q02,70,Sings_Judgement,Hjorald,NHV_VoiceHjorald,Surprise,40,"We'll take him. There were complaints, yes. Dock disputes, we thought. Your payment will be recorded.",,Only on surrender branch; bounty and Veyra disapproval.
+NHV_Q02_100_01,Q02,100,Veyra_Q02_Debrief,Veyra,NHV_VoiceVeyra,Happy,20,"He came. Good. He will read Veezara's name on the wall every night.",GetGlobalValue NHV_Q02_Result == 1,Recruit debrief.
+NHV_Q02_100_02,Q02,100,Veyra_Q02_Debrief,Veyra,NHV_VoiceVeyra,Neutral,30,"Gone south, then. I hope he finds something worth staying for.",GetGlobalValue NHV_Q02_Result == 3,Release debrief.
+NHV_Q02_100_03,Q02,100,Veyra_Q02_Debrief,Veyra,NHV_VoiceVeyra,Sad,30,"...Sithis takes them all eventually.",GetGlobalValue NHV_Q02_Result == 2,Silence debrief.
+NHV_Q02_100_04,Q02,100,Veyra_Q02_Debrief,Veyra,NHV_VoiceVeyra,Neutral,50,"Handed to the Jarl. An interesting choice for a Listener.",GetGlobalValue NHV_Q02_Result == 4,Surrender debrief.
+NHV_Q02_100_10,Q02,100,Veyra_Q02_Debrief,Player,-,Neutral,50,"Aelius kept a list. Argonian names, for the Oculatus.",GetGlobalValue NHV_Q02_FragmentFound == 1,Player reports Fragment 2.
+NHV_Q02_100_11,Q02,100,Veyra_Q02_Debrief,Veyra,NHV_VoiceVeyra,Neutral,40,"A net of whispers cast over the docks. Someone high up is hauling it in.",GetGlobalValue NHV_Q02_FragmentFound == 1,Veyra connects the fragment to the wider Oculatus thread.
+NHV_Q02_100_20,Q02,100,Veyra_Q02_Debrief,Sings,NHV_VoiceSings,Neutral,30,"The water is calm today, Listener. That is rare in me.",GetGlobalValue NHV_Q02_Result == 1,First post-recruit greeting.
+NHV_Q02_010_13,Q02,10,Q02_Docks,Player,-,Neutral,50,You count the dead before you ask who they were.,,Follow-up to Torbjorn's body count.
+NHV_Q02_010_14,Q02,10,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Neutral,35,"Names come after the count. If the count is wrong, the names do not help.",,Torbjorn explains his practical habit without excusing indifference.
+NHV_Q02_010_15,Q02,10,Q02_Docks,Player,-,Neutral,50,Who complained about the men who drowned?,,Follow-up on the records behind the victims.
+NHV_Q02_010_16,Q02,10,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Puzzled,35,"Dockhands, mostly. Men who lost cargo, teeth, or both. Haldor Frost-Knuckle's name appears often.",,Introduces Haldor as a pattern rather than a villainous exposition dump.
+NHV_Q02_010_17,Q02,10,Q02_Docks,Player,-,Neutral,50,And the Argonians? What do they say?,,Opens the social pressure behind the case.
+NHV_Q02_010_18,Q02,10,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Neutral,30,"They say less when a Nord is holding the ledger. Ask them yourself. If they stay to answer.",,Torbjorn recognizes institutional silence.
+NHV_Q02_010_19,Q02,10,Q02_Docks,DrinksTheBrine,NHV_VoiceDrinksTheBrine,Puzzled,35,"There. You see the ledger now, warm-blood. It has teeth even when the ink is dry.",,Optional follow-up after Torbjorn's branch; Drinks notices the player understands the stakes.
+NHV_Q02_020_03,Q02,20,Q02_Docks,Player,-,Neutral,50,Why use a fisherman's knot for a killing?,,Follow-up after examining the latest victim.
+NHV_Q02_020_04,Q02,20,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Neutral,35,"Because the killer knows rope. Or wants us to think he does. Either way, the knot was tied in a hurry.",,Torbjorn distinguishes observation from certainty.
+NHV_Q02_020_05,Q02,20,Q02_Docks,Player,-,Neutral,50,What was different about this body?,,Adds a concrete investigative detail.
+NHV_Q02_020_06,Q02,20,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Puzzled,35,"No bruising on the hands. He did not fight the water. He fought someone before it took him.",,The latest victim points toward Haldor's violence without naming Sings.
+NHV_Q02_020_07,Q02,20,Q02_Docks,Player,-,Neutral,50,Who was the last man seen with him?,,Follow-up that points toward the night watch.
+NHV_Q02_020_08,Q02,20,Q02_Docks,Torbjorn,NHV_VoiceTorbjorn,Neutral,30,"Haldor. He said they were settling a debt. Haldor calls every beating a debt.",,Torbjorn's dry judgment of Haldor.
+NHV_Q02_050_52,Q02,50,Sings_Hollow,Player,-,Neutral,50,You protected them by making the water afraid of them.,,Player challenges Sings's idea of protection.
+NHV_Q02_050_53,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Puzzled,35,"The water has no fear. It only remembers what is given to it.",,Sings speaks in water images without claiming supernatural control.
+NHV_Q02_050_54,Q02,50,Sings_Hollow,Player,-,Neutral,50,You remember every hand that hurt you.,,Draws out Sings's personal motive.
+NHV_Q02_050_55,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Sad,45,"Hands. Boots. Doors that closed before I reached them. A body learns its list.",,Sings names accumulated harm without giving a monologue.
+NHV_Q02_050_56,Q02,50,Sings_Hollow,Player,-,Neutral,50,Then Aelius is not on that list.,,Sets up the moral contrast of Veyra's test.
+NHV_Q02_050_57,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Sad,45,"No. That is why your knife feels heavier when you speak his name.",,Sings understands the test before Veyra states it fully.
+NHV_Q02_050_58,Q02,50,Sings_Hollow,Player,-,Neutral,50,What did Veezara's family give you?,,Optional lore question about the Brotherhood's Argonian history.
+NHV_Q02_050_59,Q02,50,Sings_Hollow,Sings,NHV_VoiceSings,Neutral,35,"A name for the dark. A place where scales were not a crime. I have not decided if that is enough.",,Sings connects Veezara to belonging without claiming Brotherhood membership.
+NHV_Q02_050_67,Q02,50,SCN_VeyraHollow,Sings,NHV_VoiceSings,Anger,45,"You call this a test. The warm-blood gets kindness, and I get a blade.",,Sings objects to the asymmetry of Veyra's trial.
+NHV_Q02_050_68,Q02,50,SCN_VeyraHollow,Veyra,NHV_VoiceVeyra,Neutral,45,"Kindness is not innocence. A hand may soothe and still keep a list.",,Veyra foreshadows Aelius's divided motive without spoiling the dispatch.
+NHV_Q02_050_69,Q02,50,SCN_VeyraHollow,Veyra,NHV_VoiceVeyra,Neutral,35,"You will learn what he kept. First, decide what you are keeping inside yourself.",,Veyra makes the test about Sings's agency.
+NHV_Q02_060_05,Q02,60,SCN_Aelius,Aelius,NHV_VoiceAelius,Neutral,35,"You have been quiet all week. Did someone at the docks threaten you?",,Aelius's concern remains genuine.
+NHV_Q02_060_06,Q02,60,SCN_Aelius,Sings,NHV_VoiceSings,Sad,45,"Everyone threatens someone. Most only call it work.",,Sings tests whether Aelius will acknowledge the dock's violence.
+NHV_Q02_060_07,Q02,60,SCN_Aelius,Aelius,NHV_VoiceAelius,Sad,35,"I know. I write complaints until the ink dries, then I write another.",,Aelius reveals his self-image as a bureaucratic protector.
+NHV_Q02_060_08,Q02,60,SCN_Aelius,Sings,NHV_VoiceSings,Puzzled,40,"And did the ink ever open a door?",,Sings exposes the limits of Aelius's help.
+NHV_Q02_060_09,Q02,60,SCN_Aelius,Aelius,NHV_VoiceAelius,Neutral,30,"Not often enough. But a closed door is still better than a grave.",,Aelius's kindness and rationalization coexist.
+NHV_Q02_070_06,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Anger,45,"He wrote our names to protect a city that never learned them.",GetGlobalValue NHV_Q02_FragmentFound == 1,The dispatch does not erase Aelius's stated motives.
+NHV_Q02_070_07,Q02,70,Sings_Judgement,Player,-,Neutral,50,You can condemn the list without pretending the killing was clean.,,Player keeps Sings accountable after the reveal.
+NHV_Q02_070_08,Q02,70,Sings_Judgement,Sings,NHV_VoiceSings,Sad,45,"Clean water is a story. I can choose what I put into it next.",,Sings articulates the possibility of change.
+NHV_Q02_070_43,Q02,70,Sings_Judgement,Hjorald,NHV_VoiceHjorald,Neutral,35,"We called it dock trouble. That was convenient. Trouble does not need a report signed against it.",,Hjorald acknowledges institutional failure on the surrender path.
+NHV_Q02_100_05,Q02,100,Veyra_Q02_Debrief,Player,-,Neutral,50,Aelius was kind to them. That was true.,,Player reports the moral complication rather than only the dispatch.
+NHV_Q02_100_06,Q02,100,Veyra_Q02_Debrief,Veyra,NHV_VoiceVeyra,Neutral,45,"Truth can wear two faces, Listener. Your task is not to make one disappear.",,Veyra reinforces the contract's central insight.

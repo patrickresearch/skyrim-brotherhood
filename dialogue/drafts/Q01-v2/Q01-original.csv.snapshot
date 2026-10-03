@@ -1,0 +1,102 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q01_040_01,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Sad,50,"Six weeks I waited. Heart, skull, flesh, bones, nightshade. I did it all right. I know I did.",,"OFFEN: Fuer Q01 gibt es im Konzept nur Schluesseldialoge, kein vollstaendiges Skript wie bei Q00. Stages 10/20/30/60/70/100 haben noch KEINE Dialogzeilen, nur Journal-Eintraege in dialogue/Journal.csv - eigene Autorenarbeit noetig vor Vertonung/CK-Import. Reihenfolge dieser Zeilen laut Konzept-Fliesstext"
+NHV_Q01_040_02,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Anger,70,"You came. Now you come. Where were you when he took the farm and my husband took to the bottle?",,"Betonung auf ""Now"" (im Konzept mit Sternchen hervorgehoben, fuer CK-Text entfernt)"
+NHV_Q01_040_03,Q01,40,Hrefna_Offer,Player,-,Neutral,50,"The family was burning. No one was left to answer.",,
+NHV_Q01_040_04,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Neutral,50,"So I answered myself. Held him under till the bubbles stopped. It was quieter than I thought.",,
+NHV_Q01_040_06,Q01,40,Hrefna_Offer,Player,-,Neutral,50,What did you expect the silence to tell you?,,
+NHV_Q01_040_07,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Sad,40,"That I had done the right thing. It told me only that he was gone.",,"Erweiterung 26.09.2026; Hrefnas Zweifel bleibt menschlich, keine Erklärung durch Veyra."
+NHV_Q01_050_01,Q01,50,Veyra_TrialBriefing,Veyra,NHV_VoiceVeyra,Neutral,50,Grief kills once. The second choice tells us what she is willing to carry.,,Veyras Briefing vor der Pruefung; E23: keine unbelegte Aussage über einen universellen Willen Sithis'.
+NHV_Q01_050_02,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Fear,40,"There's a letter on his table. To a daughter. I... can't.",,Am Bett des Agenten Quintus Aufidius
+NHV_Q01_050_03,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"(Persuade) If he lives, he'll hang you for the Brotherhood's work.",,"Option 1 von 3; Konzepttext gekuerzt, um mit Praefix unter 80 Zeichen zu bleiben (docs/DIALOGUE.md)"
+NHV_Q01_050_04,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"(Intimidate) Then you're no use to us. And neither is your silence.",,Option 2 von 3
+NHV_Q01_050_05,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"Step aside. I'll do it.",,"Option 3 von 3; Pruefung NICHT bestanden, fuehrt zu Flag Unproven"
+NHV_Q01_050_06,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,30,"It doesn't get quieter.",,"Nach Hrefnas eigenem Kill; Spieler-Kill erhält keine falsche Hrefna-Reaktion."
+NHV_Q01_050_08,Q01,50,Veyra_TrialBriefing,Veyra,NHV_VoiceVeyra,Neutral,40,The first death settled a grievance. The next will tell us whether she can act without one.,,Erweiterung 26.09.2026; Prüfung ohne persönlichen Rachegrund.
+NHV_Q01_050_09,Q01,50,Hrefna_Trial,Player,-,Neutral,50,Then decide what you are willing to become.,,Erweiterung 26.09.2026; vor der Auswahl der Prüfung.
+NHV_Q01_010_06,Q01,10,Veyra_Q01_Brief,Player,-,Neutral,50,Tell me about the Sacrament from Hjaalmarch.,,Veyra briefing.
+NHV_Q01_010_02,Q01,10,Veyra_Q01_Brief,Veyra,NHV_VoiceVeyra,Neutral,40,"Heart, skull, flesh, bones, nightshade. Someone did it properly, and then waited. Nobody came.",,Veyra sets the unanswered-sacrament mystery.
+NHV_Q01_010_03,Q01,10,Veyra_Q01_Brief,Veyra,NHV_VoiceVeyra,Neutral,30,Morthal buries its dead quietly. Ask about the ones it buried too quickly.,,Points to Hakan and Eirik.
+NHV_Q01_010_04,Q01,10,Veyra_Q01_Brief,Player,-,Neutral,50,What if they have given up on us?,,Follow-up question.
+NHV_Q01_010_05,Q01,10,Veyra_Q01_Brief,Veyra,NHV_VoiceVeyra,Happy,10,"Then they did the work themselves. Those are exactly the people I want to meet.",,Veyra reframes self-reliance as a recruitable trait.
+NHV_Q01_010_10,Q01,10,Hakan_Rumors,Player,-,Neutral,50,Anyone die strangely around here lately?,,Opens Hakan branch.
+NHV_Q01_010_11,Q01,10,Hakan_Rumors,Hakan,NHV_VoiceHakan,Neutral,40,"Strangely? It is Hjaalmarch. Dying normally would be strange.",,Hakan's dry opening.
+NHV_Q01_010_12,Q01,10,Hakan_Rumors,Hakan,NHV_VoiceHakan,Neutral,40,"But Eirik Ashmark, aye. Drowned in the bog, they say. Man never touched water unless it was in his ale.",,Introduces Eirik.
+NHV_Q01_010_20,Q01,10,Hakan_Rumors,Player,-,Neutral,50,Who found him?,,Question branch.
+NHV_Q01_010_21,Q01,10,Hakan_Rumors,Hakan,NHV_VoiceHakan,Neutral,30,"I did. Face down in the reeds, purse still on his belt. The bog does not give back purses. People do.",,Hakan distinguishes accident from staging.
+NHV_Q01_010_30,Q01,10,Hakan_Rumors,Player,-,Neutral,50,Who would want him dead?,,Question branch.
+NHV_Q01_010_31,Q01,10,Hakan_Rumors,Hakan,NHV_VoiceHakan,Happy,10,"Anyone he ever lent a coin to. Last one he ruined was the Stormhollow place, north of the river.",,Hrefna's farm lead.
+NHV_Q01_010_32,Q01,10,Hakan_Rumors,Hakan,NHV_VoiceHakan,Sad,30,"Husband drank himself south. The wife, Hrefna, just vanished. Good woman. Made the best bread in the hold.",,Advances to Stage 20 and the farm marker.
+NHV_Q01_010_40,Q01,10,Hakan_Rumors,Player,-,Neutral,50,Anyone else been asking about Eirik?,,Question branch.
+NHV_Q01_010_41,Q01,10,Hakan_Rumors,Hakan,NHV_VoiceHakan,Neutral,40,"An Imperial. Calls himself a trader. Traders ask about prices, not about dead moneylenders.",,Introduces Quintus without revealing him.
+NHV_Q01_010_42,Q01,10,Hakan_Rumors,Hakan,NHV_VoiceHakan,Neutral,30,"He is lodging at the Moorside. Pays in good coin and watches everyone who pays in bad.",,Quintus lead.
+NHV_Q01_020_06,Q01,20,Q01_Farm,Player,-,Neutral,50,What happened to this place?,,At the Stormhollow farm.
+NHV_Q01_020_02,Q01,20,Q01_Farm,Hrefna,NHV_VoiceHrefna,Neutral,40,"Debt happened. Then weather. Then the kind of silence that makes a house forget its own name.",,Hrefna's presence is heard before Stage 40.
+NHV_Q01_020_03,Q01,20,Q01_Farm,Player,-,Neutral,50,The cellar was used for a Black Sacrament.,,Examines ritual remains.
+NHV_Q01_020_04,Q01,20,Q01_Farm,Hrefna,NHV_VoiceHrefna,Sad,40,"I know what it was. I know what it asks. I do not know why asking changed nothing.",,No divine explanation.
+NHV_Q01_020_10,Q01,20,Q01_Farm,Player,-,Neutral,50,Who was the prayer meant for?,,Lore follow-up.
+NHV_Q01_020_11,Q01,20,Q01_Farm,Hrefna,NHV_VoiceHrefna,Neutral,40,"The family. The old words. The ones everyone says correctly when there is still time.",,Hrefna's understanding stays local and human.
+NHV_Q01_020_20,Q01,20,Q01_Farm,Player,-,Neutral,50,Where did Hrefna go?,,Search branch.
+NHV_Q01_020_21,Q01,20,Q01_Farm,Hakan,NHV_VoiceHakan,Neutral,30,"Into the reeds, most likely. She knows a hunting camp east of the road. Do not walk in loud.",,Hakan's optional follow-up.
+NHV_Q01_030_06,Q01,30,SCN_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Anger,60,Hands where I can see them. You have been in my cellar.,,Hrefna confronts the player at night.
+NHV_Q01_030_02,Q01,30,SCN_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Anger,50,Are you with the Imperial? The trader who does not trade?,,Quintus connection.
+NHV_Q01_030_10,Q01,30,SCN_HrefnaCamp,Player,-,Neutral,50,I am with the Dark Brotherhood.,,Identity choice.
+NHV_Q01_030_11,Q01,30,SCN_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Surprise,50,The Brotherhood.,,Hrefna lowers her bow after a pause.
+NHV_Q01_030_20,Q01,30,SCN_HrefnaCamp,Player,-,Neutral,50,I read your diary. All six weeks of it.,,Diary path.
+NHV_Q01_030_21,Q01,30,SCN_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Anger,40,"Then you know more than anyone living. Who sent you?",,Hrefna resents being observed.
+NHV_Q01_030_22,Q01,30,SCN_HrefnaCamp,Player,-,Neutral,50,The Brotherhood sent me.,,Returns to identity response.
+NHV_Q01_030_30,Q01,30,SCN_HrefnaCamp,Player,-,Neutral,50,"Easy. I am not here to hurt you.",,De-escalation choice.
+NHV_Q01_030_31,Q01,30,SCN_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Neutral,40,"Everyone says that. Right before. Who are you?",,Hrefna tests the claim.
+NHV_Q01_030_32,Q01,30,SCN_HrefnaCamp,Player,-,Neutral,50,The Dark Brotherhood.,,Advances to Stage 40.
+NHV_Q01_040_10,Q01,40,Hrefna_Offer,Player,-,Neutral,50,Falkreath was burning. No one was left to answer.,,Explains Falkreath.
+NHV_Q01_040_11,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Sad,40,"Burning. Aye. I heard about Falkreath. I did not know it was you.",,Hrefna recognizes the player's loss.
+NHV_Q01_040_20,Q01,40,Hrefna_Offer,Player,-,Neutral,50,We are here now. That is what matters.,,Reassurance choice.
+NHV_Q01_040_21,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Anger,50,"Is it? Tell that to the fields. They do not care who comes late.",,Hrefna rejects easy reassurance.
+NHV_Q01_040_30,Q01,40,Hrefna_Offer,Player,-,Neutral,50,(Say nothing.),,Silence choice.
+NHV_Q01_040_31,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Neutral,30,"Nothing to say. Well. At least you are honest.",,Silence earns limited trust.
+NHV_Q01_040_40,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Neutral,40,"I answered myself. Held him under till the bubbles stopped. It was quieter than I thought.",,Hrefna explains Eirik's death.
+NHV_Q01_040_41,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Fear,30,"Now there is an Imperial knocking on every door in Morthal. He will reach mine soon enough.",,Sets the immediate threat.
+NHV_Q01_040_50,Q01,40,Hrefna_Offer,Player,-,Neutral,50,Come with me. The Brotherhood takes care of its own.,,Recruitment offer before the trial.
+NHV_Q01_040_51,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Puzzled,30,"Its own? I am not your own. I am a farmer who drowned a man.",,Hrefna refuses premature belonging.
+NHV_Q01_040_52,Q01,40,Hrefna_Offer,Player,-,Neutral,50,You performed the Sacrament. That makes you ours.,,Player argues tradition.
+NHV_Q01_040_60,Q01,40,Hrefna_Offer,Player,-,Neutral,50,That depends on what you do next.,,Moves to Stage 50.
+NHV_Q01_040_61,Q01,40,Hrefna_Offer,Hrefna,NHV_VoiceHrefna,Neutral,30,Everything always does.,,Hrefna accepts the uncertainty.
+NHV_Q01_050_10,Q01,50,Hrefna_Trial,Player,-,Neutral,50,You heard her. Can you do it?,,Direct challenge.
+NHV_Q01_050_11,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Neutral,40,"I will have to, will I?",,Hrefna accepts the burden.
+NHV_Q01_050_20,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"(Persuade) If he finds proof, you hang. Better him than you.",GetActorValue Speech >= 30,Speech check.
+NHV_Q01_050_21,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,30,"Better him than me. I used to say that about wolves.",GetActorValue Speech >= 30,Successful persuasion.
+NHV_Q01_050_22,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Neutral,30,"Tonight, in his room. Or on the road at dawn. Pick one; I will not do it twice.",,Hrefna becomes a temporary companion.
+NHV_Q01_050_30,Q01,50,SCN_Quintus,Hrefna,NHV_VoiceHrefna,Neutral,30,"He is asleep. Snores like my husband did. That is not helping.",,Night variant.
+NHV_Q01_050_31,Q01,50,SCN_Quintus,Hrefna,NHV_VoiceHrefna,Neutral,30,"He is reading as he walks. A letter. Stupid man, on a road like this.",,Road variant.
+NHV_Q01_050_32,Q01,50,SCN_Quintus,Quintus,NHV_VoiceQuintus,Puzzled,30,"Morning. Are you two headed to Solitude as well? Safer in company, I would think.",,Road variant before attack.
+NHV_Q01_050_40,Q01,50,SCN_Quintus,Hrefna,NHV_VoiceHrefna,Fear,40,"There is a letter. To a daughter. Home by Frostfall, little owl. I... cannot.",,Letter hesitation.
+NHV_Q01_050_50,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"(Persuade) If he lives, he hangs you for what we should have done.",GetActorValue Speech >= 30,Speech check.
+NHV_Q01_050_51,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,40,"You are right. Gods help me, you are right.",GetActorValue Speech >= 30,Successful persuasion; Hrefna kills.
+NHV_Q01_050_52,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Fear,50,I cannot. I cannot do it.,,Failed persuasion; only player or second check remains.
+NHV_Q01_050_60,Q01,50,Hrefna_Trial,Player,-,Neutral,50,"(Intimidate) Then you are no use to us. And neither is your silence.",GetActorValue Intimidation >= 30,Intimidation check.
+NHV_Q01_050_61,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Anger,40,"Do not threaten me. Just... look away.",GetActorValue Intimidation >= 30,Successful intimidation; Hrefna kills.
+NHV_Q01_050_62,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Fear,50,"Threaten all you like. My hands will not move.",,Failed intimidation.
+NHV_Q01_050_70,Q01,50,Hrefna_Trial,Player,-,Neutral,50,Step aside. I will do it.,,Unproven path; player kills.
+NHV_Q01_050_71,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,30,"I am sorry. I thought I was more than this.",,Player kills; Hrefna's failure is not hidden.
+NHV_Q01_050_80,Q01,50,Hrefna_Trial,Hrefna,NHV_VoiceHrefna,Sad,30,Twice now. It does not get quieter.,,After Hrefna kills; advances to Stage 60.
+NHV_Q01_060_06,Q01,60,Q01_QuintusPapers,Hrefna,NHV_VoiceHrefna,Puzzled,40,"Papers. A seal with an eye on it. He was not a trader, was he?",,Fragment 1 found.
+NHV_Q01_060_02,Q01,60,Q01_QuintusPapers,Player,-,Neutral,50,Penitus Oculatus. The Emperor's watchdogs.,,Identifies Quintus.
+NHV_Q01_060_03,Q01,60,Q01_QuintusPapers,Hrefna,NHV_VoiceHrefna,Neutral,30,"So he would have come for me eventually. Funny. That does not help either.",,Advances to Stage 70.
+NHV_Q01_070_06,Q01,70,Hrefna_Judgement,Hrefna,NHV_VoiceHrefna,Neutral,40,So. What happens to me now?,,Opens judgement.
+NHV_Q01_070_10,Q01,70,Hrefna_Judgement,Player,-,Neutral,50,You are coming home. To Dawnstar.,GetGlobalValue NHV_Q01_Result == 0,Recruit branch.
+NHV_Q01_070_11,Q01,70,Hrefna_Judgement,Hrefna,NHV_VoiceHrefna,Happy,20,"Home. I have not had one of those since the frost took the barley.",,"Recruit, proven path."
+NHV_Q01_070_12,Q01,70,Hrefna_Judgement,Hrefna,NHV_VoiceHrefna,Happy,20,"I will need a kitchen. You all look underfed.",,Hrefna's practical acceptance.
+NHV_Q01_070_13,Q01,70,Hrefna_Judgement,Hrefna,NHV_VoiceHrefna,Sad,30,"Home, even though I could not do it? ...I will earn my place. I swear it.",,"Recruit, Unproven path."
+NHV_Q01_070_20,Q01,70,Hrefna_Judgement,Player,-,Neutral,50,Go back to your life. We are square.,GetGlobalValue NHV_Q01_Result == 0,Release branch.
+NHV_Q01_070_21,Q01,70,Hrefna_Judgement,Hrefna,NHV_VoiceHrefna,Neutral,40,"Square. Aye. I will remember you came. Even late.",,Release; follow-up letter after seven days.
+NHV_Q01_070_30,Q01,70,Hrefna_Judgement,Player,-,Neutral,50,The Brotherhood leaves no witnesses.,GetGlobalValue NHV_Q01_Result == 0,Silence branch.
+NHV_Q01_070_31,Q01,70,Hrefna_Judgement,Hrefna,NHV_VoiceHrefna,Fear,70,Please. I did everything right.,,Combat branch.
+NHV_Q01_100_06,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Happy,20,"She did it. Twice is where the family begins. Another bed filled, Listener.",,"Recruit, proven path."
+NHV_Q01_100_02,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Neutral,40,"You did it for her. That was kind. It is also a debt. We will see if she pays it.",,"Recruit, Unproven path."
+NHV_Q01_100_03,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Neutral,30,"Released. The Sacrament goes unanswered twice. I hope she sleeps better than I would.",,Release.
+NHV_Q01_100_04,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Sad,20,"A waste. But your right, Listener.",,Silence branch.
+NHV_Q01_100_10,Q01,100,Veyra_Q01_Debrief,Player,-,Neutral,50,Quintus carried this. An Oculatus dispatch.,GetGlobalValue NHV_Q01_FragmentFound == 1,Fragment 1 follow-up.
+NHV_Q01_100_11,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Neutral,40,"Torn from something larger. A register of Black Sacraments, it looks like. Someone is counting our prayers.",GetGlobalValue NHV_Q01_FragmentFound == 1,Fragment 1 reveals a wider pattern.
+NHV_Q01_100_12,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Neutral,30,"You left this on the body. I did not.",GetGlobalValue NHV_Q01_FragmentFound == 0,Fallback handover for missed Fragment 1.
+NHV_Q01_100_20,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Neutral,40,"Four more names. Windhelm, Winterhold, Riften, the Reach. Choose where we go next.",,Starts the next-contract map discussion.
+NHV_Q01_100_21,Q01,100,Veyra_Q01_Debrief,Veyra,NHV_VoiceVeyra,Happy,10,"Do not dawdle. Murderers rarely stay put. It is one of their few consistent qualities.",,Closing line.
+NHV_Q01_100_30,Q01,100,Veyra_Q01_Debrief,Hrefna,NHV_VoiceHrefna,Happy,20,"There is stew if you want it. There is always stew.",,Recruit greeting in the Kitchen.

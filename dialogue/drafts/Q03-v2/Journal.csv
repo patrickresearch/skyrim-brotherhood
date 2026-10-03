@@ -1,0 +1,17 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q03_010_2000,Q03,10,V2_JournalObjective,Journal,-,Neutral,50,Learn why Nirelda Aurantil was expelled from the College.,GetStage NHV_Q03_TheScholarsSin == 10,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_010_2001,Q03,10,V2_JournalLog,Journal,-,Neutral,50,Veyra sent you to investigate an expelled Altmer and travelers who never reached Winterhold.,GetStage NHV_Q03_TheScholarsSin == 10,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_020_2002,Q03,20,V2_JournalObjective,Journal,-,Neutral,50,Find Hollowfrost Spire.,GetStage NHV_Q03_TheScholarsSin == 20,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_020_2003,Q03,20,V2_JournalLog,Journal,-,Neutral,50,The College record and Thyra's grief point toward a tower on the tundra.,GetStage NHV_Q03_TheScholarsSin == 20,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_030_2004,Q03,30,V2_JournalObjective,Journal,-,Neutral,50,Pass the Four Stillnesses.,GetStage NHV_Q03_TheScholarsSin == 30,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_030_2005,Q03,30,V2_JournalLog,Journal,-,Neutral,50,Nirelda's defenses measure how you react. The order can be learned without repeating her experiments.,GetStage NHV_Q03_TheScholarsSin == 30,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_040_2006,Q03,40,V2_JournalObjective,Journal,-,Neutral,50,Find Nirelda.,GetStage NHV_Q03_TheScholarsSin == 40,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_040_2007,Q03,40,V2_JournalLog,Journal,-,Neutral,50,Nirelda is observing Joric's last breath. Your response becomes part of her evidence.,GetStage NHV_Q03_TheScholarsSin == 40,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_050_2008,Q03,50,V2_JournalObjective,Journal,-,Neutral,50,"Pass Nirelda's examination, or survive it.",GetStage NHV_Q03_TheScholarsSin == 50,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_050_2009,Q03,50,V2_JournalLog,Journal,-,Neutral,50,Nirelda will hear the Brotherhood only if you answer for your service and its limits.,GetStage NHV_Q03_TheScholarsSin == 50,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_060_2010,Q03,60,V2_JournalObjective,Journal,-,Neutral,50,Search Nirelda's correspondence.,GetStage NHV_Q03_TheScholarsSin == 60,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_060_2011,Q03,60,V2_JournalLog,Journal,-,Neutral,50,A poison order signed L.M. connects her research to a threat against the family.,GetStage NHV_Q03_TheScholarsSin == 60,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_070_2012,Q03,70,V2_JournalObjective,Journal,-,Neutral,50,Decide Nirelda's fate.,GetStage NHV_Q03_TheScholarsSin == 70,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_070_2013,Q03,70,V2_JournalLog,Journal,-,Neutral,50,Nirelda's knowledge does not decide her place. You do.,GetStage NHV_Q03_TheScholarsSin == 70,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_100_2014,Q03,100,V2_JournalObjective,Journal,-,Neutral,50,Return to Veyra.,GetStage NHV_Q03_TheScholarsSin == 100,INACTIVE V2; Preview subphase; no new Stage.
+NHV_Q03_100_2015,Q03,100,V2_JournalLog,Journal,-,Neutral,50,Report Nirelda's outcome and add Fragment Three to the ledger.,GetStage NHV_Q03_TheScholarsSin == 100,INACTIVE V2; Preview subphase; no new Stage.

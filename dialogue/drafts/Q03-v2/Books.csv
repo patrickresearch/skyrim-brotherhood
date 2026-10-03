@@ -1,0 +1,2 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q03_060_3000,Q03,60,V2_WhisperbaneLetter,Book,-,Neutral,50,"ORDER: WHISPERBANE\n\nTwo doses. One for the old woman, one for the Redguard. Payment in Imperial gold. Sign only L.M.",GetStage NHV_Q03_TheScholarsSin == 60,INACTIVE V2; Draft-only V2 book paragraph; active Books.csv remains untouched.

@@ -1,0 +1,22 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q01_010_9001,Q01,10,-,Journal,-,Neutral,50,Travel to Morthal and find Hakan Reed-Walker.,,Enhanced draft; Q00 transition.
+NHV_Q01_010_9002,Q01,10,-,Journal,-,Neutral,50,Ask what the marsh returned and what it kept.,,
+NHV_Q01_012_9003,Q01,12,-,Journal,-,Neutral,50,Recover Hakan’s red ferry marker from the reedbed scavengers.,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 0,Required before Hakan names his suspect.
+NHV_Q01_012_9004,Q01,12,-,Journal,-,Neutral,50,Follow Hakan’s suspicion to Hrefna’s farm.,GetGlobalValue NHV_Q01_HrefnaFarmMarker == 1,Map marker appears after the marker is returned.
+NHV_Q01_020_9005,Q01,20,-,Journal,-,Neutral,50,Search the Stormhollow cellar and reconstruct the Black Sacrament.,,
+NHV_Q01_020_9006,Q01,20,-,Journal,-,Neutral,50,Follow the Imperial boot prints to the old watchpost.,GetGlobalValue NHV_Q01_WatchpostMarker == 1,Map marker appears after the farm inspection.
+NHV_Q01_025_9007,Q01,25,-,Journal,-,Neutral,50,Defeat the soldiers and question the surviving Oculatus scout.,,The scout survives and reveals Hrefna’s camp.
+NHV_Q01_030_9008,Q01,30,-,Journal,-,Neutral,50,Confront Hrefna at the camp beyond the drowned shrine.,GetGlobalValue NHV_Q01_HrefnaCampMarker == 1,
+NHV_Q01_030_9009,Q01,30,-,Journal,-,Neutral,50,Hear what Hrefna lost before she performed the Sacrament.,,"Husband, daughter, farm, and unanswered prayer."
+NHV_Q01_040_9010,Q01,40,-,Journal,-,Neutral,50,Return to Morthal and expose the trader’s contradictions.,,
+NHV_Q01_040_9011,Q01,40,-,Journal,-,Neutral,50,Force Quintus to admit that he is Penitus Oculatus.,GetGlobalValue NHV_Q01_QuintusTruth == 0,
+NHV_Q01_050_9012,Q01,50,-,Journal,-,Neutral,50,Find Quintus’s letter to his daughter and the remaining documents.,GetGlobalValue NHV_Q01_DocumentsFound == 0,
+NHV_Q01_050_9013,Q01,50,-,Journal,-,Neutral,50,Decide whether Quintus stays in the inn or follows the false lead to the farm.,GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_050_9014,Q01,50,-,Journal,-,Neutral,50,Return to Hrefna and bring her to the inn.,GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_055_9015,Q01,55,-,Journal,-,Neutral,50,Let Hrefna read the documents and choose Quintus’s fate.,,"Three branches: Hrefna kills, Hrefna surrenders, or the Listener kills."
+NHV_Q01_060_9016,Q01,60,-,Journal,-,Neutral,50,Secure Quintus’s dispatch fragment.,,The documents were found earlier; this objective covers the final evidence review.
+NHV_Q01_060_9017,Q01,60,-,Journal,-,Neutral,50,Determine what the Oculatus pattern proves—and what it does not.,,
+NHV_Q01_070_9018,Q01,70,-,Journal,-,Neutral,50,Decide whether Hrefna belongs in the family.,,
+NHV_Q01_070_9019,Q01,70,-,Journal,-,Neutral,50,Record Hrefna’s answer and the Listener’s judgment.,,
+NHV_Q01_100_9020,Q01,100,-,Journal,-,Neutral,50,Report what Hrefna chose and what the unanswered Sacrament revealed.,,
+NHV_Q01_100_9021,Q01,100,-,Journal,-,Neutral,50,Choose the next name from the Black Ledger.,,

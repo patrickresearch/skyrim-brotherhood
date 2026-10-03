@@ -1,0 +1,153 @@
+LineID,Quest,Stage,Topic,Speaker,VoiceType,Emotion,Value,Text,Conditions,Notes
+NHV_Q01_010_2000,Q01,10,Enhanced_Briefing,Player,-,Neutral,50,What exactly are we going to Morthal to find?,,"Enhanced draft; Q00 has ended, but the case is not yet a contract."
+NHV_Q01_010_2001,Q01,10,Enhanced_Briefing,Veyra,NHV_VoiceVeyra,Neutral,40,A prayer that waited six weeks. Begin with the people who noticed the waiting.,,Veyra frames the quest as an investigation.
+NHV_Q01_010_2002,Q01,10,Enhanced_Briefing,Player,-,Neutral,50,You said find. Not kill.,,Clarifies the objective before travel.
+NHV_Q01_010_2003,Q01,10,Enhanced_Briefing,Veyra,NHV_VoiceVeyra,Neutral,35,"Until we know who answered, a knife would only be a confession.",,No Night Mother certainty is claimed.
+NHV_Q01_010_2004,Q01,10,Enhanced_Briefing,Veyra,NHV_VoiceVeyra,Neutral,35,Hakan Reed-Walker found the first body. He remembers what the marsh kept and what it gave back.,,Introduces the first witness.
+NHV_Q01_010_2005,Q01,10,Enhanced_Briefing,Player,-,Neutral,50,And the woman who made the Sacrament?,,Optional question.
+NHV_Q01_010_2006,Q01,10,Enhanced_Briefing,Veyra,NHV_VoiceVeyra,Neutral,35,"Hrefna Stormhollow is the name in the ledger. A name is an invitation to look, not permission to decide.",,Connects to The Gleaner’s Ledger.
+NHV_Q01_010_2010,Q01,10,Enhanced_Hakan,Player,-,Neutral,50,You found Eirik Ashmark in the reeds.,,Starts Hakan interview.
+NHV_Q01_010_2011,Q01,10,Enhanced_Hakan,Hakan,NHV_VoiceHakan,Neutral,40,Found him face down. Purse still tied. Boots still dry inside.,,Hakan separates facts from rumor.
+NHV_Q01_010_2012,Q01,10,Enhanced_Hakan,Player,-,Neutral,50,What does that tell you?,,
+NHV_Q01_010_2013,Q01,10,Enhanced_Hakan,Hakan,NHV_VoiceHakan,Neutral,35,That the bog did not take him. Someone put him where the water would take the blame.,,"Evidence, not omniscience."
+NHV_Q01_010_2014,Q01,10,Enhanced_Hakan,Player,-,Neutral,50,Who else was asking about him?,,
+NHV_Q01_010_2015,Q01,10,Enhanced_Hakan,Hakan,NHV_VoiceHakan,Neutral,35,"An Imperial calling himself a trader. Asked about the cellar, not the debt. Traders ask about prices.",,Introduces Quintus without naming the Oculatus.
+NHV_Q01_010_2016,Q01,10,Enhanced_Hakan,Hakan,NHV_VoiceHakan,Neutral,30,"He paid for lamp oil, then watched who watched him. That is no way to sell grain.",,Optional second Hakan response.
+NHV_Q01_010_2017,Q01,10,Enhanced_Hakan,Player,-,Neutral,50,Take me to the reeds.,,Begins the first subquest.
+NHV_Q01_010_2018,Q01,10,Enhanced_Hakan,Hakan,NHV_VoiceHakan,Neutral,30,Bring back my red ferry marker. The marsh swallowed it when I found the body. Then I will show you where Hrefna crossed.,,Subquest gate: recover marker.
+NHV_Q01_010_2019,Q01,10,Enhanced_Hakan,Player,-,Neutral,50,What took it?,,
+NHV_Q01_010_2020,Q01,10,Enhanced_Hakan,Hakan,NHV_VoiceHakan,Neutral,30,Men with hooks and empty sacks. Eirik’s debt was worth stealing twice.,,Sets scavenger encounter.
+NHV_Q01_012_2021,Q01,12,Enhanced_Reedbed,MarshScavenger,NHV_VoiceMarshScavenger,Anger,35,The dead man owed us. We are only collecting what his paper promised.,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 0,Optional encounter at the reedbed.
+NHV_Q01_012_2022,Q01,12,Enhanced_Reedbed,Player,-,Neutral,50,Drop the ledger and step away from the marker.,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 0,
+NHV_Q01_012_2023,Q01,12,Enhanced_Reedbed,MarshScavenger,NHV_VoiceMarshScavenger,Fear,30,You are late. The woman was later. Everyone is late in this marsh.,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 0,
+NHV_Q01_012_2024,Q01,12,Enhanced_Reedbed,Player,-,Neutral,50,Who hired you?,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 0,Speech/intimidation hook; no forced answer.
+NHV_Q01_012_2025,Q01,12,Enhanced_Reedbed,MarshScavenger,NHV_VoiceMarshScavenger,Neutral,30,No one hired us. A seal on a page is enough to make hungry men brave.,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 0,Shows debt system without making Eirik a cultist.
+NHV_Q01_012_2026,Q01,12,Enhanced_Reedbed,Hakan,NHV_VoiceHakan,Neutral,35,"You found the marker. The woman crossed east, toward the old watchpost.",GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 0,Hakan gives the route only after the marker is returned; farm map marker follows.
+NHV_Q01_020_2100,Q01,20,Enhanced_FarmSearch,Player,-,Neutral,50,"The house is empty, but the cellar was used recently.",,Stage 20 research start.
+NHV_Q01_020_2101,Q01,20,Enhanced_FarmSearch,Veyra,NHV_VoiceVeyra,Neutral,35,A Black Sacrament leaves a shape even when no voice answers it. Read the shape before you read your anger into it.,,Veyra does not explain why no answer came.
+NHV_Q01_020_2102,Q01,20,Enhanced_FarmSearch,Player,-,Neutral,50,"The heart, skull, flesh, bones, and nightshade were arranged correctly.",,Ritual research clue.
+NHV_Q01_020_2103,Q01,20,Enhanced_FarmSearch,Veyra,NHV_VoiceVeyra,Neutral,30,Correct enough to show intent. Not proof that the dark was listening.,,Keeps the ritual ambiguous.
+NHV_Q01_020_2104,Q01,20,Enhanced_FarmSearch,Player,-,Neutral,50,There is ash beneath the altar. Someone burned a second note.,,
+NHV_Q01_020_2105,Q01,20,Enhanced_FarmSearch,Veyra,NHV_VoiceVeyra,Neutral,35,Then find what the fire spared. Truth is often the least flammable part of a lie.,,
+NHV_Q01_020_2106,Q01,20,Enhanced_FarmSearch,Player,-,Neutral,50,"The note names a debt, a date, and a place by the watchpost.",,
+NHV_Q01_020_2107,Q01,20,Enhanced_FarmSearch,Veyra,NHV_VoiceVeyra,Neutral,35,"Now you have a route, not an answer. Follow it.",,
+NHV_Q01_020_2110,Q01,20,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Anger,55,"You found me. Did the Scout tell you, or did the marsh?",GetGlobalValue NHV_Q01_HrefnaCampReady == 1; GetGlobalValue NHV_Q01_ScoutEncountered == 1,Camp arrival after the surviving Scout reveals the location.
+NHV_Q01_020_2111,Q01,20,Enhanced_HrefnaCamp,Player,-,Neutral,50,The Scout lived. He gave us your camp.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1; GetGlobalValue NHV_Q01_ScoutEncountered == 1,
+NHV_Q01_020_2112,Q01,20,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Neutral,40,Then he has more sense than the men he brought.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1; GetGlobalValue NHV_Q01_ScoutEncountered == 1,
+NHV_Q01_025_2120,Q01,25,Enhanced_Watchpost,Player,-,Neutral,50,The old watchpost overlooks the road and the farm.,,Subquest: reconstruct the route.
+NHV_Q01_025_2121,Q01,25,Enhanced_Watchpost,Player,-,Neutral,50,"A boot print, a broken seal, and fresh candle wax.",,"Evidence nodes, not dialogue-only."
+NHV_Q01_025_2122,Q01,25,Enhanced_Watchpost,OculatusScout,NHV_VoiceOculatusScout,Puzzled,35,You should not be reading Imperial notes.,,Mandatory post-battle conversation; set NHV_Q01_ScoutEncountered after the Scout survives and the interrogation begins.
+NHV_Q01_025_2123,Q01,25,Enhanced_Watchpost,Player,-,Neutral,50,Then you should not leave them where a reader can find them.,,
+NHV_Q01_025_2124,Q01,25,Enhanced_Watchpost,OculatusScout,NHV_VoiceOculatusScout,Neutral,30,A report from this post names a living witness. That is all you need to know.,,Does not reveal full conspiracy.
+NHV_Q01_025_2125,Q01,25,Enhanced_Watchpost,Player,-,Neutral,50,And what do you need to know?,,
+NHV_Q01_025_2126,Q01,25,Enhanced_Watchpost,OculatusScout,NHV_VoiceOculatusScout,Anger,35,Whether the woman who prayed is still alive.,,Creates pressure; scout may flee or fight.
+NHV_Q01_030_2200,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Anger,55,Hands where I can see them. You have been in my cellar.,,Night encounter at the camp.
+NHV_Q01_030_2201,Q01,30,Enhanced_HrefnaCamp,Player,-,Neutral,50,I followed the trail you left behind.,,
+NHV_Q01_030_2202,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Neutral,40,Then you know I wanted to be found. You do not yet know why.,,
+NHV_Q01_030_2203,Q01,30,Enhanced_HrefnaCamp,Player,-,Neutral,50,Tell me about the six weeks.,,
+NHV_Q01_030_2204,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Sad,45,"Six weeks of candles, empty cupboards, and a door that stayed shut. Waiting became another kind of work.",,
+NHV_Q01_030_2205,Q01,30,Enhanced_HrefnaCamp,Player,-,Neutral,50,And Eirik?,,
+NHV_Q01_030_2206,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Anger,45,He took the farm on paper. I took his breath in the water. Neither of us called it murder while we were doing it.,,Confession without absolution.
+NHV_Q01_030_2207,Q01,30,Enhanced_HrefnaCamp,Player,-,Neutral,50,Why hide the ritual remains?,,
+NHV_Q01_030_2208,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Fear,35,Because I could bear an empty answer. I could not bear a town laughing at the question.,,
+NHV_Q01_030_2209,Q01,30,Enhanced_HrefnaCamp,Player,-,Neutral,50,Come back with me and tell the whole story.,,"REMOVED 01.10.2026 (camp flow: Hrefna waits, follows only after the return, see 2340); do not reuse the LineID."
+NHV_Q01_030_2210,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Neutral,35,I will tell it. Whether I walk beside you is still mine to choose.,,"REMOVED 01.10.2026 (camp flow: Hrefna waits, follows only after the return, see 2340); do not reuse the LineID. Preserves agency."
+NHV_Q01_040_2303,Q01,40,Enhanced_Moorside,Quintus,NHV_VoiceQuintus,Neutral,40,You have the look of someone asking about a death without wishing to own the answer.,,First Quintus conversation after the return to Morthal.
+NHV_Q01_040_2304,Q01,40,Enhanced_Moorside,Player,-,Neutral,50,You are asking about Hjaalmarch’s Black Sacraments.,,
+NHV_Q01_040_2305,Q01,40,Enhanced_Moorside,Quintus,NHV_VoiceQuintus,Neutral,35,I am asking why this prayer went unanswered.,,
+NHV_Q01_040_2306,Q01,40,Enhanced_Moorside,Player,-,Neutral,50,Are you Penitus Oculatus?,,
+NHV_Q01_040_2307,Q01,40,Enhanced_Moorside,Quintus,NHV_VoiceQuintus,Puzzled,30,"In this room, I am a trader. Outside it, I am a man trying to stop the next death.",,He avoids a direct confession.
+NHV_Q01_040_2308,Q01,40,Enhanced_Moorside,Quintus,NHV_VoiceQuintus,Sad,30,I have a letter to finish before I leave. Duty is easier when it has a door to go home to.,,Humanizes him without a new family fact.
+NHV_Q01_040_2309,Q01,40,Enhanced_Investigation,Player,-,Neutral,50,Hrefna is alive. She performed the Sacrament.,,Optional reveal to Quintus; raises risk.
+NHV_Q01_040_2310,Q01,40,Enhanced_Moorside,Quintus,NHV_VoiceQuintus,Anger,35,Then the unanswered prayer has a living witness. I cannot leave that loose.,,
+NHV_Q01_040_2311,Q01,40,Enhanced_Investigation,Veyra,NHV_VoiceVeyra,Neutral,35,Now he knows enough to become dangerous. That does not make him wrong.,,Veyra distinguishes threat from moral guilt.
+NHV_Q01_060_2600,Q01,60,Enhanced_Papers,Hrefna,NHV_VoiceHrefna,Puzzled,35,A seal marked with the Oculatus sign. He kept my name beside the names of other prayers.,,
+NHV_Q01_060_2601,Q01,60,Enhanced_Papers,Player,-,Neutral,50,This is not a local report.,,
+NHV_Q01_060_2602,Q01,60,Enhanced_Papers,Veyra,NHV_VoiceVeyra,Neutral,40,"No. It is a pattern seen by people who count absences. That makes it useful, not complete.",,Fragment remains partial.
+NHV_Q01_060_2603,Q01,60,Enhanced_Papers,Player,-,Neutral,50,The report says: “A prayer unanswered is still a signal.”,,
+NHV_Q01_060_2604,Q01,60,Enhanced_Papers,Veyra,NHV_VoiceVeyra,Sad,30,Then someone is watching the spaces where our family fails to arrive.,,"Campaign hook, no Livia reveal."
+NHV_Q01_060_2605,Q01,60,Enhanced_Papers,Hrefna,NHV_VoiceHrefna,Neutral,30,Do they watch every woman who waits?,,
+NHV_Q01_060_2606,Q01,60,Enhanced_Papers,Veyra,NHV_VoiceVeyra,Neutral,35,Only the ones who leave a mark. You have left one. So have we.,,
+NHV_Q01_060_2620,Q01,60,Enhanced_FragmentChoice,Player,-,Neutral,50,Leave the incomplete report. We have enough to know the pattern exists.,,Player leaves the fragment; set NHV_Q01_FragmentFound = 0.
+NHV_Q01_060_2621,Q01,60,Enhanced_FragmentChoice,Veyra,NHV_VoiceVeyra,Neutral,35,Then remember the absence. It is still a warning.,,Veyra acknowledges the missing fragment.
+NHV_Q01_060_2622,Q01,60,Enhanced_FragmentChoice,Player,-,Neutral,50,Secure the dispatch fragment. The pattern may matter later.,,Player keeps the fragment; set NHV_Q01_FragmentFound = 1.
+NHV_Q01_070_2700,Q01,70,Enhanced_Judgment,Hrefna,NHV_VoiceHrefna,Neutral,40,So. What happens to me now?,,
+NHV_Q01_070_2701,Q01,70,Enhanced_JudgmentRecruitProven,Player,-,Neutral,50,You are coming to Dawnstar. You will earn your place.,GetGlobalValue NHV_Q01_Result == 1,Recruit proven.
+NHV_Q01_070_2702,Q01,70,Enhanced_JudgmentRecruitProven,Hrefna,NHV_VoiceHrefna,Happy,25,Then give me work that keeps my hands busy and my eyes open.,GetGlobalValue NHV_Q01_Result == 1,
+NHV_Q01_070_2703,Q01,70,Enhanced_JudgmentRecruitUnproven,Player,-,Neutral,50,"You are coming to Dawnstar, but the question remains open.",GetGlobalValue NHV_Q01_Result == 2,Recruit unproven.
+NHV_Q01_070_2704,Q01,70,Enhanced_JudgmentRecruitUnproven,Hrefna,NHV_VoiceHrefna,Sad,30,An open door is still more mercy than I expected.,GetGlobalValue NHV_Q01_Result == 2,
+NHV_Q01_070_2705,Q01,70,Enhanced_JudgmentRelease,Player,-,Neutral,50,Go back to your life. We are square.,GetGlobalValue NHV_Q01_Result == 3,Release.
+NHV_Q01_070_2706,Q01,70,Enhanced_JudgmentRelease,Hrefna,NHV_VoiceHrefna,Neutral,35,Square is a word people use when they cannot afford another debt.,GetGlobalValue NHV_Q01_Result == 3,
+NHV_Q01_070_2707,Q01,70,Enhanced_JudgmentSilence,Player,-,Neutral,50,The Brotherhood leaves no witnesses.,GetGlobalValue NHV_Q01_Result == 4,Silence branch.
+NHV_Q01_070_2708,Q01,70,Enhanced_JudgmentSilence,Hrefna,NHV_VoiceHrefna,Fear,65,Please. I answered the prayer. Do not make that the only thing I am.,GetGlobalValue NHV_Q01_Result == 4,
+NHV_Q01_100_2800,Q01,100,Enhanced_Debrief,Veyra,NHV_VoiceVeyra,Neutral,40,You did not bring me a clean story. Good. Clean stories are usually hiding a body.,,
+NHV_Q01_100_2801,Q01,100,Enhanced_Debrief,Player,-,Neutral,50,Hrefna made a second choice.,,
+NHV_Q01_100_2802,Q01,100,Enhanced_Debrief,Veyra,NHV_VoiceVeyra,Neutral,35,The first death explains the wound. The choice that followed shows whether she can carry it.,,
+NHV_Q01_100_2803,Q01,100,Enhanced_Debrief,Player,-,Neutral,50,The Oculatus has records of other unanswered Sacraments.,GetGlobalValue NHV_Q01_FragmentFound == 1,Only when the dispatch fragment was found.
+NHV_Q01_100_2804,Q01,100,Enhanced_Debrief,Veyra,NHV_VoiceVeyra,Neutral,40,Four more names wait in the ledger. Choose the next road when you are ready.,,No Q02 details revealed.
+NHV_Q01_100_2805,Q01,100,Enhanced_Debrief,Veyra,NHV_VoiceVeyra,Sad,30,Someone is learning our absences. We will teach them our returns.,,Campaign-level hook.
+NHV_Q01_050_2530,Q01,50,Enhanced_TrialRoom,Veyra,NHV_VoiceVeyra,Neutral,35,"In the room, the letter is the first witness. Let Hrefna read before she reaches for steel.",GetGlobalValue NHV_Q01_TrialRoute == 1,Trial route: room.
+NHV_Q01_050_2531,Q01,50,Enhanced_TrialRoom,Hrefna,NHV_VoiceHrefna,Fear,35,His words are ordinary. That is what makes the knife feel like a lie.,GetGlobalValue NHV_Q01_TrialRoute == 1,
+NHV_Q01_050_2540,Q01,50,Enhanced_TrialRoad,Veyra,NHV_VoiceVeyra,Neutral,35,"On the road, there is no wall to hide behind and no witness to blame.",GetGlobalValue NHV_Q01_TrialRoute == 2,Trial route: road.
+NHV_Q01_050_2541,Q01,50,Enhanced_TrialRoad,Quintus,NHV_VoiceQuintus,Puzzled,35,You chose a dangerous place for a conversation. I assume that was the point.,GetGlobalValue NHV_Q01_TrialRoute == 2,
+NHV_Q01_050_2550,Q01,50,Enhanced_TrialFalseLead,Veyra,NHV_VoiceVeyra,Neutral,35,A false lead gives Hrefna one advantage: Quintus arrives believing he chose the ground.,GetGlobalValue NHV_Q01_TrialRoute == 3,Trial route: false lead.
+NHV_Q01_050_2551,Q01,50,Enhanced_TrialFalseLead,Player,-,Neutral,50,Let him speak first. We learn more from a man who thinks he is safe.,GetGlobalValue NHV_Q01_TrialRoute == 3,
+NHV_Q01_100_2806,Q01,100,Enhanced_Debrief,Veyra,NHV_VoiceVeyra,Neutral,40,The Oculatus was watching the same silence we found. The missing fragment is still a warning.,GetGlobalValue NHV_Q01_FragmentFound == 0,Alternate debrief when the fragment was missed.
+NHV_Q01_100_2810,Q01,100,Enhanced_MapTable,Veyra,NHV_VoiceVeyra,Neutral,40,The table in my ledger room is open to you now. Set the next pin when you are ready.,,"ENHANCED E45; Claude 01.10.2026: transition Q01 -> Q02 (Hello at the map table after the debrief, see NHV_MapTableScript)."
+NHV_Q01_100_2811,Q01,100,Enhanced_MapTable,Player,-,Neutral,50,Windhelm. I will take that name.,,ENHANCED E45; Claude 01.10.2026: fallback to the map table - starts Q02 through NHV_MapTableScript.Choose(2).
+NHV_Q01_012_2027,Q01,12,Enhanced_Reedbed,Player,-,Neutral,50,You know who killed Eirik.,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 1,
+NHV_Q01_012_2028,Q01,12,Enhanced_Reedbed,Hakan,NHV_VoiceHakan,Neutral,40,"I know who had reason, means, and mud on her boots. Hrefna Stormhollow.",GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 1,Hakan reveals his suspicion only after the marker is returned; set NHV_Q01_ReedbedResolved after this response.
+NHV_Q01_012_2029,Q01,12,Enhanced_Reedbed,Hakan,NHV_VoiceHakan,Neutral,35,The farm is east of the reed road. I will mark it.,GetGlobalValue NHV_Q01_ReedbedMarkerReturned == 1,Place the Hrefna farm quest marker.
+NHV_Q01_020_2108,Q01,20,Enhanced_FarmSearch,Player,-,Neutral,50,There are Imperial boot prints beside the cellar door.,GetGlobalValue NHV_Q01_FarmInspected == 0,Set NHV_Q01_FarmInspected after the farm search.
+NHV_Q01_020_2109,Q01,20,Enhanced_FarmSearch,Player,-,Neutral,50,They lead toward an old watchpost near the road.,GetGlobalValue NHV_Q01_FarmInspected == 1,Place the watchpost quest marker on the map.
+NHV_Q01_030_2211,Q01,30,Enhanced_HrefnaCamp,Player,-,Neutral,50,Wait here. I am going back to Morthal to find the trader.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1,Hrefna remains at the camp.
+NHV_Q01_030_2212,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Neutral,35,I will wait. Do not let him turn my life into another report.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1,
+NHV_Q01_030_2213,Q01,30,Enhanced_HrefnaCamp,Player,-,Neutral,50,"If I return, we go to the inn together. You read everything I find.",GetGlobalValue NHV_Q01_HrefnaCampReady == 1,
+NHV_Q01_030_2214,Q01,30,Enhanced_HrefnaCamp,Hrefna,NHV_VoiceHrefna,Sad,40,Then return with the truth. I have lived too long with other people’s versions of it.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1,
+NHV_Q01_030_2215,Q01,30,Enhanced_HrefnaFamily,Player,-,Neutral,50,What happened to your husband and your daughter?,GetGlobalValue NHV_Q01_HrefnaCampReady == 1,Optional deeper question.
+NHV_Q01_030_2216,Q01,30,Enhanced_HrefnaFamily,Hrefna,NHV_VoiceHrefna,Sad,45,The debts broke my husband. He drank until there was nothing left that could wake him.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1,Hrefna’s husband died from alcohol after the debt pressure.
+NHV_Q01_030_2217,Q01,30,Enhanced_HrefnaFamily,Hrefna,NHV_VoiceHrefna,Fear,45,Eirik’s hired man kept cornering my daughter. I found her after she ended her life. The farm became a grave with a roof.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1,Handle the abuse and suicide reference without graphic detail.
+NHV_Q01_030_2218,Q01,30,Enhanced_HrefnaFamily,Hrefna,NHV_VoiceHrefna,Anger,40,Eirik still came for the land. That was when waiting stopped being a virtue.,GetGlobalValue NHV_Q01_HrefnaCampReady == 1,
+NHV_Q01_040_2312,Q01,40,Enhanced_MoorsideReveal,Player,-,Neutral,50,"A trader does not know the cellar, the watchpost, and the ritual dates.",GetGlobalValue NHV_Q01_QuintusTruth == 0,Contradiction-based reveal.
+NHV_Q01_040_2313,Q01,40,Enhanced_MoorsideReveal,Quintus,NHV_VoiceQuintus,Puzzled,35,You have been reading the wrong books and asking the right questions.,GetGlobalValue NHV_Q01_QuintusTruth == 0,
+NHV_Q01_040_2314,Q01,40,Enhanced_MoorsideReveal,Player,-,Neutral,50,Stop hiding behind the ledger. Tell me who you are.,GetGlobalValue NHV_Q01_QuintusTruth == 0,
+NHV_Q01_040_2315,Q01,40,Enhanced_MoorsideReveal,Quintus,NHV_VoiceQuintus,Neutral,40,Penitus Oculatus. I was sent to find the woman behind the Sacrament.,GetGlobalValue NHV_Q01_QuintusTruth == 0,Sets NHV_Q01_QuintusTruth = 1.
+NHV_Q01_040_2316,Q01,40,Enhanced_MoorsideReveal,Player,-,Neutral,50,And if I find you again?,GetGlobalValue NHV_Q01_QuintusTruth == 1,
+NHV_Q01_040_2317,Q01,40,Enhanced_MoorsideReveal,Quintus,NHV_VoiceQuintus,Neutral,35,Then you will decide whether a witness is more useful alive.,GetGlobalValue NHV_Q01_QuintusTruth == 1,
+NHV_Q01_042_2320,Q01,42,Enhanced_QuintusDocuments,Player,-,Neutral,50,The room holds a letter addressed to his daughter.,GetGlobalValue NHV_Q01_QuintusTruth == 1,Set NHV_Q01_DocumentsFound = 1.
+NHV_Q01_042_2321,Q01,42,Enhanced_QuintusDocuments,Player,-,Neutral,50,"The papers list Stormhollow, the watchpost, and other cases.",GetGlobalValue NHV_Q01_QuintusTruth == 1,
+NHV_Q01_042_2322,Q01,42,Enhanced_QuintusDocuments,Quintus,NHV_VoiceQuintus,Anger,35,You searched my room while I was speaking plainly.,GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_042_2323,Q01,42,Enhanced_QuintusDocuments,Player,-,Neutral,50,You started with a lie. I am checking what the truth costs.,GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_045_2330,Q01,45,Enhanced_QuintusChoice,Player,-,Neutral,50,Stay here until I return.,GetGlobalValue NHV_Q01_DocumentsFound == 1,Quintus remains at the inn; set NHV_Q01_QuintusLocation = 1.
+NHV_Q01_045_2331,Q01,45,Enhanced_QuintusChoice,Quintus,NHV_VoiceQuintus,Puzzled,35,You mean to bring the witness to me.,GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_045_2332,Q01,45,Enhanced_QuintusChoice,Player,-,Neutral,50,Leave Morthal. Hrefna will return to her farm.,GetGlobalValue NHV_Q01_DocumentsFound == 1,Lie; set NHV_Q01_QuintusLocation = 2 and send Quintus toward the farm.
+NHV_Q01_045_2333,Q01,45,Enhanced_QuintusChoice,Quintus,NHV_VoiceQuintus,Neutral,35,Then I will follow the road and meet her there.,GetGlobalValue NHV_Q01_QuintusLocation == 2,
+NHV_Q01_048_2340,Q01,48,Enhanced_CampReturn,Player,-,Neutral,50,I found the truth. Come with me to the inn.,GetGlobalValue NHV_Q01_DocumentsFound == 1,Player returns to the camp; Hrefna joins the inn trip.
+NHV_Q01_048_2341,Q01,48,Enhanced_CampReturn,Hrefna,NHV_VoiceHrefna,Neutral,40,I will read the papers where he expected to hide them.,GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_048_2342,Q01,48,Enhanced_CampReturn,Player,-,Neutral,50,"Then we go together. Whatever happens, you will know what he knew.",GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_050_2359,Q01,50,Enhanced_InnLetter,Player,-,Neutral,50,This was in his room. Read it.,GetItemCount NHV_Book_QuintusPrivateLetter >= 1,ENHANCED E45; Claude 01.10.2026: the player hands Hrefna the letter; 2360/2361 are her reaction after reading it.
+NHV_Q01_050_2360,Q01,50,Enhanced_InnDocuments,Hrefna,NHV_VoiceHrefna,Sad,40,The letter is to his daughter. He was still trying to go home.,GetGlobalValue NHV_Q01_DocumentsFound == 1,Hrefna reads the letter in the inn.
+NHV_Q01_050_2361,Q01,50,Enhanced_InnDocuments,Hrefna,NHV_VoiceHrefna,Neutral,35,"He was looking for me, but he was also looking for a way back to his own life.",GetGlobalValue NHV_Q01_DocumentsFound == 1,
+NHV_Q01_050_2362,Q01,50,Enhanced_InnDocuments,Player,-,Neutral,50,"Now choose: kill him, leave him alive, or let me end this.",GetGlobalValue NHV_Q01_DocumentsFound == 1,Three final options.
+NHV_Q01_050_2370,Q01,50,Enhanced_InnChoice,Player,-,Neutral,50,Quintus is here. You will kill him in the inn.,GetGlobalValue NHV_Q01_DocumentsFound == 1; GetGlobalValue NHV_Q01_QuintusLocation == 1,Sets NHV_Q01_FinalChoice = 1; Quintus remains in the inn.
+NHV_Q01_050_2371,Q01,50,Enhanced_InnChoice,Hrefna,NHV_VoiceHrefna,Neutral,40,Then let him come. I will not pretend I am killing Eirik again.,GetGlobalValue NHV_Q01_FinalChoice == 1; GetGlobalValue NHV_Q01_QuintusLocation == 1,
+NHV_Q01_050_2372,Q01,50,Enhanced_InnChoice,Player,-,Neutral,50,Quintus is at the farm. I will bring him back to the inn.,GetGlobalValue NHV_Q01_DocumentsFound == 1; GetGlobalValue NHV_Q01_QuintusLocation == 2,Sets NHV_Q01_FinalChoice = 1; move Quintus to the inn.
+NHV_Q01_050_2373,Q01,50,Enhanced_InnChoice,Hrefna,NHV_VoiceHrefna,Neutral,40,Bring him here. I will face him in the inn.,GetGlobalValue NHV_Q01_FinalChoice == 1; GetGlobalValue NHV_Q01_QuintusLocation == 2,Hrefna agrees to the relocated inn confrontation.
+NHV_Q01_050_2380,Q01,50,Enhanced_InnChoice,Player,-,Neutral,50,Let Quintus live. I will send him to the farm and let him take you there.,GetGlobalValue NHV_Q01_DocumentsFound == 1; GetGlobalValue NHV_Q01_QuintusLocation == 1,Sets NHV_Q01_FinalChoice = 2; move Quintus to the farm; Hrefna returns there.
+NHV_Q01_050_2381,Q01,50,Enhanced_InnChoice,Hrefna,NHV_VoiceHrefna,Fear,40,"If I go willingly, he may leave the town without burning it around me.",GetGlobalValue NHV_Q01_FinalChoice == 2,Hrefna chooses capture rather than killing.
+NHV_Q01_050_2382,Q01,50,Enhanced_InnChoice,Player,-,Neutral,50,Let Quintus live. I will return to the farm and let him take me.,GetGlobalValue NHV_Q01_DocumentsFound == 1; GetGlobalValue NHV_Q01_QuintusLocation == 2,Sets NHV_Q01_FinalChoice = 2; Hrefna returns to the farm.
+NHV_Q01_050_2390,Q01,50,Enhanced_InnChoice,Player,-,Neutral,50,I will kill Quintus. We go to the farm.,GetGlobalValue NHV_Q01_DocumentsFound == 1; GetGlobalValue NHV_Q01_QuintusLocation == 2,Sets NHV_Q01_FinalChoice = 3; player travels to farm.
+NHV_Q01_050_2392,Q01,50,Enhanced_InnChoice,Player,-,Neutral,50,"Quintus is here. I will send him to the farm, then kill him there.",GetGlobalValue NHV_Q01_DocumentsFound == 1; GetGlobalValue NHV_Q01_QuintusLocation == 1,Sets NHV_Q01_FinalChoice = 3; move Quintus to the farm before the player kills him.
+NHV_Q01_050_2393,Q01,50,Enhanced_InnChoice,Hrefna,NHV_VoiceHrefna,Sad,35,Then I will stand beside you. The inn will not become another cage.,GetGlobalValue NHV_Q01_FinalChoice == 3; GetGlobalValue NHV_Q01_QuintusLocation == 1,
+NHV_Q01_050_2391,Q01,50,Enhanced_InnChoice,Hrefna,NHV_VoiceHrefna,Sad,35,Then I will walk beside you. I will not let another man decide what my silence means.,GetGlobalValue NHV_Q01_FinalChoice == 3; GetGlobalValue NHV_Q01_QuintusLocation == 2,
+NHV_Q01_055_2560,Q01,55,Enhanced_HrefnaKill,Quintus,NHV_VoiceQuintus,Puzzled,35,You brought me the woman from the farm. I hoped you had chosen mercy.,,"Quintus is present in the inn; if he was sent to the farm, the scene brings him back before Hrefna strikes."
+NHV_Q01_055_2561,Q01,55,Enhanced_HrefnaKill,Hrefna,NHV_VoiceHrefna,Neutral,40,I read your letter. I know you were going home.,,
+NHV_Q01_055_2562,Q01,55,Enhanced_HrefnaKill,Hrefna,NHV_VoiceHrefna,Sad,40,I am sorry you will not get there.,,
+NHV_Q01_055_2563,Q01,55,Enhanced_HrefnaKill,Hrefna,NHV_VoiceHrefna,Neutral,40,I choose this knowing who you are.,,Hrefna performs the kill; outcome Proven.
+NHV_Q01_055_2570,Q01,55,Enhanced_HrefnaCapture,Hrefna,NHV_VoiceHrefna,Fear,40,I will not kill him. I will return to the farm and let him take me.,,Hrefna returns to the farm and surrenders; outcome Unproven/Captured.
+NHV_Q01_055_2571,Q01,55,Enhanced_HrefnaCapture,Player,-,Neutral,50,You are choosing a cell over another death.,,
+NHV_Q01_055_2573,Q01,55,Enhanced_HrefnaCapture,Quintus,NHV_VoiceQuintus,Neutral,35,Then return to the farm. I will be there before nightfall.,,Quintus follows the surrender route to the farm.
+NHV_Q01_055_2572,Q01,55,Enhanced_HrefnaCapture,Hrefna,NHV_VoiceHrefna,Sad,35,I am choosing what I can still answer for.,,
+NHV_Q01_055_2580,Q01,55,Enhanced_PlayerKill,Quintus,NHV_VoiceQuintus,Anger,35,You brought me to the farm. You will not take her from me.,,"Quintus is at the farm for the player-kill route, whether he was sent there directly or followed the false return story."
+NHV_Q01_055_2581,Q01,55,Enhanced_PlayerKill,Player,-,Neutral,50,You were going to take her. I will not let you.,,
+NHV_Q01_055_2582,Q01,55,Enhanced_PlayerKill,Hrefna,NHV_VoiceHrefna,Fear,35,"Do it, then. But do not call it my choice.",,Player kills Quintus; outcome Unproven.
